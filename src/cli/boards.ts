@@ -28,6 +28,8 @@ export function renderLedger(tasks: Task[], events: JournalEvent[], currentTree?
   const lines: string[] = [
     "# LEDGER — generated from the journal; do not edit",
     "",
+    "> Legend: ✅ done · 🔨 in progress · 🚧 blocked · ⬜ pending — proofs: 🟢 green · 🔴 red · 🟣 stale · ⚪ unproven",
+    "",
     "## Progress board",
     "",
     `**${done}/${tasks.length} done (${pct}%)**`,

@@ -9,6 +9,7 @@ import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/ve
 import { proofStamp } from "../engine/verify/stamp.js";
 import { gitTreeHash } from "../engine/git.js";
 import { renderTaskReport } from "./task-report.js";
+import { label } from "./emoji.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
 import { kindForRef } from "../engine/spec/ears.js";
@@ -101,7 +102,7 @@ export async function checkRun(
   if (resolution.source !== "flag") {
     console.log(
       pc.dim(
-        `🧭 stack ${resolution.source === "config" ? "from verify.defaultStack" : "inferred"}: ${stackName}` +
+        `${label("route")} stack ${resolution.source === "config" ? "from verify.defaultStack" : "inferred"}: ${stackName}` +
           (resolution.reason ? ` (${resolution.reason})` : ""),
       ),
     );
@@ -122,7 +123,7 @@ export async function checkRun(
     (kind === "api" || kind === "e2e") && config.verify.runApp && config.verify.app.start.length > 0;
   console.log(
     pc.dim(
-      `running ${ref} [${kind}] via ${stackName}` +
+      `${label("checkRun")} running ${ref} [${kind}] via ${stackName}` +
         (picked.source !== "builtin" ? ` (${picked.source} runner)` : "") +
         (needsApp ? " +app" : "") +
         (expectRed ? " (expect-red: no retries)" : "") +

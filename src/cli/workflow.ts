@@ -14,6 +14,7 @@ import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import { gateVerdict } from "../engine/gate.js";
 import { gitTreeHash, isDirty } from "../engine/git.js";
 import { loadConfig } from "./config-io.js";
+import { label } from "./emoji.js";
 
 function journal(cwd: string): Journal {
   return new Journal(join(cwd, ".rivet", "journal.jsonl"));
@@ -81,7 +82,7 @@ export function specTasks(): void {
     created++;
     console.log(pc.green(`✓ ${req.id}`) + pc.dim(` — ${req.title} (${refs.length} bound check(s))`));
   }
-  console.log(pc.dim(`\n${created} created · ${synced} synced from spec — the spec is the source of truth`));
+  console.log(pc.dim(`\n${label("specSync")} ${created} created · ${synced} synced from spec — the spec is the source of truth`));
 }
 
 /** `rivet approve <taskIds...>` — record the human gate as a signed artifact. */
@@ -132,7 +133,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   });
   const outPath = join(cwd, ".rivet", "pr-body.md");
   writeFileSync(outPath, body + "\n");
-  console.log(pc.green("✓ PR body generated") + pc.dim(" → .rivet/pr-body.md"));
+  console.log(pc.green(`${label("pr")} ✓ PR body generated`) + pc.dim(" → .rivet/pr-body.md"));
 
   // FIX-GATE-01: same predicate as the hook and `guard pr` — anything not green blocks --create.
   const verdict = gateVerdict(graph);
@@ -194,13 +195,13 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
   }
   const badge =
     result.mode === "research" ? pc.cyan("RESEARCH") : result.mode === "quick" ? pc.green("QUICK") : pc.magenta("FULL-SPEC");
-  console.log(`${badge} ${pc.dim("— " + result.reason)}`);
+  console.log(`${label("route")} ${badge} ${pc.dim("— " + result.reason)}`);
   if (config.mode.confirmFirst && !opts.mode) {
     console.log(pc.dim("confirm-first is on: proceed with this mode, or override via --mode"));
   }
   const next =
     result.mode === "research"
-      ? "investigate and report — no code changes"
+      ? `${label("research")} investigate and report — no code changes`
       : result.mode === "quick"
         ? "one delta + one test (quick mode still writes a test) → rivet check run → rivet task done"
         : "write .rivet/specs/<feature>.md (EARS + @check) → rivet spec tasks → TDD → rivet graph build";
