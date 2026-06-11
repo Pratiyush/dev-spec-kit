@@ -2,6 +2,7 @@ import { join } from "node:path";
 import { existsSync, readFileSync } from "node:fs";
 import pc from "picocolors";
 import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
+import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, pickRunner } from "../engine/verify/runner.js";
@@ -155,5 +156,30 @@ export function status(): void {
       console.log(`        ${light} ${pc.dim(ref)}`);
     }
   }
+  console.log("");
+}
+
+/** TRAIL-01: `rivet task trail <id>` — every gate, minute-level, done/blocked/skipped/pending. */
+export function taskTrail(id: string): void {
+  const cwd = process.cwd();
+  const events = new Journal(join(cwd, ".rivet", "journal.jsonl")).read();
+  const { timeline, summary } = deriveTrail(events, id);
+  console.log(pc.bold(`\nGate trail — ${id}\n`));
+  const badge = (v: string) =>
+    v.startsWith("passed") || v === "green" || v === "done" || v === "recorded"
+      ? pc.green(v)
+      : v.startsWith("blocked") || v === "red"
+        ? pc.red(v)
+        : pc.yellow(v);
+  console.log(`  binding: ${badge(summary.binding)}   tdd-red: ${badge(summary.tddRed)}   proof: ${badge(summary.proof)}`);
+  console.log(`  done-gate: ${badge(summary.doneGate)}   approval: ${badge(summary.approval)}\n`);
+  const ICON: Record<string, string> = { red: "🔴", green: "🟢", blocked: "⛔", passed: "🏁", recorded: "🔏", bound: "🔗", synced: "🔁", started: "▶️" };
+  for (const ev of timeline) {
+    console.log(
+      `  ${pc.dim(ev.at.slice(11, 16))}  ${ICON[ev.outcome] ?? "·"} ${ev.gate.padEnd(9)} ${ev.outcome}` +
+        (ev.detail ? pc.dim(`  ${ev.detail}`) : ""),
+    );
+  }
+  if (timeline.length === 0) console.log(pc.dim("  no recorded gates for this task"));
   console.log("");
 }

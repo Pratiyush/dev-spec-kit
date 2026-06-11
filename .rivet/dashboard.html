@@ -1,480 +1,878 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rivet — untitled</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title>rivet — dashboard</title>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('rivet-theme')||'light');}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"></link>
 <style>
-  :root{--bg:#0d1117;--card:#161b22;--text:#e6edf3;--dim:#8b949e;--accent:#e8590c;--green:#3fb950}
-  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,system-ui,sans-serif;padding:32px}
-  h1{font-size:22px;margin:0 0 4px}h2{font-size:15px;color:var(--dim);margin:28px 0 10px;text-transform:uppercase;letter-spacing:.08em}
-  .card{background:var(--card);border:1px solid #21262d;border-radius:10px;padding:18px 20px;margin-top:10px}
-  .bar{height:14px;background:#21262d;border-radius:7px;overflow:hidden;margin:10px 0}
-  .bar>div{height:100%;width:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:7px;transition:width .6s}
-  .pct{font-size:34px;font-weight:700}.dim{color:var(--dim);font-size:12px}
-  table{width:100%;border-collapse:collapse}td{padding:6px 8px;border-top:1px solid #21262d}tr:first-child td{border-top:0}
-  .lights{font-size:16px;letter-spacing:2px}.drift{background:#3d1d29;border:1px solid #f85149;color:#ffa198;border-radius:10px;padding:12px 16px;margin-top:14px}
-  .pill{display:inline-block;margin-right:14px}iframe{width:100%;height:520px;border:1px solid #21262d;border-radius:10px;background:#fff}
-  ul{margin:0;padding-left:18px}
-  details{border-top:1px solid #21262d;padding:8px 0}details:first-child{border-top:0}
-  summary{cursor:pointer;font-weight:600;padding:4px 0}
-  .md{padding:8px 4px;color:var(--text)}.md h1,.md h2,.md h3{margin:12px 0 6px}.md p{margin:6px 0}
-  .md table{margin:8px 0}.md th{text-align:left;color:var(--dim)}.md code{background:#21262d;padding:1px 5px;border-radius:4px}
-  .md pre{background:#0a0d12;border:1px solid #21262d;border-radius:8px;padding:10px;overflow-x:auto}
-  .md blockquote{border-left:3px solid var(--accent);margin:6px 0;padding:2px 10px;color:var(--dim)}
-</style></head><body>
-<h1>📊 Rivet — untitled</h1>
-<div class="dim">generated 2026-06-11T21:29:17.919Z · refresh with <code>rivet dashboard</code></div>
+:root{
+  /* ---- light (default) ---- */
+  --bg:#f4f1e9;
+  --panel:#ffffff;
+  --panel-2:#f7f4ec;
+  --panel-3:#eee9dd;
+  --border:#e5e0d3;
+  --border-2:#d6d0bf;
+  --text:#201c15;
+  --dim:#6c675b;
+  --faint:#9b9485;
+  --accent:#bd6a2c;
+  --accent-soft:rgba(189,106,44,.10);
+  --green:#13935a;  --green-soft:rgba(19,147,90,.11);
+  --red:#d4453a;    --red-soft:rgba(212,69,58,.10);
+  --purple:#7a5bf0; --purple-soft:rgba(122,91,240,.10);
+  --gray:#a39b8a;   --gray-soft:rgba(163,155,138,.13);
+  --glow:.22;
+  --shadow:0 1px 2px rgba(60,45,15,.05), 0 5px 16px rgba(60,45,15,.045);
+  --shadow-lg:0 2px 6px rgba(60,45,15,.06), 0 14px 38px rgba(60,45,15,.07);
+  --header-bg:rgba(244,241,233,.86);
+  --halo:radial-gradient(1150px 540px at 50% -240px, rgba(189,106,44,.08), transparent 64%);
+  --stripe:rgba(40,30,10,.045);
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:'Space Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --r:12px;
+}
+[data-theme="dark"]{
+  --bg:#0c0b09;
+  --panel:#14120e;
+  --panel-2:#1a1712;
+  --panel-3:#211d15;
+  --border:#262219;
+  --border-2:#37301f;
+  --text:#ece7dc;
+  --dim:#9a9180;
+  --faint:#6b6457;
+  --accent:#e09a52;
+  --accent-soft:rgba(224,154,82,.12);
+  --green:#3fd68f;  --green-soft:rgba(63,214,143,.12);
+  --red:#f4604e;    --red-soft:rgba(244,96,78,.12);
+  --purple:#b88ff5; --purple-soft:rgba(184,143,245,.13);
+  --gray:#a8a294;   --gray-soft:rgba(168,162,148,.10);
+  --glow:.7;
+  --shadow:none;
+  --shadow-lg:0 18px 50px rgba(0,0,0,.5);
+  --header-bg:rgba(12,11,9,.88);
+  --halo:radial-gradient(1100px 500px at 50% -200px, rgba(224,154,82,.05), transparent 60%);
+  --stripe:rgba(255,255,255,.018);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{background:var(--bg);}
+body{
+  background:var(--halo),var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.5;
+  min-height:100vh;
+  transition:background-color .25s,color .25s;
+}
+::selection{background:var(--accent-soft);}
 
-<div class="card">
-  <span class="pct">100%</span> <span class="dim">complete — 30/30 task(s) done</span>
-  <div class="bar"><div></div></div>
-  <span class="pill">🟢 3</span><span class="pill">🔴 0</span>
-  <span class="pill">🟣 0</span><span class="pill">⚪ 0</span>
-</div>
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:10;
+  background:var(--header-bg);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.hd-inner{
+  max-width:1240px;margin:0 auto;padding:0 28px;
+  display:flex;align-items:center;gap:28px;height:58px;
+}
+.wordmark{display:flex;align-items:baseline;gap:9px;flex-shrink:0;}
+.wordmark .bolt{font-size:17px;}
+.wordmark .name{font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:-.02em;}
+.wordmark .name em{font-style:normal;color:var(--accent);}
+nav{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.tab{
+  appearance:none;border:0;background:none;cursor:pointer;
+  font-family:var(--sans);font-size:14px;font-weight:500;color:var(--dim);
+  padding:8px 13px;border-radius:8px;white-space:nowrap;
+  transition:color .15s,background .15s;
+  display:flex;align-items:center;gap:7px;
+}
+.tab:hover{color:var(--text);background:var(--panel-2);}
+.tab.active{color:var(--text);background:var(--panel-3);box-shadow:inset 0 0 0 1px var(--border-2);}
+.tab .ct{font-family:var(--mono);font-size:10.5px;color:var(--faint);background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:0 5px;line-height:16px;}
+.tab.active .ct{color:var(--accent);border-color:var(--border-2);}
+.stamp{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap;flex-shrink:0;}
+.stamp b{color:var(--dim);font-weight:500;}
+.theme-toggle{
+  appearance:none;border:1px solid var(--border);background:var(--panel-2);cursor:pointer;
+  font-size:15px;line-height:1;width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s,transform .15s;
+}
+.theme-toggle:hover{border-color:var(--border-2);background:var(--panel-3);transform:translateY(-1px);}
+.theme-toggle:active{transform:translateY(0);}
 
+/* ---------- layout ---------- */
+main{max-width:1240px;margin:0 auto;padding:26px 28px 70px;}
+.view{display:none;}
+.view.active{display:block;animation:rise .32s cubic-bezier(.22,.8,.3,1);}
+@keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){.view.active{animation:none;}}
 
-<h2>Tasks</h2><div class="card"><table><tr><td>✅</td><td><b>FIX-ROUTE-01</b></td><td>route: build-intent must veto research keywords</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>R-AUDIT-01</b></td><td>every CLI invocation is audit-logged</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>R-AUDIT-02</b></td><td>the audit trail is readable</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>R-PROG-01</b></td><td>progress with emoji after completing a task</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-PRMATH-01</b></td><td>PR coverage uses worst-of obligation semantics</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-PROOF-01</b></td><td>proof identity = tested tree hash, not commit SHA</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-ROBUST-01</b></td><td>inputs never crash; infra errors are not proofs</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-SPECSYNC-01</b></td><td>spec re-derive syncs bindings; evidence unclobberable</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-GATE-01</b></td><td>one not-green-blocks predicate; missing graph blocks</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>GATE-PROTECT-01</b></td><td>in-flight specs/tests/config need human unlock</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-PARSE-01</b></td><td>parser respects markdown reality</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-QUERY-01</b></td><td>read-only queries; no retry burn; deterministic ties</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>AUDIT-META-01</b></td><td>journal meta (actor/model) + governance events</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FINISH-RITUAL-01</b></td><td>rivet-finish skill: evidence gate, fixed menu, typed confirm</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>GATE-FACTS-01</b></td><td>DENY-FORCE-ALLOW investigative gate (opt-in)</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>GATE-PACKS-01</b></td><td>config gate packs: sections+kinds+security floor</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>COMPACT-01</b></td><td>phase-aware checkpoints + PreCompact resume save</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>SKILL-QA-01</b></td><td>mechanical QA: skills reference only real commands/artifacts</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>SCALE-01</b></td><td>P3: locking, fold cache, failure tails, anchor-by-path, audit gating</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>RUNNERS-01</b></td><td>multi-kind verification: kind-aware runs + app lifecycle + kind runners</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>RENAME-LAWS-01</b></td><td>rename constitution → laws (user term)</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>BOARDS-01</b></td><td>generated LEDGER.md + TRACKING.md boards</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>WAVE-01</b></td><td>worktree wave dispatcher: plan + fetch-first start</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>STEER-01</b></td><td>laws engine: 3 scopes + personal inheritance + file injection</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>LEARN-01</b></td><td>warn-on-repeat: open lessons surface at task start</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>WAVE-02</b></td><td>wave done: provenance-checked worktree cleanup after merge</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>DASH-01</b></td><td>dashboard v1: emoji + completion % + traffic lights + graph embed</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FILES-01</b></td><td>dashboard files plumbing: collect .rivet md + safe renderer</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>README-01</b></td><td>README refresh: match the real tool surface</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>FIX-PROOF-02</b></td><td>proof identity excludes .rivet state (journal must not stale its own proofs)</td><td class="lights">🟢</td><td>done</td></tr></table></div>
-<h2>Requirements</h2><div class="card"><table><tr><td>✅</td><td><b>R-AUDIT-01</b></td><td>every CLI invocation is audit-logged</td><td class="lights">🟢</td></tr>
-<tr><td>✅</td><td><b>R-AUDIT-02</b></td><td>the audit trail is readable</td><td class="lights">🟢</td></tr>
-<tr><td>✅</td><td><b>R-PROG-01</b></td><td>progress with emoji after completing a task</td><td class="lights">🟢</td></tr></table></div>
-<h2>Approvals &amp; governance</h2><div class="card"><ul><li class='dim'>none recorded yet</li></ul></div>
-<h2>Code graph (graphify)</h2><div class="card"><iframe src="../graphify-out/graph.html" title="code graph"></iframe></div>
-<h2>Files</h2><div class="card"><details open><summary>📄 laws.md</summary><div class="md"><h1>Project Constitution</h1>
-<blockquote>The rules Rivet must always obey for this project. Three scopes are supported (Kiro-style steering):</blockquote>
-<blockquote>always-on (this file), file-match, and on-summon. A personal default can be inherited and overridden here.</blockquote>
-<h2>Standards</h2>
-<ul>
-<li>(add your do's and don'ts here)</li>
-</ul>
-<h2>Tech &amp; conventions</h2>
-<ul>
-<li>(stacks, libraries, naming, structure, folder layout)</li>
-</ul>
-<h2>Hard rules (never violate)</h2>
-<ul>
-<li>Commits are authored by the human, never co-authored by the AI.</li>
-<li>A task is not "done" until its bound checks pass (evidence-bound completion).</li>
-<li>Reuse existing code before writing new; follow the surrounding patterns.</li>
-<li>Every feature gets an adversarial review pass before PR — verification and review catch</li>
-</ul>
-<p>  different bug classes; neither substitutes for the other.</p>
-<p>  (Promoted from learnings 2026-06-11; APPROVED by Pratiyush 2026-06-11.)</p></div></details>
-<details><summary>📄 learnings.md</summary><div class="md"><h1>Rivet learnings — append-only; a lesson counts once PROMOTED or HARDENED</h1>
-<h2>2026-06-11 Build-intent must veto research keywords in routing</h2>
-<ul>
-<li>Trigger: live demo routed "i want a portfolio page … and compare with index" to RESEARCH — the</li>
-</ul>
-<p>  word "compare" outweighed the explicit "i want a … page" build intent.</p>
-<ul>
-<li>Lesson: investigative keywords are weak signals; build-intent ("i/we want|need", "add/create/</li>
-</ul>
-<p>  implement") must veto them. Misrouting a feature to research silently produces zero code.</p>
-<ul>
-<li>Promoted to: check:test/workflow.test.ts::want-signals veto research routing (permanent</li>
-</ul>
-<p>  regression test, bound via task FIX-ROUTE-01 — red→fix→green through Rivet's own done-gate)</p>
-<h2>2026-06-11 Proof identity must be the TESTED TREE, not the commit SHA  ⟨P1 · BLOCKER⟩</h2>
-<ul>
-<li>Trigger: adversarial review #1 (confirmed live): proofs stamp <code>git rev-parse HEAD</code> while the tree</li>
-</ul>
-<p>  is dirty — green can vouch for uncommitted code; and committing the tested code moves HEAD, so</p>
-<p>  every proof instantly flips stale.</p>
-<ul>
-<li>Lesson: "green means this code is proven" requires the proof to identify the tree it ran against.</li>
-</ul>
-<p>  Stamp proofs with a content/tree hash (e.g. <code>git stash create</code> tree-hash or hash of bound files)</p>
-<p>  + a dirty flag; compute staleness against the tree hash; dirty-tree greens are <code>provisional</code>.</p>
-<ul>
-<li>Promoted to: check:test/proof-identity.test.ts (HARDENED via FIX-PROOF-01 — proofs carry</li>
-</ul>
-<p>  tree+dirty; staleness compares trees with sha fallback for legacy entries; with tree identity a</p>
-<p>  dirty green is sound, so no provisional state was needed)</p>
-<h2>2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩</h2>
-<ul>
-<li>Trigger: review #2/#3 (confirmed): <code>spec tasks</code> skips existing tasks so NEW <code>@check</code> obligations</li>
-</ul>
-<p>  are never enforced; bare <code>task create</code> on an existing id resets status and wipes recorded proofs.</p>
-<ul>
-<li>Lesson: the spec is only the source of truth if re-derivation diffs bindings into existing tasks,</li>
-</ul>
-<p>  and <code>task.created</code> folds as create-if-absent — recorded evidence must be unclobberable.</p>
-<ul>
-<li>Promoted to: check:test/spec-sync.test.ts (HARDENED via FIX-SPECSYNC-01 — create() refuses duplicates, fold is create-if-absent, syncBindings diffs spec refs in and reopens done tasks with new obligations)</li>
-</ul>
-<h2>2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩</h2>
-<ul>
-<li>Trigger: review #4/#8/#5 (confirmed): malformed config.json or a data-less journal line → raw</li>
-</ul>
-<p>  stack traces across commands; missing runner binary (ENOENT, status null) recorded as a RED proof.</p>
-<ul>
-<li>Lesson: parse all inputs defensively with one helper + clear message; spawn errors/status null are</li>
-</ul>
-<p>  tooling errors, never proofs — they must not enter the graph.</p>
-<ul>
-<li>Promoted to: check:test/robust.test.ts (HARDENED via FIX-ROBUST-01 — one defensive loadConfig + safe() CLI wrapper, data-less journal lines tolerated, RunnerUnavailableError instead of fake red proofs; timeout stays a red proof)</li>
-</ul>
-<h2>2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩</h2>
-<ul>
-<li>Trigger: review #6 (confirmed bypasses): <code>gh "pr" create</code>, <code>$GH pr create</code>, <code>gh api …/pulls</code>, and</li>
-</ul>
-<p>  <code>rm .rivet/graph.json</code> all sail past the guard; <code>rivet pr</code> blocks red/stale but not unproven —</p>
-<p>  three gates, three different predicates.</p>
-<ul>
-<li>Lesson: one shared rule — "anything not green blocks" — applied by the hook, <code>guard pr</code>, and</li>
-</ul>
-<p>  <code>rivet pr</code> alike; in a Rivet project a MISSING graph blocks (state absence ≠ permission);</p>
-<p>  <code>rivet pr --create</code> must run the same guard it advertises.</p>
-<ul>
-<li>Promoted to: check:test/gate.test.ts (HARDENED via FIX-GATE-01 — shared gateVerdict across hook/guard/pr, missing or unreadable graph BLOCKS, quote-stripped matcher + gh api …/pulls; $VAR indirection documented as known limit)</li>
-</ul>
-<h2>2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩</h2>
-<ul>
-<li>Trigger: review #7 (confirmed): PR body counts a criterion proven if ANY binding is green; one</li>
-</ul>
-<p>  green + one red reports "100% proven green" exactly when a proof is failing.</p>
-<ul>
-<li>Lesson: every consumer of proof state uses worst-of (<code>every(green)</code>), never any-of. The headline</li>
-</ul>
-<p>  number reviewers trust must be the strictest one.</p>
-<ul>
-<li>Promoted to: check:test/workflow.test.ts::worst-of coverage in the PR body (HARDENED via FIX-PRMATH-01)</li>
-</ul>
-<h2>2026-06-11 Parser must respect markdown reality  ⟨P2⟩</h2>
-<ul>
-<li>Trigger: review #11/#12/#13/#14 (confirmed): fenced code blocks become real requirements; blank-</li>
-</ul>
-<p>  line-separated EARS sentences merge into one criterion; bulleted/orphan <code>@check</code> lines silently</p>
-<p>  drop; <code>--mode bogus</code> accepted; <code>log -n 0</code> prints everything.</p>
-<ul>
-<li>Lesson: silent loss of a proof obligation is the worst parser failure — fence-track, flush on</li>
-</ul>
-<p>  blank lines, strip list markers, warn on orphans, validate enums and numbers.</p>
-<ul>
-<li>Promoted to: check:test/parse-fix.test.ts (HARDENED via FIX-PARSE-01 — fences invisible, blank lines separate criteria, bulleted @checks bind, orphan @checks WARN, assertMode + parseCount validate inputs)</li>
-</ul>
-<h2>2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩</h2>
-<ul>
-<li>Trigger: review #15/#10/#9: <code>trace</code>/<code>affected</code>/<code>drift --dry-run</code> rewrite graph.json or trigger</li>
-</ul>
-<p>  re-index; TDD's expected red burns retryLimit+1 full Maven runs; equal-timestamp results resolve</p>
-<p>  by iteration order.</p>
-<ul>
-<li>Lesson: queries take a no-write path; retry only on suspected flakiness (or <code>--expect-red</code> for</li>
-</ul>
-<p>  TDD); tie-break proofs deterministically toward the worse state.</p>
-<ul>
-<li>Promoted to: check:test/query-fix.test.ts (HARDENED via FIX-QUERY-01 — materialize(write:false) for trace/affected/dry-run, --expect-red skips retry burn, equal-timestamp ties break toward the worse proof)</li>
-</ul>
-<h2>2026-06-11 Scale &amp; evidence quality backlog  ⟨P3⟩</h2>
-<ul>
-<li>Trigger: review #16-#19: full journal re-fold per command while audit events balloon the file;</li>
-</ul>
-<p>  red proofs carry no failure output; test anchors collide on same-named classes; concurrent</p>
-<p>  worktree waves can interleave journal writes and last-writer-wins graph.json.</p>
-<ul>
-<li>Lesson: snapshot+tail folding; gate audit to mutating commands or honor memory.journal=</li>
-</ul>
-<p>  "milestones"; capture truncated failure tails in CheckResult; anchor by source path; file locking</p>
-<p>  before parallel waves ship.</p>
-<ul>
-<li>Promoted to: check:test/scale.test.ts (HARDENED via SCALE-01 — withLock mkdir-mutex with stale-steal serializes journal appends across real processes; per-process (size,mtime)-keyed read cache; red proofs carry a 1500-char output tail; same-label code nodes each get anchor edges (ambiguity visible); memory.journal='milestones' skips read-only cli.run noise. Durable snapshot+tail folding deferred until journals measurably grow.)</li>
-</ul>
-<h2>2026-06-11 Verification and review catch DIFFERENT bug classes — keep both</h2>
-<ul>
-<li>Trigger: during construction, bound checks caught 3 real bugs (stale Boot-3 import, ANSI-split</li>
-</ul>
-<p>  assertion, worst-of rollup); the adversarial review then found 20 MORE confirmed issues the</p>
-<p>  checks could not see (semantics, robustness, bypasses).</p>
-<ul>
-<li>Lesson: evidence-bound done ≠ reviewed. The rivet-review skill's two-pass doctrine is load-</li>
-</ul>
-<p>  bearing, not ceremony; schedule adversarial review at feature boundaries.</p>
-<ul>
-<li>Promoted to: constitution#hard-rules — "every feature gets an adversarial review pass before PR"</li>
-</ul>
-<p>  (APPROVED by Pratiyush 2026-06-11; recorded in .rivet/constitution.md)</p>
-<h2>2026-06-11 The 17-gate proposal: menu yes, mandate no</h2>
-<ul>
-<li>Trigger: ChatGPT proposed 17 mandatory sequential checkbox gates before any coding.</li>
-<li>Lesson: checkbox gates are enforcement-by-prose (tickable without truth) and mandatory ceremony</li>
-</ul>
-<p>  recreates the over-ceremony death spiral our research documented. But its CONTENT is valuable:</p>
-<p>  NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.</p>
-<ul>
-<li>Promoted to: check:test/gate-packs.test.ts + check:test/audit-meta.test.ts (BOTH HARDENED — packs ship as editable config defaults, security trigger floors the mode, graph build enforces sections+kinds; journal meta + governance events landed). Its artifact</li>
-</ul>
-<p>  taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into</p>
-<p>  pack-required spec sections; ADR is already a VTG node type; "AI Execution Plan" = our task DAG.</p>
-<p>  Its "no code before tests" ordering: already stronger in Rivet (bindings at spec time, mechanical).</p>
-<h2>2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)</h2>
-<ul>
-<li>Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the</li>
-</ul>
-<p>  first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes</p>
-<p>  the output, because "the investigation itself creates context."</p>
-<ul>
-<li>Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.</li>
-<li>Promoted to: check:test/gate-facts.test.ts (HARDENED via GATE-FACTS-01 — DENY→FORCE→ALLOW in guard-facts.mjs + engine/facts.ts; opt-in gates.facts='on'; 30-min window; 500-entry bounded state)</li>
-</ul>
-<h2>2026-06-11 Protect the gates from the agent (anti-gaming)</h2>
-<ul>
-<li>Trigger: ECC <code>pre:config-protection</code> blocks edits to linter configs ("fix code instead of weakening</li>
-</ul>
-<p>  configs"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.</p>
-<ul>
-<li>Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config</li>
-</ul>
-<p>  require an explicit human-approved unlock — the moat must not be editable by the thing it gates.</p>
-<ul>
-<li>Promoted to: check:test/protect.test.ts (HARDENED via GATE-PROTECT-01 — specs/config immutable while tasks in flight; bound test files lock AFTER their ref goes green (pre-green TDD stays free); human escape hatch <code>rivet unlock</code> is time-boxed + journaled)</li>
-</ul>
-<h2>2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules</h2>
-<ul>
-<li>Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; "anything touching a</li>
-</ul>
-<p>  security trigger or public API is AT LEAST standard"; two named human gates; "gated, not</p>
-<p>  autonomous") + hookify-rules (markdown rules: event/pattern/conditions/action warn|block,</p>
-<p>  verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.</p>
-<ul>
-<li>Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the</li>
-</ul>
-<p>  tier; packs are user-editable rule files, not code.</p>
-<ul>
-<li>Promoted to: check:test/gate-packs.test.ts (HARDENED via GATE-PACKS-01 — packs as config data: sections+kinds+triggers; security floor in route; enforcement in graph build; require empty by default)</li>
-</ul>
-<h2>2026-06-11 Journal upgrades: governance events + "confidence is not approval"</h2>
-<ul>
-<li>Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)</li>
-</ul>
-<p>  + governance-capture hook (secrets/policy-violation/approval-request as first-class events) +</p>
-<p>  provenance schema (source/created_at/confidence/author required on anything learned).</p>
-<ul>
-<li>Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +</li>
-</ul>
-<p>  evidence and promotion requires beating the incumbent, never self-declared confidence.</p>
-<ul>
-<li>Promoted to: check:test/audit-meta.test.ts (HARDENED via AUDIT-META-01 — EventMeta actor/model/sources on journal events, cli.run stamped with git user/RIVET_MODEL, governance first-class event type 🛡️, unlock journals as governance; pack-seeded content remains with GATE-PACKS-01)</li>
-</ul>
-<h2>2026-06-11 Finishing ritual + phase chaining (superpowers)</h2>
-<ul>
-<li>Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;</li>
-</ul>
-<p>  typed confirmation to discard; provenance check before cleanup) + every phase skill pins its sole</p>
-<p>  successor + checklists compile into tracked tasks, not prose.</p>
-<ul>
-<li>Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional</li>
-</ul>
-<p>  cleanup; skills should name their one successor so phases can't be silently skipped.</p>
-<ul>
-<li>Promoted to: check:test/finish-skill.test.ts (HARDENED via FINISH-RITUAL-01 — skills/rivet-finish: fresh-evidence entry gate via rivet graph build, fixed 4-option menu, typed <code>discard</code>, provenance-checked cleanup, journaled landing)</li>
-</ul>
-<h2>2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)</h2>
-<ul>
-<li>Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands</li>
-</ul>
-<p>  (~230 are stack packs &amp; domain verticals, consciously skipped). Both MIT; adaptation as original</p>
-<p>  prose unencumbered. Independent pass confirmed all five prior promotions (GATE-FACTS/PROTECT/</p>
-<p>  PACKS-01, AUDIT-META-01, FINISH-RITUAL-01).</p>
-<ul>
-<li>Lesson: Rivet is the enforcement/traceability layer; generic craft (brainstorming, systematic-</li>
-</ul>
-<p>  debugging, worktrees, parallel dispatch, TDD craft) stays in superpowers — recommend alongside,</p>
-<p>  never duplicate. Absorb only mechanics that strengthen the moat. Net-new from this pass:</p>
-<p>  review content (silent-failure hunt, behavioral-vs-line coverage, verify-feedback-before-</p>
-<p>  implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project</p>
-<p>  recurrence), phase-aware compaction, and compliance-QA of our own skills.</p>
-<ul>
-<li>Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;</li>
-</ul>
-<p>  check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)</p>
-<h2>2026-06-12 A grammar that can't spell its own kinds drops obligations silently</h2>
-<ul>
-<li>Trigger: RUNNERS-01's kind-resolution test failed — CHECK_LINE's kind pattern was [a-z]+, so</li>
-</ul>
-<p>  <code>kind=e2e</code> (digit!) never matched and e2e bindings had parsed as PROSE since day one. No error,</p>
-<p>  no warning: the obligation just vanished.</p>
-<ul>
-<li>Lesson: grammar character classes must be derived from the actual vocabulary (e2e has a digit);</li>
-</ul>
-<p>  every enum the parser accepts needs at least one test using its trickiest member.</p>
-<ul>
-<li>Confidence: high (reproduced; permanent test) · Scope: project</li>
-<li>Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)</li>
-</ul>
-<h2>2026-06-12 Test fixtures must pin every git assumption the host can override</h2>
-<ul>
-<li>Trigger: WAVE-01's fixture broke twice on this machine's <code>init.defaultBranch=master</code> — a push</li>
-</ul>
-<p>  refspec assumed a local <code>main</code>, and a bare origin's HEAD pointed at a branch we never pushed.</p>
-<ul>
-<li>Lesson: fixtures that shell out to git must pin branch names (<code>init -b</code>, <code>push HEAD:&lt;branch&gt;</code>),</li>
-</ul>
-<p>  identity, and HEAD explicitly — host config is part of the environment under test.</p>
-<ul>
-<li>Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)</li>
-<li>Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)</li>
-</ul></div></details>
-<details><summary>📄 DEFER.md</summary><div class="md"><h1>DEFER — consciously postponed (each entry: why + when to revisit)</h1>
-<h2>Intake adapters: GitHub / GitLab issues + Jira (P6)</h2>
-<ul>
-<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): intake comes from user input via Claude Code CLI for now</li>
-</ul>
-<p>  ("we will do GitHub and GitLab issues and Jira integration later, it is not really required at this</p>
-<p>  moment"). The raw path (<code>.rivet/intake/*.md</code> + <code>rivet route --file</code>) covers the actual workflow.</p>
-<ul>
-<li><strong>To revisit:</strong> when Rivet is used on a project whose work actually arrives as tickets, or at the</li>
-</ul>
-<p>  public launch when team usage begins. Config groundwork (<code>intake.sources</code>, <code>intake.jiraEpic</code>,</p>
-<p>  <code>intake.writeBack</code>) already exists — only the adapters are missing.</p>
-<h2>Packaging &amp; publish: npm <code>rivet-kit</code> + plugin marketplace listing (P7)</h2>
-<ul>
-<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): "defer packaging… we can do it later, and plugin</li>
-</ul>
-<p>  marketplace listing later." First: build real apps WITH Rivet, learn, and improve from those</p>
-<p>  lessons before freezing a public artifact.</p>
-<ul>
-<li><strong>To revisit:</strong> after ≥1 app has been built end-to-end with Rivet and the resulting learnings are</li>
-</ul>
-<p>  promoted (the app-build dogfood phase). Then: check <code>rivet-kit</code> npm availability, docs pass,</p>
-<p>  marketplace listing.</p>
-<h2>Durable journal snapshot+tail folding</h2>
-<ul>
-<li><strong>Why deferred:</strong> per-process (size,mtime) read cache covers current scale; snapshotting adds</li>
-</ul>
-<p>  invalidation risk with no measured need. (Ledger: SCALE-01.)</p>
-<ul>
-<li><strong>To revisit:</strong> when a real journal measurably slows commands (&gt;~50k events).</li>
-</ul>
-<h2>LLM-judged skill compliance scenarios</h2>
-<ul>
-<li><strong>Why deferred:</strong> structural skill-QA (commands/artifacts must exist) ships; judged compliance</li>
-</ul>
-<p>  needs an eval budget and stable scenarios. (Ledger: SKILL-QA-01.)</p>
-<ul>
-<li><strong>To revisit:</strong> pre-publish hardening, alongside the docs pass.</li>
-</ul>
-<h2>Live Spring <code>withApp</code> e2e showcase</h2>
-<ul>
-<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): showcase only; the lifecycle is already proven in-suite</li>
-</ul>
-<p>  against a real HTTP server (RUNNERS-01). Spinning Spring adds demo value, not verification value.</p>
-<ul>
-<li><strong>To revisit:</strong> before the public launch demo reel, or first real api/e2e-kind project.</li>
-</ul>
-<h2>Sonnet-driven temporary e2e demo (master-prompt dry run)</h2>
-<ul>
-<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): the REAL app-dogfood phase (him + master prompt)</li>
-</ul>
-<p>  supersedes a synthetic dry run.</p>
-<ul>
-<li><strong>To revisit:</strong> only if the app phase stalls and we need a cheap rehearsal first.</li>
-</ul></div></details>
-<details><summary>📄 specs/cli-ux.md</summary><div class="md"><h1>Feature: CLI audit trail &amp; progress visibility</h1>
-<blockquote>User story: As the user, I want every Rivet action audit-logged and a progress view after each</blockquote>
-<blockquote>completed task, so that I can always see what was done and what remains.</blockquote>
-<blockquote>Intake: Pratiyush, 2026-06-11 — "add jsonl logging for rivet as audit logs so we can see what all</blockquote>
-<blockquote>is done; after completing one task rivet should show pending tasks or features with progress with emoji."</blockquote>
-<h2>Requirement R-AUDIT-01 — every CLI invocation is audit-logged</h2>
-<p>WHEN any rivet command runs inside a Rivet project THEN the system SHALL append a <code>cli.run</code> event</p>
-<p>(command path + arguments + timestamp) to the append-only journal <code>.rivet/journal.jsonl</code>.</p>
-<p>@check kind=unit ref=test/cli-ux.test.ts::audits cli invocations into the journal</p>
-<h2>Requirement R-AUDIT-02 — the audit trail is readable</h2>
-<p>WHEN <code>rivet log</code> runs THEN the system SHALL print the journal events in chronological order with</p>
-<p>timestamps and per-type emoji, and WHEN <code>--json</code> is passed THEN the system SHALL emit raw JSONL.</p>
-<p>@check kind=unit ref=test/cli-ux.test.ts::renders the audit trail with per-type emoji</p>
-<h2>Requirement R-PROG-01 — progress with emoji after completing a task</h2>
-<p>WHEN a task transitions to done THEN the system SHALL display the remaining tasks and features with</p>
-<p>per-task emoji status, per-check proof lights, an overall progress bar with percentage, and the</p>
-<p>suggested next task.</p>
-<p>@check kind=unit ref=test/cli-ux.test.ts::renders progress with emoji, bar, and next-up</p></div></details>
-<details><summary>📄 LEDGER.md</summary><div class="md"><h1>LEDGER — generated from the journal; do not edit</h1>
-<h2>Progress board</h2>
-<p><strong>30/30 done (100%)</strong></p>
-<ul>
-<li>✅ <strong>FIX-ROUTE-01</strong> route: build-intent must veto research keywords 🟢</li>
-<li>✅ <strong>R-AUDIT-01</strong> every CLI invocation is audit-logged 🟢</li>
-<li>✅ <strong>R-AUDIT-02</strong> the audit trail is readable 🟢</li>
-<li>✅ <strong>R-PROG-01</strong> progress with emoji after completing a task 🟢</li>
-<li>✅ <strong>FIX-PRMATH-01</strong> PR coverage uses worst-of obligation semantics 🟢</li>
-<li>✅ <strong>FIX-PROOF-01</strong> proof identity = tested tree hash, not commit SHA 🟢</li>
-<li>✅ <strong>FIX-ROBUST-01</strong> inputs never crash; infra errors are not proofs 🟢</li>
-<li>✅ <strong>FIX-SPECSYNC-01</strong> spec re-derive syncs bindings; evidence unclobberable 🟢</li>
-<li>✅ <strong>FIX-GATE-01</strong> one not-green-blocks predicate; missing graph blocks 🟢</li>
-<li>✅ <strong>GATE-PROTECT-01</strong> in-flight specs/tests/config need human unlock 🟢</li>
-<li>✅ <strong>FIX-PARSE-01</strong> parser respects markdown reality 🟢</li>
-<li>✅ <strong>FIX-QUERY-01</strong> read-only queries; no retry burn; deterministic ties 🟢</li>
-<li>✅ <strong>AUDIT-META-01</strong> journal meta (actor/model) + governance events 🟢</li>
-<li>✅ <strong>FINISH-RITUAL-01</strong> rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢</li>
-<li>✅ <strong>GATE-FACTS-01</strong> DENY-FORCE-ALLOW investigative gate (opt-in) 🟢</li>
-<li>✅ <strong>GATE-PACKS-01</strong> config gate packs: sections+kinds+security floor 🟢</li>
-<li>✅ <strong>COMPACT-01</strong> phase-aware checkpoints + PreCompact resume save 🟢</li>
-<li>✅ <strong>SKILL-QA-01</strong> mechanical QA: skills reference only real commands/artifacts 🟢</li>
-<li>✅ <strong>SCALE-01</strong> P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢</li>
-<li>✅ <strong>RUNNERS-01</strong> multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢</li>
-<li>✅ <strong>RENAME-LAWS-01</strong> rename constitution → laws (user term) 🟢</li>
-<li>✅ <strong>BOARDS-01</strong> generated LEDGER.md + TRACKING.md boards 🟢</li>
-<li>✅ <strong>WAVE-01</strong> worktree wave dispatcher: plan + fetch-first start 🟢</li>
-<li>✅ <strong>STEER-01</strong> laws engine: 3 scopes + personal inheritance + file injection 🟢</li>
-<li>✅ <strong>LEARN-01</strong> warn-on-repeat: open lessons surface at task start 🟢</li>
-<li>✅ <strong>WAVE-02</strong> wave done: provenance-checked worktree cleanup after merge 🟢</li>
-<li>✅ <strong>DASH-01</strong> dashboard v1: emoji + completion % + traffic lights + graph embed 🟢</li>
-<li>✅ <strong>FILES-01</strong> dashboard files plumbing: collect .rivet md + safe renderer 🟢</li>
-<li>✅ <strong>README-01</strong> README refresh: match the real tool surface 🟢</li>
-<li>✅ <strong>FIX-PROOF-02</strong> proof identity excludes .rivet state (journal must not stale its own proofs) 🟢</li>
-</ul>
-<h2>Approvals &amp; governance</h2>
-<ul>
-<li>_none recorded yet_</li>
-</ul>
-<h2>Recent activity</h2>
-<ul>
-<li>[2m2026-06-11 21:28:43[22m  ❌ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02</li>
-<li>[2m2026-06-11 21:29:13[22m  🧾 check run FIX-PROOF-02 test/proof-identity.test.ts  [Pratiyush Kumar Singh]</li>
-<li>[2m2026-06-11 21:29:15[22m  ✅ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02</li>
-<li>[2m2026-06-11 21:29:15[22m  🧾 task done FIX-PROOF-02  [Pratiyush Kumar Singh]</li>
-<li>[2m2026-06-11 21:29:15[22m  🏁 task FIX-PROOF-02 → done</li>
-<li>[2m2026-06-11 21:29:15[22m  🧾 drift  [Pratiyush Kumar Singh]</li>
-<li>[2m2026-06-11 21:29:16[22m  ✅ check test/cli-ux.test.ts::audits cli invocations into the journal @ eabad481 → R-AUDIT-01</li>
-<li>[2m2026-06-11 21:29:16[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ eabad481 → R-AUDIT-02</li>
-<li>[2m2026-06-11 21:29:17[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ eabad481 → R-PROG-01</li>
-<li>[2m2026-06-11 21:29:17[22m  🧾 graph build  [Pratiyush Kumar Singh]</li>
-</ul></div></details>
-<details><summary>📄 TRACKING.md</summary><div class="md"><h1>TRACKING — per-requirement Definition of Done (generated; do not edit)</h1>
-<table><thead><tr><th>Requirement</th><th>Title</th><th>Criteria</th><th>Proof</th><th>Task</th><th>Approved</th></tr></thead><tbody>
-<tr><td>R-AUDIT-01</td><td>every CLI invocation is audit-logged</td><td>1</td><td>🟢</td><td>done</td><td>—</td></tr>
-<tr><td>R-AUDIT-02</td><td>the audit trail is readable</td><td>1</td><td>🟢</td><td>done</td><td>—</td></tr>
-<tr><td>R-PROG-01</td><td>progress with emoji after completing a task</td><td>1</td><td>🟢</td><td>done</td><td>—</td></tr>
-</tbody></table></div></details>
-<details><summary>📄 RESUME.md</summary><div class="md"><h1>RESUME — state-only handoff (generated from the journal; do not edit)</h1>
-<p>Board: 18/18 task(s) done.</p>
-<p>✅ all task(s) done — nothing open. Next: <code>rivet graph build</code> → <code>rivet pr</code>.</p>
-<h2>Rebuild truth</h2>
-<p><code>rivet status</code> · <code>rivet graph build</code> · <code>rivet log -n 10</code></p></div></details></div>
-</body></html>
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);}
+.card-pad{padding:20px 22px;}
+.card-label{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:14px;
+}
+code,pre{font-family:var(--mono);}
+.cmd{
+  font-family:var(--mono);font-size:12px;color:var(--accent);
+  background:var(--accent-soft);border:1px solid rgba(224,154,82,.25);
+  border-radius:6px;padding:2px 7px;white-space:nowrap;
+}
+
+/* ---------- overview ---------- */
+.drift-banner{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  background:var(--purple-soft);border:1px solid rgba(184,143,245,.3);
+  border-radius:var(--r);padding:12px 18px;margin-bottom:18px;
+  animation:rise .4s ease;
+}
+.drift-banner .msg{font-weight:500;color:var(--text);}
+.drift-banner .msg b{color:var(--purple);font-weight:600;}
+.ov-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;}
+.hero{display:flex;flex-direction:column;justify-content:space-between;min-height:300px;}
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.hero-num{
+  font-family:var(--mono);font-weight:700;font-size:clamp(72px,9vw,118px);
+  line-height:.95;letter-spacing:-.05em;color:var(--text);
+  font-variant-numeric:tabular-nums;
+}
+.hero-num .pct{font-size:.42em;color:var(--accent);font-weight:500;margin-left:4px;}
+.hero-sub{font-family:var(--mono);font-size:13px;color:var(--dim);margin-top:10px;}
+.hero-sub b{color:var(--text);font-weight:500;}
+.blockbar{
+  font-family:var(--mono);font-size:15px;letter-spacing:1px;line-height:1;
+  color:var(--accent);margin-top:26px;white-space:nowrap;overflow:hidden;
+}
+.blockbar .empty{color:var(--border-2);}
+.fillbar{height:7px;border-radius:99px;background:var(--panel-3);margin-top:12px;overflow:hidden;}
+.fillbar i{
+  display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,#9a5e2a,var(--accent));
+  box-shadow:0 0 14px rgba(224,154,82,.45);
+  transition:width 1.1s cubic-bezier(.25,.9,.3,1);
+}
+.ov-side{display:flex;flex-direction:column;gap:18px;}
+.pills{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pill{
+  display:flex;align-items:center;gap:11px;padding:13px 15px;
+  border-radius:9px;border:1px solid var(--border);background:var(--panel-2);
+}
+.pill .dot{font-size:15px;}
+.pill .n{font-family:var(--mono);font-weight:700;font-size:21px;font-variant-numeric:tabular-nums;}
+.pill .lb{font-size:12px;color:var(--dim);line-height:1.2;}
+.pill.green{border-color:rgba(63,214,143,.3);background:var(--green-soft);}  .pill.green .n{color:var(--green);}
+.pill.red{border-color:rgba(244,96,78,.3);background:var(--red-soft);}       .pill.red .n{color:var(--red);}
+.pill.purple{border-color:rgba(184,143,245,.3);background:var(--purple-soft);}.pill.purple .n{color:var(--purple);}
+.pill.gray{border-color:var(--border-2);background:var(--gray-soft);}        .pill.gray .n{color:var(--gray);}
+.approval-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;}
+.approval-line .who{font-weight:600;}
+.approval-line .ids{font-family:var(--mono);font-size:12px;color:var(--accent);}
+.approval-line .when{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-left:auto;}
+.strip{display:flex;align-items:flex-end;gap:5px;height:34px;margin-top:2px;}
+.strip i{
+  flex:1;min-width:8px;border-radius:3px 3px 1px 1px;background:var(--border-2);
+  transform-origin:bottom;animation:pop .5s ease backwards;
+}
+@keyframes pop{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+.legend{
+  margin-top:18px;font-family:var(--mono);font-size:11.5px;color:var(--dim);
+  display:flex;gap:18px;flex-wrap:wrap;padding:0 4px;
+}
+.legend span b{font-weight:500;color:var(--text);}
+.legend .note{color:var(--faint);}
+
+/* ---------- proof lights ---------- */
+.light{display:inline-block;width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.light.green{background:var(--green);box-shadow:0 0 7px color-mix(in srgb,var(--green) calc(var(--glow)*100%),transparent);}
+.light.red{background:var(--red);box-shadow:0 0 7px color-mix(in srgb,var(--red) calc(var(--glow)*100%),transparent);}
+.light.purple{background:var(--purple);box-shadow:0 0 7px color-mix(in srgb,var(--purple) calc(var(--glow)*100%),transparent);}
+.light.gray{background:none;border:1.5px solid var(--gray);width:8px;height:8px;}
+
+/* ---------- tasks ---------- */
+.toolbar{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.seg{display:flex;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:3px;}
+.seg button{
+  appearance:none;border:0;background:none;cursor:pointer;color:var(--dim);
+  font-family:var(--sans);font-size:13px;font-weight:500;padding:5px 13px;border-radius:7px;
+  transition:all .15s;display:flex;align-items:center;gap:6px;
+}
+.seg button:hover{color:var(--text);}
+.seg button.on{background:var(--panel-3);color:var(--text);box-shadow:inset 0 0 0 1px var(--border-2);}
+.toolbar .summary{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--faint);}
+.task-list{display:flex;flex-direction:column;gap:10px;}
+.task{overflow:hidden;transition:border-color .15s;}
+.task-row{display:flex;align-items:center;gap:14px;padding:14px 18px;}
+.task.expandable .task-row{cursor:pointer;}
+.task.expandable:hover{border-color:var(--border-2);}
+.task .st{font-size:17px;width:24px;text-align:center;flex-shrink:0;}
+.task .tid{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;width:74px;flex-shrink:0;}
+.task .ttl{font-weight:500;flex:1;min-width:140px;}
+.task .checks{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.check-chip{
+  display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11.5px;
+  color:var(--dim);background:var(--panel-2);border:1px solid var(--border);
+  border-radius:6px;padding:4px 9px;
+}
+.task .caret{color:var(--faint);font-size:11px;transition:transform .2s;width:14px;text-align:center;}
+.task.open .caret{transform:rotate(90deg);}
+.task-tail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease;}
+.task.open .task-tail{grid-template-rows:1fr;}
+.task-tail > div{overflow:hidden;}
+.terminal{
+  margin:0 18px 16px 56px;background:#0a0908;border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;
+}
+.terminal .t-head{
+  display:flex;align-items:center;gap:10px;padding:7px 13px;
+  border-bottom:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--faint);
+}
+.terminal .t-head .fail{color:var(--red);font-weight:500;}
+.terminal pre{padding:13px 15px;font-size:12.5px;color:var(--red);white-space:pre-wrap;line-height:1.6;}
+.status-done .ttl{color:var(--dim);}
+
+/* ---------- requirements ---------- */
+table.req{width:100%;border-collapse:collapse;}
+table.req th{
+  text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
+  padding:12px 16px;border-bottom:1px solid var(--border);
+}
+table.req td{padding:15px 16px;border-bottom:1px solid var(--border);vertical-align:middle;}
+table.req tr:last-child td{border-bottom:0;}
+table.req tr{transition:background .15s;}
+table.req tbody tr:hover{background:var(--panel-2);}
+.req-id{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500;}
+.req-title{font-weight:500;margin-top:2px;}
+.crit-chips{display:flex;gap:7px;flex-wrap:wrap;}
+.crit{
+  display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;
+  color:var(--dim);background:var(--panel-2);border:1px solid var(--border);
+  border-radius:6px;padding:3px 8px;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;
+  font-weight:500;letter-spacing:.06em;border-radius:6px;padding:3px 9px;
+}
+.badge.proven{color:var(--green);background:var(--green-soft);border:1px solid rgba(63,214,143,.3);}
+.badge.unproven{color:var(--gray);background:var(--gray-soft);border:1px solid var(--border-2);}
+.worst{display:flex;align-items:center;gap:9px;font-size:15px;}
+.appr-cell{font-size:15px;text-align:center;}
+.appr-cell .dash{color:var(--faint);font-family:var(--mono);}
+
+/* ---------- graph ---------- */
+.graph-shell{position:relative;min-height:440px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.graph-shell .stripes{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(-45deg,transparent 0 14px,var(--stripe) 14px 28px);
+}
+.graph-ph{
+  position:relative;text-align:center;font-family:var(--mono);color:var(--faint);
+  font-size:12.5px;line-height:2;
+}
+.graph-ph .big{font-size:30px;display:block;margin-bottom:6px;}
+.graph-ph b{color:var(--dim);font-weight:500;}
+.edge-legend{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;padding:0 4px;}
+.edge-legend span{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;color:var(--dim);}
+.edge{width:30px;height:0;border-top:2px solid;}
+.edge.green{border-color:var(--green);}
+.edge.red{border-color:var(--red);}
+.edge.purple{border-color:var(--purple);border-top-style:dashed;}
+.edge.gray{border-color:var(--gray);border-top-style:dotted;}
+
+/* ---------- activity ---------- */
+.feed{display:flex;flex-direction:column;}
+.evt{display:flex;align-items:baseline;gap:14px;padding:13px 6px;border-bottom:1px solid var(--border);}
+.evt:last-child{border-bottom:0;}
+.evt .ic{font-size:15px;width:22px;text-align:center;flex-shrink:0;}
+.evt .tx{flex:1;font-size:14px;}
+.evt .tx code{font-size:12.5px;color:var(--accent);background:var(--accent-soft);border-radius:5px;padding:1px 6px;}
+.evt .meta{display:flex;gap:6px;flex-shrink:0;}
+.chip{
+  font-family:var(--mono);font-size:10.5px;color:var(--dim);
+  background:var(--panel-2);border:1px solid var(--border);border-radius:99px;padding:2px 9px;
+}
+.evt .when{font-family:var(--mono);font-size:11px;color:var(--faint);width:74px;text-align:right;flex-shrink:0;}
+.feed-section{margin-top:26px;}
+
+/* ---------- files ---------- */
+.files-grid{display:grid;grid-template-columns:248px 1fr;gap:18px;align-items:start;}
+.file-nav{position:sticky;top:84px;padding:10px;}
+.fgroup{margin-bottom:6px;}
+.fgroup-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--faint);padding:9px 10px 5px;
+}
+.fitem{
+  display:flex;align-items:center;gap:9px;width:100%;text-align:left;
+  appearance:none;border:0;background:none;cursor:pointer;
+  font-family:var(--mono);font-size:12.5px;color:var(--dim);
+  padding:7px 10px;border-radius:7px;transition:all .13s;
+}
+.fitem:hover{color:var(--text);background:var(--panel-2);}
+.fitem.on{color:var(--text);background:var(--panel-3);box-shadow:inset 2px 0 0 var(--accent);}
+.fitem .fic{font-size:12px;opacity:.8;}
+.file-pane{min-height:480px;}
+.file-head{
+  display:flex;align-items:center;gap:10px;padding:14px 24px;
+  border-bottom:1px solid var(--border);font-family:var(--mono);font-size:12px;color:var(--faint);
+}
+.file-head b{color:var(--accent);font-weight:500;}
+.md{padding:26px 30px 36px;max-width:760px;}
+.md h1{font-size:26px;font-weight:600;letter-spacing:-.02em;margin:6px 0 16px;}
+.md h2{font-size:18px;font-weight:600;margin:26px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.md h3{font-size:15px;font-weight:600;margin:20px 0 8px;}
+.md h4{font-size:13.5px;font-weight:600;margin:16px 0 6px;color:var(--dim);}
+.md p{margin:0 0 12px;color:var(--text);text-wrap:pretty;}
+.md ul,.md ol{margin:0 0 14px;padding-left:22px;display:flex;flex-direction:column;gap:5px;}
+.md li{color:var(--text);}
+.md strong{font-weight:600;}
+.md em{color:var(--dim);}
+.md a{color:var(--accent);}
+.md code{
+  font-size:.86em;background:var(--panel-3);border:1px solid var(--border-2);
+  border-radius:5px;padding:1px 6px;color:var(--accent);
+}
+.md pre{
+  background:#0a0908;border:1px solid var(--border);border-radius:8px;
+  padding:14px 16px;margin:0 0 14px;overflow-x:auto;
+}
+.md pre code{background:none;border:0;padding:0;color:var(--text);font-size:12.5px;line-height:1.65;}
+.md blockquote{
+  border-left:2px solid var(--accent);background:var(--accent-soft);
+  border-radius:0 7px 7px 0;padding:10px 16px;margin:0 0 14px;color:var(--dim);
+}
+.md table{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:13.5px;}
+.md th{
+  text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+  padding:9px 13px;border-bottom:1px solid var(--border-2);background:var(--panel-2);
+}
+.md th:first-child{border-radius:7px 0 0 0;}
+.md th:last-child{border-radius:0 7px 0 0;}
+.md td{padding:9px 13px;border-bottom:1px solid var(--border);}
+.md hr{border:0;border-top:1px solid var(--border);margin:20px 0;}
+.md .directive{
+  display:block;font-family:var(--mono);font-size:12px;color:var(--purple);
+  background:var(--purple-soft);border:1px solid rgba(184,143,245,.25);
+  border-radius:7px;padding:8px 13px;margin:0 0 12px;
+}
+
+/* ---------- empty states ---------- */
+.empty{
+  padding:56px 20px;text-align:center;color:var(--faint);
+  font-family:var(--mono);font-size:13px;
+}
+.empty .e-ic{font-size:26px;display:block;margin-bottom:12px;opacity:.6;}
+.empty code{color:var(--accent);}
+
+/* ---------- responsive ---------- */
+@media (max-width:1120px){
+  .stamp{display:none;}
+}
+@media (max-width:900px){
+  .ov-grid{grid-template-columns:1fr;}
+  .files-grid{grid-template-columns:1fr;}
+  .file-nav{position:static;}
+  .hd-inner{padding:0 16px;gap:14px;}
+  main{padding:20px 16px 60px;}
+  .task .checks{display:none;}
+  table.req th:nth-child(4),table.req td:nth-child(4){display:none;}
+}
+
+/* ===== gate trail (TRAIL-01) ===== */
+.gate-chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.gate-chip{font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:20px;border:1px solid var(--line)}
+.gate-chip.g-ok{color:#7ee2a8;border-color:rgba(63,185,80,.4)}
+.gate-chip.g-bad{color:#ffa198;border-color:rgba(248,81,73,.45)}
+.gate-chip.g-mut{color:var(--dim)}
+.trail{margin:4px 0 8px;border-left:2px solid var(--line);padding-left:10px}
+.trail-row{display:flex;gap:8px;align-items:baseline;font-family:var(--mono);font-size:11.5px;padding:2px 0;color:var(--dim)}
+.trail-row .t-at{color:var(--faint)}
+.trail-row .t-g{color:var(--text)}
+.trail-row .t-d{color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-inner">
+    <div class="wordmark"><span class="bolt">🔩</span><span class="name">rivet<em>_</em></span></div>
+    <nav id="tabs"></nav>
+    <div class="stamp" id="stamp"></div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light / dark" aria-label="Toggle theme">🌙</button>
+  </div>
+</header>
+
+<main>
+  <section class="view" id="view-overview" data-screen-label="Overview"></section>
+  <section class="view" id="view-tasks" data-screen-label="Tasks"></section>
+  <section class="view" id="view-requirements" data-screen-label="Requirements"></section>
+  <section class="view" id="view-graph" data-screen-label="Graph"></section>
+  <section class="view" id="view-activity" data-screen-label="Activity"></section>
+  <section class="view" id="view-files" data-screen-label="Files"></section>
+</main>
+
+<script>
+/* ================= DATA (injected by `rivet dashboard`) ================= */
+const DATA = {"project":"untitled","generatedAt":"2026-06-11T21:47:36.440Z","completion":{"done":32,"total":32},"validates":{"unproven":0,"green":0,"red":0,"stale":3},"tasks":[{"id":"FIX-ROUTE-01","title":"route: build-intent must veto research keywords","status":"done","boundChecks":["test/workflow.test.ts::want-signals veto research routing"],"results":{"test/workflow.test.ts::want-signals veto research routing":{"ref":"test/workflow.test.ts::want-signals veto research routing","passed":true,"at":"2026-06-11T19:04:45.282Z","sha":"d907fcfc8886ce437e5c3a4cdeed73f0c66db0f1"}},"trail":{"timeline":[{"at":"2026-06-11T19:04:11.629Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:04:11.683Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:04:12.300Z","gate":"proof","outcome":"red","detail":"test/workflow.test.ts::want-signals veto research routing"},{"at":"2026-06-11T19:04:45.293Z","gate":"proof","outcome":"green","detail":"test/workflow.test.ts::want-signals veto research routing"},{"at":"2026-06-11T19:04:45.348Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"R-AUDIT-01","title":"every CLI invocation is audit-logged","status":"done","boundChecks":["test/cli-ux.test.ts::audits cli invocations into the journal"],"results":{"test/cli-ux.test.ts::audits cli invocations into the journal":{"ref":"test/cli-ux.test.ts::audits cli invocations into the journal","passed":true,"at":"2026-06-11T21:29:16.307Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"f8ccd6b391c961e074f3d013c742605912a482e2","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T19:15:03.416Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:15:03.477Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:15:05.640Z","gate":"proof","outcome":"red","detail":"test/cli-ux.test.ts::audits cli invocations into the journal"},{"at":"2026-06-11T19:16:29.001Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::audits cli invocations into the journal"},{"at":"2026-06-11T19:16:32.167Z","gate":"done-gate","outcome":"passed"},{"at":"2026-06-11T21:27:29.390Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::audits cli invocations into the journal"},{"at":"2026-06-11T21:29:16.326Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::audits cli invocations into the journal"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"R-AUDIT-02","title":"the audit trail is readable","status":"done","boundChecks":["test/cli-ux.test.ts::renders the audit trail with per-type emoji"],"results":{"test/cli-ux.test.ts::renders the audit trail with per-type emoji":{"ref":"test/cli-ux.test.ts::renders the audit trail with per-type emoji","passed":true,"at":"2026-06-11T21:29:16.930Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"f8ccd6b391c961e074f3d013c742605912a482e2","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T19:15:03.417Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:16:31.357Z","gate":"proof","outcome":"red","detail":"test/cli-ux.test.ts::renders the audit trail with per-type emoji"},{"at":"2026-06-11T19:16:32.050Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:16:32.226Z","gate":"done-gate","outcome":"blocked"},{"at":"2026-06-11T19:17:04.722Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::renders the audit trail with per-type emoji"},{"at":"2026-06-11T19:17:04.781Z","gate":"done-gate","outcome":"passed"},{"at":"2026-06-11T21:27:30.000Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::renders the audit trail with per-type emoji"},{"at":"2026-06-11T21:29:16.951Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::renders the audit trail with per-type emoji"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed (1 blocked)","approval":"pending"}}},{"id":"R-PROG-01","title":"progress with emoji after completing a task","status":"done","boundChecks":["test/cli-ux.test.ts::renders progress with emoji, bar, and next-up"],"results":{"test/cli-ux.test.ts::renders progress with emoji, bar, and next-up":{"ref":"test/cli-ux.test.ts::renders progress with emoji, bar, and next-up","passed":true,"at":"2026-06-11T21:29:17.560Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"f8ccd6b391c961e074f3d013c742605912a482e2","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T19:15:03.417Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:16:31.989Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::renders progress with emoji, bar, and next-up"},{"at":"2026-06-11T19:16:32.108Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:16:32.288Z","gate":"done-gate","outcome":"passed"},{"at":"2026-06-11T21:27:30.610Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::renders progress with emoji, bar, and next-up"},{"at":"2026-06-11T21:29:17.578Z","gate":"proof","outcome":"green","detail":"test/cli-ux.test.ts::renders progress with emoji, bar, and next-up"}],"summary":{"binding":"done","tddRed":"skipped","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-PRMATH-01","title":"PR coverage uses worst-of obligation semantics","status":"done","boundChecks":["test/workflow.test.ts::worst-of coverage in the PR body"],"results":{"test/workflow.test.ts::worst-of coverage in the PR body":{"ref":"test/workflow.test.ts::worst-of coverage in the PR body","passed":true,"at":"2026-06-11T19:40:40.285Z","sha":"3c73e8ccf1bb82aa5652f0802c5d8d149cbe6ae7","tree":"821bc2c18d38769ade48aa7475f2e2f28a0ecba8","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T19:38:10.582Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:38:10.704Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:39:20.587Z","gate":"proof","outcome":"red","detail":"test/workflow.test.ts::worst-of coverage in the PR body"},{"at":"2026-06-11T19:40:40.306Z","gate":"proof","outcome":"green","detail":"test/workflow.test.ts::worst-of coverage in the PR body"},{"at":"2026-06-11T19:40:41.546Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-PROOF-01","title":"proof identity = tested tree hash, not commit SHA","status":"done","boundChecks":["test/proof-identity.test.ts"],"results":{"test/proof-identity.test.ts":{"ref":"test/proof-identity.test.ts","passed":true,"at":"2026-06-11T19:40:41.463Z","sha":"3c73e8ccf1bb82aa5652f0802c5d8d149cbe6ae7","tree":"841d50faacf6d776868ef24103e5516fdeed07b3","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T19:38:10.643Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:38:10.765Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:39:22.819Z","gate":"proof","outcome":"red","detail":"test/proof-identity.test.ts"},{"at":"2026-06-11T19:40:41.487Z","gate":"proof","outcome":"green","detail":"test/proof-identity.test.ts"},{"at":"2026-06-11T19:40:41.605Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-ROBUST-01","title":"inputs never crash; infra errors are not proofs","status":"done","boundChecks":["test/robust.test.ts"],"results":{"test/robust.test.ts":{"ref":"test/robust.test.ts","passed":true,"at":"2026-06-11T20:03:40.197Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"fa8bf773caf100fb0514971f21220db23feb7231","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T19:54:44.022Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:54:44.259Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:57:31.219Z","gate":"proof","outcome":"red","detail":"test/robust.test.ts"},{"at":"2026-06-11T20:03:40.216Z","gate":"proof","outcome":"green","detail":"test/robust.test.ts"},{"at":"2026-06-11T20:03:54.474Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-SPECSYNC-01","title":"spec re-derive syncs bindings; evidence unclobberable","status":"done","boundChecks":["test/spec-sync.test.ts"],"results":{"test/spec-sync.test.ts":{"ref":"test/spec-sync.test.ts","passed":true,"at":"2026-06-11T20:03:40.850Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"d8286eac86b2d6e8251dadb863d3c1b604fa97ea","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T19:54:44.081Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:54:44.318Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:57:33.625Z","gate":"proof","outcome":"red","detail":"test/spec-sync.test.ts"},{"at":"2026-06-11T20:03:40.868Z","gate":"proof","outcome":"green","detail":"test/spec-sync.test.ts"},{"at":"2026-06-11T20:03:54.537Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-GATE-01","title":"one not-green-blocks predicate; missing graph blocks","status":"done","boundChecks":["test/gate.test.ts"],"results":{"test/gate.test.ts":{"ref":"test/gate.test.ts","passed":true,"at":"2026-06-11T20:03:41.706Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"0680725c0d9c424f3beb6c9d251d9365ec4faabe","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T19:54:44.140Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:54:44.376Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:57:35.923Z","gate":"proof","outcome":"red","detail":"test/gate.test.ts"},{"at":"2026-06-11T20:03:41.725Z","gate":"proof","outcome":"green","detail":"test/gate.test.ts"},{"at":"2026-06-11T20:03:54.601Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"GATE-PROTECT-01","title":"in-flight specs/tests/config need human unlock","status":"done","boundChecks":["test/protect.test.ts"],"results":{"test/protect.test.ts":{"ref":"test/protect.test.ts","passed":true,"at":"2026-06-11T20:03:42.509Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"ab79494dc3ad70caa7e28369cfdb4ff6e417ba65","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T19:54:44.199Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T19:54:44.433Z","gate":"start","outcome":"started"},{"at":"2026-06-11T19:57:38.256Z","gate":"proof","outcome":"red","detail":"test/protect.test.ts"},{"at":"2026-06-11T20:03:42.528Z","gate":"proof","outcome":"green","detail":"test/protect.test.ts"},{"at":"2026-06-11T20:03:54.667Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-PARSE-01","title":"parser respects markdown reality","status":"done","boundChecks":["test/parse-fix.test.ts"],"results":{"test/parse-fix.test.ts":{"ref":"test/parse-fix.test.ts","passed":true,"at":"2026-06-11T20:14:00.842Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"42b08be2b8e3e1670633c8d10403f37aa1e0d690","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:10:17.167Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:10:17.408Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:11:23.180Z","gate":"proof","outcome":"red","detail":"test/parse-fix.test.ts"},{"at":"2026-06-11T20:14:00.864Z","gate":"proof","outcome":"green","detail":"test/parse-fix.test.ts"},{"at":"2026-06-11T20:14:04.691Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-QUERY-01","title":"read-only queries; no retry burn; deterministic ties","status":"done","boundChecks":["test/query-fix.test.ts"],"results":{"test/query-fix.test.ts":{"ref":"test/query-fix.test.ts","passed":true,"at":"2026-06-11T20:14:01.590Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"980ef995f031f6ed118847a6fb96d5a2e4c37d4e","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:10:17.228Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:10:17.466Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:11:25.937Z","gate":"proof","outcome":"red","detail":"test/query-fix.test.ts"},{"at":"2026-06-11T20:14:01.609Z","gate":"proof","outcome":"green","detail":"test/query-fix.test.ts"},{"at":"2026-06-11T20:14:04.762Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"AUDIT-META-01","title":"journal meta (actor/model) + governance events","status":"done","boundChecks":["test/audit-meta.test.ts"],"results":{"test/audit-meta.test.ts":{"ref":"test/audit-meta.test.ts","passed":true,"at":"2026-06-11T20:14:02.272Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"3688bfe548f0f3ff14e86da2ffafa08a6bc17b7d","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:10:17.288Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:10:17.525Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:11:28.441Z","gate":"proof","outcome":"red","detail":"test/audit-meta.test.ts"},{"at":"2026-06-11T20:14:02.292Z","gate":"proof","outcome":"green","detail":"test/audit-meta.test.ts"},{"at":"2026-06-11T20:14:04.832Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FINISH-RITUAL-01","title":"rivet-finish skill: evidence gate, fixed menu, typed confirm","status":"done","boundChecks":["test/finish-skill.test.ts"],"results":{"test/finish-skill.test.ts":{"ref":"test/finish-skill.test.ts","passed":true,"at":"2026-06-11T20:14:28.441Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"83d65b5d7779753a680466f1205f786065e43190","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:10:17.348Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:10:17.585Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:11:30.803Z","gate":"proof","outcome":"red","detail":"test/finish-skill.test.ts"},{"at":"2026-06-11T20:14:04.621Z","gate":"proof","outcome":"red","detail":"test/finish-skill.test.ts"},{"at":"2026-06-11T20:14:04.900Z","gate":"done-gate","outcome":"blocked"},{"at":"2026-06-11T20:14:28.460Z","gate":"proof","outcome":"green","detail":"test/finish-skill.test.ts"},{"at":"2026-06-11T20:14:28.531Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed (1 blocked)","approval":"pending"}}},{"id":"GATE-FACTS-01","title":"DENY-FORCE-ALLOW investigative gate (opt-in)","status":"done","boundChecks":["test/gate-facts.test.ts"],"results":{"test/gate-facts.test.ts":{"ref":"test/gate-facts.test.ts","passed":true,"at":"2026-06-11T20:20:54.347Z","sha":"0d0c54c0f001dcc45a3dc43bf551c459aaf435e6","tree":"f61961e30068fb7756bb1cd6f2d575652199f5ac","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:17:33.780Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:17:33.918Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:18:22.299Z","gate":"proof","outcome":"red","detail":"test/gate-facts.test.ts"},{"at":"2026-06-11T20:20:54.366Z","gate":"proof","outcome":"green","detail":"test/gate-facts.test.ts"},{"at":"2026-06-11T20:20:55.117Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"GATE-PACKS-01","title":"config gate packs: sections+kinds+security floor","status":"done","boundChecks":["test/gate-packs.test.ts"],"results":{"test/gate-packs.test.ts":{"ref":"test/gate-packs.test.ts","passed":true,"at":"2026-06-11T20:20:55.029Z","sha":"0d0c54c0f001dcc45a3dc43bf551c459aaf435e6","tree":"037426744dcb0d8bd7ca9687e67b9a170a398c92","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:17:33.851Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:17:33.988Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:18:22.942Z","gate":"proof","outcome":"red","detail":"test/gate-packs.test.ts"},{"at":"2026-06-11T20:20:55.047Z","gate":"proof","outcome":"green","detail":"test/gate-packs.test.ts"},{"at":"2026-06-11T20:20:55.188Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"COMPACT-01","title":"phase-aware checkpoints + PreCompact resume save","status":"done","boundChecks":["test/compact.test.ts"],"results":{"test/compact.test.ts":{"ref":"test/compact.test.ts","passed":true,"at":"2026-06-11T20:26:12.832Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"9e3b4787d627be2e8160f57580b0c81f617d7521","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:23:49.218Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:23:49.359Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:24:37.612Z","gate":"proof","outcome":"red","detail":"test/compact.test.ts"},{"at":"2026-06-11T20:26:12.853Z","gate":"proof","outcome":"green","detail":"test/compact.test.ts"},{"at":"2026-06-11T20:26:46.589Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"SKILL-QA-01","title":"mechanical QA: skills reference only real commands/artifacts","status":"done","boundChecks":["test/skill-qa.test.ts"],"results":{"test/skill-qa.test.ts":{"ref":"test/skill-qa.test.ts","passed":true,"at":"2026-06-11T20:26:46.486Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"61fd35cb41a58fa19315684b414421d6378c2431","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:23:49.289Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:23:49.429Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:24:38.284Z","gate":"proof","outcome":"red","detail":"test/skill-qa.test.ts"},{"at":"2026-06-11T20:26:15.313Z","gate":"proof","outcome":"red","detail":"test/skill-qa.test.ts"},{"at":"2026-06-11T20:26:46.508Z","gate":"proof","outcome":"green","detail":"test/skill-qa.test.ts"},{"at":"2026-06-11T20:26:46.662Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"SCALE-01","title":"P3: locking, fold cache, failure tails, anchor-by-path, audit gating","status":"done","boundChecks":["test/scale.test.ts"],"results":{"test/scale.test.ts":{"ref":"test/scale.test.ts","passed":true,"at":"2026-06-11T20:31:26.691Z","sha":"dbfea130b0041d92f8f0256e2a398290851d11fc","tree":"0a038ae6c1891096369cf91d81eda36bbbaa077b","dirty":true,"stack":"node-vitest"}},"trail":{"timeline":[{"at":"2026-06-11T20:29:31.194Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:29:31.265Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:30:04.351Z","gate":"proof","outcome":"red","detail":"test/scale.test.ts"},{"at":"2026-06-11T20:31:26.712Z","gate":"proof","outcome":"green","detail":"test/scale.test.ts"},{"at":"2026-06-11T20:31:26.783Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"RUNNERS-01","title":"multi-kind verification: kind-aware runs + app lifecycle + kind runners","status":"done","boundChecks":["test/runners-kind.test.ts"],"results":{"test/runners-kind.test.ts":{"ref":"test/runners-kind.test.ts","passed":true,"at":"2026-06-11T20:37:33.483Z","sha":"87578225052104715ad24fc2dbe2fd27ffccaed1","tree":"53cbf304ed844aab8bc9f1d49dbf4e041b2f0fc7","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T20:34:18.529Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:34:18.602Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:34:50.667Z","gate":"proof","outcome":"red","detail":"test/runners-kind.test.ts"},{"at":"2026-06-11T20:36:34.244Z","gate":"proof","outcome":"red","detail":"test/runners-kind.test.ts"},{"at":"2026-06-11T20:36:34.315Z","gate":"done-gate","outcome":"blocked"},{"at":"2026-06-11T20:37:33.505Z","gate":"proof","outcome":"green","detail":"test/runners-kind.test.ts"},{"at":"2026-06-11T20:37:33.577Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed (1 blocked)","approval":"pending"}}},{"id":"RENAME-LAWS-01","title":"rename constitution → laws (user term)","status":"done","boundChecks":["test/skill-qa.test.ts"],"results":{"test/skill-qa.test.ts":{"ref":"test/skill-qa.test.ts","passed":true,"at":"2026-06-11T20:43:54.504Z","sha":"d00dbaed9b3d5602005dd53966835c844520b4dd","tree":"8953a0d0643e2a4ae1e3308e3af3bd522477e834","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T20:42:18.174Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:42:18.245Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:43:05.634Z","gate":"proof","outcome":"green","detail":"test/skill-qa.test.ts"},{"at":"2026-06-11T20:43:54.525Z","gate":"proof","outcome":"green","detail":"test/skill-qa.test.ts"},{"at":"2026-06-11T20:43:54.597Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"skipped","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"BOARDS-01","title":"generated LEDGER.md + TRACKING.md boards","status":"done","boundChecks":["test/boards.test.ts"],"results":{"test/boards.test.ts":{"ref":"test/boards.test.ts","passed":true,"at":"2026-06-11T20:47:10.950Z","sha":"0da325d26abb2dcf183f792a2d64a6d99bc4f632","tree":"ff4f153d64dead88693168c083c771b96569f6b7","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T20:44:37.939Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:44:38.081Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:45:27.759Z","gate":"proof","outcome":"red","detail":"test/boards.test.ts"},{"at":"2026-06-11T20:47:10.971Z","gate":"proof","outcome":"green","detail":"test/boards.test.ts"},{"at":"2026-06-11T20:47:14.501Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"WAVE-01","title":"worktree wave dispatcher: plan + fetch-first start","status":"done","boundChecks":["test/wave.test.ts"],"results":{"test/wave.test.ts":{"ref":"test/wave.test.ts","passed":true,"at":"2026-06-11T20:48:33.481Z","sha":"0da325d26abb2dcf183f792a2d64a6d99bc4f632","tree":"7227212614ee5cff4573ccca093636753bc934f7","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T20:44:38.010Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T20:44:38.150Z","gate":"start","outcome":"started"},{"at":"2026-06-11T20:45:28.400Z","gate":"proof","outcome":"red","detail":"test/wave.test.ts"},{"at":"2026-06-11T20:47:14.429Z","gate":"proof","outcome":"red","detail":"test/wave.test.ts"},{"at":"2026-06-11T20:47:14.574Z","gate":"done-gate","outcome":"blocked"},{"at":"2026-06-11T20:47:56.893Z","gate":"proof","outcome":"red","detail":"test/wave.test.ts"},{"at":"2026-06-11T20:47:56.962Z","gate":"done-gate","outcome":"blocked"},{"at":"2026-06-11T20:48:33.504Z","gate":"proof","outcome":"green","detail":"test/wave.test.ts"},{"at":"2026-06-11T20:48:33.587Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed (2 blocked)","approval":"pending"}}},{"id":"STEER-01","title":"laws engine: 3 scopes + personal inheritance + file injection","status":"done","boundChecks":["test/steering.test.ts"],"results":{"test/steering.test.ts":{"ref":"test/steering.test.ts","passed":true,"at":"2026-06-11T21:02:48.986Z","sha":"0b7f3ccb6b0487175cb7c0d05944446801dd6e62","tree":"6e83b58fed212c637bc918e5e11042b2a12247b1","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:00:21.971Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:00:22.186Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:01:17.816Z","gate":"proof","outcome":"red","detail":"test/steering.test.ts"},{"at":"2026-06-11T21:02:49.007Z","gate":"proof","outcome":"green","detail":"test/steering.test.ts"},{"at":"2026-06-11T21:02:51.227Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"LEARN-01","title":"warn-on-repeat: open lessons surface at task start","status":"done","boundChecks":["test/learnwarn.test.ts"],"results":{"test/learnwarn.test.ts":{"ref":"test/learnwarn.test.ts","passed":true,"at":"2026-06-11T21:02:49.636Z","sha":"0b7f3ccb6b0487175cb7c0d05944446801dd6e62","tree":"487cf5cd05ab26a69ba18c15df904c819741073c","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:00:22.042Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:00:22.259Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:01:18.453Z","gate":"proof","outcome":"red","detail":"test/learnwarn.test.ts"},{"at":"2026-06-11T21:02:49.656Z","gate":"proof","outcome":"green","detail":"test/learnwarn.test.ts"},{"at":"2026-06-11T21:02:51.302Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"WAVE-02","title":"wave done: provenance-checked worktree cleanup after merge","status":"done","boundChecks":["test/wave-done.test.ts"],"results":{"test/wave-done.test.ts":{"ref":"test/wave-done.test.ts","passed":true,"at":"2026-06-11T21:02:51.136Z","sha":"0b7f3ccb6b0487175cb7c0d05944446801dd6e62","tree":"9f27b9adab726f43b8fe044290aa87e03d6d9a4c","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:00:22.113Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:00:22.331Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:01:19.771Z","gate":"proof","outcome":"red","detail":"test/wave-done.test.ts"},{"at":"2026-06-11T21:02:51.155Z","gate":"proof","outcome":"green","detail":"test/wave-done.test.ts"},{"at":"2026-06-11T21:02:51.378Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"DASH-01","title":"dashboard v1: emoji + completion % + traffic lights + graph embed","status":"done","boundChecks":["test/dashboard.test.ts"],"results":{"test/dashboard.test.ts":{"ref":"test/dashboard.test.ts","passed":true,"at":"2026-06-11T21:11:19.414Z","sha":"d72c6bac355baa6a644a05c8085bb006f5dc3e81","tree":"04802fe3867b6b4e05a76391b12883545cda2ffa","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:09:02.526Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:09:02.595Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:09:29.219Z","gate":"proof","outcome":"red","detail":"test/dashboard.test.ts"},{"at":"2026-06-11T21:10:35.483Z","gate":"proof","outcome":"red","detail":"test/dashboard.test.ts"},{"at":"2026-06-11T21:10:35.555Z","gate":"done-gate","outcome":"blocked"},{"at":"2026-06-11T21:11:19.435Z","gate":"proof","outcome":"green","detail":"test/dashboard.test.ts"},{"at":"2026-06-11T21:11:19.509Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed (1 blocked)","approval":"pending"}}},{"id":"FILES-01","title":"dashboard files plumbing: collect .rivet md + safe renderer","status":"done","boundChecks":["test/files-tab.test.ts"],"results":{"test/files-tab.test.ts":{"ref":"test/files-tab.test.ts","passed":true,"at":"2026-06-11T21:27:26.317Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"62f3e9041ae4886b162e16980c835c191e1dd9d2","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:24:20.246Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:24:20.394Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:25:28.642Z","gate":"proof","outcome":"red","detail":"test/files-tab.test.ts"},{"at":"2026-06-11T21:27:26.339Z","gate":"proof","outcome":"green","detail":"test/files-tab.test.ts"},{"at":"2026-06-11T21:27:27.102Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"README-01","title":"README refresh: match the real tool surface","status":"done","boundChecks":["test/readme.test.ts"],"results":{"test/readme.test.ts":{"ref":"test/readme.test.ts","passed":true,"at":"2026-06-11T21:27:27.007Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"6185e94a2fe1677235338b9236a319ca5bb05c04","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:24:20.319Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:24:20.467Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:25:29.312Z","gate":"proof","outcome":"red","detail":"test/readme.test.ts"},{"at":"2026-06-11T21:27:27.027Z","gate":"proof","outcome":"green","detail":"test/readme.test.ts"},{"at":"2026-06-11T21:27:27.176Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"FIX-PROOF-02","title":"proof identity excludes .rivet state (journal must not stale its own proofs)","status":"done","boundChecks":["test/proof-identity.test.ts"],"results":{"test/proof-identity.test.ts":{"ref":"test/proof-identity.test.ts","passed":true,"at":"2026-06-11T21:29:15.431Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"f8ccd6b391c961e074f3d013c742605912a482e2","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:28:23.678Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:28:23.751Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:28:43.717Z","gate":"proof","outcome":"red","detail":"test/proof-identity.test.ts"},{"at":"2026-06-11T21:29:15.451Z","gate":"proof","outcome":"green","detail":"test/proof-identity.test.ts"},{"at":"2026-06-11T21:29:15.525Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"TRAIL-01","title":"per-task gate trail: minute-level done/blocked/skipped/pending","status":"done","boundChecks":["test/trail.test.ts"],"results":{"test/trail.test.ts":{"ref":"test/trail.test.ts","passed":true,"at":"2026-06-11T21:47:11.693Z","sha":"4317b2ed6e5e7660a688a5c08f3657d82f32f08e","tree":"61afc144396b48ffcb45c6e91a7bdc01c5f7b350","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:43:07.617Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:43:07.765Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:44:03.784Z","gate":"proof","outcome":"red","detail":"test/trail.test.ts"},{"at":"2026-06-11T21:47:11.715Z","gate":"proof","outcome":"green","detail":"test/trail.test.ts"},{"at":"2026-06-11T21:47:12.508Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}},{"id":"DASH-02","title":"port design.html as the dashboard template with live data injection","status":"done","boundChecks":["test/dashboard.test.ts"],"results":{"test/dashboard.test.ts":{"ref":"test/dashboard.test.ts","passed":true,"at":"2026-06-11T21:47:12.413Z","sha":"4317b2ed6e5e7660a688a5c08f3657d82f32f08e","tree":"61afc144396b48ffcb45c6e91a7bdc01c5f7b350","dirty":true,"stack":"node-vitest","kind":"unit"}},"trail":{"timeline":[{"at":"2026-06-11T21:43:07.692Z","gate":"binding","outcome":"bound","detail":"1 check(s)"},{"at":"2026-06-11T21:43:07.838Z","gate":"start","outcome":"started"},{"at":"2026-06-11T21:44:04.506Z","gate":"proof","outcome":"red","detail":"test/dashboard.test.ts"},{"at":"2026-06-11T21:47:12.432Z","gate":"proof","outcome":"green","detail":"test/dashboard.test.ts"},{"at":"2026-06-11T21:47:12.582Z","gate":"done-gate","outcome":"passed"}],"summary":{"binding":"done","tddRed":"done","proof":"green","doneGate":"passed","approval":"pending"}}}],"requirements":[{"id":"R-AUDIT-01","title":"every CLI invocation is audit-logged","proven":false,"criteria":[{"id":"R-AUDIT-01-AC1","proof":"stale"}]},{"id":"R-AUDIT-02","title":"the audit trail is readable","proven":false,"criteria":[{"id":"R-AUDIT-02-AC1","proof":"stale"}]},{"id":"R-PROG-01","title":"progress with emoji after completing a task","proven":false,"criteria":[{"id":"R-PROG-01-AC1","proof":"stale"}]}],"approvals":[],"governance":[],"activity":[{"at":"2026-06-11T21:28:23.678Z","icon":"📋","text":"task FIX-PROOF-02 created — proof identity excludes .rivet state (journal must not stale its own proofs)"},{"at":"2026-06-11T21:28:23.750Z","icon":"🧾","text":"task start FIX-PROOF-02","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:28:23.751Z","icon":"🔁","text":"task FIX-PROOF-02 → in_progress"},{"at":"2026-06-11T21:28:42.382Z","icon":"🧾","text":"check run FIX-PROOF-02 test/proof-identity.test.ts","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:28:43.717Z","icon":"❌","text":"check test/proof-identity.test.ts → FIX-PROOF-02"},{"at":"2026-06-11T21:29:13.920Z","icon":"🧾","text":"check run FIX-PROOF-02 test/proof-identity.test.ts","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:29:15.451Z","icon":"✅","text":"check test/proof-identity.test.ts → FIX-PROOF-02"},{"at":"2026-06-11T21:29:15.522Z","icon":"🧾","text":"task done FIX-PROOF-02","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:29:15.525Z","icon":"🏁","text":"task FIX-PROOF-02 → done"},{"at":"2026-06-11T21:29:15.598Z","icon":"🧾","text":"drift","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:29:16.326Z","icon":"✅","text":"check test/cli-ux.test.ts::audits cli invocations into the journal → R-AUDIT-01"},{"at":"2026-06-11T21:29:16.951Z","icon":"✅","text":"check test/cli-ux.test.ts::renders the audit trail with per-type emoji → R-AUDIT-02"},{"at":"2026-06-11T21:29:17.578Z","icon":"✅","text":"check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up → R-PROG-01"},{"at":"2026-06-11T21:29:17.712Z","icon":"🧾","text":"graph build","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:29:17.857Z","icon":"🧾","text":"dashboard","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:31:07.621Z","icon":"🧾","text":"status","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:31:07.697Z","icon":"🧾","text":"guard pr","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:31:20.860Z","icon":"🧾","text":"dashboard","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:43:07.616Z","icon":"🧾","text":"task create TRAIL-01 per-task gate trail: minute-level done/blocked/skipped/pending","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:43:07.617Z","icon":"📋","text":"task TRAIL-01 created — per-task gate trail: minute-level done/blocked/skipped/pending"},{"at":"2026-06-11T21:43:07.690Z","icon":"🧾","text":"task create DASH-02 port design.html as the dashboard template with live data injection","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:43:07.692Z","icon":"📋","text":"task DASH-02 created — port design.html as the dashboard template with live data injection"},{"at":"2026-06-11T21:43:07.764Z","icon":"🧾","text":"task start TRAIL-01","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:43:07.765Z","icon":"🔁","text":"task TRAIL-01 → in_progress"},{"at":"2026-06-11T21:43:07.837Z","icon":"🧾","text":"task start DASH-02","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:43:07.838Z","icon":"🔁","text":"task DASH-02 → in_progress"},{"at":"2026-06-11T21:44:03.163Z","icon":"🧾","text":"check run TRAIL-01 test/trail.test.ts","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:44:03.784Z","icon":"❌","text":"check test/trail.test.ts → TRAIL-01"},{"at":"2026-06-11T21:44:03.854Z","icon":"🧾","text":"check run DASH-02 test/dashboard.test.ts","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:44:04.506Z","icon":"❌","text":"check test/dashboard.test.ts → DASH-02"},{"at":"2026-06-11T21:47:11.068Z","icon":"🧾","text":"check run TRAIL-01 test/trail.test.ts","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:47:11.715Z","icon":"✅","text":"check test/trail.test.ts → TRAIL-01"},{"at":"2026-06-11T21:47:11.786Z","icon":"🧾","text":"check run DASH-02 test/dashboard.test.ts","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:47:12.432Z","icon":"✅","text":"check test/dashboard.test.ts → DASH-02"},{"at":"2026-06-11T21:47:12.505Z","icon":"🧾","text":"task done TRAIL-01","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:47:12.508Z","icon":"🏁","text":"task TRAIL-01 → done"},{"at":"2026-06-11T21:47:12.580Z","icon":"🧾","text":"task done DASH-02","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:47:12.582Z","icon":"🏁","text":"task DASH-02 → done"},{"at":"2026-06-11T21:47:12.654Z","icon":"🧾","text":"task trail DASH-02","meta":"Pratiyush Kumar Singh"},{"at":"2026-06-11T21:47:36.377Z","icon":"🧾","text":"dashboard","meta":"Pratiyush Kumar Singh"}],"graphHtml":"../graphify-out/graph.html","drift":3,"files":[{"name":"laws.md","content":"# Project Constitution\n\n> The rules Rivet must always obey for this project. Three scopes are supported (Kiro-style steering):\n> always-on (this file), file-match, and on-summon. A personal default can be inherited and overridden here.\n\n## Standards\n- (add your do's and don'ts here)\n\n## Tech & conventions\n- (stacks, libraries, naming, structure, folder layout)\n\n## Hard rules (never violate)\n- Commits are authored by the human, never co-authored by the AI.\n- A task is not \"done\" until its bound checks pass (evidence-bound completion).\n- Reuse existing code before writing new; follow the surrounding patterns.\n- Every feature gets an adversarial review pass before PR — verification and review catch\n  different bug classes; neither substitutes for the other.\n  (Promoted from learnings 2026-06-11; APPROVED by Pratiyush 2026-06-11.)\n"},{"name":"learnings.md","content":"# Rivet learnings — append-only; a lesson counts once PROMOTED or HARDENED\n\n## 2026-06-11 Build-intent must veto research keywords in routing\n- Trigger: live demo routed \"i want a portfolio page … and compare with index\" to RESEARCH — the\n  word \"compare\" outweighed the explicit \"i want a … page\" build intent.\n- Lesson: investigative keywords are weak signals; build-intent (\"i/we want|need\", \"add/create/\n  implement\") must veto them. Misrouting a feature to research silently produces zero code.\n- Promoted to: check:test/workflow.test.ts::want-signals veto research routing (permanent\n  regression test, bound via task FIX-ROUTE-01 — red→fix→green through Rivet's own done-gate)\n\n## 2026-06-11 Proof identity must be the TESTED TREE, not the commit SHA  ⟨P1 · BLOCKER⟩\n- Trigger: adversarial review #1 (confirmed live): proofs stamp `git rev-parse HEAD` while the tree\n  is dirty — green can vouch for uncommitted code; and committing the tested code moves HEAD, so\n  every proof instantly flips stale.\n- Lesson: \"green means this code is proven\" requires the proof to identify the tree it ran against.\n  Stamp proofs with a content/tree hash (e.g. `git stash create` tree-hash or hash of bound files)\n  + a dirty flag; compute staleness against the tree hash; dirty-tree greens are `provisional`.\n- Promoted to: check:test/proof-identity.test.ts (HARDENED via FIX-PROOF-01 — proofs carry\n  tree+dirty; staleness compares trees with sha fallback for legacy entries; with tree identity a\n  dirty green is sound, so no provisional state was needed)\n\n## 2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩\n- Trigger: review #2/#3 (confirmed): `spec tasks` skips existing tasks so NEW `@check` obligations\n  are never enforced; bare `task create` on an existing id resets status and wipes recorded proofs.\n- Lesson: the spec is only the source of truth if re-derivation diffs bindings into existing tasks,\n  and `task.created` folds as create-if-absent — recorded evidence must be unclobberable.\n- Promoted to: check:test/spec-sync.test.ts (HARDENED via FIX-SPECSYNC-01 — create() refuses duplicates, fold is create-if-absent, syncBindings diffs spec refs in and reopens done tasks with new obligations)\n\n## 2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩\n- Trigger: review #4/#8/#5 (confirmed): malformed config.json or a data-less journal line → raw\n  stack traces across commands; missing runner binary (ENOENT, status null) recorded as a RED proof.\n- Lesson: parse all inputs defensively with one helper + clear message; spawn errors/status null are\n  tooling errors, never proofs — they must not enter the graph.\n- Promoted to: check:test/robust.test.ts (HARDENED via FIX-ROBUST-01 — one defensive loadConfig + safe() CLI wrapper, data-less journal lines tolerated, RunnerUnavailableError instead of fake red proofs; timeout stays a red proof)\n\n## 2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩\n- Trigger: review #6 (confirmed bypasses): `gh \"pr\" create`, `$GH pr create`, `gh api …/pulls`, and\n  `rm .rivet/graph.json` all sail past the guard; `rivet pr` blocks red/stale but not unproven —\n  three gates, three different predicates.\n- Lesson: one shared rule — \"anything not green blocks\" — applied by the hook, `guard pr`, and\n  `rivet pr` alike; in a Rivet project a MISSING graph blocks (state absence ≠ permission);\n  `rivet pr --create` must run the same guard it advertises.\n- Promoted to: check:test/gate.test.ts (HARDENED via FIX-GATE-01 — shared gateVerdict across hook/guard/pr, missing or unreadable graph BLOCKS, quote-stripped matcher + gh api …/pulls; $VAR indirection documented as known limit)\n\n## 2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩\n- Trigger: review #7 (confirmed): PR body counts a criterion proven if ANY binding is green; one\n  green + one red reports \"100% proven green\" exactly when a proof is failing.\n- Lesson: every consumer of proof state uses worst-of (`every(green)`), never any-of. The headline\n  number reviewers trust must be the strictest one.\n- Promoted to: check:test/workflow.test.ts::worst-of coverage in the PR body (HARDENED via FIX-PRMATH-01)\n\n## 2026-06-11 Parser must respect markdown reality  ⟨P2⟩\n- Trigger: review #11/#12/#13/#14 (confirmed): fenced code blocks become real requirements; blank-\n  line-separated EARS sentences merge into one criterion; bulleted/orphan `@check` lines silently\n  drop; `--mode bogus` accepted; `log -n 0` prints everything.\n- Lesson: silent loss of a proof obligation is the worst parser failure — fence-track, flush on\n  blank lines, strip list markers, warn on orphans, validate enums and numbers.\n- Promoted to: check:test/parse-fix.test.ts (HARDENED via FIX-PARSE-01 — fences invisible, blank lines separate criteria, bulleted @checks bind, orphan @checks WARN, assertMode + parseCount validate inputs)\n\n## 2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩\n- Trigger: review #15/#10/#9: `trace`/`affected`/`drift --dry-run` rewrite graph.json or trigger\n  re-index; TDD's expected red burns retryLimit+1 full Maven runs; equal-timestamp results resolve\n  by iteration order.\n- Lesson: queries take a no-write path; retry only on suspected flakiness (or `--expect-red` for\n  TDD); tie-break proofs deterministically toward the worse state.\n- Promoted to: check:test/query-fix.test.ts (HARDENED via FIX-QUERY-01 — materialize(write:false) for trace/affected/dry-run, --expect-red skips retry burn, equal-timestamp ties break toward the worse proof)\n\n## 2026-06-11 Scale & evidence quality backlog  ⟨P3⟩\n- Trigger: review #16-#19: full journal re-fold per command while audit events balloon the file;\n  red proofs carry no failure output; test anchors collide on same-named classes; concurrent\n  worktree waves can interleave journal writes and last-writer-wins graph.json.\n- Lesson: snapshot+tail folding; gate audit to mutating commands or honor memory.journal=\n  \"milestones\"; capture truncated failure tails in CheckResult; anchor by source path; file locking\n  before parallel waves ship.\n- Promoted to: check:test/scale.test.ts (HARDENED via SCALE-01 — withLock mkdir-mutex with stale-steal serializes journal appends across real processes; per-process (size,mtime)-keyed read cache; red proofs carry a 1500-char output tail; same-label code nodes each get anchor edges (ambiguity visible); memory.journal='milestones' skips read-only cli.run noise. Durable snapshot+tail folding deferred until journals measurably grow.)\n\n## 2026-06-11 Verification and review catch DIFFERENT bug classes — keep both\n- Trigger: during construction, bound checks caught 3 real bugs (stale Boot-3 import, ANSI-split\n  assertion, worst-of rollup); the adversarial review then found 20 MORE confirmed issues the\n  checks could not see (semantics, robustness, bypasses).\n- Lesson: evidence-bound done ≠ reviewed. The rivet-review skill's two-pass doctrine is load-\n  bearing, not ceremony; schedule adversarial review at feature boundaries.\n- Promoted to: constitution#hard-rules — \"every feature gets an adversarial review pass before PR\"\n  (APPROVED by Pratiyush 2026-06-11; recorded in .rivet/constitution.md)\n\n## 2026-06-11 The 17-gate proposal: menu yes, mandate no\n- Trigger: ChatGPT proposed 17 mandatory sequential checkbox gates before any coding.\n- Lesson: checkbox gates are enforcement-by-prose (tickable without truth) and mandatory ceremony\n  recreates the over-ceremony death spiral our research documented. But its CONTENT is valuable:\n  NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.\n- Promoted to: check:test/gate-packs.test.ts + check:test/audit-meta.test.ts (BOTH HARDENED — packs ship as editable config defaults, security trigger floors the mode, graph build enforces sections+kinds; journal meta + governance events landed). Its artifact\n  taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into\n  pack-required spec sections; ADR is already a VTG node type; \"AI Execution Plan\" = our task DAG.\n  Its \"no code before tests\" ordering: already stronger in Rivet (bindings at spec time, mechanical).\n\n## 2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)\n- Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the\n  first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes\n  the output, because \"the investigation itself creates context.\"\n- Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.\n- Promoted to: check:test/gate-facts.test.ts (HARDENED via GATE-FACTS-01 — DENY→FORCE→ALLOW in guard-facts.mjs + engine/facts.ts; opt-in gates.facts='on'; 30-min window; 500-entry bounded state)\n\n## 2026-06-11 Protect the gates from the agent (anti-gaming)\n- Trigger: ECC `pre:config-protection` blocks edits to linter configs (\"fix code instead of weakening\n  configs\"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.\n- Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config\n  require an explicit human-approved unlock — the moat must not be editable by the thing it gates.\n- Promoted to: check:test/protect.test.ts (HARDENED via GATE-PROTECT-01 — specs/config immutable while tasks in flight; bound test files lock AFTER their ref goes green (pre-green TDD stays free); human escape hatch `rivet unlock` is time-boxed + journaled)\n\n## 2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules\n- Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; \"anything touching a\n  security trigger or public API is AT LEAST standard\"; two named human gates; \"gated, not\n  autonomous\") + hookify-rules (markdown rules: event/pattern/conditions/action warn|block,\n  verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.\n- Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the\n  tier; packs are user-editable rule files, not code.\n- Promoted to: check:test/gate-packs.test.ts (HARDENED via GATE-PACKS-01 — packs as config data: sections+kinds+triggers; security floor in route; enforcement in graph build; require empty by default)\n\n## 2026-06-11 Journal upgrades: governance events + \"confidence is not approval\"\n- Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)\n  + governance-capture hook (secrets/policy-violation/approval-request as first-class events) +\n  provenance schema (source/created_at/confidence/author required on anything learned).\n- Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +\n  evidence and promotion requires beating the incumbent, never self-declared confidence.\n- Promoted to: check:test/audit-meta.test.ts (HARDENED via AUDIT-META-01 — EventMeta actor/model/sources on journal events, cli.run stamped with git user/RIVET_MODEL, governance first-class event type 🛡️, unlock journals as governance; pack-seeded content remains with GATE-PACKS-01)\n\n## 2026-06-11 Finishing ritual + phase chaining (superpowers)\n- Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;\n  typed confirmation to discard; provenance check before cleanup) + every phase skill pins its sole\n  successor + checklists compile into tracked tasks, not prose.\n- Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional\n  cleanup; skills should name their one successor so phases can't be silently skipped.\n- Promoted to: check:test/finish-skill.test.ts (HARDENED via FINISH-RITUAL-01 — skills/rivet-finish: fresh-evidence entry gate via rivet graph build, fixed 4-option menu, typed `discard`, provenance-checked cleanup, journaled landing)\n\n## 2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)\n- Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands\n  (~230 are stack packs & domain verticals, consciously skipped). Both MIT; adaptation as original\n  prose unencumbered. Independent pass confirmed all five prior promotions (GATE-FACTS/PROTECT/\n  PACKS-01, AUDIT-META-01, FINISH-RITUAL-01).\n- Lesson: Rivet is the enforcement/traceability layer; generic craft (brainstorming, systematic-\n  debugging, worktrees, parallel dispatch, TDD craft) stays in superpowers — recommend alongside,\n  never duplicate. Absorb only mechanics that strengthen the moat. Net-new from this pass:\n  review content (silent-failure hunt, behavioral-vs-line coverage, verify-feedback-before-\n  implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project\n  recurrence), phase-aware compaction, and compliance-QA of our own skills.\n- Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;\n  check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)\n\n## 2026-06-12 A grammar that can't spell its own kinds drops obligations silently\n- Trigger: RUNNERS-01's kind-resolution test failed — CHECK_LINE's kind pattern was [a-z]+, so\n  `kind=e2e` (digit!) never matched and e2e bindings had parsed as PROSE since day one. No error,\n  no warning: the obligation just vanished.\n- Lesson: grammar character classes must be derived from the actual vocabulary (e2e has a digit);\n  every enum the parser accepts needs at least one test using its trickiest member.\n- Confidence: high (reproduced; permanent test) · Scope: project\n- Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)\n\n## 2026-06-12 Test fixtures must pin every git assumption the host can override\n- Trigger: WAVE-01's fixture broke twice on this machine's `init.defaultBranch=master` — a push\n  refspec assumed a local `main`, and a bare origin's HEAD pointed at a branch we never pushed.\n- Lesson: fixtures that shell out to git must pin branch names (`init -b`, `push HEAD:\u003cbranch>`),\n  identity, and HEAD explicitly — host config is part of the environment under test.\n- Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)\n- Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)\n\n## 2026-06-12 The journal must not stale its own proofs\n- Trigger: first self-graph of the rivet repo — drift re-proved 3/3 PASS yet all stayed STALE\n  forever: recording a proof appends to the tracked journal, which changed the tree-hash the proof\n  was compared against. The bookkeeping invalidated the evidence it was keeping.\n- Lesson: proof identity = the CODE tree only. Build a temp index from HEAD, drop .rivet/, add the\n  working state (now INCLUDING untracked files — closes the stash-create blind spot), write-tree.\n  A system whose act of measurement changes the measurement is not a measurement system.\n- Confidence: high (reproduced live; permanent regression test) · Scope: project\n- Promoted to: check:test/proof-identity.test.ts (FIX-PROOF-02 — journal-append keeps identity,\n  code change moves it, untracked files count; drift now converges 3/3 green on this very repo)\n"},{"name":"DEFER.md","content":"# DEFER — consciously postponed (each entry: why + when to revisit)\n\n## Intake adapters: GitHub / GitLab issues + Jira (P6)\n- **Why deferred:** Pratiyush (2026-06-12): intake comes from user input via Claude Code CLI for now\n  (\"we will do GitHub and GitLab issues and Jira integration later, it is not really required at this\n  moment\"). The raw path (`.rivet/intake/*.md` + `rivet route --file`) covers the actual workflow.\n- **To revisit:** when Rivet is used on a project whose work actually arrives as tickets, or at the\n  public launch when team usage begins. Config groundwork (`intake.sources`, `intake.jiraEpic`,\n  `intake.writeBack`) already exists — only the adapters are missing.\n\n## Packaging & publish: npm `rivet-kit` + plugin marketplace listing (P7)\n- **Why deferred:** Pratiyush (2026-06-12): \"defer packaging… we can do it later, and plugin\n  marketplace listing later.\" First: build real apps WITH Rivet, learn, and improve from those\n  lessons before freezing a public artifact.\n- **To revisit:** after ≥1 app has been built end-to-end with Rivet and the resulting learnings are\n  promoted (the app-build dogfood phase). Then: check `rivet-kit` npm availability, docs pass,\n  marketplace listing.\n\n## Durable journal snapshot+tail folding\n- **Why deferred:** per-process (size,mtime) read cache covers current scale; snapshotting adds\n  invalidation risk with no measured need. (Ledger: SCALE-01.)\n- **To revisit:** when a real journal measurably slows commands (>~50k events).\n\n## LLM-judged skill compliance scenarios\n- **Why deferred:** structural skill-QA (commands/artifacts must exist) ships; judged compliance\n  needs an eval budget and stable scenarios. (Ledger: SKILL-QA-01.)\n- **To revisit:** pre-publish hardening, alongside the docs pass.\n\n## Live Spring `withApp` e2e showcase\n- **Why deferred:** Pratiyush (2026-06-12): showcase only; the lifecycle is already proven in-suite\n  against a real HTTP server (RUNNERS-01). Spinning Spring adds demo value, not verification value.\n- **To revisit:** before the public launch demo reel, or first real api/e2e-kind project.\n\n## Sonnet-driven temporary e2e demo (master-prompt dry run)\n- **Why deferred:** Pratiyush (2026-06-12): the REAL app-dogfood phase (him + master prompt)\n  supersedes a synthetic dry run.\n- **To revisit:** only if the app phase stalls and we need a cheap rehearsal first.\n"},{"name":"specs/cli-ux.md","content":"# Feature: CLI audit trail & progress visibility\n\n> User story: As the user, I want every Rivet action audit-logged and a progress view after each\n> completed task, so that I can always see what was done and what remains.\n> Intake: Pratiyush, 2026-06-11 — \"add jsonl logging for rivet as audit logs so we can see what all\n> is done; after completing one task rivet should show pending tasks or features with progress with emoji.\"\n\n## Requirement R-AUDIT-01 — every CLI invocation is audit-logged\n\nWHEN any rivet command runs inside a Rivet project THEN the system SHALL append a `cli.run` event\n(command path + arguments + timestamp) to the append-only journal `.rivet/journal.jsonl`.\n\n@check kind=unit ref=test/cli-ux.test.ts::audits cli invocations into the journal\n\n## Requirement R-AUDIT-02 — the audit trail is readable\n\nWHEN `rivet log` runs THEN the system SHALL print the journal events in chronological order with\ntimestamps and per-type emoji, and WHEN `--json` is passed THEN the system SHALL emit raw JSONL.\n\n@check kind=unit ref=test/cli-ux.test.ts::renders the audit trail with per-type emoji\n\n## Requirement R-PROG-01 — progress with emoji after completing a task\n\nWHEN a task transitions to done THEN the system SHALL display the remaining tasks and features with\nper-task emoji status, per-check proof lights, an overall progress bar with percentage, and the\nsuggested next task.\n\n@check kind=unit ref=test/cli-ux.test.ts::renders progress with emoji, bar, and next-up\n"},{"name":"LEDGER.md","content":"# LEDGER — generated from the journal; do not edit\n\n## Progress board\n\n**30/30 done (100%)**\n\n- ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢\n- ✅ **R-AUDIT-01** every CLI invocation is audit-logged 🟢\n- ✅ **R-AUDIT-02** the audit trail is readable 🟢\n- ✅ **R-PROG-01** progress with emoji after completing a task 🟢\n- ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢\n- ✅ **FIX-PROOF-01** proof identity = tested tree hash, not commit SHA 🟢\n- ✅ **FIX-ROBUST-01** inputs never crash; infra errors are not proofs 🟢\n- ✅ **FIX-SPECSYNC-01** spec re-derive syncs bindings; evidence unclobberable 🟢\n- ✅ **FIX-GATE-01** one not-green-blocks predicate; missing graph blocks 🟢\n- ✅ **GATE-PROTECT-01** in-flight specs/tests/config need human unlock 🟢\n- ✅ **FIX-PARSE-01** parser respects markdown reality 🟢\n- ✅ **FIX-QUERY-01** read-only queries; no retry burn; deterministic ties 🟢\n- ✅ **AUDIT-META-01** journal meta (actor/model) + governance events 🟢\n- ✅ **FINISH-RITUAL-01** rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢\n- ✅ **GATE-FACTS-01** DENY-FORCE-ALLOW investigative gate (opt-in) 🟢\n- ✅ **GATE-PACKS-01** config gate packs: sections+kinds+security floor 🟢\n- ✅ **COMPACT-01** phase-aware checkpoints + PreCompact resume save 🟢\n- ✅ **SKILL-QA-01** mechanical QA: skills reference only real commands/artifacts 🟢\n- ✅ **SCALE-01** P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢\n- ✅ **RUNNERS-01** multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢\n- ✅ **RENAME-LAWS-01** rename constitution → laws (user term) 🟢\n- ✅ **BOARDS-01** generated LEDGER.md + TRACKING.md boards 🟢\n- ✅ **WAVE-01** worktree wave dispatcher: plan + fetch-first start 🟢\n- ✅ **STEER-01** laws engine: 3 scopes + personal inheritance + file injection 🟢\n- ✅ **LEARN-01** warn-on-repeat: open lessons surface at task start 🟢\n- ✅ **WAVE-02** wave done: provenance-checked worktree cleanup after merge 🟢\n- ✅ **DASH-01** dashboard v1: emoji + completion % + traffic lights + graph embed 🟢\n- ✅ **FILES-01** dashboard files plumbing: collect .rivet md + safe renderer 🟢\n- ✅ **README-01** README refresh: match the real tool surface 🟢\n- ✅ **FIX-PROOF-02** proof identity excludes .rivet state (journal must not stale its own proofs) 🟢\n\n## Approvals & governance\n\n- _none recorded yet_\n\n## Recent activity\n\n- \u001b[2m2026-06-11 21:28:43\u001b[22m  ❌ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02\n- \u001b[2m2026-06-11 21:29:13\u001b[22m  🧾 check run FIX-PROOF-02 test/proof-identity.test.ts  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-11 21:29:15\u001b[22m  ✅ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02\n- \u001b[2m2026-06-11 21:29:15\u001b[22m  🧾 task done FIX-PROOF-02  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-11 21:29:15\u001b[22m  🏁 task FIX-PROOF-02 → done\n- \u001b[2m2026-06-11 21:29:15\u001b[22m  🧾 drift  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-11 21:29:16\u001b[22m  ✅ check test/cli-ux.test.ts::audits cli invocations into the journal @ eabad481 → R-AUDIT-01\n- \u001b[2m2026-06-11 21:29:16\u001b[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ eabad481 → R-AUDIT-02\n- \u001b[2m2026-06-11 21:29:17\u001b[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ eabad481 → R-PROG-01\n- \u001b[2m2026-06-11 21:29:17\u001b[22m  🧾 graph build  [Pratiyush Kumar Singh]\n"},{"name":"TRACKING.md","content":"# TRACKING — per-requirement Definition of Done (generated; do not edit)\n\n| Requirement | Title | Criteria | Proof | Task | Approved |\n|---|---|---|---|---|---|\n| R-AUDIT-01 | every CLI invocation is audit-logged | 1 | 🟢 | done | — |\n| R-AUDIT-02 | the audit trail is readable | 1 | 🟢 | done | — |\n| R-PROG-01 | progress with emoji after completing a task | 1 | 🟢 | done | — |\n"},{"name":"RESUME.md","content":"# RESUME — state-only handoff (generated from the journal; do not edit)\n\nBoard: 18/18 task(s) done.\n\n✅ all task(s) done — nothing open. Next: `rivet graph build` → `rivet pr`.\n## Rebuild truth\n\n`rivet status` · `rivet graph build` · `rivet log -n 10`\n"}]};
+
+/* ================= helpers ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const NOW = new Date(DATA.generatedAt).getTime();
+function rel(iso){
+  const d = Math.max(0, NOW - new Date(iso).getTime());
+  const m = Math.round(d/60000);
+  if (m < 1) return 'now';
+  if (m < 60) return m + 'm ago';
+  const h = Math.round(m/60);
+  if (h < 24) return h + 'h ago';
+  return Math.round(h/24) + 'd ago';
+}
+function clock(iso){
+  const d = new Date(iso);
+  return String(d.getUTCHours()).padStart(2,'0') + ':' + String(d.getUTCMinutes()).padStart(2,'0');
+}
+const PROOF = {
+  green:    { e:'🟢', cls:'green',  label:'proven'   },
+  red:      { e:'🔴', cls:'red',    label:'failing'  },
+  stale:    { e:'🟣', cls:'purple', label:'stale'    },
+  unproven: { e:'⚪', cls:'gray',   label:'unproven' },
+};
+const STATUS = { done:'✅', in_progress:'🔨', blocked:'🚧', pending:'⬜' };
+const approvedIds = new Set((DATA.approvals||[]).flatMap(a => a.taskIds));
+function checkProof(t, c){
+  const r = t.results && t.results[c];
+  if (!r) return 'unproven';
+  return r.passed ? 'green' : 'red';
+}
+function emptyState(icon, text){
+  return '<div class="empty"><span class="e-ic">' + icon + '</span>' + text + '</div>';
+}
+
+/* ================= overview ================= */
+function renderOverview(){
+  const v = $('#view-overview');
+  const c = DATA.completion, pct = c.total ? Math.round(c.done / c.total * 100) : 0;
+  const open = c.total - c.done;
+  const val = DATA.validates;
+  let html = '';
+  if (DATA.drift > 0){
+    html += '<div class="drift-banner"><span class="msg">🟣 <b>' + DATA.drift + ' proofs red/stale</b> — code moved or checks failed since last verify</span>' +
+            '<span class="cmd">$ rivet drift</span></div>';
+  }
+  html += '<div class="ov-grid">';
+  html += '<div class="card card-pad hero">' +
+            '<div><div class="card-label">🔩 Riveted · evidence-bound done</div>' +
+            '<div class="hero-num"><span id="heroNum">0</span><span class="pct">%</span></div>' +
+            '<div class="hero-sub"><b>' + c.done + '</b> of <b>' + c.total + '</b> tasks riveted to passing checks · ' + open + ' open</div></div>' +
+            '<div><div class="blockbar" id="blockbar"></div>' +
+            '<div class="fillbar"><i id="fillbar"></i></div></div>' +
+          '</div>';
+  html += '<div class="ov-side">';
+  html += '<div class="card card-pad"><div class="card-label">🚦 Proof states</div><div class="pills">' +
+            pill('green', val.green, 'proven') + pill('red', val.red, 'failing') +
+            pill('purple', val.stale, 'stale') + pill('gray', val.unproven, 'unproven') +
+          '</div></div>';
+  const ap = (DATA.approvals||[])[0];
+  html += '<div class="card card-pad"><div class="card-label">🔏 Latest approval</div>' +
+          (ap
+            ? '<div class="approval-line"><span>🔏</span><span class="who">' + esc(ap.approver) + '</span>' +
+              '<span class="ids">' + ap.taskIds.map(esc).join(' · ') + '</span>' +
+              '<span class="when">' + rel(ap.at) + '</span></div>'
+            : '<div class="approval-line"><span>🔏</span><span style="color:var(--faint)">none yet — <code class="cmd">rivet approve</code></span></div>') +
+          '</div>';
+  html += '<div class="card card-pad"><div class="card-label">📈 Last ' + DATA.activity.length + ' events</div><div class="strip" id="strip"></div></div>';
+  html += '</div></div>';
+  html += '<div class="legend">' +
+          '<span>🟢 <b>green</b> — proven</span>' +
+          '<span>🔴 <b>red</b> — check failing</span>' +
+          '<span>🟣 <b>stale</b> <span class="note">— code moved, re-verify (not broken)</span></span>' +
+          '<span>⚪ <b>unproven</b> — no evidence yet</span>' +
+          '</div>';
+  v.innerHTML = html;
+
+  // sparkline strip
+  const strip = $('#strip');
+  const tone = { '✅':'var(--green)', '❌':'var(--red)', '🏁':'var(--accent)', '🔏':'var(--purple)', '🛡️':'var(--purple)', '🧾':'var(--gray)' };
+  [...DATA.activity].reverse().forEach((e, i) => {
+    const bar = document.createElement('i');
+    const hs = [60, 100, 75, 45, 88, 55][i % 6];
+    bar.style.height = hs + '%';
+    bar.style.background = tone[e.icon] || 'var(--border-2)';
+    bar.style.opacity = '.85';
+    bar.style.animationDelay = (i * 70) + 'ms';
+    bar.title = e.icon + ' ' + e.text + ' · ' + rel(e.at);
+    strip.appendChild(bar);
+  });
+}
+function pill(cls, n, lb){
+  return '<div class="pill ' + cls + '"><span class="light ' + cls + '"></span><span class="n">' + n + '</span><span class="lb">' + lb + '</span></div>';
+}
+let heroAnimated = false;
+function setHeroFinal(pct, target, CELLS){
+  const numEl = $('#heroNum'), blockEl = $('#blockbar'), fillEl = $('#fillbar');
+  if (!numEl) return;
+  numEl.textContent = pct;
+  blockEl.innerHTML = '█'.repeat(target) + '<span class="empty">' + '░'.repeat(CELLS - target) + '</span>';
+  fillEl.style.width = pct + '%';
+}
+function animateHero(){
+  if (heroAnimated) return;
+  heroAnimated = true;
+  const c = DATA.completion, pct = c.total ? Math.round(c.done / c.total * 100) : 0;
+  const numEl = $('#heroNum'), blockEl = $('#blockbar'), fillEl = $('#fillbar');
+  if (!numEl) return;
+  const CELLS = 28, target = Math.round(pct / 100 * CELLS);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Render final state immediately so the hero is correct even if rAF never fires.
+  setHeroFinal(pct, target, CELLS);
+  if (reduced) return;
+  // Then animate from 0 → final, but only if frames actually run.
+  let started = false;
+  const t0 = performance.now(), DUR = 1100;
+  function frame(t){
+    started = true;
+    const p = Math.min(1, (t - t0) / DUR);
+    const e = 1 - Math.pow(1 - p, 3); // ease-out cubic
+    numEl.textContent = Math.round(e * pct);
+    const f = Math.round(e * target);
+    blockEl.innerHTML = '█'.repeat(f) + '<span class="empty">' + '░'.repeat(CELLS - f) + '</span>';
+    if (p < 1) requestAnimationFrame(frame);
+    else setHeroFinal(pct, target, CELLS);
+  }
+  // start from 0 for the count-up, but guard: if no frame fires soon, leave final state.
+  numEl.textContent = '0';
+  blockEl.innerHTML = '<span class="empty">' + '░'.repeat(CELLS) + '</span>';
+  fillEl.style.width = '0%';
+  requestAnimationFrame(() => { fillEl.style.width = pct + '%'; });
+  requestAnimationFrame(frame);
+  setTimeout(() => { if (!started) setHeroFinal(pct, target, CELLS); }, 320);
+}
+
+/* ================= tasks ================= */
+let taskFilter = 'all';
+function renderTasks(){
+  const v = $('#view-tasks');
+  const counts = {
+    all: DATA.tasks.length,
+    red: DATA.tasks.filter(hasRed).length,
+    in_progress: DATA.tasks.filter(t => t.status === 'in_progress').length,
+  };
+  let html = '<div class="toolbar"><div class="seg" id="taskSeg">' +
+    segBtn('all', 'All', counts.all) +
+    segBtn('red', '🔴 Failing', counts.red) +
+    segBtn('in_progress', '🔨 In progress', counts.in_progress) +
+    '</div><span class="summary">✅ done · 🔨 in progress · 🚧 blocked · ⬜ pending</span></div>';
+
+  const list = DATA.tasks.filter(t =>
+    taskFilter === 'all' ? true :
+    taskFilter === 'red' ? hasRed(t) :
+    t.status === 'in_progress');
+
+  if (!DATA.tasks.length){
+    html += '<div class="card">' + emptyState('⬜', 'no tasks yet — <code>rivet spec tasks</code>') + '</div>';
+  } else if (!list.length){
+    html += '<div class="card">' + emptyState('🔍', 'nothing matches this filter') + '</div>';
+  } else {
+    html += '<div class="task-list">' + list.map(taskCard).join('') + '</div>';
+  }
+  v.innerHTML = html;
+
+  v.querySelectorAll('#taskSeg button').forEach(b => {
+    b.addEventListener('click', () => { taskFilter = b.dataset.f; renderTasks(); });
+  });
+  v.querySelectorAll('.task.expandable .task-row').forEach(r => {
+    r.addEventListener('click', () => r.parentElement.classList.toggle('open'));
+  });
+}
+function hasRed(t){ return t.boundChecks.some(c => checkProof(t, c) === 'red'); }
+function segBtn(f, lb, n){
+  return '<button data-f="' + f + '" class="' + (taskFilter === f ? 'on' : '') + '">' + lb +
+         ' <span class="ct" style="font-family:var(--mono);font-size:10.5px;color:var(--faint)">' + n + '</span></button>';
+}
+function taskCard(t){
+  const failing = t.boundChecks.filter(c => checkProof(t, c) === 'red');
+  const hasTrail = t.trail && t.trail.timeline && t.trail.timeline.length > 0;
+  const expandable = failing.length > 0 || hasTrail;
+  const chips = t.boundChecks.map(c => {
+    const p = checkProof(t, c);
+    return '<span class="check-chip"><span class="light ' + PROOF[p].cls + '"></span>' + esc(c) + '</span>';
+  }).join('');
+  let tail = '';
+  if (expandable){
+    let inner = '';
+    if (hasTrail){
+      const OUT = { red:'🔴', green:'🟢', blocked:'⛔', passed:'🏁', recorded:'🔏', bound:'🔗', synced:'🔁', started:'▶️' };
+      const ok = v => { v = String(v); return v.startsWith('passed') || v === 'green' || v === 'done' || v === 'recorded'; };
+      const bad = v => { v = String(v); return v.startsWith('blocked') || v === 'red'; };
+      inner += '<div class="gate-chips">' + Object.entries(t.trail.summary || {}).map(([g, v]) =>
+        '<span class="gate-chip ' + (ok(v) ? 'g-ok' : bad(v) ? 'g-bad' : 'g-mut') + '">' + esc(g) + ' · ' + esc(v) + '</span>'
+      ).join('') + '</div>';
+      inner += '<div class="trail">' + t.trail.timeline.map(ev =>
+        '<div class="trail-row"><span class="t-at">' + esc(String(ev.at || '').slice(11, 16)) + '</span>' +
+        '<span class="t-ic">' + (OUT[ev.outcome] || '·') + '</span>' +
+        '<span class="t-g">' + esc(ev.gate) + '</span><span class="t-o">' + esc(ev.outcome) + '</span>' +
+        (ev.detail ? '<span class="t-d">' + esc(ev.detail) + '</span>' : '') + '</div>'
+      ).join('') + '</div>';
+    }
+    if (failing.length > 0){
+      inner += failing.map(c => {
+        const r = t.results[c];
+        return '<div class="terminal"><div class="t-head"><span class="fail">✗ FAIL</span><span>' + esc(c) + '</span>' +
+               '<span>' + esc(r.kind) + '</span><span style="margin-left:auto">' + rel(r.at) + '</span></div>' +
+               '<pre>' + esc(r.tail || '(no output captured)') + '</pre></div>';
+      }).join('');
+    }
+    tail = '<div class="task-tail"><div>' + inner + '</div></div>';
+  }
+  return '<div class="card task status-' + t.status + (expandable ? ' expandable' : '') + '">' +
+    '<div class="task-row">' +
+      '<span class="st">' + (STATUS[t.status] || '⬜') + '</span>' +
+      '<span class="tid">' + esc(t.id) + '</span>' +
+      '<span class="ttl">' + esc(t.title) + '</span>' +
+      '<span class="checks">' + chips + '</span>' +
+      '<span class="caret">' + (expandable ? '▶' : '') + '</span>' +
+    '</div>' + tail + '</div>';
+}
+
+/* ================= requirements ================= */
+function renderRequirements(){
+  const v = $('#view-requirements');
+  if (!DATA.requirements.length){
+    v.innerHTML = '<div class="card">' + emptyState('📐', 'no requirements yet — <code>rivet spec requirements</code>') + '</div>';
+    return;
+  }
+  const order = { red: 0, stale: 1, unproven: 2, green: 3 };
+  const rows = DATA.requirements.map(r => {
+    const worst = r.criteria.reduce((w, c) => order[c.proof] < order[w] ? c.proof : w, 'green');
+    const crits = r.criteria.map(c =>
+      '<span class="crit"><span class="light ' + PROOF[c.proof].cls + '"></span>' + esc(c.id) + '</span>').join('');
+    const approved = approvedIds.has(r.id);
+    return '<tr>' +
+      '<td><div class="req-id">' + esc(r.id) + '</div><div class="req-title">' + esc(r.title) + '</div></td>' +
+      '<td><div class="crit-chips">' + crits + '</div></td>' +
+      '<td><div class="worst">' + PROOF[worst].e + '<span style="font-family:var(--mono);font-size:11.5px;color:var(--dim)">' + PROOF[worst].label + '</span></div></td>' +
+      '<td><span class="badge ' + (r.proven ? 'proven' : 'unproven') + '">' + (r.proven ? '● PROVEN' : '○ UNPROVEN') + '</span></td>' +
+      '<td class="appr-cell">' + (approved ? '✅' : '<span class="dash">—</span>') + '</td>' +
+    '</tr>';
+  }).join('');
+  v.innerHTML = '<div class="card"><table class="req">' +
+    '<thead><tr><th>Requirement</th><th>Criteria</th><th>Proof (worst-of)</th><th>Definition of done</th><th>Approved</th></tr></thead>' +
+    '<tbody>' + rows + '</tbody></table></div>' +
+    '<div class="legend" style="margin-top:14px">' +
+    '<span>🟢 <b>green</b> — proven</span><span>🔴 <b>red</b> — failing</span>' +
+    '<span>🟣 <b>stale</b> <span class="note">— code moved, re-verify</span></span><span>⚪ <b>unproven</b></span></div>';
+}
+
+/* ================= graph ================= */
+function renderGraph(){
+  const v = $('#view-graph');
+  let inner;
+  if (DATA.graphHtml){
+    inner = '<div class="card graph-shell"><div class="stripes"></div>' +
+      '<div class="graph-ph"><span class="big">🕸️</span>' +
+      '<b>requirement → check graph</b><br>' +
+      'iframe panel · injected by <b>rivet dashboard</b><br>' +
+      '&lt;iframe srcdoc="' + esc(DATA.graphHtml) + '"&gt;</div></div>';
+  } else {
+    inner = '<div class="card">' + emptyState('🕸️', 'no graph yet — <code>rivet graph</code>') + '</div>';
+  }
+  v.innerHTML = inner +
+    '<div class="edge-legend">' +
+    '<span><span class="edge green"></span>proven edge</span>' +
+    '<span><span class="edge red"></span>failing edge</span>' +
+    '<span><span class="edge purple"></span>stale — re-verify</span>' +
+    '<span><span class="edge gray"></span>unproven edge</span>' +
+    '</div>';
+}
+
+/* ================= activity ================= */
+function renderActivity(){
+  const v = $('#view-activity');
+  let html = '';
+  if (!DATA.activity.length){
+    html = '<div class="card">' + emptyState('🧾', 'journal is empty — events appear as checks run') + '</div>';
+  } else {
+    html = '<div class="card" style="padding:6px 18px"><div class="feed">' +
+      DATA.activity.map(e => {
+        const meta = e.meta ? e.meta.split('·').map(m => '<span class="chip">' + esc(m.trim()) + '</span>').join('') : '';
+        return '<div class="evt"><span class="ic">' + e.icon + '</span>' +
+          '<span class="tx">' + fmtEvent(e.text) + '</span>' +
+          '<span class="meta">' + meta + '</span>' +
+          '<span class="when">' + clock(e.at) + ' · ' + rel(e.at) + '</span></div>';
+      }).join('') + '</div></div>';
+  }
+  if ((DATA.governance || []).length){
+    html += '<div class="feed-section"><div class="card-label">Governance</div>' +
+      '<div class="card" style="padding:6px 18px"><div class="feed">' +
+      DATA.governance.map(g =>
+        '<div class="evt"><span class="ic">🛡️</span>' +
+        '<span class="tx">' + esc(g.kind) + ' — <code>' + esc(g.detail) + '</code></span>' +
+        '<span class="when">' + clock(g.at) + ' · ' + rel(g.at) + '</span></div>').join('') +
+      '</div></div></div>';
+  }
+  v.innerHTML = html;
+}
+function fmtEvent(text){
+  // wrap path-looking tokens in <code>
+  return esc(text).replace(/(\S+\/\S+)/g, '<code>$1</code>');
+}
+
+/* ================= files ================= */
+let currentFile = (DATA.files[0] || {}).name;
+function renderFiles(){
+  const v = $('#view-files');
+  if (!DATA.files.length){
+    v.innerHTML = '<div class="card">' + emptyState('📁', 'no artifacts yet — <code>rivet init</code> scaffolds .rivet/') + '</div>';
+    return;
+  }
+  const groups = {};
+  DATA.files.forEach(f => {
+    const dir = f.name.includes('/') ? f.name.split('/')[0] + '/' : '.rivet/';
+    (groups[dir] = groups[dir] || []).push(f);
+  });
+  const orderedDirs = ['.rivet/', ...Object.keys(groups).filter(d => d !== '.rivet/').sort()];
+  const nav = orderedDirs.map(dir =>
+    '<div class="fgroup"><div class="fgroup-label">' + esc(dir) + '</div>' +
+    groups[dir].map(f =>
+      '<button class="fitem' + (f.name === currentFile ? ' on' : '') + '" data-file="' + esc(f.name) + '">' +
+      '<span class="fic">▤</span>' + esc(f.name.includes('/') ? f.name.split('/').slice(1).join('/') : f.name) + '</button>').join('') +
+    '</div>').join('');
+  const file = DATA.files.find(f => f.name === currentFile) || DATA.files[0];
+  v.innerHTML = '<div class="files-grid">' +
+    '<div class="card file-nav">' + nav + '</div>' +
+    '<div class="card file-pane">' +
+      '<div class="file-head">📄 <b>.rivet/' + esc(file.name) + '</b><span style="margin-left:auto">' + file.content.split('\n').length + ' lines · markdown</span></div>' +
+      '<div class="md">' + renderMarkdown(file.content) + '</div>' +
+    '</div></div>';
+  v.querySelectorAll('.fitem').forEach(b => {
+    b.addEventListener('click', () => { currentFile = b.dataset.file; renderFiles(); });
+  });
+}
+
+/* ====== minimal markdown renderer (escapes raw HTML; no libraries) ====== */
+function renderMarkdown(src){
+  const inline = s => esc(s)
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[\s(])\*([^*]+)\*/g, '$1<em>$2</em>')
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  const lines = src.split('\n');
+  const out = [];
+  let i = 0;
+  while (i < lines.length){
+    const l = lines[i];
+    if (/^```/.test(l)){                                   // fenced code
+      const buf = []; i++;
+      while (i < lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
+      i++;
+      out.push('<pre><code>' + esc(buf.join('\n')) + '</code></pre>');
+    } else if (/^#{1,4} /.test(l)){                        // headings
+      const n = l.match(/^#+/)[0].length;
+      out.push('<h' + n + '>' + inline(l.replace(/^#+ /, '')) + '</h' + n + '>'); i++;
+    } else if (/^\s*---+\s*$/.test(l)){                    // hr
+      out.push('<hr></hr>'); i++;
+    } else if (/^\|/.test(l)){                             // table
+      const rows = [];
+      while (i < lines.length && /^\|/.test(lines[i])) rows.push(lines[i++]);
+      const cells = r => r.replace(/^\|/, '').replace(/\|\s*$/, '').split('|').map(c => inline(c.trim()));
+      let t = '<table><thead><tr>' + cells(rows[0]).map(c => '<th>' + c + '</th>').join('') + '</tr></thead><tbody>';
+      for (let r = 1; r < rows.length; r++){
+        if (/^[\s|:-]+$/.test(rows[r])) continue;          // separator row
+        t += '<tr>' + cells(rows[r]).map(c => '<td>' + c + '</td>').join('') + '</tr>';
+      }
+      out.push(t + '</tbody></table>');
+    } else if (/^> ?/.test(l)){                            // blockquote
+      const buf = [];
+      while (i < lines.length && /^> ?/.test(lines[i])) buf.push(lines[i++].replace(/^> ?/, ''));
+      out.push('<blockquote>' + buf.map(inline).join('<br></br>') + '</blockquote>');
+    } else if (/^[-*] /.test(l)){                          // ul
+      const buf = [];
+      while (i < lines.length && /^[-*] /.test(lines[i])) buf.push(lines[i++]);
+      out.push('<ul>' + buf.map(x => '<li>' + inline(x.replace(/^[-*] /, '')) + '</li>').join('') + '</ul>');
+    } else if (/^\d+\. /.test(l)){                         // ol
+      const buf = [];
+      while (i < lines.length && /^\d+\. /.test(lines[i])) buf.push(lines[i++]);
+      out.push('<ol>' + buf.map(x => '<li>' + inline(x.replace(/^\d+\. /, '')) + '</li>').join('') + '</ol>');
+    } else if (/^@\w+/.test(l)){                           // @check directives
+      out.push('<span class="directive">' + esc(l) + '</span>'); i++;
+    } else if (/^\s*$/.test(l)){
+      i++;
+    } else {                                               // paragraph
+      const buf = [];
+      while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,4} |```|\||> |[-*] |\d+\. |@\w)/.test(lines[i])) buf.push(lines[i++]);
+      out.push('<p>' + buf.map(inline).join('<br></br>') + '</p>');
+    }
+  }
+  return out.join('\n');
+}
+
+/* ================= tabs + routing ================= */
+const TABS = [
+  { id: 'overview',     label: 'Overview' },
+  { id: 'tasks',        label: 'Tasks',        count: DATA.tasks.length },
+  { id: 'requirements', label: 'Requirements', count: DATA.requirements.length },
+  { id: 'graph',        label: 'Graph' },
+  { id: 'activity',     label: 'Activity' },
+  { id: 'files',        label: 'Files',        count: DATA.files.length },
+];
+function buildTabs(){
+  $('#tabs').innerHTML = TABS.map(t =>
+    '<button class="tab" data-t="' + t.id + '">' + t.label +
+    (t.count != null ? '<span class="ct">' + t.count + '</span>' : '') + '</button>').join('');
+  document.querySelectorAll('.tab').forEach(b => {
+    b.addEventListener('click', () => { location.hash = b.dataset.t; });
+  });
+}
+function route(){
+  const h = (location.hash || '#overview').slice(1);
+  const id = TABS.some(t => t.id === h) ? h : 'overview';
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.t === id));
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('active', s.id === 'view-' + id));
+  if (id === 'overview') animateHero();
+}
+
+/* ================= theme ================= */
+const THEME_KEY = 'rivet-theme';
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  const b = $('#themeToggle');
+  if (b){ b.textContent = t === 'dark' ? '☀️' : '🌙'; b.title = t === 'dark' ? 'Switch to light' : 'Switch to dark'; }
+}
+let theme = (function(){ try { return localStorage.getItem(THEME_KEY) || 'light'; } catch(e){ return 'light'; } })();
+applyTheme(theme);
+$('#themeToggle').addEventListener('click', () => {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  try { localStorage.setItem(THEME_KEY, theme); } catch(e){}
+  applyTheme(theme);
+});
+
+/* ================= init ================= */
+function fmtStamp(iso){
+  const d = new Date(iso);
+  return d.toISOString().slice(0, 10) + ' ' + clock(iso) + ' UTC';
+}
+$('#stamp').innerHTML = 'generated <b>' + fmtStamp(DATA.generatedAt) + '</b> · <span style="color:var(--accent)">rivet dashboard</span>';
+document.title = DATA.project + ' — dashboard';
+buildTabs();
+renderOverview();
+renderTasks();
+renderRequirements();
+renderGraph();
+renderActivity();
+renderFiles();
+window.addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>

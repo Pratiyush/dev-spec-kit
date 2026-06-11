@@ -15,7 +15,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && cp src/cli/dashboard-template.html dist/cli/",
     "dev": "tsx src/cli/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

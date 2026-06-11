@@ -3,7 +3,7 @@ import { Command } from "commander";
 import pc from "picocolors";
 import { runDoctor } from "./doctor.js";
 import { runInit } from "./init.js";
-import { taskCreate, taskStart, taskDone, checkRun, status } from "./tasks.js";
+import { taskCreate, taskStart, taskDone, checkRun, status, taskTrail } from "./tasks.js";
 import { graphBuild } from "./graph.js";
 import { specTasks, approve, pr, route, guardPr, unlock } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
@@ -86,6 +86,11 @@ task
   .description("Mark a task in progress")
   .argument("<id>")
   .action(safe((id: string) => taskStart(id)));
+task
+  .command("trail")
+  .description("Every gate this task crossed — minute-level, done/blocked/skipped/pending")
+  .argument("<id>")
+  .action(safe((id: string) => taskTrail(id)));
 task
   .command("done")
   .description("THE GATE — mark done; refuses unless every bound check has a passing run")

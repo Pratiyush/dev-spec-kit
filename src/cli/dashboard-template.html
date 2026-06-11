@@ -387,6 +387,18 @@ table.req tbody tr:hover{background:var(--panel-2);}
   .task .checks{display:none;}
   table.req th:nth-child(4),table.req td:nth-child(4){display:none;}
 }
+
+/* ===== gate trail (TRAIL-01) ===== */
+.gate-chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.gate-chip{font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:20px;border:1px solid var(--line)}
+.gate-chip.g-ok{color:#7ee2a8;border-color:rgba(63,185,80,.4)}
+.gate-chip.g-bad{color:#ffa198;border-color:rgba(248,81,73,.45)}
+.gate-chip.g-mut{color:var(--dim)}
+.trail{margin:4px 0 8px;border-left:2px solid var(--line);padding-left:10px}
+.trail-row{display:flex;gap:8px;align-items:baseline;font-family:var(--mono);font-size:11.5px;padding:2px 0;color:var(--dim)}
+.trail-row .t-at{color:var(--faint)}
+.trail-row .t-g{color:var(--text)}
+.trail-row .t-d{color:var(--faint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -625,19 +637,38 @@ function segBtn(f, lb, n){
 }
 function taskCard(t){
   const failing = t.boundChecks.filter(c => checkProof(t, c) === 'red');
-  const expandable = failing.length > 0;
+  const hasTrail = t.trail && t.trail.timeline && t.trail.timeline.length > 0;
+  const expandable = failing.length > 0 || hasTrail;
   const chips = t.boundChecks.map(c => {
     const p = checkProof(t, c);
     return '<span class="check-chip"><span class="light ' + PROOF[p].cls + '"></span>' + esc(c) + '</span>';
   }).join('');
   let tail = '';
   if (expandable){
-    tail = '<div class="task-tail"><div>' + failing.map(c => {
-      const r = t.results[c];
-      return '<div class="terminal"><div class="t-head"><span class="fail">✗ FAIL</span><span>' + esc(c) + '</span>' +
-             '<span>' + esc(r.kind) + '</span><span style="margin-left:auto">' + rel(r.at) + '</span></div>' +
-             '<pre>' + esc(r.tail || '(no output captured)') + '</pre></div>';
-    }).join('') + '</div></div>';
+    let inner = '';
+    if (hasTrail){
+      const OUT = { red:'🔴', green:'🟢', blocked:'⛔', passed:'🏁', recorded:'🔏', bound:'🔗', synced:'🔁', started:'▶️' };
+      const ok = v => { v = String(v); return v.startsWith('passed') || v === 'green' || v === 'done' || v === 'recorded'; };
+      const bad = v => { v = String(v); return v.startsWith('blocked') || v === 'red'; };
+      inner += '<div class="gate-chips">' + Object.entries(t.trail.summary || {}).map(([g, v]) =>
+        '<span class="gate-chip ' + (ok(v) ? 'g-ok' : bad(v) ? 'g-bad' : 'g-mut') + '">' + esc(g) + ' · ' + esc(v) + '</span>'
+      ).join('') + '</div>';
+      inner += '<div class="trail">' + t.trail.timeline.map(ev =>
+        '<div class="trail-row"><span class="t-at">' + esc(String(ev.at || '').slice(11, 16)) + '</span>' +
+        '<span class="t-ic">' + (OUT[ev.outcome] || '·') + '</span>' +
+        '<span class="t-g">' + esc(ev.gate) + '</span><span class="t-o">' + esc(ev.outcome) + '</span>' +
+        (ev.detail ? '<span class="t-d">' + esc(ev.detail) + '</span>' : '') + '</div>'
+      ).join('') + '</div>';
+    }
+    if (failing.length > 0){
+      inner += failing.map(c => {
+        const r = t.results[c];
+        return '<div class="terminal"><div class="t-head"><span class="fail">✗ FAIL</span><span>' + esc(c) + '</span>' +
+               '<span>' + esc(r.kind) + '</span><span style="margin-left:auto">' + rel(r.at) + '</span></div>' +
+               '<pre>' + esc(r.tail || '(no output captured)') + '</pre></div>';
+      }).join('');
+    }
+    tail = '<div class="task-tail"><div>' + inner + '</div></div>';
   }
   return '<div class="card task status-' + t.status + (expandable ? ' expandable' : '') + '">' +
     '<div class="task-row">' +

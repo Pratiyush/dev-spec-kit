@@ -1,70 +1,67 @@
 import { describe, it, expect } from "vitest";
-import { renderDashboard } from "../src/cli/dashboard.js";
-import type { Task } from "../src/engine/state/tasks.js";
-import type { JournalEvent } from "../src/engine/state/journal.js";
-import type { RequirementRollup } from "../src/engine/graph/build.js";
+import { renderDashboard, type DesignData } from "../src/cli/dashboard.js";
 
-/** DASH-01 v1: a self-contained HTML dashboard — emoji language, completion %, traffic lights,
- *  drift banner, graphify embed — generated on demand from ground truth (his config: refresh-on-demand). */
+/** DASH-02: Pratiyush's design.html is THE template — renderDashboard injects real data into its
+ *  DATA block (sanitized), leaving his tabs/renderers untouched. */
 
-const tasks: Task[] = [
-  { id: "R-1", title: "login", status: "done", boundChecks: ["c1"], results: { c1: { ref: "c1", passed: true, at: "t" } } },
-  { id: "R-2", title: "<script>alert(1)</script>", status: "in_progress", boundChecks: ["c2"], results: {} },
-];
-const rollups: RequirementRollup[] = [
-  { id: "R-1", title: "login", criteria: [{ id: "R-1-AC1", bound: true, proof: "green" }], proven: true },
-  { id: "R-2", title: "logout", criteria: [{ id: "R-2-AC1", bound: true, proof: "stale" }], proven: false },
-];
-const events: JournalEvent[] = [
-  { at: "2026-06-12T10:00:00Z", type: "approval.recorded", data: { taskIds: ["R-1"], approver: "Pratiyush" } },
-];
+const data: DesignData = {
+  project: "demo",
+  generatedAt: "2026-06-12T10:05:00Z",
+  completion: { done: 1, total: 2 },
+  validates: { green: 1, red: 0, stale: 1, unproven: 0 },
+  tasks: [
+    {
+      id: "R-1",
+      title: "login",
+      status: "done",
+      boundChecks: ["c1"],
+      results: { c1: { ref: "c1", passed: true, at: "t" } },
+      trail: {
+        summary: { binding: "done", tddRed: "done", proof: "green", doneGate: "passed (1 blocked)", approval: "recorded" },
+        timeline: [{ at: "2026-06-12T10:02:00Z", gate: "done-gate", outcome: "blocked" }],
+      },
+    },
+    {
+      id: "R-2",
+      title: "<script>alert(1)</script>",
+      status: "in_progress",
+      boundChecks: ["c2"],
+      results: {},
+      trail: { summary: { binding: "done", tddRed: "skipped", proof: "pending", doneGate: "pending", approval: "pending" }, timeline: [] },
+    },
+  ],
+  requirements: [{ id: "R-1", title: "login", proven: true, criteria: [{ id: "AC1", proof: "green" }] }],
+  approvals: [{ at: "t", approver: "Pratiyush", taskIds: ["R-1"] }],
+  governance: [],
+  activity: [{ at: "2026-06-12T10:10:01Z", icon: "🏁", text: "task R-1 → done" }],
+  graphHtml: null,
+  drift: 1,
+  files: [{ name: "laws.md", content: "# Laws" }],
+};
 
-describe("renderDashboard", () => {
-  const html = renderDashboard({
-    project: "demo",
-    tasks,
-    rollups,
-    events,
-    validates: { green: 1, red: 0, stale: 1, unproven: 0 },
-    graphHtml: "../graphify-out/graph.html",
-    generatedAt: "2026-06-12T10:05:00Z",
+describe("renderDashboard (template injection)", () => {
+  const html = renderDashboard(data);
+
+  it("uses the design template (his tabs and views are present)", () => {
+    for (const id of ["view-overview", "view-tasks", "view-requirements", "view-graph", "view-activity", "view-files"]) {
+      expect(html).toContain(`id="${id}"`);
+    }
   });
 
-  it("shows completion percentage and the emoji language", () => {
-    expect(html).toContain("50%"); // 1/2 done
-    expect(html).toContain("✅");
-    expect(html).toContain("🔨");
-    expect(html).toContain("🟢");
-    expect(html).toContain("🟣");
+  it("injects the real DATA (sample block fully replaced)", () => {
+    expect(html).toContain('"project":"demo"');
+    expect(html).toContain('"completion":{"done":1,"total":2}');
+    expect(html).not.toContain("DASH-01"); // sample data gone
+    expect(html).toContain('"trail"'); // gate trails ride along
   });
 
-  it("warns on drift (stale/red present) and links the code graph", () => {
-    expect(html).toMatch(/drift|re-verify/i);
-    expect(html).toContain("../graphify-out/graph.html");
+  it("sanitizes injected JSON — a title cannot break out of the script tag", () => {
+    expect(html).not.toContain("<script>alert(1)");
+    expect(html).toContain("\\u003cscript"); // < escaped inside the JSON string
   });
 
-  it("escapes HTML in user content (titles can't inject script)", () => {
-    expect(html).not.toContain("<script>alert(1)</script>");
-    expect(html).toContain("&lt;script&gt;");
-  });
-
-  it("names the approver and the generation time (on-demand refresh model)", () => {
-    expect(html).toContain("Pratiyush");
-    expect(html).toContain("2026-06-12T10:05:00Z");
-    expect(html).toMatch(/rivet dashboard/); // tells the user how to refresh
-  });
-
-  it("omits the graph section gracefully when graphify output is absent", () => {
-    const none = renderDashboard({
-      project: "demo",
-      tasks,
-      rollups,
-      events,
-      validates: { green: 2, red: 0, stale: 0, unproven: 0 },
-      graphHtml: null,
-      generatedAt: "t",
-    });
-    expect(none).not.toContain("graphify-out");
-    expect(none).not.toMatch(/drift detected/i); // all green = no banner (the CSS class may exist)
+  it("renders gate-trail UI hooks in the template", () => {
+    expect(html).toContain("trail"); // taskCard consumes t.trail
+    expect(html).toMatch(/done-gate|gate-chip|trail-row/);
   });
 });

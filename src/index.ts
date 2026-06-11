@@ -28,3 +28,4 @@ export * from "./engine/verify/applife.js";
 export * from "./engine/wave.js";
 export * from "./engine/steering.js";
 export * from "./engine/learnwarn.js";
+export * from "./engine/trail.js";
