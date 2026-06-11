@@ -20,6 +20,13 @@ hole"), and most drown small changes in ceremony. Rivet's answer: **evidence-bou
 real passing check) and **ceremony proportional to change size** (a fast path for small changes; the full spec
 pipeline only when a feature earns it).
 
+## Pairs well with
+
+Rivet is the **enforcement + traceability layer**; it deliberately does not duplicate generic dev
+craft. We recommend installing [superpowers](https://github.com/obra/superpowers) (MIT) alongside it
+for brainstorming, systematic debugging, git-worktree discipline, and parallel subagent dispatch —
+Rivet's skills compose with them and pick up where they stop: proofs, gates, and the graph.
+
 ## Prerequisites
 
 - **Node.js ≥ 22** and **git**

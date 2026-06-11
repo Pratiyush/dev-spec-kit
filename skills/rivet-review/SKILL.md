@@ -23,6 +23,18 @@ Now load `.rivet/specs/*.md`, `.rivet/graph.json`, and the tasks. Hunt what blin
 - Spec gaps the implementation revealed — propose spec updates, don't silently patch around them.
 - Reuse violations: code that duplicates something the code graph shows already exists
   (`graphify query` / the dashboard map are your friends).
+- **Silent failures**: swallowed exceptions, catch-and-continue, default fallbacks that mask errors,
+  empty error branches — every error path must surface or journal, never vanish.
+- **Behavioral coverage, not line coverage**: do the bound tests assert the *behavior* the criterion
+  names (outcome, side effects, prohibited effects), or merely execute the lines? A test that
+  cannot fail when the behavior breaks proves nothing.
+
+## Receiving review feedback (when Rivet's work is reviewed)
+
+Verify each suggestion against the spec and graph BEFORE implementing it — a reviewer can be wrong
+about a requirement. No performative agreement: if a finding conflicts with a criterion, say so
+with the criterion id; if it reveals a spec gap, propose the spec change rather than silently
+complying. Accepted findings follow the normal loop (bind a check where one is missing).
 
 ## Output rules (RFC-2119)
 

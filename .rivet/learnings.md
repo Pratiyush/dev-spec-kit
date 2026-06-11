@@ -133,3 +133,19 @@
 - Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional
   cleanup; skills should name their one successor so phases can't be silently skipped.
 - Promoted to: OPEN → task FINISH-RITUAL-01 (P2)
+
+## 2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)
+- Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands
+  (~230 are stack packs & domain verticals, consciously skipped). Both MIT; adaptation as original
+  prose unencumbered. Independent pass confirmed all five prior promotions (GATE-FACTS/PROTECT/
+  PACKS-01, AUDIT-META-01, FINISH-RITUAL-01).
+- Lesson: Rivet is the enforcement/traceability layer; generic craft (brainstorming, systematic-
+  debugging, worktrees, parallel dispatch, TDD craft) stays in superpowers — recommend alongside,
+  never duplicate. Absorb only mechanics that strengthen the moat. Net-new from this pass:
+  review content (silent-failure hunt, behavioral-vs-line coverage, verify-feedback-before-
+  implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project
+  recurrence), phase-aware compaction, and compliance-QA of our own skills.
+- Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;
+  OPEN → task COMPACT-01 (journal-driven checkpoint/compact suggestion at phase boundaries +
+  PreCompact state save) and task SKILL-QA-01 (skill-comply-style scenario tests measuring whether
+  agents actually obey Rivet's skills — empirical drift detection for prose).
