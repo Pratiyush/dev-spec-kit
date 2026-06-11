@@ -11,3 +11,5 @@ export * from "./engine/state/journal.js";
 export * from "./engine/state/tasks.js";
 export * from "./engine/verify/runner.js";
 export * from "./engine/graphify/index.js";
+export * from "./engine/spec/parse.js";
+export * from "./engine/graph/build.js";

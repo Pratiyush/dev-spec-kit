@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { homedir } from "node:os";
 import { join, dirname } from "node:path";
 import type { GraphNode } from "../graph/types.js";
 
@@ -7,53 +8,74 @@ import type { GraphNode } from "../graph/types.js";
  * graphify integration — the code-side of the Verified Traceability Graph.
  *
  * graphify (PyPI `graphifyy`, CLI `graphify`) indexes the codebase into `graphify-out/graph.json`
- * (gitignored, derived). Rivet ingests its nodes as `codeNode`s and overlays the proven
- * spec/test/PR edges. Freshness: we record the last-indexed commit SHA in committed state and
- * re-index via `graphify <dir> --update` when HEAD moves (graphify also offers --watch and a
- * post-commit hook for continuous sync).
+ * (gitignored, derived). Code-only refresh needs no LLM key: `graphify update <path>`. Rivet ingests
+ * its nodes as `codeNode`s and overlays the proven spec/test/PR edges. Freshness: graphify stamps
+ * `built_at_commit` in graph.json and we mirror the last-indexed SHA in committed state.
  */
 
+/** Resolve the graphify executable: PATH first, then uv's default install location. */
+export function graphifyBin(): string | null {
+  if (spawnSync("graphify", ["--help"], { stdio: "ignore" }).status === 0) return "graphify";
+  const uvPath = join(homedir(), ".local", "bin", "graphify");
+  if (existsSync(uvPath)) return uvPath;
+  return null;
+}
+
 export function graphifyInstalled(): boolean {
-  const res = spawnSync("graphify", ["--help"], { stdio: "ignore" });
-  return res.status === 0;
+  return graphifyBin() !== null;
 }
 
 export const GRAPHIFY_INSTALL_HINT =
   "pip install graphifyy && graphify install   (PyPI package is 'graphifyy'; CLI is 'graphify')";
 
-/** Raw graphify graph.json shapes we tolerate (d3-style nodes/links or nodes/edges). */
+/** Raw graphify graph.json (verified against v0.8.37 output). */
 interface RawGraph {
-  nodes?: Array<{ id?: string; name?: string; label?: string; type?: string; [k: string]: unknown }>;
-  links?: Array<{ source?: unknown; target?: unknown; [k: string]: unknown }>;
-  edges?: Array<{ source?: unknown; target?: unknown; from?: unknown; to?: unknown; [k: string]: unknown }>;
+  built_at_commit?: string;
+  nodes?: Array<{
+    id?: string;
+    name?: string;
+    label?: string;
+    source_file?: string;
+    source_location?: string;
+    community?: number;
+    [k: string]: unknown;
+  }>;
+  links?: Array<{ source?: unknown; target?: unknown; relation?: string; [k: string]: unknown }>;
+  edges?: Array<{ source?: unknown; target?: unknown; from?: unknown; to?: unknown; relation?: string; [k: string]: unknown }>;
+}
+
+export interface CodeLink {
+  from: string;
+  to: string;
+  relation?: string;
 }
 
 export interface CodeGraph {
   nodes: GraphNode[];
   /** Raw code-to-code links (kept opaque; Rivet's proven edges are layered separately). */
-  links: Array<{ from: string; to: string }>;
+  links: CodeLink[];
+  /** Commit the graph was built at, when graphify recorded it. */
+  builtAtCommit?: string;
 }
 
-/**
- * Load graphify's graph.json into Rivet codeNodes. Tolerant of shape variations; the exact schema
- * is pinned down against real output during P1 (tooling honesty: best-effort until then).
- */
+/** Load graphify's graph.json into Rivet codeNodes (tolerant of older/other shapes too). */
 export function loadCodeGraph(graphJsonPath: string): CodeGraph {
   const raw = JSON.parse(readFileSync(graphJsonPath, "utf8")) as RawGraph;
   const nodes: GraphNode[] = (raw.nodes ?? []).map((n, i) => ({
     id: String(n.id ?? n.name ?? n.label ?? `node-${i}`),
     kind: "codeNode",
     label: String(n.label ?? n.name ?? n.id ?? `node-${i}`),
-    meta: { type: n.type },
+    meta: { sourceFile: n.source_file, sourceLocation: n.source_location, community: n.community },
   }));
   const rawEdges = raw.links ?? raw.edges ?? [];
-  const links = rawEdges
-    .map((e) => ({
-      from: endpointId(e.source ?? (e as { from?: unknown }).from),
-      to: endpointId(e.target ?? (e as { to?: unknown }).to),
-    }))
-    .filter((l): l is { from: string; to: string } => l.from !== undefined && l.to !== undefined);
-  return { nodes, links };
+  const links: CodeLink[] = [];
+  for (const e of rawEdges) {
+    const from = endpointId(e.source ?? (e as { from?: unknown }).from);
+    const to = endpointId(e.target ?? (e as { to?: unknown }).to);
+    if (from === undefined || to === undefined) continue;
+    links.push({ from, to, ...(e.relation ? { relation: e.relation } : {}) });
+  }
+  return { nodes, links, ...(raw.built_at_commit ? { builtAtCommit: raw.built_at_commit } : {}) };
 }
 
 /** d3 edge endpoints may be ids or node objects. */
@@ -95,20 +117,20 @@ export function isStale(projectDir: string): boolean {
 }
 
 /**
- * Re-index the project with graphify (incremental --update when prior output exists), then record
+ * Re-index the project's CODE graph via `graphify update <path>` (no LLM key needed), then record
  * freshness. Returns the graph.json path, or null when graphify is not installed (caller surfaces
  * the install hint — never silent).
  */
 export function refreshCodeGraph(projectDir: string, outDir = "graphify-out"): string | null {
-  if (!graphifyInstalled()) return null;
-  const graphJson = join(projectDir, outDir, "graph.json");
-  const args = existsSync(graphJson) ? [".", "--update"] : ["."];
-  const res = spawnSync("graphify", args, { cwd: projectDir, stdio: ["ignore", "pipe", "pipe"] });
+  const bin = graphifyBin();
+  if (!bin) return null;
+  const res = spawnSync(bin, ["update", "."], { cwd: projectDir, stdio: ["ignore", "pipe", "pipe"] });
   if (res.status !== 0) {
-    throw new Error(`graphify exited ${res.status}: ${res.stderr?.toString().slice(0, 500)}`);
+    throw new Error(`graphify update exited ${res.status}: ${res.stderr?.toString().slice(0, 500)}`);
   }
   const head = gitHead(projectDir);
   if (head) writeFreshness(projectDir, head);
+  const graphJson = join(projectDir, outDir, "graph.json");
   return existsSync(graphJson) ? graphJson : null;
 }
 

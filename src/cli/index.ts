@@ -3,6 +3,7 @@ import { Command } from "commander";
 import { runDoctor } from "./doctor.js";
 import { runInit } from "./init.js";
 import { taskCreate, taskStart, taskDone, checkRun, status } from "./tasks.js";
+import { graphBuild } from "./graph.js";
 
 const program = new Command();
 
@@ -57,5 +58,12 @@ program
   .command("status")
   .description("Board generated from the journal — tasks with traffic-light proof states")
   .action(() => status());
+
+const graph = program.command("graph").description("The Verified Traceability Graph");
+graph
+  .command("build")
+  .description("Fuse specs + journal + graphify code graph into .rivet/graph.json (exit 1 on red/stale)")
+  .option("--no-refresh", "skip the graphify re-index even if the code graph is stale")
+  .action((opts: { refresh?: boolean }) => graphBuild(opts));
 
 program.parseAsync(process.argv);
