@@ -60,7 +60,7 @@ export function taskDone(id: string): void {
   }
 }
 
-export function checkRun(taskId: string, ref: string, stackName: string): void {
+export function checkRun(taskId: string, ref: string, stackName: string, opts?: { expectRed?: boolean }): void {
   const cwd = process.cwd();
   // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
   const config = loadConfig(cwd);
@@ -73,9 +73,13 @@ export function checkRun(taskId: string, ref: string, stackName: string): void {
     process.exitCode = 2;
     return;
   }
-  console.log(pc.dim(`running ${ref} via ${stackName}${override ? " (config runner)" : ""} …`));
+  const expectRed = opts?.expectRed ?? false;
+  console.log(
+    pc.dim(`running ${ref} via ${stackName}${override ? " (config runner)" : ""}${expectRed ? " (expect-red: no retries)" : ""} …`),
+  );
   // Flaky policy from config: retry-flag retries up to build.retryLimit and records the flakiness.
-  const retries = config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0;
+  // FIX-QUERY-01: TDD's expected red must not burn the retry budget on a deterministic failure.
+  const retries = expectRed ? 0 : config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0;
   const { result, attempts } = runWithRetry(
     () => ({ ...runCheck({ kind: "unit", ref }, stackName, { cwd }, override), stack: stackName }),
     retries,

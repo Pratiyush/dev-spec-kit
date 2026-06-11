@@ -11,7 +11,11 @@ import type { CheckResult } from "../engine/graph/types.js";
 export function renderLog(events: JournalEvent[]): string[] {
   return events.map((e) => {
     const ts = e.at.replace("T", " ").slice(0, 19);
-    return `${pc.dim(ts)}  ${describeEvent(e)}`;
+    const meta =
+      e.meta && (e.meta.actor || e.meta.model)
+        ? `  [${[e.meta.actor, e.meta.model].filter(Boolean).join(" · ")}]`
+        : "";
+    return `${pc.dim(ts)}  ${describeEvent(e)}${meta}`;
   });
 }
 
@@ -35,6 +39,8 @@ function describeEvent(e: JournalEvent): string {
       return `🔏 approval by ${String(d.approver)} — ${((d.taskIds as string[]) ?? []).join(", ")}`;
     case "task.bindings":
       return `🔗 task ${String(d.id)} bindings → [${((d.boundChecks as string[]) ?? []).join(", ")}]`;
+    case "governance":
+      return `🛡️ ${String(d.kind ?? "governance")} ${JSON.stringify({ ...d, kind: undefined })}`;
     case "note":
       return `📝 ${JSON.stringify(d)}`;
     default:
@@ -42,10 +48,17 @@ function describeEvent(e: JournalEvent): string {
   }
 }
 
+/** FIX-PARSE-01: `-n` is validated — default 25, NaN→25, negatives clamp to 0 (0 shows nothing). */
+export function parseCount(n?: string): number {
+  if (n === undefined) return 25;
+  const v = Number(n);
+  return Number.isFinite(v) ? Math.max(0, Math.trunc(v)) : 25;
+}
+
 export function logCmd(opts: { json?: boolean; n?: string }): void {
   const events = journalFor(process.cwd()).read();
-  const n = opts.n ? Number(opts.n) : 25;
-  const slice = events.slice(-n);
+  const n = parseCount(opts.n);
+  const slice = n === 0 ? [] : events.slice(-n);
   if (events.length === 0) {
     console.log(pc.dim("journal is empty — no actions recorded yet"));
     return;

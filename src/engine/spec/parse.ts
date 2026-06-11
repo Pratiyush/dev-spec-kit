@@ -7,20 +7,27 @@ import { classifyEars, type AcceptanceCriterion, type CheckBinding, type CheckKi
  * bindings. Markdown stays the human-editable source of truth; this parser is how it becomes
  * machine state (tasks, graph nodes, proof obligations).
  *
+ * FIX-PARSE-01 rules: fenced code blocks are invisible; a blank line separates criteria (no silent
+ * merge); list markers before `@check` are stripped; an orphan `@check` is WARNED about — silent
+ * loss of a proof obligation is the worst parser failure.
+ *
  * Recognized shapes:
  *   ## Requirement R-ID — Title        (em/en dash or hyphen)
  *   <EARS sentence lines...>
- *   @check kind=<kind> ref=<ref>
+ *   @check kind=<kind> ref=<ref>       (also as a "- @check ..." bullet)
  */
 
 const REQ_HEADING = /^##\s+Requirement:?\s+([A-Za-z][A-Za-z0-9_-]*)\s*(?:[—–-]\s*(.*))?$/;
 const CHECK_LINE = /^@check\s+kind=([a-z]+)\s+ref=(.+)$/i;
+const FENCE = /^(```|~~~)/;
+const LIST_MARKER = /^(?:[-*+]|\d+\.)\s+/;
 const CHECK_KINDS: ReadonlySet<string> = new Set(["unit", "integration", "api", "e2e", "visual", "parity"]);
 
-export function parseSpec(content: string): Requirement[] {
+export function parseSpec(content: string, warnings?: string[]): Requirement[] {
   const requirements: Requirement[] = [];
   let current: Requirement | null = null;
   let textLines: string[] = [];
+  let inFence = false;
 
   const flushCriterion = (req: Requirement, checks: CheckBinding[]) => {
     const text = textLines.join(" ").replace(/\s+/g, " ").trim();
@@ -36,7 +43,13 @@ export function parseSpec(content: string): Requirement[] {
   };
 
   for (const raw of content.split(/\r?\n/)) {
-    const line = raw.trim();
+    let line = raw.trim();
+    if (FENCE.test(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue; // examples are not obligations
+
     const heading = line.match(REQ_HEADING);
     if (heading) {
       if (current) flushCriterion(current, []);
@@ -46,24 +59,31 @@ export function parseSpec(content: string): Requirement[] {
     }
     if (!current) continue; // preamble (feature title, user story note, prose)
 
-    const check = line.match(CHECK_LINE);
+    // A bullet may carry the @check; strip the marker before matching.
+    const unbulleted = line.replace(LIST_MARKER, "");
+    const check = unbulleted.match(CHECK_LINE);
     if (check) {
       const kindRaw = check[1]!.toLowerCase();
       const kind = (CHECK_KINDS.has(kindRaw) ? kindRaw : "unit") as CheckKind;
-      // A @check closes the criterion accumulated above it.
       const pending: CheckBinding = { kind, ref: check[2]!.trim() };
       if (textLines.length > 0) {
         flushCriterion(current, [pending]);
       } else if (current.criteria.length > 0) {
-        // Consecutive @check lines bind additional proofs to the same criterion.
+        // Consecutive/post-blank @check lines bind additional proofs to the last criterion.
         current.criteria[current.criteria.length - 1]!.checks.push(pending);
+      } else {
+        warnings?.push(
+          `orphan @check '${pending.ref}' in requirement ${current.id} — no criterion above it; binding DROPPED`,
+        );
       }
       continue;
     }
     if (line.startsWith("#") || line.startsWith(">")) continue; // other headings / quotes
-    if (line) textLines.push(line);
-    else if (textLines.length > 0 && current.criteria.length === 0) {
-      // blank line inside requirement body before any @check: keep accumulating (EARS may wrap)
+    if (line) {
+      textLines.push(line);
+    } else if (textLines.length > 0) {
+      // Blank line ends the current criterion — two EARS sentences must never silently merge.
+      flushCriterion(current, []);
     }
   }
   if (current) flushCriterion(current, []);
@@ -71,12 +91,14 @@ export function parseSpec(content: string): Requirement[] {
 }
 
 /** Parse every spec file in a project's `.rivet/specs/` directory. */
-export function parseSpecsDir(projectDir: string): Requirement[] {
+export function parseSpecsDir(projectDir: string, warnings?: string[]): Requirement[] {
   const dir = join(projectDir, ".rivet", "specs");
   if (!existsSync(dir)) return [];
   const out: Requirement[] = [];
   for (const f of readdirSync(dir).filter((f) => f.endsWith(".md")).sort()) {
-    out.push(...parseSpec(readFileSync(join(dir, f), "utf8")));
+    const fileWarnings: string[] = [];
+    out.push(...parseSpec(readFileSync(join(dir, f), "utf8"), fileWarnings));
+    warnings?.push(...fileWarnings.map((w) => `${f}: ${w}`));
   }
   return out;
 }

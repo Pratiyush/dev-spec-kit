@@ -8,6 +8,16 @@
 
 export type Mode = "research" | "quick" | "full-spec";
 
+export const MODES: readonly Mode[] = ["research", "quick", "full-spec"];
+
+/** FIX-PARSE-01: unknown modes are rejected loudly, never silently mislabeled. */
+export function assertMode(m: string): Mode {
+  if (!MODES.includes(m as Mode)) {
+    throw new Error(`unknown --mode '${m}' — expected research | quick | full-spec`);
+  }
+  return m as Mode;
+}
+
 export interface RouteResult {
   mode: Mode;
   reason: string;

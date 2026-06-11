@@ -92,3 +92,46 @@
 {"at":"2026-06-11T20:03:54.601Z","type":"task.status","data":{"id":"FIX-GATE-01","status":"done"}}
 {"at":"2026-06-11T20:03:54.665Z","type":"cli.run","data":{"command":"task done","args":["GATE-PROTECT-01"]}}
 {"at":"2026-06-11T20:03:54.667Z","type":"task.status","data":{"id":"GATE-PROTECT-01","status":"done"}}
+{"at":"2026-06-11T20:10:17.166Z","type":"cli.run","data":{"command":"task create","args":["FIX-PARSE-01","parser respects markdown reality"]}}
+{"at":"2026-06-11T20:10:17.167Z","type":"task.created","data":{"id":"FIX-PARSE-01","title":"parser respects markdown reality","boundChecks":["test/parse-fix.test.ts"]}}
+{"at":"2026-06-11T20:10:17.227Z","type":"cli.run","data":{"command":"task create","args":["FIX-QUERY-01","read-only queries; no retry burn; deterministic ties"]}}
+{"at":"2026-06-11T20:10:17.228Z","type":"task.created","data":{"id":"FIX-QUERY-01","title":"read-only queries; no retry burn; deterministic ties","boundChecks":["test/query-fix.test.ts"]}}
+{"at":"2026-06-11T20:10:17.287Z","type":"cli.run","data":{"command":"task create","args":["AUDIT-META-01","journal meta (actor/model) + governance events"]}}
+{"at":"2026-06-11T20:10:17.288Z","type":"task.created","data":{"id":"AUDIT-META-01","title":"journal meta (actor/model) + governance events","boundChecks":["test/audit-meta.test.ts"]}}
+{"at":"2026-06-11T20:10:17.347Z","type":"cli.run","data":{"command":"task create","args":["FINISH-RITUAL-01","rivet-finish skill: evidence gate, fixed menu, typed confirm"]}}
+{"at":"2026-06-11T20:10:17.348Z","type":"task.created","data":{"id":"FINISH-RITUAL-01","title":"rivet-finish skill: evidence gate, fixed menu, typed confirm","boundChecks":["test/finish-skill.test.ts"]}}
+{"at":"2026-06-11T20:10:17.407Z","type":"cli.run","data":{"command":"task start","args":["FIX-PARSE-01"]}}
+{"at":"2026-06-11T20:10:17.408Z","type":"task.status","data":{"id":"FIX-PARSE-01","status":"in_progress"}}
+{"at":"2026-06-11T20:10:17.465Z","type":"cli.run","data":{"command":"task start","args":["FIX-QUERY-01"]}}
+{"at":"2026-06-11T20:10:17.466Z","type":"task.status","data":{"id":"FIX-QUERY-01","status":"in_progress"}}
+{"at":"2026-06-11T20:10:17.525Z","type":"cli.run","data":{"command":"task start","args":["AUDIT-META-01"]}}
+{"at":"2026-06-11T20:10:17.525Z","type":"task.status","data":{"id":"AUDIT-META-01","status":"in_progress"}}
+{"at":"2026-06-11T20:10:17.584Z","type":"cli.run","data":{"command":"task start","args":["FINISH-RITUAL-01"]}}
+{"at":"2026-06-11T20:10:17.585Z","type":"task.status","data":{"id":"FINISH-RITUAL-01","status":"in_progress"}}
+{"at":"2026-06-11T20:11:20.727Z","type":"cli.run","data":{"command":"check run","args":["FIX-PARSE-01","test/parse-fix.test.ts"]}}
+{"at":"2026-06-11T20:11:23.180Z","type":"check.run","data":{"taskId":"FIX-PARSE-01","result":{"ref":"test/parse-fix.test.ts","passed":false,"at":"2026-06-11T20:11:23.161Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"b5c0e38a3ec937d31d321a6d158e7a2e45d49ed9","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:11:23.239Z","type":"cli.run","data":{"command":"check run","args":["FIX-QUERY-01","test/query-fix.test.ts"]}}
+{"at":"2026-06-11T20:11:25.937Z","type":"check.run","data":{"taskId":"FIX-QUERY-01","result":{"ref":"test/query-fix.test.ts","passed":false,"at":"2026-06-11T20:11:25.917Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"0a9c45575e7c00ec6d33c9cfc025db337296936d","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:11:25.997Z","type":"cli.run","data":{"command":"check run","args":["AUDIT-META-01","test/audit-meta.test.ts"]}}
+{"at":"2026-06-11T20:11:28.441Z","type":"check.run","data":{"taskId":"AUDIT-META-01","result":{"ref":"test/audit-meta.test.ts","passed":false,"at":"2026-06-11T20:11:28.422Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"662e8f7ffcfe3a53018a1308cc66fc2ebb3e44dd","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:11:28.500Z","type":"cli.run","data":{"command":"check run","args":["FINISH-RITUAL-01","test/finish-skill.test.ts"]}}
+{"at":"2026-06-11T20:11:30.803Z","type":"check.run","data":{"taskId":"FINISH-RITUAL-01","result":{"ref":"test/finish-skill.test.ts","passed":false,"at":"2026-06-11T20:11:30.785Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"43bb4ebddc49926539ca4bd54d120c8a20b5e0e3","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:14:00.231Z","type":"cli.run","data":{"command":"check run","args":["FIX-PARSE-01","test/parse-fix.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:00.864Z","type":"check.run","data":{"taskId":"FIX-PARSE-01","result":{"ref":"test/parse-fix.test.ts","passed":true,"at":"2026-06-11T20:14:00.842Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"42b08be2b8e3e1670633c8d10403f37aa1e0d690","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:14:00.935Z","type":"cli.run","data":{"command":"check run","args":["FIX-QUERY-01","test/query-fix.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:01.609Z","type":"check.run","data":{"taskId":"FIX-QUERY-01","result":{"ref":"test/query-fix.test.ts","passed":true,"at":"2026-06-11T20:14:01.590Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"980ef995f031f6ed118847a6fb96d5a2e4c37d4e","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:14:01.677Z","type":"cli.run","data":{"command":"check run","args":["AUDIT-META-01","test/audit-meta.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:02.292Z","type":"check.run","data":{"taskId":"AUDIT-META-01","result":{"ref":"test/audit-meta.test.ts","passed":true,"at":"2026-06-11T20:14:02.272Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"3688bfe548f0f3ff14e86da2ffafa08a6bc17b7d","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:14:02.364Z","type":"cli.run","data":{"command":"check run","args":["FINISH-RITUAL-01","test/finish-skill.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:04.621Z","type":"check.run","data":{"taskId":"FINISH-RITUAL-01","result":{"ref":"test/finish-skill.test.ts","passed":false,"at":"2026-06-11T20:14:04.603Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"ada65f09127b881ca0f078fb14a9bae9f31fb277","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:14:04.690Z","type":"cli.run","data":{"command":"task done","args":["FIX-PARSE-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:04.691Z","type":"task.status","data":{"id":"FIX-PARSE-01","status":"done"}}
+{"at":"2026-06-11T20:14:04.760Z","type":"cli.run","data":{"command":"task done","args":["FIX-QUERY-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:04.762Z","type":"task.status","data":{"id":"FIX-QUERY-01","status":"done"}}
+{"at":"2026-06-11T20:14:04.830Z","type":"cli.run","data":{"command":"task done","args":["AUDIT-META-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:04.832Z","type":"task.status","data":{"id":"AUDIT-META-01","status":"done"}}
+{"at":"2026-06-11T20:14:04.900Z","type":"cli.run","data":{"command":"task done","args":["FINISH-RITUAL-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:27.909Z","type":"cli.run","data":{"command":"check run","args":["FINISH-RITUAL-01","test/finish-skill.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:28.460Z","type":"check.run","data":{"taskId":"FINISH-RITUAL-01","result":{"ref":"test/finish-skill.test.ts","passed":true,"at":"2026-06-11T20:14:28.441Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"83d65b5d7779753a680466f1205f786065e43190","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:14:28.529Z","type":"cli.run","data":{"command":"task done","args":["FINISH-RITUAL-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:14:28.531Z","type":"task.status","data":{"id":"FINISH-RITUAL-01","status":"done"}}

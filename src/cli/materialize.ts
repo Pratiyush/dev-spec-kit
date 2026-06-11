@@ -22,7 +22,7 @@ export interface Materialized {
   codeGraphLoaded: boolean;
 }
 
-export function materialize(cwd: string, opts: { refresh: boolean }): Materialized {
+export function materialize(cwd: string, opts: { refresh: boolean; write?: boolean }): Materialized {
   const requirements = parseSpecsDir(cwd);
   const tasks = [...new TaskStore(journalFor(cwd)).all().values()];
   const config = configFor(cwd);
@@ -43,7 +43,10 @@ export function materialize(cwd: string, opts: { refresh: boolean }): Materializ
     ...(tree ? { currentTree: tree } : {}),
     ...(codeGraph ? { codeGraph } : {}),
   });
-  writeFileSync(join(cwd, ".rivet", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
+  // FIX-QUERY-01: queries pass write:false — read-only commands leave no fingerprints.
+  if (opts.write !== false) {
+    writeFileSync(join(cwd, ".rivet", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
+  }
   return { vtg, requirements, tasks, ...(head ? { head } : {}), config, codeGraphLoaded: !!codeGraph };
 }
 

@@ -16,21 +16,43 @@ export type JournalEventType =
   | "check.run"
   | "approval.recorded"
   | "cli.run"
+  | "governance"
   | "note";
+
+/** AUDIT-META-01: who/what acted is part of the audit trail. */
+export interface EventMeta {
+  /** Human or agent identity (git user.name, RIVET_ACTOR, …). */
+  actor?: string;
+  /** Model id when an AI performed the action. */
+  model?: string;
+  /** Context sources consulted (files, tickets, URLs). */
+  sources?: string[];
+}
 
 export interface JournalEvent<T = unknown> {
   /** ISO timestamp. */
   at: string;
   type: JournalEventType;
   data: T;
+  meta?: EventMeta;
+}
+
+export interface AppendOptions {
+  at?: Date;
+  meta?: EventMeta;
 }
 
 export class Journal {
   constructor(private readonly path: string) {}
 
   /** Append one event (atomic enough for a single-writer CLI; one line per event). */
-  append<T>(type: JournalEventType, data: T, at?: Date): JournalEvent<T> {
-    const event: JournalEvent<T> = { at: (at ?? new Date()).toISOString(), type, data };
+  append<T>(type: JournalEventType, data: T, opts?: AppendOptions): JournalEvent<T> {
+    const event: JournalEvent<T> = {
+      at: (opts?.at ?? new Date()).toISOString(),
+      type,
+      data,
+      ...(opts?.meta ? { meta: opts.meta } : {}),
+    };
     mkdirSync(dirname(this.path), { recursive: true });
     appendFileSync(this.path, JSON.stringify(event) + "\n");
     return event;

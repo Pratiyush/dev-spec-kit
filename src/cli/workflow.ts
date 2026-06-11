@@ -7,7 +7,7 @@ import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
 import { buildPrBody } from "../engine/pr/body.js";
-import { routeRequest, type Mode } from "../engine/route/classify.js";
+import { routeRequest, assertMode } from "../engine/route/classify.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import { gateVerdict } from "../engine/gate.js";
 import { loadConfig } from "./config-io.js";
@@ -148,7 +148,7 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
 
   let result = routeRequest(text);
   if (opts.mode) {
-    result = { mode: opts.mode as Mode, reason: "explicit --mode override" };
+    result = { mode: assertMode(opts.mode), reason: "explicit --mode override" };
   } else if (config.mode.routing === "pick") {
     console.log(pc.yellow("mode.routing=pick — choose explicitly with --mode research|quick|full-spec"));
     console.log(pc.dim(`  (heuristic would say: ${result.mode} — ${result.reason})`));
@@ -216,7 +216,7 @@ export function unlock(paths: string[], opts: { minutes?: string }): void {
   const minutes = Math.max(1, Number(opts.minutes ?? 30) || 30);
   const until = new Date(Date.now() + minutes * 60_000).toISOString();
   writeFileSync(join(cwd, ".rivet", "unlock.json"), JSON.stringify({ paths, until }, null, 2) + "\n");
-  journal(cwd).append("note", { kind: "governance.unlock", paths, until });
+  journal(cwd).append("governance", { kind: "unlock", paths, until });
   console.log(pc.yellow(`🔓 unlocked for ${minutes}m (until ${until}):`));
   for (const p of paths) console.log(pc.dim(`   ${p}`));
   console.log(pc.dim("   journaled as a governance event — gates re-engage on expiry"));

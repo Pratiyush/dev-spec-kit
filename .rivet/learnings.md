@@ -55,7 +55,7 @@
   drop; `--mode bogus` accepted; `log -n 0` prints everything.
 - Lesson: silent loss of a proof obligation is the worst parser failure — fence-track, flush on
   blank lines, strip list markers, warn on orphans, validate enums and numbers.
-- Promoted to: OPEN → task FIX-PARSE-01
+- Promoted to: check:test/parse-fix.test.ts (HARDENED via FIX-PARSE-01 — fences invisible, blank lines separate criteria, bulleted @checks bind, orphan @checks WARN, assertMode + parseCount validate inputs)
 
 ## 2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩
 - Trigger: review #15/#10/#9: `trace`/`affected`/`drift --dry-run` rewrite graph.json or trigger
@@ -63,7 +63,7 @@
   by iteration order.
 - Lesson: queries take a no-write path; retry only on suspected flakiness (or `--expect-red` for
   TDD); tie-break proofs deterministically toward the worse state.
-- Promoted to: OPEN → task FIX-QUERY-01
+- Promoted to: check:test/query-fix.test.ts (HARDENED via FIX-QUERY-01 — materialize(write:false) for trace/affected/dry-run, --expect-red skips retry burn, equal-timestamp ties break toward the worse proof)
 
 ## 2026-06-11 Scale & evidence quality backlog  ⟨P3⟩
 - Trigger: review #16-#19: full journal re-fold per command while audit events balloon the file;
@@ -124,7 +124,7 @@
   provenance schema (source/created_at/confidence/author required on anything learned).
 - Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +
   evidence and promotion requires beating the incumbent, never self-declared confidence.
-- Promoted to: OPEN → AUDIT-META-01 (scope widened)
+- Promoted to: check:test/audit-meta.test.ts (HARDENED via AUDIT-META-01 — EventMeta actor/model/sources on journal events, cli.run stamped with git user/RIVET_MODEL, governance first-class event type 🛡️, unlock journals as governance; pack-seeded content remains with GATE-PACKS-01)
 
 ## 2026-06-11 Finishing ritual + phase chaining (superpowers)
 - Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;
@@ -132,7 +132,7 @@
   successor + checklists compile into tracked tasks, not prose.
 - Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional
   cleanup; skills should name their one successor so phases can't be silently skipped.
-- Promoted to: OPEN → task FINISH-RITUAL-01 (P2)
+- Promoted to: check:test/finish-skill.test.ts (HARDENED via FINISH-RITUAL-01 — skills/rivet-finish: fresh-evidence entry gate via rivet graph build, fixed 4-option menu, typed `discard`, provenance-checked cleanup, journaled landing)
 
 ## 2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)
 - Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands

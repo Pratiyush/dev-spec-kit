@@ -94,7 +94,12 @@ check
   .argument("<taskId>", "task to record the proof against")
   .argument("<ref>", "check ref (maven: Class#method · vitest/jest: file::name · pytest: file::test)")
   .requiredOption("-s, --stack <stack>", "java-maven | node-vitest | node-jest | python-pytest | <config-defined>")
-  .action(safe((taskId: string, ref: string, opts: { stack: string }) => checkRun(taskId, ref, opts.stack)));
+  .option("-x, --expect-red", "TDD red phase: skip flaky retries for this run")
+  .action(
+    safe((taskId: string, ref: string, opts: { stack: string; expectRed?: boolean }) =>
+      checkRun(taskId, ref, opts.stack, { expectRed: opts.expectRed ?? false }),
+    ),
+  );
 
 program
   .command("status")

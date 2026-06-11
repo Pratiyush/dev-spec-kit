@@ -19,7 +19,7 @@ const LIGHT: Record<ProofState, string> = {
 /** `rivet trace` — requirement→criterion truth table + the gaps, straight from the graph. */
 export function trace(): void {
   const cwd = process.cwd();
-  const m = materialize(cwd, { refresh: false });
+  const m = materialize(cwd, { refresh: false, write: false }); // read-only truth table
   if (m.requirements.length === 0) {
     console.log(pc.yellow("no specs in .rivet/specs/ — nothing to trace"));
     return;
@@ -47,7 +47,8 @@ export function trace(): void {
 /** `rivet drift [--stack <fallback>]` — find red/stale proofs and re-verify them in one move. */
 export function drift(opts: { stack?: string; dryRun?: boolean }): void {
   const cwd = process.cwd();
-  const before = materialize(cwd, { refresh: true });
+  // --dry-run promised not to touch anything: no graphify re-index, no graph.json write.
+  const before = materialize(cwd, opts.dryRun ? { refresh: false, write: false } : { refresh: true });
   const targets = driftTargets(before.vtg, before.tasks);
   if (targets.length === 0) {
     console.log(pc.green("✓ no drift — every proof is green or awaiting its first run"));
@@ -97,7 +98,7 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
 /** `rivet affected <label>` — blast radius: our proven edges + graphify's reverse traversal. */
 export function affected(label: string): void {
   const cwd = process.cwd();
-  const m = materialize(cwd, { refresh: false });
+  const m = materialize(cwd, { refresh: false, write: false }); // read-only blast radius
   const needle = label.toLowerCase();
   const node = m.vtg.nodes.find(
     (n) => n.kind === "codeNode" && (n.id.toLowerCase() === needle || n.label.toLowerCase().includes(needle)),

@@ -34,7 +34,9 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
   for (const t of input.tasks) {
     for (const [ref, r] of Object.entries(t.results)) {
       const prev = latest.get(ref);
-      if (!prev || r.at > prev.at) latest.set(ref, r);
+      // FIX-QUERY-01: equal timestamps tie-break toward the WORSE result — proof state must never
+      // depend on task iteration order, and when in doubt the gate stays shut.
+      if (!prev || r.at > prev.at || (r.at === prev.at && prev.passed && !r.passed)) latest.set(ref, r);
     }
   }
 
