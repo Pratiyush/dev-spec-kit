@@ -54,6 +54,10 @@ export interface CheckResult {
   at: string;
   /** commit SHA the proof was taken at. */
   sha?: string;
+  /** content tree-hash of the working state actually tested (FIX-PROOF-01: the real identity). */
+  tree?: string;
+  /** true when the tree had uncommitted changes at proof time. */
+  dirty?: boolean;
   /** stack the check ran under (recorded so drift can re-run it without asking). */
   stack?: string;
   /** true when the run only passed after flaky retries. */

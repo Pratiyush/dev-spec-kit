@@ -86,6 +86,35 @@ describe("graph-derived PR body", () => {
   });
 });
 
+describe("FIX-PRMATH-01 regression", () => {
+  it("worst-of coverage in the PR body", () => {
+    // One criterion, two bindings: green + red. Any-of math reported "1/1 (100%)" — the headline
+    // lied exactly when a proof was failing. Worst-of must report 0/1 and the drift warning.
+    const spec = `## Requirement R-1 — a\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=A#a\n@check kind=unit ref=A#b\n`;
+    const requirements = parseSpec(spec);
+    const graph = buildVTG({
+      requirements,
+      currentSha: "HEAD",
+      tasks: [
+        {
+          id: "R-1",
+          title: "a",
+          status: "in_progress",
+          boundChecks: ["A#a", "A#b"],
+          results: {
+            "A#a": { ref: "A#a", passed: true, at: "t", sha: "HEAD" },
+            "A#b": { ref: "A#b", passed: false, at: "t", sha: "HEAD" },
+          },
+        },
+      ],
+    });
+    const body = buildPrBody({ title: "x", requirements, graph, tasks: [], approvals: [] });
+    expect(body).toContain("0/1 acceptance criteria proven green (0%)");
+    expect(body).not.toContain("1/1 acceptance criteria");
+    expect(body).toContain("should not merge until re-verified");
+  });
+});
+
 describe("requirement rollup + drift targets + retry (engine queries)", () => {
   it("rolls requirements up to proven only when every criterion is green", async () => {
     const { rollupRequirements, driftTargets } = await import("../src/engine/graph/build.js");

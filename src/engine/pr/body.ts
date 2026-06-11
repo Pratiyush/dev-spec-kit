@@ -38,8 +38,10 @@ export function buildPrBody(input: PrBodyInput): string {
   for (const req of input.requirements) {
     for (const c of req.criteria) {
       totalCriteria++;
+      // Worst-of obligation semantics (FIX-PRMATH-01): EVERY binding must be green — the headline
+      // number must be the strictest one, matching rollupRequirements.
       const edges = validatesByCriterion.get(c.id) ?? [];
-      const green = edges.some((e) => e.proof === "green");
+      const green = edges.length > 0 && edges.every((e) => e.proof === "green");
       if (green) provenCriteria++;
       const proofs =
         edges.length === 0

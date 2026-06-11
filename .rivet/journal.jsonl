@@ -28,3 +28,23 @@
 {"at":"2026-06-11T19:17:04.722Z","type":"check.run","data":{"taskId":"R-AUDIT-02","result":{"ref":"test/cli-ux.test.ts::renders the audit trail with per-type emoji","passed":true,"at":"2026-06-11T19:17:04.711Z","sha":"7b2f8ccd9b7af32b2209041b523df208fb32e382","stack":"node-vitest"}}}
 {"at":"2026-06-11T19:17:04.779Z","type":"cli.run","data":{"command":"task done","args":["R-AUDIT-02"]}}
 {"at":"2026-06-11T19:17:04.781Z","type":"task.status","data":{"id":"R-AUDIT-02","status":"done"}}
+{"at":"2026-06-11T19:38:10.581Z","type":"cli.run","data":{"command":"task create","args":["FIX-PRMATH-01","PR coverage uses worst-of obligation semantics"]}}
+{"at":"2026-06-11T19:38:10.582Z","type":"task.created","data":{"id":"FIX-PRMATH-01","title":"PR coverage uses worst-of obligation semantics","boundChecks":["test/workflow.test.ts::worst-of coverage in the PR body"]}}
+{"at":"2026-06-11T19:38:10.642Z","type":"cli.run","data":{"command":"task create","args":["FIX-PROOF-01","proof identity = tested tree hash, not commit SHA"]}}
+{"at":"2026-06-11T19:38:10.643Z","type":"task.created","data":{"id":"FIX-PROOF-01","title":"proof identity = tested tree hash, not commit SHA","boundChecks":["test/proof-identity.test.ts"]}}
+{"at":"2026-06-11T19:38:10.703Z","type":"cli.run","data":{"command":"task start","args":["FIX-PRMATH-01"]}}
+{"at":"2026-06-11T19:38:10.704Z","type":"task.status","data":{"id":"FIX-PRMATH-01","status":"in_progress"}}
+{"at":"2026-06-11T19:38:10.765Z","type":"cli.run","data":{"command":"task start","args":["FIX-PROOF-01"]}}
+{"at":"2026-06-11T19:38:10.765Z","type":"task.status","data":{"id":"FIX-PROOF-01","status":"in_progress"}}
+{"at":"2026-06-11T19:39:18.258Z","type":"cli.run","data":{"command":"check run","args":["FIX-PRMATH-01","test/workflow.test.ts::worst-of coverage in the PR body"]}}
+{"at":"2026-06-11T19:39:20.587Z","type":"check.run","data":{"taskId":"FIX-PRMATH-01","result":{"ref":"test/workflow.test.ts::worst-of coverage in the PR body","passed":false,"at":"2026-06-11T19:39:20.576Z","sha":"3c73e8ccf1bb82aa5652f0802c5d8d149cbe6ae7","stack":"node-vitest"}}}
+{"at":"2026-06-11T19:39:20.647Z","type":"cli.run","data":{"command":"check run","args":["FIX-PROOF-01","test/proof-identity.test.ts"]}}
+{"at":"2026-06-11T19:39:22.819Z","type":"check.run","data":{"taskId":"FIX-PROOF-01","result":{"ref":"test/proof-identity.test.ts","passed":false,"at":"2026-06-11T19:39:22.807Z","sha":"3c73e8ccf1bb82aa5652f0802c5d8d149cbe6ae7","stack":"node-vitest"}}}
+{"at":"2026-06-11T19:40:39.698Z","type":"cli.run","data":{"command":"check run","args":["FIX-PRMATH-01","test/workflow.test.ts::worst-of coverage in the PR body"]}}
+{"at":"2026-06-11T19:40:40.306Z","type":"check.run","data":{"taskId":"FIX-PRMATH-01","result":{"ref":"test/workflow.test.ts::worst-of coverage in the PR body","passed":true,"at":"2026-06-11T19:40:40.285Z","sha":"3c73e8ccf1bb82aa5652f0802c5d8d149cbe6ae7","tree":"821bc2c18d38769ade48aa7475f2e2f28a0ecba8","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T19:40:40.366Z","type":"cli.run","data":{"command":"check run","args":["FIX-PROOF-01","test/proof-identity.test.ts"]}}
+{"at":"2026-06-11T19:40:41.487Z","type":"check.run","data":{"taskId":"FIX-PROOF-01","result":{"ref":"test/proof-identity.test.ts","passed":true,"at":"2026-06-11T19:40:41.463Z","sha":"3c73e8ccf1bb82aa5652f0802c5d8d149cbe6ae7","tree":"841d50faacf6d776868ef24103e5516fdeed07b3","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T19:40:41.544Z","type":"cli.run","data":{"command":"task done","args":["FIX-PRMATH-01"]}}
+{"at":"2026-06-11T19:40:41.546Z","type":"task.status","data":{"id":"FIX-PRMATH-01","status":"done"}}
+{"at":"2026-06-11T19:40:41.603Z","type":"cli.run","data":{"command":"task done","args":["FIX-PROOF-01"]}}
+{"at":"2026-06-11T19:40:41.605Z","type":"task.status","data":{"id":"FIX-PROOF-01","status":"done"}}

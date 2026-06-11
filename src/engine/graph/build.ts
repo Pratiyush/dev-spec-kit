@@ -18,8 +18,10 @@ import type { CheckResult, GraphEdge, GraphNode, ProofState, VerifiedTraceabilit
 export interface BuildInput {
   requirements: Requirement[];
   tasks: Task[];
-  /** Current HEAD of the project; proofs taken at other SHAs are stale. */
+  /** Current HEAD (legacy staleness fallback for proofs recorded before tree hashes). */
   currentSha?: string;
+  /** Content tree-hash of the current working state — the REAL identity proofs compare against. */
+  currentTree?: string;
   codeGraph?: CodeGraph;
 }
 
@@ -72,11 +74,17 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
         }
 
         const result = latest.get(binding.ref);
+        // FIX-PROOF-01: identity = tested tree when recorded (content-equal across commits stays
+        // green); sha comparison only as legacy fallback for pre-tree journal entries.
+        const isStaleProof = (r: CheckResult): boolean => {
+          if (r.tree && input.currentTree) return r.tree !== input.currentTree;
+          return !!(input.currentSha && r.sha && r.sha !== input.currentSha);
+        };
         const proof: ProofState = !result
           ? "unproven"
           : !result.passed
             ? "red"
-            : input.currentSha && result.sha && result.sha !== input.currentSha
+            : isStaleProof(result)
               ? "stale"
               : "green";
         edge(test.id, c.id, "validates", proof, result);

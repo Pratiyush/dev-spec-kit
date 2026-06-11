@@ -15,7 +15,9 @@
 - Lesson: "green means this code is proven" requires the proof to identify the tree it ran against.
   Stamp proofs with a content/tree hash (e.g. `git stash create` tree-hash or hash of bound files)
   + a dirty flag; compute staleness against the tree hash; dirty-tree greens are `provisional`.
-- Promoted to: OPEN → task FIX-PROOF-01
+- Promoted to: check:test/proof-identity.test.ts (HARDENED via FIX-PROOF-01 — proofs carry
+  tree+dirty; staleness compares trees with sha fallback for legacy entries; with tree identity a
+  dirty green is sound, so no provisional state was needed)
 
 ## 2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩
 - Trigger: review #2/#3 (confirmed): `spec tasks` skips existing tasks so NEW `@check` obligations
@@ -45,7 +47,7 @@
   green + one red reports "100% proven green" exactly when a proof is failing.
 - Lesson: every consumer of proof state uses worst-of (`every(green)`), never any-of. The headline
   number reviewers trust must be the strictest one.
-- Promoted to: OPEN → task FIX-PRMATH-01
+- Promoted to: check:test/workflow.test.ts::worst-of coverage in the PR body (HARDENED via FIX-PRMATH-01)
 
 ## 2026-06-11 Parser must respect markdown reality  ⟨P2⟩
 - Trigger: review #11/#12/#13/#14 (confirmed): fenced code blocks become real requirements; blank-
@@ -89,3 +91,42 @@
 - Promoted to: OPEN → task GATE-PACKS-01 (named packs in config — security/contracts/nfr/rollback —
   required spec sections + check kinds + approvals, attached per routing mode, off by default) and
   task AUDIT-META-01 (journal records model/agent + context sources per event).
+
+## 2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)
+- Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the
+  first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes
+  the output, because "the investigation itself creates context."
+- Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.
+- Promoted to: OPEN → enrich FIX-GATE-01 design; future GATE-FACTS-01
+
+## 2026-06-11 Protect the gates from the agent (anti-gaming)
+- Trigger: ECC `pre:config-protection` blocks edits to linter configs ("fix code instead of weakening
+  configs"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.
+- Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config
+  require an explicit human-approved unlock — the moat must not be editable by the thing it gates.
+- Promoted to: OPEN → task GATE-PROTECT-01 (P1-adjacent)
+
+## 2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules
+- Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; "anything touching a
+  security trigger or public API is AT LEAST standard"; two named human gates; "gated, not
+  autonomous") + hookify-rules (markdown rules: event/pattern/conditions/action warn|block,
+  verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.
+- Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the
+  tier; packs are user-editable rule files, not code.
+- Promoted to: OPEN → GATE-PACKS-01 (schema settled)
+
+## 2026-06-11 Journal upgrades: governance events + "confidence is not approval"
+- Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)
+  + governance-capture hook (secrets/policy-violation/approval-request as first-class events) +
+  provenance schema (source/created_at/confidence/author required on anything learned).
+- Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +
+  evidence and promotion requires beating the incumbent, never self-declared confidence.
+- Promoted to: OPEN → AUDIT-META-01 (scope widened)
+
+## 2026-06-11 Finishing ritual + phase chaining (superpowers)
+- Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;
+  typed confirmation to discard; provenance check before cleanup) + every phase skill pins its sole
+  successor + checklists compile into tracked tasks, not prose.
+- Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional
+  cleanup; skills should name their one successor so phases can't be silently skipped.
+- Promoted to: OPEN → task FINISH-RITUAL-01 (P2)

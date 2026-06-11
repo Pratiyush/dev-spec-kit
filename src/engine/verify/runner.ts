@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import type { CheckBinding } from "../spec/ears.js";
 import type { CheckResult } from "../graph/types.js";
+import { gitHead, gitTreeHash, isDirty } from "../git.js";
 
 /**
  * The verification runner — executes bound checks and captures REAL exit codes.
@@ -91,20 +92,19 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
     env: { ...process.env, ...resolved.env },
   });
   const passed = res.status === 0;
+  // Proof identity = the content actually tested (tree hash), not just whatever HEAD was.
+  const tree = gitTreeHash(opts.cwd);
   return {
     ref: binding.ref,
     passed,
     at: new Date().toISOString(),
     sha: opts.sha ?? gitHead(opts.cwd),
+    ...(tree ? { tree } : {}),
+    dirty: isDirty(opts.cwd),
   };
 }
 
 /** Resolve + execute in one step. */
 export function runCheck(binding: CheckBinding, stack: string, opts: RunOptions, override?: RunnerOverride): CheckResult {
   return execute(binding, resolveCommand(binding, stack, override), opts);
-}
-
-function gitHead(cwd: string): string | undefined {
-  const res = spawnSync("git", ["rev-parse", "HEAD"], { cwd, stdio: ["ignore", "pipe", "ignore"] });
-  return res.status === 0 ? res.stdout.toString().trim() : undefined;
 }

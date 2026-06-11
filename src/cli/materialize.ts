@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
+import { gitTreeHash } from "../engine/git.js";
 import { parseSpecsDir } from "../engine/spec/parse.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, type Task } from "../engine/state/tasks.js";
@@ -33,10 +34,12 @@ export function materialize(cwd: string, opts: { refresh: boolean }): Materializ
   }
 
   const head = gitHead(cwd);
+  const tree = gitTreeHash(cwd);
   const vtg = buildVTG({
     requirements,
     tasks,
     ...(head ? { currentSha: head } : {}),
+    ...(tree ? { currentTree: tree } : {}),
     ...(codeGraph ? { codeGraph } : {}),
   });
   writeFileSync(join(cwd, ".rivet", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
