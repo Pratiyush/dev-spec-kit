@@ -5,7 +5,7 @@ import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
 import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
-import { runCheck, BUILTIN_STACKS, pickRunner } from "../engine/verify/runner.js";
+import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/verify/runner.js";
 import { proofStamp } from "../engine/verify/stamp.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
@@ -85,12 +85,23 @@ export { proofStamp };
 export async function checkRun(
   taskId: string,
   ref: string,
-  stackName: string,
+  stackArg: string | undefined,
   opts?: { expectRed?: boolean },
 ): Promise<void> {
   const cwd = process.cwd();
   // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
   const config = loadConfig(cwd);
+  // FEAT-STACK-01: flag → verify.defaultStack → inferred from platforms (notice) → clear error.
+  const resolution = resolveStack(stackArg, config, cwd);
+  const stackName = resolution.stack;
+  if (resolution.source !== "flag") {
+    console.log(
+      pc.dim(
+        `🧭 stack ${resolution.source === "config" ? "from verify.defaultStack" : "inferred"}: ${stackName}` +
+          (resolution.reason ? ` (${resolution.reason})` : ""),
+      ),
+    );
+  }
   // RUNNERS-01: the spec knows this ref's kind; the kind changes how it runs.
   const kind = kindForRef(parseSpecsDir(cwd), ref) ?? "unit";
   const picked = pickRunner(config, kind, stackName);

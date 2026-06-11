@@ -121,6 +121,11 @@ export const RivetConfigSchema = z
         kinds: z
           .array(z.enum(["unit", "integration", "api", "e2e", "visual", "parity"]))
           .default(["unit", "integration", "api", "e2e"]),
+        /**
+         * FEAT-STACK-01: the stack `check run` uses when -s/--stack is omitted. Resolution:
+         * flag → this → inferred from project.platforms (🧭 notice) → error naming all three.
+         */
+        defaultStack: z.string().optional(),
         /** Coverage gate as a percentage; null = judge by criteria coverage, not a number. */
         coverage: z.union([z.number().min(0).max(100), z.null()]).default(null),
         /** A task cannot be marked done while bound checks fail. */

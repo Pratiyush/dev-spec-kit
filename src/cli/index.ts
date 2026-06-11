@@ -103,10 +103,14 @@ check
   .description("Execute a check via the stack's real test runner and record the result")
   .argument("<taskId>", "task to record the proof against")
   .argument("<ref>", "check ref (maven: Class#method · vitest/jest: file::name · pytest: file::test)")
-  .requiredOption("-s, --stack <stack>", "java-maven | node-vitest | node-jest | python-pytest | <config-defined>")
+  .option(
+    "-s, --stack <stack>",
+    "java-maven | node-vitest | node-jest | python-pytest | <config-defined> " +
+      "(optional — falls back to verify.defaultStack, then platform inference)",
+  )
   .option("-x, --expect-red", "TDD red phase: skip flaky retries for this run")
   .action(
-    safe((taskId: string, ref: string, opts: { stack: string; expectRed?: boolean }) =>
+    safe((taskId: string, ref: string, opts: { stack?: string; expectRed?: boolean }) =>
       checkRun(taskId, ref, opts.stack, { expectRed: opts.expectRed ?? false }),
     ),
   );
