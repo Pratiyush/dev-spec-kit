@@ -173,3 +173,32 @@
 - Confidence: high (reproduced live; permanent regression test) · Scope: project
 - Promoted to: check:test/proof-identity.test.ts (FIX-PROOF-02 — journal-append keeps identity,
   code change moves it, untracked files count; drift now converges 3/3 green on this very repo)
+
+## 2026-06-11 Doctor's graphify install hint reads as a typosquat to security tooling
+- Trigger: dogfooding the notepad app — `rivet doctor` flags graphify as the only required red with
+  hint `pip install graphifyy && graphify install`. Claude Code's permission classifier auto-DENIED
+  the command as "agent-chosen, typosquat-looking package … untrusted external code execution"
+  (PyPI name 'graphifyy' ≠ CLI name 'graphify'), so an agent cannot self-heal doctor's one required
+  prerequisite; setup stalls on a human.
+- Lesson: a name-mismatched install hint is indistinguishable from a supply-chain attack to policy
+  bots and cautious humans. Options: publish under the CLI's own name, state provenance in the hint
+  ("graphifyy is Rivet's companion package — <repo url>"), let doctor accept a vendored/bundled
+  graphify path, or degrade gracefully (graph features off with a clear enable message) instead of
+  a required red.
+- Confidence: medium (one environment, but the classifier's reasoning generalizes)
+- Scope: project
+- Promoted to: check:test/doctor-fix.test.ts (HARDENED via FIX-DOCTOR-01 — graphify is optional-with-consequences in doctor, never a required red; install hint carries provenance + source repo + 'optional' framing so classifiers and humans can trust it)
+
+## 2026-06-11 "Stack" names two disjoint enums — config rejects the runner vocabulary
+- Trigger: dogfooding the notepad setup — the project brief says "stack node-vitest" (matching
+  `check run --stack` / BUILTIN_STACKS in engine/verify/runner.ts), but `project.stacks` in
+  config.json is a different enum (java-maven|…|node|typescript|react|…). Setting
+  `"stacks": ["node-vitest"]` fails EVERY command with an enum error whose valid values share no
+  overlap with runner ids and no pointer to where runner stacks actually live.
+- Lesson: one word naming two disjoint enums guarantees mis-filing by users and agents alike.
+  Either unify/rename (e.g. `project.stacks` → `project.platforms`, runner ids stay "stacks"), or
+  make the config error disambiguate: "node-vitest is a RUNNER stack — pass it to `check run
+  --stack` or configure verify.runners; project.stacks describes the codebase (typescript, react…)".
+- Confidence: high (reproduced; the project's own brief conflates the two)
+- Scope: project
+- Promoted to: check:test/stacknames.test.ts (HARDENED via FIX-STACKNAMES-01 — project.stacks renamed to project.platforms (legacy key ignored harmlessly); filing a runner stack there now yields a disambiguating error pointing to `check run --stack` / verify.runners)

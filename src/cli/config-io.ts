@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ZodError } from "zod";
 import { parseConfig, type RivetConfig } from "../config/schema.js";
+import { BUILTIN_STACKS } from "../engine/verify/runner.js";
 
 /**
  * FIX-ROBUST-01: user-editable inputs never crash the tool. All config reads go through here;
@@ -30,7 +31,20 @@ export function loadConfig(projectDir: string): RivetConfig {
     if (e instanceof ZodError) {
       const first = e.issues[0];
       const where = first?.path.join(".") || "(root)";
-      throw new InputError(`invalid .rivet/config.json at ${where}: ${first?.message ?? "schema violation"}`);
+      let msg = `invalid .rivet/config.json at ${where}: ${first?.message ?? "schema violation"}`;
+      // Dogfood lesson: a RUNNER stack filed under project.platforms must get a pointer home.
+      const received = (first as { received?: unknown } | undefined)?.received;
+      if (
+        first?.path[0] === "project" &&
+        (first.path[1] === "platforms" || first.path[1] === "stacks") &&
+        typeof received === "string" &&
+        (BUILTIN_STACKS as readonly string[]).includes(received)
+      ) {
+        msg +=
+          `\n  ↳ '${received}' is a RUNNER stack — use it with \`rivet check run --stack ${received}\` ` +
+          `or define it in verify.runners. project.platforms describes the codebase (typescript, react, spring, …).`;
+      }
+      throw new InputError(msg);
     }
     throw e;
   }

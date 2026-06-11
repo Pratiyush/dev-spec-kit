@@ -15,8 +15,12 @@ export const RivetConfigSchema = z
     project: z
       .object({
         name: z.string().default("untitled"),
-        /** Stacks present in this project; drives which check-runners are wired. */
-        stacks: z
+        /**
+         * Codebase platforms (descriptive). NOT runner stacks — runner ids like "node-vitest"
+         * belong to `check run --stack` / verify.runners. (Renamed from `stacks`; the old key is
+         * ignored harmlessly. Dogfood lesson: one word must not name two disjoint enums.)
+         */
+        platforms: z
           .array(
             z.enum([
               "java-maven",

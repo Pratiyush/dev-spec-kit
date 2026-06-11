@@ -1,7 +1,8 @@
 import { execSync } from "node:child_process";
 import pc from "picocolors";
+import { GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
 
-interface Check {
+export interface Check {
   name: string;
   ok: boolean;
   detail: string;
@@ -9,8 +10,10 @@ interface Check {
   hint?: string;
 }
 
+export type Probe = (cmd: string) => string | null;
+
 /** Run a command and return trimmed stdout, or null if it fails / is missing. */
-function probe(cmd: string): string | null {
+function realProbe(cmd: string): string | null {
   try {
     return execSync(cmd, { stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
   } catch {
@@ -23,12 +26,15 @@ function firstLine(s: string | null): string {
 }
 
 /**
- * `rivet doctor` — verify the prerequisites Rivet relies on, with install hints for anything missing.
- * Required: Node >= 22, git, Python >= 3.10, graphify. Optional (per target stack): JDK, Maven.
+ * The prerequisite matrix — pure, probe-injectable (testable).
+ * Dogfood lesson (notepad session): graphify is OPTIONAL-with-consequences, never a required red —
+ * Rivet runs fully without it (graph/dashboard-map features stay off), so setup can never stall on
+ * a permission classifier refusing the install.
  */
-export function runDoctor(): void {
+export function doctorChecks(probe: Probe = realProbe): Check[] {
   const nodeMajor = Number(process.versions.node.split(".")[0]);
-  const checks: Check[] = [
+  const graphifyPresent = !!probe("graphify --version") || !!probe("graphify --help");
+  return [
     {
       name: "Node.js",
       ok: nodeMajor >= 22,
@@ -41,15 +47,15 @@ export function runDoctor(): void {
       name: "Python 3.10+",
       ok: !!probe("python3 --version"),
       detail: firstLine(probe("python3 --version")),
-      required: true,
-      hint: "graphify needs Python >= 3.10",
+      required: false,
+      hint: "Only needed for graphify (the code-graph layer)",
     },
     {
       name: "graphify",
-      ok: !!probe("graphify --version") || !!probe("graphify --help"),
-      detail: probe("graphify --version") ? "installed" : "missing",
-      required: true,
-      hint: "pip install graphifyy && graphify install   (PyPI package is 'graphifyy'; CLI is 'graphify')",
+      ok: graphifyPresent,
+      detail: graphifyPresent ? "installed" : "missing — graph features disabled (Rivet still fully works)",
+      required: false,
+      hint: GRAPHIFY_INSTALL_HINT,
     },
     {
       name: "Java (JDK)",
@@ -66,7 +72,11 @@ export function runDoctor(): void {
       hint: "Needed for Maven-based Java targets",
     },
   ];
+}
 
+/** `rivet doctor` — verify prerequisites; only REQUIRED misses fail the exit code. */
+export function runDoctor(): void {
+  const checks = doctorChecks();
   console.log(pc.bold("\nRivet doctor — prerequisite check\n"));
   let missingRequired = 0;
   for (const c of checks) {

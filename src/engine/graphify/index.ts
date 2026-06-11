@@ -26,7 +26,9 @@ export function graphifyInstalled(): boolean {
 }
 
 export const GRAPHIFY_INSTALL_HINT =
-  "pip install graphifyy && graphify install   (PyPI package is 'graphifyy'; CLI is 'graphify')";
+  "pip install graphifyy && graphify install — 'graphifyy' (double-y) is graphify's official PyPI package name; " +
+  "the CLI stays 'graphify'. Source: https://github.com/safishamsi/graphify (213k★). " +
+  "Optional: without it, Rivet's graph features stay off and everything else works.";
 
 /** Raw graphify graph.json (verified against v0.8.37 output). */
 interface RawGraph {
