@@ -11,6 +11,7 @@ import { routeRequest, assertMode } from "../engine/route/classify.js";
 import { applyGateFloor } from "../engine/gatepacks.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import { gateVerdict } from "../engine/gate.js";
+import { gitTreeHash, isDirty } from "../engine/git.js";
 import { loadConfig } from "./config-io.js";
 
 function journal(cwd: string): Journal {
@@ -91,6 +92,8 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   const requirements = parseSpecsDir(cwd);
   const tasks = [...new TaskStore(journal(cwd)).all().values()];
   const head = gitHead(cwd);
+  // FIX-PROOF-04: the PR body claims coverage of the CODE TREE, so stamp that identity.
+  const tree = gitTreeHash(cwd);
   const body = buildPrBody({
     title: opts.title ?? "Rivet change",
     requirements,
@@ -98,6 +101,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     tasks,
     approvals: listApprovals(cwd),
     ...(head ? { headSha: head } : {}),
+    ...(tree ? { tree, dirty: isDirty(cwd) } : {}),
   });
   const outPath = join(cwd, ".rivet", "pr-body.md");
   writeFileSync(outPath, body + "\n");

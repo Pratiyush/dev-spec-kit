@@ -6,6 +6,7 @@ import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, pickRunner } from "../engine/verify/runner.js";
+import { proofStamp } from "../engine/verify/stamp.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
 import { kindForRef } from "../engine/spec/ears.js";
@@ -77,13 +78,9 @@ export function taskDone(id: string): void {
   }
 }
 
-// FIX-PROOF-03: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
-// only). Printing HEAD made a red and a green over different code render the same "@ <sha8>".
-export function proofStamp(result: { sha?: string; tree?: string; dirty?: boolean }): string {
-  const id = result.tree ?? result.sha;
-  if (!id) return "";
-  return ` @ ${result.tree ? "tree " : ""}${id.slice(0, 8)}${result.dirty ? "*" : ""}`;
-}
+// FIX-PROOF-03/04: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
+// only). The renderer now lives in engine/verify/stamp.ts so EVERY surface shares it.
+export { proofStamp };
 
 export async function checkRun(
   taskId: string,

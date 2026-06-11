@@ -3,6 +3,8 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { Journal } from "./state/journal.js";
 import type { Task, TaskStore } from "./state/tasks.js";
+import { gitTreeHash, isDirty } from "./git.js";
+import { identityLabel, proofStamp } from "./verify/stamp.js";
 
 /**
  * Recorded human approval — a signed, dated artifact in the repo, not a chat message.
@@ -36,6 +38,13 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
 
   const approver = input.approver ?? gitConfig(input.projectDir, "user.name") ?? "unknown";
   const sha = gitHead(input.projectDir);
+  // FIX-PROOF-04: the approval records the CODE TREE it was granted against — the same identity
+  // every proof carries — never just whatever commit happened to be HEAD.
+  const tree = gitTreeHash(input.projectDir);
+  const treeLabel = identityLabel({
+    ...(sha ? { sha } : {}),
+    ...(tree ? { tree, dirty: isDirty(input.projectDir) } : {}),
+  });
   const date = new Date().toISOString();
 
   const lines: string[] = [
@@ -43,7 +52,7 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
     "",
     `- **Approved by:** ${approver}`,
     `- **At:** ${date}`,
-    `- **Commit:** ${sha ?? "(no git HEAD)"}`,
+    `- **Code tree:** ${treeLabel || "(no git identity)"}`,
     ...(input.note ? [`- **Note:** ${input.note}`] : []),
     "",
     "## Evidence",
@@ -55,7 +64,7 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
       const r = t.results[ref];
       lines.push(
         r
-          ? `- ${r.passed ? "✅" : "❌"} \`${ref}\` @ ${r.sha?.slice(0, 8) ?? "?"} (${r.at})`
+          ? `- ${r.passed ? "✅" : "❌"} \`${ref}\`${proofStamp(r)} (${r.at})`
           : `- ⚠️ \`${ref}\` — no recorded run`,
       );
     }
@@ -73,6 +82,7 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
     taskIds: input.taskIds,
     approver,
     sha,
+    ...(tree ? { tree } : {}),
     path,
   });
   return { path, markdown };

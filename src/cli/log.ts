@@ -2,6 +2,7 @@ import pc from "picocolors";
 import type { JournalEvent } from "../engine/state/journal.js";
 import { journalFor } from "./materialize.js";
 import type { CheckResult } from "../engine/graph/types.js";
+import { proofStamp } from "../engine/verify/stamp.js";
 
 /**
  * `rivet log` (R-AUDIT-02) — the audit trail, readable. One line per journal event, chronological,
@@ -29,7 +30,8 @@ function describeEvent(e: JournalEvent): string {
       const r = d.result as CheckResult;
       const mark = r.passed ? "✅" : "❌";
       const flaky = r.flaky ? " (flaky)" : "";
-      return `${mark} check ${r.ref}${flaky}${r.sha ? ` @ ${r.sha.slice(0, 8)}` : ""} → ${String(d.taskId)}`;
+      // FIX-PROOF-04: the audit trail (and LEDGER's recent activity) stamps the tested tree.
+      return `${mark} check ${r.ref}${flaky}${proofStamp(r)} → ${String(d.taskId)}`;
     }
     case "task.created":
       return `📋 task ${String(d.id)} created — ${String(d.title)}`;

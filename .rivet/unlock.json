@@ -1,0 +1,7 @@
+{
+  "paths": [
+    "test/proof-display.test.ts",
+    "test/workflow.test.ts"
+  ],
+  "until": "2026-06-12T01:25:31.905Z"
+}

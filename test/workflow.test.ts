@@ -28,7 +28,14 @@ describe("recorded approval", () => {
   it("writes a signed artifact with evidence and journals the gate", () => {
     const { dir, journal, store } = tempProject();
     store.create("T1", "Greeting API", ["c1"]);
-    store.recordCheck("T1", { ref: "c1", passed: true, at: "2026-06-11T10:00:00Z", sha: "abc12345" });
+    // FIX-PROOF-04: evidence rows stamp the recorded TREE (sha kept only as legacy fallback).
+    store.recordCheck("T1", {
+      ref: "c1",
+      passed: true,
+      at: "2026-06-11T10:00:00Z",
+      sha: "abc1234567890",
+      tree: "fade1234567890",
+    });
     store.markDone("T1");
     const { path, markdown } = createApproval({
       projectDir: dir,
@@ -39,7 +46,8 @@ describe("recorded approval", () => {
       note: "ship it",
     });
     expect(markdown).toContain("Approved by:** Pratiyush");
-    expect(markdown).toContain("✅ `c1` @ abc12345");
+    expect(markdown).toContain("✅ `c1` @ tree fade1234");
+    expect(markdown).not.toContain("abc12345");
     expect(markdown).toContain("ship it");
     expect(readFileSync(path, "utf8")).toContain("# Approval — T1");
     expect(journal.read().some((e) => e.type === "approval.recorded")).toBe(true);
