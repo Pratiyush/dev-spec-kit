@@ -77,6 +77,14 @@ export function taskDone(id: string): void {
   }
 }
 
+// FIX-PROOF-03: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
+// only). Printing HEAD made a red and a green over different code render the same "@ <sha8>".
+export function proofStamp(result: { sha?: string; tree?: string; dirty?: boolean }): string {
+  const id = result.tree ?? result.sha;
+  if (!id) return "";
+  return ` @ ${result.tree ? "tree " : ""}${id.slice(0, 8)}${result.dirty ? "*" : ""}`;
+}
+
 export async function checkRun(
   taskId: string,
   ref: string,
@@ -123,11 +131,11 @@ export async function checkRun(
   store(cwd).recordCheck(taskId, result);
   if (result.passed) {
     const flaky = result.flaky ? pc.yellow(` (flaky — passed on attempt ${attempts})`) : "";
-    console.log(pc.green(`✓ PASS ${ref}`) + flaky + pc.dim(result.sha ? ` @ ${result.sha.slice(0, 8)}` : ""));
+    console.log(pc.green(`✓ PASS ${ref}`) + flaky + pc.dim(proofStamp(result)));
   } else {
     console.log(
       pc.red(`✗ FAIL ${ref}`) +
-        pc.dim((attempts > 1 ? ` after ${attempts} attempts` : "") + (result.sha ? ` @ ${result.sha.slice(0, 8)}` : "")),
+        pc.dim((attempts > 1 ? ` after ${attempts} attempts` : "") + proofStamp(result)),
     );
     process.exitCode = 1;
   }
