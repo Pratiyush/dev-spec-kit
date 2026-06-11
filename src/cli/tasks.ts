@@ -7,6 +7,8 @@ import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/verify/runner.js";
 import { proofStamp } from "../engine/verify/stamp.js";
+import { gitTreeHash } from "../engine/git.js";
+import { renderTaskReport } from "./task-report.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
 import { kindForRef } from "../engine/spec/ears.js";
@@ -59,6 +61,8 @@ export function taskDone(id: string): void {
   try {
     const t = store(cwd).markDone(id);
     console.log(pc.green(`✓ Task ${t.id} DONE`) + pc.dim(" — every bound check has a passing run"));
+    // FEAT-REPORT-01: show the evidence at the moment of done — scannable, tree-stamped.
+    console.log("\n" + renderTaskReport(t, gitTreeHash(cwd)));
     console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
   } catch (e) {
     if (e instanceof EvidenceError) {

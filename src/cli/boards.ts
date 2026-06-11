@@ -5,6 +5,8 @@ import type { JournalEvent } from "../engine/state/journal.js";
 import type { RequirementRollup } from "../engine/graph/build.js";
 import type { ProofState } from "../engine/graph/types.js";
 import { renderLog } from "./log.js";
+import { renderTaskReport } from "./task-report.js";
+import { gitTreeHash } from "../engine/git.js";
 
 /**
  * BOARDS-01 — LEDGER.md and TRACKING.md are GENERATED views over the journal and the graph.
@@ -20,7 +22,7 @@ const STATUS_EMOJI: Record<Task["status"], string> = {
 };
 const LIGHT: Record<ProofState, string> = { green: "🟢", red: "🔴", stale: "🟣", unproven: "⚪" };
 
-export function renderLedger(tasks: Task[], events: JournalEvent[]): string {
+export function renderLedger(tasks: Task[], events: JournalEvent[], currentTree?: string): string {
   const done = tasks.filter((t) => t.status === "done").length;
   const pct = tasks.length === 0 ? 0 : Math.round((done / tasks.length) * 100);
   const lines: string[] = [
@@ -34,6 +36,10 @@ export function renderLedger(tasks: Task[], events: JournalEvent[]): string {
   for (const t of tasks) {
     const lights = t.boundChecks.map((ref) => (!t.results[ref] ? "⚪" : t.results[ref]!.passed ? "🟢" : "🔴")).join("");
     lines.push(`- ${STATUS_EMOJI[t.status]} **${t.id}** ${t.title} ${lights}`);
+    // FEAT-REPORT-01: the per-task evidence table is the permanent tabular record.
+    if (Object.keys(t.results).length > 0) {
+      lines.push(renderTaskReport(t, currentTree, "  "), "");
+    }
   }
 
   lines.push("", "## Approvals & governance", "");
@@ -84,6 +90,6 @@ export function writeBoards(
   events: JournalEvent[],
   rollups: RequirementRollup[],
 ): void {
-  writeFileSync(join(cwd, ".rivet", "LEDGER.md"), renderLedger(tasks, events));
+  writeFileSync(join(cwd, ".rivet", "LEDGER.md"), renderLedger(tasks, events, gitTreeHash(cwd)));
   writeFileSync(join(cwd, ".rivet", "TRACKING.md"), renderTracking(rollups, tasks, events));
 }
