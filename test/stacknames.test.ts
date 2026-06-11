@@ -14,6 +14,14 @@ describe("project.platforms replaces project.stacks", () => {
     expect(c.project.platforms).toEqual(["typescript", "spring"]);
   });
 
+  // FEAT-PLATFORM-01: electron is a platform, and platforms is an ARRAY — a desktop app spanning
+  // typescript+electron+python is the normal case, not an edge case.
+  it("accepts electron and multi-language platform arrays", () => {
+    expect(parseConfig({ project: { platforms: ["electron"] } }).project.platforms).toEqual(["electron"]);
+    const multi = parseConfig({ project: { platforms: ["typescript", "electron", "python"] } });
+    expect(multi.project.platforms).toEqual(["typescript", "electron", "python"]);
+  });
+
   it("legacy project.stacks is ignored harmlessly (no crash, defaults apply)", () => {
     const c = parseConfig({ project: { stacks: ["node"] } });
     expect(c.project.platforms).toEqual([]);

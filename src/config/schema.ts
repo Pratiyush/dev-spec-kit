@@ -29,6 +29,7 @@ export const RivetConfigSchema = z
               "quarkus",
               "node",
               "typescript",
+              "electron",
               "react",
               "next",
               "angular",
