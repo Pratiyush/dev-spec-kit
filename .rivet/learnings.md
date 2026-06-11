@@ -145,3 +145,12 @@
   recurrence), phase-aware compaction, and compliance-QA of our own skills.
 - Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;
   check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)
+
+## 2026-06-12 A grammar that can't spell its own kinds drops obligations silently
+- Trigger: RUNNERS-01's kind-resolution test failed — CHECK_LINE's kind pattern was [a-z]+, so
+  `kind=e2e` (digit!) never matched and e2e bindings had parsed as PROSE since day one. No error,
+  no warning: the obligation just vanished.
+- Lesson: grammar character classes must be derived from the actual vocabulary (e2e has a digit);
+  every enum the parser accepts needs at least one test using its trickiest member.
+- Confidence: high (reproduced; permanent test) · Scope: project
+- Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)

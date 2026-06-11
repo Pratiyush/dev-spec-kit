@@ -4,8 +4,9 @@ import { materialize, journalFor } from "./materialize.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { rollupRequirements, driftTargets } from "../engine/graph/build.js";
 import { blastRadius } from "../engine/graph/types.js";
-import { runCheck } from "../engine/verify/runner.js";
+import { runCheck, pickRunner } from "../engine/verify/runner.js";
 import { runWithRetry } from "../engine/verify/retry.js";
+import { kindForRef } from "../engine/spec/ears.js";
 import { graphifyBin } from "../engine/graphify/index.js";
 import type { ProofState } from "../engine/graph/types.js";
 
@@ -73,10 +74,11 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
       console.log(pc.yellow(`  ⚠ ${t.ref}: no recorded stack and no --stack fallback — skipped`));
       continue;
     }
-    const override = config.verify.runners[stack];
-    process.stdout.write(pc.dim(`  re-running ${t.ref} via ${stack} … `));
+    const kind = kindForRef(before.requirements, t.ref) ?? "unit";
+    const picked = pickRunner(config, kind, stack);
+    process.stdout.write(pc.dim(`  re-running ${t.ref} [${kind}] via ${stack} … `));
     const { result, attempts } = runWithRetry(
-      () => ({ ...runCheck({ kind: "unit", ref: t.ref }, stack, { cwd }, override), stack }),
+      () => ({ ...runCheck({ kind: kind as never, ref: t.ref }, stack, { cwd }, picked.override), stack, kind }),
       config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0,
     );
     for (const taskId of t.taskIds.length > 0 ? t.taskIds : []) store.recordCheck(taskId, result);

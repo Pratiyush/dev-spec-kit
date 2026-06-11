@@ -51,6 +51,12 @@ export function unverifiedCriteria(reqs: Requirement[]): AcceptanceCriterion[] {
   return reqs.flatMap((r) => r.criteria).filter((c) => !isVerifiable(c));
 }
 
+/** RUNNERS-01: the spec is where a ref's kind lives — execution looks it up here. */
+export function kindForRef(reqs: Requirement[], ref: string): CheckKind | undefined {
+  for (const r of reqs) for (const c of r.criteria) for (const ch of c.checks) if (ch.ref === ref) return ch.kind;
+  return undefined;
+}
+
 const EARS_PATTERNS: ReadonlyArray<[EarsPattern, RegExp]> = [
   ["complex", /\bWHEN\b.*\bWHILE\b|\bWHILE\b.*\bWHEN\b/i],
   ["unwanted", /^\s*IF\b.*\bTHEN\b.*\bSHALL\b/i],

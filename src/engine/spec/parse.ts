@@ -18,7 +18,9 @@ import { classifyEars, type AcceptanceCriterion, type CheckBinding, type CheckKi
  */
 
 const REQ_HEADING = /^##\s+Requirement:?\s+([A-Za-z][A-Za-z0-9_-]*)\s*(?:[—–-]\s*(.*))?$/;
-const CHECK_LINE = /^@check\s+kind=([a-z]+)\s+ref=(.+)$/i;
+// [a-z0-9]: 'e2e' carries a digit — a kind pattern of [a-z]+ silently dropped e2e bindings (real
+// bug caught by the RUNNERS-01 suite; "silent loss of a proof obligation is the worst parser failure").
+const CHECK_LINE = /^@check\s+kind=([a-z0-9]+)\s+ref=(.+)$/i;
 const FENCE = /^(```|~~~)/;
 const LIST_MARKER = /^(?:[-*+]|\d+\.)\s+/;
 const CHECK_KINDS: ReadonlySet<string> = new Set(["unit", "integration", "api", "e2e", "visual", "parity"]);

@@ -26,6 +26,22 @@ export interface RunnerOverride {
 }
 
 /**
+ * RUNNERS-01 precedence: a kind-level template (visual/parity/...) beats the stack template,
+ * which beats the builtin mapping. Pure selection — testable, and the CLI just applies it.
+ */
+export function pickRunner(
+  config: { verify: { kindRunners: Record<string, RunnerOverride>; runners: Record<string, RunnerOverride> } },
+  kind: string,
+  stack: string,
+): { override?: RunnerOverride; source: "kind" | "stack" | "builtin" } {
+  const byKind = config.verify.kindRunners[kind];
+  if (byKind) return { override: byKind, source: "kind" };
+  const byStack = config.verify.runners[stack];
+  if (byStack) return { override: byStack, source: "stack" };
+  return { source: "builtin" };
+}
+
+/**
  * Map a check binding to the concrete test-runner invocation for a stack.
  * Refs use the runner's own selector syntax:
  *  - java-maven:    "ClassName#method"  -> mvn -B test -Dtest=ClassName#method

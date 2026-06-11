@@ -60,6 +60,8 @@ export interface CheckResult {
   dirty?: boolean;
   /** stack the check ran under (recorded so drift can re-run it without asking). */
   stack?: string;
+  /** check kind (unit/integration/api/e2e/visual/parity) the proof was taken as. */
+  kind?: string;
   /** true when the run only passed after flaky retries. */
   flaky?: boolean;
   /** Truncated stdout/stderr tail captured on FAILURE — the proof carries its own diagnostic. */

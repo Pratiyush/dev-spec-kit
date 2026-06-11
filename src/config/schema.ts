@@ -135,6 +135,22 @@ export const RivetConfigSchema = z
          * Overrides built-ins when the key matches; unknown keys define brand-new stacks.
          */
         runners: z.record(z.object({ cmd: z.string(), args: z.array(z.string()) })).default({}),
+        /**
+         * RUNNERS-01: kind-level runner templates — a binding's KIND can carry its own command
+         * (visual snapshots, parity harnesses) with the same {ref}/{file}/{name} placeholders.
+         * Precedence: kindRunners > runners (stack) > builtin.
+         */
+        kindRunners: z.record(z.object({ cmd: z.string(), args: z.array(z.string()) })).default({}),
+        /** App lifecycle for api/e2e checks (used when verify.runApp is true). */
+        app: z
+          .object({
+            /** argv to start the app, e.g. ["./mvnw","spring-boot:run"]. Empty = no lifecycle. */
+            start: z.array(z.string()).default([]),
+            /** URL polled until it answers; null = fixed 1s grace. */
+            readyUrl: z.union([z.string(), z.null()]).default(null),
+            readyTimeoutMs: z.number().int().min(1).default(30000),
+          })
+          .default({}),
       })
       .default({}),
 

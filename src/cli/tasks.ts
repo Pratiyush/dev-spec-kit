@@ -2,8 +2,11 @@ import { join } from "node:path";
 import pc from "picocolors";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
-import { runCheck, BUILTIN_STACKS, type RunnerOverride } from "../engine/verify/runner.js";
+import { runCheck, BUILTIN_STACKS, pickRunner } from "../engine/verify/runner.js";
 import { runWithRetry } from "../engine/verify/retry.js";
+import { withApp } from "../engine/verify/applife.js";
+import { kindForRef } from "../engine/spec/ears.js";
+import { parseSpecsDir } from "../engine/spec/parse.js";
 import { loadConfig } from "./config-io.js";
 import { renderProgress } from "./progress.js";
 
@@ -60,30 +63,49 @@ export function taskDone(id: string): void {
   }
 }
 
-export function checkRun(taskId: string, ref: string, stackName: string, opts?: { expectRed?: boolean }): void {
+export async function checkRun(
+  taskId: string,
+  ref: string,
+  stackName: string,
+  opts?: { expectRed?: boolean },
+): Promise<void> {
   const cwd = process.cwd();
   // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
   const config = loadConfig(cwd);
-  const override: RunnerOverride | undefined = config.verify.runners[stackName];
-  if (!override && !BUILTIN_STACKS.includes(stackName as (typeof BUILTIN_STACKS)[number])) {
+  // RUNNERS-01: the spec knows this ref's kind; the kind changes how it runs.
+  const kind = kindForRef(parseSpecsDir(cwd), ref) ?? "unit";
+  const picked = pickRunner(config, kind, stackName);
+  if (picked.source === "builtin" && !BUILTIN_STACKS.includes(stackName as (typeof BUILTIN_STACKS)[number])) {
     console.error(
       pc.red(`unknown --stack '${stackName}'`) +
-        pc.dim(` — built-ins: ${BUILTIN_STACKS.join(", ")}; or define it in .rivet/config.json verify.runners`),
+        pc.dim(` — built-ins: ${BUILTIN_STACKS.join(", ")}; or define it in verify.runners / verify.kindRunners`),
     );
     process.exitCode = 2;
     return;
   }
   const expectRed = opts?.expectRed ?? false;
+  const needsApp =
+    (kind === "api" || kind === "e2e") && config.verify.runApp && config.verify.app.start.length > 0;
   console.log(
-    pc.dim(`running ${ref} via ${stackName}${override ? " (config runner)" : ""}${expectRed ? " (expect-red: no retries)" : ""} …`),
+    pc.dim(
+      `running ${ref} [${kind}] via ${stackName}` +
+        (picked.source !== "builtin" ? ` (${picked.source} runner)` : "") +
+        (needsApp ? " +app" : "") +
+        (expectRed ? " (expect-red: no retries)" : "") +
+        " …",
+    ),
   );
   // Flaky policy from config: retry-flag retries up to build.retryLimit and records the flakiness.
   // FIX-QUERY-01: TDD's expected red must not burn the retry budget on a deterministic failure.
   const retries = expectRed ? 0 : config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0;
-  const { result, attempts } = runWithRetry(
-    () => ({ ...runCheck({ kind: "unit", ref }, stackName, { cwd }, override), stack: stackName }),
-    retries,
-  );
+  const exec = () => ({
+    ...runCheck({ kind: kind as never, ref }, stackName, { cwd }, picked.override),
+    stack: stackName,
+    kind,
+  });
+  const { result, attempts } = needsApp
+    ? await withApp(config.verify.app, () => runWithRetry(exec, retries))
+    : runWithRetry(exec, retries);
   store(cwd).recordCheck(taskId, result);
   if (result.passed) {
     const flaky = result.flaky ? pc.yellow(` (flaky — passed on attempt ${attempts})`) : "";
