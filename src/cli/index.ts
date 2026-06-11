@@ -4,6 +4,7 @@ import { runDoctor } from "./doctor.js";
 import { runInit } from "./init.js";
 import { taskCreate, taskStart, taskDone, checkRun, status } from "./tasks.js";
 import { graphBuild } from "./graph.js";
+import { specTasks, approve, pr, route, guardPr } from "./workflow.js";
 
 const program = new Command();
 
@@ -65,5 +66,38 @@ graph
   .description("Fuse specs + journal + graphify code graph into .rivet/graph.json (exit 1 on red/stale)")
   .option("--no-refresh", "skip the graphify re-index even if the code graph is stale")
   .action((opts: { refresh?: boolean }) => graphBuild(opts));
+
+const spec = program.command("spec").description("Spec-driven flow (specs are the source of truth)");
+spec
+  .command("tasks")
+  .description("Create evidence-bound tasks from .rivet/specs/*.md @check bindings (idempotent)")
+  .action(() => specTasks());
+
+program
+  .command("approve")
+  .description("Record the human gate as a signed artifact (.rivet/approvals/) — tasks must be DONE")
+  .argument("<taskIds...>")
+  .option("-n, --note <note>", "approval note")
+  .action((taskIds: string[], opts: { note?: string }) => approve(taskIds, opts));
+
+program
+  .command("pr")
+  .description("Generate the graph-derived PR body (.rivet/pr-body.md); --create opens it via gh")
+  .option("-t, --title <title>", "PR title")
+  .option("--create", "create the PR with gh after generating the body")
+  .action((opts: { title?: string; create?: boolean }) => pr(opts));
+
+program
+  .command("route")
+  .description("The front door — classify a request into research | quick | full-spec (config-aware)")
+  .argument("<request>", "the raw request text")
+  .option("-m, --mode <mode>", "override: research | quick | full-spec")
+  .action((text: string, opts: { mode?: string }) => route(text, opts));
+
+const guard = program.command("guard").description("Hard gates (hook-friendly; exit 2 = block)");
+guard
+  .command("pr")
+  .description("Block PR creation while any proof is red/stale/unproven")
+  .action(() => guardPr());
 
 program.parseAsync(process.argv);

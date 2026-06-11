@@ -1,0 +1,10 @@
+{
+  "name": "rivet",
+  "description": "Spec-driven development with a Verified Traceability Graph — every requirement riveted to a passing check. EARS specs, evidence-bound done, drift detection, graph-derived PRs.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Pratiyush Kumar Singh",
+    "email": "pratiyush1@gmail.com",
+    "url": "https://github.com/Pratiyush/llm-dev-kit"
+  }
+}

@@ -13,3 +13,6 @@ export * from "./engine/verify/runner.js";
 export * from "./engine/graphify/index.js";
 export * from "./engine/spec/parse.js";
 export * from "./engine/graph/build.js";
+export * from "./engine/approvals.js";
+export * from "./engine/pr/body.js";
+export * from "./engine/route/classify.js";
