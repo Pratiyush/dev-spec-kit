@@ -202,3 +202,44 @@
 - Confidence: high (reproduced; the project's own brief conflates the two)
 - Scope: project
 - Promoted to: check:test/stacknames.test.ts (HARDENED via FIX-STACKNAMES-01 — project.stacks renamed to project.platforms (legacy key ignored harmlessly); filing a runner stack there now yields a disambiguating error pointing to `check run --stack` / verify.runners)
+
+## 2026-06-12 The printed proof stamp showed HEAD, not the proof's identity
+- Trigger: dogfooding the notepad vault feature — a TDD red and its green ran against DIFFERENT
+  code (stub → implementation, both uncommitted) yet both printed "@ 9aa40ae2": checkRun stamped
+  `result.sha` (HEAD) while the journal correctly recorded distinct `tree` hashes. Cost a live
+  P1-scare detour into the journal to rule out a proof-identity regression.
+- Lesson: every printed identity must be the SAME identity the system reasons with (FIX-PROOF-01/02
+  made that the tree) — a stale-but-familiar id invites false bug reports and, worse, false
+  confidence. Related: the PR-body stamp (workflow.test.ts pins "@ abc12345") may deserve the same
+  treatment.
+- Confidence: high (reproduced live; permanent test)
+- Scope: project
+- Promoted to: check:test/proof-display.test.ts::stamps the tree identity, not the commit sha
+  (FIX-PROOF-03 — red→green through Rivet's own done-gate; stamp = "tree <hash8>" + "*" dirty
+  marker, sha only as legacy fallback; landed in commit 96ce52a authored by Pratiyush)
+
+## 2026-06-12 Provenance lines must not pin facts that rot (or were never true)
+- Trigger: FIX-DOCTOR-01's improved graphify hint says "Source: github.com/safishamsi/graphify
+  (213k★)" — live GitHub API shows the repo is real but has ~65.6k stars. An inflated number
+  inside the very line meant to establish trust undercuts it; star counts hardcoded in CLI
+  strings are stale the day they ship.
+- Lesson: provenance = verifiable pointers (URL, package name, owner), never point-in-time
+  vanity metrics. If popularity matters, phrase it un-rottably ("65k+ stars as of 2026-06") or
+  let the reader click. (The repo itself checks out — graphifyy install is trustworthy.)
+- Confidence: high (checked via GitHub API live)
+- Scope: project
+- Promoted to: OPEN
+
+## 2026-06-12 PR body and LEDGER still stamp commit sha (anticipated tail of the proof-display lesson)
+- Trigger: finishing vault-persistence in the notepad — `rivet pr` emitted "proven green (100%) at
+  `3311f7bb`" and LEDGER.md rows print "@ 6903f20f" (bare commit shas) while every proof in the
+  journal is identified by tree (`70786fd1`). Harmless this run (tree was clean, so sha↔tree map
+  1:1), but on any dirty-tree run these surfaces repeat the exact misdirection FIX-PROOF-03 cured
+  in the CLI stamp.
+- Lesson: "printed identity = the identity the system reasons with" wasn't applied to all
+  printers — when changing an identity scheme, sweep every surface that renders a proof (PR body,
+  LEDGER.md, TRACKING.md, dashboards), not just the surface that triggered the report.
+- Confidence: high (observed live; .rivet/pr-body.md + LEDGER.md on notepad branch worktree-vault-07-08)
+- Scope: project
+- Promoted to: OPEN (candidate fix mirrors FIX-PROOF-03: tree hash + dirty marker in the PR-body
+  and LEDGER writers; note workflow.test.ts pins "@ abc12345" and will need the same update)
