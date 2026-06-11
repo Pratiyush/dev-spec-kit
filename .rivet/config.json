@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "project": {
+    "name": "untitled",
+    "stacks": []
+  },
+  "mode": {
+    "routing": "auto-override",
+    "confirmFirst": true,
+    "researchMode": true,
+    "custom": {}
+  },
+  "intake": {
+    "sources": [
+      "raw",
+      "github"
+    ],
+    "jiraEpic": "ask",
+    "writeBack": false
+  },
+  "spec": {
+    "style": "both",
+    "acceptanceCriteria": "tool-drafts",
+    "criteriaFormat": "ears",
+    "breakdownDepth": "feature-story-task-subtask",
+    "estimates": true,
+    "autoDependencies": true,
+    "diagram": true,
+    "gapHunting": "propose",
+    "riskWarn": true,
+    "livingPlan": "update-ask",
+    "onVague": "clarify"
+  },
+  "build": {
+    "tests": "tdd",
+    "fileFence": false,
+    "retryLimit": 3,
+    "checkFrequency": "per-task",
+    "whenStuck": "bounded-then-ask",
+    "codeStyle": "both",
+    "reuse": "prefer",
+    "comments": "moderate",
+    "commitCadence": "per-task",
+    "newDeps": "ask-big"
+  },
+  "verify": {
+    "kinds": [
+      "unit",
+      "integration",
+      "api",
+      "e2e"
+    ],
+    "coverage": null,
+    "blockDoneOnFail": true,
+    "everyCriterionNeedsCheck": true,
+    "runApp": false,
+    "ui": "off",
+    "sandbox": "local",
+    "security": "on-demand",
+    "lintTypes": "part-of-done",
+    "flaky": "retry-flag",
+    "runners": {}
+  },
+  "review": {
+    "separateReviewer": true,
+    "angles": [
+      "correctness",
+      "security",
+      "performance",
+      "style"
+    ],
+    "passes": "both",
+    "fixFindings": "list"
+  },
+  "pr": {
+    "autoBody": true,
+    "branchPattern": "{type}/{slug}",
+    "merge": "manual",
+    "waitForCI": true,
+    "commitAuthor": "user",
+    "cleanupAfterMerge": true
+  },
+  "memory": {
+    "crashResume": "exact",
+    "journal": "full",
+    "driftDetection": true
+  },
+  "parallel": {
+    "enabled": true,
+    "waveSize": 6,
+    "isolation": "worktree",
+    "onFileClash": "serialize",
+    "coordinator": true
+  },
+  "dashboard": {
+    "enabled": true,
+    "form": "web",
+    "updates": "on-demand",
+    "notify": {
+      "channels": [],
+      "on": []
+    }
+  },
+  "rules": {
+    "constitution": true,
+    "onConflict": "warn",
+    "inheritPersonal": true
+  },
+  "learning": {
+    "capture": true,
+    "promoteToRules": "ask",
+    "bugToTest": true,
+    "scope": "both",
+    "retro": "per-feature",
+    "warnOnRepeat": true,
+    "share": "personal"
+  },
+  "graphify": {
+    "outDir": "graphify-out",
+    "freshness": "update-on-run"
+  }
+}

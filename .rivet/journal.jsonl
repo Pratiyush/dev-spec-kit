@@ -1,0 +1,5 @@
+{"at":"2026-06-11T19:04:11.629Z","type":"task.created","data":{"id":"FIX-ROUTE-01","title":"route: build-intent must veto research keywords","boundChecks":["test/workflow.test.ts::want-signals veto research routing"]}}
+{"at":"2026-06-11T19:04:11.683Z","type":"task.status","data":{"id":"FIX-ROUTE-01","status":"in_progress"}}
+{"at":"2026-06-11T19:04:12.300Z","type":"check.run","data":{"taskId":"FIX-ROUTE-01","result":{"ref":"test/workflow.test.ts::want-signals veto research routing","passed":false,"at":"2026-06-11T19:04:12.290Z","sha":"d907fcfc8886ce437e5c3a4cdeed73f0c66db0f1"}}}
+{"at":"2026-06-11T19:04:45.293Z","type":"check.run","data":{"taskId":"FIX-ROUTE-01","result":{"ref":"test/workflow.test.ts::want-signals veto research routing","passed":true,"at":"2026-06-11T19:04:45.282Z","sha":"d907fcfc8886ce437e5c3a4cdeed73f0c66db0f1"}}}
+{"at":"2026-06-11T19:04:45.348Z","type":"task.status","data":{"id":"FIX-ROUTE-01","status":"done"}}

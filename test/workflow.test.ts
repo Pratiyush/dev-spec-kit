@@ -97,6 +97,16 @@ describe("mode routing (the front door)", () => {
   it("routes feature-scope to full-spec", () => {
     expect(routeRequest("build a new payment integration feature with webhooks").mode).toBe("full-spec");
   });
+  it("want-signals veto research routing", () => {
+    // Regression for the first dogfood lesson: a feature ask containing a research-y word
+    // ("compare") was misrouted to research. Build-intent must veto investigation keywords.
+    const featureAsk =
+      "basically i want, you know, a portfolio page which shows all my holdings and graphs over time and compare with index etc";
+    expect(routeRequest(featureAsk).mode).toBe("full-spec");
+    // ...while genuine investigation (no build intent) still routes to research.
+    expect(routeRequest("compare backtrader vs vectorbt for our backtesting").mode).toBe("research");
+  });
+
   it("short ambiguous requests default to quick; longer ambiguous to full-spec", () => {
     expect(routeRequest("update the greeting").mode).toBe("quick");
     const long =

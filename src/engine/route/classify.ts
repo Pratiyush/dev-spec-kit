@@ -19,11 +19,18 @@ const QUICK_RE =
   /\b(typo|rename|bump|tweak|small fix|quick fix|one[- ]liner|button|label|color|colour|comment|log line|spacing|padding|copy change|wording)\b/i;
 const BIG_RE =
   /\b(feature|system|platform|architecture|redesign|refactor|migration|integrate|new (service|module|api|endpoint)|build (a|an|the)|implement|dashboard|pipeline)\b/i;
+/**
+ * Build-intent signals. A request that *wants something built* is never research, even when it
+ * contains investigative words — lesson #1 in .rivet/learnings.md: "compare with index" inside a
+ * feature ask misrouted a portfolio page to research.
+ */
+const WANT_RE = /\b(?:i|we)\s+(?:want|need|would like)\b|\b(?:add|create|implement|make me)\b/i;
 
 export function routeRequest(text: string): RouteResult {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const buildIntent = WANT_RE.test(text) || BIG_RE.test(text);
 
-  if (RESEARCH_RE.test(text) && !BIG_RE.test(text)) {
+  if (RESEARCH_RE.test(text) && !buildIntent) {
     return { mode: "research", reason: "asks to investigate/understand — no code change requested" };
   }
   if (QUICK_RE.test(text) && !BIG_RE.test(text)) {
