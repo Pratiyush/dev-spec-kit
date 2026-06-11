@@ -95,6 +95,75 @@ export interface VTGSummary {
   validates: Record<ProofState, number>;
 }
 
+/**
+ * Per-requirement rollup. Every binding is an OBLIGATION, so a criterion rolls up to its WORST
+ * proof (green+stale = stale; green+unrun = unproven) — never its best. A requirement is proven
+ * only when every criterion's worst proof is green.
+ */
+export interface RequirementRollup {
+  id: string;
+  title: string;
+  criteria: Array<{ id: string; bound: boolean; proof: ProofState }>;
+  proven: boolean;
+}
+
+const PROOF_RANK: Record<ProofState, number> = { unproven: 0, red: 1, stale: 2, green: 3 };
+
+export function rollupRequirements(
+  requirements: Requirement[],
+  g: VerifiedTraceabilityGraph,
+): RequirementRollup[] {
+  const byCriterion = new Map<string, ProofState[]>();
+  for (const e of g.edges) {
+    if (e.kind !== "validates") continue;
+    (byCriterion.get(e.to) ?? byCriterion.set(e.to, []).get(e.to)!).push(e.proof);
+  }
+  return requirements.map((req) => {
+    const criteria = req.criteria.map((c) => {
+      const proofs = byCriterion.get(c.id) ?? [];
+      const proof = proofs.reduce(
+        (worst, p) => (PROOF_RANK[p] < PROOF_RANK[worst] ? p : worst),
+        proofs.length === 0 ? ("unproven" as ProofState) : ("green" as ProofState),
+      );
+      return { id: c.id, bound: c.checks.length > 0, proof };
+    });
+    return {
+      id: req.id,
+      title: req.title,
+      criteria,
+      proven: criteria.length > 0 && criteria.every((c) => c.proof === "green"),
+    };
+  });
+}
+
+/** Drift work-list: red/stale validates edges with the stack each proof last ran under. */
+export interface DriftTarget {
+  ref: string;
+  proof: ProofState;
+  stack?: string;
+  taskIds: string[];
+}
+
+export function driftTargets(
+  g: VerifiedTraceabilityGraph,
+  tasks: Array<{ id: string; boundChecks: string[] }>,
+): DriftTarget[] {
+  const out = new Map<string, DriftTarget>();
+  for (const e of g.edges) {
+    if (e.kind !== "validates" || (e.proof !== "red" && e.proof !== "stale")) continue;
+    const ref = e.lastCheck?.ref ?? e.from.replace(/^test:/, "");
+    if (out.has(ref)) continue;
+    const taskIds = tasks.filter((t) => t.boundChecks.includes(ref)).map((t) => t.id);
+    out.set(ref, {
+      ref,
+      proof: e.proof,
+      ...(e.lastCheck?.stack ? { stack: e.lastCheck.stack } : {}),
+      taskIds,
+    });
+  }
+  return [...out.values()];
+}
+
 export function summarize(g: VerifiedTraceabilityGraph): VTGSummary {
   const count = (kind: GraphNode["kind"]) => g.nodes.filter((n) => n.kind === kind).length;
   const validates: Record<ProofState, number> = { unproven: 0, green: 0, red: 0, stale: 0 };

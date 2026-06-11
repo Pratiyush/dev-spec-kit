@@ -92,20 +92,31 @@ export class TaskStore {
   /**
    * The done-gate. Throws EvidenceError unless EVERY bound check has a recorded PASSING result.
    * This is the one transition that cannot be talked into existence.
+   *
+   * `force` exists ONLY for config `verify.blockDoneOnFail: false` (done-with-warnings): the task is
+   * marked done but the violation is journaled forever — recorded, never hidden.
    */
-  markDone(id: string): Task {
+  markDone(id: string, opts: { force?: boolean } = {}): Task {
     const task = this.requireTask(id);
     const missing = task.boundChecks.filter((ref) => !task.results[ref]);
     const failing = task.boundChecks.filter((ref) => task.results[ref] && !task.results[ref]!.passed);
     if (missing.length > 0 || failing.length > 0) {
-      throw new EvidenceError(
-        `Task "${id}" cannot be done: ` +
-          (missing.length ? `${missing.length} check(s) never ran (${missing.join(", ")})` : "") +
-          (missing.length && failing.length ? "; " : "") +
-          (failing.length ? `${failing.length} check(s) failing (${failing.join(", ")})` : ""),
+      if (!opts.force) {
+        throw new EvidenceError(
+          `Task "${id}" cannot be done: ` +
+            (missing.length ? `${missing.length} check(s) never ran (${missing.join(", ")})` : "") +
+            (missing.length && failing.length ? "; " : "") +
+            (failing.length ? `${failing.length} check(s) failing (${failing.join(", ")})` : ""),
+          missing,
+          failing,
+        );
+      }
+      this.journal.append("note", {
+        kind: "done-with-warnings",
+        taskId: id,
         missing,
         failing,
-      );
+      });
     }
     this.journal.append("task.status", { id, status: "done" } satisfies TaskStatusData);
     return this.get(id)!;

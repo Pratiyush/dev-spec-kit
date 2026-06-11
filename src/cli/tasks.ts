@@ -4,6 +4,7 @@ import pc from "picocolors";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, type RunnerOverride } from "../engine/verify/runner.js";
+import { runWithRetry } from "../engine/verify/retry.js";
 import { parseConfig } from "../config/schema.js";
 
 /**
@@ -35,11 +36,20 @@ export function taskStart(id: string): void {
 }
 
 export function taskDone(id: string): void {
+  const cwd = process.cwd();
+  const configPath = join(cwd, ".rivet", "config.json");
+  const config = parseConfig(existsSync(configPath) ? JSON.parse(readFileSync(configPath, "utf8")) : {});
   try {
-    const t = store(process.cwd()).markDone(id);
+    const t = store(cwd).markDone(id);
     console.log(pc.green(`✓ Task ${t.id} DONE`) + pc.dim(" — every bound check has a passing run"));
   } catch (e) {
     if (e instanceof EvidenceError) {
+      // Config knob verify.blockDoneOnFail=false -> done-with-warnings, journaled forever.
+      if (!config.verify.blockDoneOnFail) {
+        store(cwd).markDone(id, { force: true });
+        console.log(pc.yellow(`⚠ Task ${id} DONE-WITH-WARNINGS`) + pc.dim(` — ${e.message} [verify.blockDoneOnFail=false]`));
+        return;
+      }
       console.error(pc.red(`✗ BLOCKED: ${e.message}`));
       console.error(pc.dim("  done is evidence-bound — run the checks: rivet check run <task> <ref> --stack <stack>"));
       process.exitCode = 1;
@@ -64,12 +74,21 @@ export function checkRun(taskId: string, ref: string, stackName: string): void {
     return;
   }
   console.log(pc.dim(`running ${ref} via ${stackName}${override ? " (config runner)" : ""} …`));
-  const result = runCheck({ kind: "unit", ref }, stackName, { cwd }, override);
+  // Flaky policy from config: retry-flag retries up to build.retryLimit and records the flakiness.
+  const retries = config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0;
+  const { result, attempts } = runWithRetry(
+    () => ({ ...runCheck({ kind: "unit", ref }, stackName, { cwd }, override), stack: stackName }),
+    retries,
+  );
   store(cwd).recordCheck(taskId, result);
   if (result.passed) {
-    console.log(pc.green(`✓ PASS ${ref}`) + pc.dim(result.sha ? ` @ ${result.sha.slice(0, 8)}` : ""));
+    const flaky = result.flaky ? pc.yellow(` (flaky — passed on attempt ${attempts})`) : "";
+    console.log(pc.green(`✓ PASS ${ref}`) + flaky + pc.dim(result.sha ? ` @ ${result.sha.slice(0, 8)}` : ""));
   } else {
-    console.log(pc.red(`✗ FAIL ${ref}`) + pc.dim(result.sha ? ` @ ${result.sha.slice(0, 8)}` : ""));
+    console.log(
+      pc.red(`✗ FAIL ${ref}`) +
+        pc.dim((attempts > 1 ? ` after ${attempts} attempts` : "") + (result.sha ? ` @ ${result.sha.slice(0, 8)}` : "")),
+    );
     process.exitCode = 1;
   }
 }

@@ -5,6 +5,7 @@ import { runInit } from "./init.js";
 import { taskCreate, taskStart, taskDone, checkRun, status } from "./tasks.js";
 import { graphBuild } from "./graph.js";
 import { specTasks, approve, pr, route, guardPr } from "./workflow.js";
+import { trace, drift, affected } from "./queries.js";
 
 const program = new Command();
 
@@ -100,5 +101,23 @@ guard
   .command("pr")
   .description("Block PR creation while any proof is red/stale/unproven")
   .action(() => guardPr());
+
+program
+  .command("trace")
+  .description("Requirement→criterion truth table from the graph (exit 1 while any requirement unproven)")
+  .action(() => trace());
+
+program
+  .command("drift")
+  .description("Find red/stale proofs and re-run their checks in one move (exit 1 if any remain)")
+  .option("-s, --stack <stack>", "fallback stack for proofs recorded before stacks were journaled")
+  .option("--dry-run", "list drifted proofs without re-running")
+  .action((opts: { stack?: string; dryRun?: boolean }) => drift(opts));
+
+program
+  .command("affected")
+  .description("Blast radius of a code node — proven edges touching it + graphify reverse traversal")
+  .argument("<label>", "code node label or id (e.g. GreetController)")
+  .action((label: string) => affected(label));
 
 program.parseAsync(process.argv);

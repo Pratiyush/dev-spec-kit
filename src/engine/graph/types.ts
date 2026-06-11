@@ -54,6 +54,10 @@ export interface CheckResult {
   at: string;
   /** commit SHA the proof was taken at. */
   sha?: string;
+  /** stack the check ran under (recorded so drift can re-run it without asking). */
+  stack?: string;
+  /** true when the run only passed after flaky retries. */
+  flaky?: boolean;
 }
 
 export interface GraphEdge {

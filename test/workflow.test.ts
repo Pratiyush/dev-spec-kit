@@ -86,6 +86,65 @@ describe("graph-derived PR body", () => {
   });
 });
 
+describe("requirement rollup + drift targets + retry (engine queries)", () => {
+  it("rolls requirements up to proven only when every criterion is green", async () => {
+    const { rollupRequirements, driftTargets } = await import("../src/engine/graph/build.js");
+    const spec = `## Requirement R-1 — a\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=A#a\n@check kind=unit ref=A#b\n`;
+    const requirements = parseSpec(spec);
+    const graph = buildVTG({
+      requirements,
+      currentSha: "HEAD",
+      tasks: [
+        {
+          id: "R-1",
+          title: "a",
+          status: "in_progress",
+          boundChecks: ["A#a", "A#b"],
+          results: {
+            "A#a": { ref: "A#a", passed: true, at: "t", sha: "HEAD", stack: "java-maven" },
+            "A#b": { ref: "A#b", passed: true, at: "t", sha: "OLD", stack: "java-maven" }, // stale
+          },
+        },
+      ],
+    });
+    const [r] = rollupRequirements(requirements, graph);
+    expect(r!.proven).toBe(false); // one criterion green, the other stale
+    const targets = driftTargets(graph, [{ id: "R-1", boundChecks: ["A#a", "A#b"] }]);
+    expect(targets).toEqual([{ ref: "A#b", proof: "stale", stack: "java-maven", taskIds: ["R-1"] }]);
+  });
+
+  it("retry-flag marks late passes as flaky and stops at the retry cap", async () => {
+    const { runWithRetry } = await import("../src/engine/verify/retry.js");
+    let calls = 0;
+    const flakyRun = () => ({ ref: "r", passed: ++calls >= 2, at: "t" });
+    const ok = runWithRetry(flakyRun, 3);
+    expect(ok.result.passed).toBe(true);
+    expect(ok.result.flaky).toBe(true);
+    expect(ok.attempts).toBe(2);
+
+    calls = -10; // never passes within cap
+    const bad = runWithRetry(() => ({ ref: "r", passed: ++calls >= 2, at: "t" }), 2);
+    expect(bad.result.passed).toBe(false);
+    expect(bad.attempts).toBe(3); // 1 + 2 retries
+  });
+
+  it("done-with-warnings (blockDoneOnFail=false) journals the violation instead of hiding it", async () => {
+    const { Journal } = await import("../src/engine/state/journal.js");
+    const { TaskStore } = await import("../src/engine/state/tasks.js");
+    const { mkdtempSync } = await import("node:fs");
+    const { tmpdir } = await import("node:os");
+    const { join } = await import("node:path");
+    const journal = new Journal(join(mkdtempSync(join(tmpdir(), "rivet-force-")), "j.jsonl"));
+    const store = new TaskStore(journal);
+    store.create("T1", "t", ["c1"]);
+    const t = store.markDone("T1", { force: true });
+    expect(t.status).toBe("done");
+    const note = journal.read().find((e) => e.type === "note");
+    expect((note?.data as { kind: string; missing: string[] }).kind).toBe("done-with-warnings");
+    expect((note?.data as { missing: string[] }).missing).toEqual(["c1"]);
+  });
+});
+
 describe("mode routing (the front door)", () => {
   it("routes investigation to research", () => {
     expect(routeRequest("investigate why the login is slow").mode).toBe("research");
