@@ -41,6 +41,10 @@ function describeEvent(e: JournalEvent): string {
       return `🔏 approval by ${String(d.approver)} — ${((d.taskIds as string[]) ?? []).join(", ")}`;
     case "task.bindings":
       return `🔗 task ${String(d.id)} bindings → [${((d.boundChecks as string[]) ?? []).join(", ")}]`;
+    case "verify.run": {
+      const steps = (d.steps as unknown[]) ?? [];
+      return `${d.passed ? "✅" : "❌"} verify ${steps.length} step(s)${proofStamp(d as { tree?: string; dirty?: boolean; sha?: string })}`;
+    }
     case "governance":
       return `🛡️ ${String(d.kind ?? "governance")} ${JSON.stringify({ ...d, kind: undefined })}`;
     case "note":

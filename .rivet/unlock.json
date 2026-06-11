@@ -1,8 +1,6 @@
 {
   "paths": [
-    ".rivet/specs/cli-ux.md",
-    "test/cli-ux.test.ts",
-    ".rivet/config.json"
+    "test/skill-qa.test.ts"
   ],
-  "until": "2026-06-12T00:41:27.273Z"
+  "until": "2026-06-12T00:28:14.741Z"
 }

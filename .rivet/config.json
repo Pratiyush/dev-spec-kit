@@ -2,7 +2,11 @@
   "version": 1,
   "project": {
     "name": "untitled",
-    "stacks": []
+    "stacks": [],
+    "platforms": [
+      "typescript",
+      "node"
+    ]
   },
   "mode": {
     "routing": "auto-override",

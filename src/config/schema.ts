@@ -126,6 +126,11 @@ export const RivetConfigSchema = z
          * flag → this → inferred from project.platforms (🧭 notice) → error naming all three.
          */
         defaultStack: z.string().optional(),
+        /**
+         * FEAT-VERIFY-01: build steps `rivet verify` runs before the test kinds ("Build ALL").
+         * Empty → node-ish platforms fall back to package.json build/typecheck scripts.
+         */
+        buildAll: z.array(z.object({ cmd: z.string(), args: z.array(z.string()).default([]) })).default([]),
         /** Coverage gate as a percentage; null = judge by criteria coverage, not a number. */
         coverage: z.union([z.number().min(0).max(100), z.null()]).default(null),
         /** A task cannot be marked done while bound checks fail. */

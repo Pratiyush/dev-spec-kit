@@ -11,7 +11,7 @@ import { buildPrBody } from "../engine/pr/body.js";
 import { routeRequest, assertMode } from "../engine/route/classify.js";
 import { applyGateFloor } from "../engine/gatepacks.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
-import { gateVerdict } from "../engine/gate.js";
+import { gateVerdict, verifyVerdict } from "../engine/gate.js";
 import { gitTreeHash, isDirty } from "../engine/git.js";
 import { loadConfig } from "./config-io.js";
 import { label } from "./emoji.js";
@@ -144,6 +144,16 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     return;
   }
   if (verdict.zeroProofs) console.log(pc.yellow("⚠ zero bound proofs in the graph — PR carries no evidence"));
+  // FEAT-VERIFY-01: with real proofs in play, a PR also needs a fresh green `rivet verify`.
+  if (!verdict.zeroProofs) {
+    const vv = verifyVerdict(journal(cwd).read(), tree);
+    if (!vv.ok) {
+      console.error(pc.red("✗ blocked by the gate:"));
+      for (const r of vv.reasons) console.error(pc.red(`   ${r}`));
+      process.exitCode = 1;
+      return;
+    }
+  }
   if (opts.create) {
     const res = spawnSync("gh", ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath], {
       cwd,
@@ -219,7 +229,8 @@ function gateGraph(cwd: string): VerifiedTraceabilityGraph | null {
   }
 }
 
-/** `rivet guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green. */
+/** `rivet guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green.
+ *  FEAT-VERIFY-01: once real proofs exist, the gate ALSO demands a fresh green `rivet verify`. */
 export function guardPr(): void {
   const cwd = process.cwd();
   if (!existsSync(join(cwd, ".rivet"))) {
@@ -228,11 +239,18 @@ export function guardPr(): void {
   }
   const verdict = gateVerdict(gateGraph(cwd));
   if (verdict.ok) {
-    console.log(
-      verdict.zeroProofs
-        ? pc.yellow("rivet guard: graph has zero bound proofs — nothing to enforce (bind @checks!)")
-        : pc.green("✓ rivet guard: every proof green — PR may proceed"),
-    );
+    if (verdict.zeroProofs) {
+      console.log(pc.yellow("rivet guard: graph has zero bound proofs — nothing to enforce (bind @checks!)"));
+      return;
+    }
+    const vv = verifyVerdict(journal(cwd).read(), gitTreeHash(cwd));
+    if (!vv.ok) {
+      console.error(pc.red("✗ rivet guard: blocked:"));
+      for (const r of vv.reasons) console.error(pc.red(`   ${r}`));
+      process.exitCode = 2;
+      return;
+    }
+    console.log(pc.green("✓ rivet guard: every proof green + fresh verify — PR may proceed"));
     return;
   }
   console.error(pc.red("✗ rivet guard: blocked:"));

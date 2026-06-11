@@ -26,3 +26,27 @@ export function gateVerdict(graph: VerifiedTraceabilityGraph | null | undefined)
     reasons: bad.map((e) => `${e.proof.toUpperCase()} ${e.lastCheck?.ref ?? e.from.replace(/^test:/, "")}`),
   };
 }
+
+/**
+ * FEAT-VERIFY-01 — the second half of the PR gate: the LAST `verify.run` journal event must exist,
+ * be green, and carry the CURRENT code-tree hash. A green task is not a green project; a verify
+ * from before the last code change vouches for code that no longer exists.
+ */
+export function verifyVerdict(
+  events: ReadonlyArray<{ type: string; data?: unknown }>,
+  currentTree: string | undefined,
+): GateVerdict {
+  const last = [...events].reverse().find((e) => e.type === "verify.run");
+  if (!last) {
+    return {
+      ok: false,
+      reasons: ["no `rivet verify` recorded — run it (build ALL + every kind) before creating a PR"],
+    };
+  }
+  const d = (last.data ?? {}) as { passed?: boolean; tree?: string };
+  if (!d.passed) return { ok: false, reasons: ["last `rivet verify` was RED — fix and re-run it"] };
+  if (d.tree && currentTree && d.tree !== currentTree) {
+    return { ok: false, reasons: ["`rivet verify` is STALE — the code tree changed since it ran; re-run it"] };
+  }
+  return { ok: true, reasons: [] };
+}

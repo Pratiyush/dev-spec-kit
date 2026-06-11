@@ -13,6 +13,7 @@ import { wavePlan, waveStart, waveDone } from "./wave.js";
 import { boardCmd } from "./board-cmd.js";
 import { lawsCmd } from "./laws-cmd.js";
 import { dashboardCmd } from "./dashboard.js";
+import { verifyCmd } from "./verify-cmd.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -119,6 +120,11 @@ program
   .command("status")
   .description("Board generated from the journal — tasks with traffic-light proof states")
   .action(safe(() => status()));
+
+program
+  .command("verify")
+  .description("Build ALL + run EVERY configured kind (full suites) — journaled; the PR gate needs this green on the current tree")
+  .action(safe(() => verifyCmd()));
 
 const graph = program.command("graph").description("The Verified Traceability Graph");
 graph
