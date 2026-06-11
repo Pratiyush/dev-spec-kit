@@ -9,7 +9,8 @@ import { createApproval, listApprovals, ApprovalError } from "../engine/approval
 import { buildPrBody } from "../engine/pr/body.js";
 import { routeRequest, type Mode } from "../engine/route/classify.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
-import { parseConfig } from "../config/schema.js";
+import { gateVerdict } from "../engine/gate.js";
+import { loadConfig } from "./config-io.js";
 
 function journal(cwd: string): Journal {
   return new Journal(join(cwd, ".rivet", "journal.jsonl"));
@@ -26,21 +27,32 @@ export function specTasks(): void {
   const store = new TaskStore(journal(cwd));
   const existing = store.all();
   let created = 0;
+  let synced = 0;
   for (const req of requirements) {
     const refs = req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref));
-    if (existing.has(req.id)) {
-      console.log(pc.dim(`= ${req.id} already exists — skipped`));
-      continue;
-    }
     if (refs.length === 0) {
       console.log(pc.yellow(`⚠ ${req.id} has no @check bindings — UNVERIFIABLE, task not created; bind checks first`));
+      continue;
+    }
+    const prior = existing.get(req.id);
+    if (prior) {
+      // FIX-SPECSYNC-01: the spec stays the source of truth — diff bindings into the existing task.
+      const before = [...prior.boundChecks].sort().join(" ");
+      if (before === [...refs].sort().join(" ")) {
+        console.log(pc.dim(`= ${req.id} unchanged`));
+        continue;
+      }
+      const updated = store.syncBindings(req.id, refs);
+      synced++;
+      const reopened = prior.status === "done" && updated.status !== "done" ? pc.yellow(" (reopened — new obligations)") : "";
+      console.log(pc.cyan(`↻ ${req.id} bindings synced`) + pc.dim(` — now ${refs.length} check(s)`) + reopened);
       continue;
     }
     store.create(req.id, req.title, refs);
     created++;
     console.log(pc.green(`✓ ${req.id}`) + pc.dim(` — ${req.title} (${refs.length} bound check(s))`));
   }
-  console.log(pc.dim(`\n${created} task(s) created from spec — the spec is the source of truth`));
+  console.log(pc.dim(`\n${created} created · ${synced} synced from spec — the spec is the source of truth`));
 }
 
 /** `rivet approve <taskIds...>` — record the human gate as a signed artifact. */
@@ -90,12 +102,15 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   writeFileSync(outPath, body + "\n");
   console.log(pc.green("✓ PR body generated") + pc.dim(" → .rivet/pr-body.md"));
 
-  const drifted = graph.edges.some((e) => e.kind === "validates" && (e.proof === "red" || e.proof === "stale"));
-  if (drifted) {
-    console.error(pc.red("✗ red/stale proofs present — fix before opening the PR"));
+  // FIX-GATE-01: same predicate as the hook and `guard pr` — anything not green blocks --create.
+  const verdict = gateVerdict(graph);
+  if (!verdict.ok) {
+    console.error(pc.red("✗ blocked by the gate:"));
+    for (const r of verdict.reasons) console.error(pc.red(`   ${r}`));
     process.exitCode = 1;
     return;
   }
+  if (verdict.zeroProofs) console.log(pc.yellow("⚠ zero bound proofs in the graph — PR carries no evidence"));
   if (opts.create) {
     const res = spawnSync("gh", ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath], {
       cwd,
@@ -129,8 +144,7 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
     process.exitCode = 1;
     return;
   }
-  const configPath = join(cwd, ".rivet", "config.json");
-  const config = parseConfig(existsSync(configPath) ? JSON.parse(readFileSync(configPath, "utf8")) : {});
+  const config = loadConfig(cwd);
 
   let result = routeRequest(text);
   if (opts.mode) {
@@ -155,28 +169,55 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
   console.log(pc.dim(`next: ${next}`));
 }
 
-/** `rivet guard pr` — hard gate for PR creation: exit 2 when proofs are red/stale/missing. */
+/** Load the graph for gating: null when missing/unreadable (which BLOCKS — absence ≠ permission). */
+function gateGraph(cwd: string): VerifiedTraceabilityGraph | null {
+  const graphPath = join(cwd, ".rivet", "graph.json");
+  if (!existsSync(graphPath)) return null;
+  try {
+    return JSON.parse(readFileSync(graphPath, "utf8")) as VerifiedTraceabilityGraph;
+  } catch {
+    return null;
+  }
+}
+
+/** `rivet guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green. */
 export function guardPr(): void {
   const cwd = process.cwd();
-  const graphPath = join(cwd, ".rivet", "graph.json");
-  if (!existsSync(graphPath)) {
-    console.log(pc.dim("rivet guard: no .rivet/graph.json here — nothing to enforce"));
+  if (!existsSync(join(cwd, ".rivet"))) {
+    console.log(pc.dim("rivet guard: not a Rivet project — nothing to enforce"));
     return;
   }
-  const graph = JSON.parse(readFileSync(graphPath, "utf8")) as VerifiedTraceabilityGraph;
-  const validates = graph.edges.filter((e) => e.kind === "validates");
-  const bad = validates.filter((e) => e.proof !== "green");
-  if (bad.length === 0) {
-    console.log(pc.green(`✓ rivet guard: all ${validates.length} proof(s) green — PR may proceed`));
+  const verdict = gateVerdict(gateGraph(cwd));
+  if (verdict.ok) {
+    console.log(
+      verdict.zeroProofs
+        ? pc.yellow("rivet guard: graph has zero bound proofs — nothing to enforce (bind @checks!)")
+        : pc.green("✓ rivet guard: every proof green — PR may proceed"),
+    );
     return;
   }
-  console.error(pc.red(`✗ rivet guard: ${bad.length}/${validates.length} proof(s) not green:`));
-  for (const e of bad) console.error(pc.red(`   ${e.proof.toUpperCase()} ${e.lastCheck?.ref ?? e.from}`));
-  console.error(pc.dim("   re-run checks (rivet check run …) and rebuild (rivet graph build)"));
+  console.error(pc.red("✗ rivet guard: blocked:"));
+  for (const r of verdict.reasons) console.error(pc.red(`   ${r}`));
   process.exitCode = 2;
 }
 
 function gitHead(cwd: string): string | undefined {
   const res = spawnSync("git", ["rev-parse", "HEAD"], { cwd, stdio: ["ignore", "pipe", "ignore"] });
   return res.status === 0 ? res.stdout.toString().trim() : undefined;
+}
+
+/**
+ * `rivet unlock <paths...> --minutes N` — GATE-PROTECT-01's human escape hatch: a time-boxed,
+ * journaled unlock for protected files (specs / bound green tests / gate config). The unlock is
+ * itself an auditable governance event — nothing is ever silently weakened.
+ */
+export function unlock(paths: string[], opts: { minutes?: string }): void {
+  const cwd = process.cwd();
+  const minutes = Math.max(1, Number(opts.minutes ?? 30) || 30);
+  const until = new Date(Date.now() + minutes * 60_000).toISOString();
+  writeFileSync(join(cwd, ".rivet", "unlock.json"), JSON.stringify({ paths, until }, null, 2) + "\n");
+  journal(cwd).append("note", { kind: "governance.unlock", paths, until });
+  console.log(pc.yellow(`🔓 unlocked for ${minutes}m (until ${until}):`));
+  for (const p of paths) console.log(pc.dim(`   ${p}`));
+  console.log(pc.dim("   journaled as a governance event — gates re-engage on expiry"));
 }

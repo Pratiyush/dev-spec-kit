@@ -24,14 +24,14 @@
   are never enforced; bare `task create` on an existing id resets status and wipes recorded proofs.
 - Lesson: the spec is only the source of truth if re-derivation diffs bindings into existing tasks,
   and `task.created` folds as create-if-absent — recorded evidence must be unclobberable.
-- Promoted to: OPEN → task FIX-SPECSYNC-01
+- Promoted to: check:test/spec-sync.test.ts (HARDENED via FIX-SPECSYNC-01 — create() refuses duplicates, fold is create-if-absent, syncBindings diffs spec refs in and reopens done tasks with new obligations)
 
 ## 2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩
 - Trigger: review #4/#8/#5 (confirmed): malformed config.json or a data-less journal line → raw
   stack traces across commands; missing runner binary (ENOENT, status null) recorded as a RED proof.
 - Lesson: parse all inputs defensively with one helper + clear message; spawn errors/status null are
   tooling errors, never proofs — they must not enter the graph.
-- Promoted to: OPEN → task FIX-ROBUST-01
+- Promoted to: check:test/robust.test.ts (HARDENED via FIX-ROBUST-01 — one defensive loadConfig + safe() CLI wrapper, data-less journal lines tolerated, RunnerUnavailableError instead of fake red proofs; timeout stays a red proof)
 
 ## 2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩
 - Trigger: review #6 (confirmed bypasses): `gh "pr" create`, `$GH pr create`, `gh api …/pulls`, and
@@ -40,7 +40,7 @@
 - Lesson: one shared rule — "anything not green blocks" — applied by the hook, `guard pr`, and
   `rivet pr` alike; in a Rivet project a MISSING graph blocks (state absence ≠ permission);
   `rivet pr --create` must run the same guard it advertises.
-- Promoted to: OPEN → task FIX-GATE-01
+- Promoted to: check:test/gate.test.ts (HARDENED via FIX-GATE-01 — shared gateVerdict across hook/guard/pr, missing or unreadable graph BLOCKS, quote-stripped matcher + gh api …/pulls; $VAR indirection documented as known limit)
 
 ## 2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩
 - Trigger: review #7 (confirmed): PR body counts a criterion proven if ANY binding is green; one
@@ -80,8 +80,8 @@
   checks could not see (semantics, robustness, bypasses).
 - Lesson: evidence-bound done ≠ reviewed. The rivet-review skill's two-pass doctrine is load-
   bearing, not ceremony; schedule adversarial review at feature boundaries.
-- Promoted to: constitution candidate — "every feature gets an adversarial review pass before PR"
-  (awaiting Pratiyush's approval)
+- Promoted to: constitution#hard-rules — "every feature gets an adversarial review pass before PR"
+  (APPROVED by Pratiyush 2026-06-11; recorded in .rivet/constitution.md)
 
 ## 2026-06-11 The 17-gate proposal: menu yes, mandate no
 - Trigger: ChatGPT proposed 17 mandatory sequential checkbox gates before any coding.
@@ -107,7 +107,7 @@
   configs"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.
 - Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config
   require an explicit human-approved unlock — the moat must not be editable by the thing it gates.
-- Promoted to: OPEN → task GATE-PROTECT-01 (P1-adjacent)
+- Promoted to: check:test/protect.test.ts (HARDENED via GATE-PROTECT-01 — specs/config immutable while tasks in flight; bound test files lock AFTER their ref goes green (pre-green TDD stays free); human escape hatch `rivet unlock` is time-boxed + journaled)
 
 ## 2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules
 - Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; "anything touching a

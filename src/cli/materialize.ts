@@ -9,7 +9,8 @@ import { buildVTG } from "../engine/graph/build.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import type { Requirement } from "../engine/spec/ears.js";
 import { graphifyInstalled, refreshCodeGraph, loadCodeGraph, isStale, type CodeGraph } from "../engine/graphify/index.js";
-import { parseConfig, type RivetConfig } from "../config/schema.js";
+import { type RivetConfig } from "../config/schema.js";
+import { loadConfig } from "./config-io.js";
 
 /** Shared materialization: specs + journal + (optionally refreshed) code graph -> VTG on disk. */
 export interface Materialized {
@@ -51,8 +52,7 @@ export function journalFor(cwd: string): Journal {
 }
 
 export function configFor(cwd: string): RivetConfig {
-  const p = join(cwd, ".rivet", "config.json");
-  return parseConfig(existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : {});
+  return loadConfig(cwd); // FIX-ROBUST-01: one defensive loader everywhere
 }
 
 export function gitHead(cwd: string): string | undefined {

@@ -12,6 +12,7 @@ import { dirname } from "node:path";
 export type JournalEventType =
   | "task.created"
   | "task.status"
+  | "task.bindings"
   | "check.run"
   | "approval.recorded"
   | "cli.run"
@@ -43,7 +44,10 @@ export class Journal {
       const trimmed = line.trim();
       if (!trimmed) continue;
       try {
-        out.push(JSON.parse(trimmed) as JournalEvent);
+        const parsed = JSON.parse(trimmed) as JournalEvent;
+        if (typeof parsed.type !== "string") continue; // not an event line
+        parsed.data = parsed.data ?? {}; // FIX-ROBUST-01: a data-less event must not brick folds
+        out.push(parsed);
       } catch {
         // A torn/corrupt line (e.g. crash mid-write) must not poison resume; skip it.
       }

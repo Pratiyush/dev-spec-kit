@@ -48,3 +48,47 @@
 {"at":"2026-06-11T19:40:41.546Z","type":"task.status","data":{"id":"FIX-PRMATH-01","status":"done"}}
 {"at":"2026-06-11T19:40:41.603Z","type":"cli.run","data":{"command":"task done","args":["FIX-PROOF-01"]}}
 {"at":"2026-06-11T19:40:41.605Z","type":"task.status","data":{"id":"FIX-PROOF-01","status":"done"}}
+{"at":"2026-06-11T19:54:44.021Z","type":"cli.run","data":{"command":"task create","args":["FIX-ROBUST-01","inputs never crash; infra errors are not proofs"]}}
+{"at":"2026-06-11T19:54:44.022Z","type":"task.created","data":{"id":"FIX-ROBUST-01","title":"inputs never crash; infra errors are not proofs","boundChecks":["test/robust.test.ts"]}}
+{"at":"2026-06-11T19:54:44.081Z","type":"cli.run","data":{"command":"task create","args":["FIX-SPECSYNC-01","spec re-derive syncs bindings; evidence unclobberable"]}}
+{"at":"2026-06-11T19:54:44.081Z","type":"task.created","data":{"id":"FIX-SPECSYNC-01","title":"spec re-derive syncs bindings; evidence unclobberable","boundChecks":["test/spec-sync.test.ts"]}}
+{"at":"2026-06-11T19:54:44.139Z","type":"cli.run","data":{"command":"task create","args":["FIX-GATE-01","one not-green-blocks predicate; missing graph blocks"]}}
+{"at":"2026-06-11T19:54:44.140Z","type":"task.created","data":{"id":"FIX-GATE-01","title":"one not-green-blocks predicate; missing graph blocks","boundChecks":["test/gate.test.ts"]}}
+{"at":"2026-06-11T19:54:44.199Z","type":"cli.run","data":{"command":"task create","args":["GATE-PROTECT-01","in-flight specs/tests/config need human unlock"]}}
+{"at":"2026-06-11T19:54:44.199Z","type":"task.created","data":{"id":"GATE-PROTECT-01","title":"in-flight specs/tests/config need human unlock","boundChecks":["test/protect.test.ts"]}}
+{"at":"2026-06-11T19:54:44.258Z","type":"cli.run","data":{"command":"task start","args":["FIX-ROBUST-01"]}}
+{"at":"2026-06-11T19:54:44.259Z","type":"task.status","data":{"id":"FIX-ROBUST-01","status":"in_progress"}}
+{"at":"2026-06-11T19:54:44.317Z","type":"cli.run","data":{"command":"task start","args":["FIX-SPECSYNC-01"]}}
+{"at":"2026-06-11T19:54:44.318Z","type":"task.status","data":{"id":"FIX-SPECSYNC-01","status":"in_progress"}}
+{"at":"2026-06-11T19:54:44.375Z","type":"cli.run","data":{"command":"task start","args":["FIX-GATE-01"]}}
+{"at":"2026-06-11T19:54:44.376Z","type":"task.status","data":{"id":"FIX-GATE-01","status":"in_progress"}}
+{"at":"2026-06-11T19:54:44.432Z","type":"cli.run","data":{"command":"task start","args":["GATE-PROTECT-01"]}}
+{"at":"2026-06-11T19:54:44.433Z","type":"task.status","data":{"id":"GATE-PROTECT-01","status":"in_progress"}}
+{"at":"2026-06-11T19:56:48.955Z","type":"cli.run","data":{"command":"check run","args":["FIX-ROBUST-01 test/robust.test.ts",""]}}
+{"at":"2026-06-11T19:56:53.559Z","type":"cli.run","data":{"command":"check run","args":["FIX-SPECSYNC-01 test/spec-sync.test.ts",""]}}
+{"at":"2026-06-11T19:56:58.160Z","type":"cli.run","data":{"command":"check run","args":["FIX-GATE-01 test/gate.test.ts",""]}}
+{"at":"2026-06-11T19:57:02.747Z","type":"cli.run","data":{"command":"check run","args":["GATE-PROTECT-01 test/protect.test.ts",""]}}
+{"at":"2026-06-11T19:57:28.979Z","type":"cli.run","data":{"command":"check run","args":["FIX-ROBUST-01","test/robust.test.ts"]}}
+{"at":"2026-06-11T19:57:31.219Z","type":"check.run","data":{"taskId":"FIX-ROBUST-01","result":{"ref":"test/robust.test.ts","passed":false,"at":"2026-06-11T19:57:31.198Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"1239db598d82d4581ab3bc5cc9a357e4cc5d6375","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T19:57:31.279Z","type":"cli.run","data":{"command":"check run","args":["FIX-SPECSYNC-01","test/spec-sync.test.ts"]}}
+{"at":"2026-06-11T19:57:33.625Z","type":"check.run","data":{"taskId":"FIX-SPECSYNC-01","result":{"ref":"test/spec-sync.test.ts","passed":false,"at":"2026-06-11T19:57:33.605Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"5a927f7eed26145202a46d6d6266a35782a39c13","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T19:57:33.684Z","type":"cli.run","data":{"command":"check run","args":["FIX-GATE-01","test/gate.test.ts"]}}
+{"at":"2026-06-11T19:57:35.923Z","type":"check.run","data":{"taskId":"FIX-GATE-01","result":{"ref":"test/gate.test.ts","passed":false,"at":"2026-06-11T19:57:35.905Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"aa24f6d3c7b962c32b8dff39b6f6b85e53eb29bf","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T19:57:35.983Z","type":"cli.run","data":{"command":"check run","args":["GATE-PROTECT-01","test/protect.test.ts"]}}
+{"at":"2026-06-11T19:57:38.256Z","type":"check.run","data":{"taskId":"GATE-PROTECT-01","result":{"ref":"test/protect.test.ts","passed":false,"at":"2026-06-11T19:57:38.236Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"30e57927ce3e49da7659f91647f1a37adf0d78e2","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:03:39.355Z","type":"cli.run","data":{"command":"check run","args":["FIX-ROBUST-01","test/robust.test.ts"]}}
+{"at":"2026-06-11T20:03:40.216Z","type":"check.run","data":{"taskId":"FIX-ROBUST-01","result":{"ref":"test/robust.test.ts","passed":true,"at":"2026-06-11T20:03:40.197Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"fa8bf773caf100fb0514971f21220db23feb7231","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:03:40.277Z","type":"cli.run","data":{"command":"check run","args":["FIX-SPECSYNC-01","test/spec-sync.test.ts"]}}
+{"at":"2026-06-11T20:03:40.868Z","type":"check.run","data":{"taskId":"FIX-SPECSYNC-01","result":{"ref":"test/spec-sync.test.ts","passed":true,"at":"2026-06-11T20:03:40.850Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"d8286eac86b2d6e8251dadb863d3c1b604fa97ea","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:03:40.926Z","type":"cli.run","data":{"command":"check run","args":["FIX-GATE-01","test/gate.test.ts"]}}
+{"at":"2026-06-11T20:03:41.725Z","type":"check.run","data":{"taskId":"FIX-GATE-01","result":{"ref":"test/gate.test.ts","passed":true,"at":"2026-06-11T20:03:41.706Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"0680725c0d9c424f3beb6c9d251d9365ec4faabe","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:03:41.784Z","type":"cli.run","data":{"command":"check run","args":["GATE-PROTECT-01","test/protect.test.ts"]}}
+{"at":"2026-06-11T20:03:42.528Z","type":"check.run","data":{"taskId":"GATE-PROTECT-01","result":{"ref":"test/protect.test.ts","passed":true,"at":"2026-06-11T20:03:42.509Z","sha":"c9271bc32cb1dad1c6fc4f5f62676e501db3433f","tree":"ab79494dc3ad70caa7e28369cfdb4ff6e417ba65","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:03:54.473Z","type":"cli.run","data":{"command":"task done","args":["FIX-ROBUST-01"]}}
+{"at":"2026-06-11T20:03:54.474Z","type":"task.status","data":{"id":"FIX-ROBUST-01","status":"done"}}
+{"at":"2026-06-11T20:03:54.535Z","type":"cli.run","data":{"command":"task done","args":["FIX-SPECSYNC-01"]}}
+{"at":"2026-06-11T20:03:54.537Z","type":"task.status","data":{"id":"FIX-SPECSYNC-01","status":"done"}}
+{"at":"2026-06-11T20:03:54.599Z","type":"cli.run","data":{"command":"task done","args":["FIX-GATE-01"]}}
+{"at":"2026-06-11T20:03:54.601Z","type":"task.status","data":{"id":"FIX-GATE-01","status":"done"}}
+{"at":"2026-06-11T20:03:54.665Z","type":"cli.run","data":{"command":"task done","args":["GATE-PROTECT-01"]}}
+{"at":"2026-06-11T20:03:54.667Z","type":"task.status","data":{"id":"GATE-PROTECT-01","status":"done"}}

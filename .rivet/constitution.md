@@ -13,3 +13,6 @@
 - Commits are authored by the human, never co-authored by the AI.
 - A task is not "done" until its bound checks pass (evidence-bound completion).
 - Reuse existing code before writing new; follow the surrounding patterns.
+- Every feature gets an adversarial review pass before PR — verification and review catch
+  different bug classes; neither substitutes for the other.
+  (Promoted from learnings 2026-06-11; APPROVED by Pratiyush 2026-06-11.)

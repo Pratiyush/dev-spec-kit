@@ -83,6 +83,14 @@ export interface RunOptions {
   sha?: string;
 }
 
+/** A runner that could not execute at all — a tooling problem, NEVER recorded as a proof. */
+export class RunnerUnavailableError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "RunnerUnavailableError";
+  }
+}
+
 /** Execute a resolved command and convert its exit code into a CheckResult (the proof). */
 export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: RunOptions): CheckResult {
   const res = spawnSync(resolved.cmd, resolved.args, {
@@ -91,6 +99,14 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
     stdio: ["ignore", "pipe", "pipe"],
     env: { ...process.env, ...resolved.env },
   });
+  // FIX-ROBUST-01: a missing/unspawnable runner is an infra error, not a red proof. A TIMEOUT,
+  // by contrast, means the test ran and hung — a hung test IS a failing test.
+  const timedOut = (res.error as NodeJS.ErrnoException | undefined)?.code === "ETIMEDOUT";
+  if (!timedOut && (res.error || res.status === null)) {
+    throw new RunnerUnavailableError(
+      `cannot execute '${resolved.cmd}': ${res.error?.message ?? `terminated by ${res.signal ?? "unknown signal"}`} — fix the tooling; nothing was recorded`,
+    );
+  }
   const passed = res.status === 0;
   // Proof identity = the content actually tested (tree hash), not just whatever HEAD was.
   const tree = gitTreeHash(opts.cwd);

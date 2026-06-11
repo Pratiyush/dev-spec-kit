@@ -33,8 +33,12 @@ function describeEvent(e: JournalEvent): string {
       return `${d.status === "done" ? "🏁" : "🔁"} task ${String(d.id)} → ${String(d.status)}`;
     case "approval.recorded":
       return `🔏 approval by ${String(d.approver)} — ${((d.taskIds as string[]) ?? []).join(", ")}`;
+    case "task.bindings":
+      return `🔗 task ${String(d.id)} bindings → [${((d.boundChecks as string[]) ?? []).join(", ")}]`;
     case "note":
       return `📝 ${JSON.stringify(d)}`;
+    default:
+      return `❓ ${e.type} ${JSON.stringify(d)}`;
   }
 }
 

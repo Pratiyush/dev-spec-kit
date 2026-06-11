@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 /**
- * Rivet PreToolUse guard — the hard gate no SDD tool ships.
+ * Rivet PreToolUse guard — PR creation (FIX-GATE-01 hardened).
  *
- * Self-contained (no deps, no build) so it works straight from a plugin install. Reads the hook
- * payload on stdin; when the Bash command is about to create a PR (`gh pr create` / `glab mr create`)
- * in a Rivet project whose Verified Traceability Graph has non-green proofs, it exits 2 — which
- * blocks the tool call and feeds the reason back to the agent. Everything else passes through.
+ * Self-contained mirror of src/engine/gate.ts gateVerdict (keep in sync): in a Rivet project,
+ * "anything not green blocks" — and a MISSING or unreadable graph blocks too (state absence is not
+ * permission). Matcher is quote-stripped and also catches the REST route (`gh api …/pulls`).
+ * Known limit: shell variable indirection ($GH pr create) cannot be resolved here; GATE-PROTECT
+ * and CI-side checks are the backstop. Exit 2 blocks the tool call.
  */
 import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -22,44 +23,54 @@ let payload = {};
 try {
   payload = JSON.parse(readStdin() || "{}");
 } catch {
-  process.exit(0); // malformed payload — never break unrelated tool calls
-}
-
-const toolName = payload.tool_name ?? payload.toolName;
-const command = payload.tool_input?.command ?? "";
-if (toolName !== "Bash" || !/\b(gh\s+pr\s+create|glab\s+mr\s+create)\b/.test(command)) {
   process.exit(0);
 }
 
-// Find the Rivet graph upward from the hook's cwd (worktrees, monorepos).
+const toolName = payload.tool_name ?? payload.toolName;
+const rawCommand = payload.tool_input?.command ?? "";
+if (toolName !== "Bash") process.exit(0);
+
+// Strip quotes so `gh "pr" create` can't slip past; collapse whitespace.
+const command = String(rawCommand).replace(/["']/g, "").replace(/\s+/g, " ");
+const PR_RE = /\bgh\s+pr\s+create\b|\bglab\s+mr\s+create\b|\bgh\s+api\s+\S*\/pulls\b/i;
+if (!PR_RE.test(command)) process.exit(0);
+
+// Find the Rivet project root (the .rivet DIR — not the graph) upward from cwd.
 let dir = payload.cwd || process.cwd();
-let graphPath = null;
+let rivetRoot = null;
 for (let i = 0; i < 10; i++) {
-  const candidate = join(dir, ".rivet", "graph.json");
-  if (existsSync(candidate)) {
-    graphPath = candidate;
+  if (existsSync(join(dir, ".rivet"))) {
+    rivetRoot = dir;
     break;
   }
   const parent = dirname(dir);
   if (parent === dir) break;
   dir = parent;
 }
-if (!graphPath) process.exit(0); // not a Rivet project — do not interfere
+if (!rivetRoot) process.exit(0); // not a Rivet project — do not interfere
+
+const block = (msg) => {
+  console.error(`rivet guard: blocking PR creation — ${msg}`);
+  process.exit(2);
+};
+
+const graphPath = join(rivetRoot, ".rivet", "graph.json");
+if (!existsSync(graphPath)) block("no .rivet/graph.json. Run `rivet graph build` first (state absence is not permission).");
 
 let graph;
 try {
   graph = JSON.parse(readFileSync(graphPath, "utf8"));
 } catch {
-  process.exit(0);
+  block("unreadable .rivet/graph.json. Rebuild it with `rivet graph build`.");
 }
 
 const validates = (graph.edges ?? []).filter((e) => e.kind === "validates");
+if (validates.length === 0) process.exit(0); // nothing bound — nothing to enforce
 const bad = validates.filter((e) => e.proof !== "green");
 if (bad.length === 0) process.exit(0);
 
-console.error(
-  `rivet guard: blocking PR creation — ${bad.length}/${validates.length} proof(s) not green:\n` +
+block(
+  `${bad.length}/${validates.length} proof(s) not green:\n` +
     bad.map((e) => `  ${String(e.proof).toUpperCase()} ${e.lastCheck?.ref ?? e.from}`).join("\n") +
-    `\nRe-run the checks (rivet check run …) and rebuild the graph (rivet graph build) first.`,
+    `\nRe-verify (rivet drift / rivet check run …) and rebuild (rivet graph build) first.`,
 );
-process.exit(2);

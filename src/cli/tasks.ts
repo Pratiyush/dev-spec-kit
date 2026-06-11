@@ -1,11 +1,10 @@
 import { join } from "node:path";
-import { existsSync, readFileSync } from "node:fs";
 import pc from "picocolors";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, type RunnerOverride } from "../engine/verify/runner.js";
 import { runWithRetry } from "../engine/verify/retry.js";
-import { parseConfig } from "../config/schema.js";
+import { loadConfig } from "./config-io.js";
 import { renderProgress } from "./progress.js";
 
 /**
@@ -38,8 +37,7 @@ export function taskStart(id: string): void {
 
 export function taskDone(id: string): void {
   const cwd = process.cwd();
-  const configPath = join(cwd, ".rivet", "config.json");
-  const config = parseConfig(existsSync(configPath) ? JSON.parse(readFileSync(configPath, "utf8")) : {});
+  const config = loadConfig(cwd);
   try {
     const t = store(cwd).markDone(id);
     console.log(pc.green(`✓ Task ${t.id} DONE`) + pc.dim(" — every bound check has a passing run"));
@@ -65,8 +63,7 @@ export function taskDone(id: string): void {
 export function checkRun(taskId: string, ref: string, stackName: string): void {
   const cwd = process.cwd();
   // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
-  const configPath = join(cwd, ".rivet", "config.json");
-  const config = parseConfig(existsSync(configPath) ? JSON.parse(readFileSync(configPath, "utf8")) : {});
+  const config = loadConfig(cwd);
   const override: RunnerOverride | undefined = config.verify.runners[stackName];
   if (!override && !BUILTIN_STACKS.includes(stackName as (typeof BUILTIN_STACKS)[number])) {
     console.error(
