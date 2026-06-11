@@ -1,0 +1,3 @@
+# esbuild's postinstall fetches its platform binary — approved.
+allowBuilds:
+  esbuild: true

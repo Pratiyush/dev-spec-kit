@@ -41,6 +41,7 @@ export function runInit(opts: InitOptions): void {
   }
 
   mkdirSync(join(rivetDir, "specs"), { recursive: true });
+  mkdirSync(join(rivetDir, "intake"), { recursive: true });
   mkdirSync(join(rivetDir, "cache"), { recursive: true });
 
   writeFileSync(configPath, JSON.stringify(defaultConfig(), null, 2) + "\n");

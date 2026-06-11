@@ -1,8 +1,10 @@
 import { join } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
 import pc from "picocolors";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
-import { runCheck, type Stack } from "../engine/verify/runner.js";
+import { runCheck, BUILTIN_STACKS, type RunnerOverride } from "../engine/verify/runner.js";
+import { parseConfig } from "../config/schema.js";
 
 /**
  * CLI surface for the evidence-bound task flow:
@@ -48,15 +50,21 @@ export function taskDone(id: string): void {
 }
 
 export function checkRun(taskId: string, ref: string, stackName: string): void {
-  const stacks: Stack[] = ["java-maven", "node-vitest", "node-jest", "python-pytest"];
-  if (!stacks.includes(stackName as Stack)) {
-    console.error(pc.red(`unknown --stack '${stackName}' (expected: ${stacks.join(", ")})`));
+  const cwd = process.cwd();
+  // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
+  const configPath = join(cwd, ".rivet", "config.json");
+  const config = parseConfig(existsSync(configPath) ? JSON.parse(readFileSync(configPath, "utf8")) : {});
+  const override: RunnerOverride | undefined = config.verify.runners[stackName];
+  if (!override && !BUILTIN_STACKS.includes(stackName as (typeof BUILTIN_STACKS)[number])) {
+    console.error(
+      pc.red(`unknown --stack '${stackName}'`) +
+        pc.dim(` — built-ins: ${BUILTIN_STACKS.join(", ")}; or define it in .rivet/config.json verify.runners`),
+    );
     process.exitCode = 2;
     return;
   }
-  const cwd = process.cwd();
-  console.log(pc.dim(`running ${ref} via ${stackName} …`));
-  const result = runCheck({ kind: "unit", ref }, stackName as Stack, { cwd });
+  console.log(pc.dim(`running ${ref} via ${stackName}${override ? " (config runner)" : ""} …`));
+  const result = runCheck({ kind: "unit", ref }, stackName, { cwd }, override);
   store(cwd).recordCheck(taskId, result);
   if (result.passed) {
     console.log(pc.green(`✓ PASS ${ref}`) + pc.dim(result.sha ? ` @ ${result.sha.slice(0, 8)}` : ""));

@@ -26,6 +26,31 @@ describe("resolveCommand — stack mappings", () => {
   });
 });
 
+describe("resolveCommand — config-supplied runners (code never changes, only input)", () => {
+  it("substitutes {ref}/{file}/{name} placeholders in an override", () => {
+    const r = resolveCommand(
+      { kind: "unit", ref: "pkg/foo_test.go::TestBar" },
+      "go-test",
+      { cmd: "go", args: ["test", "{file}", "-run={name}"] },
+    );
+    expect(r.cmd).toBe("go");
+    expect(r.args).toEqual(["test", "pkg/foo_test.go", "-run=TestBar"]);
+  });
+
+  it("drops {name}-bearing args when the ref has no name part", () => {
+    const r = resolveCommand(
+      { kind: "unit", ref: "pkg/foo_test.go" },
+      "go-test",
+      { cmd: "go", args: ["test", "{file}", "-run={name}"] },
+    );
+    expect(r.args).toEqual(["test", "pkg/foo_test.go"]);
+  });
+
+  it("throws a helpful error for an unknown stack with no override", () => {
+    expect(() => resolveCommand({ kind: "unit", ref: "x" }, "go-test")).toThrowError(/verify\.runners/);
+  });
+});
+
 describe("execute — real exit codes become proof", () => {
   it("exit 0 => passed", () => {
     const result = execute(

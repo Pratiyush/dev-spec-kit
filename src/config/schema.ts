@@ -128,6 +128,13 @@ export const RivetConfigSchema = z
         security: z.enum(["off", "pre-pr", "on-demand"]).default("on-demand"),
         lintTypes: z.enum(["part-of-done", "separate"]).default("part-of-done"),
         flaky: z.enum(["retry-flag", "quarantine"]).default("retry-flag"),
+        /**
+         * Custom check-runner commands, keyed by stack name — the tool's code never changes for a
+         * new stack; only this input does. Args support {ref}, {file}, {name} placeholders
+         * (use the combined `--flag={name}` form so name-less refs drop cleanly).
+         * Overrides built-ins when the key matches; unknown keys define brand-new stacks.
+         */
+        runners: z.record(z.object({ cmd: z.string(), args: z.array(z.string()) })).default({}),
       })
       .default({}),
 

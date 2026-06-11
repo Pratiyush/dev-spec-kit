@@ -107,9 +107,28 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   }
 }
 
-/** `rivet route "<request>"` — the front door: pick the mode, show the why, honor config. */
-export function route(text: string, opts: { mode?: string }): void {
+/**
+ * `rivet route "<request>"` / `rivet route --file <idea.md>` — the front door.
+ * Ideas live as external files (.rivet/intake/*.md, optional YAML frontmatter); the tool only ever
+ * consumes input, it is never edited per project.
+ */
+export function route(textArg: string | undefined, opts: { mode?: string; file?: string }): void {
   const cwd = process.cwd();
+  let text = textArg ?? "";
+  if (opts.file) {
+    if (!existsSync(opts.file)) {
+      console.error(pc.red(`no such intake file: ${opts.file}`));
+      process.exitCode = 1;
+      return;
+    }
+    // Strip YAML frontmatter; route on the body.
+    text = readFileSync(opts.file, "utf8").replace(/^---\n[\s\S]*?\n---\n/, "").trim();
+  }
+  if (!text) {
+    console.error(pc.red("provide a request: rivet route \"<text>\" or rivet route --file .rivet/intake/<idea>.md"));
+    process.exitCode = 1;
+    return;
+  }
   const configPath = join(cwd, ".rivet", "config.json");
   const config = parseConfig(existsSync(configPath) ? JSON.parse(readFileSync(configPath, "utf8")) : {});
 

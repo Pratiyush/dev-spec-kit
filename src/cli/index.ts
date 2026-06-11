@@ -90,9 +90,10 @@ program
 program
   .command("route")
   .description("The front door — classify a request into research | quick | full-spec (config-aware)")
-  .argument("<request>", "the raw request text")
+  .argument("[request]", "the raw request text (or use --file)")
   .option("-m, --mode <mode>", "override: research | quick | full-spec")
-  .action((text: string, opts: { mode?: string }) => route(text, opts));
+  .option("-f, --file <path>", "route an external idea file (e.g. .rivet/intake/<idea>.md)")
+  .action((text: string | undefined, opts: { mode?: string; file?: string }) => route(text, opts));
 
 const guard = program.command("guard").description("Hard gates (hook-friendly; exit 2 = block)");
 guard

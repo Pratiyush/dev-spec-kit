@@ -10,11 +10,18 @@ import type { CheckResult } from "../graph/types.js";
  */
 
 export type Stack = "java-maven" | "node-vitest" | "node-jest" | "python-pytest";
+export const BUILTIN_STACKS: readonly Stack[] = ["java-maven", "node-vitest", "node-jest", "python-pytest"];
 
 export interface ResolvedCommand {
   cmd: string;
   args: string[];
   env?: Record<string, string>;
+}
+
+/** A config-supplied runner: new stacks are pure input, never code changes. */
+export interface RunnerOverride {
+  cmd: string;
+  args: string[];
 }
 
 /**
@@ -24,9 +31,24 @@ export interface ResolvedCommand {
  *  - node-vitest:   "file::name"        -> vitest run file -t name
  *  - node-jest:     "file::name"        -> jest file -t name
  *  - python-pytest: "file::test"        -> python3 -m pytest file::test
+ * An override (from `.rivet/config.json` verify.runners) replaces or defines a stack; its args may
+ * use {ref}, {file}, {name} placeholders — args referencing {name} are dropped when the ref has no
+ * `::name` part.
  */
-export function resolveCommand(binding: CheckBinding, stack: Stack): ResolvedCommand {
-  switch (stack) {
+export function resolveCommand(binding: CheckBinding, stack: string, override?: RunnerOverride): ResolvedCommand {
+  if (override) {
+    const [file, name] = splitRef(binding.ref);
+    const args = override.args
+      .filter((a) => !(a.includes("{name}") && name === undefined))
+      .map((a) => a.replaceAll("{ref}", binding.ref).replaceAll("{file}", file).replaceAll("{name}", name ?? ""));
+    return { cmd: override.cmd, args };
+  }
+  if (!BUILTIN_STACKS.includes(stack as Stack)) {
+    throw new Error(
+      `unknown stack '${stack}' — built-ins: ${BUILTIN_STACKS.join(", ")}; or define it in config verify.runners`,
+    );
+  }
+  switch (stack as Stack) {
     case "java-maven": {
       const env: Record<string, string> = {};
       // macOS Homebrew installs OpenJDK keg-only; honor an explicit JAVA_HOME, else use the keg path.
@@ -78,8 +100,8 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
 }
 
 /** Resolve + execute in one step. */
-export function runCheck(binding: CheckBinding, stack: Stack, opts: RunOptions): CheckResult {
-  return execute(binding, resolveCommand(binding, stack), opts);
+export function runCheck(binding: CheckBinding, stack: string, opts: RunOptions, override?: RunnerOverride): CheckResult {
+  return execute(binding, resolveCommand(binding, stack, override), opts);
 }
 
 function gitHead(cwd: string): string | undefined {

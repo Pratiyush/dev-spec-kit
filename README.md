@@ -29,13 +29,31 @@ pipeline only when a feature earns it).
 
 Run `rivet doctor` to check all of these.
 
+## The input contract — the tool never changes, only its inputs
+
+Rivet has three layers: **engine code** (changes only when Rivet evolves), **skills** (the tool's
+voice, versioned here under `skills/`), and **project inputs** — the only thing that changes per
+project, all under `.rivet/` in your repo:
+
+| Input | Format | Purpose |
+|---|---|---|
+| `.rivet/config.json` | JSON (zod-validated) | every policy knob — gates, TDD, runners, autonomy |
+| `.rivet/specs/*.md` | Markdown + EARS + `@check` | requirements; source of truth for tasks & proofs |
+| `.rivet/intake/*.md` | Markdown + YAML frontmatter | raw ideas/tickets, verbatim; `rivet route --file` |
+| `.rivet/constitution.md` | Markdown | the rules the agent must always obey |
+| `.rivet/learnings.md` | Markdown (append-only) | the retro loop; lessons promote into rules/checks |
+| `verify.runners` (in config) | JSON command templates | new test stacks with zero code changes |
+
+State Rivet writes (also in-repo, committed): `journal.jsonl`, `graph.json`, `approvals/`, `pr-body.md`.
+
 ## Develop
 
 ```bash
-npm install
-npm run build
-node dist/cli/index.js doctor    # or: npm run dev -- doctor
+pnpm install
+pnpm build
+node dist/cli/index.js doctor    # or: pnpm dev doctor
 node dist/cli/index.js init
+pnpm test
 ```
 
 ## Roadmap
