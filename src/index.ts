@@ -25,3 +25,4 @@ export * from "./engine/gatepacks.js";
 export * from "./engine/phase.js";
 export * from "./engine/lock.js";
 export * from "./engine/verify/applife.js";
+export * from "./engine/wave.js";

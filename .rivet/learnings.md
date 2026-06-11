@@ -154,3 +154,11 @@
   every enum the parser accepts needs at least one test using its trickiest member.
 - Confidence: high (reproduced; permanent test) · Scope: project
 - Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)
+
+## 2026-06-12 Test fixtures must pin every git assumption the host can override
+- Trigger: WAVE-01's fixture broke twice on this machine's `init.defaultBranch=master` — a push
+  refspec assumed a local `main`, and a bare origin's HEAD pointed at a branch we never pushed.
+- Lesson: fixtures that shell out to git must pin branch names (`init -b`, `push HEAD:<branch>`),
+  identity, and HEAD explicitly — host config is part of the environment under test.
+- Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)
+- Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)

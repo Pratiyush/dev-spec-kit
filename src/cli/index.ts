@@ -9,6 +9,8 @@ import { specTasks, approve, pr, route, guardPr, unlock } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
 import { logCmd } from "./log.js";
 import { resumeCmd } from "./resume.js";
+import { wavePlan, waveStart } from "./wave.js";
+import { boardCmd } from "./board-cmd.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -172,6 +174,22 @@ program
   .description("Blast radius of a code node — proven edges touching it + graphify reverse traversal")
   .argument("<label>", "code node label or id (e.g. GreetController)")
   .action(safe((label: string) => affected(label)));
+
+const wave = program.command("wave").description("Parallel waves — plan independence, dispatch worktrees");
+wave
+  .command("plan")
+  .description("Group pending tasks into waves (no shared bound-check files; cap = parallel.waveSize)")
+  .action(safe(() => wavePlan()));
+wave
+  .command("start")
+  .description("Create one worktree per task — fetch-first, branched from origin's CURRENT tip")
+  .argument("<ids...>")
+  .action(safe((ids: string[]) => waveStart(ids)));
+
+program
+  .command("board")
+  .description("Regenerate .rivet/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)")
+  .action(safe(() => boardCmd()));
 
 program
   .command("resume")

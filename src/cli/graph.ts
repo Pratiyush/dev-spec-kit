@@ -1,8 +1,9 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import pc from "picocolors";
-import { materialize } from "./materialize.js";
-import { summarize } from "../engine/graph/build.js";
+import { materialize, journalFor } from "./materialize.js";
+import { summarize, rollupRequirements } from "../engine/graph/build.js";
+import { writeBoards } from "./boards.js";
 import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
 import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
 
@@ -72,5 +73,8 @@ export function graphBuild(opts: { refresh?: boolean }): void {
       console.log(pc.dim(`  gate packs in force: ${packNames.join(", ")} — satisfied`));
     }
   }
+  // BOARDS-01: every graph build refreshes the generated boards — they can never drift from truth.
+  writeBoards(cwd, m.tasks, journalFor(cwd).read(), rollupRequirements(m.requirements, m.vtg));
+  console.log(pc.dim("  boards → .rivet/LEDGER.md · .rivet/TRACKING.md"));
   console.log("");
 }
