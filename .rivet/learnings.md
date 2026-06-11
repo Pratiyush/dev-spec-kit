@@ -243,3 +243,88 @@
 - Scope: project
 - Promoted to: OPEN (candidate fix mirrors FIX-PROOF-03: tree hash + dirty marker in the PR-body
   and LEDGER writers; note workflow.test.ts pins "@ abc12345" and will need the same update)
+
+## 2026-06-12 A broken session must cost zero re-orientation  ⟨P2⟩
+- Trigger: the notepad dogfood session died mid-batch on connectivity; `rivet status` + `rivet
+  resume` + the journal re-oriented a fresh session losslessly — twice in one day — but only
+  because a human knew to run them first.
+- Lesson: "resume-first after any break" is tool knowledge, not human knowledge — the workflow and
+  finish skills must state it as a hard first step so any agent session starts from recorded truth.
+- Confidence: high (two live recoveries) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-VERIFY-01 — skill text lands with W3)
+
+## 2026-06-12 Requirement ids are read by humans out of context — they must self-describe
+- Trigger: Pratiyush, reading boards/PR bodies from the notepad run: "Don't use R-VAULT etc — use
+  FULLY QUALIFIED NAMES." `R-` carries zero meaning to anyone who didn't write the parser.
+- Lesson: ids travel without their spec (PR bodies, LEDGER, dashboards, chat). The prefix must
+  carry the noun: REQUIREMENT_VAULT-01, NFR_PERF-01, ADR_STORAGE-01. Enforce as a lint
+  (configurable warn|error|off) — never break parsing of old specs.
+- Confidence: high (direct user feedback) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-IDS-01)
+
+## 2026-06-12 Edge-case coverage mandates in prose are ignorable — make absence detectable
+- Trigger: Pratiyush: "Use Gherkin test cases but cover more ground — 100%, edge cases etc,
+  every test has to be very solid." The spec-author skill already says "hunt unhappy paths";
+  nothing notices when a spec ships without a single failure criterion.
+- Lesson: a requirement with zero negative/failure criteria is an UNVERIFIED-shaped hole the
+  graph must flag, exactly like an unbound criterion. Gherkin (Scenario + Scenario Outline with
+  Examples) becomes first-class and the default; the floor is mechanical, on everywhere.
+- Confidence: high (direct user feedback + matches FLOOR-C instinct) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-GHERKIN-01)
+
+## 2026-06-12 A green task is not a green project — "Build ALL + run ALL kinds" needs one command
+- Trigger: Pratiyush: "Build ALL. Run All Type Test." Tasks prove their bound checks; nothing
+  proves the whole tree builds and every configured kind passes before a PR.
+- Lesson: one journaled `rivet verify` (build + every kind, full suites, report-all) carrying the
+  code-tree hash is the only honest PR precondition — and it must be a hard gate in guard-pr
+  (green + same tree), not skill prose.
+- Confidence: high (direct user feedback) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-VERIFY-01)
+
+## 2026-06-12 Post-task evidence must be scannable — table, not prose
+- Trigger: Pratiyush: "Tabular format of report after task." `task done` prints a progress bar;
+  the actual evidence (which checks, what kind, what proof, which tree) is in the journal where
+  nobody looks.
+- Lesson: the moment of "done" is when evidence must be shown: a 📋 table (Check | Kind | State |
+  Proof | Proven at) in the terminal AND persisted per-task in LEDGER.
+- Confidence: high (direct user feedback) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-REPORT-01)
+
+## 2026-06-12 Emoji are an event-type grammar — central map with a plain fallback
+- Trigger: Pratiyush: "Use more emojis, at least 6-10 more types." Current emoji are scattered
+  string literals; adding types means hunting call sites, and CI logs can't opt out.
+- Lesson: one emoji map keyed by event type (≥10 new: 🧪📋🧭✍️📦⏱️♻️🧰🔍🚀📝🧹), every renderer
+  reads it, and !TTY / NO_EMOJI=1 / --plain degrade to ASCII labels so logs stay greppable.
+- Confidence: high (direct user feedback) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-EMOJI-01)
+
+## 2026-06-12 Init must seed standards, not just folders — per-platform law packs
+- Trigger: Pratiyush: "If project is initialized, add best practices for different types of
+  projects — TypeScript and Electron, and multiple langs can be used in a project." Today
+  `rivet init` writes config + an empty laws file; quality standards stay in the human's head.
+- Lesson: `init --platforms` seeds scoped law packs (TypeScript/Electron/Java/Python/
+  quality-gates/polyglot), 100% free/OSS tools, each ending with "Bind these as Rivet checks"
+  wiring — standards arrive pre-wired to enforcement, and platforms is an ARRAY (polyglot is
+  normal, not an edge case).
+- Confidence: high (direct user feedback) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-INITPACKS-01)
+
+## 2026-06-12 The graph layer must not depend on someone else's pip package
+- Trigger: Pratiyush: clone github.com/safishamsi/graphify and create a modular TS counterpart
+  named **revitify**. Root cause chain: doctor's graphify hint already burned us twice
+  (typosquat-looking install auto-DENIED; star count rotted) — the dependency itself is the
+  liability, not just its hint.
+- Lesson: anything moat-adjacent (the visual/queryable graph) needs a native, in-repo provider.
+  revitify = packages/revitify workspace pkg, same output contract as graphify (graph.json /
+  graph.html / GRAPH_REPORT.md) so the engine swaps providers invisibly; external graphify stays
+  available behind config for those who want its full multi-modal power.
+- Confidence: high (two prior lessons + direct instruction) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-REVITIFY-01)
+
+## 2026-06-12 Depth on one harness beats breadth — say it out loud
+- Trigger: Pratiyush: "Focus it for only Claude Code now, later we extend it."
+- Lesson: docs/skills are already Claude-Code-only by construction; the README must SAY so
+  ("Built for Claude Code first; other assistants later.") so contributors don't generalize
+  early and dilute the hook/skill integration that is the moat.
+- Confidence: high (direct user feedback) · Scope: project
+- Promoted to: IN FLIGHT (this batch FEAT-CCFIRST-01)
