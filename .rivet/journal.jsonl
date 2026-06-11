@@ -179,3 +179,13 @@
 {"at":"2026-06-11T20:26:46.660Z","type":"cli.run","data":{"command":"task done","args":["SKILL-QA-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
 {"at":"2026-06-11T20:26:46.662Z","type":"task.status","data":{"id":"SKILL-QA-01","status":"done"}}
 {"at":"2026-06-11T20:26:46.733Z","type":"cli.run","data":{"command":"resume","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:29:31.193Z","type":"cli.run","data":{"command":"task create","args":["SCALE-01","P3: locking, fold cache, failure tails, anchor-by-path, audit gating"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:29:31.194Z","type":"task.created","data":{"id":"SCALE-01","title":"P3: locking, fold cache, failure tails, anchor-by-path, audit gating","boundChecks":["test/scale.test.ts"]}}
+{"at":"2026-06-11T20:29:31.264Z","type":"cli.run","data":{"command":"task start","args":["SCALE-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:29:31.265Z","type":"task.status","data":{"id":"SCALE-01","status":"in_progress"}}
+{"at":"2026-06-11T20:30:03.759Z","type":"cli.run","data":{"command":"check run","args":["SCALE-01","test/scale.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:30:04.351Z","type":"check.run","data":{"taskId":"SCALE-01","result":{"ref":"test/scale.test.ts","passed":false,"at":"2026-06-11T20:30:04.332Z","sha":"dbfea130b0041d92f8f0256e2a398290851d11fc","tree":"4744f4e3945f3e78be5777d899067e062413a34b","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:31:25.652Z","type":"cli.run","data":{"command":"check run","args":["SCALE-01","test/scale.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:31:26.712Z","type":"check.run","data":{"taskId":"SCALE-01","result":{"ref":"test/scale.test.ts","passed":true,"at":"2026-06-11T20:31:26.691Z","sha":"dbfea130b0041d92f8f0256e2a398290851d11fc","tree":"0a038ae6c1891096369cf91d81eda36bbbaa077b","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:31:26.780Z","type":"cli.run","data":{"command":"task done","args":["SCALE-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:31:26.783Z","type":"task.status","data":{"id":"SCALE-01","status":"done"}}

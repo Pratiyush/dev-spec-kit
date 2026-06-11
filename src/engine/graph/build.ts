@@ -40,11 +40,14 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
     }
   }
 
-  const codeByNormLabel = new Map<string, GraphNode>();
+  // SCALE-01: a label can collide (two Foo.java in different dirs) — keep ALL candidates and
+  // anchor to each, so ambiguity is visible in the graph instead of last-wins arbitrary.
+  const codeByNormLabel = new Map<string, GraphNode[]>();
   if (input.codeGraph) {
     for (const n of input.codeGraph.nodes) {
       nodes.push(n);
-      codeByNormLabel.set(n.label.toLowerCase(), n);
+      const key = n.label.toLowerCase();
+      (codeByNormLabel.get(key) ?? codeByNormLabel.set(key, []).get(key)!).push(n);
     }
   }
 
@@ -67,12 +70,13 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
           testNodes.set(binding.ref, test);
           nodes.push(test);
 
-          // Anchor the test to graphify's code node for its class file (e.g. "Class#m" -> class.java).
+          // Anchor the test to graphify's code node(s) for its class file ("Class#m" -> class.java).
           const className = binding.ref.split(/[#:]/)[0]!.split("/").pop()!;
-          const anchor =
+          const anchors =
             codeByNormLabel.get(`${className.toLowerCase()}.java`) ??
-            codeByNormLabel.get(className.toLowerCase());
-          if (anchor) edge(test.id, anchor.id, "dependsOn", "unproven");
+            codeByNormLabel.get(className.toLowerCase()) ??
+            [];
+          for (const anchor of anchors) edge(test.id, anchor.id, "dependsOn", "unproven");
         }
 
         const result = latest.get(binding.ref);

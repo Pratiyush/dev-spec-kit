@@ -72,7 +72,7 @@
 - Lesson: snapshot+tail folding; gate audit to mutating commands or honor memory.journal=
   "milestones"; capture truncated failure tails in CheckResult; anchor by source path; file locking
   before parallel waves ship.
-- Promoted to: OPEN → backlog (pre-P5 parallelism prerequisite)
+- Promoted to: check:test/scale.test.ts (HARDENED via SCALE-01 — withLock mkdir-mutex with stale-steal serializes journal appends across real processes; per-process (size,mtime)-keyed read cache; red proofs carry a 1500-char output tail; same-label code nodes each get anchor edges (ambiguity visible); memory.journal='milestones' skips read-only cli.run noise. Durable snapshot+tail folding deferred until journals measurably grow.)
 
 ## 2026-06-11 Verification and review catch DIFFERENT bug classes — keep both
 - Trigger: during construction, bound checks caught 3 real bugs (stale Boot-3 import, ANSI-split

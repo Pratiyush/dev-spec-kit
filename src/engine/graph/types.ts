@@ -62,6 +62,8 @@ export interface CheckResult {
   stack?: string;
   /** true when the run only passed after flaky retries. */
   flaky?: boolean;
+  /** Truncated stdout/stderr tail captured on FAILURE — the proof carries its own diagnostic. */
+  tail?: string;
 }
 
 export interface GraphEdge {

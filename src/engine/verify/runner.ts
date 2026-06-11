@@ -108,6 +108,12 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
     );
   }
   const passed = res.status === 0;
+  // SCALE-01: a red proof carries its own diagnostic — the truncated output tail.
+  let tail: string | undefined;
+  if (!passed) {
+    const combined = `${res.stdout?.toString() ?? ""}\n${res.stderr?.toString() ?? ""}`.trim();
+    if (combined) tail = combined.slice(-1500);
+  }
   // Proof identity = the content actually tested (tree hash), not just whatever HEAD was.
   const tree = gitTreeHash(opts.cwd);
   return {
@@ -117,6 +123,7 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
     sha: opts.sha ?? gitHead(opts.cwd),
     ...(tree ? { tree } : {}),
     dirty: isDirty(opts.cwd),
+    ...(tail ? { tail } : {}),
   };
 }
 

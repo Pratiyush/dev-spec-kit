@@ -23,3 +23,4 @@ export * from "./engine/protect.js";
 export * from "./engine/facts.js";
 export * from "./engine/gatepacks.js";
 export * from "./engine/phase.js";
+export * from "./engine/lock.js";

@@ -1,5 +1,11 @@
-import { appendFileSync, existsSync, readFileSync, mkdirSync } from "node:fs";
+import { appendFileSync, existsSync, readFileSync, mkdirSync, statSync } from "node:fs";
 import { dirname } from "node:path";
+import { withLock } from "../lock.js";
+
+/** SCALE-01: per-process read cache keyed by (size, mtime) — a command that folds the journal
+ *  several times reads the file once. Appends invalidate; growth from other processes is detected
+ *  by the stat key. */
+const readCache = new Map<string, { size: number; mtimeMs: number; events: JournalEvent[] }>();
 
 /**
  * The append-only action journal — Rivet's "never loses its place" spine.
@@ -45,7 +51,7 @@ export interface AppendOptions {
 export class Journal {
   constructor(private readonly path: string) {}
 
-  /** Append one event (atomic enough for a single-writer CLI; one line per event). */
+  /** Append one event under a cross-process lock — concurrent waves cannot tear lines. */
   append<T>(type: JournalEventType, data: T, opts?: AppendOptions): JournalEvent<T> {
     const event: JournalEvent<T> = {
       at: (opts?.at ?? new Date()).toISOString(),
@@ -54,13 +60,17 @@ export class Journal {
       ...(opts?.meta ? { meta: opts.meta } : {}),
     };
     mkdirSync(dirname(this.path), { recursive: true });
-    appendFileSync(this.path, JSON.stringify(event) + "\n");
+    withLock(this.path + ".lock", () => appendFileSync(this.path, JSON.stringify(event) + "\n"));
+    readCache.delete(this.path);
     return event;
   }
 
   /** Read every event in order. Tolerates a missing file (fresh project) and skips corrupt lines. */
   read(): JournalEvent[] {
     if (!existsSync(this.path)) return [];
+    const stat = statSync(this.path);
+    const cached = readCache.get(this.path);
+    if (cached && cached.size === stat.size && cached.mtimeMs === stat.mtimeMs) return cached.events;
     const out: JournalEvent[] = [];
     for (const line of readFileSync(this.path, "utf8").split("\n")) {
       const trimmed = line.trim();
@@ -74,6 +84,7 @@ export class Journal {
         // A torn/corrupt line (e.g. crash mid-write) must not poison resume; skip it.
       }
     }
+    readCache.set(this.path, { size: stat.size, mtimeMs: stat.mtimeMs, events: out });
     return out;
   }
 

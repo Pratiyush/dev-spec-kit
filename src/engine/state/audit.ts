@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { Journal, type EventMeta } from "./journal.js";
@@ -8,8 +8,12 @@ import { Journal, type EventMeta } from "./journal.js";
  * journaled as a `cli.run` event stamped with WHO acted (git user.name / RIVET_ACTOR) and WHICH
  * model drove it when known. Outside a Rivet project (no .rivet/) this is a no-op.
  */
+/** Read-only commands — skipped in `memory.journal: "milestones"` mode (SCALE-01 noise gating). */
+const READ_ONLY = new Set(["status", "log", "trace", "affected", "route", "doctor", "resume", "guard"]);
+
 export function auditCliRun(cwd: string, commandPath: string[], args: string[]): void {
   if (!existsSync(join(cwd, ".rivet"))) return;
+  if (journalMode(cwd) === "milestones" && READ_ONLY.has(commandPath[0] ?? "")) return;
   const meta: EventMeta = {};
   const actor = process.env.RIVET_ACTOR ?? gitUserName(cwd);
   if (actor) meta.actor = actor;
@@ -25,4 +29,16 @@ export function auditCliRun(cwd: string, commandPath: string[], args: string[]):
 function gitUserName(cwd: string): string | undefined {
   const res = spawnSync("git", ["config", "user.name"], { cwd, stdio: ["ignore", "pipe", "ignore"] });
   return res.status === 0 ? res.stdout.toString().trim() || undefined : undefined;
+}
+
+/** Raw, dependency-light config peek (audit must never crash or import the CLI layer). */
+function journalMode(cwd: string): string {
+  try {
+    const raw = JSON.parse(readFileSync(join(cwd, ".rivet", "config.json"), "utf8")) as {
+      memory?: { journal?: string };
+    };
+    return raw.memory?.journal ?? "full";
+  } catch {
+    return "full";
+  }
 }
