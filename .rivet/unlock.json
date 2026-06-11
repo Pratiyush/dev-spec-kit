@@ -1,7 +1,6 @@
 {
   "paths": [
-    "test/proof-display.test.ts",
-    "test/workflow.test.ts"
+    "test/doctor-fix.test.ts"
   ],
-  "until": "2026-06-12T01:25:31.905Z"
+  "until": "2026-06-12T00:29:29.462Z"
 }

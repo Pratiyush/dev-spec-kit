@@ -25,9 +25,11 @@ export function graphifyInstalled(): boolean {
   return graphifyBin() !== null;
 }
 
+// FIX-PROV-01: provenance is verifiable pointers only (repo URL, package name, owner) — never a
+// point-in-time vanity metric. The shipped star count was stale-by-construction AND wrong.
 export const GRAPHIFY_INSTALL_HINT =
   "pip install graphifyy && graphify install — 'graphifyy' (double-y) is graphify's official PyPI package name; " +
-  "the CLI stays 'graphify'. Source: https://github.com/safishamsi/graphify (213k★). " +
+  "the CLI stays 'graphify'. Source: https://github.com/safishamsi/graphify (MIT — verify the repo yourself). " +
   "Optional: without it, Rivet's graph features stay off and everything else works.";
 
 /** Raw graphify graph.json (verified against v0.8.37 output). */

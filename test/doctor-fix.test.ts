@@ -31,4 +31,11 @@ describe("the install hint carries provenance (classifier- and human-trustable)"
     expect(GRAPHIFY_INSTALL_HINT).toMatch(/official PyPI (package|name)/i);
     expect(GRAPHIFY_INSTALL_HINT).toContain("github.com/safishamsi/graphify");
   });
+
+  // FIX-PROV-01: provenance = verifiable pointers (URL, package, owner). A star count hardcoded
+  // in a CLI string is stale the day it ships — and ours shipped inflated (213k vs ~65k live).
+  it("pins no point-in-time vanity metrics (star counts rot or were never true)", () => {
+    expect(GRAPHIFY_INSTALL_HINT).not.toMatch(/★/);
+    expect(GRAPHIFY_INSTALL_HINT).not.toMatch(/\d+\s*k?\s*(stars?|★)/i);
+  });
 });
