@@ -90,7 +90,10 @@
   NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.
 - Promoted to: OPEN → task GATE-PACKS-01 (named packs in config — security/contracts/nfr/rollback —
   required spec sections + check kinds + approvals, attached per routing mode, off by default) and
-  task AUDIT-META-01 (journal records model/agent + context sources per event).
+  task AUDIT-META-01 (journal records model/agent + context sources per event). Its artifact
+  taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into
+  pack-required spec sections; ADR is already a VTG node type; "AI Execution Plan" = our task DAG.
+  Its "no code before tests" ordering: already stronger in Rivet (bindings at spec time, mechanical).
 
 ## 2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)
 - Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the
