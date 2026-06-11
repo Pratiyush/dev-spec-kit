@@ -88,9 +88,7 @@
 - Lesson: checkbox gates are enforcement-by-prose (tickable without truth) and mandatory ceremony
   recreates the over-ceremony death spiral our research documented. But its CONTENT is valuable:
   NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.
-- Promoted to: OPEN → task GATE-PACKS-01 (named packs in config — security/contracts/nfr/rollback —
-  required spec sections + check kinds + approvals, attached per routing mode, off by default) and
-  task AUDIT-META-01 (journal records model/agent + context sources per event). Its artifact
+- Promoted to: check:test/gate-packs.test.ts + check:test/audit-meta.test.ts (BOTH HARDENED — packs ship as editable config defaults, security trigger floors the mode, graph build enforces sections+kinds; journal meta + governance events landed). Its artifact
   taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into
   pack-required spec sections; ADR is already a VTG node type; "AI Execution Plan" = our task DAG.
   Its "no code before tests" ordering: already stronger in Rivet (bindings at spec time, mechanical).
@@ -100,7 +98,7 @@
   first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes
   the output, because "the investigation itself creates context."
 - Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.
-- Promoted to: OPEN → enrich FIX-GATE-01 design; future GATE-FACTS-01
+- Promoted to: check:test/gate-facts.test.ts (HARDENED via GATE-FACTS-01 — DENY→FORCE→ALLOW in guard-facts.mjs + engine/facts.ts; opt-in gates.facts='on'; 30-min window; 500-entry bounded state)
 
 ## 2026-06-11 Protect the gates from the agent (anti-gaming)
 - Trigger: ECC `pre:config-protection` blocks edits to linter configs ("fix code instead of weakening
@@ -116,7 +114,7 @@
   verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.
 - Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the
   tier; packs are user-editable rule files, not code.
-- Promoted to: OPEN → GATE-PACKS-01 (schema settled)
+- Promoted to: check:test/gate-packs.test.ts (HARDENED via GATE-PACKS-01 — packs as config data: sections+kinds+triggers; security floor in route; enforcement in graph build; require empty by default)
 
 ## 2026-06-11 Journal upgrades: governance events + "confidence is not approval"
 - Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)

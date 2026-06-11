@@ -135,3 +135,24 @@
 {"at":"2026-06-11T20:14:28.460Z","type":"check.run","data":{"taskId":"FINISH-RITUAL-01","result":{"ref":"test/finish-skill.test.ts","passed":true,"at":"2026-06-11T20:14:28.441Z","sha":"73ea267891f9ef29a076b6e29db5cf9aa1293ff3","tree":"83d65b5d7779753a680466f1205f786065e43190","dirty":true,"stack":"node-vitest"}}}
 {"at":"2026-06-11T20:14:28.529Z","type":"cli.run","data":{"command":"task done","args":["FINISH-RITUAL-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
 {"at":"2026-06-11T20:14:28.531Z","type":"task.status","data":{"id":"FINISH-RITUAL-01","status":"done"}}
+{"at":"2026-06-11T20:17:33.779Z","type":"cli.run","data":{"command":"task create","args":["GATE-FACTS-01","DENY-FORCE-ALLOW investigative gate (opt-in)"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:17:33.780Z","type":"task.created","data":{"id":"GATE-FACTS-01","title":"DENY-FORCE-ALLOW investigative gate (opt-in)","boundChecks":["test/gate-facts.test.ts"]}}
+{"at":"2026-06-11T20:17:33.850Z","type":"cli.run","data":{"command":"task create","args":["GATE-PACKS-01","config gate packs: sections+kinds+security floor"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:17:33.851Z","type":"task.created","data":{"id":"GATE-PACKS-01","title":"config gate packs: sections+kinds+security floor","boundChecks":["test/gate-packs.test.ts"]}}
+{"at":"2026-06-11T20:17:33.917Z","type":"cli.run","data":{"command":"task start","args":["GATE-FACTS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:17:33.918Z","type":"task.status","data":{"id":"GATE-FACTS-01","status":"in_progress"}}
+{"at":"2026-06-11T20:17:33.988Z","type":"cli.run","data":{"command":"task start","args":["GATE-PACKS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:17:33.988Z","type":"task.status","data":{"id":"GATE-PACKS-01","status":"in_progress"}}
+{"at":"2026-06-11T20:18:21.736Z","type":"cli.run","data":{"command":"check run","args":["GATE-FACTS-01","test/gate-facts.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:18:22.299Z","type":"check.run","data":{"taskId":"GATE-FACTS-01","result":{"ref":"test/gate-facts.test.ts","passed":false,"at":"2026-06-11T20:18:22.281Z","sha":"0d0c54c0f001dcc45a3dc43bf551c459aaf435e6","tree":"d6fe86f6286102bb6639f31e98b43fe8439a26cf","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:18:22.368Z","type":"cli.run","data":{"command":"check run","args":["GATE-PACKS-01","test/gate-packs.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:18:22.942Z","type":"check.run","data":{"taskId":"GATE-PACKS-01","result":{"ref":"test/gate-packs.test.ts","passed":false,"at":"2026-06-11T20:18:22.922Z","sha":"0d0c54c0f001dcc45a3dc43bf551c459aaf435e6","tree":"850e56b11a7862c8dc27f23309d04ba76d8c2b37","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:20:53.631Z","type":"cli.run","data":{"command":"check run","args":["GATE-FACTS-01","test/gate-facts.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:20:54.366Z","type":"check.run","data":{"taskId":"GATE-FACTS-01","result":{"ref":"test/gate-facts.test.ts","passed":true,"at":"2026-06-11T20:20:54.347Z","sha":"0d0c54c0f001dcc45a3dc43bf551c459aaf435e6","tree":"f61961e30068fb7756bb1cd6f2d575652199f5ac","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:20:54.436Z","type":"cli.run","data":{"command":"check run","args":["GATE-PACKS-01","test/gate-packs.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:20:55.047Z","type":"check.run","data":{"taskId":"GATE-PACKS-01","result":{"ref":"test/gate-packs.test.ts","passed":true,"at":"2026-06-11T20:20:55.029Z","sha":"0d0c54c0f001dcc45a3dc43bf551c459aaf435e6","tree":"037426744dcb0d8bd7ca9687e67b9a170a398c92","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:20:55.115Z","type":"cli.run","data":{"command":"task done","args":["GATE-FACTS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:20:55.117Z","type":"task.status","data":{"id":"GATE-FACTS-01","status":"done"}}
+{"at":"2026-06-11T20:20:55.186Z","type":"cli.run","data":{"command":"task done","args":["GATE-PACKS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:20:55.188Z","type":"task.status","data":{"id":"GATE-PACKS-01","status":"done"}}
+{"at":"2026-06-11T20:20:55.259Z","type":"cli.run","data":{"command":"route","args":["fix typo in the password reset email"]},"meta":{"actor":"Pratiyush Kumar Singh"}}

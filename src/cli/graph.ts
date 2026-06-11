@@ -1,6 +1,9 @@
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import pc from "picocolors";
 import { materialize } from "./materialize.js";
 import { summarize } from "../engine/graph/build.js";
+import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
 import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
 
 /**
@@ -33,6 +36,8 @@ export function graphBuild(opts: { refresh?: boolean }): void {
   }
   if (v.red > 0) process.exitCode = 1;
 
+  for (const w of m.specWarnings) console.log(pc.yellow(`  ⚠ ${w}`));
+
   // Config enforcement: every acceptance criterion must bind to an executable check.
   const unbound = m.requirements.flatMap((r) => r.criteria.filter((c) => c.checks.length === 0).map((c) => c.id));
   if (unbound.length > 0) {
@@ -42,6 +47,29 @@ export function graphBuild(opts: { refresh?: boolean }): void {
       process.exitCode = 1;
     } else {
       console.log(pc.yellow("⚠" + msg));
+    }
+  }
+
+  // GATE-PACKS-01: packs in force (explicit require ∪ triggered by spec text) must be satisfied.
+  const specsDir = join(cwd, ".rivet", "specs");
+  const specText = existsSync(specsDir)
+    ? readdirSync(specsDir)
+        .filter((f) => f.endsWith(".md"))
+        .sort()
+        .map((f) => readFileSync(join(specsDir, f), "utf8"))
+        .join("\n")
+    : "";
+  const packNames = requiredPacks(specText, m.config);
+  if (packNames.length > 0) {
+    const violations = packNames.flatMap((n) => {
+      const pack = m.config.gates.packs[n];
+      return pack ? evaluatePack(specText, m.requirements, n, pack) : [];
+    });
+    if (violations.length > 0) {
+      for (const v of violations) console.error(pc.red(`  ✗ ${v}`) + pc.dim("  [gates]"));
+      process.exitCode = 1;
+    } else {
+      console.log(pc.dim(`  gate packs in force: ${packNames.join(", ")} — satisfied`));
     }
   }
   console.log("");

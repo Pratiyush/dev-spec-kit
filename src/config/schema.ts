@@ -224,6 +224,38 @@ export const RivetConfigSchema = z
       })
       .default({}),
 
+    /**
+     * GATE-PACKS-01 + GATE-FACTS-01 — the 17-gate proposal's content as a config MENU, never a
+     * mandate. Packs are user-editable data: required spec sections, required check kinds, and
+     * security triggers that FLOOR the routing mode to full-spec. `require` lists packs enforced on
+     * every spec (empty by default — ceremony stays proportional). `facts` opt-in enables the
+     * DENY→FORCE→ALLOW investigative edit gate.
+     */
+    gates: z
+      .object({
+        facts: z.enum(["off", "on"]).default("off"),
+        require: z.array(z.string()).default([]),
+        packs: z
+          .record(
+            z.object({
+              sections: z.array(z.string()).default([]),
+              kinds: z.array(z.enum(["unit", "integration", "api", "e2e", "visual", "parity"])).default([]),
+              triggers: z.array(z.string()).default([]),
+            }),
+          )
+          .default({
+            security: {
+              sections: ["Security"],
+              kinds: [],
+              triggers: ["auth", "login", "password", "token", "secret", "payment", "crypt", "session", "permission", "sql"],
+            },
+            contracts: { sections: ["API Contract"], kinds: ["api"], triggers: [] },
+            nfr: { sections: ["NFR"], kinds: [], triggers: [] },
+            rollback: { sections: ["Rollback"], kinds: [], triggers: [] },
+          }),
+      })
+      .default({}),
+
     graphify: z
       .object({
         /** graphify output directory (gitignored, derived). */

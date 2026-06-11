@@ -20,10 +20,13 @@ export interface Materialized {
   head?: string;
   config: RivetConfig;
   codeGraphLoaded: boolean;
+  /** Parser warnings (orphan @checks etc.) — surfaced, never swallowed. */
+  specWarnings: string[];
 }
 
 export function materialize(cwd: string, opts: { refresh: boolean; write?: boolean }): Materialized {
-  const requirements = parseSpecsDir(cwd);
+  const specWarnings: string[] = [];
+  const requirements = parseSpecsDir(cwd, specWarnings);
   const tasks = [...new TaskStore(journalFor(cwd)).all().values()];
   const config = configFor(cwd);
 
@@ -47,7 +50,7 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
   if (opts.write !== false) {
     writeFileSync(join(cwd, ".rivet", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
   }
-  return { vtg, requirements, tasks, ...(head ? { head } : {}), config, codeGraphLoaded: !!codeGraph };
+  return { vtg, requirements, tasks, ...(head ? { head } : {}), config, codeGraphLoaded: !!codeGraph, specWarnings };
 }
 
 export function journalFor(cwd: string): Journal {

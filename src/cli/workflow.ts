@@ -8,6 +8,7 @@ import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
 import { buildPrBody } from "../engine/pr/body.js";
 import { routeRequest, assertMode } from "../engine/route/classify.js";
+import { applyGateFloor } from "../engine/gatepacks.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import { gateVerdict } from "../engine/gate.js";
 import { loadConfig } from "./config-io.js";
@@ -149,7 +150,13 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
   let result = routeRequest(text);
   if (opts.mode) {
     result = { mode: assertMode(opts.mode), reason: "explicit --mode override" };
-  } else if (config.mode.routing === "pick") {
+  }
+  // GATE-PACKS-01: a security trigger floors the mode — even past --mode and the heuristic.
+  const floor = applyGateFloor(text, result.mode, config);
+  if (floor.mode !== result.mode) {
+    result = { mode: floor.mode, reason: floor.reason };
+  }
+  if (!opts.mode && config.mode.routing === "pick") {
     console.log(pc.yellow("mode.routing=pick — choose explicitly with --mode research|quick|full-spec"));
     console.log(pc.dim(`  (heuristic would say: ${result.mode} — ${result.reason})`));
     return;
