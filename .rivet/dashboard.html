@@ -13,17 +13,23 @@
   .lights{font-size:16px;letter-spacing:2px}.drift{background:#3d1d29;border:1px solid #f85149;color:#ffa198;border-radius:10px;padding:12px 16px;margin-top:14px}
   .pill{display:inline-block;margin-right:14px}iframe{width:100%;height:520px;border:1px solid #21262d;border-radius:10px;background:#fff}
   ul{margin:0;padding-left:18px}
+  details{border-top:1px solid #21262d;padding:8px 0}details:first-child{border-top:0}
+  summary{cursor:pointer;font-weight:600;padding:4px 0}
+  .md{padding:8px 4px;color:var(--text)}.md h1,.md h2,.md h3{margin:12px 0 6px}.md p{margin:6px 0}
+  .md table{margin:8px 0}.md th{text-align:left;color:var(--dim)}.md code{background:#21262d;padding:1px 5px;border-radius:4px}
+  .md pre{background:#0a0d12;border:1px solid #21262d;border-radius:8px;padding:10px;overflow-x:auto}
+  .md blockquote{border-left:3px solid var(--accent);margin:6px 0;padding:2px 10px;color:var(--dim)}
 </style></head><body>
 <h1>📊 Rivet — untitled</h1>
-<div class="dim">generated 2026-06-11T21:11:19.623Z · refresh with <code>rivet dashboard</code></div>
+<div class="dim">generated 2026-06-11T21:29:17.919Z · refresh with <code>rivet dashboard</code></div>
 
 <div class="card">
-  <span class="pct">100%</span> <span class="dim">complete — 27/27 task(s) done</span>
+  <span class="pct">100%</span> <span class="dim">complete — 30/30 task(s) done</span>
   <div class="bar"><div></div></div>
-  <span class="pill">🟢 0</span><span class="pill">🔴 0</span>
-  <span class="pill">🟣 3</span><span class="pill">⚪ 0</span>
+  <span class="pill">🟢 3</span><span class="pill">🔴 0</span>
+  <span class="pill">🟣 0</span><span class="pill">⚪ 0</span>
 </div>
-<div class="drift">🟣 <b>3 proof(s) red/stale — drift detected.</b> Re-verify: <code>rivet drift</code></div>
+
 
 <h2>Tasks</h2><div class="card"><table><tr><td>✅</td><td><b>FIX-ROUTE-01</b></td><td>route: build-intent must veto research keywords</td><td class="lights">🟢</td><td>done</td></tr>
 <tr><td>✅</td><td><b>R-AUDIT-01</b></td><td>every CLI invocation is audit-logged</td><td class="lights">🟢</td><td>done</td></tr>
@@ -51,10 +57,424 @@
 <tr><td>✅</td><td><b>STEER-01</b></td><td>laws engine: 3 scopes + personal inheritance + file injection</td><td class="lights">🟢</td><td>done</td></tr>
 <tr><td>✅</td><td><b>LEARN-01</b></td><td>warn-on-repeat: open lessons surface at task start</td><td class="lights">🟢</td><td>done</td></tr>
 <tr><td>✅</td><td><b>WAVE-02</b></td><td>wave done: provenance-checked worktree cleanup after merge</td><td class="lights">🟢</td><td>done</td></tr>
-<tr><td>✅</td><td><b>DASH-01</b></td><td>dashboard v1: emoji + completion % + traffic lights + graph embed</td><td class="lights">🟢</td><td>done</td></tr></table></div>
-<h2>Requirements</h2><div class="card"><table><tr><td>⏳</td><td><b>R-AUDIT-01</b></td><td>every CLI invocation is audit-logged</td><td class="lights">🟣</td></tr>
-<tr><td>⏳</td><td><b>R-AUDIT-02</b></td><td>the audit trail is readable</td><td class="lights">🟣</td></tr>
-<tr><td>⏳</td><td><b>R-PROG-01</b></td><td>progress with emoji after completing a task</td><td class="lights">🟣</td></tr></table></div>
+<tr><td>✅</td><td><b>DASH-01</b></td><td>dashboard v1: emoji + completion % + traffic lights + graph embed</td><td class="lights">🟢</td><td>done</td></tr>
+<tr><td>✅</td><td><b>FILES-01</b></td><td>dashboard files plumbing: collect .rivet md + safe renderer</td><td class="lights">🟢</td><td>done</td></tr>
+<tr><td>✅</td><td><b>README-01</b></td><td>README refresh: match the real tool surface</td><td class="lights">🟢</td><td>done</td></tr>
+<tr><td>✅</td><td><b>FIX-PROOF-02</b></td><td>proof identity excludes .rivet state (journal must not stale its own proofs)</td><td class="lights">🟢</td><td>done</td></tr></table></div>
+<h2>Requirements</h2><div class="card"><table><tr><td>✅</td><td><b>R-AUDIT-01</b></td><td>every CLI invocation is audit-logged</td><td class="lights">🟢</td></tr>
+<tr><td>✅</td><td><b>R-AUDIT-02</b></td><td>the audit trail is readable</td><td class="lights">🟢</td></tr>
+<tr><td>✅</td><td><b>R-PROG-01</b></td><td>progress with emoji after completing a task</td><td class="lights">🟢</td></tr></table></div>
 <h2>Approvals &amp; governance</h2><div class="card"><ul><li class='dim'>none recorded yet</li></ul></div>
-
+<h2>Code graph (graphify)</h2><div class="card"><iframe src="../graphify-out/graph.html" title="code graph"></iframe></div>
+<h2>Files</h2><div class="card"><details open><summary>📄 laws.md</summary><div class="md"><h1>Project Constitution</h1>
+<blockquote>The rules Rivet must always obey for this project. Three scopes are supported (Kiro-style steering):</blockquote>
+<blockquote>always-on (this file), file-match, and on-summon. A personal default can be inherited and overridden here.</blockquote>
+<h2>Standards</h2>
+<ul>
+<li>(add your do's and don'ts here)</li>
+</ul>
+<h2>Tech &amp; conventions</h2>
+<ul>
+<li>(stacks, libraries, naming, structure, folder layout)</li>
+</ul>
+<h2>Hard rules (never violate)</h2>
+<ul>
+<li>Commits are authored by the human, never co-authored by the AI.</li>
+<li>A task is not "done" until its bound checks pass (evidence-bound completion).</li>
+<li>Reuse existing code before writing new; follow the surrounding patterns.</li>
+<li>Every feature gets an adversarial review pass before PR — verification and review catch</li>
+</ul>
+<p>  different bug classes; neither substitutes for the other.</p>
+<p>  (Promoted from learnings 2026-06-11; APPROVED by Pratiyush 2026-06-11.)</p></div></details>
+<details><summary>📄 learnings.md</summary><div class="md"><h1>Rivet learnings — append-only; a lesson counts once PROMOTED or HARDENED</h1>
+<h2>2026-06-11 Build-intent must veto research keywords in routing</h2>
+<ul>
+<li>Trigger: live demo routed "i want a portfolio page … and compare with index" to RESEARCH — the</li>
+</ul>
+<p>  word "compare" outweighed the explicit "i want a … page" build intent.</p>
+<ul>
+<li>Lesson: investigative keywords are weak signals; build-intent ("i/we want|need", "add/create/</li>
+</ul>
+<p>  implement") must veto them. Misrouting a feature to research silently produces zero code.</p>
+<ul>
+<li>Promoted to: check:test/workflow.test.ts::want-signals veto research routing (permanent</li>
+</ul>
+<p>  regression test, bound via task FIX-ROUTE-01 — red→fix→green through Rivet's own done-gate)</p>
+<h2>2026-06-11 Proof identity must be the TESTED TREE, not the commit SHA  ⟨P1 · BLOCKER⟩</h2>
+<ul>
+<li>Trigger: adversarial review #1 (confirmed live): proofs stamp <code>git rev-parse HEAD</code> while the tree</li>
+</ul>
+<p>  is dirty — green can vouch for uncommitted code; and committing the tested code moves HEAD, so</p>
+<p>  every proof instantly flips stale.</p>
+<ul>
+<li>Lesson: "green means this code is proven" requires the proof to identify the tree it ran against.</li>
+</ul>
+<p>  Stamp proofs with a content/tree hash (e.g. <code>git stash create</code> tree-hash or hash of bound files)</p>
+<p>  + a dirty flag; compute staleness against the tree hash; dirty-tree greens are <code>provisional</code>.</p>
+<ul>
+<li>Promoted to: check:test/proof-identity.test.ts (HARDENED via FIX-PROOF-01 — proofs carry</li>
+</ul>
+<p>  tree+dirty; staleness compares trees with sha fallback for legacy entries; with tree identity a</p>
+<p>  dirty green is sound, so no provisional state was needed)</p>
+<h2>2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩</h2>
+<ul>
+<li>Trigger: review #2/#3 (confirmed): <code>spec tasks</code> skips existing tasks so NEW <code>@check</code> obligations</li>
+</ul>
+<p>  are never enforced; bare <code>task create</code> on an existing id resets status and wipes recorded proofs.</p>
+<ul>
+<li>Lesson: the spec is only the source of truth if re-derivation diffs bindings into existing tasks,</li>
+</ul>
+<p>  and <code>task.created</code> folds as create-if-absent — recorded evidence must be unclobberable.</p>
+<ul>
+<li>Promoted to: check:test/spec-sync.test.ts (HARDENED via FIX-SPECSYNC-01 — create() refuses duplicates, fold is create-if-absent, syncBindings diffs spec refs in and reopens done tasks with new obligations)</li>
+</ul>
+<h2>2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩</h2>
+<ul>
+<li>Trigger: review #4/#8/#5 (confirmed): malformed config.json or a data-less journal line → raw</li>
+</ul>
+<p>  stack traces across commands; missing runner binary (ENOENT, status null) recorded as a RED proof.</p>
+<ul>
+<li>Lesson: parse all inputs defensively with one helper + clear message; spawn errors/status null are</li>
+</ul>
+<p>  tooling errors, never proofs — they must not enter the graph.</p>
+<ul>
+<li>Promoted to: check:test/robust.test.ts (HARDENED via FIX-ROBUST-01 — one defensive loadConfig + safe() CLI wrapper, data-less journal lines tolerated, RunnerUnavailableError instead of fake red proofs; timeout stays a red proof)</li>
+</ul>
+<h2>2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩</h2>
+<ul>
+<li>Trigger: review #6 (confirmed bypasses): <code>gh "pr" create</code>, <code>$GH pr create</code>, <code>gh api …/pulls</code>, and</li>
+</ul>
+<p>  <code>rm .rivet/graph.json</code> all sail past the guard; <code>rivet pr</code> blocks red/stale but not unproven —</p>
+<p>  three gates, three different predicates.</p>
+<ul>
+<li>Lesson: one shared rule — "anything not green blocks" — applied by the hook, <code>guard pr</code>, and</li>
+</ul>
+<p>  <code>rivet pr</code> alike; in a Rivet project a MISSING graph blocks (state absence ≠ permission);</p>
+<p>  <code>rivet pr --create</code> must run the same guard it advertises.</p>
+<ul>
+<li>Promoted to: check:test/gate.test.ts (HARDENED via FIX-GATE-01 — shared gateVerdict across hook/guard/pr, missing or unreadable graph BLOCKS, quote-stripped matcher + gh api …/pulls; $VAR indirection documented as known limit)</li>
+</ul>
+<h2>2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩</h2>
+<ul>
+<li>Trigger: review #7 (confirmed): PR body counts a criterion proven if ANY binding is green; one</li>
+</ul>
+<p>  green + one red reports "100% proven green" exactly when a proof is failing.</p>
+<ul>
+<li>Lesson: every consumer of proof state uses worst-of (<code>every(green)</code>), never any-of. The headline</li>
+</ul>
+<p>  number reviewers trust must be the strictest one.</p>
+<ul>
+<li>Promoted to: check:test/workflow.test.ts::worst-of coverage in the PR body (HARDENED via FIX-PRMATH-01)</li>
+</ul>
+<h2>2026-06-11 Parser must respect markdown reality  ⟨P2⟩</h2>
+<ul>
+<li>Trigger: review #11/#12/#13/#14 (confirmed): fenced code blocks become real requirements; blank-</li>
+</ul>
+<p>  line-separated EARS sentences merge into one criterion; bulleted/orphan <code>@check</code> lines silently</p>
+<p>  drop; <code>--mode bogus</code> accepted; <code>log -n 0</code> prints everything.</p>
+<ul>
+<li>Lesson: silent loss of a proof obligation is the worst parser failure — fence-track, flush on</li>
+</ul>
+<p>  blank lines, strip list markers, warn on orphans, validate enums and numbers.</p>
+<ul>
+<li>Promoted to: check:test/parse-fix.test.ts (HARDENED via FIX-PARSE-01 — fences invisible, blank lines separate criteria, bulleted @checks bind, orphan @checks WARN, assertMode + parseCount validate inputs)</li>
+</ul>
+<h2>2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩</h2>
+<ul>
+<li>Trigger: review #15/#10/#9: <code>trace</code>/<code>affected</code>/<code>drift --dry-run</code> rewrite graph.json or trigger</li>
+</ul>
+<p>  re-index; TDD's expected red burns retryLimit+1 full Maven runs; equal-timestamp results resolve</p>
+<p>  by iteration order.</p>
+<ul>
+<li>Lesson: queries take a no-write path; retry only on suspected flakiness (or <code>--expect-red</code> for</li>
+</ul>
+<p>  TDD); tie-break proofs deterministically toward the worse state.</p>
+<ul>
+<li>Promoted to: check:test/query-fix.test.ts (HARDENED via FIX-QUERY-01 — materialize(write:false) for trace/affected/dry-run, --expect-red skips retry burn, equal-timestamp ties break toward the worse proof)</li>
+</ul>
+<h2>2026-06-11 Scale &amp; evidence quality backlog  ⟨P3⟩</h2>
+<ul>
+<li>Trigger: review #16-#19: full journal re-fold per command while audit events balloon the file;</li>
+</ul>
+<p>  red proofs carry no failure output; test anchors collide on same-named classes; concurrent</p>
+<p>  worktree waves can interleave journal writes and last-writer-wins graph.json.</p>
+<ul>
+<li>Lesson: snapshot+tail folding; gate audit to mutating commands or honor memory.journal=</li>
+</ul>
+<p>  "milestones"; capture truncated failure tails in CheckResult; anchor by source path; file locking</p>
+<p>  before parallel waves ship.</p>
+<ul>
+<li>Promoted to: check:test/scale.test.ts (HARDENED via SCALE-01 — withLock mkdir-mutex with stale-steal serializes journal appends across real processes; per-process (size,mtime)-keyed read cache; red proofs carry a 1500-char output tail; same-label code nodes each get anchor edges (ambiguity visible); memory.journal='milestones' skips read-only cli.run noise. Durable snapshot+tail folding deferred until journals measurably grow.)</li>
+</ul>
+<h2>2026-06-11 Verification and review catch DIFFERENT bug classes — keep both</h2>
+<ul>
+<li>Trigger: during construction, bound checks caught 3 real bugs (stale Boot-3 import, ANSI-split</li>
+</ul>
+<p>  assertion, worst-of rollup); the adversarial review then found 20 MORE confirmed issues the</p>
+<p>  checks could not see (semantics, robustness, bypasses).</p>
+<ul>
+<li>Lesson: evidence-bound done ≠ reviewed. The rivet-review skill's two-pass doctrine is load-</li>
+</ul>
+<p>  bearing, not ceremony; schedule adversarial review at feature boundaries.</p>
+<ul>
+<li>Promoted to: constitution#hard-rules — "every feature gets an adversarial review pass before PR"</li>
+</ul>
+<p>  (APPROVED by Pratiyush 2026-06-11; recorded in .rivet/constitution.md)</p>
+<h2>2026-06-11 The 17-gate proposal: menu yes, mandate no</h2>
+<ul>
+<li>Trigger: ChatGPT proposed 17 mandatory sequential checkbox gates before any coding.</li>
+<li>Lesson: checkbox gates are enforcement-by-prose (tickable without truth) and mandatory ceremony</li>
+</ul>
+<p>  recreates the over-ceremony death spiral our research documented. But its CONTENT is valuable:</p>
+<p>  NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.</p>
+<ul>
+<li>Promoted to: check:test/gate-packs.test.ts + check:test/audit-meta.test.ts (BOTH HARDENED — packs ship as editable config defaults, security trigger floors the mode, graph build enforces sections+kinds; journal meta + governance events landed). Its artifact</li>
+</ul>
+<p>  taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into</p>
+<p>  pack-required spec sections; ADR is already a VTG node type; "AI Execution Plan" = our task DAG.</p>
+<p>  Its "no code before tests" ordering: already stronger in Rivet (bindings at spec time, mechanical).</p>
+<h2>2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)</h2>
+<ul>
+<li>Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the</li>
+</ul>
+<p>  first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes</p>
+<p>  the output, because "the investigation itself creates context."</p>
+<ul>
+<li>Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.</li>
+<li>Promoted to: check:test/gate-facts.test.ts (HARDENED via GATE-FACTS-01 — DENY→FORCE→ALLOW in guard-facts.mjs + engine/facts.ts; opt-in gates.facts='on'; 30-min window; 500-entry bounded state)</li>
+</ul>
+<h2>2026-06-11 Protect the gates from the agent (anti-gaming)</h2>
+<ul>
+<li>Trigger: ECC <code>pre:config-protection</code> blocks edits to linter configs ("fix code instead of weakening</li>
+</ul>
+<p>  configs"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.</p>
+<ul>
+<li>Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config</li>
+</ul>
+<p>  require an explicit human-approved unlock — the moat must not be editable by the thing it gates.</p>
+<ul>
+<li>Promoted to: check:test/protect.test.ts (HARDENED via GATE-PROTECT-01 — specs/config immutable while tasks in flight; bound test files lock AFTER their ref goes green (pre-green TDD stays free); human escape hatch <code>rivet unlock</code> is time-boxed + journaled)</li>
+</ul>
+<h2>2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules</h2>
+<ul>
+<li>Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; "anything touching a</li>
+</ul>
+<p>  security trigger or public API is AT LEAST standard"; two named human gates; "gated, not</p>
+<p>  autonomous") + hookify-rules (markdown rules: event/pattern/conditions/action warn|block,</p>
+<p>  verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.</p>
+<ul>
+<li>Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the</li>
+</ul>
+<p>  tier; packs are user-editable rule files, not code.</p>
+<ul>
+<li>Promoted to: check:test/gate-packs.test.ts (HARDENED via GATE-PACKS-01 — packs as config data: sections+kinds+triggers; security floor in route; enforcement in graph build; require empty by default)</li>
+</ul>
+<h2>2026-06-11 Journal upgrades: governance events + "confidence is not approval"</h2>
+<ul>
+<li>Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)</li>
+</ul>
+<p>  + governance-capture hook (secrets/policy-violation/approval-request as first-class events) +</p>
+<p>  provenance schema (source/created_at/confidence/author required on anything learned).</p>
+<ul>
+<li>Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +</li>
+</ul>
+<p>  evidence and promotion requires beating the incumbent, never self-declared confidence.</p>
+<ul>
+<li>Promoted to: check:test/audit-meta.test.ts (HARDENED via AUDIT-META-01 — EventMeta actor/model/sources on journal events, cli.run stamped with git user/RIVET_MODEL, governance first-class event type 🛡️, unlock journals as governance; pack-seeded content remains with GATE-PACKS-01)</li>
+</ul>
+<h2>2026-06-11 Finishing ritual + phase chaining (superpowers)</h2>
+<ul>
+<li>Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;</li>
+</ul>
+<p>  typed confirmation to discard; provenance check before cleanup) + every phase skill pins its sole</p>
+<p>  successor + checklists compile into tracked tasks, not prose.</p>
+<ul>
+<li>Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional</li>
+</ul>
+<p>  cleanup; skills should name their one successor so phases can't be silently skipped.</p>
+<ul>
+<li>Promoted to: check:test/finish-skill.test.ts (HARDENED via FINISH-RITUAL-01 — skills/rivet-finish: fresh-evidence entry gate via rivet graph build, fixed 4-option menu, typed <code>discard</code>, provenance-checked cleanup, journaled landing)</li>
+</ul>
+<h2>2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)</h2>
+<ul>
+<li>Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands</li>
+</ul>
+<p>  (~230 are stack packs &amp; domain verticals, consciously skipped). Both MIT; adaptation as original</p>
+<p>  prose unencumbered. Independent pass confirmed all five prior promotions (GATE-FACTS/PROTECT/</p>
+<p>  PACKS-01, AUDIT-META-01, FINISH-RITUAL-01).</p>
+<ul>
+<li>Lesson: Rivet is the enforcement/traceability layer; generic craft (brainstorming, systematic-</li>
+</ul>
+<p>  debugging, worktrees, parallel dispatch, TDD craft) stays in superpowers — recommend alongside,</p>
+<p>  never duplicate. Absorb only mechanics that strengthen the moat. Net-new from this pass:</p>
+<p>  review content (silent-failure hunt, behavioral-vs-line coverage, verify-feedback-before-</p>
+<p>  implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project</p>
+<p>  recurrence), phase-aware compaction, and compliance-QA of our own skills.</p>
+<ul>
+<li>Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;</li>
+</ul>
+<p>  check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)</p>
+<h2>2026-06-12 A grammar that can't spell its own kinds drops obligations silently</h2>
+<ul>
+<li>Trigger: RUNNERS-01's kind-resolution test failed — CHECK_LINE's kind pattern was [a-z]+, so</li>
+</ul>
+<p>  <code>kind=e2e</code> (digit!) never matched and e2e bindings had parsed as PROSE since day one. No error,</p>
+<p>  no warning: the obligation just vanished.</p>
+<ul>
+<li>Lesson: grammar character classes must be derived from the actual vocabulary (e2e has a digit);</li>
+</ul>
+<p>  every enum the parser accepts needs at least one test using its trickiest member.</p>
+<ul>
+<li>Confidence: high (reproduced; permanent test) · Scope: project</li>
+<li>Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)</li>
+</ul>
+<h2>2026-06-12 Test fixtures must pin every git assumption the host can override</h2>
+<ul>
+<li>Trigger: WAVE-01's fixture broke twice on this machine's <code>init.defaultBranch=master</code> — a push</li>
+</ul>
+<p>  refspec assumed a local <code>main</code>, and a bare origin's HEAD pointed at a branch we never pushed.</p>
+<ul>
+<li>Lesson: fixtures that shell out to git must pin branch names (<code>init -b</code>, <code>push HEAD:&lt;branch&gt;</code>),</li>
+</ul>
+<p>  identity, and HEAD explicitly — host config is part of the environment under test.</p>
+<ul>
+<li>Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)</li>
+<li>Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)</li>
+</ul></div></details>
+<details><summary>📄 DEFER.md</summary><div class="md"><h1>DEFER — consciously postponed (each entry: why + when to revisit)</h1>
+<h2>Intake adapters: GitHub / GitLab issues + Jira (P6)</h2>
+<ul>
+<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): intake comes from user input via Claude Code CLI for now</li>
+</ul>
+<p>  ("we will do GitHub and GitLab issues and Jira integration later, it is not really required at this</p>
+<p>  moment"). The raw path (<code>.rivet/intake/*.md</code> + <code>rivet route --file</code>) covers the actual workflow.</p>
+<ul>
+<li><strong>To revisit:</strong> when Rivet is used on a project whose work actually arrives as tickets, or at the</li>
+</ul>
+<p>  public launch when team usage begins. Config groundwork (<code>intake.sources</code>, <code>intake.jiraEpic</code>,</p>
+<p>  <code>intake.writeBack</code>) already exists — only the adapters are missing.</p>
+<h2>Packaging &amp; publish: npm <code>rivet-kit</code> + plugin marketplace listing (P7)</h2>
+<ul>
+<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): "defer packaging… we can do it later, and plugin</li>
+</ul>
+<p>  marketplace listing later." First: build real apps WITH Rivet, learn, and improve from those</p>
+<p>  lessons before freezing a public artifact.</p>
+<ul>
+<li><strong>To revisit:</strong> after ≥1 app has been built end-to-end with Rivet and the resulting learnings are</li>
+</ul>
+<p>  promoted (the app-build dogfood phase). Then: check <code>rivet-kit</code> npm availability, docs pass,</p>
+<p>  marketplace listing.</p>
+<h2>Durable journal snapshot+tail folding</h2>
+<ul>
+<li><strong>Why deferred:</strong> per-process (size,mtime) read cache covers current scale; snapshotting adds</li>
+</ul>
+<p>  invalidation risk with no measured need. (Ledger: SCALE-01.)</p>
+<ul>
+<li><strong>To revisit:</strong> when a real journal measurably slows commands (&gt;~50k events).</li>
+</ul>
+<h2>LLM-judged skill compliance scenarios</h2>
+<ul>
+<li><strong>Why deferred:</strong> structural skill-QA (commands/artifacts must exist) ships; judged compliance</li>
+</ul>
+<p>  needs an eval budget and stable scenarios. (Ledger: SKILL-QA-01.)</p>
+<ul>
+<li><strong>To revisit:</strong> pre-publish hardening, alongside the docs pass.</li>
+</ul>
+<h2>Live Spring <code>withApp</code> e2e showcase</h2>
+<ul>
+<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): showcase only; the lifecycle is already proven in-suite</li>
+</ul>
+<p>  against a real HTTP server (RUNNERS-01). Spinning Spring adds demo value, not verification value.</p>
+<ul>
+<li><strong>To revisit:</strong> before the public launch demo reel, or first real api/e2e-kind project.</li>
+</ul>
+<h2>Sonnet-driven temporary e2e demo (master-prompt dry run)</h2>
+<ul>
+<li><strong>Why deferred:</strong> Pratiyush (2026-06-12): the REAL app-dogfood phase (him + master prompt)</li>
+</ul>
+<p>  supersedes a synthetic dry run.</p>
+<ul>
+<li><strong>To revisit:</strong> only if the app phase stalls and we need a cheap rehearsal first.</li>
+</ul></div></details>
+<details><summary>📄 specs/cli-ux.md</summary><div class="md"><h1>Feature: CLI audit trail &amp; progress visibility</h1>
+<blockquote>User story: As the user, I want every Rivet action audit-logged and a progress view after each</blockquote>
+<blockquote>completed task, so that I can always see what was done and what remains.</blockquote>
+<blockquote>Intake: Pratiyush, 2026-06-11 — "add jsonl logging for rivet as audit logs so we can see what all</blockquote>
+<blockquote>is done; after completing one task rivet should show pending tasks or features with progress with emoji."</blockquote>
+<h2>Requirement R-AUDIT-01 — every CLI invocation is audit-logged</h2>
+<p>WHEN any rivet command runs inside a Rivet project THEN the system SHALL append a <code>cli.run</code> event</p>
+<p>(command path + arguments + timestamp) to the append-only journal <code>.rivet/journal.jsonl</code>.</p>
+<p>@check kind=unit ref=test/cli-ux.test.ts::audits cli invocations into the journal</p>
+<h2>Requirement R-AUDIT-02 — the audit trail is readable</h2>
+<p>WHEN <code>rivet log</code> runs THEN the system SHALL print the journal events in chronological order with</p>
+<p>timestamps and per-type emoji, and WHEN <code>--json</code> is passed THEN the system SHALL emit raw JSONL.</p>
+<p>@check kind=unit ref=test/cli-ux.test.ts::renders the audit trail with per-type emoji</p>
+<h2>Requirement R-PROG-01 — progress with emoji after completing a task</h2>
+<p>WHEN a task transitions to done THEN the system SHALL display the remaining tasks and features with</p>
+<p>per-task emoji status, per-check proof lights, an overall progress bar with percentage, and the</p>
+<p>suggested next task.</p>
+<p>@check kind=unit ref=test/cli-ux.test.ts::renders progress with emoji, bar, and next-up</p></div></details>
+<details><summary>📄 LEDGER.md</summary><div class="md"><h1>LEDGER — generated from the journal; do not edit</h1>
+<h2>Progress board</h2>
+<p><strong>30/30 done (100%)</strong></p>
+<ul>
+<li>✅ <strong>FIX-ROUTE-01</strong> route: build-intent must veto research keywords 🟢</li>
+<li>✅ <strong>R-AUDIT-01</strong> every CLI invocation is audit-logged 🟢</li>
+<li>✅ <strong>R-AUDIT-02</strong> the audit trail is readable 🟢</li>
+<li>✅ <strong>R-PROG-01</strong> progress with emoji after completing a task 🟢</li>
+<li>✅ <strong>FIX-PRMATH-01</strong> PR coverage uses worst-of obligation semantics 🟢</li>
+<li>✅ <strong>FIX-PROOF-01</strong> proof identity = tested tree hash, not commit SHA 🟢</li>
+<li>✅ <strong>FIX-ROBUST-01</strong> inputs never crash; infra errors are not proofs 🟢</li>
+<li>✅ <strong>FIX-SPECSYNC-01</strong> spec re-derive syncs bindings; evidence unclobberable 🟢</li>
+<li>✅ <strong>FIX-GATE-01</strong> one not-green-blocks predicate; missing graph blocks 🟢</li>
+<li>✅ <strong>GATE-PROTECT-01</strong> in-flight specs/tests/config need human unlock 🟢</li>
+<li>✅ <strong>FIX-PARSE-01</strong> parser respects markdown reality 🟢</li>
+<li>✅ <strong>FIX-QUERY-01</strong> read-only queries; no retry burn; deterministic ties 🟢</li>
+<li>✅ <strong>AUDIT-META-01</strong> journal meta (actor/model) + governance events 🟢</li>
+<li>✅ <strong>FINISH-RITUAL-01</strong> rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢</li>
+<li>✅ <strong>GATE-FACTS-01</strong> DENY-FORCE-ALLOW investigative gate (opt-in) 🟢</li>
+<li>✅ <strong>GATE-PACKS-01</strong> config gate packs: sections+kinds+security floor 🟢</li>
+<li>✅ <strong>COMPACT-01</strong> phase-aware checkpoints + PreCompact resume save 🟢</li>
+<li>✅ <strong>SKILL-QA-01</strong> mechanical QA: skills reference only real commands/artifacts 🟢</li>
+<li>✅ <strong>SCALE-01</strong> P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢</li>
+<li>✅ <strong>RUNNERS-01</strong> multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢</li>
+<li>✅ <strong>RENAME-LAWS-01</strong> rename constitution → laws (user term) 🟢</li>
+<li>✅ <strong>BOARDS-01</strong> generated LEDGER.md + TRACKING.md boards 🟢</li>
+<li>✅ <strong>WAVE-01</strong> worktree wave dispatcher: plan + fetch-first start 🟢</li>
+<li>✅ <strong>STEER-01</strong> laws engine: 3 scopes + personal inheritance + file injection 🟢</li>
+<li>✅ <strong>LEARN-01</strong> warn-on-repeat: open lessons surface at task start 🟢</li>
+<li>✅ <strong>WAVE-02</strong> wave done: provenance-checked worktree cleanup after merge 🟢</li>
+<li>✅ <strong>DASH-01</strong> dashboard v1: emoji + completion % + traffic lights + graph embed 🟢</li>
+<li>✅ <strong>FILES-01</strong> dashboard files plumbing: collect .rivet md + safe renderer 🟢</li>
+<li>✅ <strong>README-01</strong> README refresh: match the real tool surface 🟢</li>
+<li>✅ <strong>FIX-PROOF-02</strong> proof identity excludes .rivet state (journal must not stale its own proofs) 🟢</li>
+</ul>
+<h2>Approvals &amp; governance</h2>
+<ul>
+<li>_none recorded yet_</li>
+</ul>
+<h2>Recent activity</h2>
+<ul>
+<li>[2m2026-06-11 21:28:43[22m  ❌ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02</li>
+<li>[2m2026-06-11 21:29:13[22m  🧾 check run FIX-PROOF-02 test/proof-identity.test.ts  [Pratiyush Kumar Singh]</li>
+<li>[2m2026-06-11 21:29:15[22m  ✅ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02</li>
+<li>[2m2026-06-11 21:29:15[22m  🧾 task done FIX-PROOF-02  [Pratiyush Kumar Singh]</li>
+<li>[2m2026-06-11 21:29:15[22m  🏁 task FIX-PROOF-02 → done</li>
+<li>[2m2026-06-11 21:29:15[22m  🧾 drift  [Pratiyush Kumar Singh]</li>
+<li>[2m2026-06-11 21:29:16[22m  ✅ check test/cli-ux.test.ts::audits cli invocations into the journal @ eabad481 → R-AUDIT-01</li>
+<li>[2m2026-06-11 21:29:16[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ eabad481 → R-AUDIT-02</li>
+<li>[2m2026-06-11 21:29:17[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ eabad481 → R-PROG-01</li>
+<li>[2m2026-06-11 21:29:17[22m  🧾 graph build  [Pratiyush Kumar Singh]</li>
+</ul></div></details>
+<details><summary>📄 TRACKING.md</summary><div class="md"><h1>TRACKING — per-requirement Definition of Done (generated; do not edit)</h1>
+<table><thead><tr><th>Requirement</th><th>Title</th><th>Criteria</th><th>Proof</th><th>Task</th><th>Approved</th></tr></thead><tbody>
+<tr><td>R-AUDIT-01</td><td>every CLI invocation is audit-logged</td><td>1</td><td>🟢</td><td>done</td><td>—</td></tr>
+<tr><td>R-AUDIT-02</td><td>the audit trail is readable</td><td>1</td><td>🟢</td><td>done</td><td>—</td></tr>
+<tr><td>R-PROG-01</td><td>progress with emoji after completing a task</td><td>1</td><td>🟢</td><td>done</td><td>—</td></tr>
+</tbody></table></div></details>
+<details><summary>📄 RESUME.md</summary><div class="md"><h1>RESUME — state-only handoff (generated from the journal; do not edit)</h1>
+<p>Board: 18/18 task(s) done.</p>
+<p>✅ all task(s) done — nothing open. Next: <code>rivet graph build</code> → <code>rivet pr</code>.</p>
+<h2>Rebuild truth</h2>
+<p><code>rivet status</code> · <code>rivet graph build</code> · <code>rivet log -n 10</code></p></div></details></div>
 </body></html>

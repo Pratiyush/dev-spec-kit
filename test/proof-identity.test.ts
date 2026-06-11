@@ -65,6 +65,28 @@ describe("proof identity = tested tree", () => {
     expect(edge.proof).toBe("green"); // old behavior: stale. The moat's claim holds now.
   });
 
+  it("FIX-PROOF-02: the journal must not stale its own proofs — .rivet is excluded from identity", () => {
+    const dir = tempRepo();
+    execSync("mkdir -p .rivet && echo '{}' > .rivet/journal.jsonl && git add -A && git commit -qm rivet", {
+      cwd: dir,
+      stdio: "pipe",
+    });
+    const before = gitTreeHash(dir);
+    // Recording a proof appends to the tracked journal — identity MUST NOT move.
+    execSync("echo '{\"type\":\"check.run\"}' >> .rivet/journal.jsonl", { cwd: dir, stdio: "pipe" });
+    expect(gitTreeHash(dir)).toBe(before);
+    // …but a CODE change still moves it.
+    writeFileSync(join(dir, "f.txt"), "v-changed\n");
+    expect(gitTreeHash(dir)).not.toBe(before);
+  });
+
+  it("untracked code files now COUNT toward identity (closes the old stash-create blind spot)", () => {
+    const dir = tempRepo();
+    const before = gitTreeHash(dir);
+    writeFileSync(join(dir, "brand-new.ts"), "export const x = 1;\n");
+    expect(gitTreeHash(dir)).not.toBe(before);
+  });
+
   it("changed content goes stale even at the same HEAD; legacy sha-only proofs still compare by sha", () => {
     const r = parseSpec(SPEC);
     const treeProof = { ref: "A#a", passed: true, at: "t", sha: "S1", tree: "T1" };

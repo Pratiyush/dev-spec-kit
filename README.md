@@ -2,72 +2,96 @@
 
 > Spec-driven development with a **Verified Traceability Graph** — every requirement riveted to a passing check.
 
-**Status:** Phase 0 (foundation). Early, not yet usable. Repo: `Pratiyush/llm-dev-kit`.
+Rivet is a spec-driven development tool you drive from **Claude Code** (Spec-Kit-compatible layouts).
+It turns a request into **EARS** acceptance criteria with `@check` bindings, derives evidence-bound
+tasks, and — unlike every other SDD tool — **proves** the requirement → code → test → PR edges with
+real executed checks. A task physically cannot be marked done while a bound check is failing or
+unrun. Proofs carry the **tested tree-hash**, so committing tested code keeps them green while
+changed code goes stale — **drift** you can see and fix with one command.
 
-Rivet is a Spec-Kit-compatible spec-driven development tool you drive from **Claude Code**. It turns a request
-(a raw idea, a GitHub/GitLab issue, or a Jira epic) into **EARS** acceptance criteria, decomposes it into a
-verified plan, and — unlike other SDD tools — **proves every requirement → code → test → PR edge with a real,
-executed check.** A task literally cannot be marked *done* until its bound checks pass.
+Built on [graphify](https://github.com/safishamsi/graphify) (the code knowledge graph) — Rivet
+overlays the proven spec/test/PR edges and their traffic-light states on top.
 
-It builds on **[graphify](https://github.com/safishamsi/graphify)** for the code knowledge graph (Java,
-TypeScript, Python, and 20+ more languages) and overlays the proven spec/test/PR edges and their proof states
-on top — the **Verified Traceability Graph**.
+**Status:** v0 — fully usable from source; npm publish as **`rivet-kit`** is deferred until the
+app-dogfood phase completes (see `.rivet/DEFER.md`).
 
-## Why
+## The loop
 
-Every SDD tool today writes acceptance criteria as *text* and trusts the model to honor them (the "verification
-hole"), and most drown small changes in ceremony. Rivet's answer: **evidence-bound "done"** (no green without a
-real passing check) and **ceremony proportional to change size** (a fast path for small changes; the full spec
-pipeline only when a feature earns it).
+```bash
+rivet route "add idle session expiry"        # front door: research | quick | full-spec (+ security floor)
+# write .rivet/specs/sessions.md — EARS + @check bindings
+rivet spec tasks                              # spec → evidence-bound tasks (re-derive syncs bindings)
+rivet task start R-AUTH-03
+rivet check run R-AUTH-03 "SessionTest#idle" --stack java-maven --expect-red   # TDD red, journaled
+# implement…
+rivet check run R-AUTH-03 "SessionTest#idle" --stack java-maven               # green proof @ tree-hash
+rivet task done R-AUTH-03                     # THE GATE — refuses without green proofs
+rivet graph build                             # Verified Traceability Graph + boards (exit 1 on drift)
+rivet drift                                   # re-verify anything stale/red in one move
+rivet approve R-AUTH-03 --note "ship it"      # human gate as a signed artifact
+rivet pr --title "Session expiry"             # graph-derived PR body; guard hook blocks non-green PRs
+```
 
-## Pairs well with
+## What's inside
 
-Rivet is the **enforcement + traceability layer**; it deliberately does not duplicate generic dev
-craft. We recommend installing [superpowers](https://github.com/obra/superpowers) (MIT) alongside it
-for brainstorming, systematic debugging, git-worktree discipline, and parallel subagent dispatch —
-Rivet's skills compose with them and pick up where they stop: proofs, gates, and the graph.
+- **Hard gates (PreToolUse hooks):** PR creation blocked unless every proof is green (missing graph
+  blocks too) · in-flight specs/tests/gate-config are tamper-protected (`rivet unlock` = journaled,
+  time-boxed escape hatch) · opt-in DENY→FORCE→ALLOW investigative gate · PreCompact auto-saves
+  `RESUME.md`.
+- **Config-driven policy engine:** ~40 knobs in `.rivet/config.json` — TDD, flaky retries,
+  kind-aware runners (`unit/integration/api/e2e/visual/parity`), app spin-up lifecycle for e2e,
+  custom stacks as pure config, **gate packs** (security/contracts/nfr/rollback) with trigger words
+  that floor risky requests to full-spec.
+- **Laws** (`.rivet/laws.md` + scoped `laws/*.md`): always-on / file-match / summon-on-demand rules,
+  personal→project inheritance, `#[[file:…]]` doc injection — `rivet laws` shows what's in force.
+- **Continuity:** locked append-only journal with actor/model metadata · emoji audit trail
+  (`rivet log`) · generated `LEDGER.md`/`TRACKING.md`/`RESUME.md` boards that cannot lie ·
+  warn-on-repeat from the learnings ledger · `rivet dashboard` (emoji cockpit with completion %,
+  traffic lights, drift banner, the code graph, and every `.rivet/*.md` rendered readable).
+- **Parallelism:** `rivet wave plan/start/done` — no-shared-files waves, **fetch-first** worktrees
+  branched from origin's current tip (stale-base disasters designed out), merge-gated
+  provenance-checked cleanup.
 
-## Prerequisites
+## Commands
 
-- **Node.js ≥ 22** and **git**
-- **Python ≥ 3.10** and **graphify**: `pip install graphifyy && graphify install`
-  (the PyPI package is `graphifyy`; the CLI is `graphify`)
-- Per-stack build/test tools for your targets (e.g. a JDK + Maven for Spring/Quarkus; pytest for Python)
+`doctor` · `init` · `route` · `spec tasks` · `task create/start/done` · `check run [--expect-red]` ·
+`status` · `graph build` · `trace` · `drift` · `affected` · `approve` · `pr` · `guard pr` · `unlock` ·
+`laws` · `wave plan/start/done` · `board` · `dashboard` · `resume` · `log`
 
-Run `rivet doctor` to check all of these.
+Full reference with every option, the complete configuration guide, concepts, and a tutorial:
+**`website/`** — open `website/index.html`, docs under `website/docs/`.
 
 ## The input contract — the tool never changes, only its inputs
 
-Rivet has three layers: **engine code** (changes only when Rivet evolves), **skills** (the tool's
-voice, versioned here under `skills/`), and **project inputs** — the only thing that changes per
-project, all under `.rivet/` in your repo:
+| Input | Purpose |
+|---|---|
+| `.rivet/config.json` | every policy knob (gates, TDD, runners, autonomy) |
+| `.rivet/specs/*.md` | EARS requirements + `@check` bindings — source of truth |
+| `.rivet/intake/*.md` | raw ideas/tickets, verbatim (`rivet route --file`) |
+| `.rivet/laws.md`, `.rivet/laws/*.md` | the rules the agent must always obey |
+| `.rivet/learnings.md` | append-only retro ledger; lessons promote into laws or permanent checks |
+| `.rivet/DEFER.md` | consciously postponed work, with revisit conditions |
 
-| Input | Format | Purpose |
-|---|---|---|
-| `.rivet/config.json` | JSON (zod-validated) | every policy knob — gates, TDD, runners, autonomy |
-| `.rivet/specs/*.md` | Markdown + EARS + `@check` | requirements; source of truth for tasks & proofs |
-| `.rivet/intake/*.md` | Markdown + YAML frontmatter | raw ideas/tickets, verbatim; `rivet route --file` |
-| `.rivet/laws.md` | Markdown | the rules the agent must always obey |
-| `.rivet/learnings.md` | Markdown (append-only) | the retro loop; lessons promote into rules/checks |
-| `verify.runners` (in config) | JSON command templates | new test stacks with zero code changes |
+Rivet writes (committed, travels with a clone): `journal.jsonl`, `graph.json`, boards, `approvals/`,
+`pr-body.md`. Derived & gitignored: `graphify-out/`, `.rivet/cache/`.
 
-State Rivet writes (also in-repo, committed): `journal.jsonl`, `graph.json`, `approvals/`, `pr-body.md`.
+## Pairs well with
 
-## Develop
+[superpowers](https://github.com/obra/superpowers) (MIT) for brainstorming, systematic debugging,
+and worktree craft — Rivet is the enforcement + traceability layer those stop short of.
+
+## Prerequisites & develop
+
+Node ≥ 22 · git · Python ≥ 3.10 · graphify (`pip install graphifyy && graphify install`) — check
+everything with `rivet doctor`.
 
 ```bash
-pnpm install
-pnpm build
-node dist/cli/index.js doctor    # or: pnpm dev doctor
-node dist/cli/index.js init
-pnpm test
+pnpm install && pnpm build && pnpm test     # 150+ tests
+node dist/cli/index.js doctor
 ```
 
-## Roadmap
-
-P0 foundation → **P1 vertical slice** (one verified change end-to-end on a real Spring Boot project) → P2
-multi-kind verification + drift detection → P3 planning depth + agent roster → P4 state/continuity + parallelism
-→ P5 rules/steering + learning loop → P6 intake adapters (Jira/GitLab/GitHub) → P7 dashboard + public release.
+Rivet dogfoods itself: this repo's own `.rivet/` carries its specs, journal, laws, learnings, and
+boards — every feature here went through the gate it ships.
 
 ## License
 

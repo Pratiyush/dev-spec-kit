@@ -162,3 +162,14 @@
   identity, and HEAD explicitly — host config is part of the environment under test.
 - Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)
 - Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)
+
+## 2026-06-12 The journal must not stale its own proofs
+- Trigger: first self-graph of the rivet repo — drift re-proved 3/3 PASS yet all stayed STALE
+  forever: recording a proof appends to the tracked journal, which changed the tree-hash the proof
+  was compared against. The bookkeeping invalidated the evidence it was keeping.
+- Lesson: proof identity = the CODE tree only. Build a temp index from HEAD, drop .rivet/, add the
+  working state (now INCLUDING untracked files — closes the stash-create blind spot), write-tree.
+  A system whose act of measurement changes the measurement is not a measurement system.
+- Confidence: high (reproduced live; permanent regression test) · Scope: project
+- Promoted to: check:test/proof-identity.test.ts (FIX-PROOF-02 — journal-append keeps identity,
+  code change moves it, untracked files count; drift now converges 3/3 green on this very repo)

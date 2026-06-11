@@ -25,3 +25,13 @@
 - **Why deferred:** structural skill-QA (commands/artifacts must exist) ships; judged compliance
   needs an eval budget and stable scenarios. (Ledger: SKILL-QA-01.)
 - **To revisit:** pre-publish hardening, alongside the docs pass.
+
+## Live Spring `withApp` e2e showcase
+- **Why deferred:** Pratiyush (2026-06-12): showcase only; the lifecycle is already proven in-suite
+  against a real HTTP server (RUNNERS-01). Spinning Spring adds demo value, not verification value.
+- **To revisit:** before the public launch demo reel, or first real api/e2e-kind project.
+
+## Sonnet-driven temporary e2e demo (master-prompt dry run)
+- **Why deferred:** Pratiyush (2026-06-12): the REAL app-dogfood phase (him + master prompt)
+  supersedes a synthetic dry run.
+- **To revisit:** only if the app phase stalls and we need a cheap rehearsal first.

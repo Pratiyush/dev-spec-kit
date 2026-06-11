@@ -1,0 +1,5353 @@
+{
+  "nodes": [
+    {
+      "id": "hooks_guard_facts",
+      "kind": "codeNode",
+      "label": "guard-facts.mjs",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L1",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_readstdin",
+      "kind": "codeNode",
+      "label": "readStdin()",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L16",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_payload",
+      "kind": "codeNode",
+      "label": "payload",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L24",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_edit_tools",
+      "kind": "codeNode",
+      "label": "EDIT_TOOLS",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L31",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_config",
+      "kind": "codeNode",
+      "label": "config",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L50",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_statepath",
+      "kind": "codeNode",
+      "label": "statePath",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L58",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_state",
+      "kind": "codeNode",
+      "label": "state",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L59",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_now",
+      "kind": "codeNode",
+      "label": "now",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L69",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_facts_keys",
+      "kind": "codeNode",
+      "label": "keys",
+      "meta": {
+        "sourceFile": "hooks/guard-facts.mjs",
+        "sourceLocation": "L74",
+        "community": 14
+      }
+    },
+    {
+      "id": "hooks_guard_pr",
+      "kind": "codeNode",
+      "label": "guard-pr.mjs",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L1",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_readstdin",
+      "kind": "codeNode",
+      "label": "readStdin()",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L14",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_payload",
+      "kind": "codeNode",
+      "label": "payload",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L22",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_command",
+      "kind": "codeNode",
+      "label": "command",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L34",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_block",
+      "kind": "codeNode",
+      "label": "block()",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L52",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_graphpath",
+      "kind": "codeNode",
+      "label": "graphPath",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L57",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_validates",
+      "kind": "codeNode",
+      "label": "validates",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L67",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_pr_bad",
+      "kind": "codeNode",
+      "label": "bad",
+      "meta": {
+        "sourceFile": "hooks/guard-pr.mjs",
+        "sourceLocation": "L69",
+        "community": 17
+      }
+    },
+    {
+      "id": "hooks_guard_protect",
+      "kind": "codeNode",
+      "label": "guard-protect.mjs",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L1",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_readstdin",
+      "kind": "codeNode",
+      "label": "readStdin()",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L14",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_payload",
+      "kind": "codeNode",
+      "label": "payload",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L22",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_edit_tools",
+      "kind": "codeNode",
+      "label": "EDIT_TOOLS",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L29",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_events",
+      "kind": "codeNode",
+      "label": "events",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L50",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_tasks",
+      "kind": "codeNode",
+      "label": "tasks",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L67",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_inflight",
+      "kind": "codeNode",
+      "label": "inFlight",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L80",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_block",
+      "kind": "codeNode",
+      "label": "block()",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L96",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_guard_protect_ids",
+      "kind": "codeNode",
+      "label": "ids",
+      "meta": {
+        "sourceFile": "hooks/guard-protect.mjs",
+        "sourceLocation": "L104",
+        "community": 15
+      }
+    },
+    {
+      "id": "hooks_resume_save",
+      "kind": "codeNode",
+      "label": "resume-save.mjs",
+      "meta": {
+        "sourceFile": "hooks/resume-save.mjs",
+        "sourceLocation": "L1",
+        "community": 20
+      }
+    },
+    {
+      "id": "hooks_resume_save_readstdin",
+      "kind": "codeNode",
+      "label": "readStdin()",
+      "meta": {
+        "sourceFile": "hooks/resume-save.mjs",
+        "sourceLocation": "L11",
+        "community": 20
+      }
+    },
+    {
+      "id": "hooks_resume_save_payload",
+      "kind": "codeNode",
+      "label": "payload",
+      "meta": {
+        "sourceFile": "hooks/resume-save.mjs",
+        "sourceLocation": "L19",
+        "community": 20
+      }
+    },
+    {
+      "id": "hooks_resume_save_tasks",
+      "kind": "codeNode",
+      "label": "tasks",
+      "meta": {
+        "sourceFile": "hooks/resume-save.mjs",
+        "sourceLocation": "L39",
+        "community": 20
+      }
+    },
+    {
+      "id": "hooks_resume_save_all",
+      "kind": "codeNode",
+      "label": "all",
+      "meta": {
+        "sourceFile": "hooks/resume-save.mjs",
+        "sourceLocation": "L64",
+        "community": 20
+      }
+    },
+    {
+      "id": "hooks_resume_save_lines",
+      "kind": "codeNode",
+      "label": "lines",
+      "meta": {
+        "sourceFile": "hooks/resume-save.mjs",
+        "sourceLocation": "L68",
+        "community": 20
+      }
+    },
+    {
+      "id": "package",
+      "kind": "codeNode",
+      "label": "package.json",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L1",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_name",
+      "kind": "codeNode",
+      "label": "name",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L2",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_version",
+      "kind": "codeNode",
+      "label": "version",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L3",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_description",
+      "kind": "codeNode",
+      "label": "description",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L4",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_type",
+      "kind": "codeNode",
+      "label": "type",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L5",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_bin",
+      "kind": "codeNode",
+      "label": "bin",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L6",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_bin_rivet",
+      "kind": "codeNode",
+      "label": "rivet",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L7",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_main",
+      "kind": "codeNode",
+      "label": "main",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L9",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_types",
+      "kind": "codeNode",
+      "label": "types",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L10",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_files",
+      "kind": "codeNode",
+      "label": "files",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L11",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_engines",
+      "kind": "codeNode",
+      "label": "engines",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L14",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_engines_node",
+      "kind": "codeNode",
+      "label": "node",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L15",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts",
+      "kind": "codeNode",
+      "label": "scripts",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L17",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts_build",
+      "kind": "codeNode",
+      "label": "build",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L18",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts_dev",
+      "kind": "codeNode",
+      "label": "dev",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L19",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts_typecheck",
+      "kind": "codeNode",
+      "label": "typecheck",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L20",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts_test",
+      "kind": "codeNode",
+      "label": "test",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L21",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts_test_watch",
+      "kind": "codeNode",
+      "label": "test:watch",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L22",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_scripts_start",
+      "kind": "codeNode",
+      "label": "start",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L23",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_dependencies",
+      "kind": "codeNode",
+      "label": "dependencies",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L25",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_dependencies_commander",
+      "kind": "codeNode",
+      "label": "commander",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L26",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_dependencies_picocolors",
+      "kind": "codeNode",
+      "label": "picocolors",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L27",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_dependencies_zod",
+      "kind": "codeNode",
+      "label": "zod",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L28",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_devdependencies",
+      "kind": "codeNode",
+      "label": "devDependencies",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L30",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "kind": "codeNode",
+      "label": "@types/node",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L31",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_devdependencies_tsx",
+      "kind": "codeNode",
+      "label": "tsx",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L32",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "kind": "codeNode",
+      "label": "typescript",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L33",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_devdependencies_vitest",
+      "kind": "codeNode",
+      "label": "vitest",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L34",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_keywords",
+      "kind": "codeNode",
+      "label": "keywords",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L36",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_author",
+      "kind": "codeNode",
+      "label": "author",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L45",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_license",
+      "kind": "codeNode",
+      "label": "license",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L46",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_repository",
+      "kind": "codeNode",
+      "label": "repository",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L47",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_repository_type",
+      "kind": "codeNode",
+      "label": "type",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L48",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_repository_url",
+      "kind": "codeNode",
+      "label": "url",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L49",
+        "community": 5
+      }
+    },
+    {
+      "id": "package_packagemanager",
+      "kind": "codeNode",
+      "label": "packageManager",
+      "meta": {
+        "sourceFile": "package.json",
+        "sourceLocation": "L51",
+        "community": 5
+      }
+    },
+    {
+      "id": "cli_board_cmd",
+      "kind": "codeNode",
+      "label": "board-cmd.ts",
+      "meta": {
+        "sourceFile": "src/cli/board-cmd.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_board_cmd_boardcmd",
+      "kind": "codeNode",
+      "label": "boardCmd()",
+      "meta": {
+        "sourceFile": "src/cli/board-cmd.ts",
+        "sourceLocation": "L7",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_boards",
+      "kind": "codeNode",
+      "label": "boards.ts",
+      "meta": {
+        "sourceFile": "src/cli/boards.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_boards_status_emoji",
+      "kind": "codeNode",
+      "label": "STATUS_EMOJI",
+      "meta": {
+        "sourceFile": "src/cli/boards.ts",
+        "sourceLocation": "L15",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_boards_light",
+      "kind": "codeNode",
+      "label": "LIGHT",
+      "meta": {
+        "sourceFile": "src/cli/boards.ts",
+        "sourceLocation": "L21",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_boards_renderledger",
+      "kind": "codeNode",
+      "label": "renderLedger()",
+      "meta": {
+        "sourceFile": "src/cli/boards.ts",
+        "sourceLocation": "L23",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_boards_rendertracking",
+      "kind": "codeNode",
+      "label": "renderTracking()",
+      "meta": {
+        "sourceFile": "src/cli/boards.ts",
+        "sourceLocation": "L57",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_boards_writeboards",
+      "kind": "codeNode",
+      "label": "writeBoards()",
+      "meta": {
+        "sourceFile": "src/cli/boards.ts",
+        "sourceLocation": "L81",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_config_io",
+      "kind": "codeNode",
+      "label": "config-io.ts",
+      "meta": {
+        "sourceFile": "src/cli/config-io.ts",
+        "sourceLocation": "L1",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_config_io_inputerror",
+      "kind": "codeNode",
+      "label": "InputError",
+      "meta": {
+        "sourceFile": "src/cli/config-io.ts",
+        "sourceLocation": "L11",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_config_io_inputerror_constructor",
+      "kind": "codeNode",
+      "label": ".constructor()",
+      "meta": {
+        "sourceFile": "src/cli/config-io.ts",
+        "sourceLocation": "L12",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_config_io_loadconfig",
+      "kind": "codeNode",
+      "label": "loadConfig()",
+      "meta": {
+        "sourceFile": "src/cli/config-io.ts",
+        "sourceLocation": "L18",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_dashboard",
+      "kind": "codeNode",
+      "label": "dashboard.ts",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_status_emoji",
+      "kind": "codeNode",
+      "label": "STATUS_EMOJI",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L18",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_light",
+      "kind": "codeNode",
+      "label": "LIGHT",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L24",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_esc",
+      "kind": "codeNode",
+      "label": "esc()",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L26",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_rivetfile",
+      "kind": "codeNode",
+      "label": "RivetFile",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L30",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_collectrivetfiles",
+      "kind": "codeNode",
+      "label": "collectRivetFiles()",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L38",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_escmd",
+      "kind": "codeNode",
+      "label": "escMd()",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L65",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_mdtohtml",
+      "kind": "codeNode",
+      "label": "mdToHtml()",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L68",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_dashboardinput",
+      "kind": "codeNode",
+      "label": "DashboardInput",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L144",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_renderdashboard",
+      "kind": "codeNode",
+      "label": "renderDashboard()",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L155",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_dashboard_dashboardcmd",
+      "kind": "codeNode",
+      "label": "dashboardCmd()",
+      "meta": {
+        "sourceFile": "src/cli/dashboard.ts",
+        "sourceLocation": "L238",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_doctor",
+      "kind": "codeNode",
+      "label": "doctor.ts",
+      "meta": {
+        "sourceFile": "src/cli/doctor.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_doctor_check",
+      "kind": "codeNode",
+      "label": "Check",
+      "meta": {
+        "sourceFile": "src/cli/doctor.ts",
+        "sourceLocation": "L4",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_doctor_probe",
+      "kind": "codeNode",
+      "label": "probe()",
+      "meta": {
+        "sourceFile": "src/cli/doctor.ts",
+        "sourceLocation": "L13",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_doctor_firstline",
+      "kind": "codeNode",
+      "label": "firstLine()",
+      "meta": {
+        "sourceFile": "src/cli/doctor.ts",
+        "sourceLocation": "L21",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_doctor_rundoctor",
+      "kind": "codeNode",
+      "label": "runDoctor()",
+      "meta": {
+        "sourceFile": "src/cli/doctor.ts",
+        "sourceLocation": "L29",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_graph",
+      "kind": "codeNode",
+      "label": "graph.ts",
+      "meta": {
+        "sourceFile": "src/cli/graph.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_graph_graphbuild",
+      "kind": "codeNode",
+      "label": "graphBuild()",
+      "meta": {
+        "sourceFile": "src/cli/graph.ts",
+        "sourceLocation": "L15",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_index",
+      "kind": "codeNode",
+      "label": "index.ts",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_safe",
+      "kind": "codeNode",
+      "label": "safe()",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L24",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_program",
+      "kind": "codeNode",
+      "label": "program",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L44",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_task",
+      "kind": "codeNode",
+      "label": "task",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L76",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_check",
+      "kind": "codeNode",
+      "label": "check",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L95",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_graph",
+      "kind": "codeNode",
+      "label": "graph",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L114",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_spec",
+      "kind": "codeNode",
+      "label": "spec",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L121",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_guard",
+      "kind": "codeNode",
+      "label": "guard",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L149",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_index_wave",
+      "kind": "codeNode",
+      "label": "wave",
+      "meta": {
+        "sourceFile": "src/cli/index.ts",
+        "sourceLocation": "L180",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_init",
+      "kind": "codeNode",
+      "label": "init.ts",
+      "meta": {
+        "sourceFile": "src/cli/init.ts",
+        "sourceLocation": "L1",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_init_initoptions",
+      "kind": "codeNode",
+      "label": "InitOptions",
+      "meta": {
+        "sourceFile": "src/cli/init.ts",
+        "sourceLocation": "L23",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_init_runinit",
+      "kind": "codeNode",
+      "label": "runInit()",
+      "meta": {
+        "sourceFile": "src/cli/init.ts",
+        "sourceLocation": "L31",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_init_ensuregitignore",
+      "kind": "codeNode",
+      "label": "ensureGitignore()",
+      "meta": {
+        "sourceFile": "src/cli/init.ts",
+        "sourceLocation": "L60",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_laws_cmd",
+      "kind": "codeNode",
+      "label": "laws-cmd.ts",
+      "meta": {
+        "sourceFile": "src/cli/laws-cmd.ts",
+        "sourceLocation": "L1",
+        "community": 12
+      }
+    },
+    {
+      "id": "cli_laws_cmd_lawscmd",
+      "kind": "codeNode",
+      "label": "lawsCmd()",
+      "meta": {
+        "sourceFile": "src/cli/laws-cmd.ts",
+        "sourceLocation": "L5",
+        "community": 12
+      }
+    },
+    {
+      "id": "cli_log",
+      "kind": "codeNode",
+      "label": "log.ts",
+      "meta": {
+        "sourceFile": "src/cli/log.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "cli_log_renderlog",
+      "kind": "codeNode",
+      "label": "renderLog()",
+      "meta": {
+        "sourceFile": "src/cli/log.ts",
+        "sourceLocation": "L11",
+        "community": 3
+      }
+    },
+    {
+      "id": "cli_log_describeevent",
+      "kind": "codeNode",
+      "label": "describeEvent()",
+      "meta": {
+        "sourceFile": "src/cli/log.ts",
+        "sourceLocation": "L23",
+        "community": 3
+      }
+    },
+    {
+      "id": "cli_log_parsecount",
+      "kind": "codeNode",
+      "label": "parseCount()",
+      "meta": {
+        "sourceFile": "src/cli/log.ts",
+        "sourceLocation": "L52",
+        "community": 3
+      }
+    },
+    {
+      "id": "cli_log_logcmd",
+      "kind": "codeNode",
+      "label": "logCmd()",
+      "meta": {
+        "sourceFile": "src/cli/log.ts",
+        "sourceLocation": "L58",
+        "community": 3
+      }
+    },
+    {
+      "id": "cli_materialize",
+      "kind": "codeNode",
+      "label": "materialize.ts",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "L1",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_materialize_materialized",
+      "kind": "codeNode",
+      "label": "Materialized",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "L16",
+        "community": 0
+      }
+    },
+    {
+      "id": "cli_materialize_materialize",
+      "kind": "codeNode",
+      "label": "materialize()",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "L27",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_materialize_journalfor",
+      "kind": "codeNode",
+      "label": "journalFor()",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "L56",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_materialize_configfor",
+      "kind": "codeNode",
+      "label": "configFor()",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "L60",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_materialize_githead",
+      "kind": "codeNode",
+      "label": "gitHead()",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "L64",
+        "community": 9
+      }
+    },
+    {
+      "id": "cli_progress",
+      "kind": "codeNode",
+      "label": "progress.ts",
+      "meta": {
+        "sourceFile": "src/cli/progress.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_progress_status_emoji",
+      "kind": "codeNode",
+      "label": "STATUS_EMOJI",
+      "meta": {
+        "sourceFile": "src/cli/progress.ts",
+        "sourceLocation": "L10",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_progress_renderprogress",
+      "kind": "codeNode",
+      "label": "renderProgress()",
+      "meta": {
+        "sourceFile": "src/cli/progress.ts",
+        "sourceLocation": "L17",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_queries",
+      "kind": "codeNode",
+      "label": "queries.ts",
+      "meta": {
+        "sourceFile": "src/cli/queries.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_queries_light",
+      "kind": "codeNode",
+      "label": "LIGHT",
+      "meta": {
+        "sourceFile": "src/cli/queries.ts",
+        "sourceLocation": "L13",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_queries_trace",
+      "kind": "codeNode",
+      "label": "trace()",
+      "meta": {
+        "sourceFile": "src/cli/queries.ts",
+        "sourceLocation": "L21",
+        "community": 2
+      }
+    },
+    {
+      "id": "cli_queries_drift",
+      "kind": "codeNode",
+      "label": "drift()",
+      "meta": {
+        "sourceFile": "src/cli/queries.ts",
+        "sourceLocation": "L49",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_queries_affected",
+      "kind": "codeNode",
+      "label": "affected()",
+      "meta": {
+        "sourceFile": "src/cli/queries.ts",
+        "sourceLocation": "L101",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_resume",
+      "kind": "codeNode",
+      "label": "resume.ts",
+      "meta": {
+        "sourceFile": "src/cli/resume.ts",
+        "sourceLocation": "L1",
+        "community": 6
+      }
+    },
+    {
+      "id": "cli_resume_resumecmd",
+      "kind": "codeNode",
+      "label": "resumeCmd()",
+      "meta": {
+        "sourceFile": "src/cli/resume.ts",
+        "sourceLocation": "L9",
+        "community": 6
+      }
+    },
+    {
+      "id": "cli_tasks",
+      "kind": "codeNode",
+      "label": "tasks.ts",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_tasks_store",
+      "kind": "codeNode",
+      "label": "store()",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L24",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_tasks_taskcreate",
+      "kind": "codeNode",
+      "label": "taskCreate()",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L28",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_tasks_taskstart",
+      "kind": "codeNode",
+      "label": "taskStart()",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L38",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_tasks_taskdone",
+      "kind": "codeNode",
+      "label": "taskDone()",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L54",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_tasks_checkrun",
+      "kind": "codeNode",
+      "label": "checkRun()",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L79",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_tasks_status",
+      "kind": "codeNode",
+      "label": "status()",
+      "meta": {
+        "sourceFile": "src/cli/tasks.ts",
+        "sourceLocation": "L135",
+        "community": 1
+      }
+    },
+    {
+      "id": "cli_wave",
+      "kind": "codeNode",
+      "label": "wave.ts",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L1",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_git",
+      "kind": "codeNode",
+      "label": "git()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L16",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_defaultbranch",
+      "kind": "codeNode",
+      "label": "defaultBranch()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L20",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_ensureunionmerge",
+      "kind": "codeNode",
+      "label": "ensureUnionMerge()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L37",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_worktreereport",
+      "kind": "codeNode",
+      "label": "WorktreeReport",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L45",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_wavestartat",
+      "kind": "codeNode",
+      "label": "waveStartAt()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L52",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_wavedonereport",
+      "kind": "codeNode",
+      "label": "WaveDoneReport",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L66",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_wavedoneat",
+      "kind": "codeNode",
+      "label": "waveDoneAt()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L77",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_wavedone",
+      "kind": "codeNode",
+      "label": "waveDone()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L108",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_waveplan",
+      "kind": "codeNode",
+      "label": "wavePlan()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L116",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_wave_wavestart",
+      "kind": "codeNode",
+      "label": "waveStart()",
+      "meta": {
+        "sourceFile": "src/cli/wave.ts",
+        "sourceLocation": "L131",
+        "community": 10
+      }
+    },
+    {
+      "id": "cli_workflow",
+      "kind": "codeNode",
+      "label": "workflow.ts",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L1",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_journal",
+      "kind": "codeNode",
+      "label": "journal()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L16",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_spectasks",
+      "kind": "codeNode",
+      "label": "specTasks()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L21",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_approve",
+      "kind": "codeNode",
+      "label": "approve()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L60",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_pr",
+      "kind": "codeNode",
+      "label": "pr()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L82",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_route",
+      "kind": "codeNode",
+      "label": "route()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L131",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_gategraph",
+      "kind": "codeNode",
+      "label": "gateGraph()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L180",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_guardpr",
+      "kind": "codeNode",
+      "label": "guardPr()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L191",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_githead",
+      "kind": "codeNode",
+      "label": "gitHead()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L211",
+        "community": 4
+      }
+    },
+    {
+      "id": "cli_workflow_unlock",
+      "kind": "codeNode",
+      "label": "unlock()",
+      "meta": {
+        "sourceFile": "src/cli/workflow.ts",
+        "sourceLocation": "L221",
+        "community": 4
+      }
+    },
+    {
+      "id": "config_schema",
+      "kind": "codeNode",
+      "label": "schema.ts",
+      "meta": {
+        "sourceFile": "src/config/schema.ts",
+        "sourceLocation": "L1",
+        "community": 9
+      }
+    },
+    {
+      "id": "config_schema_rivetconfigschema",
+      "kind": "codeNode",
+      "label": "RivetConfigSchema",
+      "meta": {
+        "sourceFile": "src/config/schema.ts",
+        "sourceLocation": "L10",
+        "community": 9
+      }
+    },
+    {
+      "id": "config_schema_rivetconfig",
+      "kind": "codeNode",
+      "label": "RivetConfig",
+      "meta": {
+        "sourceFile": "src/config/schema.ts",
+        "sourceLocation": "L288",
+        "community": 9
+      }
+    },
+    {
+      "id": "config_schema_defaultconfig",
+      "kind": "codeNode",
+      "label": "defaultConfig()",
+      "meta": {
+        "sourceFile": "src/config/schema.ts",
+        "sourceLocation": "L291",
+        "community": 9
+      }
+    },
+    {
+      "id": "config_schema_parseconfig",
+      "kind": "codeNode",
+      "label": "parseConfig()",
+      "meta": {
+        "sourceFile": "src/config/schema.ts",
+        "sourceLocation": "L296",
+        "community": 9
+      }
+    },
+    {
+      "id": "engine_approvals",
+      "kind": "codeNode",
+      "label": "approvals.ts",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L1",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_approvals_approvalinput",
+      "kind": "codeNode",
+      "label": "ApprovalInput",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L15",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_approvals_approvalerror",
+      "kind": "codeNode",
+      "label": "ApprovalError",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L25",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_approvals_createapproval",
+      "kind": "codeNode",
+      "label": "createApproval()",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L27",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_approvals_listapprovals",
+      "kind": "codeNode",
+      "label": "listApprovals()",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L82",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_approvals_githead",
+      "kind": "codeNode",
+      "label": "gitHead()",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L88",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_approvals_gitconfig",
+      "kind": "codeNode",
+      "label": "gitConfig()",
+      "meta": {
+        "sourceFile": "src/engine/approvals.ts",
+        "sourceLocation": "L93",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_facts",
+      "kind": "codeNode",
+      "label": "facts.ts",
+      "meta": {
+        "sourceFile": "src/engine/facts.ts",
+        "sourceLocation": "L1",
+        "community": 19
+      }
+    },
+    {
+      "id": "engine_facts_factsentry",
+      "kind": "codeNode",
+      "label": "FactsEntry",
+      "meta": {
+        "sourceFile": "src/engine/facts.ts",
+        "sourceLocation": "L13",
+        "community": 19
+      }
+    },
+    {
+      "id": "engine_facts_factsstate",
+      "kind": "codeNode",
+      "label": "FactsState",
+      "meta": {
+        "sourceFile": "src/engine/facts.ts",
+        "sourceLocation": "L17",
+        "community": 19
+      }
+    },
+    {
+      "id": "engine_facts_factsverdict",
+      "kind": "codeNode",
+      "label": "factsVerdict",
+      "meta": {
+        "sourceFile": "src/engine/facts.ts",
+        "sourceLocation": "L37",
+        "community": 19
+      }
+    },
+    {
+      "id": "engine_facts_factsdemand",
+      "kind": "codeNode",
+      "label": "factsDemand()",
+      "meta": {
+        "sourceFile": "src/engine/facts.ts",
+        "sourceLocation": "L28",
+        "community": 19
+      }
+    },
+    {
+      "id": "engine_gate",
+      "kind": "codeNode",
+      "label": "gate.ts",
+      "meta": {
+        "sourceFile": "src/engine/gate.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "engine_gate_gateverdict",
+      "kind": "codeNode",
+      "label": "gateVerdict",
+      "meta": {
+        "sourceFile": "src/engine/gate.ts",
+        "sourceLocation": "L16",
+        "community": 0
+      }
+    },
+    {
+      "id": "engine_gatepacks",
+      "kind": "codeNode",
+      "label": "gatepacks.ts",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L1",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_gatepacks_packdef",
+      "kind": "codeNode",
+      "label": "PackDef",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L12",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_gatepacks_escapere",
+      "kind": "codeNode",
+      "label": "escapeRe()",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L18",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_gatepacks_triggered",
+      "kind": "codeNode",
+      "label": "triggered()",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L22",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_gatepacks_requiredpacks",
+      "kind": "codeNode",
+      "label": "requiredPacks()",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L31",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_gatepacks_evaluatepack",
+      "kind": "codeNode",
+      "label": "evaluatePack()",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L36",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_gatepacks_applygatefloor",
+      "kind": "codeNode",
+      "label": "applyGateFloor()",
+      "meta": {
+        "sourceFile": "src/engine/gatepacks.ts",
+        "sourceLocation": "L50",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_git",
+      "kind": "codeNode",
+      "label": "git.ts",
+      "meta": {
+        "sourceFile": "src/engine/git.ts",
+        "sourceLocation": "L1",
+        "community": 7
+      }
+    },
+    {
+      "id": "engine_git_git",
+      "kind": "codeNode",
+      "label": "git()",
+      "meta": {
+        "sourceFile": "src/engine/git.ts",
+        "sourceLocation": "L17",
+        "community": 7
+      }
+    },
+    {
+      "id": "engine_git_githead",
+      "kind": "codeNode",
+      "label": "gitHead()",
+      "meta": {
+        "sourceFile": "src/engine/git.ts",
+        "sourceLocation": "L24",
+        "community": 7
+      }
+    },
+    {
+      "id": "engine_git_isdirty",
+      "kind": "codeNode",
+      "label": "isDirty()",
+      "meta": {
+        "sourceFile": "src/engine/git.ts",
+        "sourceLocation": "L28",
+        "community": 7
+      }
+    },
+    {
+      "id": "engine_git_gittreehash",
+      "kind": "codeNode",
+      "label": "gitTreeHash()",
+      "meta": {
+        "sourceFile": "src/engine/git.ts",
+        "sourceLocation": "L34",
+        "community": 7
+      }
+    },
+    {
+      "id": "graph_build",
+      "kind": "codeNode",
+      "label": "build.ts",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_build_buildinput",
+      "kind": "codeNode",
+      "label": "BuildInput",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L18",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_build_buildvtg",
+      "kind": "codeNode",
+      "label": "buildVTG()",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L28",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_build_vtgsummary",
+      "kind": "codeNode",
+      "label": "VTGSummary",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L104",
+        "community": 2
+      }
+    },
+    {
+      "id": "graph_build_requirementrollup",
+      "kind": "codeNode",
+      "label": "RequirementRollup",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L117",
+        "community": 2
+      }
+    },
+    {
+      "id": "graph_build_proof_rank",
+      "kind": "codeNode",
+      "label": "PROOF_RANK",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L124",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_build_rolluprequirements",
+      "kind": "codeNode",
+      "label": "rollupRequirements()",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L126",
+        "community": 2
+      }
+    },
+    {
+      "id": "graph_build_drifttarget",
+      "kind": "codeNode",
+      "label": "DriftTarget",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L154",
+        "community": 2
+      }
+    },
+    {
+      "id": "graph_build_drifttargets",
+      "kind": "codeNode",
+      "label": "driftTargets()",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L161",
+        "community": 1
+      }
+    },
+    {
+      "id": "graph_build_summarize",
+      "kind": "codeNode",
+      "label": "summarize()",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "L181",
+        "community": 2
+      }
+    },
+    {
+      "id": "graph_types",
+      "kind": "codeNode",
+      "label": "types.ts",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_nodekind",
+      "kind": "codeNode",
+      "label": "NodeKind",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L12",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_edgekind",
+      "kind": "codeNode",
+      "label": "EdgeKind",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L31",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_proofstate",
+      "kind": "codeNode",
+      "label": "ProofState",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L40",
+        "community": 2
+      }
+    },
+    {
+      "id": "graph_types_graphnode",
+      "kind": "codeNode",
+      "label": "GraphNode",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L42",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_checkresult",
+      "kind": "codeNode",
+      "label": "CheckResult",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L49",
+        "community": 6
+      }
+    },
+    {
+      "id": "graph_types_graphedge",
+      "kind": "codeNode",
+      "label": "GraphEdge",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L71",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_verifiedtraceabilitygraph",
+      "kind": "codeNode",
+      "label": "VerifiedTraceabilityGraph",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L82",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_proven_edge_kinds",
+      "kind": "codeNode",
+      "label": "PROVEN_EDGE_KINDS",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L88",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_hasgreenedge",
+      "kind": "codeNode",
+      "label": "hasGreenEdge()",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L94",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_unimplementedrequirements",
+      "kind": "codeNode",
+      "label": "unimplementedRequirements()",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L109",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_untestedcriteria",
+      "kind": "codeNode",
+      "label": "untestedCriteria()",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L114",
+        "community": 0
+      }
+    },
+    {
+      "id": "graph_types_blastradius",
+      "kind": "codeNode",
+      "label": "blastRadius()",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L124",
+        "community": 1
+      }
+    },
+    {
+      "id": "graph_types_driftededges",
+      "kind": "codeNode",
+      "label": "driftedEdges()",
+      "meta": {
+        "sourceFile": "src/engine/graph/types.ts",
+        "sourceLocation": "L131",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index",
+      "kind": "codeNode",
+      "label": "index.ts",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_graphifybin",
+      "kind": "codeNode",
+      "label": "graphifyBin()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L17",
+        "community": 1
+      }
+    },
+    {
+      "id": "graphify_index_graphifyinstalled",
+      "kind": "codeNode",
+      "label": "graphifyInstalled()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L24",
+        "community": 2
+      }
+    },
+    {
+      "id": "graphify_index_rawgraph",
+      "kind": "codeNode",
+      "label": "RawGraph",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L32",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_codelink",
+      "kind": "codeNode",
+      "label": "CodeLink",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L47",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_codegraph",
+      "kind": "codeNode",
+      "label": "CodeGraph",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L53",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_loadcodegraph",
+      "kind": "codeNode",
+      "label": "loadCodeGraph()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L62",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_endpointid",
+      "kind": "codeNode",
+      "label": "endpointId()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L82",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_graphfreshness",
+      "kind": "codeNode",
+      "label": "GraphFreshness",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L90",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_freshness_file",
+      "kind": "codeNode",
+      "label": "FRESHNESS_FILE",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L94",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_readfreshness",
+      "kind": "codeNode",
+      "label": "readFreshness()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L96",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_writefreshness",
+      "kind": "codeNode",
+      "label": "writeFreshness()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L106",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_isstale",
+      "kind": "codeNode",
+      "label": "isStale()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L113",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_refreshcodegraph",
+      "kind": "codeNode",
+      "label": "refreshCodeGraph()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L124",
+        "community": 0
+      }
+    },
+    {
+      "id": "graphify_index_githead",
+      "kind": "codeNode",
+      "label": "gitHead()",
+      "meta": {
+        "sourceFile": "src/engine/graphify/index.ts",
+        "sourceLocation": "L137",
+        "community": 0
+      }
+    },
+    {
+      "id": "engine_learnwarn",
+      "kind": "codeNode",
+      "label": "learnwarn.ts",
+      "meta": {
+        "sourceFile": "src/engine/learnwarn.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "engine_learnwarn_lessonentry",
+      "kind": "codeNode",
+      "label": "LessonEntry",
+      "meta": {
+        "sourceFile": "src/engine/learnwarn.ts",
+        "sourceLocation": "L7",
+        "community": 1
+      }
+    },
+    {
+      "id": "engine_learnwarn_parselearnings",
+      "kind": "codeNode",
+      "label": "parseLearnings()",
+      "meta": {
+        "sourceFile": "src/engine/learnwarn.ts",
+        "sourceLocation": "L13",
+        "community": 1
+      }
+    },
+    {
+      "id": "engine_learnwarn_stop",
+      "kind": "codeNode",
+      "label": "STOP",
+      "meta": {
+        "sourceFile": "src/engine/learnwarn.ts",
+        "sourceLocation": "L26",
+        "community": 1
+      }
+    },
+    {
+      "id": "engine_learnwarn_tokens",
+      "kind": "codeNode",
+      "label": "tokens()",
+      "meta": {
+        "sourceFile": "src/engine/learnwarn.ts",
+        "sourceLocation": "L28",
+        "community": 1
+      }
+    },
+    {
+      "id": "engine_learnwarn_matchopenlessons",
+      "kind": "codeNode",
+      "label": "matchOpenLessons()",
+      "meta": {
+        "sourceFile": "src/engine/learnwarn.ts",
+        "sourceLocation": "L38",
+        "community": 1
+      }
+    },
+    {
+      "id": "engine_lock",
+      "kind": "codeNode",
+      "label": "lock.ts",
+      "meta": {
+        "sourceFile": "src/engine/lock.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "engine_lock_lockoptions",
+      "kind": "codeNode",
+      "label": "LockOptions",
+      "meta": {
+        "sourceFile": "src/engine/lock.ts",
+        "sourceLocation": "L10",
+        "community": 3
+      }
+    },
+    {
+      "id": "engine_lock_sleepsync",
+      "kind": "codeNode",
+      "label": "sleepSync()",
+      "meta": {
+        "sourceFile": "src/engine/lock.ts",
+        "sourceLocation": "L15",
+        "community": 3
+      }
+    },
+    {
+      "id": "engine_lock_withlock",
+      "kind": "codeNode",
+      "label": "withLock()",
+      "meta": {
+        "sourceFile": "src/engine/lock.ts",
+        "sourceLocation": "L19",
+        "community": 3
+      }
+    },
+    {
+      "id": "engine_phase",
+      "kind": "codeNode",
+      "label": "phase.ts",
+      "meta": {
+        "sourceFile": "src/engine/phase.ts",
+        "sourceLocation": "L1",
+        "community": 6
+      }
+    },
+    {
+      "id": "engine_phase_boundary",
+      "kind": "codeNode",
+      "label": "Boundary",
+      "meta": {
+        "sourceFile": "src/engine/phase.ts",
+        "sourceLocation": "L10",
+        "community": 6
+      }
+    },
+    {
+      "id": "engine_phase_phaseboundary",
+      "kind": "codeNode",
+      "label": "phaseBoundary()",
+      "meta": {
+        "sourceFile": "src/engine/phase.ts",
+        "sourceLocation": "L14",
+        "community": 6
+      }
+    },
+    {
+      "id": "engine_phase_renderresume",
+      "kind": "codeNode",
+      "label": "renderResume()",
+      "meta": {
+        "sourceFile": "src/engine/phase.ts",
+        "sourceLocation": "L24",
+        "community": 6
+      }
+    },
+    {
+      "id": "pr_body",
+      "kind": "codeNode",
+      "label": "body.ts",
+      "meta": {
+        "sourceFile": "src/engine/pr/body.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "pr_body_prbodyinput",
+      "kind": "codeNode",
+      "label": "PrBodyInput",
+      "meta": {
+        "sourceFile": "src/engine/pr/body.ts",
+        "sourceLocation": "L10",
+        "community": 0
+      }
+    },
+    {
+      "id": "pr_body_light",
+      "kind": "codeNode",
+      "label": "LIGHT",
+      "meta": {
+        "sourceFile": "src/engine/pr/body.ts",
+        "sourceLocation": "L19",
+        "community": 0
+      }
+    },
+    {
+      "id": "pr_body_buildprbody",
+      "kind": "codeNode",
+      "label": "buildPrBody()",
+      "meta": {
+        "sourceFile": "src/engine/pr/body.ts",
+        "sourceLocation": "L26",
+        "community": 4
+      }
+    },
+    {
+      "id": "engine_protect",
+      "kind": "codeNode",
+      "label": "protect.ts",
+      "meta": {
+        "sourceFile": "src/engine/protect.ts",
+        "sourceLocation": "L1",
+        "community": 13
+      }
+    },
+    {
+      "id": "engine_protect_inflighttask",
+      "kind": "codeNode",
+      "label": "InFlightTask",
+      "meta": {
+        "sourceFile": "src/engine/protect.ts",
+        "sourceLocation": "L12",
+        "community": 13
+      }
+    },
+    {
+      "id": "engine_protect_inflighttasks",
+      "kind": "codeNode",
+      "label": "inFlightTasks()",
+      "meta": {
+        "sourceFile": "src/engine/protect.ts",
+        "sourceLocation": "L19",
+        "community": 13
+      }
+    },
+    {
+      "id": "engine_protect_unlock",
+      "kind": "codeNode",
+      "label": "Unlock",
+      "meta": {
+        "sourceFile": "src/engine/protect.ts",
+        "sourceLocation": "L45",
+        "community": 13
+      }
+    },
+    {
+      "id": "engine_protect_relativeto",
+      "kind": "codeNode",
+      "label": "relativeTo()",
+      "meta": {
+        "sourceFile": "src/engine/protect.ts",
+        "sourceLocation": "L50",
+        "community": 13
+      }
+    },
+    {
+      "id": "engine_protect_isprotectedpath",
+      "kind": "codeNode",
+      "label": "isProtectedPath()",
+      "meta": {
+        "sourceFile": "src/engine/protect.ts",
+        "sourceLocation": "L55",
+        "community": 13
+      }
+    },
+    {
+      "id": "route_classify",
+      "kind": "codeNode",
+      "label": "classify.ts",
+      "meta": {
+        "sourceFile": "src/engine/route/classify.ts",
+        "sourceLocation": "L1",
+        "community": 4
+      }
+    },
+    {
+      "id": "route_classify_mode",
+      "kind": "codeNode",
+      "label": "Mode",
+      "meta": {
+        "sourceFile": "src/engine/route/classify.ts",
+        "sourceLocation": "L9",
+        "community": 4
+      }
+    },
+    {
+      "id": "route_classify_modes",
+      "kind": "codeNode",
+      "label": "MODES",
+      "meta": {
+        "sourceFile": "src/engine/route/classify.ts",
+        "sourceLocation": "L11",
+        "community": 4
+      }
+    },
+    {
+      "id": "route_classify_assertmode",
+      "kind": "codeNode",
+      "label": "assertMode()",
+      "meta": {
+        "sourceFile": "src/engine/route/classify.ts",
+        "sourceLocation": "L14",
+        "community": 4
+      }
+    },
+    {
+      "id": "route_classify_routeresult",
+      "kind": "codeNode",
+      "label": "RouteResult",
+      "meta": {
+        "sourceFile": "src/engine/route/classify.ts",
+        "sourceLocation": "L21",
+        "community": 4
+      }
+    },
+    {
+      "id": "route_classify_routerequest",
+      "kind": "codeNode",
+      "label": "routeRequest()",
+      "meta": {
+        "sourceFile": "src/engine/route/classify.ts",
+        "sourceLocation": "L39",
+        "community": 4
+      }
+    },
+    {
+      "id": "spec_ears",
+      "kind": "codeNode",
+      "label": "ears.ts",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_earspattern",
+      "kind": "codeNode",
+      "label": "EarsPattern",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L10",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_checkkind",
+      "kind": "codeNode",
+      "label": "CheckKind",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L12",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_checkbinding",
+      "kind": "codeNode",
+      "label": "CheckBinding",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L15",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_acceptancecriterion",
+      "kind": "codeNode",
+      "label": "AcceptanceCriterion",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L21",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_userstory",
+      "kind": "codeNode",
+      "label": "UserStory",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L31",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_requirement",
+      "kind": "codeNode",
+      "label": "Requirement",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L37",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_isverifiable",
+      "kind": "codeNode",
+      "label": "isVerifiable()",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L45",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_unverifiedcriteria",
+      "kind": "codeNode",
+      "label": "unverifiedCriteria()",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L50",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_kindforref",
+      "kind": "codeNode",
+      "label": "kindForRef()",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L55",
+        "community": 1
+      }
+    },
+    {
+      "id": "spec_ears_ears_patterns",
+      "kind": "codeNode",
+      "label": "EARS_PATTERNS",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L60",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_classifyears",
+      "kind": "codeNode",
+      "label": "classifyEars()",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L70",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_ears_lookslikeears",
+      "kind": "codeNode",
+      "label": "looksLikeEars()",
+      "meta": {
+        "sourceFile": "src/engine/spec/ears.ts",
+        "sourceLocation": "L78",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_parse",
+      "kind": "codeNode",
+      "label": "parse.ts",
+      "meta": {
+        "sourceFile": "src/engine/spec/parse.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_parse_check_kinds",
+      "kind": "codeNode",
+      "label": "CHECK_KINDS",
+      "meta": {
+        "sourceFile": "src/engine/spec/parse.ts",
+        "sourceLocation": "L26",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_parse_parsespec",
+      "kind": "codeNode",
+      "label": "parseSpec()",
+      "meta": {
+        "sourceFile": "src/engine/spec/parse.ts",
+        "sourceLocation": "L28",
+        "community": 0
+      }
+    },
+    {
+      "id": "spec_parse_parsespecsdir",
+      "kind": "codeNode",
+      "label": "parseSpecsDir()",
+      "meta": {
+        "sourceFile": "src/engine/spec/parse.ts",
+        "sourceLocation": "L96",
+        "community": 4
+      }
+    },
+    {
+      "id": "state_audit",
+      "kind": "codeNode",
+      "label": "audit.ts",
+      "meta": {
+        "sourceFile": "src/engine/state/audit.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_audit_read_only",
+      "kind": "codeNode",
+      "label": "READ_ONLY",
+      "meta": {
+        "sourceFile": "src/engine/state/audit.ts",
+        "sourceLocation": "L12",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_audit_auditclirun",
+      "kind": "codeNode",
+      "label": "auditCliRun()",
+      "meta": {
+        "sourceFile": "src/engine/state/audit.ts",
+        "sourceLocation": "L14",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_audit_gitusername",
+      "kind": "codeNode",
+      "label": "gitUserName()",
+      "meta": {
+        "sourceFile": "src/engine/state/audit.ts",
+        "sourceLocation": "L29",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_audit_journalmode",
+      "kind": "codeNode",
+      "label": "journalMode()",
+      "meta": {
+        "sourceFile": "src/engine/state/audit.ts",
+        "sourceLocation": "L35",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal",
+      "kind": "codeNode",
+      "label": "journal.ts",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_readcache",
+      "kind": "codeNode",
+      "label": "readCache",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L8",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journaleventtype",
+      "kind": "codeNode",
+      "label": "JournalEventType",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L18",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_eventmeta",
+      "kind": "codeNode",
+      "label": "EventMeta",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L29",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journalevent",
+      "kind": "codeNode",
+      "label": "JournalEvent",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L38",
+        "community": 2
+      }
+    },
+    {
+      "id": "state_journal_appendoptions",
+      "kind": "codeNode",
+      "label": "AppendOptions",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L46",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journal",
+      "kind": "codeNode",
+      "label": "Journal",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L51",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journal_constructor",
+      "kind": "codeNode",
+      "label": ".constructor()",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L52",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journal_append",
+      "kind": "codeNode",
+      "label": ".append()",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L55",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journal_read",
+      "kind": "codeNode",
+      "label": ".read()",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L69",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_journal_journal_fold",
+      "kind": "codeNode",
+      "label": ".fold()",
+      "meta": {
+        "sourceFile": "src/engine/state/journal.ts",
+        "sourceLocation": "L92",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_tasks",
+      "kind": "codeNode",
+      "label": "tasks.ts",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L1",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstatus",
+      "kind": "codeNode",
+      "label": "TaskStatus",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L11",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_task",
+      "kind": "codeNode",
+      "label": "Task",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L13",
+        "community": 0
+      }
+    },
+    {
+      "id": "state_tasks_evidenceerror",
+      "kind": "codeNode",
+      "label": "EvidenceError",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L23",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_tasks_evidenceerror_constructor",
+      "kind": "codeNode",
+      "label": ".constructor()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L24",
+        "community": 3
+      }
+    },
+    {
+      "id": "state_tasks_taskcreateddata",
+      "kind": "codeNode",
+      "label": "TaskCreatedData",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L34",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskbindingsdata",
+      "kind": "codeNode",
+      "label": "TaskBindingsData",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L39",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstatusdata",
+      "kind": "codeNode",
+      "label": "TaskStatusData",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L43",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_checkrundata",
+      "kind": "codeNode",
+      "label": "CheckRunData",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L47",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore",
+      "kind": "codeNode",
+      "label": "TaskStore",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L52",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_constructor",
+      "kind": "codeNode",
+      "label": ".constructor()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L53",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_all",
+      "kind": "codeNode",
+      "label": ".all()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L56",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_get",
+      "kind": "codeNode",
+      "label": ".get()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L87",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_create",
+      "kind": "codeNode",
+      "label": ".create()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L91",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_syncbindings",
+      "kind": "codeNode",
+      "label": ".syncBindings()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L107",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_setstatus",
+      "kind": "codeNode",
+      "label": ".setStatus()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L116",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_recordcheck",
+      "kind": "codeNode",
+      "label": ".recordCheck()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L122",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_markdone",
+      "kind": "codeNode",
+      "label": ".markDone()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L134",
+        "community": 6
+      }
+    },
+    {
+      "id": "state_tasks_taskstore_requiretask",
+      "kind": "codeNode",
+      "label": ".requireTask()",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "L160",
+        "community": 6
+      }
+    },
+    {
+      "id": "engine_steering",
+      "kind": "codeNode",
+      "label": "steering.ts",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L1",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_lawsection",
+      "kind": "codeNode",
+      "label": "LawSection",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L14",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_effectivelaws",
+      "kind": "codeNode",
+      "label": "EffectiveLaws",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L19",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_scopedfile",
+      "kind": "codeNode",
+      "label": "ScopedFile",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L24",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_parsescoped",
+      "kind": "codeNode",
+      "label": "parseScoped()",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L35",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_expandincludes",
+      "kind": "codeNode",
+      "label": "expandIncludes()",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L50",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_loadlawsoptions",
+      "kind": "codeNode",
+      "label": "LoadLawsOptions",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L62",
+        "community": 12
+      }
+    },
+    {
+      "id": "engine_steering_loadlaws",
+      "kind": "codeNode",
+      "label": "loadLaws()",
+      "meta": {
+        "sourceFile": "src/engine/steering.ts",
+        "sourceLocation": "L71",
+        "community": 12
+      }
+    },
+    {
+      "id": "verify_applife",
+      "kind": "codeNode",
+      "label": "applife.ts",
+      "meta": {
+        "sourceFile": "src/engine/verify/applife.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_applife_appconfig",
+      "kind": "codeNode",
+      "label": "AppConfig",
+      "meta": {
+        "sourceFile": "src/engine/verify/applife.ts",
+        "sourceLocation": "L9",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_applife_sleep",
+      "kind": "codeNode",
+      "label": "sleep()",
+      "meta": {
+        "sourceFile": "src/engine/verify/applife.ts",
+        "sourceLocation": "L15",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_applife_waitready",
+      "kind": "codeNode",
+      "label": "waitReady()",
+      "meta": {
+        "sourceFile": "src/engine/verify/applife.ts",
+        "sourceLocation": "L17",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_applife_withapp",
+      "kind": "codeNode",
+      "label": "withApp()",
+      "meta": {
+        "sourceFile": "src/engine/verify/applife.ts",
+        "sourceLocation": "L31",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_retry",
+      "kind": "codeNode",
+      "label": "retry.ts",
+      "meta": {
+        "sourceFile": "src/engine/verify/retry.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_retry_runwithretry",
+      "kind": "codeNode",
+      "label": "runWithRetry()",
+      "meta": {
+        "sourceFile": "src/engine/verify/retry.ts",
+        "sourceLocation": "L8",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_runner",
+      "kind": "codeNode",
+      "label": "runner.ts",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L1",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_stack",
+      "kind": "codeNode",
+      "label": "Stack",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L13",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_builtin_stacks",
+      "kind": "codeNode",
+      "label": "BUILTIN_STACKS",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L14",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_resolvedcommand",
+      "kind": "codeNode",
+      "label": "ResolvedCommand",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L16",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_runneroverride",
+      "kind": "codeNode",
+      "label": "RunnerOverride",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L23",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_pickrunner",
+      "kind": "codeNode",
+      "label": "pickRunner()",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L32",
+        "community": 1
+      }
+    },
+    {
+      "id": "verify_runner_resolvecommand",
+      "kind": "codeNode",
+      "label": "resolveCommand()",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L55",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_splitref",
+      "kind": "codeNode",
+      "label": "splitRef()",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L88",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_runoptions",
+      "kind": "codeNode",
+      "label": "RunOptions",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L94",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_runnerunavailableerror",
+      "kind": "codeNode",
+      "label": "RunnerUnavailableError",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L103",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_runnerunavailableerror_constructor",
+      "kind": "codeNode",
+      "label": ".constructor()",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L104",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_execute",
+      "kind": "codeNode",
+      "label": "execute()",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L111",
+        "community": 7
+      }
+    },
+    {
+      "id": "verify_runner_runcheck",
+      "kind": "codeNode",
+      "label": "runCheck()",
+      "meta": {
+        "sourceFile": "src/engine/verify/runner.ts",
+        "sourceLocation": "L147",
+        "community": 7
+      }
+    },
+    {
+      "id": "engine_wave",
+      "kind": "codeNode",
+      "label": "wave.ts",
+      "meta": {
+        "sourceFile": "src/engine/wave.ts",
+        "sourceLocation": "L1",
+        "community": 10
+      }
+    },
+    {
+      "id": "engine_wave_wavetask",
+      "kind": "codeNode",
+      "label": "WaveTask",
+      "meta": {
+        "sourceFile": "src/engine/wave.ts",
+        "sourceLocation": "L7",
+        "community": 10
+      }
+    },
+    {
+      "id": "engine_wave_filesfortask",
+      "kind": "codeNode",
+      "label": "filesForTask()",
+      "meta": {
+        "sourceFile": "src/engine/wave.ts",
+        "sourceLocation": "L14",
+        "community": 10
+      }
+    },
+    {
+      "id": "engine_wave_planwaves",
+      "kind": "codeNode",
+      "label": "planWaves()",
+      "meta": {
+        "sourceFile": "src/engine/wave.ts",
+        "sourceLocation": "L27",
+        "community": 10
+      }
+    },
+    {
+      "id": "src_index",
+      "kind": "codeNode",
+      "label": "index.ts",
+      "meta": {
+        "sourceFile": "src/index.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_audit_meta_test",
+      "kind": "codeNode",
+      "label": "audit-meta.test.ts",
+      "meta": {
+        "sourceFile": "test/audit-meta.test.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_audit_meta_test_tempjournal",
+      "kind": "codeNode",
+      "label": "tempJournal()",
+      "meta": {
+        "sourceFile": "test/audit-meta.test.ts",
+        "sourceLocation": "L10",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_boards_test",
+      "kind": "codeNode",
+      "label": "boards.test.ts",
+      "meta": {
+        "sourceFile": "test/boards.test.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_boards_test_task",
+      "kind": "codeNode",
+      "label": "task()",
+      "meta": {
+        "sourceFile": "test/boards.test.ts",
+        "sourceLocation": "L10",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_boards_test_events",
+      "kind": "codeNode",
+      "label": "events",
+      "meta": {
+        "sourceFile": "test/boards.test.ts",
+        "sourceLocation": "L18",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_cli_ux_test",
+      "kind": "codeNode",
+      "label": "cli-ux.test.ts",
+      "meta": {
+        "sourceFile": "test/cli-ux.test.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_cli_ux_test_tempproject",
+      "kind": "codeNode",
+      "label": "tempProject()",
+      "meta": {
+        "sourceFile": "test/cli-ux.test.ts",
+        "sourceLocation": "L11",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_compact_test",
+      "kind": "codeNode",
+      "label": "compact.test.ts",
+      "meta": {
+        "sourceFile": "test/compact.test.ts",
+        "sourceLocation": "L1",
+        "community": 6
+      }
+    },
+    {
+      "id": "test_compact_test_ev",
+      "kind": "codeNode",
+      "label": "ev()",
+      "meta": {
+        "sourceFile": "test/compact.test.ts",
+        "sourceLocation": "L13",
+        "community": 6
+      }
+    },
+    {
+      "id": "test_compact_test_task",
+      "kind": "codeNode",
+      "label": "task()",
+      "meta": {
+        "sourceFile": "test/compact.test.ts",
+        "sourceLocation": "L14",
+        "community": 6
+      }
+    },
+    {
+      "id": "test_dashboard_test",
+      "kind": "codeNode",
+      "label": "dashboard.test.ts",
+      "meta": {
+        "sourceFile": "test/dashboard.test.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_dashboard_test_tasks",
+      "kind": "codeNode",
+      "label": "tasks",
+      "meta": {
+        "sourceFile": "test/dashboard.test.ts",
+        "sourceLocation": "L10",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_dashboard_test_rollups",
+      "kind": "codeNode",
+      "label": "rollups",
+      "meta": {
+        "sourceFile": "test/dashboard.test.ts",
+        "sourceLocation": "L14",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_dashboard_test_events",
+      "kind": "codeNode",
+      "label": "events",
+      "meta": {
+        "sourceFile": "test/dashboard.test.ts",
+        "sourceLocation": "L18",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_files_tab_test",
+      "kind": "codeNode",
+      "label": "files-tab.test.ts",
+      "meta": {
+        "sourceFile": "test/files-tab.test.ts",
+        "sourceLocation": "L1",
+        "community": 2
+      }
+    },
+    {
+      "id": "test_finish_skill_test",
+      "kind": "codeNode",
+      "label": "finish-skill.test.ts",
+      "meta": {
+        "sourceFile": "test/finish-skill.test.ts",
+        "sourceLocation": "L1",
+        "community": 34
+      }
+    },
+    {
+      "id": "test_finish_skill_test_path",
+      "kind": "codeNode",
+      "label": "PATH",
+      "meta": {
+        "sourceFile": "test/finish-skill.test.ts",
+        "sourceLocation": "L10",
+        "community": 34
+      }
+    },
+    {
+      "id": "test_gate_facts_test",
+      "kind": "codeNode",
+      "label": "gate-facts.test.ts",
+      "meta": {
+        "sourceFile": "test/gate-facts.test.ts",
+        "sourceLocation": "L1",
+        "community": 19
+      }
+    },
+    {
+      "id": "test_gate_facts_test_project",
+      "kind": "codeNode",
+      "label": "project()",
+      "meta": {
+        "sourceFile": "test/gate-facts.test.ts",
+        "sourceLocation": "L45",
+        "community": 19
+      }
+    },
+    {
+      "id": "test_gate_packs_test",
+      "kind": "codeNode",
+      "label": "gate-packs.test.ts",
+      "meta": {
+        "sourceFile": "test/gate-packs.test.ts",
+        "sourceLocation": "L1",
+        "community": 4
+      }
+    },
+    {
+      "id": "test_gate_test",
+      "kind": "codeNode",
+      "label": "gate.test.ts",
+      "meta": {
+        "sourceFile": "test/gate.test.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_gate_test_graphwith",
+      "kind": "codeNode",
+      "label": "graphWith()",
+      "meta": {
+        "sourceFile": "test/gate.test.ts",
+        "sourceLocation": "L11",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_gate_test_rivetproject",
+      "kind": "codeNode",
+      "label": "rivetProject()",
+      "meta": {
+        "sourceFile": "test/gate.test.ts",
+        "sourceLocation": "L50",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_graph_test",
+      "kind": "codeNode",
+      "label": "graph.test.ts",
+      "meta": {
+        "sourceFile": "test/graph.test.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_graph_test_graph",
+      "kind": "codeNode",
+      "label": "graph",
+      "meta": {
+        "sourceFile": "test/graph.test.ts",
+        "sourceLocation": "L11",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_graphify_test",
+      "kind": "codeNode",
+      "label": "graphify.test.ts",
+      "meta": {
+        "sourceFile": "test/graphify.test.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_learnwarn_test",
+      "kind": "codeNode",
+      "label": "learnwarn.test.ts",
+      "meta": {
+        "sourceFile": "test/learnwarn.test.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "test_parse_fix_test",
+      "kind": "codeNode",
+      "label": "parse-fix.test.ts",
+      "meta": {
+        "sourceFile": "test/parse-fix.test.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_proof_identity_test",
+      "kind": "codeNode",
+      "label": "proof-identity.test.ts",
+      "meta": {
+        "sourceFile": "test/proof-identity.test.ts",
+        "sourceLocation": "L1",
+        "community": 7
+      }
+    },
+    {
+      "id": "test_proof_identity_test_temprepo",
+      "kind": "codeNode",
+      "label": "tempRepo()",
+      "meta": {
+        "sourceFile": "test/proof-identity.test.ts",
+        "sourceLocation": "L19",
+        "community": 7
+      }
+    },
+    {
+      "id": "test_proof_identity_test_taskwith",
+      "kind": "codeNode",
+      "label": "taskWith()",
+      "meta": {
+        "sourceFile": "test/proof-identity.test.ts",
+        "sourceLocation": "L31",
+        "community": 7
+      }
+    },
+    {
+      "id": "test_protect_test",
+      "kind": "codeNode",
+      "label": "protect.test.ts",
+      "meta": {
+        "sourceFile": "test/protect.test.ts",
+        "sourceLocation": "L1",
+        "community": 13
+      }
+    },
+    {
+      "id": "test_protect_test_ev",
+      "kind": "codeNode",
+      "label": "ev()",
+      "meta": {
+        "sourceFile": "test/protect.test.ts",
+        "sourceLocation": "L12",
+        "community": 13
+      }
+    },
+    {
+      "id": "test_protect_test_project",
+      "kind": "codeNode",
+      "label": "project()",
+      "meta": {
+        "sourceFile": "test/protect.test.ts",
+        "sourceLocation": "L63",
+        "community": 13
+      }
+    },
+    {
+      "id": "test_query_fix_test",
+      "kind": "codeNode",
+      "label": "query-fix.test.ts",
+      "meta": {
+        "sourceFile": "test/query-fix.test.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_query_fix_test_project",
+      "kind": "codeNode",
+      "label": "project()",
+      "meta": {
+        "sourceFile": "test/query-fix.test.ts",
+        "sourceLocation": "L13",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_readme_test",
+      "kind": "codeNode",
+      "label": "readme.test.ts",
+      "meta": {
+        "sourceFile": "test/readme.test.ts",
+        "sourceLocation": "L1",
+        "community": 35
+      }
+    },
+    {
+      "id": "test_readme_test_readme",
+      "kind": "codeNode",
+      "label": "README",
+      "meta": {
+        "sourceFile": "test/readme.test.ts",
+        "sourceLocation": "L7",
+        "community": 35
+      }
+    },
+    {
+      "id": "test_robust_test",
+      "kind": "codeNode",
+      "label": "robust.test.ts",
+      "meta": {
+        "sourceFile": "test/robust.test.ts",
+        "sourceLocation": "L1",
+        "community": 9
+      }
+    },
+    {
+      "id": "test_robust_test_projectwithconfig",
+      "kind": "codeNode",
+      "label": "projectWithConfig()",
+      "meta": {
+        "sourceFile": "test/robust.test.ts",
+        "sourceLocation": "L13",
+        "community": 9
+      }
+    },
+    {
+      "id": "test_runner_test",
+      "kind": "codeNode",
+      "label": "runner.test.ts",
+      "meta": {
+        "sourceFile": "test/runner.test.ts",
+        "sourceLocation": "L1",
+        "community": 7
+      }
+    },
+    {
+      "id": "test_runners_kind_test",
+      "kind": "codeNode",
+      "label": "runners-kind.test.ts",
+      "meta": {
+        "sourceFile": "test/runners-kind.test.ts",
+        "sourceLocation": "L1",
+        "community": 1
+      }
+    },
+    {
+      "id": "test_scale_test",
+      "kind": "codeNode",
+      "label": "scale.test.ts",
+      "meta": {
+        "sourceFile": "test/scale.test.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_scale_test_project",
+      "kind": "codeNode",
+      "label": "project()",
+      "meta": {
+        "sourceFile": "test/scale.test.ts",
+        "sourceLocation": "L97",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_skill_qa_test",
+      "kind": "codeNode",
+      "label": "skill-qa.test.ts",
+      "meta": {
+        "sourceFile": "test/skill-qa.test.ts",
+        "sourceLocation": "L1",
+        "community": 24
+      }
+    },
+    {
+      "id": "test_skill_qa_test_skills_dir",
+      "kind": "codeNode",
+      "label": "SKILLS_DIR",
+      "meta": {
+        "sourceFile": "test/skill-qa.test.ts",
+        "sourceLocation": "L11",
+        "community": 24
+      }
+    },
+    {
+      "id": "test_skill_qa_test_skilldirs",
+      "kind": "codeNode",
+      "label": "skillDirs",
+      "meta": {
+        "sourceFile": "test/skill-qa.test.ts",
+        "sourceLocation": "L12",
+        "community": 24
+      }
+    },
+    {
+      "id": "test_skill_qa_test_commands",
+      "kind": "codeNode",
+      "label": "COMMANDS",
+      "meta": {
+        "sourceFile": "test/skill-qa.test.ts",
+        "sourceLocation": "L15",
+        "community": 24
+      }
+    },
+    {
+      "id": "test_skill_qa_test_subcommands",
+      "kind": "codeNode",
+      "label": "SUBCOMMANDS",
+      "meta": {
+        "sourceFile": "test/skill-qa.test.ts",
+        "sourceLocation": "L19",
+        "community": 24
+      }
+    },
+    {
+      "id": "test_skill_qa_test_known_artifacts",
+      "kind": "codeNode",
+      "label": "KNOWN_ARTIFACTS",
+      "meta": {
+        "sourceFile": "test/skill-qa.test.ts",
+        "sourceLocation": "L20",
+        "community": 24
+      }
+    },
+    {
+      "id": "test_spec_parse_test",
+      "kind": "codeNode",
+      "label": "spec-parse.test.ts",
+      "meta": {
+        "sourceFile": "test/spec-parse.test.ts",
+        "sourceLocation": "L1",
+        "community": 0
+      }
+    },
+    {
+      "id": "test_spec_sync_test",
+      "kind": "codeNode",
+      "label": "spec-sync.test.ts",
+      "meta": {
+        "sourceFile": "test/spec-sync.test.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_spec_sync_test_fresh",
+      "kind": "codeNode",
+      "label": "fresh()",
+      "meta": {
+        "sourceFile": "test/spec-sync.test.ts",
+        "sourceLocation": "L10",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_state_test",
+      "kind": "codeNode",
+      "label": "state.test.ts",
+      "meta": {
+        "sourceFile": "test/state.test.ts",
+        "sourceLocation": "L1",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_state_test_tempjournal",
+      "kind": "codeNode",
+      "label": "tempJournal()",
+      "meta": {
+        "sourceFile": "test/state.test.ts",
+        "sourceLocation": "L8",
+        "community": 3
+      }
+    },
+    {
+      "id": "test_steering_test",
+      "kind": "codeNode",
+      "label": "steering.test.ts",
+      "meta": {
+        "sourceFile": "test/steering.test.ts",
+        "sourceLocation": "L1",
+        "community": 12
+      }
+    },
+    {
+      "id": "test_steering_test_project",
+      "kind": "codeNode",
+      "label": "project()",
+      "meta": {
+        "sourceFile": "test/steering.test.ts",
+        "sourceLocation": "L10",
+        "community": 12
+      }
+    },
+    {
+      "id": "test_wave_done_test",
+      "kind": "codeNode",
+      "label": "wave-done.test.ts",
+      "meta": {
+        "sourceFile": "test/wave-done.test.ts",
+        "sourceLocation": "L1",
+        "community": 10
+      }
+    },
+    {
+      "id": "test_wave_done_test_setup",
+      "kind": "codeNode",
+      "label": "setup()",
+      "meta": {
+        "sourceFile": "test/wave-done.test.ts",
+        "sourceLocation": "L11",
+        "community": 10
+      }
+    },
+    {
+      "id": "test_wave_test",
+      "kind": "codeNode",
+      "label": "wave.test.ts",
+      "meta": {
+        "sourceFile": "test/wave.test.ts",
+        "sourceLocation": "L1",
+        "community": 10
+      }
+    },
+    {
+      "id": "test_workflow_test",
+      "kind": "codeNode",
+      "label": "workflow.test.ts",
+      "meta": {
+        "sourceFile": "test/workflow.test.ts",
+        "sourceLocation": "L1",
+        "community": 4
+      }
+    },
+    {
+      "id": "test_workflow_test_tempproject",
+      "kind": "codeNode",
+      "label": "tempProject()",
+      "meta": {
+        "sourceFile": "test/workflow.test.ts",
+        "sourceLocation": "L13",
+        "community": 4
+      }
+    },
+    {
+      "id": "tsconfig",
+      "kind": "codeNode",
+      "label": "tsconfig.json",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L1",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "kind": "codeNode",
+      "label": "compilerOptions",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L2",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_target",
+      "kind": "codeNode",
+      "label": "target",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L3",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_module",
+      "kind": "codeNode",
+      "label": "module",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L4",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_moduleresolution",
+      "kind": "codeNode",
+      "label": "moduleResolution",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L5",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "kind": "codeNode",
+      "label": "lib",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L6",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_outdir",
+      "kind": "codeNode",
+      "label": "outDir",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L7",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_rootdir",
+      "kind": "codeNode",
+      "label": "rootDir",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L8",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_declaration",
+      "kind": "codeNode",
+      "label": "declaration",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L9",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_sourcemap",
+      "kind": "codeNode",
+      "label": "sourceMap",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L10",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_strict",
+      "kind": "codeNode",
+      "label": "strict",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L11",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_esmoduleinterop",
+      "kind": "codeNode",
+      "label": "esModuleInterop",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L12",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_skiplibcheck",
+      "kind": "codeNode",
+      "label": "skipLibCheck",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L13",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_resolvejsonmodule",
+      "kind": "codeNode",
+      "label": "resolveJsonModule",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L14",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "kind": "codeNode",
+      "label": "forceConsistentCasingInFileNames",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L15",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_compileroptions_nouncheckedindexedaccess",
+      "kind": "codeNode",
+      "label": "noUncheckedIndexedAccess",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L16",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_include",
+      "kind": "codeNode",
+      "label": "include",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L18",
+        "community": 11
+      }
+    },
+    {
+      "id": "tsconfig_exclude",
+      "kind": "codeNode",
+      "label": "exclude",
+      "meta": {
+        "sourceFile": "tsconfig.json",
+        "sourceLocation": "L19",
+        "community": 11
+      }
+    },
+    {
+      "id": "rivet_dashboard_design_prompt",
+      "kind": "codeNode",
+      "label": "DASHBOARD-DESIGN-PROMPT.md",
+      "meta": {
+        "sourceFile": ".rivet/DASHBOARD-DESIGN-PROMPT.md",
+        "sourceLocation": "L1",
+        "community": 21
+      }
+    },
+    {
+      "id": "rivet_dashboard_design_prompt_rivet_dashboard_design_prompt",
+      "kind": "codeNode",
+      "label": "Rivet Dashboard — Design Prompt",
+      "meta": {
+        "sourceFile": ".rivet/DASHBOARD-DESIGN-PROMPT.md",
+        "sourceLocation": "L1",
+        "community": 21
+      }
+    },
+    {
+      "id": "rivet_dashboard_design_prompt_deliverables_in_this_folder_do_not_touch_anything_else",
+      "kind": "codeNode",
+      "label": "Deliverables (in this folder — do not touch anything else)",
+      "meta": {
+        "sourceFile": ".rivet/DASHBOARD-DESIGN-PROMPT.md",
+        "sourceLocation": "L14",
+        "community": 21
+      }
+    },
+    {
+      "id": "rivet_dashboard_design_prompt_the_data_contract_render_from_exactly_this_sample_values_included",
+      "kind": "codeNode",
+      "label": "The data contract (render from exactly this; sample values included)",
+      "meta": {
+        "sourceFile": ".rivet/DASHBOARD-DESIGN-PROMPT.md",
+        "sourceLocation": "L21",
+        "community": 21
+      }
+    },
+    {
+      "id": "rivet_dashboard_design_prompt_design_requirements",
+      "kind": "codeNode",
+      "label": "Design requirements",
+      "meta": {
+        "sourceFile": ".rivet/DASHBOARD-DESIGN-PROMPT.md",
+        "sourceLocation": "L61",
+        "community": 21
+      }
+    },
+    {
+      "id": "rivet_dashboard_design_prompt_iterate_with_me",
+      "kind": "codeNode",
+      "label": "Iterate with me",
+      "meta": {
+        "sourceFile": ".rivet/DASHBOARD-DESIGN-PROMPT.md",
+        "sourceLocation": "L85",
+        "community": 21
+      }
+    },
+    {
+      "id": "rivet_defer",
+      "kind": "codeNode",
+      "label": "DEFER.md",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L1",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_defer_consciously_postponed_each_entry_why_when_to_revisit",
+      "kind": "codeNode",
+      "label": "DEFER — consciously postponed (each entry: why + when to revisit)",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L1",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_intake_adapters_github_gitlab_issues_jira_p6",
+      "kind": "codeNode",
+      "label": "Intake adapters: GitHub / GitLab issues + Jira (P6)",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L3",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_packaging_publish_npm_rivet_kit_plugin_marketplace_listing_p7",
+      "kind": "codeNode",
+      "label": "Packaging & publish: npm `rivet-kit` + plugin marketplace listing (P7)",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L11",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_durable_journal_snapshot_tail_folding",
+      "kind": "codeNode",
+      "label": "Durable journal snapshot+tail folding",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L19",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_llm_judged_skill_compliance_scenarios",
+      "kind": "codeNode",
+      "label": "LLM-judged skill compliance scenarios",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L24",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_live_spring_withapp_e2e_showcase",
+      "kind": "codeNode",
+      "label": "Live Spring `withApp` e2e showcase",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L29",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_defer_sonnet_driven_temporary_e2e_demo_master_prompt_dry_run",
+      "kind": "codeNode",
+      "label": "Sonnet-driven temporary e2e demo (master-prompt dry run)",
+      "meta": {
+        "sourceFile": ".rivet/DEFER.md",
+        "sourceLocation": "L34",
+        "community": 18
+      }
+    },
+    {
+      "id": "rivet_ledger",
+      "kind": "codeNode",
+      "label": "LEDGER.md",
+      "meta": {
+        "sourceFile": ".rivet/LEDGER.md",
+        "sourceLocation": "L1",
+        "community": 26
+      }
+    },
+    {
+      "id": "rivet_ledger_ledger_generated_from_the_journal_do_not_edit",
+      "kind": "codeNode",
+      "label": "LEDGER — generated from the journal; do not edit",
+      "meta": {
+        "sourceFile": ".rivet/LEDGER.md",
+        "sourceLocation": "L1",
+        "community": 26
+      }
+    },
+    {
+      "id": "rivet_ledger_progress_board",
+      "kind": "codeNode",
+      "label": "Progress board",
+      "meta": {
+        "sourceFile": ".rivet/LEDGER.md",
+        "sourceLocation": "L3",
+        "community": 26
+      }
+    },
+    {
+      "id": "rivet_ledger_approvals_governance",
+      "kind": "codeNode",
+      "label": "Approvals & governance",
+      "meta": {
+        "sourceFile": ".rivet/LEDGER.md",
+        "sourceLocation": "L31",
+        "community": 26
+      }
+    },
+    {
+      "id": "rivet_ledger_recent_activity",
+      "kind": "codeNode",
+      "label": "Recent activity",
+      "meta": {
+        "sourceFile": ".rivet/LEDGER.md",
+        "sourceLocation": "L35",
+        "community": 26
+      }
+    },
+    {
+      "id": "rivet_resume",
+      "kind": "codeNode",
+      "label": "RESUME.md",
+      "meta": {
+        "sourceFile": ".rivet/RESUME.md",
+        "sourceLocation": "L1",
+        "community": 32
+      }
+    },
+    {
+      "id": "rivet_resume_resume_state_only_handoff_generated_from_the_journal_do_not_edit",
+      "kind": "codeNode",
+      "label": "RESUME — state-only handoff (generated from the journal; do not edit)",
+      "meta": {
+        "sourceFile": ".rivet/RESUME.md",
+        "sourceLocation": "L1",
+        "community": 32
+      }
+    },
+    {
+      "id": "rivet_resume_rebuild_truth",
+      "kind": "codeNode",
+      "label": "Rebuild truth",
+      "meta": {
+        "sourceFile": ".rivet/RESUME.md",
+        "sourceLocation": "L6",
+        "community": 32
+      }
+    },
+    {
+      "id": "rivet_tracking",
+      "kind": "codeNode",
+      "label": "TRACKING.md",
+      "meta": {
+        "sourceFile": ".rivet/TRACKING.md",
+        "sourceLocation": "L1",
+        "community": 33
+      }
+    },
+    {
+      "id": "rivet_tracking_tracking_per_requirement_definition_of_done_generated_do_not_edit",
+      "kind": "codeNode",
+      "label": "TRACKING — per-requirement Definition of Done (generated; do not edit)",
+      "meta": {
+        "sourceFile": ".rivet/TRACKING.md",
+        "sourceLocation": "L1",
+        "community": 33
+      }
+    },
+    {
+      "id": "rivet_laws",
+      "kind": "codeNode",
+      "label": "laws.md",
+      "meta": {
+        "sourceFile": ".rivet/laws.md",
+        "sourceLocation": "L1",
+        "community": 25
+      }
+    },
+    {
+      "id": "rivet_laws_project_constitution",
+      "kind": "codeNode",
+      "label": "Project Constitution",
+      "meta": {
+        "sourceFile": ".rivet/laws.md",
+        "sourceLocation": "L1",
+        "community": 25
+      }
+    },
+    {
+      "id": "rivet_laws_standards",
+      "kind": "codeNode",
+      "label": "Standards",
+      "meta": {
+        "sourceFile": ".rivet/laws.md",
+        "sourceLocation": "L6",
+        "community": 25
+      }
+    },
+    {
+      "id": "rivet_laws_tech_conventions",
+      "kind": "codeNode",
+      "label": "Tech & conventions",
+      "meta": {
+        "sourceFile": ".rivet/laws.md",
+        "sourceLocation": "L9",
+        "community": 25
+      }
+    },
+    {
+      "id": "rivet_laws_hard_rules_never_violate",
+      "kind": "codeNode",
+      "label": "Hard rules (never violate)",
+      "meta": {
+        "sourceFile": ".rivet/laws.md",
+        "sourceLocation": "L12",
+        "community": 25
+      }
+    },
+    {
+      "id": "rivet_learnings",
+      "kind": "codeNode",
+      "label": "learnings.md",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L1",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_rivet_learnings_append_only_a_lesson_counts_once_promoted_or_hardened",
+      "kind": "codeNode",
+      "label": "Rivet learnings — append-only; a lesson counts once PROMOTED or HARDENED",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L1",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_build_intent_must_veto_research_keywords_in_routing",
+      "kind": "codeNode",
+      "label": "2026-06-11 Build-intent must veto research keywords in routing",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L3",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_proof_identity_must_be_the_tested_tree_not_the_commit_sha_p1_blocker",
+      "kind": "codeNode",
+      "label": "2026-06-11 Proof identity must be the TESTED TREE, not the commit SHA  ⟨P1 · BLOCKER⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L11",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_the_spec_gate_link_must_never_freeze_or_clobber_p1",
+      "kind": "codeNode",
+      "label": "2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L22",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_user_editable_inputs_must_never_crash_infra_errors_are_not_test_failures_p1",
+      "kind": "codeNode",
+      "label": "2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L29",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_all_gates_must_share_one_predicate_and_absence_of_state_must_block_p1",
+      "kind": "codeNode",
+      "label": "2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L36",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_worst_of_obligation_semantics_everywhere_including_the_pr_headline_p1_quick",
+      "kind": "codeNode",
+      "label": "2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L45",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_parser_must_respect_markdown_reality_p2",
+      "kind": "codeNode",
+      "label": "2026-06-11 Parser must respect markdown reality  ⟨P2⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L52",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_read_only_must_be_read_only_retries_must_not_burn_deterministic_reds_p2",
+      "kind": "codeNode",
+      "label": "2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L60",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_scale_evidence_quality_backlog_p3",
+      "kind": "codeNode",
+      "label": "2026-06-11 Scale & evidence quality backlog  ⟨P3⟩",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L68",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_verification_and_review_catch_different_bug_classes_keep_both",
+      "kind": "codeNode",
+      "label": "2026-06-11 Verification and review catch DIFFERENT bug classes — keep both",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L77",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_the_17_gate_proposal_menu_yes_mandate_no",
+      "kind": "codeNode",
+      "label": "2026-06-11 The 17-gate proposal: menu yes, mandate no",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L86",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_gates_can_force_investigation_not_just_block_ecc_gateguard",
+      "kind": "codeNode",
+      "label": "2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L96",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_protect_the_gates_from_the_agent_anti_gaming",
+      "kind": "codeNode",
+      "label": "2026-06-11 Protect the gates from the agent (anti-gaming)",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L103",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_gate_packs_tier_classifier_phase_mask_security_floor_yaml_rules",
+      "kind": "codeNode",
+      "label": "2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L110",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_journal_upgrades_governance_events_confidence_is_not_approval",
+      "kind": "codeNode",
+      "label": "2026-06-11 Journal upgrades: governance events + \"confidence is not approval\"",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L119",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_finishing_ritual_phase_chaining_superpowers",
+      "kind": "codeNode",
+      "label": "2026-06-11 Finishing ritual + phase chaining (superpowers)",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L127",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_11_skill_integration_compose_don_t_vendor_superpowers_ecc_both_mit",
+      "kind": "codeNode",
+      "label": "2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L135",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_12_a_grammar_that_can_t_spell_its_own_kinds_drops_obligations_silently",
+      "kind": "codeNode",
+      "label": "2026-06-12 A grammar that can't spell its own kinds drops obligations silently",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L149",
+        "community": 8
+      }
+    },
+    {
+      "id": "rivet_learnings_2026_06_12_test_fixtures_must_pin_every_git_assumption_the_host_can_override",
+      "kind": "codeNode",
+      "label": "2026-06-12 Test fixtures must pin every git assumption the host can override",
+      "meta": {
+        "sourceFile": ".rivet/learnings.md",
+        "sourceLocation": "L158",
+        "community": 8
+      }
+    },
+    {
+      "id": "specs_cli_ux",
+      "kind": "codeNode",
+      "label": "cli-ux.md",
+      "meta": {
+        "sourceFile": ".rivet/specs/cli-ux.md",
+        "sourceLocation": "L1",
+        "community": 28
+      }
+    },
+    {
+      "id": "specs_cli_ux_feature_cli_audit_trail_progress_visibility",
+      "kind": "codeNode",
+      "label": "Feature: CLI audit trail & progress visibility",
+      "meta": {
+        "sourceFile": ".rivet/specs/cli-ux.md",
+        "sourceLocation": "L1",
+        "community": 28
+      }
+    },
+    {
+      "id": "specs_cli_ux_requirement_r_audit_01_every_cli_invocation_is_audit_logged",
+      "kind": "codeNode",
+      "label": "Requirement R-AUDIT-01 — every CLI invocation is audit-logged",
+      "meta": {
+        "sourceFile": ".rivet/specs/cli-ux.md",
+        "sourceLocation": "L8",
+        "community": 28
+      }
+    },
+    {
+      "id": "specs_cli_ux_requirement_r_audit_02_the_audit_trail_is_readable",
+      "kind": "codeNode",
+      "label": "Requirement R-AUDIT-02 — the audit trail is readable",
+      "meta": {
+        "sourceFile": ".rivet/specs/cli-ux.md",
+        "sourceLocation": "L15",
+        "community": 28
+      }
+    },
+    {
+      "id": "specs_cli_ux_requirement_r_prog_01_progress_with_emoji_after_completing_a_task",
+      "kind": "codeNode",
+      "label": "Requirement R-PROG-01 — progress with emoji after completing a task",
+      "meta": {
+        "sourceFile": ".rivet/specs/cli-ux.md",
+        "sourceLocation": "L22",
+        "community": 28
+      }
+    },
+    {
+      "id": "readme",
+      "kind": "codeNode",
+      "label": "README.md",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L1",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_rivet",
+      "kind": "codeNode",
+      "label": "Rivet",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L1",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_the_loop",
+      "kind": "codeNode",
+      "label": "The loop",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L18",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_what_s_inside",
+      "kind": "codeNode",
+      "label": "What's inside",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L35",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_commands",
+      "kind": "codeNode",
+      "label": "Commands",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L55",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_the_input_contract_the_tool_never_changes_only_its_inputs",
+      "kind": "codeNode",
+      "label": "The input contract — the tool never changes, only its inputs",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L64",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_pairs_well_with",
+      "kind": "codeNode",
+      "label": "Pairs well with",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L78",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_prerequisites_develop",
+      "kind": "codeNode",
+      "label": "Prerequisites & develop",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L83",
+        "community": 16
+      }
+    },
+    {
+      "id": "readme_license",
+      "kind": "codeNode",
+      "label": "License",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "L96",
+        "community": 16
+      }
+    },
+    {
+      "id": "commands_rivet",
+      "kind": "codeNode",
+      "label": "rivet.md",
+      "meta": {
+        "sourceFile": "commands/rivet.md",
+        "sourceLocation": "L1",
+        "community": 36
+      }
+    },
+    {
+      "id": "rivet_finish_skill",
+      "kind": "codeNode",
+      "label": "SKILL.md",
+      "meta": {
+        "sourceFile": "skills/rivet-finish/SKILL.md",
+        "sourceLocation": "L1",
+        "community": 22
+      }
+    },
+    {
+      "id": "rivet_finish_skill_rivet_finish_landing_a_branch_is_a_ritual_not_a_vibe",
+      "kind": "codeNode",
+      "label": "rivet-finish — landing a branch is a ritual, not a vibe",
+      "meta": {
+        "sourceFile": "skills/rivet-finish/SKILL.md",
+        "sourceLocation": "L6",
+        "community": 22
+      }
+    },
+    {
+      "id": "rivet_finish_skill_1_entry_gate_fresh_evidence_only",
+      "kind": "codeNode",
+      "label": "1. Entry gate — fresh evidence only",
+      "meta": {
+        "sourceFile": "skills/rivet-finish/SKILL.md",
+        "sourceLocation": "L10",
+        "community": 22
+      }
+    },
+    {
+      "id": "rivet_finish_skill_2_the_menu_present_exactly_these_4_options_nothing_open_ended",
+      "kind": "codeNode",
+      "label": "2. The menu — present exactly these 4 options, nothing open-ended",
+      "meta": {
+        "sourceFile": "skills/rivet-finish/SKILL.md",
+        "sourceLocation": "L19",
+        "community": 22
+      }
+    },
+    {
+      "id": "rivet_finish_skill_3_execute_cleanup_option_conditional",
+      "kind": "codeNode",
+      "label": "3. Execute + cleanup (option-conditional)",
+      "meta": {
+        "sourceFile": "skills/rivet-finish/SKILL.md",
+        "sourceLocation": "L28",
+        "community": 22
+      }
+    },
+    {
+      "id": "rivet_finish_skill_4_journal_the_landing",
+      "kind": "codeNode",
+      "label": "4. Journal the landing",
+      "meta": {
+        "sourceFile": "skills/rivet-finish/SKILL.md",
+        "sourceLocation": "L37",
+        "community": 22
+      }
+    },
+    {
+      "id": "rivet_intake_skill",
+      "kind": "codeNode",
+      "label": "SKILL.md",
+      "meta": {
+        "sourceFile": "skills/rivet-intake/SKILL.md",
+        "sourceLocation": "L1",
+        "community": 29
+      }
+    },
+    {
+      "id": "rivet_intake_skill_intake_ideas_are_external_files_the_tool_only_consumes_input",
+      "kind": "codeNode",
+      "label": "Intake — ideas are external files, the tool only consumes input",
+      "meta": {
+        "sourceFile": "skills/rivet-intake/SKILL.md",
+        "sourceLocation": "L6",
+        "community": 29
+      }
+    },
+    {
+      "id": "rivet_intake_skill_file_shape_rivet_intake_slug_md",
+      "kind": "codeNode",
+      "label": "File shape (`.rivet/intake/<slug>.md`)",
+      "meta": {
+        "sourceFile": "skills/rivet-intake/SKILL.md",
+        "sourceLocation": "L11",
+        "community": 29
+      }
+    },
+    {
+      "id": "rivet_intake_skill_process_rfc_2119",
+      "kind": "codeNode",
+      "label": "Process (RFC-2119)",
+      "meta": {
+        "sourceFile": "skills/rivet-intake/SKILL.md",
+        "sourceLocation": "L28",
+        "community": 29
+      }
+    },
+    {
+      "id": "rivet_retro_skill",
+      "kind": "codeNode",
+      "label": "SKILL.md",
+      "meta": {
+        "sourceFile": "skills/rivet-retro/SKILL.md",
+        "sourceLocation": "L1",
+        "community": 30
+      }
+    },
+    {
+      "id": "rivet_retro_skill_rivet_retro_lessons_compound_or_they_repeat",
+      "kind": "codeNode",
+      "label": "Rivet retro — lessons compound or they repeat",
+      "meta": {
+        "sourceFile": "skills/rivet-retro/SKILL.md",
+        "sourceLocation": "L6",
+        "community": 30
+      }
+    },
+    {
+      "id": "rivet_retro_skill_the_ledger_rivet_learnings_md_append_only_data_not_code",
+      "kind": "codeNode",
+      "label": "The ledger (`.rivet/learnings.md` — append-only, data not code)",
+      "meta": {
+        "sourceFile": "skills/rivet-retro/SKILL.md",
+        "sourceLocation": "L11",
+        "community": 30
+      }
+    },
+    {
+      "id": "rivet_retro_skill_process_rfc_2119",
+      "kind": "codeNode",
+      "label": "Process (RFC-2119)",
+      "meta": {
+        "sourceFile": "skills/rivet-retro/SKILL.md",
+        "sourceLocation": "L28",
+        "community": 30
+      }
+    },
+    {
+      "id": "rivet_review_skill",
+      "kind": "codeNode",
+      "label": "SKILL.md",
+      "meta": {
+        "sourceFile": "skills/rivet-review/SKILL.md",
+        "sourceLocation": "L1",
+        "community": 23
+      }
+    },
+    {
+      "id": "rivet_review_skill_rivet_review_two_passes_findings_listed_no_quotas",
+      "kind": "codeNode",
+      "label": "Rivet review — two passes, findings listed, no quotas",
+      "meta": {
+        "sourceFile": "skills/rivet-review/SKILL.md",
+        "sourceLocation": "L6",
+        "community": 23
+      }
+    },
+    {
+      "id": "rivet_review_skill_pass_1_blind_diff_only",
+      "kind": "codeNode",
+      "label": "Pass 1 — blind (diff only)",
+      "meta": {
+        "sourceFile": "skills/rivet-review/SKILL.md",
+        "sourceLocation": "L11",
+        "community": 23
+      }
+    },
+    {
+      "id": "rivet_review_skill_pass_2_full_context_diff_spec_graph",
+      "kind": "codeNode",
+      "label": "Pass 2 — full context (diff + spec + graph)",
+      "meta": {
+        "sourceFile": "skills/rivet-review/SKILL.md",
+        "sourceLocation": "L18",
+        "community": 23
+      }
+    },
+    {
+      "id": "rivet_review_skill_receiving_review_feedback_when_rivet_s_work_is_reviewed",
+      "kind": "codeNode",
+      "label": "Receiving review feedback (when Rivet's work is reviewed)",
+      "meta": {
+        "sourceFile": "skills/rivet-review/SKILL.md",
+        "sourceLocation": "L32",
+        "community": 23
+      }
+    },
+    {
+      "id": "rivet_review_skill_output_rules_rfc_2119",
+      "kind": "codeNode",
+      "label": "Output rules (RFC-2119)",
+      "meta": {
+        "sourceFile": "skills/rivet-review/SKILL.md",
+        "sourceLocation": "L39",
+        "community": 23
+      }
+    },
+    {
+      "id": "rivet_spec_author_skill",
+      "kind": "codeNode",
+      "label": "SKILL.md",
+      "meta": {
+        "sourceFile": "skills/rivet-spec-author/SKILL.md",
+        "sourceLocation": "L1",
+        "community": 27
+      }
+    },
+    {
+      "id": "rivet_spec_author_skill_authoring_a_rivet_spec",
+      "kind": "codeNode",
+      "label": "Authoring a Rivet spec",
+      "meta": {
+        "sourceFile": "skills/rivet-spec-author/SKILL.md",
+        "sourceLocation": "L6",
+        "community": 27
+      }
+    },
+    {
+      "id": "rivet_spec_author_skill_file_shape_rivet_specs_feature_md",
+      "kind": "codeNode",
+      "label": "File shape (`.rivet/specs/<feature>.md`)",
+      "meta": {
+        "sourceFile": "skills/rivet-spec-author/SKILL.md",
+        "sourceLocation": "L12",
+        "community": 27
+      }
+    },
+    {
+      "id": "rivet_spec_author_skill_rules_rfc_2119",
+      "kind": "codeNode",
+      "label": "Rules (RFC-2119)",
+      "meta": {
+        "sourceFile": "skills/rivet-spec-author/SKILL.md",
+        "sourceLocation": "L26",
+        "community": 27
+      }
+    },
+    {
+      "id": "rivet_spec_author_skill_quality_check_before_handing_off",
+      "kind": "codeNode",
+      "label": "Quality check before handing off",
+      "meta": {
+        "sourceFile": "skills/rivet-spec-author/SKILL.md",
+        "sourceLocation": "L42",
+        "community": 27
+      }
+    },
+    {
+      "id": "rivet_workflow_skill",
+      "kind": "codeNode",
+      "label": "SKILL.md",
+      "meta": {
+        "sourceFile": "skills/rivet-workflow/SKILL.md",
+        "sourceLocation": "L1",
+        "community": 31
+      }
+    },
+    {
+      "id": "rivet_workflow_skill_rivet_workflow_verification_by_construction",
+      "kind": "codeNode",
+      "label": "Rivet workflow — verification-by-construction",
+      "meta": {
+        "sourceFile": "skills/rivet-workflow/SKILL.md",
+        "sourceLocation": "L6",
+        "community": 31
+      }
+    },
+    {
+      "id": "rivet_workflow_skill_the_loop",
+      "kind": "codeNode",
+      "label": "The loop",
+      "meta": {
+        "sourceFile": "skills/rivet-workflow/SKILL.md",
+        "sourceLocation": "L15",
+        "community": 31
+      }
+    },
+    {
+      "id": "rivet_workflow_skill_hard_rules_rfc_2119",
+      "kind": "codeNode",
+      "label": "Hard rules (RFC-2119)",
+      "meta": {
+        "sourceFile": "skills/rivet-workflow/SKILL.md",
+        "sourceLocation": "L43",
+        "community": 31
+      }
+    },
+    {
+      "id": "R-AUDIT-01",
+      "kind": "requirement",
+      "label": "every CLI invocation is audit-logged"
+    },
+    {
+      "id": "R-AUDIT-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN any rivet command runs inside a Rivet project THEN the system SHALL append a `cli.run` event (command path + arguments + timestamp) to the append-only journal `.rivet/journal.jsonl`."
+    },
+    {
+      "id": "test:test/cli-ux.test.ts::audits cli invocations into the journal",
+      "kind": "test",
+      "label": "test/cli-ux.test.ts::audits cli invocations into the journal",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "R-AUDIT-02",
+      "kind": "requirement",
+      "label": "the audit trail is readable"
+    },
+    {
+      "id": "R-AUDIT-02-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN `rivet log` runs THEN the system SHALL print the journal events in chronological order with timestamps and per-type emoji, and WHEN `--json` is passed THEN the system SHALL emit raw JSONL."
+    },
+    {
+      "id": "test:test/cli-ux.test.ts::renders the audit trail with per-type emoji",
+      "kind": "test",
+      "label": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "R-PROG-01",
+      "kind": "requirement",
+      "label": "progress with emoji after completing a task"
+    },
+    {
+      "id": "R-PROG-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN a task transitions to done THEN the system SHALL display the remaining tasks and features with per-task emoji status, per-check proof lights, an overall progress bar with percentage, and the suggested next task."
+    },
+    {
+      "id": "test:test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
+      "kind": "test",
+      "label": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
+      "meta": {
+        "kind": "unit"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "R-AUDIT-01-AC1",
+      "to": "R-AUDIT-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e2",
+      "from": "test:test/cli-ux.test.ts::audits cli invocations into the journal",
+      "to": "test_cli_ux_test",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e3",
+      "from": "test:test/cli-ux.test.ts::audits cli invocations into the journal",
+      "to": "R-AUDIT-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
+        "passed": true,
+        "at": "2026-06-11T21:29:16.307Z",
+        "sha": "eabad481137314e8821d5e48d0ed2fef48165def",
+        "tree": "f8ccd6b391c961e074f3d013c742605912a482e2",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e4",
+      "from": "R-AUDIT-02-AC1",
+      "to": "R-AUDIT-02",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e5",
+      "from": "test:test/cli-ux.test.ts::renders the audit trail with per-type emoji",
+      "to": "test_cli_ux_test",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e6",
+      "from": "test:test/cli-ux.test.ts::renders the audit trail with per-type emoji",
+      "to": "R-AUDIT-02-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
+        "passed": true,
+        "at": "2026-06-11T21:29:16.930Z",
+        "sha": "eabad481137314e8821d5e48d0ed2fef48165def",
+        "tree": "f8ccd6b391c961e074f3d013c742605912a482e2",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e7",
+      "from": "R-PROG-01-AC1",
+      "to": "R-PROG-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e8",
+      "from": "test:test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
+      "to": "test_cli_ux_test",
+      "kind": "dependsOn",
+      "proof": "unproven"
+    },
+    {
+      "id": "e9",
+      "from": "test:test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
+      "to": "R-PROG-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
+        "passed": true,
+        "at": "2026-06-11T21:29:17.560Z",
+        "sha": "eabad481137314e8821d5e48d0ed2fef48165def",
+        "tree": "f8ccd6b391c961e074f3d013c742605912a482e2",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    }
+  ]
+}
