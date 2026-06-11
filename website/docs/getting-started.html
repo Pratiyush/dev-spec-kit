@@ -189,7 +189,7 @@
           <div class="term-line out">&nbsp;</div>
           <div class="term-line out">&gt; User story: As a user, I want my session to expire after 30 min idle.</div>
           <div class="term-line out">&nbsp;</div>
-          <div class="term-line out">## Requirement R-SESSION-01 — idle timeout</div>
+          <div class="term-line out">## Requirement REQUIREMENT_SESSION-01 — idle timeout</div>
           <div class="term-line out">&nbsp;</div>
           <div class="term-line out">WHEN a session has been idle for &gt;= 30 minutes</div>
           <div class="term-line out">THEN the system SHALL invalidate the session and return HTTP 401.</div>
@@ -212,7 +212,7 @@
         </div>
         <div class="terminal-body">
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet spec tasks</span></div>
-          <div class="term-line green">✓ T1  R-SESSION-01 — idle timeout  [bound: SessionTest#idleTimeout, SessionIT#expiredSessionReturns401]</div>
+          <div class="term-line green">✓ T1  REQUIREMENT_SESSION-01 — idle timeout  [bound: SessionTest#idleTimeout, SessionIT#expiredSessionReturns401]</div>
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task start T1</span></div>
         </div>
       </div>

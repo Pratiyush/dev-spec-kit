@@ -3,6 +3,7 @@ import { join } from "node:path";
 import pc from "picocolors";
 import { materialize, journalFor } from "./materialize.js";
 import { summarize, rollupRequirements } from "../engine/graph/build.js";
+import { lintQualifiedIds, unboundObligations, requirementKind } from "../engine/spec/ears.js";
 import { writeBoards } from "./boards.js";
 import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
 import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
@@ -39,8 +40,20 @@ export function graphBuild(opts: { refresh?: boolean }): void {
 
   for (const w of m.specWarnings) console.log(pc.yellow(`  ⚠ ${w}`));
 
-  // Config enforcement: every acceptance criterion must bind to an executable check.
-  const unbound = m.requirements.flatMap((r) => r.criteria.filter((c) => c.checks.length === 0).map((c) => c.id));
+  // FEAT-IDS-01: ids must self-describe; severity from rules.requireQualifiedIds.
+  const idLint = lintQualifiedIds(m.requirements);
+  const lintLevel = m.config.rules.requireQualifiedIds;
+  if (lintLevel !== "off") {
+    for (const v of idLint) {
+      if (lintLevel === "error") console.error(pc.red(`  ✗ ${v}`) + pc.dim("  [rules.requireQualifiedIds]"));
+      else console.log(pc.yellow(`  ⚠ ${v}`));
+    }
+    if (lintLevel === "error" && idLint.length > 0) process.exitCode = 1;
+  }
+
+  // Config enforcement: every acceptance criterion carrying an obligation must bind to a check.
+  // (ADR decision records are exempt — FEAT-IDS-01.)
+  const unbound = unboundObligations(m.requirements).map((c) => c.id);
   if (unbound.length > 0) {
     const msg = `  ${unbound.length} criteria with NO @check binding (unverifiable): ${unbound.join(", ")}`;
     if (m.config.verify.everyCriterionNeedsCheck) {
@@ -74,7 +87,9 @@ export function graphBuild(opts: { refresh?: boolean }): void {
     }
   }
   // BOARDS-01: every graph build refreshes the generated boards — they can never drift from truth.
-  writeBoards(cwd, m.tasks, journalFor(cwd).read(), rollupRequirements(m.requirements, m.vtg));
+  // ADR decision records carry no proof obligation, so they don't get TRACKING rows.
+  const obligated = m.requirements.filter((r) => requirementKind(r.id) !== "adr");
+  writeBoards(cwd, m.tasks, journalFor(cwd).read(), rollupRequirements(obligated, m.vtg));
   console.log(pc.dim("  boards → .rivet/LEDGER.md · .rivet/TRACKING.md"));
   console.log("");
 }

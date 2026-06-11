@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
 import { parseSpecsDir } from "../engine/spec/parse.js";
+import { lintQualifiedIds, requirementKind, type Requirement } from "../engine/spec/ears.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -18,6 +19,21 @@ function journal(cwd: string): Journal {
   return new Journal(join(cwd, ".rivet", "journal.jsonl"));
 }
 
+/** FEAT-IDS-01 lint printer — returns false when level=error and violations exist (caller stops). */
+function lintIds(requirements: Requirement[], level: "warn" | "error" | "off"): boolean {
+  if (level === "off") return true;
+  const violations = lintQualifiedIds(requirements);
+  for (const v of violations) {
+    if (level === "error") console.error(pc.red(`✗ ${v}`) + pc.dim("  [rules.requireQualifiedIds]"));
+    else console.log(pc.yellow(`⚠ ${v}`));
+  }
+  if (level === "error" && violations.length > 0) {
+    process.exitCode = 1;
+    return false;
+  }
+  return true;
+}
+
 /** `rivet spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */
 export function specTasks(): void {
   const cwd = process.cwd();
@@ -26,11 +42,17 @@ export function specTasks(): void {
     console.log(pc.yellow("no specs in .rivet/specs/ — write one first (EARS + @check bindings)"));
     return;
   }
+  // FEAT-IDS-01: ids must self-describe; severity comes from rules.requireQualifiedIds.
+  if (!lintIds(requirements, loadConfig(cwd).rules.requireQualifiedIds)) return;
   const store = new TaskStore(journal(cwd));
   const existing = store.all();
   let created = 0;
   let synced = 0;
   for (const req of requirements) {
+    if (requirementKind(req.id) === "adr") {
+      console.log(pc.dim(`◇ ${req.id} — decision record (ADR), no task derived`));
+      continue;
+    }
     const refs = req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref));
     if (refs.length === 0) {
       console.log(pc.yellow(`⚠ ${req.id} has no @check bindings — UNVERIFIABLE, task not created; bind checks first`));

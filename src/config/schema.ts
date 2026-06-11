@@ -226,6 +226,11 @@ export const RivetConfigSchema = z
         onConflict: z.enum(["refuse", "warn"]).default("warn"),
         /** Inherit a personal default rules file, then override per-project. */
         inheritPersonal: z.boolean().default(true),
+        /**
+         * FEAT-IDS-01: requirement ids must self-describe (REQUIREMENT_/NFR_/ADR_) — they travel
+         * without their spec. Legacy short ids always parse; this knob sets the lint severity.
+         */
+        requireQualifiedIds: z.enum(["warn", "error", "off"]).default("warn"),
       })
       .default({}),
 

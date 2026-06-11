@@ -16,7 +16,7 @@ is a wish, not a requirement.
 
 > User story: As a <role>, I want <capability>, so that <benefit>.
 
-## Requirement R-<AREA>-NN — <short title>
+## Requirement REQUIREMENT_<AREA>-NN — <short title>
 
 WHEN <event> THEN the system SHALL <observable response>.
 
@@ -33,7 +33,11 @@ WHEN <event> THEN the system SHALL <observable response>.
   the criterion is not done being written. Unbound criteria are flagged UNVERIFIED and create no task.
 - Ref syntax MUST match the stack's runner: maven `Class#method` · vitest/jest `file::test name` ·
   pytest `file.py::test_name` · custom stacks per `verify.runners` in config.
-- IDs (`R-AREA-NN`) are stable forever — never renumber; deprecate instead.
+- IDs MUST be fully qualified — they travel without their spec (PR bodies, boards, chat):
+  `REQUIREMENT_<AREA>-NN` for functional and `NFR_<AREA>-NN` for non-functional criteria (both
+  carry full proof obligations); `ADR_<AREA>-NN` for decision records (graph nodes, NO check
+  obligation). Never bare `R-…` ids — legacy ids still parse but lint (`rules.requireQualifiedIds`).
+- IDs are stable forever — never renumber; deprecate instead.
 - Before locking a spec, ask the user at most 5 clarifying questions, ONE at a time, each with a
   recommended answer they can accept with "yes" (scope > security > UX > technical detail).
 - Hunt for the unhappy paths: for each WHEN, ask "and when it doesn't?" — propose IF-pattern criteria

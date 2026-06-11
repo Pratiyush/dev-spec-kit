@@ -19,8 +19,10 @@ or a global install) and `rivet doctor` passing. If `.rivet/` is missing, run `r
    - research → investigate and report. You MUST NOT change code in research mode.
    - quick → one small change. Quick mode still writes at least one test (NO exceptions).
    - full-spec → continue with step 2.
-2. **Spec.** Write `.rivet/specs/<feature>.md`: a user story, then `## Requirement R-<AREA>-NN — title`
-   sections with EARS criteria (`WHEN/IF … THEN the system SHALL …`) and one `@check kind=<kind> ref=<ref>`
+2. **Spec.** Write `.rivet/specs/<feature>.md`: a user story, then
+   `## Requirement REQUIREMENT_<AREA>-NN — title` sections (ids MUST be fully qualified:
+   `REQUIREMENT_` / `NFR_` / `ADR_`, never bare `R-…`) with EARS criteria
+   (`WHEN/IF … THEN the system SHALL …`) and one `@check kind=<kind> ref=<ref>`
    line per criterion. Refs use the runner's selector syntax (maven `Class#method`, vitest/jest
    `file::name`, pytest `file::test`). Present the spec to the user for approval BEFORE implementing.
 3. **Derive tasks.** `rivet spec tasks` — one evidence-bound task per requirement. NEVER create code

@@ -41,6 +41,44 @@ export interface Requirement {
   criteria: AcceptanceCriterion[];
 }
 
+/**
+ * FEAT-IDS-01 — ids travel without their spec (PR bodies, boards, chat), so the prefix must carry
+ * the noun. REQUIREMENT_ and NFR_ carry full proof obligations; ADR_ is a decision record — a
+ * first-class graph node with NO check obligation (decisions are recorded, not unit-tested).
+ */
+export type RequirementKind = "requirement" | "nfr" | "adr";
+
+export const QUALIFIED_PREFIXES = ["REQUIREMENT_", "NFR_", "ADR_"] as const;
+
+export function isQualifiedId(id: string): boolean {
+  return QUALIFIED_PREFIXES.some((p) => id.startsWith(p));
+}
+
+export function requirementKind(id: string): RequirementKind {
+  if (id.startsWith("NFR_")) return "nfr";
+  if (id.startsWith("ADR_")) return "adr";
+  return "requirement";
+}
+
+/** Lint messages for unqualified ids, each with the fix-it suggestion. Severity is the caller's
+ *  call (`rules.requireQualifiedIds`: warn | error | off). */
+export function lintQualifiedIds(reqs: Requirement[]): string[] {
+  return reqs
+    .filter((r) => !isQualifiedId(r.id))
+    .map(
+      (r) =>
+        `${r.id} — not fully qualified; use REQUIREMENT_${r.id.replace(/^R-/, "")} ` +
+        `(prefixes: ${QUALIFIED_PREFIXES.join(" / ")})`,
+    );
+}
+
+/** Unbound criteria that actually carry a proof obligation (ADR decision records are exempt). */
+export function unboundObligations(reqs: Requirement[]): AcceptanceCriterion[] {
+  return reqs
+    .filter((r) => requirementKind(r.id) !== "adr")
+    .flatMap((r) => r.criteria.filter((c) => c.checks.length === 0));
+}
+
 /** A criterion is verifiable only if it binds to at least one executable check. */
 export function isVerifiable(c: AcceptanceCriterion): boolean {
   return c.checks.length > 0;

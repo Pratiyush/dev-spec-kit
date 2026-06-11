@@ -1,6 +1,6 @@
 {
   "paths": [
-    "test/doctor-fix.test.ts"
+    ".rivet/specs/cli-ux.md"
   ],
-  "until": "2026-06-12T00:29:29.462Z"
+  "until": "2026-06-12T00:04:24.469Z"
 }

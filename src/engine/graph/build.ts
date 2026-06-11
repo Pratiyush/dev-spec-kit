@@ -1,4 +1,4 @@
-import type { Requirement } from "../spec/ears.js";
+import { requirementKind, type Requirement } from "../spec/ears.js";
 import type { Task } from "../state/tasks.js";
 import type { CodeGraph } from "../graphify/index.js";
 import type { CheckResult, GraphEdge, GraphNode, ProofState, VerifiedTraceabilityGraph } from "./types.js";
@@ -57,7 +57,8 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
     edges.push({ id: `e${++edgeSeq}`, from, to, kind, proof, ...(lastCheck ? { lastCheck } : {}) });
 
   for (const req of input.requirements) {
-    nodes.push({ id: req.id, kind: "requirement", label: req.title });
+    // FEAT-IDS-01: ADR_ ids are decision records — first-class "adr" nodes in the graph.
+    nodes.push({ id: req.id, kind: requirementKind(req.id) === "adr" ? "adr" : "requirement", label: req.title });
     for (const c of req.criteria) {
       nodes.push({ id: c.id, kind: "acceptanceCriterion", label: c.text });
       edge(c.id, req.id, "derivedFrom", "unproven");
