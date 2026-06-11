@@ -46,5 +46,5 @@ or a global install) and `rivet doctor` passing. If `.rivet/` is missing, run `r
 - You MUST NOT weaken, skip, or delete a failing test to make it pass; fix the code or escalate.
 - You MUST show real command output for check runs — never paraphrase a result that did not happen.
 - You SHOULD run `rivet status` to re-orient after any interruption; the journal is the ground truth.
-- Commits MUST be authored by the human (per project constitution), and you MUST stop at the
+- Commits MUST be authored by the human (per project laws (.rivet/laws.md)), and you MUST stop at the
   configured human gates (plan approval, task approval, pre-PR, pre-merge).

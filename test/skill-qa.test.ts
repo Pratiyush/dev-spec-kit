@@ -20,7 +20,7 @@ const SUBCOMMANDS = new Set(["create", "start", "done", "run", "build", "tasks",
 const KNOWN_ARTIFACTS = [
   ".rivet/", // the project root marker itself ("if .rivet/ is missing, run rivet init")
   ".rivet/specs/", ".rivet/config.json", ".rivet/journal.jsonl", ".rivet/graph.json",
-  ".rivet/approvals/", ".rivet/pr-body.md", ".rivet/intake/", ".rivet/constitution.md",
+  ".rivet/approvals/", ".rivet/pr-body.md", ".rivet/intake/", ".rivet/laws.md",
   ".rivet/learnings.md", ".rivet/RESUME.md", ".rivet/unlock.json", ".rivet/cache/",
 ];
 

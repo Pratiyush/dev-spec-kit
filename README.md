@@ -47,7 +47,7 @@ project, all under `.rivet/` in your repo:
 | `.rivet/config.json` | JSON (zod-validated) | every policy knob — gates, TDD, runners, autonomy |
 | `.rivet/specs/*.md` | Markdown + EARS + `@check` | requirements; source of truth for tasks & proofs |
 | `.rivet/intake/*.md` | Markdown + YAML frontmatter | raw ideas/tickets, verbatim; `rivet route --file` |
-| `.rivet/constitution.md` | Markdown | the rules the agent must always obey |
+| `.rivet/laws.md` | Markdown | the rules the agent must always obey |
 | `.rivet/learnings.md` | Markdown (append-only) | the retro loop; lessons promote into rules/checks |
 | `verify.runners` (in config) | JSON command templates | new test stacks with zero code changes |
 

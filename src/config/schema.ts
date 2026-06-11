@@ -216,8 +216,8 @@ export const RivetConfigSchema = z
 
     rules: z
       .object({
-        /** Use a constitution/rules file. */
-        constitution: z.boolean().default(true),
+        /** Use a laws/rules file (.rivet/laws.md). */
+        laws: z.boolean().default(true),
         /** On conflict with a rule: refuse or warn. */
         onConflict: z.enum(["refuse", "warn"]).default("warn"),
         /** Inherit a personal default rules file, then override per-project. */

@@ -65,7 +65,7 @@ program
 
 program
   .command("init")
-  .description("Initialize Rivet in the current project (.rivet/ config, constitution, specs, journal)")
+  .description("Initialize Rivet in the current project (.rivet/ config, laws, specs, journal)")
   .option("-f, --force", "overwrite the existing Rivet config")
   .action(safe((opts: { force?: boolean }) => runInit(opts)));
 

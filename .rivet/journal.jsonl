@@ -202,3 +202,13 @@
 {"at":"2026-06-11T20:37:33.505Z","type":"check.run","data":{"taskId":"RUNNERS-01","result":{"ref":"test/runners-kind.test.ts","passed":true,"at":"2026-06-11T20:37:33.483Z","sha":"87578225052104715ad24fc2dbe2fd27ffccaed1","tree":"53cbf304ed844aab8bc9f1d49dbf4e041b2f0fc7","dirty":true,"stack":"node-vitest","kind":"unit"}}}
 {"at":"2026-06-11T20:37:33.575Z","type":"cli.run","data":{"command":"task done","args":["RUNNERS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
 {"at":"2026-06-11T20:37:33.577Z","type":"task.status","data":{"id":"RUNNERS-01","status":"done"}}
+{"at":"2026-06-11T20:42:18.172Z","type":"cli.run","data":{"command":"task create","args":["RENAME-LAWS-01","rename constitution → laws (user term)"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:42:18.174Z","type":"task.created","data":{"id":"RENAME-LAWS-01","title":"rename constitution → laws (user term)","boundChecks":["test/skill-qa.test.ts"]}}
+{"at":"2026-06-11T20:42:18.244Z","type":"cli.run","data":{"command":"task start","args":["RENAME-LAWS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:42:18.245Z","type":"task.status","data":{"id":"RENAME-LAWS-01","status":"in_progress"}}
+{"at":"2026-06-11T20:43:05.050Z","type":"cli.run","data":{"command":"check run","args":["RENAME-LAWS-01","test/skill-qa.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:43:05.634Z","type":"check.run","data":{"taskId":"RENAME-LAWS-01","result":{"ref":"test/skill-qa.test.ts","passed":true,"at":"2026-06-11T20:43:05.613Z","sha":"d00dbaed9b3d5602005dd53966835c844520b4dd","tree":"8037759de5891bbd65e04adc4ed07d620f839cb7","dirty":true,"stack":"node-vitest","kind":"unit"}}}
+{"at":"2026-06-11T20:43:53.940Z","type":"cli.run","data":{"command":"check run","args":["RENAME-LAWS-01","test/skill-qa.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:43:54.525Z","type":"check.run","data":{"taskId":"RENAME-LAWS-01","result":{"ref":"test/skill-qa.test.ts","passed":true,"at":"2026-06-11T20:43:54.504Z","sha":"d00dbaed9b3d5602005dd53966835c844520b4dd","tree":"8953a0d0643e2a4ae1e3308e3af3bd522477e834","dirty":true,"stack":"node-vitest","kind":"unit"}}}
+{"at":"2026-06-11T20:43:54.594Z","type":"cli.run","data":{"command":"task done","args":["RENAME-LAWS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:43:54.597Z","type":"task.status","data":{"id":"RENAME-LAWS-01","status":"done"}}

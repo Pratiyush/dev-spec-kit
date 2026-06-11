@@ -1,11 +1,11 @@
 ---
 name: rivet-retro
-description: Run the Rivet learning loop — capture lessons after a feature/incident into .rivet/learnings.md, propose promotions into the constitution, and turn fixed bugs into permanent regression checks. Use after completing a feature, after any surprising failure, or when the user says retro.
+description: Run the Rivet learning loop — capture lessons after a feature/incident into .rivet/learnings.md, propose promotions into the laws, and turn fixed bugs into permanent regression checks. Use after completing a feature, after any surprising failure, or when the user says retro.
 ---
 
 # Rivet retro — lessons compound or they repeat
 
-A lesson only counts once it is PROMOTED (into the constitution) or HARDENED (into a permanent
+A lesson only counts once it is PROMOTED (into the laws) or HARDENED (into a permanent
 check). Logged-but-unpromoted lessons recur — that is the failure mode this loop exists to kill.
 
 ## The ledger (`.rivet/learnings.md` — append-only, data not code)
@@ -16,7 +16,7 @@ check). Logged-but-unpromoted lessons recur — that is the failure mode this lo
 - Lesson: <what we now know>
 - Confidence: low | medium | high   (evidence-based: how often observed, was it reproduced?)
 - Scope: project | global           (global only after the pattern recurs in 2+ projects)
-- Promoted to: constitution#<section> | check:<ref> | OPEN
+- Promoted to: laws#<section> | check:<ref> | OPEN
 ```
 
 Instinct mechanics: a lesson starts `Confidence: low, Scope: project`. Reproduction or recurrence
@@ -30,7 +30,7 @@ beat the incumbent behavior, not merely sound right.
 1. After each completed feature (and after any surprising failure), append entries. Be concrete:
    "stale Boot-3 import caught by executed check" beats "be careful with imports".
 2. For every entry you MUST propose a promotion, and the user MUST approve before it lands:
-   - A recurring mistake → a new rule in `.rivet/constitution.md` (quote the exact wording).
+   - A recurring mistake → a new rule in `.rivet/laws.md` (quote the exact wording).
    - A fixed bug → a PERMANENT regression test: add the test, bind it with `@check` to the relevant
      requirement so it joins the graph forever. A bug that can come back silently was never fixed.
    - A process failure → a config change (`.rivet/config.json`) — never a code change to the tool.

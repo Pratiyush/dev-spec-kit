@@ -102,7 +102,7 @@
     }
   },
   "rules": {
-    "constitution": true,
+    "laws": true,
     "onConflict": "warn",
     "inheritPersonal": true
   },
