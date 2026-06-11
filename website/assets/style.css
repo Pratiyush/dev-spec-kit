@@ -1,0 +1,230 @@
+/* ============================================================
+   Rivet — shared base stylesheet (homepage + docs)
+   ============================================================ */
+
+/* ---------- Reset + Custom Properties ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Accent: a single electric violet */
+  --accent:       #7c3aed;
+  --accent-light: #a78bfa;
+  --accent-glow:  rgba(124, 58, 237, 0.35);
+  --accent-dim:   rgba(124, 58, 237, 0.12);
+
+  /* Surface */
+  --bg:           #0d0d12;
+  --bg-card:      #13131c;
+  --bg-card2:     #18182a;
+  --border:       rgba(255,255,255,0.07);
+  --border-soft:  rgba(255,255,255,0.04);
+
+  /* Text */
+  --text:         #e8e8f0;
+  --text-dim:     #8888a8;
+  --text-dimmer:  #55556a;
+  --heading:      #f4f4ff;
+
+  /* Status colours */
+  --green:  #22c55e;
+  --red:    #ef4444;
+  --yellow: #eab308;
+  --purple: #a855f7;
+  --gray:   #6b7280;
+
+  /* Type */
+  --font: "Inter", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+
+  /* Spacing */
+  --radius:  12px;
+  --radius-lg: 20px;
+  --gap:     24px;
+}
+
+/* ---------- Typography ---------- */
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--heading);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; font-weight: 600; }
+
+p { margin-bottom: 1em; }
+a { color: var(--accent-light); text-decoration: none; transition: color 0.15s; }
+a:hover { color: #fff; }
+
+code, kbd {
+  font-family: var(--mono);
+  font-size: 0.875em;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+.btn-primary:hover {
+  background: #6d28d9;
+  box-shadow: 0 0 40px rgba(124,58,237,0.55);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  border-color: rgba(124,58,237,0.4);
+  box-shadow: 0 0 30px rgba(124,58,237,0.08);
+}
+
+/* ---------- Badge / Pill ---------- */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(124,58,237,0.3);
+  color: var(--accent-light);
+}
+
+/* ---------- Terminal blocks ---------- */
+.terminal {
+  background: #0a0a10;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  overflow: hidden;
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.terminal-bar .dot { width: 12px; height: 12px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+.terminal-body { padding: 20px 24px; }
+.terminal-body .prompt { color: var(--accent-light); }
+.terminal-body .cmd    { color: var(--heading); }
+.terminal-body .out    { color: var(--text-dim); }
+.terminal-body .green  { color: var(--green); }
+.terminal-body .red    { color: var(--red); }
+.terminal-body .yellow { color: var(--yellow); }
+.terminal-body .purple { color: var(--purple); }
+.terminal-body .dim    { color: var(--text-dimmer); }
+
+/* ---------- Progress bar ---------- */
+.progress-track {
+  height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 50px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Section divider ---------- */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 12px;
+}
+
+/* ---------- Grid helpers ---------- */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--gap); }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--gap); }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.4); border-radius: 3px; }
+
+/* ---------- Selection ---------- */
+::selection { background: var(--accent); color: #fff; }

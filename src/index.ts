@@ -26,3 +26,5 @@ export * from "./engine/phase.js";
 export * from "./engine/lock.js";
 export * from "./engine/verify/applife.js";
 export * from "./engine/wave.js";
+export * from "./engine/steering.js";
+export * from "./engine/learnwarn.js";

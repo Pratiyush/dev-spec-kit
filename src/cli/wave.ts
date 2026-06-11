@@ -63,6 +63,56 @@ export function waveStartAt(cwd: string, ids: string[]): WorktreeReport[] {
   return reports;
 }
 
+export interface WaveDoneReport {
+  removed: boolean;
+  branchDeleted: boolean;
+  forced: boolean;
+}
+
+/**
+ * WAVE-02 — cleanup, provenance-checked and merge-gated: only `.worktrees/<id>` paths we created
+ * may be removed, and only after the branch's work is on origin (or with an explicit force
+ * discard). Journaled as a governance event either way.
+ */
+export function waveDoneAt(cwd: string, id: string, opts: { force?: boolean }): WaveDoneReport {
+  if (!/^[A-Za-z0-9._-]+$/.test(id)) {
+    throw new Error(`provenance check: '${id}' is not a wave id — only .worktrees/<id> may be cleaned up`);
+  }
+  const path = join(cwd, ".worktrees", id);
+  if (!existsSync(path)) {
+    throw new Error(`provenance check: ${path} does not exist — only .worktrees/<id> we created may be cleaned up`);
+  }
+  const branch = `rivet/${id}`;
+  const forced = opts.force ?? false;
+  if (!forced) {
+    const def = defaultBranch(cwd);
+    git(cwd, "fetch origin");
+    try {
+      git(cwd, `merge-base --is-ancestor ${branch} origin/${def}`);
+    } catch {
+      throw new Error(`${branch} is not merged into origin/${def} — merge first, or pass --force to discard the work`);
+    }
+  }
+  git(cwd, `worktree remove ${forced ? "--force " : ""}"${path}"`);
+  let branchDeleted = false;
+  try {
+    git(cwd, `branch -D ${branch}`);
+    branchDeleted = true;
+  } catch {
+    /* branch may not exist locally */
+  }
+  journalFor(cwd).append("governance", { kind: "worktree-cleaned", id, forced });
+  return { removed: true, branchDeleted, forced };
+}
+
+export function waveDone(id: string, opts: { force?: boolean }): void {
+  const r = waveDoneAt(process.cwd(), id, opts);
+  console.log(
+    pc.green(`✓ worktree ${id} cleaned`) +
+      pc.dim(` (branch ${r.branchDeleted ? "deleted" : "kept"}${r.forced ? " · FORCED discard" : " · merged"})`),
+  );
+}
+
 export function wavePlan(): void {
   const cwd = process.cwd();
   const tasks = [...new TaskStore(journalFor(cwd)).all().values()];

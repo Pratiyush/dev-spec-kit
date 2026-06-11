@@ -1,5 +1,7 @@
 import { join } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
 import pc from "picocolors";
+import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, pickRunner } from "../engine/verify/runner.js";
@@ -34,8 +36,19 @@ export function taskCreate(id: string, title: string, checks: string[]): void {
 }
 
 export function taskStart(id: string): void {
-  store(process.cwd()).setStatus(id, "in_progress");
+  const cwd = process.cwd();
+  const s = store(cwd);
+  s.setStatus(id, "in_progress");
   console.log(pc.green(`▶ Task ${id} in progress`));
+  // LEARN-01: surface OPEN lessons that pattern-match this task BEFORE the work begins.
+  const ledgerPath = join(cwd, ".rivet", "learnings.md");
+  if (existsSync(ledgerPath)) {
+    const task = s.get(id);
+    const words = `${id} ${task?.title ?? ""} ${(task?.boundChecks ?? []).join(" ")}`;
+    for (const hit of matchOpenLessons(parseLearnings(readFileSync(ledgerPath, "utf8")), words)) {
+      console.log(pc.yellow(`  ⚠ open lesson may apply: ${hit.title}`) + pc.dim("  (.rivet/learnings.md)"));
+    }
+  }
 }
 
 export function taskDone(id: string): void {

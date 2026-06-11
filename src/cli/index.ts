@@ -9,8 +9,9 @@ import { specTasks, approve, pr, route, guardPr, unlock } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
 import { logCmd } from "./log.js";
 import { resumeCmd } from "./resume.js";
-import { wavePlan, waveStart } from "./wave.js";
+import { wavePlan, waveStart, waveDone } from "./wave.js";
 import { boardCmd } from "./board-cmd.js";
+import { lawsCmd } from "./laws-cmd.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -185,6 +186,19 @@ wave
   .description("Create one worktree per task — fetch-first, branched from origin's CURRENT tip")
   .argument("<ids...>")
   .action(safe((ids: string[]) => waveStart(ids)));
+wave
+  .command("done")
+  .description("Provenance-checked cleanup: remove .worktrees/<id> after its branch reached origin (--force discards)")
+  .argument("<id>")
+  .option("--force", "discard unmerged work (destructive — requires explicit intent)")
+  .action(safe((id: string, opts: { force?: boolean }) => waveDone(id, opts)));
+
+program
+  .command("laws")
+  .description("Print the effective laws: personal → project → scoped (fileMatch via --for, manual via --summon)")
+  .option("--for <file>", "activate fileMatch-scoped laws for this path")
+  .option("--summon <names...>", "load manual-scope laws by name")
+  .action(safe((opts: { for?: string; summon?: string[] }) => lawsCmd(opts)));
 
 program
   .command("board")
