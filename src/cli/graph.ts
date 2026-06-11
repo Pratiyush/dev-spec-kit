@@ -3,7 +3,8 @@ import { join } from "node:path";
 import pc from "picocolors";
 import { materialize, journalFor } from "./materialize.js";
 import { summarize, rollupRequirements } from "../engine/graph/build.js";
-import { lintQualifiedIds, unboundObligations, requirementKind } from "../engine/spec/ears.js";
+import { lintQualifiedIds, lintCriteriaFormat, unboundObligations, requirementKind } from "../engine/spec/ears.js";
+import { floorViolations } from "../engine/gatepacks.js";
 import { writeBoards } from "./boards.js";
 import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
 import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
@@ -49,6 +50,17 @@ export function graphBuild(opts: { refresh?: boolean }): void {
       else console.log(pc.yellow(`  ⚠ ${v}`));
     }
     if (lintLevel === "error" && idLint.length > 0) process.exitCode = 1;
+  }
+
+  // FEAT-GHERKIN-01: off-format criteria lint (warn-only — both grammars always parse and bind).
+  for (const w of lintCriteriaFormat(m.requirements, m.config.spec.criteriaFormat)) {
+    console.log(pc.yellow(`  ⚠ ${w}`));
+  }
+  // FEAT-GHERKIN-01: the mechanical edge-case floor — unnamed unhappy paths block the graph.
+  const floor = floorViolations(m.requirements, m.config);
+  if (floor.length > 0) {
+    for (const v of floor) console.error(pc.red(`  ✗ ${v}`) + pc.dim("  [gates.negativeFloor]"));
+    process.exitCode = 1;
   }
 
   // Config enforcement: every acceptance criterion carrying an obligation must bind to a check.

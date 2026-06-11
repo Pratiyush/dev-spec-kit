@@ -21,7 +21,7 @@
   "spec": {
     "style": "both",
     "acceptanceCriteria": "tool-drafts",
-    "criteriaFormat": "ears",
+    "criteriaFormat": "mixed",
     "breakdownDepth": "feature-story-task-subtask",
     "estimates": true,
     "autoDependencies": true,

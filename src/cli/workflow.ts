@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
 import { parseSpecsDir } from "../engine/spec/parse.js";
-import { lintQualifiedIds, requirementKind, type Requirement } from "../engine/spec/ears.js";
+import { lintQualifiedIds, lintCriteriaFormat, requirementKind, type Requirement } from "../engine/spec/ears.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -43,7 +43,12 @@ export function specTasks(): void {
     return;
   }
   // FEAT-IDS-01: ids must self-describe; severity comes from rules.requireQualifiedIds.
-  if (!lintIds(requirements, loadConfig(cwd).rules.requireQualifiedIds)) return;
+  const config = loadConfig(cwd);
+  if (!lintIds(requirements, config.rules.requireQualifiedIds)) return;
+  // FEAT-GHERKIN-01: off-format criteria lint (warn-only).
+  for (const w of lintCriteriaFormat(requirements, config.spec.criteriaFormat)) {
+    console.log(pc.yellow(`⚠ ${w}`));
+  }
   const store = new TaskStore(journal(cwd));
   const existing = store.all();
   let created = 0;

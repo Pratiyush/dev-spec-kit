@@ -70,8 +70,12 @@ export const RivetConfigSchema = z
         style: z.enum(["checklist", "stories", "both"]).default("both"),
         /** Who authors acceptance criteria. */
         acceptanceCriteria: z.enum(["tool-drafts", "user-writes"]).default("tool-drafts"),
-        /** Criteria syntax. EARS = WHEN/IF ... THEN ... SHALL. */
-        criteriaFormat: z.enum(["ears", "plain", "mixed"]).default("ears"),
+        /**
+         * Criteria syntax. FEAT-GHERKIN-01: gherkin (Scenario / Scenario Outline + Examples) is
+         * the DEFAULT for new projects; EARS stays fully supported. Both always parse and bind —
+         * this knob only sets the off-format lint (warn, never block). "mixed" accepts both.
+         */
+        criteriaFormat: z.enum(["gherkin", "ears", "plain", "mixed"]).default("gherkin"),
         breakdownDepth: z
           .enum(["feature-story-task-subtask", "task-subtask"])
           .default("feature-story-task-subtask"),
@@ -259,6 +263,12 @@ export const RivetConfigSchema = z
     gates: z
       .object({
         facts: z.enum(["off", "on"]).default("off"),
+        /**
+         * FEAT-GHERKIN-01: the mechanical edge-case floor — every obligated requirement needs
+         * ≥1 negative/failure criterion (EARS unwanted-pattern or a failure Scenario) or graph
+         * build flags it. ON everywhere by default; prose mandates are ignorable, floors aren't.
+         */
+        negativeFloor: z.enum(["on", "off"]).default("on"),
         require: z.array(z.string()).default([]),
         packs: z
           .record(

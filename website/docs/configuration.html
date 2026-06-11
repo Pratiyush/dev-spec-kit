@@ -220,10 +220,15 @@
           </div>
           <div class="config-row">
             <div class="config-key">spec.criteriaFormat</div>
-            <div class="config-default">"ears"</div>
+            <div class="config-default">"gherkin"</div>
             <div class="config-desc">
-              Criteria syntax. EARS = <code>WHEN/IF … THEN the system SHALL …</code>.
-              <div class="allowed">ears | plain | mixed</div>
+              Criteria syntax. Gherkin (the default) = <code>Scenario:</code> blocks with
+              Given/When/Then steps; <code>Scenario Outline:</code> + <code>Examples:</code> tables
+              expand one criterion per row (one <code>@check</code> binds them all). EARS =
+              <code>WHEN/IF … THEN the system SHALL …</code>. Both always parse and bind —
+              off-format criteria lint (warn-only). Every requirement also needs ≥1
+              negative/failure criterion (<code>gates.negativeFloor</code>, on by default).
+              <div class="allowed">gherkin | ears | plain | mixed</div>
             </div>
           </div>
           <div class="config-row">

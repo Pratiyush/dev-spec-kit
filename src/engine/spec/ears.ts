@@ -6,8 +6,8 @@
  * `@check` bindings to executable checks — a criterion with no binding is UNVERIFIED and gets flagged.
  */
 
-/** EARS clause patterns. */
-export type EarsPattern = "ubiquitous" | "event" | "state" | "optional" | "unwanted" | "complex";
+/** EARS clause patterns, plus "gherkin" for Given/When/Then criteria (FEAT-GHERKIN-01). */
+export type EarsPattern = "ubiquitous" | "event" | "state" | "optional" | "unwanted" | "complex" | "gherkin";
 
 export type CheckKind = "unit" | "integration" | "api" | "e2e" | "visual" | "parity";
 
@@ -96,6 +96,8 @@ export function kindForRef(reqs: Requirement[], ref: string): CheckKind | undefi
 }
 
 const EARS_PATTERNS: ReadonlyArray<[EarsPattern, RegExp]> = [
+  // Gherkin first: a GIVEN…WHEN…THEN sentence is a scenario, even when it also says SHALL.
+  ["gherkin", /\bGIVEN\b[\s\S]*\bWHEN\b[\s\S]*\bTHEN\b/i],
   ["complex", /\bWHEN\b.*\bWHILE\b|\bWHILE\b.*\bWHEN\b/i],
   ["unwanted", /^\s*IF\b.*\bTHEN\b.*\bSHALL\b/i],
   ["event", /^\s*WHEN\b.*\bSHALL\b/i],
@@ -115,4 +117,36 @@ export function classifyEars(text: string): EarsPattern {
 /** Does the sentence look like valid EARS (contains a SHALL response clause)? */
 export function looksLikeEars(text: string): boolean {
   return /\bSHALL\b/i.test(text);
+}
+
+/**
+ * FEAT-GHERKIN-01 — the mechanical edge-case floor needs to recognize a "negative" criterion:
+ * an EARS unwanted-pattern (IF…THEN…SHALL) or any criterion whose text names a failure mode.
+ * Keyword-based on purpose: cheap, explainable, and tunable here when a word proves noisy.
+ */
+const NEGATIVE_RE =
+  /\b(fail(s|ed|ure)?|error|invalid|reject(s|ed)?|den(y|ies|ied)|empty|missing|timeout|expir(e|es|ed)|wrong|unauthori[sz]ed|forbidden|cannot|can't|blocked|not|never|no)\b/i;
+
+export function isNegativeCriterion(c: AcceptanceCriterion): boolean {
+  return c.pattern === "unwanted" || NEGATIVE_RE.test(c.text);
+}
+
+/**
+ * Off-format lint (warn-only, never blocks): both grammars always parse and bind; this just keeps a
+ * project's declared `spec.criteriaFormat` honest. "mixed"/"plain" accept everything; ADRs exempt.
+ */
+export function lintCriteriaFormat(reqs: Requirement[], format: string): string[] {
+  if (format !== "gherkin" && format !== "ears") return [];
+  const out: string[] = [];
+  for (const r of reqs) {
+    if (requirementKind(r.id) === "adr") continue;
+    for (const c of r.criteria) {
+      if (format === "gherkin" && c.pattern !== "gherkin") {
+        out.push(`${c.id}: EARS/plain criterion in a gherkin project — write a Scenario or set spec.criteriaFormat="mixed"`);
+      } else if (format === "ears" && c.pattern === "gherkin") {
+        out.push(`${c.id}: gherkin Scenario in an ears project — use WHEN/IF…SHALL or set spec.criteriaFormat="mixed"`);
+      }
+    }
+  }
+  return out;
 }

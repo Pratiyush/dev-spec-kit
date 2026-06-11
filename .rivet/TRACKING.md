@@ -2,6 +2,7 @@
 
 | Requirement | Title | Criteria | Proof | Task | Approved |
 |---|---|---|---|---|---|
-| R-AUDIT-01 | every CLI invocation is audit-logged | 1 | 🟢 | done | — |
-| R-AUDIT-02 | the audit trail is readable | 1 | 🟢 | done | — |
-| R-PROG-01 | progress with emoji after completing a task | 1 | 🟢 | done | — |
+| REQUIREMENT_AUDIT-01 | every CLI invocation is audit-logged | 2 | 🟣🟣 | done | — |
+| REQUIREMENT_AUDIT-02 | the audit trail is readable | 2 | 🟣🟣 | done | — |
+| REQUIREMENT_PROG-01 | progress with emoji after completing a task | 2 | 🟣🟣 | done | — |
+| NFR_AUDIT-03 | auditing never breaks the CLI | 1 | 🟣 | done | — |

@@ -2,7 +2,7 @@
 
 ## Progress board
 
-**30/30 done (100%)**
+**42/43 done (98%)**
 
 - ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢
 - ✅ **R-AUDIT-01** every CLI invocation is audit-logged 🟢
@@ -34,20 +34,36 @@
 - ✅ **FILES-01** dashboard files plumbing: collect .rivet md + safe renderer 🟢
 - ✅ **README-01** README refresh: match the real tool surface 🟢
 - ✅ **FIX-PROOF-02** proof identity excludes .rivet state (journal must not stale its own proofs) 🟢
+- ✅ **TRAIL-01** per-task gate trail: minute-level done/blocked/skipped/pending 🟢
+- ✅ **DASH-02** port design.html as the dashboard template with live data injection 🟢
+- ✅ **FIX-DOCTOR-01** graphify optional in doctor + provenance hint (classifier-safe) 🟢
+- ✅ **FIX-STACKNAMES-01** project.platforms rename + runner-stack disambiguation error 🟢
+- ✅ **FIX-PROOF-03** check-run stamp shows tree identity, not commit sha 🟢
+- ✅ **FIX-PROOF-04** every proof surface stamps the tree identity (PR body, approvals, ledger log) 🟢
+- ✅ **FIX-PROV-01** provenance hint carries no rotting vanity metrics (star count) 🟢
+- ✅ **FEAT-IDS-01** fully-qualified requirement ids (REQUIREMENT_/NFR_/ADR_) with configurable lint 🟢
+- ✅ **REQUIREMENT_AUDIT-01** every CLI invocation is audit-logged 🟢🟢
+- ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢
+- ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢
+- 🔨 **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢
+- ✅ **NFR_AUDIT-03** auditing never breaks the CLI 🟢
 
 ## Approvals & governance
 
-- _none recorded yet_
+- 🛡️ 2026-06-11T23:25:31.905Z — unlock
+- 🛡️ 2026-06-11T23:29:29.462Z — unlock
+- 🛡️ 2026-06-11T23:34:24.469Z — unlock
+- 🛡️ 2026-06-11T23:41:27.273Z — unlock
 
 ## Recent activity
 
-- [2m2026-06-11 21:28:43[22m  ❌ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02
-- [2m2026-06-11 21:29:13[22m  🧾 check run FIX-PROOF-02 test/proof-identity.test.ts  [Pratiyush Kumar Singh]
-- [2m2026-06-11 21:29:15[22m  ✅ check test/proof-identity.test.ts @ eabad481 → FIX-PROOF-02
-- [2m2026-06-11 21:29:15[22m  🧾 task done FIX-PROOF-02  [Pratiyush Kumar Singh]
-- [2m2026-06-11 21:29:15[22m  🏁 task FIX-PROOF-02 → done
-- [2m2026-06-11 21:29:15[22m  🧾 drift  [Pratiyush Kumar Singh]
-- [2m2026-06-11 21:29:16[22m  ✅ check test/cli-ux.test.ts::audits cli invocations into the journal @ eabad481 → R-AUDIT-01
-- [2m2026-06-11 21:29:16[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ eabad481 → R-AUDIT-02
-- [2m2026-06-11 21:29:17[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ eabad481 → R-PROG-01
-- [2m2026-06-11 21:29:17[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-11 23:42:29[22m  🧾 task done REQUIREMENT_AUDIT-02  [Pratiyush Kumar Singh]
+- [2m2026-06-11 23:42:29[22m  🏁 task REQUIREMENT_AUDIT-02 → done
+- [2m2026-06-11 23:42:30[22m  🧾 task done REQUIREMENT_PROG-01  [Pratiyush Kumar Singh]
+- [2m2026-06-11 23:42:30[22m  🏁 task REQUIREMENT_PROG-01 → done
+- [2m2026-06-11 23:42:30[22m  🧾 task done NFR_AUDIT-03  [Pratiyush Kumar Singh]
+- [2m2026-06-11 23:42:41[22m  🧾 check run NFR_AUDIT-03 test/cli-ux.test.ts::does not create journals outside Rivet projects  [Pratiyush Kumar Singh]
+- [2m2026-06-11 23:42:41[22m  ✅ check test/cli-ux.test.ts::does not create journals outside Rivet projects @ tree 71708eb8* → NFR_AUDIT-03
+- [2m2026-06-11 23:42:41[22m  🧾 task done NFR_AUDIT-03  [Pratiyush Kumar Singh]
+- [2m2026-06-11 23:42:41[22m  🏁 task NFR_AUDIT-03 → done
+- [2m2026-06-11 23:43:26[22m  🧾 graph build  [Pratiyush Kumar Singh]
