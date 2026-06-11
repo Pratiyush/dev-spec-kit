@@ -6,6 +6,7 @@ import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, type RunnerOverride } from "../engine/verify/runner.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { parseConfig } from "../config/schema.js";
+import { renderProgress } from "./progress.js";
 
 /**
  * CLI surface for the evidence-bound task flow:
@@ -42,12 +43,14 @@ export function taskDone(id: string): void {
   try {
     const t = store(cwd).markDone(id);
     console.log(pc.green(`✓ Task ${t.id} DONE`) + pc.dim(" — every bound check has a passing run"));
+    console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
   } catch (e) {
     if (e instanceof EvidenceError) {
       // Config knob verify.blockDoneOnFail=false -> done-with-warnings, journaled forever.
       if (!config.verify.blockDoneOnFail) {
         store(cwd).markDone(id, { force: true });
         console.log(pc.yellow(`⚠ Task ${id} DONE-WITH-WARNINGS`) + pc.dim(` — ${e.message} [verify.blockDoneOnFail=false]`));
+        console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
         return;
       }
       console.error(pc.red(`✗ BLOCKED: ${e.message}`));

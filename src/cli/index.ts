@@ -6,8 +6,17 @@ import { taskCreate, taskStart, taskDone, checkRun, status } from "./tasks.js";
 import { graphBuild } from "./graph.js";
 import { specTasks, approve, pr, route, guardPr } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
+import { logCmd } from "./log.js";
+import { auditCliRun } from "../engine/state/audit.js";
 
 const program = new Command();
+
+// R-AUDIT-01: every invocation inside a Rivet project lands in the journal (no-op elsewhere).
+program.hook("preAction", (_thisCommand, actionCommand) => {
+  const path: string[] = [];
+  for (let c: Command | null = actionCommand; c && c.name() !== "rivet"; c = c.parent) path.unshift(c.name());
+  auditCliRun(process.cwd(), path, actionCommand.args.map(String));
+});
 
 program
   .name("rivet")
@@ -119,5 +128,12 @@ program
   .description("Blast radius of a code node — proven edges touching it + graphify reverse traversal")
   .argument("<label>", "code node label or id (e.g. GreetController)")
   .action((label: string) => affected(label));
+
+program
+  .command("log")
+  .description("The audit trail — every recorded action, chronological, with emoji (--json for raw JSONL)")
+  .option("--json", "emit raw JSONL")
+  .option("-n <count>", "number of events to show (default 25)")
+  .action((opts: { json?: boolean; n?: string }) => logCmd(opts));
 
 program.parseAsync(process.argv);

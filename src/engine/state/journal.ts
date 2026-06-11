@@ -14,6 +14,7 @@ export type JournalEventType =
   | "task.status"
   | "check.run"
   | "approval.recorded"
+  | "cli.run"
   | "note";
 
 export interface JournalEvent<T = unknown> {
