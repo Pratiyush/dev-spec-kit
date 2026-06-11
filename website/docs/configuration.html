@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuration — Rivet Docs</title>
+  <meta name="description" content="Complete .rivet/config.json reference — every knob, its default, and what it does. Sourced from src/config/schema.ts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    .section-block {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-bottom: 28px;
+    }
+    .section-block-header {
+      padding: 14px 20px; background: var(--bg-card2); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-block-header h3 { margin: 0; font-size: 0.95rem; color: var(--accent-light); }
+    .section-block-header p { margin: 0; font-size: 0.8rem; color: var(--text-dimmer); }
+    .section-block-body { padding: 0 20px; }
+    .config-row { grid-template-columns: 210px 140px 1fr; }
+    .config-row .allowed {
+      font-size: 0.75rem; color: var(--text-dimmer); font-family: var(--mono);
+      margin-top: 3px;
+    }
+    .config-key { font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+
+  <header class="docs-topnav">
+    <a class="brand" href="../index.html">
+      <span class="logo-mark">R</span>
+      Rivet
+    </a>
+    <nav>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html" class="active">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+  </header>
+
+  <aside class="docs-sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Start here</div>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Full Workflow</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Reference</div>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html" class="active">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Sections</div>
+      <a href="#project">project</a>
+      <a href="#mode">mode</a>
+      <a href="#intake">intake</a>
+      <a href="#spec">spec</a>
+      <a href="#build">build</a>
+      <a href="#verify">verify</a>
+      <a href="#review">review</a>
+      <a href="#pr">pr</a>
+      <a href="#memory">memory</a>
+      <a href="#parallel">parallel</a>
+      <a href="#dashboard">dashboard</a>
+      <a href="#rules">rules</a>
+      <a href="#learning">learning</a>
+      <a href="#gates">gates</a>
+      <a href="#graphify">graphify</a>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <div class="page-header">
+      <div class="badge">Reference</div>
+      <h1>Configuration reference</h1>
+      <p>Every knob in <code>.rivet/config.json</code>, its default value, and what it controls. All defaults are sourced directly from <code>src/config/schema.ts</code> (zod schema).</p>
+    </div>
+
+    <div class="prose">
+
+      <div class="callout callout-info">
+        <strong>How config works</strong>
+        Rivet ships with opinionated defaults — TDD on, gates on, even quick-mode writes a test. Every knob is overridable in <code>.rivet/config.json</code>. The schema version is <code>1</code>; Rivet applies defaults for any omitted field.
+      </div>
+
+      <div class="callout callout-tip">
+        <strong>Minimal config</strong>
+        An empty object <code>{}</code> is valid — every field has a default. You only need to set what you want to change.
+      </div>
+
+      <!-- ── PROJECT ── -->
+      <div class="section-block" id="project">
+        <div class="section-block-header">
+          <div>
+            <h3>project</h3>
+            <p>Basic project identity and stack detection</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">project.name</div>
+            <div class="config-default">"untitled"</div>
+            <div class="config-desc">Human-readable project name used in board headers and journal metadata.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">project.stacks</div>
+            <div class="config-default">[]</div>
+            <div class="config-desc">
+              Stacks present in this project. Drives which check runners are wired automatically.
+              <div class="allowed">Allowed: "java-maven" | "java-gradle" | "spring" | "quarkus" | "node" | "typescript" | "react" | "next" | "angular" | "python"</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MODE ── -->
+      <div class="section-block" id="mode">
+        <div class="section-block-header">
+          <div>
+            <h3>mode</h3>
+            <p>How a request is routed into a workflow</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">mode.routing</div>
+            <div class="config-default">"auto-override"</div>
+            <div class="config-desc">
+              How the mode is selected for each request.
+              <div class="allowed">auto — classify automatically; pick — always ask; auto-override — classify but allow user to override before proceeding</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">mode.confirmFirst</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Show the chosen mode and reason before proceeding. The agent must wait for user confirmation.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">mode.researchMode</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Offer a research-only "investigate and report" mode. No code changes are made in research mode.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">mode.custom</div>
+            <div class="config-default">{}</div>
+            <div class="config-desc">User-defined custom modes: <code>{ "mode-name": "description / workflow reference" }</code>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── INTAKE ── -->
+      <div class="section-block" id="intake">
+        <div class="section-block-header">
+          <div>
+            <h3>intake</h3>
+            <p>Where work comes from</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">intake.sources</div>
+            <div class="config-default">["raw","github"]</div>
+            <div class="config-desc">
+              Enabled intake sources.
+              <div class="allowed">raw | github | gitlab | jira</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">intake.jiraEpic</div>
+            <div class="config-default">"ask"</div>
+            <div class="config-desc">
+              How a Jira epic maps to Rivet's hierarchy.
+              <div class="allowed">mirror — copy as-is; replan — decompose fresh; ask — prompt the user</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">intake.writeBack</div>
+            <div class="config-default">false</div>
+            <div class="config-desc">Write progress back to the source ticket (GitHub/GitLab/Jira). Off by default — requires explicit opt-in.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SPEC ── -->
+      <div class="section-block" id="spec">
+        <div class="section-block-header">
+          <div>
+            <h3>spec</h3>
+            <p>Idea → acceptance criteria → spec</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">spec.style</div>
+            <div class="config-default">"both"</div>
+            <div class="config-desc">
+              Spec authoring style.
+              <div class="allowed">checklist | stories | both</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.acceptanceCriteria</div>
+            <div class="config-default">"tool-drafts"</div>
+            <div class="config-desc">
+              Who authors acceptance criteria.
+              <div class="allowed">tool-drafts — Rivet writes a draft for human review; user-writes — human writes criteria directly</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.criteriaFormat</div>
+            <div class="config-default">"ears"</div>
+            <div class="config-desc">
+              Criteria syntax. EARS = <code>WHEN/IF … THEN the system SHALL …</code>.
+              <div class="allowed">ears | plain | mixed</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.breakdownDepth</div>
+            <div class="config-default">"feature-story-task-subtask"</div>
+            <div class="config-desc">
+              Decomposition hierarchy depth.
+              <div class="allowed">feature-story-task-subtask | task-subtask</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.estimates</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Generate effort estimates for tasks.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.autoDependencies</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Automatically detect and record task dependencies from spec analysis.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.diagram</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Generate a dependency/flow diagram alongside the spec.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.gapHunting</div>
+            <div class="config-default">"propose"</div>
+            <div class="config-desc">
+              Hunt for missing edge cases and error-handling, then propose extra tasks.
+              <div class="allowed">off | propose — list gaps for approval; auto — add tasks automatically</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.riskWarn</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Warn and suggest splitting big or risky changes before starting implementation.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.livingPlan</div>
+            <div class="config-default">"update-ask"</div>
+            <div class="config-desc">
+              Whether the plan can update mid-build.
+              <div class="allowed">frozen — plan locked after approval; update-ask — propose updates for approval; update-auto — update automatically</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">spec.onVague</div>
+            <div class="config-default">"clarify"</div>
+            <div class="config-desc">
+              What to do when the request is vague.
+              <div class="allowed">clarify — ask questions first; guess-flag — proceed with assumptions flagged</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BUILD ── -->
+      <div class="section-block" id="build">
+        <div class="section-block-header">
+          <div>
+            <h3>build</h3>
+            <p>How code is written</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">build.tests</div>
+            <div class="config-default">"tdd"</div>
+            <div class="config-desc">
+              Test-first (TDD) vs code-first. Even quick-mode writes at least one test.
+              <div class="allowed">tdd | code-first | either</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.fileFence</div>
+            <div class="config-default">false</div>
+            <div class="config-desc">Restrict edits to the active task's declared files. Off = trust + verify.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.retryLimit</div>
+            <div class="config-default">3</div>
+            <div class="config-desc">Self-retry budget on a failing check before escalating to the human. Integer ≥ 0. Note: <code>--expect-red</code> skips retries for TDD red phase.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.checkFrequency</div>
+            <div class="config-default">"per-task"</div>
+            <div class="config-desc">
+              When to run checks.
+              <div class="allowed">per-change — after every file edit; per-task — at end of task</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.whenStuck</div>
+            <div class="config-default">"bounded-then-ask"</div>
+            <div class="config-desc">
+              Behavior when the agent can't make progress.
+              <div class="allowed">ask — escalate immediately; grind — keep retrying; bounded-then-ask — retry up to retryLimit, then ask</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.codeStyle</div>
+            <div class="config-default">"both"</div>
+            <div class="config-desc">
+              Code style authority.
+              <div class="allowed">match-repo | style-guide | both</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.reuse</div>
+            <div class="config-default">"prefer"</div>
+            <div class="config-desc">
+              How aggressively to reuse existing code.
+              <div class="allowed">prefer — reuse by default; fresh-ok — new code fine; prefer-flag — prefer reuse and flag when writing new</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.comments</div>
+            <div class="config-default">"moderate"</div>
+            <div class="config-desc">
+              Comment density in generated/edited code.
+              <div class="allowed">minimal | moderate | heavy</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.commitCadence</div>
+            <div class="config-default">"per-task"</div>
+            <div class="config-desc">
+              When to commit.
+              <div class="allowed">per-step | per-task</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">build.newDeps</div>
+            <div class="config-default">"ask-big"</div>
+            <div class="config-desc">
+              New dependency policy.
+              <div class="allowed">ask — always ask; auto — add automatically; ask-big — auto for small, ask for large/new</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── VERIFY ── -->
+      <div class="section-block" id="verify">
+        <div class="section-block-header">
+          <div>
+            <h3>verify</h3>
+            <p>What "done" means — the moat, made configurable</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">verify.kinds</div>
+            <div class="config-default">["unit","integration","api","e2e"]</div>
+            <div class="config-desc">
+              Which proof kinds a criterion may bind to.
+              <div class="allowed">unit | integration | api | e2e | visual | parity</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.coverage</div>
+            <div class="config-default">null</div>
+            <div class="config-desc">Coverage gate as a percentage. <code>null</code> = judge by criteria coverage, not a number.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.blockDoneOnFail</div>
+            <div class="config-default">true</div>
+            <div class="config-desc"><strong>The moat.</strong> A task cannot be marked done while bound checks fail. This is the enforced invariant; disabling it removes the hard gate.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.everyCriterionNeedsCheck</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Every acceptance criterion must bind to ≥1 executed check. Unbound criteria are flagged UNVERIFIED by <code>rivet spec tasks</code>.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.runApp</div>
+            <div class="config-default">false</div>
+            <div class="config-desc">Spin up the application for api/e2e checks. Requires <code>verify.app.start</code> to be set.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.ui</div>
+            <div class="config-default">"off"</div>
+            <div class="config-desc">
+              Visual / UI check method.
+              <div class="allowed">off | screenshot | browser | both</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.sandbox</div>
+            <div class="config-default">"local"</div>
+            <div class="config-desc">
+              Run checks in an isolated sandbox or directly on the machine.
+              <div class="allowed">sandbox | local</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.security</div>
+            <div class="config-default">"on-demand"</div>
+            <div class="config-desc">
+              When security checks run.
+              <div class="allowed">off | pre-pr | on-demand</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.lintTypes</div>
+            <div class="config-default">"part-of-done"</div>
+            <div class="config-desc">
+              Where lint and type checks live.
+              <div class="allowed">part-of-done | separate</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.flaky</div>
+            <div class="config-default">"retry-flag"</div>
+            <div class="config-desc">
+              Flaky test policy.
+              <div class="allowed">retry-flag — retry and flag if inconsistent; quarantine — move to quarantine set</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.runners</div>
+            <div class="config-default">{}</div>
+            <div class="config-desc">
+              Custom check-runner commands, keyed by stack name. Overrides built-in runners when the key matches; unknown keys define new stacks. Each entry: <code>{ "cmd": "mvn", "args": ["test", "-Dtest={name}"] }</code>. Placeholders: <code>{"{ref}"}</code>, <code>{"{file}"}</code>, <code>{"{name}"}</code> — use combined <code>--flag={"{name}"}</code> form so nameless refs drop cleanly.
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.kindRunners</div>
+            <div class="config-default">{}</div>
+            <div class="config-desc">
+              Kind-level runner templates (RUNNERS-01). A binding's <em>kind</em> can carry its own command — e.g. a visual snapshot harness or a parity runner. Same placeholders as <code>verify.runners</code>. <strong>Precedence: kindRunners &gt; runners (stack) &gt; builtin.</strong>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.app.start</div>
+            <div class="config-default">[]</div>
+            <div class="config-desc">argv to start the app for api/e2e checks when <code>verify.runApp</code> is true. Example: <code>["./mvnw","spring-boot:run"]</code>. Empty = no lifecycle.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.app.readyUrl</div>
+            <div class="config-default">null</div>
+            <div class="config-desc">URL polled until it responds before checks start. <code>null</code> = fixed 1 s grace period.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">verify.app.readyTimeoutMs</div>
+            <div class="config-default">30000</div>
+            <div class="config-desc">Maximum milliseconds to wait for the app's ready URL. Integer ≥ 1. Default: 30 seconds.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── REVIEW ── -->
+      <div class="section-block" id="review">
+        <div class="section-block-header">
+          <div>
+            <h3>review</h3>
+            <p>Code review policy (rivet-review skill)</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">review.separateReviewer</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Review must run in a separate context from the implementer — the implementer cannot approve their own work.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">review.angles</div>
+            <div class="config-default">["correctness","security","performance","style"]</div>
+            <div class="config-desc">
+              Review angles to cover.
+              <div class="allowed">correctness | security | performance | style</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">review.passes</div>
+            <div class="config-default">"both"</div>
+            <div class="config-desc">
+              Which review passes to run.
+              <div class="allowed">blind — diff-only first pass; context — full spec+graph pass; both (default)</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">review.fixFindings</div>
+            <div class="config-default">"list"</div>
+            <div class="config-desc">
+              How findings are handled. Default is <code>list</code> — the human decides which to fix.
+              <div class="allowed">auto | list | auto-small — auto-fix only small findings</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PR ── -->
+      <div class="section-block" id="pr">
+        <div class="section-block-header">
+          <div>
+            <h3>pr</h3>
+            <p>Pull request policy</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">pr.autoBody</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Auto-generate the PR body from the graph on <code>rivet pr</code>.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">pr.branchPattern</div>
+            <div class="config-default">"{type}/{slug}"</div>
+            <div class="config-desc">Branch name pattern. Placeholders: <code>{"{type}"}</code> (feat/fix/…), <code>{"{slug}"}</code> (task title slugified).</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">pr.merge</div>
+            <div class="config-default">"manual"</div>
+            <div class="config-desc">
+              Merge policy.
+              <div class="allowed">auto-on-green — merge after CI passes; manual — human merges</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">pr.waitForCI</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Wait for CI to pass before reporting the PR as ready.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">pr.commitAuthor</div>
+            <div class="config-default">"user"</div>
+            <div class="config-desc">
+              Commit author policy. Default: always the human; the AI is never a commit co-author by default.
+              <div class="allowed">user | co-author</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">pr.cleanupAfterMerge</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Delete the branch and worktree (if Rivet-created) after a successful merge.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MEMORY ── -->
+      <div class="section-block" id="memory">
+        <div class="section-block-header">
+          <div>
+            <h3>memory</h3>
+            <p>Journal, resume, and drift</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">memory.crashResume</div>
+            <div class="config-default">"exact"</div>
+            <div class="config-desc">
+              What happens on a crash or interrupted session.
+              <div class="allowed">exact — resume from the exact journal position; restart — clean restart from the last task boundary</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">memory.journal</div>
+            <div class="config-default">"full"</div>
+            <div class="config-desc">
+              Journal verbosity.
+              <div class="allowed">full — every CLI invocation; milestones — only task state transitions and gate events (skips read-only cli.run noise)</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">memory.driftDetection</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Detect plan ↔ code drift. Proofs compare tree-hashes; changed code auto-stales proofs.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PARALLEL ── -->
+      <div class="section-block" id="parallel">
+        <div class="section-block-header">
+          <div>
+            <h3>parallel</h3>
+            <p>Wave dispatcher and worktree isolation</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">parallel.enabled</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Enable wave parallelism. When true, <code>rivet wave plan/start</code> can dispatch tasks concurrently.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">parallel.waveSize</div>
+            <div class="config-default">6</div>
+            <div class="config-desc">Max concurrent worktree tasks per wave. Default 6 — avoids rate-limit wipeouts. Integer ≥ 1.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">parallel.isolation</div>
+            <div class="config-default">"worktree"</div>
+            <div class="config-desc">
+              Isolation strategy for parallel tasks.
+              <div class="allowed">worktree — each task in its own git worktree (fetch-first, branched from origin); shared — all tasks share the working tree</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">parallel.onFileClash</div>
+            <div class="config-default">"serialize"</div>
+            <div class="config-desc">
+              What to do when two tasks in a wave touch the same file.
+              <div class="allowed">serialize — run clashing tasks sequentially; warn — warn and continue; both</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">parallel.coordinator</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Run a coordinator agent that monitors wave progress and handles file-clash serialization.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DASHBOARD ── -->
+      <div class="section-block" id="dashboard">
+        <div class="section-block-header">
+          <div>
+            <h3>dashboard</h3>
+            <p>LEDGER / TRACKING boards and notifications</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">dashboard.enabled</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Enable board generation (<code>rivet board</code>).</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">dashboard.form</div>
+            <div class="config-default">"web"</div>
+            <div class="config-desc">
+              Dashboard form factor.
+              <div class="allowed">web | editor | both</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">dashboard.updates</div>
+            <div class="config-default">"on-demand"</div>
+            <div class="config-desc">
+              How frequently boards update.
+              <div class="allowed">live | on-demand</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">dashboard.notify.channels</div>
+            <div class="config-default">[]</div>
+            <div class="config-desc">
+              Notification channels to use.
+              <div class="allowed">desktop | slack | email</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">dashboard.notify.on</div>
+            <div class="config-default">[]</div>
+            <div class="config-desc">
+              Events that trigger notifications.
+              <div class="allowed">gates | done</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RULES ── -->
+      <div class="section-block" id="rules">
+        <div class="section-block-header">
+          <div>
+            <h3>rules</h3>
+            <p>Laws and steering file policy</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">rules.laws</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Use the <code>.rivet/laws.md</code> steering file. The agent must always obey laws.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">rules.onConflict</div>
+            <div class="config-default">"warn"</div>
+            <div class="config-desc">
+              What to do when a requested action conflicts with a rule.
+              <div class="allowed">refuse — block the action; warn — proceed with a warning</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">rules.inheritPersonal</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Inherit a personal default rules file, then override per-project.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── LEARNING ── -->
+      <div class="section-block" id="learning">
+        <div class="section-block-header">
+          <div>
+            <h3>learning</h3>
+            <p>Retro loop and lesson promotion</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">learning.capture</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Capture lessons after each feature into <code>.rivet/learnings.md</code>.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">learning.promoteToRules</div>
+            <div class="config-default">"ask"</div>
+            <div class="config-desc">
+              Promote confirmed lessons into laws (requires human approval).
+              <div class="allowed">off | ask — propose promotion for approval; auto — promote automatically</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">learning.bugToTest</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Turn a fixed bug into a permanent regression test, bound via <code>@check</code>. A bug that can come back silently was never fixed.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">learning.scope</div>
+            <div class="config-default">"both"</div>
+            <div class="config-desc">
+              Lesson scope.
+              <div class="allowed">project | global — after recurrence in 2+ projects; both</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">learning.retro</div>
+            <div class="config-default">"per-feature"</div>
+            <div class="config-desc">
+              When the retro loop runs.
+              <div class="allowed">per-feature | on-demand</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">learning.warnOnRepeat</div>
+            <div class="config-default">true</div>
+            <div class="config-desc">Warn when the current task pattern-matches a known mistake from <code>learnings.md</code>.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">learning.share</div>
+            <div class="config-default">"personal"</div>
+            <div class="config-desc">
+              Lesson sharing scope.
+              <div class="allowed">personal — never exported without being asked; team — export/import with team</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── GATES ── -->
+      <div class="section-block" id="gates">
+        <div class="section-block-header">
+          <div>
+            <h3>gates</h3>
+            <p>Gate packs and investigative edit gates (GATE-PACKS-01 + GATE-FACTS-01)</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">gates.facts</div>
+            <div class="config-default">"off"</div>
+            <div class="config-desc">
+              Opt-in investigative edit gate (DENY→FORCE→ALLOW). When "on", the guard demands that the agent gather named facts (importers, schemas, verbatim instructions) before the first edit on a gated file. The investigation creates context that changes the output. Window: 30 min; bounded at 500 entries.
+              <div class="allowed">off | on</div>
+            </div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">gates.require</div>
+            <div class="config-default">[]</div>
+            <div class="config-desc">Pack names enforced on every spec. Empty by default — ceremony stays proportional. List any of the pack keys defined in <code>gates.packs</code>.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">gates.packs</div>
+            <div class="config-default">(see below)</div>
+            <div class="config-desc">
+              User-editable gate pack definitions. Each pack: <code>{ sections, kinds, triggers }</code>. <code>sections</code>: spec sections required; <code>kinds</code>: check kinds required; <code>triggers</code>: keywords that floor the routing mode to full-spec. Built-in packs:
+              <ul style="margin-top:8px;font-size:0.82rem;">
+                <li><strong>security</strong>: sections ["Security"], triggers: auth/login/password/token/secret/payment/crypt/session/permission/sql</li>
+                <li><strong>contracts</strong>: sections ["API Contract"], kinds ["api"]</li>
+                <li><strong>nfr</strong>: sections ["NFR"]</li>
+                <li><strong>rollback</strong>: sections ["Rollback"]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── GRAPHIFY ── -->
+      <div class="section-block" id="graphify">
+        <div class="section-block-header">
+          <div>
+            <h3>graphify</h3>
+            <p>Code knowledge graph integration</p>
+          </div>
+        </div>
+        <div class="section-block-body">
+          <div class="config-row">
+            <div class="config-key">graphify.outDir</div>
+            <div class="config-default">"graphify-out"</div>
+            <div class="config-desc">Output directory for graphify's generated graph artifacts. Should be gitignored.</div>
+          </div>
+          <div class="config-row">
+            <div class="config-key">graphify.freshness</div>
+            <div class="config-default">"update-on-run"</div>
+            <div class="config-desc">
+              How the code graph is kept fresh.
+              <div class="allowed">post-commit-hook | update-on-run — re-index before graph build; watch — file-watcher mode; manual</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow — Rivet Docs</title>
+  <meta name="description" content="The complete Rivet workflow: route → spec → tasks → TDD → done gate → graph → drift → approve → PR." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+</head>
+<body>
+<div class="docs-shell">
+
+  <header class="docs-topnav">
+    <a class="brand" href="../index.html">
+      <span class="logo-mark">R</span>
+      Rivet
+    </a>
+    <nav>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html" class="active">Workflow</a>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+  </header>
+
+  <aside class="docs-sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Start here</div>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html" class="active">Full Workflow</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Reference</div>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Stages</div>
+      <a href="#route">1. Route</a>
+      <a href="#spec">2. Spec</a>
+      <a href="#tasks">3. Tasks</a>
+      <a href="#tdd">4. TDD</a>
+      <a href="#prove">5. Prove</a>
+      <a href="#done">6. Done gate</a>
+      <a href="#graph">7. Graph build</a>
+      <a href="#drift">8. Drift</a>
+      <a href="#approve">9. Approve</a>
+      <a href="#pr">10. PR</a>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <div class="page-header">
+      <div class="badge">Workflow</div>
+      <h1>The Rivet workflow</h1>
+      <p>Verification by construction — every stage gates the next. You cannot merge unproven work.</p>
+    </div>
+
+    <div class="prose">
+
+      <div class="callout callout-info">
+        <strong>Rule zero</strong>
+        A claim of "done" is worthless; only an executed check counts. The CLI enforces this —
+        <code>rivet task done</code> physically refuses without green proofs.
+      </div>
+
+      <!-- OVERVIEW STRIP -->
+      <div style="margin: 32px 0; display:flex; gap:0; overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--bg-card);">
+        <div style="display:flex; gap:0; white-space:nowrap; width:100%;">
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--accent-light);">Route</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">Spec</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">Tasks</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">TDD</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">Prove</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--green);">Done 🔏</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">Graph</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">Drift</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;border-right:1px solid var(--border);font-size:0.78rem;font-weight:600;color:var(--text-dim);">Approve</div>
+          <div style="flex:1;padding:14px 10px;text-align:center;font-size:0.78rem;font-weight:600;color:var(--text-dim);">PR 🛡️</div>
+        </div>
+      </div>
+
+      <!-- 1. ROUTE -->
+      <h2 id="route">1. Route — classify the request</h2>
+      <p>Every change starts at the front door. <code>rivet route</code> classifies a raw request into one of three modes, applies gate-pack security triggers, and (when <code>mode.confirmFirst</code> is true) waits for your confirmation before proceeding.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet route "add OAuth2 login"</span></div>
+          <div class="term-line out">Mode: full-spec</div>
+          <div class="term-line yellow">⚠ Security trigger matched: login — mode floored to full-spec</div>
+          <div class="term-line out">Reason: auth keyword in request + security gate pack active</div>
+          <div class="term-line out">Confirm? [y/n]:</div>
+        </div>
+      </div>
+
+      <p>Routing modes:</p>
+      <ul>
+        <li><strong>research</strong> — investigate and report only. No code changes in this mode.</li>
+        <li><strong>quick</strong> — one small change, one test. No full spec pipeline.</li>
+        <li><strong>full-spec</strong> — EARS spec → tasks → TDD → proof → PR. For new behaviour.</li>
+      </ul>
+
+      <p>Override with <code>-m full-spec</code>. Route a file from the intake folder with <code>--file .rivet/intake/idea.md</code>.</p>
+
+      <!-- 2. SPEC -->
+      <h2 id="spec">2. Spec — EARS criteria with @check bindings</h2>
+      <p>Write (or have Rivet draft) a spec file under <code>.rivet/specs/</code>. The spec is the source of truth — everything downstream is derived from it.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out"># Feature: OAuth2 login</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out">&gt; User story: As a user, I want to log in with GitHub OAuth2.</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out">## Requirement R-AUTH-01 — OAuth callback</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out">WHEN the OAuth provider returns a valid code</div>
+          <div class="term-line out">THEN the system SHALL exchange it for a token and create a session.</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line purple">@check kind=integration ref=OAuthIT#callbackExchangesToken</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out">## Requirement R-AUTH-02 — invalid code</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out">IF the OAuth code is invalid or expired</div>
+          <div class="term-line out">THEN the system SHALL return HTTP 400 and NOT create a session.</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line purple">@check kind=unit ref=OAuthServiceTest#rejectsInvalidCode</div>
+        </div>
+      </div>
+
+      <p>EARS syntax: <code>WHEN/IF/WHILE/WHERE … the system SHALL …</code>. One behaviour per criterion. Split compound sentences. Every criterion needs ≥1 <code>@check</code> binding — unbound criteria are flagged UNVERIFIED and never become tasks.</p>
+
+      <!-- 3. TASKS -->
+      <h2 id="tasks">3. Tasks — spec-derived, evidence-bound</h2>
+      <p>Run <code>rivet spec tasks</code>. It reads every <code>@check</code> binding in every spec file and creates (or syncs) tasks. The command is idempotent — re-run it after adding new criteria. Existing proofs are never clobbered.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet spec tasks</span></div>
+          <div class="term-line green">✓ T4  R-AUTH-01 — OAuth callback  [bound: OAuthIT#callbackExchangesToken]</div>
+          <div class="term-line green">✓ T5  R-AUTH-02 — invalid code    [bound: OAuthServiceTest#rejectsInvalidCode]</div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task start T4</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet status</span></div>
+          <div class="term-line out">T4  IN PROGRESS  🔴 OAuthIT#callbackExchangesToken (unrun)</div>
+          <div class="term-line out">T5  TODO         🔴 OAuthServiceTest#rejectsInvalidCode (unrun)</div>
+        </div>
+      </div>
+
+      <!-- 4. TDD -->
+      <h2 id="tdd">4. TDD — red phase first</h2>
+      <p>Write the failing test before any production code. The <code>--expect-red</code> flag tells the runner this is a TDD red phase: it skips flaky retries (so it doesn't burn your retry budget) and records the red proof without triggering the done-gate block.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T4 OAuthIT#callbackExchangesToken --stack java-maven --expect-red</span></div>
+          <div class="term-line red">✗ FAILED  (expected — TDD red phase)  tree: b1d4e02  dirty: true</div>
+          <div class="term-line dim">  → write the production code, then re-run without --expect-red</div>
+        </div>
+      </div>
+
+      <!-- 5. PROVE -->
+      <h2 id="prove">5. Prove — real runs only</h2>
+      <p>Once the implementation is in place, re-run the checks. The runner invokes the real test framework (Maven, vitest, pytest, etc.) and records the result with a tree-hash and dirty flag. You cannot manually edit a recorded result — only real runs count.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T4 OAuthIT#callbackExchangesToken --stack java-maven</span></div>
+          <div class="term-line green">✓ OAuthIT#callbackExchangesToken PASSED  tree: c9e1a77  dirty: false</div>
+          <div class="term-line out">  proof recorded — worst-of rollup: GREEN</div>
+        </div>
+      </div>
+
+      <p>Proof states:</p>
+      <ul>
+        <li><span class="status-green">GREEN</span> — passed at the current tree-hash</li>
+        <li><span class="status-red">RED</span> — failed; task blocked until fixed</li>
+        <li><span class="status-yellow">STALE</span> — code changed after the proof; must re-run</li>
+        <li><span class="status-gray">UNRUN</span> — no proof recorded yet</li>
+      </ul>
+
+      <!-- 6. DONE GATE -->
+      <h2 id="done">6. Done gate</h2>
+      <p><code>rivet task done</code> is the hard gate. It reads the live proof graph and refuses if any bound check is not GREEN. This is not a lint warning — it's an exit-code-1 refusal enforced by the CLI.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task done T4</span></div>
+          <div class="term-line green">✓ T4 done  🎉  (1/1 checks green)</div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task done T5</span></div>
+          <div class="term-line red">✗ T5 BLOCKED — bound checks not all green:</div>
+          <div class="term-line dim">  🔴 OAuthServiceTest#rejectsInvalidCode — last run: UNRUN</div>
+          <div class="term-line dim">  Run: rivet check run T5 OAuthServiceTest#rejectsInvalidCode --stack java-maven</div>
+        </div>
+      </div>
+
+      <!-- 7. GRAPH BUILD -->
+      <h2 id="graph">7. Graph build</h2>
+      <p>Fuse the spec, the journal, and the graphify code graph into <code>.rivet/graph.json</code>. Exit 1 if any proof is red or stale. The <strong>Verified Traceability Graph</strong> overlays requirement→criterion→check→proof edges on top of graphify's code-knowledge graph.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet graph build</span></div>
+          <div class="term-line out">Refreshing graphify index…</div>
+          <div class="term-line out">Fusing specs + journal + code graph…</div>
+          <div class="term-line green">✓ graph green  (2 requirements · 2 criteria · 2 proofs · all GREEN)</div>
+          <div class="term-line out">Written: .rivet/graph.json</div>
+        </div>
+      </div>
+
+      <p>Use <code>--no-refresh</code> to skip the graphify re-index when the code graph is known to be current.</p>
+
+      <!-- 8. DRIFT -->
+      <h2 id="drift">8. Drift detection</h2>
+      <p>Proofs carry the tested tree-hash. If code changes after a green run, that proof goes stale. <code>rivet drift</code> finds stale proofs and re-runs their checks in one move.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet drift</span></div>
+          <div class="term-line yellow">⚠ 1 stale proof found:</div>
+          <div class="term-line dim">  OAuthIT#callbackExchangesToken — proved at c9e1a77, current tree: f2b0d34</div>
+          <div class="term-line out">Re-running stale checks…</div>
+          <div class="term-line green">✓ OAuthIT#callbackExchangesToken PASSED  tree: f2b0d34  dirty: false</div>
+          <div class="term-line green">✓ All proofs current.</div>
+        </div>
+      </div>
+
+      <p>Use <code>--dry-run</code> to list stale proofs without re-running. Use <code>--stack</code> to provide a fallback stack for proofs recorded before stacks were journaled.</p>
+
+      <!-- 9. APPROVE -->
+      <h2 id="approve">9. Human approval</h2>
+      <p>Evidence-bound done ≠ reviewed. Record the human gate separately — approval is on top of verification, never a substitute. Tasks must be DONE before they can be approved.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet approve T4 T5 --note "OAuth flow reviewed; timing and error paths correct"</span></div>
+          <div class="term-line purple">🛡️ approval recorded → .rivet/approvals/T4-T5-2026-06-12.json</div>
+        </div>
+      </div>
+
+      <!-- 10. PR -->
+      <h2 id="pr">10. PR</h2>
+      <p><code>rivet pr</code> generates <code>.rivet/pr-body.md</code> from the graph: a full traceability table of requirements → criteria → proofs, with worst-of rollup coverage numbers. The guard hook blocks <code>gh pr create</code> while proofs are not green.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet pr --title "feat: OAuth2 login" --create</span></div>
+          <div class="term-line out">Generating PR body from graph…</div>
+          <div class="term-line green">✓ guard pr — 2/2 requirements proven GREEN</div>
+          <div class="term-line out">Creating PR via gh…</div>
+          <div class="term-line out">https://github.com/org/repo/pull/43</div>
+        </div>
+      </div>
+
+      <div class="callout callout-warn">
+        <strong>The hook blocks PR creation</strong>
+        A <code>PreToolUse</code> guard hook runs <code>rivet guard pr</code> before any <code>gh pr create</code> invocation. Missing graph, stale proofs, or red checks all block — you cannot work around this by calling <code>gh</code> directly. Use <code>rivet unlock</code> (with a time-boxed human approval) if you need to override.
+      </div>
+
+      <p>After the PR is open, run the <a href="skills.html#rivet-finish">rivet-finish</a> skill to land the branch cleanly.</p>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

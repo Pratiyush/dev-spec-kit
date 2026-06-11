@@ -12,6 +12,7 @@ import { resumeCmd } from "./resume.js";
 import { wavePlan, waveStart, waveDone } from "./wave.js";
 import { boardCmd } from "./board-cmd.js";
 import { lawsCmd } from "./laws-cmd.js";
+import { dashboardCmd } from "./dashboard.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -199,6 +200,12 @@ program
   .option("--for <file>", "activate fileMatch-scoped laws for this path")
   .option("--summon <names...>", "load manual-scope laws by name")
   .action(safe((opts: { for?: string; summon?: string[] }) => lawsCmd(opts)));
+
+program
+  .command("dashboard")
+  .description("Generate .rivet/dashboard.html — emoji board, completion %, traffic lights, code graph embed")
+  .option("--open", "open it in the browser after generating (macOS)")
+  .action(safe((opts: { open?: boolean }) => dashboardCmd(opts)));
 
 program
   .command("board")

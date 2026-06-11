@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commands — Rivet Docs</title>
+  <meta name="description" content="Complete Rivet CLI command reference: every command, option, and what it does." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    .group-heading {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-dimmer); margin: 48px 0 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .group-heading::after {
+      content: ''; flex: 1; height: 1px; background: var(--border-soft);
+    }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+
+  <header class="docs-topnav">
+    <a class="brand" href="../index.html">
+      <span class="logo-mark">R</span>
+      Rivet
+    </a>
+    <nav>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="commands.html" class="active">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+  </header>
+
+  <aside class="docs-sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Start here</div>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Full Workflow</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Reference</div>
+      <a href="commands.html" class="active">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Command groups</div>
+      <a href="#health">Health</a>
+      <a href="#tasks">Tasks</a>
+      <a href="#checks">Checks</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#graph">Graph</a>
+      <a href="#queries">Queries</a>
+      <a href="#gates">Gates</a>
+      <a href="#state">State &amp; audit</a>
+      <a href="#parallel">Parallel</a>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <div class="page-header">
+      <div class="badge">Reference</div>
+      <h1>Command reference</h1>
+      <p>Every <code>rivet</code> command with its options and what it does. Sourced directly from <code>src/cli/index.ts</code>.</p>
+    </div>
+
+    <div class="prose">
+
+      <div class="callout callout-info">
+        <strong>Every command is safe by default</strong>
+        A malformed config.json, missing runner binary, or unavailable stack gives a clean one-line red error message with a meaningful exit code — never a raw stack trace. Every invocation inside a Rivet project is also automatically recorded in <code>journal.jsonl</code>.
+      </div>
+
+      <!-- ── HEALTH ── -->
+      <div class="group-heading" id="health">Health</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet doctor</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Check prerequisites: Node.js, git, Python, graphify, Java, Maven. Exits 0 only when all required tools are found and the version constraints are met. Run this after <code>rivet init</code> and whenever a check runner starts failing unexpectedly.</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet init</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Initialize Rivet in the current git repo. Creates <code>.rivet/</code> with a default <code>config.json</code>, <code>laws.md</code>, empty <code>specs/</code> and <code>intake/</code> directories, and an empty <code>journal.jsonl</code>.</p>
+          <div class="opt"><code>-f, --force</code><span>Overwrite the existing Rivet config if present.</span></div>
+        </div>
+      </div>
+
+      <!-- ── TASKS ── -->
+      <div class="group-heading" id="tasks">Tasks — evidence-bound</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet task create &lt;id&gt; &lt;title&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Create a task bound to one or more check refs. The id (e.g. <code>T1</code>) is stable and permanent — duplicates are refused, not overwritten. Proofs recorded against a task are never clobbered by re-creation.</p>
+          <div class="opt"><code>-c, --check &lt;ref...&gt;</code><span>One or more check refs this task must prove (e.g. <code>SessionTest#idleTimeout</code>). Space-separated; repeat the flag for multiple.</span></div>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet task start &lt;id&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Mark a task in progress. Records the state transition in the journal. While a task is in flight, its bound spec criteria and test files are locked against edits (anti-tamper protection).</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:var(--green);">gate</span>
+          <code>rivet task done &lt;id&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p><strong>THE GATE.</strong> Marks a task done; refuses with exit code 1 unless every bound check has a GREEN proof at the current tree-hash. Not a warning — a hard refusal. Fix the failing checks and re-run; do not argue with the gate.</p>
+          <p style="margin-top:8px;font-size:0.82rem;color:var(--text-dimmer);">Config knob: <code>verify.blockDoneOnFail</code> (default: <code>true</code>)</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet status</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Print a traffic-light board of all tasks and their proof states, generated from the journal. Use to re-orient after any interruption — the journal is the ground truth.</p>
+          <div class="terminal" style="margin-top:12px;">
+            <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+            <div class="terminal-body">
+              <div class="term-line out">T1  DONE        🟢 SessionTest#idleTimeout (GREEN)</div>
+              <div class="term-line out">T2  IN PROGRESS 🔴 ApiTest#createUser (UNRUN)</div>
+              <div class="term-line out">T3  TODO        ⚪ unstarted</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CHECKS ── -->
+      <div class="group-heading" id="checks">Checks — proof recording</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet check run &lt;taskId&gt; &lt;ref&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Execute a check via the stack's real test runner and record the result as a proof in the journal. The proof carries the tested tree-hash and a dirty flag. A <code>RunnerUnavailableError</code> (ENOENT, missing binary) is treated as a tooling error and does not enter the graph as a RED proof — only actual test failures do.</p>
+          <div class="opt"><code>-s, --stack &lt;stack&gt;</code><span>Required. One of: <code>java-maven</code> · <code>node-vitest</code> · <code>node-jest</code> · <code>python-pytest</code> · any config-defined stack. Precedence: <code>verify.kindRunners</code> &gt; <code>verify.runners</code> (stack) &gt; builtin.</span></div>
+          <div class="opt"><code>-x, --expect-red</code><span>TDD red phase. Skip flaky retries for this run. Record the red proof without triggering the done-gate block. Use when writing the failing test first.</span></div>
+          <p style="margin-top:10px;font-size:0.82rem;">Ref syntax by runner:</p>
+          <ul style="font-size:0.82rem;">
+            <li><strong>java-maven</strong>: <code>ClassName#methodName</code></li>
+            <li><strong>node-vitest / node-jest</strong>: <code>path/to/file.test.ts::test name</code></li>
+            <li><strong>python-pytest</strong>: <code>path/to/test_file.py::test_name</code></li>
+            <li><strong>config-defined</strong>: per <code>verify.runners[stack].args</code> placeholders</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── WORKFLOW ── -->
+      <div class="group-heading" id="workflow">Workflow — spec-driven flow</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet route [request]</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>The front door. Classify a request into <code>research</code> | <code>quick</code> | <code>full-spec</code>, respecting config routing policy and gate-pack security triggers (which floor the mode). Build-intent signals ("I want", "add", "create") veto research keywords.</p>
+          <div class="opt"><code>-m, --mode &lt;mode&gt;</code><span>Override the classified mode: <code>research</code> | <code>quick</code> | <code>full-spec</code>.</span></div>
+          <div class="opt"><code>-f, --file &lt;path&gt;</code><span>Route an external idea file from the intake folder (e.g. <code>.rivet/intake/my-idea.md</code>).</span></div>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet spec tasks</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Create or sync evidence-bound tasks from all <code>@check</code> bindings in <code>.rivet/specs/*.md</code>. Idempotent — safe to re-run after editing specs. New <code>@check</code> obligations are diffed in; existing proofs are never overwritten. Done tasks with new obligations are re-opened.</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet approve &lt;taskIds...&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Record the human gate as a signed artifact at <code>.rivet/approvals/</code>. Tasks must be DONE. Approval is the human gate on top of verification — never a substitute for proofs.</p>
+          <div class="opt"><code>-n, --note &lt;note&gt;</code><span>Approval note to include in the artifact.</span></div>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet pr</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Generate <code>.rivet/pr-body.md</code> from the graph: a traceability table with requirement→criterion→proof coverage. Uses worst-of rollup — one red + one green reports partial coverage, never 100%. The PR headline number is always the strictest one.</p>
+          <div class="opt"><code>-t, --title &lt;title&gt;</code><span>PR title to include in the generated body.</span></div>
+          <div class="opt"><code>--create</code><span>After generating the body, open the PR via <code>gh</code>. Runs the same guard as the hook — blocked while proofs are not all green.</span></div>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet unlock &lt;paths...&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Human escape hatch. Time-boxed unlock of protected files (spec criteria and bound test files that the anti-tamper lock has frozen). Every unlock is journaled as a governance event (<code>🛡️ governance</code>). Default window: 30 minutes.</p>
+          <div class="opt"><code>-m, --minutes &lt;minutes&gt;</code><span>How long the unlock lasts. Default: 30.</span></div>
+        </div>
+      </div>
+
+      <!-- ── GRAPH ── -->
+      <div class="group-heading" id="graph">Graph — Verified Traceability Graph</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:var(--green);">gate</span>
+          <code>rivet graph build</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Fuse specs + journal + graphify code graph into <code>.rivet/graph.json</code>. Exit 1 if any proof is red or stale. The graph must be green before any PR. Gate packs are enforced here (required spec sections, required check kinds).</p>
+          <div class="opt"><code>--no-refresh</code><span>Skip the graphify re-index even if the code graph is stale. Use when the graph is known to be current.</span></div>
+        </div>
+      </div>
+
+      <!-- ── QUERIES ── -->
+      <div class="group-heading" id="queries">Queries — read-only</div>
+
+      <p>All query commands take a no-write path — they do not rewrite <code>graph.json</code> or trigger re-index as a side effect.</p>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet trace</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Print the requirement→criterion truth table from the graph. Exit 1 while any requirement is unproven. Use before approve/PR to see the full coverage picture.</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet drift</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Find red or stale proofs (code changed after the proof was recorded) and re-run their checks in one move. Exit 1 if any remain after re-running.</p>
+          <div class="opt"><code>-s, --stack &lt;stack&gt;</code><span>Fallback stack for proofs recorded before stacks were journaled.</span></div>
+          <div class="opt"><code>--dry-run</code><span>List drifted proofs without re-running. Read-only — does not modify graph.json.</span></div>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet affected &lt;label&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Blast radius of a code node — proven edges touching it plus graphify reverse traversal. Useful for impact analysis before changing a shared class or function.</p>
+          <p style="margin-top:6px;font-size:0.83rem;color:var(--text-dimmer);">Example: <code>rivet affected GreetController</code></p>
+        </div>
+      </div>
+
+      <!-- ── GATES ── -->
+      <div class="group-heading" id="gates">Gates — hook-friendly</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:var(--red);">block</span>
+          <code>rivet guard pr</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Block PR creation unless every proof is green. Missing or unreadable graph also blocks — state absence ≠ permission. Exit code 2 signals a block (hook-friendly: Claude Code interprets exit 2 as "deny this tool call"). Called automatically by the <code>PreToolUse</code> hook before any <code>gh pr create</code> invocation.</p>
+        </div>
+      </div>
+
+      <!-- ── STATE ── -->
+      <div class="group-heading" id="state">State &amp; audit</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet log</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>The audit trail — every recorded action, chronological, with emoji lane. Shows the last 25 events by default.</p>
+          <div class="opt"><code>--json</code><span>Emit raw JSONL instead of the formatted log.</span></div>
+          <div class="opt"><code>-n &lt;count&gt;</code><span>Number of events to show. Default: 25. Pass 0 to show all.</span></div>
+          <div class="terminal" style="margin-top:12px;">
+            <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+            <div class="terminal-body">
+              <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet log -n 5</span></div>
+              <div class="term-line out">2026-06-12T10:14:03Z  🟢  check.run    T1 SessionTest#idleTimeout → GREEN</div>
+              <div class="term-line out">2026-06-12T10:15:22Z  🔏  task.done    T1 (all checks green)</div>
+              <div class="term-line out">2026-06-12T10:16:01Z  🌐  graph.build  green (2 criteria proven)</div>
+              <div class="term-line out">2026-06-12T10:16:45Z  🛡️  approve      T1 "reviewed; looks correct"</div>
+              <div class="term-line out">2026-06-12T10:17:12Z  📤  pr.create    feat/session-timeout → #42</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet resume</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Write and print the state-only handoff at <code>.rivet/RESUME.md</code>, generated from the journal. Use to hand off context to a new agent session or after an interruption. Pairs with the PreCompact hook that auto-saves a checkpoint at 100% context.</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet board</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Regenerate <code>.rivet/LEDGER.md</code> and <code>.rivet/TRACKING.md</code> from the journal and graph. These are boards that cannot lie — they are derived from the proof record, never manually edited.</p>
+        </div>
+      </div>
+
+      <!-- ── PARALLEL ── -->
+      <div class="group-heading" id="parallel">Parallel — wave dispatcher</div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet wave plan</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Group pending tasks into waves: no two tasks in the same wave share bound-check files, capped at <code>parallel.waveSize</code> (default: 6). Outputs the wave grouping for review before dispatch.</p>
+        </div>
+      </div>
+
+      <div class="cmd-card">
+        <div class="cmd-card-header">
+          <span class="badge">cmd</span>
+          <code>rivet wave start &lt;ids...&gt;</code>
+        </div>
+        <div class="cmd-card-body">
+          <p>Create one git worktree per task — fetch-first (branching from origin's current tip, not local HEAD) to avoid stale-branch races. Each worktree runs its task in isolation. Journal writes are file-locked to prevent last-writer-wins collisions across concurrent worktrees.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>
