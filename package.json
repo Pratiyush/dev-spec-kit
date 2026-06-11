@@ -1,0 +1,51 @@
+{
+  "name": "rivet",
+  "version": "0.0.1",
+  "description": "Rivet — spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
+  "type": "module",
+  "bin": {
+    "rivet": "dist/cli/index.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start": "node dist/cli/index.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "spec-driven-development",
+    "sdd",
+    "claude-code",
+    "ai-coding-agent",
+    "traceability",
+    "verification",
+    "ears"
+  ],
+  "author": "Pratiyush Kumar Singh <pratiyush1@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pratiyush/llm-dev-kit.git"
+  }
+}
