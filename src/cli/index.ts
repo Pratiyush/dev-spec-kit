@@ -8,6 +8,7 @@ import { graphBuild } from "./graph.js";
 import { specTasks, approve, pr, route, guardPr, unlock } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
 import { logCmd } from "./log.js";
+import { resumeCmd } from "./resume.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -171,6 +172,11 @@ program
   .description("Blast radius of a code node — proven edges touching it + graphify reverse traversal")
   .argument("<label>", "code node label or id (e.g. GreetController)")
   .action(safe((label: string) => affected(label)));
+
+program
+  .command("resume")
+  .description("Write + print the state-only handoff (.rivet/RESUME.md), generated from the journal")
+  .action(safe(() => resumeCmd()));
 
 program
   .command("log")

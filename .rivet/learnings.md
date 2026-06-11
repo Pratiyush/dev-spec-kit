@@ -144,6 +144,4 @@
   implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project
   recurrence), phase-aware compaction, and compliance-QA of our own skills.
 - Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;
-  OPEN → task COMPACT-01 (journal-driven checkpoint/compact suggestion at phase boundaries +
-  PreCompact state save) and task SKILL-QA-01 (skill-comply-style scenario tests measuring whether
-  agents actually obey Rivet's skills — empirical drift detection for prose).
+  check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)

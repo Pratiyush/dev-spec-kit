@@ -156,3 +156,26 @@
 {"at":"2026-06-11T20:20:55.186Z","type":"cli.run","data":{"command":"task done","args":["GATE-PACKS-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
 {"at":"2026-06-11T20:20:55.188Z","type":"task.status","data":{"id":"GATE-PACKS-01","status":"done"}}
 {"at":"2026-06-11T20:20:55.259Z","type":"cli.run","data":{"command":"route","args":["fix typo in the password reset email"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:23:49.217Z","type":"cli.run","data":{"command":"task create","args":["COMPACT-01","phase-aware checkpoints + PreCompact resume save"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:23:49.218Z","type":"task.created","data":{"id":"COMPACT-01","title":"phase-aware checkpoints + PreCompact resume save","boundChecks":["test/compact.test.ts"]}}
+{"at":"2026-06-11T20:23:49.288Z","type":"cli.run","data":{"command":"task create","args":["SKILL-QA-01","mechanical QA: skills reference only real commands/artifacts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:23:49.289Z","type":"task.created","data":{"id":"SKILL-QA-01","title":"mechanical QA: skills reference only real commands/artifacts","boundChecks":["test/skill-qa.test.ts"]}}
+{"at":"2026-06-11T20:23:49.358Z","type":"cli.run","data":{"command":"task start","args":["COMPACT-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:23:49.359Z","type":"task.status","data":{"id":"COMPACT-01","status":"in_progress"}}
+{"at":"2026-06-11T20:23:49.428Z","type":"cli.run","data":{"command":"task start","args":["SKILL-QA-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:23:49.429Z","type":"task.status","data":{"id":"SKILL-QA-01","status":"in_progress"}}
+{"at":"2026-06-11T20:24:37.024Z","type":"cli.run","data":{"command":"check run","args":["COMPACT-01","test/compact.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:24:37.612Z","type":"check.run","data":{"taskId":"COMPACT-01","result":{"ref":"test/compact.test.ts","passed":false,"at":"2026-06-11T20:24:37.592Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"387cc480ebd16bb615f945c8c9529e108ef61f74","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:24:37.683Z","type":"cli.run","data":{"command":"check run","args":["SKILL-QA-01","test/skill-qa.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:24:38.284Z","type":"check.run","data":{"taskId":"SKILL-QA-01","result":{"ref":"test/skill-qa.test.ts","passed":false,"at":"2026-06-11T20:24:38.265Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"bf9ef89182412bcd0f3e2665499937d79532d672","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:26:12.209Z","type":"cli.run","data":{"command":"check run","args":["COMPACT-01","test/compact.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:26:12.853Z","type":"check.run","data":{"taskId":"COMPACT-01","result":{"ref":"test/compact.test.ts","passed":true,"at":"2026-06-11T20:26:12.832Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"9e3b4787d627be2e8160f57580b0c81f617d7521","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:26:12.922Z","type":"cli.run","data":{"command":"check run","args":["SKILL-QA-01","test/skill-qa.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:26:15.313Z","type":"check.run","data":{"taskId":"SKILL-QA-01","result":{"ref":"test/skill-qa.test.ts","passed":false,"at":"2026-06-11T20:26:15.293Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"2415c9cddcabfd1620c459c3946c7747e9ea56ff","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:26:45.921Z","type":"cli.run","data":{"command":"check run","args":["SKILL-QA-01","test/skill-qa.test.ts"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:26:46.508Z","type":"check.run","data":{"taskId":"SKILL-QA-01","result":{"ref":"test/skill-qa.test.ts","passed":true,"at":"2026-06-11T20:26:46.486Z","sha":"9536cc7680ba970ba40cbc7ff0b7845842b2a8d8","tree":"61fd35cb41a58fa19315684b414421d6378c2431","dirty":true,"stack":"node-vitest"}}}
+{"at":"2026-06-11T20:26:46.587Z","type":"cli.run","data":{"command":"task done","args":["COMPACT-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:26:46.589Z","type":"task.status","data":{"id":"COMPACT-01","status":"done"}}
+{"at":"2026-06-11T20:26:46.660Z","type":"cli.run","data":{"command":"task done","args":["SKILL-QA-01"]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T20:26:46.662Z","type":"task.status","data":{"id":"SKILL-QA-01","status":"done"}}
+{"at":"2026-06-11T20:26:46.733Z","type":"cli.run","data":{"command":"resume","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}

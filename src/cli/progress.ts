@@ -34,6 +34,7 @@ export function renderProgress(tasks: Task[]): string {
   }
   if (done === tasks.length) {
     lines.push(`🎉 all ${tasks.length} task(s) done (100%) — run \`rivet graph build\` then \`rivet pr\``);
+    lines.push(`💾 natural checkpoint — commit/push now; compaction is safe (.rivet/RESUME.md carries the handoff)`);
   } else {
     const next = tasks.find((t) => t.status === "in_progress") ?? tasks.find((t) => t.status === "pending");
     if (next) lines.push(`🎯 next: ${pc.bold(next.id)} — ${next.title}`);
