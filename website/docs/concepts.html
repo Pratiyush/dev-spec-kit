@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concepts — Rivet Docs</title>
+  <meta name="description" content="Core Rivet concepts: Verified Traceability Graph, proof states, laws, gate packs, learnings loop, boards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    .proof-state {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px; border-radius: var(--radius); margin-bottom: 10px;
+      border: 1px solid var(--border); background: var(--bg-card);
+    }
+    .proof-dot {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+    }
+    .proof-label { font-weight: 700; font-size: 0.9rem; min-width: 80px; }
+    .proof-desc { font-size: 0.85rem; color: var(--text-dim); }
+
+    .graph-node {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 50px; border: 1px solid;
+      font-size: 0.78rem; font-weight: 600;
+    }
+    .graph-edge {
+      color: var(--text-dimmer); margin: 0 4px; font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+
+  <header class="docs-topnav">
+    <a class="brand" href="../index.html">
+      <span class="logo-mark">R</span>
+      Rivet
+    </a>
+    <nav>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html" class="active">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+  </header>
+
+  <aside class="docs-sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Start here</div>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Full Workflow</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Reference</div>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html" class="active">Concepts</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">On this page</div>
+      <a href="#vtg">Verified Traceability Graph</a>
+      <a href="#proof-states">Proof states</a>
+      <a href="#ears">EARS criteria</a>
+      <a href="#laws">Laws</a>
+      <a href="#gate-packs">Gate packs</a>
+      <a href="#learnings">Learning loop</a>
+      <a href="#boards">Boards</a>
+      <a href="#input-contract">Input contract</a>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <div class="page-header">
+      <div class="badge">Concepts</div>
+      <h1>Core concepts</h1>
+      <p>The ideas behind Rivet's architecture — why each piece exists and how they fit together.</p>
+    </div>
+
+    <div class="prose">
+
+      <!-- VTG -->
+      <h2 id="vtg">The Verified Traceability Graph</h2>
+      <p>
+        The VTG is Rivet's central data structure. It overlays <strong>specification, proof, and code</strong> edges on top of
+        <a href="https://github.com/safishamsi/graphify">graphify</a>'s code-knowledge graph (Java, TypeScript, Python, and 20+ more languages).
+        The result is a single structure that answers: "is every requirement proven, by which check, at which tree-hash, touching which code nodes?"
+      </p>
+
+      <div style="margin:28px 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow-x:auto;">
+        <div style="font-size:0.8rem;color:var(--text-dimmer);margin-bottom:14px;font-family:var(--mono);">Node types and proven edges in the VTG</div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;line-height:2.6;">
+          <span class="graph-node" style="background:rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.4);color:var(--accent-light);">📋 Requirement</span>
+          <span class="graph-edge">→</span>
+          <span class="graph-node" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.35);color:#c084fc;">📐 Criterion</span>
+          <span class="graph-edge">→</span>
+          <span class="graph-node" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.35);color:var(--green);">✅ Check (proof)</span>
+          <span class="graph-edge">→</span>
+          <span class="graph-node" style="background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.35);color:#60a5fa;">🏗️ Code node</span>
+          <span class="graph-edge">→</span>
+          <span class="graph-node" style="background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.35);color:#fb923c;">📦 PR</span>
+        </div>
+      </div>
+
+      <p>The graph is written to <code>.rivet/graph.json</code> by <code>rivet graph build</code>. Every edge carries metadata: proof state, tree-hash, timestamp, and actor. The guard hook reads this graph before any PR creation.</p>
+
+      <p>The graph is <strong>append-only in principle</strong> — evidence accrues. The <code>board</code> command renders the graph as human-readable boards; the <code>trace</code> command prints the requirement→criterion truth table; <code>affected</code> traverses the code-graph reverse edges.</p>
+
+      <!-- PROOF STATES -->
+      <h2 id="proof-states">Proof states</h2>
+      <p>Every <code>@check</code> binding has a proof state. The done-gate and PR-gate both use <strong>worst-of rollup</strong> — one RED binding makes the whole task/criterion red, regardless of how many green bindings exist.</p>
+
+      <div class="proof-state">
+        <div class="proof-dot" style="background:var(--green);"></div>
+        <div class="proof-label" style="color:var(--green);">GREEN</div>
+        <div class="proof-desc">A real test run passed at this tree-hash. The tree is not dirty. This is the only state that satisfies the done gate.</div>
+      </div>
+      <div class="proof-state">
+        <div class="proof-dot" style="background:var(--red);"></div>
+        <div class="proof-label" style="color:var(--red);">RED</div>
+        <div class="proof-desc">A real test run failed. Fix the code or the test (never weaken a test to pass it). Re-run to record a new proof.</div>
+      </div>
+      <div class="proof-state">
+        <div class="proof-dot" style="background:var(--yellow);"></div>
+        <div class="proof-label" style="color:var(--yellow);">STALE</div>
+        <div class="proof-desc">Code changed after this proof was recorded. The tree-hash no longer matches. Run <code>rivet drift</code> to re-prove.</div>
+      </div>
+      <div class="proof-state">
+        <div class="proof-dot" style="background:var(--gray);"></div>
+        <div class="proof-label" style="color:var(--gray);">UNRUN</div>
+        <div class="proof-desc">No proof has been recorded yet for this binding. Treated identically to RED by the gate — unproven is blocked.</div>
+      </div>
+
+      <h3>Tree-hash identity</h3>
+      <p>
+        The key insight behind Rivet's proof model: proofs stamp the <strong>tested tree</strong>, not the commit SHA. This solves two subtle problems:
+      </p>
+      <ol>
+        <li><strong>Dirty-tree greens:</strong> if a proof stamped HEAD while the tree was dirty, it was vouching for uncommitted code. Rivet stamps the tree-hash + a dirty flag, so a dirty-tree run's status is tracked accurately.</li>
+        <li><strong>Commit invalidation:</strong> if a proof stamped the commit SHA, committing the tested code would move HEAD and instantly invalidate every proof. By comparing tree-hashes, Rivet detects drift (tree changed) vs stability (tree unchanged, different commit) correctly.</li>
+      </ol>
+
+      <!-- EARS -->
+      <h2 id="ears">EARS acceptance criteria</h2>
+      <p>
+        Every acceptance criterion in a Rivet spec is written in <strong>EARS syntax</strong> (Easy Approach to Requirements Syntax). EARS sentences are machine-parseable and force observable, testable behavior.
+      </p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out"># EARS patterns</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out">WHEN &lt;event&gt; THEN the system SHALL &lt;observable response&gt;</div>
+          <div class="term-line out">IF &lt;condition&gt; THEN the system SHALL &lt;response&gt;</div>
+          <div class="term-line out">WHILE &lt;state&gt; the system SHALL &lt;continuous behaviour&gt;</div>
+          <div class="term-line out">WHERE &lt;feature set&gt; the system SHALL &lt;capability&gt;</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out"># Good: observable, testable</div>
+          <div class="term-line green">WHEN a session has been idle for &gt;= 30 min THEN the system SHALL return HTTP 401.</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out"># Bad: implementation detail, not a behaviour</div>
+          <div class="term-line red">The system SHALL use a HashMap to store sessions.</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out"># Bad: vague, untestable</div>
+          <div class="term-line red">The system SHALL handle sessions gracefully.</div>
+        </div>
+      </div>
+
+      <p>Rules for EARS criteria in Rivet:</p>
+      <ul>
+        <li>One behaviour per criterion. Split compound sentences.</li>
+        <li>The SHALL clause must be observable from outside — a response, a state change, or an emitted event.</li>
+        <li>Never an implementation detail ("uses a HashMap") or a vibe ("is fast", "handles gracefully").</li>
+        <li>Every criterion must carry ≥1 <code>@check</code> binding.</li>
+        <li>Criterion IDs (<code>R-AREA-NN</code>) are stable forever — never renumber; deprecate instead.</li>
+      </ul>
+
+      <!-- LAWS -->
+      <h2 id="laws">Laws</h2>
+      <p>
+        <code>.rivet/laws.md</code> is the agent's constitution — the rules it must always obey, regardless of the request. Laws are checked before any action. Conflicts between a request and a law trigger a refusal or warning (configurable via <code>rules.onConflict</code>).
+      </p>
+
+      <p>Rivet's own hard rules (from <code>.rivet/laws.md</code>):</p>
+      <ul>
+        <li>Commits are authored by the human, never co-authored by the AI.</li>
+        <li>A task is not "done" until its bound checks pass (evidence-bound completion).</li>
+        <li>Reuse existing code before writing new; follow the surrounding patterns.</li>
+        <li>Every feature gets an adversarial review pass before PR — verification and review catch different bug classes; neither substitutes for the other.</li>
+      </ul>
+
+      <p>Laws promote from learnings: when a lesson is confirmed and approved, it can be promoted into <code>laws.md</code> as a permanent rule. Personal laws can be inherited and overridden per-project.</p>
+
+      <!-- GATE PACKS -->
+      <h2 id="gate-packs">Gate packs</h2>
+      <p>
+        Gate packs (GATE-PACKS-01) are user-editable config data that define additional requirements for specific kinds of changes. A pack specifies:
+      </p>
+      <ul>
+        <li><strong>sections</strong> — spec sections that must be present (e.g. "Security", "API Contract")</li>
+        <li><strong>kinds</strong> — check kinds required (e.g. <code>api</code> for the contracts pack)</li>
+        <li><strong>triggers</strong> — keywords that <em>floor</em> the routing mode to full-spec when found in the request</li>
+      </ul>
+
+      <div class="callout callout-info">
+        <strong>Menu yes, mandate no</strong>
+        Gate packs are a menu — none are required by default (<code>gates.require: []</code>). Ceremony stays proportional to change size. Add packs to <code>gates.require</code> only for changes where the extra rigor earns its keep.
+      </div>
+
+      <p>The built-in security pack triggers on: <code>auth</code>, <code>login</code>, <code>password</code>, <code>token</code>, <code>secret</code>, <code>payment</code>, <code>crypt</code>, <code>session</code>, <code>permission</code>, <code>sql</code>. Any request containing these keywords is floored to full-spec regardless of the routing classification.</p>
+
+      <h3>Investigative gates (GATE-FACTS-01)</h3>
+      <p>
+        When <code>gates.facts: "on"</code>, the guard shifts to DENY→FORCE→ALLOW mode. The first edit to a gated file is blocked until the agent gathers named facts — importers, schemas, verbatim instructions. The investigation creates context that demonstrably changes output quality. The gate is opt-in, time-boxed to 30 minutes, and bounded at 500 entries.
+      </p>
+
+      <!-- LEARNINGS -->
+      <h2 id="learnings">The learning loop</h2>
+      <p>
+        <code>.rivet/learnings.md</code> is an append-only lesson ledger. After each feature (or surprising failure), lessons are added with a trigger, lesson text, confidence level, and scope. Unpromoted lessons are OPEN; they must be PROMOTED (into laws) or HARDENED (into permanent regression tests) to count.
+      </p>
+
+      <blockquote>A lesson only counts once it is PROMOTED or HARDENED. Logged-but-unpromoted lessons recur — that is the failure mode this loop exists to kill.</blockquote>
+
+      <p>Lesson lifecycle:</p>
+      <ol>
+        <li>Append to <code>learnings.md</code> after a feature or incident.</li>
+        <li>Propose a promotion: law, permanent regression test, or config change.</li>
+        <li>Human approves. Confidence is evidence, not feeling — and confidence is not approval.</li>
+        <li>A fixed bug becomes a permanent regression test bound via <code>@check</code>. A bug that can come back silently was never fixed.</li>
+        <li>A lesson recurs in 2+ projects → scope elevates to global; move to personal default rules.</li>
+      </ol>
+
+      <!-- BOARDS -->
+      <h2 id="boards">Boards: LEDGER + TRACKING</h2>
+      <p>
+        <code>rivet board</code> regenerates two board files from the journal and graph:
+      </p>
+      <ul>
+        <li><strong>LEDGER.md</strong> — the complete traceability ledger: every requirement, criterion, proof state, and evidence link.</li>
+        <li><strong>TRACKING.md</strong> — task-level progress board with traffic-light proof states, assigned tasks, and wave groupings.</li>
+      </ul>
+
+      <p>These boards are derived — they cannot lie. Unlike manually edited markdown, their content is always consistent with the proof record. Run <code>rivet board</code> whenever you want a fresh view.</p>
+
+      <!-- INPUT CONTRACT -->
+      <h2 id="input-contract">The input contract</h2>
+      <p>Rivet's architecture separates three things:</p>
+      <ul>
+        <li><strong>Engine code</strong> — changes only when Rivet itself evolves. Lives in <code>src/</code>.</li>
+        <li><strong>Skills</strong> — Rivet's voice and workflow definitions, versioned under <code>skills/</code>.</li>
+        <li><strong>Project inputs</strong> — the only thing that changes per project. Lives in <code>.rivet/</code>.</li>
+      </ul>
+
+      <p>The tool never changes for a new stack or project — only the inputs do. This means:</p>
+      <ul>
+        <li>A new test stack? Add an entry to <code>verify.runners</code> in config — no code change.</li>
+        <li>A new law? Append to <code>laws.md</code> — no code change.</li>
+        <li>A new lesson? Append to <code>learnings.md</code> — no code change.</li>
+        <li>A new routing rule? Add a gate pack to <code>gates.packs</code> — no code change.</li>
+      </ul>
+
+      <table>
+        <thead><tr><th>Input</th><th>Format</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>.rivet/config.json</code></td><td>JSON (zod-validated)</td><td>Every policy knob</td></tr>
+          <tr><td><code>.rivet/specs/*.md</code></td><td>Markdown + EARS + @check</td><td>Requirements; source of truth for tasks &amp; proofs</td></tr>
+          <tr><td><code>.rivet/intake/*.md</code></td><td>Markdown + YAML frontmatter</td><td>Raw ideas/tickets; verbatim; <code>rivet route --file</code></td></tr>
+          <tr><td><code>.rivet/laws.md</code></td><td>Markdown</td><td>Rules the agent must always obey</td></tr>
+          <tr><td><code>.rivet/learnings.md</code></td><td>Markdown (append-only)</td><td>The retro loop; lessons promote into rules/checks</td></tr>
+          <tr><td><code>verify.runners</code></td><td>JSON command templates</td><td>New test stacks with zero code changes</td></tr>
+        </tbody>
+      </table>
+
+      <p>State that Rivet writes (also in-repo, committed): <code>journal.jsonl</code>, <code>graph.json</code>, <code>approvals/</code>, <code>pr-body.md</code>, <code>LEDGER.md</code>, <code>TRACKING.md</code>, <code>RESUME.md</code>.</p>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

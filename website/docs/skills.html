@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills — Rivet Docs</title>
+  <meta name="description" content="The 6 Rivet Claude Code skills — when each fires and what it does." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    .skill-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin-bottom: 32px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .skill-card:hover {
+      border-color: rgba(124,58,237,0.4);
+      box-shadow: 0 8px 40px rgba(124,58,237,0.07);
+    }
+    .skill-header {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 26px 28px 20px; border-bottom: 1px solid var(--border-soft);
+      background: var(--bg-card2);
+    }
+    .skill-icon {
+      font-size: 2rem; flex-shrink: 0; width: 52px; height: 52px;
+      background: var(--accent-dim); border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    }
+    .skill-meta h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .skill-meta .trigger-pill {
+      display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 2px 10px; border-radius: 50px;
+      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: var(--green);
+      margin-top: 6px;
+    }
+    .skill-body { padding: 22px 28px; font-size: 0.9rem; color: var(--text-dim); line-height: 1.75; }
+    .skill-body h4 { color: var(--heading); font-size: 0.9rem; margin: 18px 0 8px; }
+    .skill-body ul { padding-left: 20px; margin-bottom: 12px; }
+    .skill-body li { margin-bottom: 4px; }
+    .skill-body li::marker { color: var(--accent-light); }
+    .skill-body strong { color: var(--heading); }
+    .skill-body code { font-size: 0.82em; }
+    .skill-name-code {
+      font-family: var(--mono); font-size: 0.88rem; color: var(--accent-light);
+      background: var(--accent-dim); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 6px; padding: 2px 10px;
+    }
+    .compose-banner {
+      background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.04));
+      border: 1px solid rgba(124,58,237,0.25); border-radius: var(--radius);
+      padding: 22px 26px; margin-bottom: 40px;
+    }
+    .compose-banner h3 { margin-bottom: 8px; color: var(--accent-light); }
+    .compose-banner p { margin: 0; font-size: 0.9rem; color: var(--text-dim); }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+
+  <header class="docs-topnav">
+    <a class="brand" href="../index.html">
+      <span class="logo-mark">R</span>
+      Rivet
+    </a>
+    <nav>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html" class="active">Skills</a>
+    </nav>
+  </header>
+
+  <aside class="docs-sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Start here</div>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Full Workflow</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Reference</div>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="skills.html" class="active">Skills</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Skills</div>
+      <a href="#rivet-workflow">rivet-workflow</a>
+      <a href="#rivet-intake">rivet-intake</a>
+      <a href="#rivet-spec-author">rivet-spec-author</a>
+      <a href="#rivet-review">rivet-review</a>
+      <a href="#rivet-retro">rivet-retro</a>
+      <a href="#rivet-finish">rivet-finish</a>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <div class="page-header">
+      <div class="badge">Reference</div>
+      <h1>Skills</h1>
+      <p>Rivet's 6 Claude Code skills — the tool's voice and workflow definitions, versioned under <code>skills/</code>.</p>
+    </div>
+
+    <div class="prose">
+
+      <div class="compose-banner">
+        <h3>Compose, don't vendor</h3>
+        <p>
+          Rivet is the <strong>enforcement + traceability layer</strong>; it deliberately does not duplicate generic dev craft.
+          Skills compose with <a href="https://github.com/obra/superpowers">superpowers</a> (MIT) — brainstorming, systematic debugging,
+          git-worktree discipline, parallel subagent dispatch — and pick up where superpowers stops: proofs, gates, and the graph.
+          Install both alongside each other.
+        </p>
+      </div>
+
+      <!-- ── RIVET-WORKFLOW ── -->
+      <div class="skill-card" id="rivet-workflow">
+        <div class="skill-header">
+          <div class="skill-icon">⚙️</div>
+          <div class="skill-meta">
+            <h3>rivet-workflow</h3>
+            <code class="skill-name-code">skills/rivet-workflow/SKILL.md</code>
+            <div class="trigger-pill">Auto-fires in Rivet projects</div>
+          </div>
+        </div>
+        <div class="skill-body">
+          <p>The main event. Drives spec-driven development with Rivet — route the request, write EARS specs with <code>@check</code> bindings, derive evidence-bound tasks, TDD, prove checks with real test runs, build the Verified Traceability Graph, record approvals, and generate graph-derived PR bodies.</p>
+          <h4>Fires when</h4>
+          <ul>
+            <li>The user asks to build or change code in a project with <code>.rivet/</code> present</li>
+            <li>The user mentions "rivet", "specs", "EARS", or "traceability"</li>
+          </ul>
+          <h4>Hard rules (RFC-2119)</h4>
+          <ul>
+            <li>MUST NOT mark, claim, or imply a task is complete while any bound check is failing or unrun.</li>
+            <li>MUST NOT weaken, skip, or delete a failing test to make it pass; fix the code or escalate.</li>
+            <li>MUST show real command output for check runs — never paraphrase a result that did not happen.</li>
+            <li>Commits MUST be authored by the human.</li>
+            <li>MUST confirm with the user before proceeding when <code>mode.confirmFirst: true</code>.</li>
+            <li>Quick mode still writes at least one test — no exceptions.</li>
+          </ul>
+          <h4>The loop</h4>
+          <p>Route → Spec → <code>rivet spec tasks</code> → TDD red → Prove green → <code>rivet task done</code> → <code>rivet graph build</code> → <code>rivet approve</code> → <code>rivet pr</code></p>
+        </div>
+      </div>
+
+      <!-- ── RIVET-INTAKE ── -->
+      <div class="skill-card" id="rivet-intake">
+        <div class="skill-header">
+          <div class="skill-icon">📥</div>
+          <div class="skill-meta">
+            <h3>rivet-intake</h3>
+            <code class="skill-name-code">skills/rivet-intake/SKILL.md</code>
+            <div class="trigger-pill">Brain-dumps · tickets · raw ideas</div>
+          </div>
+        </div>
+        <div class="skill-body">
+          <p>Turn a raw idea, voice-dump, or ticket into a Rivet intake file and route it. Raw ideas live as files under <code>.rivet/intake/</code> — versioned, re-routable, never lost.</p>
+          <h4>Fires when</h4>
+          <ul>
+            <li>The user brain-dumps a request without structure</li>
+            <li>The user pastes a Jira, GitHub, or GitLab ticket</li>
+            <li>The user points at an idea that has no spec yet</li>
+          </ul>
+          <h4>Intake file shape</h4>
+          <p>Files go in <code>.rivet/intake/&lt;slug&gt;.md</code> with YAML frontmatter: <code>id</code>, <code>source</code> (raw|github#123|gitlab#45|jira:ABC-7), <code>date</code>. The user's words are captured verbatim first — messy is fine; the original is never lost.</p>
+          <h4>Process rules</h4>
+          <ul>
+            <li>Capture verbatim first, then refine.</li>
+            <li>Run <code>rivet route --file</code> and report the mode + reason.</li>
+            <li>If vague: ask clarifying questions, one at a time, ≤5, each with a recommended answer.</li>
+            <li>Branch by mode: research → report only, no code; quick → create task directly; full-spec → hand off to rivet-spec-author.</li>
+            <li>Write-back to ticket only if <code>intake.writeBack</code> allows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── RIVET-SPEC-AUTHOR ── -->
+      <div class="skill-card" id="rivet-spec-author">
+        <div class="skill-header">
+          <div class="skill-icon">📐</div>
+          <div class="skill-meta">
+            <h3>rivet-spec-author</h3>
+            <code class="skill-name-code">skills/rivet-spec-author/SKILL.md</code>
+            <div class="trigger-pill">Writing or revising specs</div>
+          </div>
+        </div>
+        <div class="skill-body">
+          <p>Write high-quality Rivet specs — EARS acceptance criteria with <code>@check</code> bindings in <code>.rivet/specs/*.md</code>. The spec is the source of truth: <code>rivet spec tasks</code> derives evidence-bound tasks from it, and every criterion's <code>@check</code> binding becomes a proof obligation in the graph.</p>
+          <h4>Fires when</h4>
+          <ul>
+            <li>Authoring or revising a spec</li>
+            <li>Converting a ticket or idea into requirements</li>
+            <li>Criteria are vague, untestable, or unbound</li>
+          </ul>
+          <h4>Quality checks before handoff</h4>
+          <ul>
+            <li>Every criterion observable from outside?</li>
+            <li>Every criterion bound to ≥1 <code>@check</code>?</li>
+            <li>No compound sentences (split them)?</li>
+            <li>Unhappy paths covered or explicitly deferred with a note?</li>
+            <li>IDs stable and sequential?</li>
+          </ul>
+          <h4>Ref syntax by runner</h4>
+          <ul>
+            <li>Maven: <code>ClassName#methodName</code></li>
+            <li>vitest/jest: <code>path/to/file.test.ts::test name</code></li>
+            <li>pytest: <code>path/to/test_file.py::test_name</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── RIVET-REVIEW ── -->
+      <div class="skill-card" id="rivet-review">
+        <div class="skill-header">
+          <div class="skill-icon">🔍</div>
+          <div class="skill-meta">
+            <h3>rivet-review</h3>
+            <code class="skill-name-code">skills/rivet-review/SKILL.md</code>
+            <div class="trigger-pill">Before any PR · after graph build is green</div>
+          </div>
+        </div>
+        <div class="skill-body">
+          <p>Two-pass adversarial code review for Rivet changes. <strong>Verification proves the criteria; review hunts what criteria can't see.</strong> Run after <code>rivet graph build</code> is green — review is not a substitute for proofs, and proofs are not a substitute for review.</p>
+          <h4>Fires when</h4>
+          <ul>
+            <li>The user asks for a review or adversarial review</li>
+            <li>Before any PR (<code>rivet graph build</code> green first)</li>
+          </ul>
+          <h4>Pass 1 — blind (diff only)</h4>
+          <p>Read ONLY the diff (<code>git diff main...HEAD</code>) in a fresh subagent with no spec or prior conversation. Hunt: logic errors, edge cases, security smells, concurrency, resource leaks, error-handling gaps. The implementer finished suspiciously confidently — do NOT take their word for anything.</p>
+          <h4>Pass 2 — full context</h4>
+          <p>Load specs, graph, and tasks. Hunt: criteria satisfied in letter but not intent; scope creep; spec gaps the implementation revealed; reuse violations (code-graph query); <strong>silent failures</strong> (swallowed exceptions, default fallbacks that mask errors); behavioral coverage vs line coverage.</p>
+          <h4>Output rules</h4>
+          <ul>
+            <li>Findings are a list — never auto-fix (config <code>review.fixFindings: "list"</code>).</li>
+            <li>Each finding: severity (BLOCKER/MAJOR/MINOR/NOTE) · location · what · why · suggested fix.</li>
+            <li>Zero findings is a legitimate outcome. Manufacturing nitpicks is review fatigue, not quality.</li>
+            <li>The reviewer MUST NOT approve their own implementation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── RIVET-RETRO ── -->
+      <div class="skill-card" id="rivet-retro">
+        <div class="skill-header">
+          <div class="skill-icon">🔁</div>
+          <div class="skill-meta">
+            <h3>rivet-retro</h3>
+            <code class="skill-name-code">skills/rivet-retro/SKILL.md</code>
+            <div class="trigger-pill">After features · after failures · on /retro</div>
+          </div>
+        </div>
+        <div class="skill-body">
+          <p>Run the Rivet learning loop — capture lessons after a feature or incident into <code>.rivet/learnings.md</code>, propose promotions into the laws, and turn fixed bugs into permanent regression checks.</p>
+          <h4>Fires when</h4>
+          <ul>
+            <li>After completing a feature (default: per-feature from config)</li>
+            <li>After any surprising failure or incident</li>
+            <li>When the user says "retro"</li>
+          </ul>
+          <h4>Lesson lifecycle</h4>
+          <ul>
+            <li>Append with trigger, lesson text, confidence (evidence-based: low/medium/high), scope (project/global).</li>
+            <li>Propose a promotion for every entry — law, permanent regression test, or config change.</li>
+            <li>Human must approve. Confidence is not approval.</li>
+            <li>A fixed bug → permanent regression test bound via <code>@check</code>. A bug that can come back silently was never fixed.</li>
+            <li>Recurrence in 2+ projects → scope: global.</li>
+          </ul>
+          <h4>Before new work</h4>
+          <p>Scan <code>learnings.md</code> for OPEN entries and warn when the current task pattern-matches a known mistake (the repeat-warning mechanic).</p>
+        </div>
+      </div>
+
+      <!-- ── RIVET-FINISH ── -->
+      <div class="skill-card" id="rivet-finish">
+        <div class="skill-header">
+          <div class="skill-icon">🏁</div>
+          <div class="skill-meta">
+            <h3>rivet-finish</h3>
+            <code class="skill-name-code">skills/rivet-finish/SKILL.md</code>
+            <div class="trigger-pill">finish · land · merge · wrap up</div>
+          </div>
+        </div>
+        <div class="skill-body">
+          <p>The completion ritual — run when a feature's tasks are done and it's time to land the branch. <strong>Entry is EARNED, the menu is FIXED, destruction is TYPED, and every step lands in the journal.</strong></p>
+          <h4>Fires when</h4>
+          <ul>
+            <li>The user says "finish", "land", "merge", or "wrap up"</li>
+            <li>After <code>rivet pr</code> is ready and the human wants to close the loop</li>
+          </ul>
+          <h4>Entry gate (fresh evidence only)</h4>
+          <ol>
+            <li>Run <code>rivet graph build</code> — MUST exit 0. Old green output does not count.</li>
+            <li>Run <code>rivet status</code> — all tasks for this feature DONE.</li>
+            <li>Run <code>rivet pr --title "..."</code> — gate verdict green.</li>
+          </ol>
+          <p>If any step fails: STOP. Report what blocked. Do not present the menu.</p>
+          <h4>The fixed menu (exactly 4 options)</h4>
+          <ol>
+            <li><strong>Merge locally</strong> — merge to the base branch, verify the suite on the merged result.</li>
+            <li><strong>Push + PR</strong> — push and open the PR with the generated body (<code>rivet pr --create</code>).</li>
+            <li><strong>Keep as-is</strong> — leave the branch; record why in the journal.</li>
+            <li><strong>Discard</strong> — destructive. The human MUST type <code>discard</code> exactly. Anything else aborts.</li>
+          </ol>
+          <p>No fifth option. No commentary or recommendations. Wait for the choice.</p>
+          <h4>Provenance-checked cleanup</h4>
+          <p>On Discard: delete branch; remove the worktree ONLY if it lives under <code>.worktrees/</code> or <code>.claude/worktrees/</code>. Never clean up a workspace Rivet did not create.</p>
+        </div>
+      </div>
+
+      <!-- SUPERPOWERS NOTE -->
+      <div class="callout callout-tip">
+        <strong>Pairs well with superpowers</strong>
+        Rivet handles enforcement and traceability. For brainstorming, systematic debugging, git-worktree discipline, and parallel subagent dispatch — install <a href="https://github.com/obra/superpowers">superpowers</a> (MIT) alongside. Rivet's skills compose with superpowers skills and pick up where they stop: proofs, gates, and the graph.
+      </div>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>
