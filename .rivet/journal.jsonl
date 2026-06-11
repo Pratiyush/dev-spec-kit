@@ -327,3 +327,6 @@
 {"at":"2026-06-11T21:29:17.578Z","type":"check.run","data":{"taskId":"R-PROG-01","result":{"ref":"test/cli-ux.test.ts::renders progress with emoji, bar, and next-up","passed":true,"at":"2026-06-11T21:29:17.560Z","sha":"eabad481137314e8821d5e48d0ed2fef48165def","tree":"f8ccd6b391c961e074f3d013c742605912a482e2","dirty":true,"stack":"node-vitest","kind":"unit"}}}
 {"at":"2026-06-11T21:29:17.712Z","type":"cli.run","data":{"command":"graph build","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
 {"at":"2026-06-11T21:29:17.857Z","type":"cli.run","data":{"command":"dashboard","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T21:31:07.621Z","type":"cli.run","data":{"command":"status","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T21:31:07.697Z","type":"cli.run","data":{"command":"guard pr","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-11T21:31:20.860Z","type":"cli.run","data":{"command":"dashboard","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
