@@ -1,5 +1,20 @@
 import { z } from "zod";
 
+/** Codebase platforms (descriptive) — exported so init --platforms can validate input. */
+export const PLATFORM_VALUES = [
+  "java-maven",
+  "java-gradle",
+  "spring",
+  "quarkus",
+  "node",
+  "typescript",
+  "electron",
+  "react",
+  "next",
+  "angular",
+  "python",
+] as const;
+
 /**
  * The Rivet per-project configuration — the "config-driven policy engine".
  *
@@ -20,22 +35,7 @@ export const RivetConfigSchema = z
          * belong to `check run --stack` / verify.runners. (Renamed from `stacks`; the old key is
          * ignored harmlessly. Dogfood lesson: one word must not name two disjoint enums.)
          */
-        platforms: z
-          .array(
-            z.enum([
-              "java-maven",
-              "java-gradle",
-              "spring",
-              "quarkus",
-              "node",
-              "typescript",
-              "react",
-              "next",
-              "angular",
-              "python",
-            ]),
-          )
-          .default([]),
+        platforms: z.array(z.enum(PLATFORM_VALUES)).default([]),
       })
       .default({}),
 
@@ -70,8 +70,12 @@ export const RivetConfigSchema = z
         style: z.enum(["checklist", "stories", "both"]).default("both"),
         /** Who authors acceptance criteria. */
         acceptanceCriteria: z.enum(["tool-drafts", "user-writes"]).default("tool-drafts"),
-        /** Criteria syntax. EARS = WHEN/IF ... THEN ... SHALL. */
-        criteriaFormat: z.enum(["ears", "plain", "mixed"]).default("ears"),
+        /**
+         * Criteria syntax. FEAT-GHERKIN-01: gherkin (Scenario / Scenario Outline + Examples) is
+         * the DEFAULT for new projects; EARS stays fully supported. Both always parse and bind —
+         * this knob only sets the off-format lint (warn, never block). "mixed" accepts both.
+         */
+        criteriaFormat: z.enum(["gherkin", "ears", "plain", "mixed"]).default("gherkin"),
         breakdownDepth: z
           .enum(["feature-story-task-subtask", "task-subtask"])
           .default("feature-story-task-subtask"),
@@ -117,6 +121,16 @@ export const RivetConfigSchema = z
         kinds: z
           .array(z.enum(["unit", "integration", "api", "e2e", "visual", "parity"]))
           .default(["unit", "integration", "api", "e2e"]),
+        /**
+         * FEAT-STACK-01: the stack `check run` uses when -s/--stack is omitted. Resolution:
+         * flag → this → inferred from project.platforms (🧭 notice) → error naming all three.
+         */
+        defaultStack: z.string().optional(),
+        /**
+         * FEAT-VERIFY-01: build steps `rivet verify` runs before the test kinds ("Build ALL").
+         * Empty → node-ish platforms fall back to package.json build/typecheck scripts.
+         */
+        buildAll: z.array(z.object({ cmd: z.string(), args: z.array(z.string()).default([]) })).default([]),
         /** Coverage gate as a percentage; null = judge by criteria coverage, not a number. */
         coverage: z.union([z.number().min(0).max(100), z.null()]).default(null),
         /** A task cannot be marked done while bound checks fail. */
@@ -226,6 +240,11 @@ export const RivetConfigSchema = z
         onConflict: z.enum(["refuse", "warn"]).default("warn"),
         /** Inherit a personal default rules file, then override per-project. */
         inheritPersonal: z.boolean().default(true),
+        /**
+         * FEAT-IDS-01: requirement ids must self-describe (REQUIREMENT_/NFR_/ADR_) — they travel
+         * without their spec. Legacy short ids always parse; this knob sets the lint severity.
+         */
+        requireQualifiedIds: z.enum(["warn", "error", "off"]).default("warn"),
       })
       .default({}),
 
@@ -254,6 +273,12 @@ export const RivetConfigSchema = z
     gates: z
       .object({
         facts: z.enum(["off", "on"]).default("off"),
+        /**
+         * FEAT-GHERKIN-01: the mechanical edge-case floor — every obligated requirement needs
+         * ≥1 negative/failure criterion (EARS unwanted-pattern or a failure Scenario) or graph
+         * build flags it. ON everywhere by default; prose mandates are ignorable, floors aren't.
+         */
+        negativeFloor: z.enum(["on", "off"]).default("on"),
         require: z.array(z.string()).default([]),
         packs: z
           .record(
@@ -267,7 +292,18 @@ export const RivetConfigSchema = z
             security: {
               sections: ["Security"],
               kinds: [],
-              triggers: ["auth", "login", "password", "token", "secret", "payment", "crypt", "session", "permission", "sql"],
+              triggers: [
+                "auth",
+                "login",
+                "password",
+                "token",
+                "secret",
+                "payment",
+                "crypt",
+                "session",
+                "permission",
+                "sql",
+              ],
             },
             contracts: { sections: ["API Contract"], kinds: ["api"], triggers: [] },
             nfr: { sections: ["NFR"], kinds: [], triggers: [] },
@@ -278,12 +314,16 @@ export const RivetConfigSchema = z
 
     graphify: z
       .object({
-        /** graphify output directory (gitignored, derived). */
+        /**
+         * FEAT-REVITIFY-01: who builds the code graph. "revitify" (default) is Rivet's bundled
+         * native-TS engine — zero pip, zero external installs; "graphify" shells out to the
+         * external Python tool (full multi-modal power) for those who opt in.
+         */
+        provider: z.enum(["revitify", "graphify"]).default("revitify"),
+        /** graph output directory (gitignored, derived). Same contract for both providers. */
         outDir: z.string().default("graphify-out"),
         /** How the code graph is kept fresh, using graphify's own tooling. */
-        freshness: z
-          .enum(["post-commit-hook", "update-on-run", "watch", "manual"])
-          .default("update-on-run"),
+        freshness: z.enum(["post-commit-hook", "update-on-run", "watch", "manual"]).default("update-on-run"),
       })
       .default({}),
   })

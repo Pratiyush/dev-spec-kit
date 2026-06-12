@@ -1,8 +1,15 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
 import { parseSpecsDir } from "../engine/spec/parse.js";
+import {
+  lintQualifiedIds,
+  lintCriteriaFormat,
+  requirementKind,
+  type Requirement,
+} from "../engine/spec/ears.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -10,11 +17,38 @@ import { buildPrBody } from "../engine/pr/body.js";
 import { routeRequest, assertMode } from "../engine/route/classify.js";
 import { applyGateFloor } from "../engine/gatepacks.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
-import { gateVerdict } from "../engine/gate.js";
+import { gateVerdict, verifyVerdict } from "../engine/gate.js";
+import { gitTreeHash, isDirty } from "../engine/git.js";
+import { needsFlush } from "../engine/flushwarn.js";
 import { loadConfig } from "./config-io.js";
+import { label } from "./emoji.js";
 
 function journal(cwd: string): Journal {
   return new Journal(join(cwd, ".rivet", "journal.jsonl"));
+}
+
+/** FEAT-FLUSH-01: the ledger this session's lessons belong in — the project's own learnings.md,
+ *  falling back to the TOOL repo's (dogfood sessions bank tool lessons, not app lessons). */
+function ledgerPath(cwd: string): string | null {
+  const project = join(cwd, ".rivet", "learnings.md");
+  if (existsSync(project)) return project;
+  const toolRepo = fileURLToPath(new URL("../../.rivet/learnings.md", import.meta.url));
+  return existsSync(toolRepo) ? toolRepo : null;
+}
+
+/** FEAT-IDS-01 lint printer — returns false when level=error and violations exist (caller stops). */
+function lintIds(requirements: Requirement[], level: "warn" | "error" | "off"): boolean {
+  if (level === "off") return true;
+  const violations = lintQualifiedIds(requirements);
+  for (const v of violations) {
+    if (level === "error") console.error(pc.red(`✗ ${v}`) + pc.dim("  [rules.requireQualifiedIds]"));
+    else console.log(pc.yellow(`⚠ ${v}`));
+  }
+  if (level === "error" && violations.length > 0) {
+    process.exitCode = 1;
+    return false;
+  }
+  return true;
 }
 
 /** `rivet spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */
@@ -25,14 +59,28 @@ export function specTasks(): void {
     console.log(pc.yellow("no specs in .rivet/specs/ — write one first (EARS + @check bindings)"));
     return;
   }
+  // FEAT-IDS-01: ids must self-describe; severity comes from rules.requireQualifiedIds.
+  const config = loadConfig(cwd);
+  if (!lintIds(requirements, config.rules.requireQualifiedIds)) return;
+  // FEAT-GHERKIN-01: off-format criteria lint (warn-only).
+  for (const w of lintCriteriaFormat(requirements, config.spec.criteriaFormat)) {
+    console.log(pc.yellow(`⚠ ${w}`));
+  }
   const store = new TaskStore(journal(cwd));
   const existing = store.all();
   let created = 0;
   let synced = 0;
   for (const req of requirements) {
-    const refs = req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref));
+    if (requirementKind(req.id) === "adr") {
+      console.log(pc.dim(`◇ ${req.id} — decision record (ADR), no task derived`));
+      continue;
+    }
+    // One @check under an Outline binds every row — the task's obligation list dedupes the ref.
+    const refs = [...new Set(req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref)))];
     if (refs.length === 0) {
-      console.log(pc.yellow(`⚠ ${req.id} has no @check bindings — UNVERIFIABLE, task not created; bind checks first`));
+      console.log(
+        pc.yellow(`⚠ ${req.id} has no @check bindings — UNVERIFIABLE, task not created; bind checks first`),
+      );
       continue;
     }
     const prior = existing.get(req.id);
@@ -45,15 +93,24 @@ export function specTasks(): void {
       }
       const updated = store.syncBindings(req.id, refs);
       synced++;
-      const reopened = prior.status === "done" && updated.status !== "done" ? pc.yellow(" (reopened — new obligations)") : "";
-      console.log(pc.cyan(`↻ ${req.id} bindings synced`) + pc.dim(` — now ${refs.length} check(s)`) + reopened);
+      const reopened =
+        prior.status === "done" && updated.status !== "done"
+          ? pc.yellow(" (reopened — new obligations)")
+          : "";
+      console.log(
+        pc.cyan(`↻ ${req.id} bindings synced`) + pc.dim(` — now ${refs.length} check(s)`) + reopened,
+      );
       continue;
     }
     store.create(req.id, req.title, refs);
     created++;
     console.log(pc.green(`✓ ${req.id}`) + pc.dim(` — ${req.title} (${refs.length} bound check(s))`));
   }
-  console.log(pc.dim(`\n${created} created · ${synced} synced from spec — the spec is the source of truth`));
+  console.log(
+    pc.dim(
+      `\n${label("specSync")} ${created} created · ${synced} synced from spec — the spec is the source of truth`,
+    ),
+  );
 }
 
 /** `rivet approve <taskIds...>` — record the human gate as a signed artifact. */
@@ -91,6 +148,8 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   const requirements = parseSpecsDir(cwd);
   const tasks = [...new TaskStore(journal(cwd)).all().values()];
   const head = gitHead(cwd);
+  // FIX-PROOF-04: the PR body claims coverage of the CODE TREE, so stamp that identity.
+  const tree = gitTreeHash(cwd);
   const body = buildPrBody({
     title: opts.title ?? "Rivet change",
     requirements,
@@ -98,10 +157,22 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     tasks,
     approvals: listApprovals(cwd),
     ...(head ? { headSha: head } : {}),
+    ...(tree ? { tree, dirty: isDirty(cwd) } : {}),
   });
   const outPath = join(cwd, ".rivet", "pr-body.md");
   writeFileSync(outPath, body + "\n");
-  console.log(pc.green("✓ PR body generated") + pc.dim(" → .rivet/pr-body.md"));
+  console.log(pc.green(`${label("pr")} ✓ PR body generated`) + pc.dim(" → .rivet/pr-body.md"));
+
+  // FEAT-FLUSH-01: 📝 pre-flight — lessons must be banked before the work ships (warning, not a gate).
+  const ledger = ledgerPath(cwd);
+  if (ledger && needsFlush(journal(cwd).read(), statSync(ledger).mtime.toISOString())) {
+    console.log(
+      pc.yellow(`${label("flush")} flush session lessons before PR`) +
+        pc.dim(
+          ` — ${ledger.includes(cwd) ? ".rivet/learnings.md" : "the tool repo's learnings.md"} has no entry from this session`,
+        ),
+    );
+  }
 
   // FIX-GATE-01: same predicate as the hook and `guard pr` — anything not green blocks --create.
   const verdict = gateVerdict(graph);
@@ -112,11 +183,25 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     return;
   }
   if (verdict.zeroProofs) console.log(pc.yellow("⚠ zero bound proofs in the graph — PR carries no evidence"));
+  // FEAT-VERIFY-01: with real proofs in play, a PR also needs a fresh green `rivet verify`.
+  if (!verdict.zeroProofs) {
+    const vv = verifyVerdict(journal(cwd).read(), tree);
+    if (!vv.ok) {
+      console.error(pc.red("✗ blocked by the gate:"));
+      for (const r of vv.reasons) console.error(pc.red(`   ${r}`));
+      process.exitCode = 1;
+      return;
+    }
+  }
   if (opts.create) {
-    const res = spawnSync("gh", ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath], {
-      cwd,
-      stdio: "inherit",
-    });
+    const res = spawnSync(
+      "gh",
+      ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath],
+      {
+        cwd,
+        stdio: "inherit",
+      },
+    );
     if (res.status !== 0) process.exitCode = res.status ?? 1;
   } else {
     console.log(pc.dim(`  open it with: gh pr create --title "<title>" --body-file .rivet/pr-body.md`));
@@ -138,10 +223,14 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
       return;
     }
     // Strip YAML frontmatter; route on the body.
-    text = readFileSync(opts.file, "utf8").replace(/^---\n[\s\S]*?\n---\n/, "").trim();
+    text = readFileSync(opts.file, "utf8")
+      .replace(/^---\n[\s\S]*?\n---\n/, "")
+      .trim();
   }
   if (!text) {
-    console.error(pc.red("provide a request: rivet route \"<text>\" or rivet route --file .rivet/intake/<idea>.md"));
+    console.error(
+      pc.red('provide a request: rivet route "<text>" or rivet route --file .rivet/intake/<idea>.md'),
+    );
     process.exitCode = 1;
     return;
   }
@@ -162,14 +251,18 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
     return;
   }
   const badge =
-    result.mode === "research" ? pc.cyan("RESEARCH") : result.mode === "quick" ? pc.green("QUICK") : pc.magenta("FULL-SPEC");
-  console.log(`${badge} ${pc.dim("— " + result.reason)}`);
+    result.mode === "research"
+      ? pc.cyan("RESEARCH")
+      : result.mode === "quick"
+        ? pc.green("QUICK")
+        : pc.magenta("FULL-SPEC");
+  console.log(`${label("route")} ${badge} ${pc.dim("— " + result.reason)}`);
   if (config.mode.confirmFirst && !opts.mode) {
     console.log(pc.dim("confirm-first is on: proceed with this mode, or override via --mode"));
   }
   const next =
     result.mode === "research"
-      ? "investigate and report — no code changes"
+      ? `${label("research")} investigate and report — no code changes`
       : result.mode === "quick"
         ? "one delta + one test (quick mode still writes a test) → rivet check run → rivet task done"
         : "write .rivet/specs/<feature>.md (EARS + @check) → rivet spec tasks → TDD → rivet graph build";
@@ -187,7 +280,8 @@ function gateGraph(cwd: string): VerifiedTraceabilityGraph | null {
   }
 }
 
-/** `rivet guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green. */
+/** `rivet guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green.
+ *  FEAT-VERIFY-01: once real proofs exist, the gate ALSO demands a fresh green `rivet verify`. */
 export function guardPr(): void {
   const cwd = process.cwd();
   if (!existsSync(join(cwd, ".rivet"))) {
@@ -196,11 +290,18 @@ export function guardPr(): void {
   }
   const verdict = gateVerdict(gateGraph(cwd));
   if (verdict.ok) {
-    console.log(
-      verdict.zeroProofs
-        ? pc.yellow("rivet guard: graph has zero bound proofs — nothing to enforce (bind @checks!)")
-        : pc.green("✓ rivet guard: every proof green — PR may proceed"),
-    );
+    if (verdict.zeroProofs) {
+      console.log(pc.yellow("rivet guard: graph has zero bound proofs — nothing to enforce (bind @checks!)"));
+      return;
+    }
+    const vv = verifyVerdict(journal(cwd).read(), gitTreeHash(cwd));
+    if (!vv.ok) {
+      console.error(pc.red("✗ rivet guard: blocked:"));
+      for (const r of vv.reasons) console.error(pc.red(`   ${r}`));
+      process.exitCode = 2;
+      return;
+    }
+    console.log(pc.green("✓ rivet guard: every proof green + fresh verify — PR may proceed"));
     return;
   }
   console.error(pc.red("✗ rivet guard: blocked:"));

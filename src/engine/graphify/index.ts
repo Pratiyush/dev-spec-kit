@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, dirname } from "node:path";
+import { revitify } from "revitify";
 import type { GraphNode } from "../graph/types.js";
 
 /**
@@ -25,10 +26,13 @@ export function graphifyInstalled(): boolean {
   return graphifyBin() !== null;
 }
 
+// FIX-PROV-01: provenance is verifiable pointers only (repo URL, package name, owner) — never a
+// point-in-time vanity metric. The shipped star count was stale-by-construction AND wrong.
 export const GRAPHIFY_INSTALL_HINT =
+  "Optional — Rivet's graph features run on the BUNDLED revitify provider by default (zero installs). " +
+  'To opt into the external tool instead (multi-modal: PDFs/images/video), set graphify.provider to "graphify" and ' +
   "pip install graphifyy && graphify install — 'graphifyy' (double-y) is graphify's official PyPI package name; " +
-  "the CLI stays 'graphify'. Source: https://github.com/safishamsi/graphify (213k★). " +
-  "Optional: without it, Rivet's graph features stay off and everything else works.";
+  "the CLI stays 'graphify'. Source: https://github.com/safishamsi/graphify (MIT — verify the repo yourself).";
 
 /** Raw graphify graph.json (verified against v0.8.37 output). */
 interface RawGraph {
@@ -43,7 +47,14 @@ interface RawGraph {
     [k: string]: unknown;
   }>;
   links?: Array<{ source?: unknown; target?: unknown; relation?: string; [k: string]: unknown }>;
-  edges?: Array<{ source?: unknown; target?: unknown; from?: unknown; to?: unknown; relation?: string; [k: string]: unknown }>;
+  edges?: Array<{
+    source?: unknown;
+    target?: unknown;
+    from?: unknown;
+    to?: unknown;
+    relation?: string;
+    [k: string]: unknown;
+  }>;
 }
 
 export interface CodeLink {
@@ -134,6 +145,29 @@ export function refreshCodeGraph(projectDir: string, outDir = "graphify-out"): s
   if (head) writeFreshness(projectDir, head);
   const graphJson = join(projectDir, outDir, "graph.json");
   return existsSync(graphJson) ? graphJson : null;
+}
+
+export type GraphProvider = "revitify" | "graphify";
+
+/** FEAT-REVITIFY-01: revitify ships inside Rivet — it is ALWAYS available; pip never required. */
+export function providerAvailable(provider: GraphProvider): boolean {
+  return provider === "revitify" ? true : graphifyInstalled();
+}
+
+/**
+ * Provider-aware refresh: revitify runs in-process (bundled, native TS); graphify shells out to
+ * the external CLI. Both emit the SAME graphify-out/ contract, so consumers never know.
+ */
+export function refreshCodeGraphVia(
+  provider: GraphProvider,
+  projectDir: string,
+  outDir = "graphify-out",
+): string | null {
+  if (provider === "graphify") return refreshCodeGraph(projectDir, outDir);
+  const result = revitify(projectDir, outDir);
+  const head = gitHead(projectDir);
+  if (head) writeFreshness(projectDir, head);
+  return result.graphJsonPath;
 }
 
 function gitHead(cwd: string): string | undefined {

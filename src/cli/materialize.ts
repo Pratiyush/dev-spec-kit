@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { gitTreeHash } from "../engine/git.js";
@@ -8,7 +8,13 @@ import { TaskStore, type Task } from "../engine/state/tasks.js";
 import { buildVTG } from "../engine/graph/build.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import type { Requirement } from "../engine/spec/ears.js";
-import { graphifyInstalled, refreshCodeGraph, loadCodeGraph, isStale, type CodeGraph } from "../engine/graphify/index.js";
+import {
+  providerAvailable,
+  refreshCodeGraphVia,
+  loadCodeGraph,
+  isStale,
+  type CodeGraph,
+} from "../engine/graphify/index.js";
 import { type RivetConfig } from "../config/schema.js";
 import { loadConfig } from "./config-io.js";
 
@@ -32,8 +38,12 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
 
   let codeGraph: CodeGraph | undefined;
   const graphJson = join(cwd, config.graphify.outDir, "graph.json");
-  if (graphifyInstalled()) {
-    if (opts.refresh && (isStale(cwd) || !existsSync(graphJson))) refreshCodeGraph(cwd, config.graphify.outDir);
+  // FEAT-REVITIFY-01: the bundled revitify provider is always available; external graphify only
+  // when the project opts in via graphify.provider.
+  if (providerAvailable(config.graphify.provider)) {
+    if (opts.refresh && (isStale(cwd) || !existsSync(graphJson))) {
+      refreshCodeGraphVia(config.graphify.provider, cwd, config.graphify.outDir);
+    }
     if (existsSync(graphJson)) codeGraph = loadCodeGraph(graphJson);
   }
 
@@ -50,7 +60,15 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
   if (opts.write !== false) {
     writeFileSync(join(cwd, ".rivet", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
   }
-  return { vtg, requirements, tasks, ...(head ? { head } : {}), config, codeGraphLoaded: !!codeGraph, specWarnings };
+  return {
+    vtg,
+    requirements,
+    tasks,
+    ...(head ? { head } : {}),
+    config,
+    codeGraphLoaded: !!codeGraph,
+    specWarnings,
+  };
 }
 
 export function journalFor(cwd: string): Journal {

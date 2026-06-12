@@ -13,7 +13,8 @@ const skillDirs = readdirSync(SKILLS_DIR).filter((d) => existsSync(join(SKILLS_D
 
 /** The real CLI vocabulary — update when commands change, or this suite fails (that's the point). */
 const COMMANDS = new Set([
-  "doctor", "init", "task", "check", "status", "graph", "spec", "approve", "pr", "route",
+  "doctor", "init", "task", "check", "status",
+  "verify", "graph", "spec", "approve", "pr", "route",
   "guard", "unlock", "trace", "drift", "affected", "log", "resume",
 ]);
 const SUBCOMMANDS = new Set(["create", "start", "done", "run", "build", "tasks", "pr"]);

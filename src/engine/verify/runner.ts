@@ -1,4 +1,6 @@
 import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { CheckBinding } from "../spec/ears.js";
 import type { CheckResult } from "../graph/types.js";
 import { gitHead, gitTreeHash, isDirty } from "../git.js";
@@ -23,6 +25,52 @@ export interface ResolvedCommand {
 export interface RunnerOverride {
   cmd: string;
   args: string[];
+}
+
+/**
+ * FEAT-STACK-01 — `--stack` is optional; this is the resolution chain. Inference maps the
+ * project's declared platforms to a builtin stack (node-ish platforms check package.json to pick
+ * vitest vs jest). Pure + testable; the CLI prints a 🧭 notice for anything not explicit.
+ */
+export interface StackResolution {
+  stack: string;
+  source: "flag" | "config" | "inferred";
+  reason?: string;
+}
+
+const NODE_PLATFORMS = ["typescript", "node", "react", "next", "angular", "electron"];
+const MAVEN_PLATFORMS = ["java-maven", "spring", "quarkus"];
+
+export function resolveStack(
+  explicit: string | undefined,
+  config: { verify: { defaultStack?: string | undefined }; project: { platforms: string[] } },
+  cwd: string,
+): StackResolution {
+  if (explicit) return { stack: explicit, source: "flag" };
+  if (config.verify.defaultStack) return { stack: config.verify.defaultStack, source: "config" };
+  const platforms = config.project.platforms;
+  const reason = `from platforms: ${platforms.join(", ")}`;
+  if (platforms.some((p) => NODE_PLATFORMS.includes(p))) {
+    const stack = hasDep(cwd, "jest") && !hasDep(cwd, "vitest") ? "node-jest" : "node-vitest";
+    return { stack, source: "inferred", reason };
+  }
+  if (platforms.includes("python")) return { stack: "python-pytest", source: "inferred", reason };
+  if (platforms.some((p) => MAVEN_PLATFORMS.includes(p))) return { stack: "java-maven", source: "inferred", reason };
+  throw new Error(
+    "no stack resolved — pass --stack <stack>, set verify.defaultStack in .rivet/config.json, or declare project.platforms so it can be inferred",
+  );
+}
+
+function hasDep(cwd: string, name: string): boolean {
+  try {
+    const pkg = JSON.parse(readFileSync(join(cwd, "package.json"), "utf8")) as {
+      dependencies?: Record<string, string>;
+      devDependencies?: Record<string, string>;
+    };
+    return Boolean(pkg.dependencies?.[name] ?? pkg.devDependencies?.[name]);
+  } catch {
+    return false;
+  }
 }
 
 /**

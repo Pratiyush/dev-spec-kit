@@ -47,12 +47,17 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
   const run = (payload: object): number | null =>
     spawnSync("node", [hook], { input: JSON.stringify(payload), stdio: ["pipe", "pipe", "pipe"] }).status;
 
-  function rivetProject(graph?: object): string {
+  function rivetProject(graph?: object, journalLines: object[] = []): string {
     const dir = mkdtempSync(join(tmpdir(), "rivet-gate-"));
     mkdirSync(join(dir, ".rivet"), { recursive: true });
     if (graph) writeFileSync(join(dir, ".rivet", "graph.json"), JSON.stringify(graph));
+    if (journalLines.length > 0) {
+      writeFileSync(join(dir, ".rivet", "journal.jsonl"), journalLines.map((l) => JSON.stringify(l)).join("\n") + "\n");
+    }
     return dir;
   }
+
+  const greenVerify = { at: "t", type: "verify.run", data: { passed: true, tree: "T" } };
 
   it("missing graph in a Rivet project BLOCKS pr creation (exit 2)", () => {
     const cwd = rivetProject(); // .rivet exists, no graph.json
@@ -66,10 +71,20 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
     expect(run({ tool_name: "Bash", tool_input: { command: "gh api repos/o/r/pulls -f title=x" }, cwd })).toBe(2);
   });
 
-  it("green graph passes even for quoted forms; non-PR commands never touched", () => {
+  it("green graph + green verify passes even for quoted forms; non-PR commands never touched", () => {
     const green = { edges: [{ kind: "validates", proof: "green", from: "test:X" }] };
-    const cwd = rivetProject(green);
+    const cwd = rivetProject(green, [greenVerify]);
     expect(run({ tool_name: "Bash", tool_input: { command: `gh "pr" create` }, cwd })).toBe(0);
     expect(run({ tool_name: "Bash", tool_input: { command: "git status" }, cwd })).toBe(0);
+  });
+
+  // FEAT-VERIFY-01: a green graph alone is not enough — the project-level verify must exist + pass.
+  it("green graph WITHOUT a recorded verify blocks; a red verify blocks too", () => {
+    const green = { edges: [{ kind: "validates", proof: "green", from: "test:X" }] };
+    expect(run({ tool_name: "Bash", tool_input: { command: "gh pr create" }, cwd: rivetProject(green) })).toBe(2);
+    const redVerify = { at: "t", type: "verify.run", data: { passed: false, tree: "T" } };
+    expect(
+      run({ tool_name: "Bash", tool_input: { command: "gh pr create" }, cwd: rivetProject(green, [redVerify]) }),
+    ).toBe(2);
   });
 });

@@ -1,4 +1,4 @@
-import type { Requirement } from "./spec/ears.js";
+import { isNegativeCriterion, requirementKind, type Requirement } from "./spec/ears.js";
 import type { RivetConfig } from "../config/schema.js";
 import type { Mode } from "./route/classify.js";
 
@@ -44,6 +44,22 @@ export function evaluatePack(specText: string, requirements: Requirement[], name
     if (!present.has(kind as never)) violations.push(`pack '${name}': missing required check kind '${kind}'`);
   }
   return violations;
+}
+
+/**
+ * FEAT-GHERKIN-01 — the mechanical edge-case floor. "If an edge case can't be named proven, it
+ * isn't covered": every obligated requirement (ADRs exempt) must carry at least one negative/
+ * failure criterion. Returned messages are graph-build violations (exit 1), not warnings.
+ */
+export function floorViolations(reqs: Requirement[], config: RivetConfig): string[] {
+  if (config.gates.negativeFloor !== "on") return [];
+  return reqs
+    .filter((r) => requirementKind(r.id) !== "adr" && r.criteria.length > 0)
+    .filter((r) => !r.criteria.some(isNegativeCriterion))
+    .map(
+      (r) =>
+        `${r.id}: no negative/failure criterion — name the unhappy path (IF-pattern or a failure Scenario) and bind a check, or set gates.negativeFloor="off"`,
+    );
 }
 
 /** Security floor: a TRIGGERED pack forces full-spec regardless of how small the ask looks. */

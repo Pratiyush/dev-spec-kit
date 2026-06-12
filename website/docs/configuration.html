@@ -115,11 +115,16 @@
             <div class="config-desc">Human-readable project name used in board headers and journal metadata.</div>
           </div>
           <div class="config-row">
-            <div class="config-key">project.stacks</div>
+            <div class="config-key">project.platforms</div>
             <div class="config-default">[]</div>
             <div class="config-desc">
-              Stacks present in this project. Drives which check runners are wired automatically.
-              <div class="allowed">Allowed: "java-maven" | "java-gradle" | "spring" | "quarkus" | "node" | "typescript" | "react" | "next" | "angular" | "python"</div>
+              Codebase platforms (descriptive) — an ARRAY: multiple languages per project is
+              supported and expected (e.g. <code>["typescript", "electron", "python"]</code>).
+              NOT runner stacks — runner ids like <code>node-vitest</code> belong to
+              <code>check run --stack</code> / <code>verify.runners</code>. Drives stack inference
+              and <code>init --platforms</code> best-practice packs. (Replaces <code>project.stacks</code>;
+              the legacy key is ignored harmlessly.)
+              <div class="allowed">Allowed: "java-maven" | "java-gradle" | "spring" | "quarkus" | "node" | "typescript" | "electron" | "react" | "next" | "angular" | "python"</div>
             </div>
           </div>
         </div>
@@ -220,10 +225,15 @@
           </div>
           <div class="config-row">
             <div class="config-key">spec.criteriaFormat</div>
-            <div class="config-default">"ears"</div>
+            <div class="config-default">"gherkin"</div>
             <div class="config-desc">
-              Criteria syntax. EARS = <code>WHEN/IF … THEN the system SHALL …</code>.
-              <div class="allowed">ears | plain | mixed</div>
+              Criteria syntax. Gherkin (the default) = <code>Scenario:</code> blocks with
+              Given/When/Then steps; <code>Scenario Outline:</code> + <code>Examples:</code> tables
+              expand one criterion per row (one <code>@check</code> binds them all). EARS =
+              <code>WHEN/IF … THEN the system SHALL …</code>. Both always parse and bind —
+              off-format criteria lint (warn-only). Every requirement also needs ≥1
+              negative/failure criterion (<code>gates.negativeFloor</code>, on by default).
+              <div class="allowed">gherkin | ears | plain | mixed</div>
             </div>
           </div>
           <div class="config-row">

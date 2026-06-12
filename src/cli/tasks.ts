@@ -5,7 +5,11 @@ import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
 import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
-import { runCheck, BUILTIN_STACKS, pickRunner } from "../engine/verify/runner.js";
+import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/verify/runner.js";
+import { proofStamp } from "../engine/verify/stamp.js";
+import { gitTreeHash } from "../engine/git.js";
+import { renderTaskReport } from "./task-report.js";
+import { label } from "./emoji.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
 import { kindForRef } from "../engine/spec/ears.js";
@@ -58,6 +62,8 @@ export function taskDone(id: string): void {
   try {
     const t = store(cwd).markDone(id);
     console.log(pc.green(`✓ Task ${t.id} DONE`) + pc.dim(" — every bound check has a passing run"));
+    // FEAT-REPORT-01: show the evidence at the moment of done — scannable, tree-stamped.
+    console.log("\n" + renderTaskReport(t, gitTreeHash(cwd)));
     console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
   } catch (e) {
     if (e instanceof EvidenceError) {
@@ -77,23 +83,30 @@ export function taskDone(id: string): void {
   }
 }
 
-// FIX-PROOF-03: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
-// only). Printing HEAD made a red and a green over different code render the same "@ <sha8>".
-export function proofStamp(result: { sha?: string; tree?: string; dirty?: boolean }): string {
-  const id = result.tree ?? result.sha;
-  if (!id) return "";
-  return ` @ ${result.tree ? "tree " : ""}${id.slice(0, 8)}${result.dirty ? "*" : ""}`;
-}
+// FIX-PROOF-03/04: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
+// only). The renderer now lives in engine/verify/stamp.ts so EVERY surface shares it.
+export { proofStamp };
 
 export async function checkRun(
   taskId: string,
   ref: string,
-  stackName: string,
+  stackArg: string | undefined,
   opts?: { expectRed?: boolean },
 ): Promise<void> {
   const cwd = process.cwd();
   // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
   const config = loadConfig(cwd);
+  // FEAT-STACK-01: flag → verify.defaultStack → inferred from platforms (notice) → clear error.
+  const resolution = resolveStack(stackArg, config, cwd);
+  const stackName = resolution.stack;
+  if (resolution.source !== "flag") {
+    console.log(
+      pc.dim(
+        `${label("route")} stack ${resolution.source === "config" ? "from verify.defaultStack" : "inferred"}: ${stackName}` +
+          (resolution.reason ? ` (${resolution.reason})` : ""),
+      ),
+    );
+  }
   // RUNNERS-01: the spec knows this ref's kind; the kind changes how it runs.
   const kind = kindForRef(parseSpecsDir(cwd), ref) ?? "unit";
   const picked = pickRunner(config, kind, stackName);
@@ -110,7 +123,7 @@ export async function checkRun(
     (kind === "api" || kind === "e2e") && config.verify.runApp && config.verify.app.start.length > 0;
   console.log(
     pc.dim(
-      `running ${ref} [${kind}] via ${stackName}` +
+      `${label("checkRun")} running ${ref} [${kind}] via ${stackName}` +
         (picked.source !== "builtin" ? ` (${picked.source} runner)` : "") +
         (needsApp ? " +app" : "") +
         (expectRed ? " (expect-red: no retries)" : "") +

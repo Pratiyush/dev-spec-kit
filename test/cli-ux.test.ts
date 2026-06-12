@@ -78,4 +78,12 @@ describe("R-PROG-01 — progress with emoji after done", () => {
     expect(out).toContain("100%");
     expect(out).toContain("🎉");
   });
+
+  // FEAT-GHERKIN-01 dogfood: the spec's failure Scenario for the progress view.
+  it("renders an explicit empty state when there are no tasks", () => {
+    const out = renderProgress([]);
+    expect(out).toContain("no tasks yet");
+    expect(out).not.toContain("█");
+    expect(out).not.toContain("0/0");
+  });
 });

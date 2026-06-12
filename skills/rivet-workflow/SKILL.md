@@ -19,8 +19,10 @@ or a global install) and `rivet doctor` passing. If `.rivet/` is missing, run `r
    - research → investigate and report. You MUST NOT change code in research mode.
    - quick → one small change. Quick mode still writes at least one test (NO exceptions).
    - full-spec → continue with step 2.
-2. **Spec.** Write `.rivet/specs/<feature>.md`: a user story, then `## Requirement R-<AREA>-NN — title`
-   sections with EARS criteria (`WHEN/IF … THEN the system SHALL …`) and one `@check kind=<kind> ref=<ref>`
+2. **Spec.** Write `.rivet/specs/<feature>.md`: a user story, then
+   `## Requirement REQUIREMENT_<AREA>-NN — title` sections (ids MUST be fully qualified:
+   `REQUIREMENT_` / `NFR_` / `ADR_`, never bare `R-…`) with EARS criteria
+   (`WHEN/IF … THEN the system SHALL …`) and one `@check kind=<kind> ref=<ref>`
    line per criterion. Refs use the runner's selector syntax (maven `Class#method`, vitest/jest
    `file::name`, pytest `file::test`). Present the spec to the user for approval BEFORE implementing.
 3. **Derive tasks.** `rivet spec tasks` — one evidence-bound task per requirement. NEVER create code
@@ -34,17 +36,24 @@ or a global install) and `rivet doctor` passing. If `.rivet/` is missing, run `r
    argue with the gate; it is correct by construction.
 7. **Graph.** `rivet graph build`. Red/stale proofs exit 1 — stale means code moved after the proof:
    re-run those checks. The graph MUST be green before any PR.
-8. **Approve.** Ask the user, then record their gate: `rivet approve <taskIds> --note "<their words>"`.
+8. **Verify ALL.** `rivet verify` — Build ALL + run EVERY configured kind's full suite, journaled.
+   A green task is not a green project; the PR gate requires the last verify green ON THE CURRENT
+   code tree (any code change after it ⇒ re-run). MUST be green before approve/PR.
+9. **Approve.** Ask the user, then record their gate: `rivet approve <taskIds> --note "<their words>"`.
    Approval is the human gate ON TOP of verification, never a substitute.
-9. **PR.** `rivet pr --title "<title>"` generates `.rivet/pr-body.md` from the graph (traceability
+10. **PR.** `rivet pr --title "<title>"` generates `.rivet/pr-body.md` from the graph (traceability
    table + binding coverage). `--create` opens it via `gh`. The guard hook blocks PR creation while
-   proofs are not green.
+   proofs are not green or the verify is missing/red/stale.
 
 ## Hard rules (RFC-2119)
 
 - You MUST NOT mark, claim, or imply a task is complete while any bound check is failing or unrun.
 - You MUST NOT weaken, skip, or delete a failing test to make it pass; fix the code or escalate.
 - You MUST show real command output for check runs — never paraphrase a result that did not happen.
-- You SHOULD run `rivet status` to re-orient after any interruption; the journal is the ground truth.
+- Scripted check runs MUST preserve exit codes (`set -o pipefail` before piping the CLI's
+  output) — a gate whose exit code a pipe eats is decoration.
+- After ANY session break, crash, or interruption you MUST run `rivet resume` FIRST, then
+  `rivet status` — re-orient from recorded truth before touching anything. (Two live recoveries
+  prove the journal re-orients losslessly; only the resume-first habit makes that automatic.)
 - Commits MUST be authored by the human (per project laws (.rivet/laws.md)), and you MUST stop at the
   configured human gates (plan approval, task approval, pre-PR, pre-merge).

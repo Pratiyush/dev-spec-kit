@@ -13,6 +13,7 @@ import { wavePlan, waveStart, waveDone } from "./wave.js";
 import { boardCmd } from "./board-cmd.js";
 import { lawsCmd } from "./laws-cmd.js";
 import { dashboardCmd } from "./dashboard.js";
+import { verifyCmd } from "./verify-cmd.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -60,7 +61,7 @@ program
     "Rivet — spec-driven development with a Verified Traceability Graph.\n" +
       "Every requirement riveted to a passing check.",
   )
-  .version("0.0.1");
+  .version("0.1.0");
 
 program
   .command("doctor")
@@ -71,7 +72,11 @@ program
   .command("init")
   .description("Initialize Rivet in the current project (.rivet/ config, laws, specs, journal)")
   .option("-f, --force", "overwrite the existing Rivet config")
-  .action(safe((opts: { force?: boolean }) => runInit(opts)));
+  .option(
+    "-p, --platforms <list>",
+    "comma-separated codebase platforms (typescript,electron,python,…) — seeds best-practice law packs",
+  )
+  .action(safe((opts: { force?: boolean; platforms?: string }) => runInit(opts)));
 
 const task = program.command("task").description("Evidence-bound tasks (done requires green checks)");
 task
@@ -103,10 +108,14 @@ check
   .description("Execute a check via the stack's real test runner and record the result")
   .argument("<taskId>", "task to record the proof against")
   .argument("<ref>", "check ref (maven: Class#method · vitest/jest: file::name · pytest: file::test)")
-  .requiredOption("-s, --stack <stack>", "java-maven | node-vitest | node-jest | python-pytest | <config-defined>")
+  .option(
+    "-s, --stack <stack>",
+    "java-maven | node-vitest | node-jest | python-pytest | <config-defined> " +
+      "(optional — falls back to verify.defaultStack, then platform inference)",
+  )
   .option("-x, --expect-red", "TDD red phase: skip flaky retries for this run")
   .action(
-    safe((taskId: string, ref: string, opts: { stack: string; expectRed?: boolean }) =>
+    safe((taskId: string, ref: string, opts: { stack?: string; expectRed?: boolean }) =>
       checkRun(taskId, ref, opts.stack, { expectRed: opts.expectRed ?? false }),
     ),
   );
@@ -115,6 +124,13 @@ program
   .command("status")
   .description("Board generated from the journal — tasks with traffic-light proof states")
   .action(safe(() => status()));
+
+program
+  .command("verify")
+  .description(
+    "Build ALL + run EVERY configured kind (full suites) — journaled; the PR gate needs this green on the current tree",
+  )
+  .action(safe(() => verifyCmd()));
 
 const graph = program.command("graph").description("The Verified Traceability Graph");
 graph
@@ -194,14 +210,18 @@ wave
   .action(safe((ids: string[]) => waveStart(ids)));
 wave
   .command("done")
-  .description("Provenance-checked cleanup: remove .worktrees/<id> after its branch reached origin (--force discards)")
+  .description(
+    "Provenance-checked cleanup: remove .worktrees/<id> after its branch reached origin (--force discards)",
+  )
   .argument("<id>")
   .option("--force", "discard unmerged work (destructive — requires explicit intent)")
   .action(safe((id: string, opts: { force?: boolean }) => waveDone(id, opts)));
 
 program
   .command("laws")
-  .description("Print the effective laws: personal → project → scoped (fileMatch via --for, manual via --summon)")
+  .description(
+    "Print the effective laws: personal → project → scoped (fileMatch via --for, manual via --summon)",
+  )
   .option("--for <file>", "activate fileMatch-scoped laws for this path")
   .option("--summon <names...>", "load manual-scope laws by name")
   .action(safe((opts: { for?: string; summon?: string[] }) => lawsCmd(opts)));
@@ -214,7 +234,9 @@ program
 
 program
   .command("board")
-  .description("Regenerate .rivet/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)")
+  .description(
+    "Regenerate .rivet/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)",
+  )
   .action(safe(() => boardCmd()));
 
 program

@@ -1,6 +1,7 @@
 import type { VerifiedTraceabilityGraph, GraphEdge, ProofState } from "../graph/types.js";
 import type { Requirement } from "../spec/ears.js";
 import type { Task } from "../state/tasks.js";
+import { identityLabel } from "../verify/stamp.js";
 
 /**
  * Graph-derived PR body — the traceability report no incumbent tool can produce, because none of
@@ -13,7 +14,11 @@ export interface PrBodyInput {
   graph: VerifiedTraceabilityGraph;
   tasks: Task[];
   approvals: string[];
+  /** Legacy fallback identity — used only when no tree is provided. */
   headSha?: string;
+  /** FIX-PROOF-04: the code-tree hash the coverage claim refers to (the identity proofs use). */
+  tree?: string;
+  dirty?: boolean;
 }
 
 const LIGHT: Record<ProofState, string> = {
@@ -54,6 +59,12 @@ export function buildPrBody(input: PrBodyInput): string {
   }
 
   const coverage = totalCriteria === 0 ? 0 : Math.round((provenCriteria / totalCriteria) * 100);
+  // FIX-PROOF-04: the headline identity is the tested TREE (dirty-marked); sha only legacy.
+  const stamp = identityLabel({
+    ...(input.headSha ? { sha: input.headSha } : {}),
+    ...(input.tree ? { tree: input.tree } : {}),
+    ...(input.dirty !== undefined ? { dirty: input.dirty } : {}),
+  });
   const drifted = input.graph.edges.filter(
     (e) => e.kind === "validates" && (e.proof === "red" || e.proof === "stale"),
   ).length;
@@ -63,7 +74,7 @@ export function buildPrBody(input: PrBodyInput): string {
     `## ${input.title}`,
     "",
     `**Binding coverage:** ${provenCriteria}/${totalCriteria} acceptance criteria proven green (${coverage}%)` +
-      (input.headSha ? ` at \`${input.headSha.slice(0, 8)}\`` : ""),
+      (stamp ? ` at \`${stamp}\`` : ""),
     drifted > 0 ? `\n> ⚠️ **${drifted} proof(s) red/stale** — this PR should not merge until re-verified.` : "",
     "",
     "### Traceability (generated from the Verified Traceability Graph)",

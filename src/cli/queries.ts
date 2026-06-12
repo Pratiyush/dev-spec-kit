@@ -9,6 +9,7 @@ import { runWithRetry } from "../engine/verify/retry.js";
 import { kindForRef } from "../engine/spec/ears.js";
 import { graphifyBin } from "../engine/graphify/index.js";
 import type { ProofState } from "../engine/graph/types.js";
+import { label } from "./emoji.js";
 
 const LIGHT: Record<ProofState, string> = {
   green: pc.green("● green"),
@@ -76,7 +77,7 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
     }
     const kind = kindForRef(before.requirements, t.ref) ?? "unit";
     const picked = pickRunner(config, kind, stack);
-    process.stdout.write(pc.dim(`  re-running ${t.ref} [${kind}] via ${stack} … `));
+    process.stdout.write(pc.dim(`  ${label("drift")} re-running ${t.ref} [${kind}] via ${stack} … `));
     const { result, attempts } = runWithRetry(
       () => ({ ...runCheck({ kind: kind as never, ref: t.ref }, stack, { cwd }, picked.override), stack, kind }),
       config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0,

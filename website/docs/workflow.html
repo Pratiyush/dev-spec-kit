@@ -123,14 +123,14 @@
           <div class="term-line out">&nbsp;</div>
           <div class="term-line out">&gt; User story: As a user, I want to log in with GitHub OAuth2.</div>
           <div class="term-line out">&nbsp;</div>
-          <div class="term-line out">## Requirement R-AUTH-01 — OAuth callback</div>
+          <div class="term-line out">## Requirement REQUIREMENT_AUTH-01 — OAuth callback</div>
           <div class="term-line out">&nbsp;</div>
           <div class="term-line out">WHEN the OAuth provider returns a valid code</div>
           <div class="term-line out">THEN the system SHALL exchange it for a token and create a session.</div>
           <div class="term-line out">&nbsp;</div>
           <div class="term-line purple">@check kind=integration ref=OAuthIT#callbackExchangesToken</div>
           <div class="term-line out">&nbsp;</div>
-          <div class="term-line out">## Requirement R-AUTH-02 — invalid code</div>
+          <div class="term-line out">## Requirement REQUIREMENT_AUTH-02 — invalid code</div>
           <div class="term-line out">&nbsp;</div>
           <div class="term-line out">IF the OAuth code is invalid or expired</div>
           <div class="term-line out">THEN the system SHALL return HTTP 400 and NOT create a session.</div>
@@ -149,8 +149,8 @@
         <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
         <div class="terminal-body">
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet spec tasks</span></div>
-          <div class="term-line green">✓ T4  R-AUTH-01 — OAuth callback  [bound: OAuthIT#callbackExchangesToken]</div>
-          <div class="term-line green">✓ T5  R-AUTH-02 — invalid code    [bound: OAuthServiceTest#rejectsInvalidCode]</div>
+          <div class="term-line green">✓ T4  REQUIREMENT_AUTH-01 — OAuth callback  [bound: OAuthIT#callbackExchangesToken]</div>
+          <div class="term-line green">✓ T5  REQUIREMENT_AUTH-02 — invalid code    [bound: OAuthServiceTest#rejectsInvalidCode]</div>
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task start T4</span></div>
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet status</span></div>
           <div class="term-line out">T4  IN PROGRESS  🔴 OAuthIT#callbackExchangesToken (unrun)</div>

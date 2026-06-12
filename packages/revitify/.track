@@ -1,0 +1,24 @@
+# revitify ⇄ graphify upstream tracking
+# Revitify adapts CONCEPTS from graphify (MIT) with an original TypeScript implementation and the
+# same output contract (graphify-out/: graph.json · graph.html · GRAPH_REPORT.md).
+# This file pins HOW FAR upstream we have looked, so future fixes can be ported deliberately:
+# review upstream commits/PRs SINCE the pin below, port what matters, then move the pin.
+
+upstream_repo   = https://github.com/safishamsi/graphify
+upstream_clone  = _ref/reference/graphify   (shallow, reference only)
+
+# Last upstream state our implementation corresponds to:
+synced_commit   = 1bb30fcc567a72280f4dc1763947140268f101c5
+synced_version  = 0.8.38
+synced_at       = 2026-06-12
+last_merged_pr  = #1271 (2026-06-11) feat(extract): add opt-in --cargo crate dependency extractor
+
+# Output-contract anchor (what Rivet's loadCodeGraph was verified against): v0.8.37 graph.json —
+# nodes[{id,name,label,source_file,source_location,community}], links[{source,target,relation}],
+# built_at_commit. Any upstream change to this shape is a MUST-port.
+
+# Sync ritual:
+#   1. cd _ref/reference/graphify && git fetch --depth 50 origin && git log --oneline <synced_commit>..origin/HEAD
+#   2. gh api repos/safishamsi/graphify/pulls?state=closed — review merged PRs since last_merged_pr
+#   3. Port relevant fixes into packages/revitify (through Rivet's own loop, tests first)
+#   4. Update synced_commit / synced_version / last_merged_pr / synced_at here, same commit

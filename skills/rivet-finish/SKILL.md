@@ -9,11 +9,13 @@ Entry is EARNED, the menu is FIXED, destruction is TYPED, and every step lands i
 
 ## 1. Entry gate — fresh evidence only
 
-Run, in order, and SHOW the output:
+Run, in order, and SHOW the output (after any session break: `rivet resume` FIRST):
 1. `rivet graph build` — MUST exit 0 (every proof green at the current tree). Stale/red → run
    `rivet drift`, fix, and re-enter. Old green output does not count; the evidence must be fresh.
-2. `rivet status` — all tasks for this feature DONE.
-3. `rivet pr --title "<title>"` — body generated, gate verdict green.
+2. `rivet verify` — MUST exit 0 (Build ALL + every configured kind green, journaled on the
+   current tree). The PR gate refuses without it.
+3. `rivet status` — all tasks for this feature DONE.
+4. `rivet pr --title "<title>"` — body generated, gate verdict green.
 If any step fails: STOP. Report what blocked. Do not present the menu.
 
 ## 2. The menu — present exactly these 4 options, nothing open-ended

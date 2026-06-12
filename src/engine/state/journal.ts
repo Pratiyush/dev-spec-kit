@@ -20,6 +20,7 @@ export type JournalEventType =
   | "task.status"
   | "task.bindings"
   | "check.run"
+  | "verify.run"
   | "approval.recorded"
   | "cli.run"
   | "governance"

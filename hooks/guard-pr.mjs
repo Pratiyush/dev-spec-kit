@@ -67,7 +67,24 @@ try {
 const validates = (graph.edges ?? []).filter((e) => e.kind === "validates");
 if (validates.length === 0) process.exit(0); // nothing bound — nothing to enforce
 const bad = validates.filter((e) => e.proof !== "green");
-if (bad.length === 0) process.exit(0);
+if (bad.length === 0) {
+  // FEAT-VERIFY-01 fast veto: the LAST verify.run must exist and be green. (Tree-freshness is
+  // enforced strictly by `rivet guard pr` / `rivet pr`; the hook stays git-free and cheap.)
+  let lastVerify = null;
+  try {
+    const lines = readFileSync(join(rivetRoot, ".rivet", "journal.jsonl"), "utf8").split("\n");
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      try {
+        const ev = JSON.parse(line);
+        if (ev.type === "verify.run") lastVerify = ev;
+      } catch {}
+    }
+  } catch {}
+  if (!lastVerify) block("no `rivet verify` recorded — run it (build ALL + every kind) before a PR.");
+  if (!lastVerify.data?.passed) block("last `rivet verify` was RED — fix and re-run it before a PR.");
+  process.exit(0);
+}
 
 block(
   `${bad.length}/${validates.length} proof(s) not green:\n` +

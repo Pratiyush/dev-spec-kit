@@ -22,4 +22,10 @@ describe("README matches the shipped surface", () => {
     expect(README).toMatch(/spec tasks[\s\S]*task done[\s\S]*graph build/);
     expect(README).toContain("website/");
   });
+
+  // FEAT-CCFIRST-01: depth on one harness beats breadth — say it out loud so contributors don't
+  // generalize early and dilute the hook/skill integration that is the moat.
+  it("declares the Claude-Code-first focus explicitly", () => {
+    expect(README).toMatch(/Built for Claude Code first; other assistants later\./);
+  });
 });

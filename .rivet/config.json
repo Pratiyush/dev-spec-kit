@@ -2,7 +2,11 @@
   "version": 1,
   "project": {
     "name": "untitled",
-    "stacks": []
+    "stacks": [],
+    "platforms": [
+      "typescript",
+      "node"
+    ]
   },
   "mode": {
     "routing": "auto-override",
@@ -21,7 +25,7 @@
   "spec": {
     "style": "both",
     "acceptanceCriteria": "tool-drafts",
-    "criteriaFormat": "ears",
+    "criteriaFormat": "mixed",
     "breakdownDepth": "feature-story-task-subtask",
     "estimates": true,
     "autoDependencies": true,
@@ -59,7 +63,16 @@
     "security": "on-demand",
     "lintTypes": "part-of-done",
     "flaky": "retry-flag",
-    "runners": {}
+    "runners": {},
+    "kindRunners": {
+      "lint": {
+        "cmd": "npx",
+        "args": [
+          "eslint",
+          "."
+        ]
+      }
+    }
   },
   "review": {
     "separateReviewer": true,

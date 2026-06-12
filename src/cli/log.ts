@@ -2,6 +2,7 @@ import pc from "picocolors";
 import type { JournalEvent } from "../engine/state/journal.js";
 import { journalFor } from "./materialize.js";
 import type { CheckResult } from "../engine/graph/types.js";
+import { proofStamp } from "../engine/verify/stamp.js";
 
 /**
  * `rivet log` (R-AUDIT-02) — the audit trail, readable. One line per journal event, chronological,
@@ -29,7 +30,8 @@ function describeEvent(e: JournalEvent): string {
       const r = d.result as CheckResult;
       const mark = r.passed ? "✅" : "❌";
       const flaky = r.flaky ? " (flaky)" : "";
-      return `${mark} check ${r.ref}${flaky}${r.sha ? ` @ ${r.sha.slice(0, 8)}` : ""} → ${String(d.taskId)}`;
+      // FIX-PROOF-04: the audit trail (and LEDGER's recent activity) stamps the tested tree.
+      return `${mark} check ${r.ref}${flaky}${proofStamp(r)} → ${String(d.taskId)}`;
     }
     case "task.created":
       return `📋 task ${String(d.id)} created — ${String(d.title)}`;
@@ -39,6 +41,10 @@ function describeEvent(e: JournalEvent): string {
       return `🔏 approval by ${String(d.approver)} — ${((d.taskIds as string[]) ?? []).join(", ")}`;
     case "task.bindings":
       return `🔗 task ${String(d.id)} bindings → [${((d.boundChecks as string[]) ?? []).join(", ")}]`;
+    case "verify.run": {
+      const steps = (d.steps as unknown[]) ?? [];
+      return `${d.passed ? "✅" : "❌"} verify ${steps.length} step(s)${proofStamp(d as { tree?: string; dirty?: boolean; sha?: string })}`;
+    }
     case "governance":
       return `🛡️ ${String(d.kind ?? "governance")} ${JSON.stringify({ ...d, kind: undefined })}`;
     case "note":
