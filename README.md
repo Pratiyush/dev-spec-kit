@@ -3,6 +3,7 @@
 > Spec-driven development with a **Verified Traceability Graph** — every requirement riveted to a passing check.
 
 Rivet is a spec-driven development tool you drive from **Claude Code** (Spec-Kit-compatible layouts).
+Built for Claude Code first; other assistants later.
 It turns a request into **EARS** acceptance criteria with `@check` bindings, derives evidence-bound
 tasks, and — unlike every other SDD tool — **proves** the requirement → code → test → PR edges with
 real executed checks. A task physically cannot be marked done while a bound check is failing or
