@@ -380,5 +380,6 @@
   a machine-local sibling dep must be an ABSOLUTE file: path (it was already machine-local by
   choice — the relative form only pretended to be portable).
 - Confidence: high (reproduced live) · Scope: global (any repo pairing file: deps with worktrees)
-- Promoted to: package.json (file:/Users/pratiyush/Github/revitify) + this entry; revisit at
+- Promoted to: package.json (link:/Users/pratiyush/Github/revitify — pnpm's link: protocol; bare
+  absolute file: mis-parses) + this entry; revisit at
   Phase E packaging when revitify ships to npm and the file: dep disappears entirely.
