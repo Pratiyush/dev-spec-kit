@@ -3,7 +3,12 @@ import { join } from "node:path";
 import pc from "picocolors";
 import { materialize, journalFor } from "./materialize.js";
 import { summarize, rollupRequirements } from "../engine/graph/build.js";
-import { lintQualifiedIds, lintCriteriaFormat, unboundObligations, requirementKind } from "../engine/spec/ears.js";
+import {
+  lintQualifiedIds,
+  lintCriteriaFormat,
+  unboundObligations,
+  requirementKind,
+} from "../engine/spec/ears.js";
 import { floorViolations } from "../engine/gatepacks.js";
 import { writeBoards } from "./boards.js";
 import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
@@ -16,11 +21,14 @@ import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/ind
  */
 export function graphBuild(opts: { refresh?: boolean }): void {
   const cwd = process.cwd();
-  if (!graphifyInstalled()) {
-    console.log(pc.yellow("graphify not installed — building spec/test overlay only"));
+  const m = materialize(cwd, { refresh: opts.refresh !== false });
+  // FEAT-REVITIFY-01: only the OPT-IN external provider can be missing; revitify is bundled.
+  if (m.config.graphify.provider === "graphify" && !graphifyInstalled()) {
+    console.log(
+      pc.yellow("graphify.provider is 'graphify' but it is not installed — spec/test overlay only"),
+    );
     console.log(pc.dim(`  → ${GRAPHIFY_INSTALL_HINT}`));
   }
-  const m = materialize(cwd, { refresh: opts.refresh !== false });
   if (m.requirements.length === 0) console.log(pc.yellow("no specs found in .rivet/specs/"));
 
   const s = summarize(m.vtg);

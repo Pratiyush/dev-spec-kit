@@ -292,7 +292,18 @@ export const RivetConfigSchema = z
             security: {
               sections: ["Security"],
               kinds: [],
-              triggers: ["auth", "login", "password", "token", "secret", "payment", "crypt", "session", "permission", "sql"],
+              triggers: [
+                "auth",
+                "login",
+                "password",
+                "token",
+                "secret",
+                "payment",
+                "crypt",
+                "session",
+                "permission",
+                "sql",
+              ],
             },
             contracts: { sections: ["API Contract"], kinds: ["api"], triggers: [] },
             nfr: { sections: ["NFR"], kinds: [], triggers: [] },
@@ -303,12 +314,16 @@ export const RivetConfigSchema = z
 
     graphify: z
       .object({
-        /** graphify output directory (gitignored, derived). */
+        /**
+         * FEAT-REVITIFY-01: who builds the code graph. "revitify" (default) is Rivet's bundled
+         * native-TS engine — zero pip, zero external installs; "graphify" shells out to the
+         * external Python tool (full multi-modal power) for those who opt in.
+         */
+        provider: z.enum(["revitify", "graphify"]).default("revitify"),
+        /** graph output directory (gitignored, derived). Same contract for both providers. */
         outDir: z.string().default("graphify-out"),
         /** How the code graph is kept fresh, using graphify's own tooling. */
-        freshness: z
-          .enum(["post-commit-hook", "update-on-run", "watch", "manual"])
-          .default("update-on-run"),
+        freshness: z.enum(["post-commit-hook", "update-on-run", "watch", "manual"]).default("update-on-run"),
       })
       .default({}),
   })

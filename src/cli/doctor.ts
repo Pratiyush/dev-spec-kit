@@ -16,7 +16,9 @@ export type Probe = (cmd: string) => string | null;
 /** Run a command and return trimmed stdout, or null if it fails / is missing. */
 function realProbe(cmd: string): string | null {
   try {
-    return execSync(cmd, { stdio: ["ignore", "pipe", "ignore"] }).toString().trim();
+    return execSync(cmd, { stdio: ["ignore", "pipe", "ignore"] })
+      .toString()
+      .trim();
   } catch {
     return null;
   }
@@ -54,7 +56,9 @@ export function doctorChecks(probe: Probe = realProbe): Check[] {
     {
       name: "graphify",
       ok: graphifyPresent,
-      detail: graphifyPresent ? "installed" : "missing — graph features disabled (Rivet still fully works)",
+      detail: graphifyPresent
+        ? "installed (external provider available)"
+        : "missing — graph features run on the bundled revitify provider; external graphify is opt-in (graphify.provider) and only then are its extras disabled (Rivet still fully works)",
       required: false,
       hint: GRAPHIFY_INSTALL_HINT,
     },
@@ -103,7 +107,9 @@ export function runDoctor(): void {
   if (stale.length > 0) {
     console.log(`\n  ${label("cleanup")} ${stale.length} isolation worktree(s) lying around:`);
     for (const p of stale) console.log(pc.dim(`      ${p}`));
-    console.log(pc.dim("      → clean up when merged: git worktree remove <path>  (wave dirs: rivet wave done <id>)"));
+    console.log(
+      pc.dim("      → clean up when merged: git worktree remove <path>  (wave dirs: rivet wave done <id>)"),
+    );
   }
   console.log("");
   if (missingRequired > 0) {

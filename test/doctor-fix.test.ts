@@ -20,8 +20,9 @@ describe("doctor: graphify is optional with consequences, not a required red", (
     expect(requiredMissing).toEqual([]);
   });
 
-  it("the consequence is stated (graph features off), not a hard stop", () => {
-    expect(`${graphify.detail} ${graphify.hint}`).toMatch(/graph features (off|disabled)/i);
+  it("the consequence is stated honestly: bundled revitify covers graph features, external is opt-in", () => {
+    expect(`${graphify.detail} ${graphify.hint}`).toMatch(/revitify/i);
+    expect(`${graphify.detail} ${graphify.hint}`).toMatch(/optional|opt-in/i);
   });
 });
 
