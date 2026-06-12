@@ -12,6 +12,7 @@ export default tseslint.config(
       "graphify-out/**",
       ".rivet/**",
       "hooks/**", // self-contained .mjs hooks, deliberately dependency-free
+      ".design/**", // design-session handoffs — reference material, kept verbatim
       "packages/*/dist/**",
     ],
   },

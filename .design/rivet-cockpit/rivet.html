@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<title>rivet — cockpit</title>
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('rivet-theme')||'light');}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"></link>
+<link rel="stylesheet" href="rivet.css"></link>
+</head>
+<body>
+
+<div class="app">
+  <!-- left rail (built from RIVET.nav) -->
+  <aside class="rail" id="rail"></aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="tbtn icon menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <div class="crumb" id="crumb"></div>
+      <div class="tb-right">
+        <div class="sync" id="sync"></div>
+        <button class="tbtn" id="jsonBtn">{ } JSON <span class="kbd">J</span></button>
+        <button class="tbtn icon" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+
+    <div class="scroll">
+      <section class="view" id="view-dashboard" data-screen-label="Dashboard"></section>
+      <section class="view" id="view-config" data-screen-label="Config"></section>
+    </div>
+  </div>
+</div>
+
+<!-- config save bar (fixed) -->
+<div class="savebar" id="savebar"></div>
+
+<!-- shared JSON drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer">
+  <div class="dr-head">
+    <span class="dt">📄 config.json</span>
+    <span class="dpath" id="drPath"></span>
+    <div class="dr-acts">
+      <button class="dr-copy" id="drCopy">⧉ Copy</button>
+      <button class="dr-x" id="drX" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="dr-body"><pre id="drPre"></pre></div>
+  <div class="dr-foot" id="drFoot"></div>
+</aside>
+
+<!-- mobile rail scrim + toast -->
+<div class="scrim-rail" id="railScrim"></div>
+<div class="toast" id="toast"></div>
+
+<!-- load order: data → core → views → bootstrap -->
+<script src="rivet.data.js"></script>
+<script src="rivet.core.js"></script>
+<script src="rivet.dashboard.js"></script>
+<script src="rivet.config.js"></script>
+<script src="rivet.app.js"></script>
+</body>
+</html>

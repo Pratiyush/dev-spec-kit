@@ -58,7 +58,7 @@
   },
   "packageManager": "pnpm@11.5.3",
   "lint-staged": {
-    "*.{ts,tsx,mjs,js}": [
+    "{src,test}/**/*.{ts,tsx,mjs,js}": [
       "eslint --fix",
       "prettier --write"
     ]

@@ -23,3 +23,13 @@ Three improvements, sequenced behind the config-studio design session:
 
 Schema groundwork to do during the port: migrate config comments → zod .describe() so the manifest
 the UI renders, the docs page, and the schema are ONE source of truth.
+
+---
+UPDATE 2026-06-12: the design landed — `.design/rivet-cockpit/` (checked in). ONE app shell covers
+BOTH surfaces (Dashboard + Config), rendering from a single `window.RIVET` object; contract:
+GET /api/state, POST /api/config with zod errors + GATE-PROTECT refusal — exactly the locked
+architecture. Port decision: recreate in Rivet's established zero-build vanilla pattern (static
+shell + RIVET data sidecar; the prototype is already vanilla), NOT a React/Vite SPA — the README's
+framework suggestion applies only when no environment exists, and ours does. Items 1+2 above merge
+into the cockpit port; the design's module split (data/core/dashboard/config/app) maps onto the
+generated shell + sidecar + the config server.
