@@ -540,7 +540,7 @@
       "label": "renderTracking",
       "meta": {
         "sourceFile": "src/cli/boards.ts",
-        "sourceLocation": "src/cli/boards.ts:65",
+        "sourceLocation": "src/cli/boards.ts:67",
         "community": 4
       }
     },
@@ -550,7 +550,7 @@
       "label": "writeBoards",
       "meta": {
         "sourceFile": "src/cli/boards.ts",
-        "sourceLocation": "src/cli/boards.ts:89",
+        "sourceLocation": "src/cli/boards.ts:91",
         "community": 4
       }
     },
@@ -587,7 +587,7 @@
       "label": "rel",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:22",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:23",
         "community": 4
       }
     },
@@ -597,7 +597,7 @@
       "label": "toast",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:45",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:49",
         "community": 4
       }
     },
@@ -607,7 +607,7 @@
       "label": "renderMarkdown",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:55",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:63",
         "community": 4
       }
     },
@@ -617,7 +617,7 @@
       "label": "buildSidebar",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:88",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:153",
         "community": 4
       }
     },
@@ -627,7 +627,7 @@
       "label": "refreshRailBadges",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:130",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:232",
         "community": 4
       }
     },
@@ -637,7 +637,7 @@
       "label": "go",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:144",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:246",
         "community": 4
       }
     },
@@ -647,7 +647,7 @@
       "label": "openRail",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:166",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:281",
         "community": 4
       }
     },
@@ -657,7 +657,7 @@
       "label": "closeRail",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:167",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:285",
         "community": 4
       }
     },
@@ -667,7 +667,7 @@
       "label": "renderSync",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:170",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:291",
         "community": 4
       }
     },
@@ -677,7 +677,7 @@
       "label": "applyTheme",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:176",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:302",
         "community": 4
       }
     },
@@ -687,7 +687,7 @@
       "label": "jsonHighlight",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:185",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:320",
         "community": 4
       }
     },
@@ -697,7 +697,7 @@
       "label": "renderDrawer",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:193",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:328",
         "community": 4
       }
     },
@@ -707,7 +707,7 @@
       "label": "openDrawer",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:199",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:337",
         "community": 4
       }
     },
@@ -717,7 +717,7 @@
       "label": "closeDrawer",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:200",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:344",
         "community": 4
       }
     },
@@ -795,7 +795,7 @@
       "label": "sidecarJs",
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
-        "sourceLocation": "src/cli/cockpit-data.ts:233",
+        "sourceLocation": "src/cli/cockpit-data.ts:238",
         "community": 4
       }
     },
@@ -805,7 +805,7 @@
       "label": "writeSidecar",
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
-        "sourceLocation": "src/cli/cockpit-data.ts:237",
+        "sourceLocation": "src/cli/cockpit-data.ts:246",
         "community": 4
       }
     },
@@ -865,16 +865,6 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:36",
-        "community": 4
-      }
-    },
-    {
-      "id": "sym:src/cli/cockpit.ts#liveSidecar",
-      "kind": "codeNode",
-      "label": "liveSidecar",
-      "meta": {
-        "sourceFile": "src/cli/cockpit.ts",
-        "sourceLocation": "src/cli/cockpit.ts:57",
         "community": 4
       }
     },
@@ -942,7 +932,7 @@
       "label": "dashboardCmd",
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:50",
+        "sourceLocation": "src/cli/dashboard.ts:53",
         "community": 4
       }
     },
@@ -1050,7 +1040,7 @@
       "label": "EMOJI",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "sourceLocation": "src/cli/emoji.ts:16",
+        "sourceLocation": "src/cli/emoji.ts:41",
         "community": 4
       }
     },
@@ -1060,7 +1050,7 @@
       "label": "EmojiKey",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "sourceLocation": "src/cli/emoji.ts:43",
+        "sourceLocation": "src/cli/emoji.ts:68",
         "community": 4
       }
     },
@@ -1070,7 +1060,7 @@
       "label": "resolvePlain",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "sourceLocation": "src/cli/emoji.ts:61",
+        "sourceLocation": "src/cli/emoji.ts:86",
         "community": 4
       }
     },
@@ -1080,7 +1070,7 @@
       "label": "plainMode",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "sourceLocation": "src/cli/emoji.ts:68",
+        "sourceLocation": "src/cli/emoji.ts:97",
         "community": 4
       }
     },
@@ -1090,7 +1080,7 @@
       "label": "labelWith",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "sourceLocation": "src/cli/emoji.ts:72",
+        "sourceLocation": "src/cli/emoji.ts:101",
         "community": 4
       }
     },
@@ -1100,7 +1090,7 @@
       "label": "label",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "sourceLocation": "src/cli/emoji.ts:77",
+        "sourceLocation": "src/cli/emoji.ts:106",
         "community": 4
       }
     },
@@ -1119,7 +1109,7 @@
       "label": "graphBuild",
       "meta": {
         "sourceFile": "src/cli/graph.ts",
-        "sourceLocation": "src/cli/graph.ts:22",
+        "sourceLocation": "src/cli/graph.ts:17",
         "community": 4
       }
     },
@@ -1197,7 +1187,7 @@
       "label": "ensureGitignore",
       "meta": {
         "sourceFile": "src/cli/init.ts",
-        "sourceLocation": "src/cli/init.ts:96",
+        "sourceLocation": "src/cli/init.ts:97",
         "community": 4
       }
     },
@@ -1362,7 +1352,7 @@
       "label": "trace",
       "meta": {
         "sourceFile": "src/cli/queries.ts",
-        "sourceLocation": "src/cli/queries.ts:22",
+        "sourceLocation": "src/cli/queries.ts:23",
         "community": 4
       }
     },
@@ -1372,7 +1362,7 @@
       "label": "drift",
       "meta": {
         "sourceFile": "src/cli/queries.ts",
-        "sourceLocation": "src/cli/queries.ts:50",
+        "sourceLocation": "src/cli/queries.ts:51",
         "community": 4
       }
     },
@@ -1382,7 +1372,26 @@
       "label": "affected",
       "meta": {
         "sourceFile": "src/cli/queries.ts",
-        "sourceLocation": "src/cli/queries.ts:102",
+        "sourceLocation": "src/cli/queries.ts:113",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/refresh-docs.ts",
+      "kind": "codeNode",
+      "label": "src/cli/refresh-docs.ts",
+      "meta": {
+        "sourceFile": "src/cli/refresh-docs.ts",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/refresh-docs.ts#refreshDocs",
+      "kind": "codeNode",
+      "label": "refreshDocs",
+      "meta": {
+        "sourceFile": "src/cli/refresh-docs.ts",
+        "sourceLocation": "src/cli/refresh-docs.ts:19",
         "community": 4
       }
     },
@@ -1459,7 +1468,7 @@
       "label": "taskStart",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:44",
+        "sourceLocation": "src/cli/tasks.ts:46",
         "community": 4
       }
     },
@@ -1469,7 +1478,7 @@
       "label": "taskDone",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:60",
+        "sourceLocation": "src/cli/tasks.ts:63",
         "community": 4
       }
     },
@@ -1479,7 +1488,7 @@
       "label": "checkRun",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:112",
+        "sourceLocation": "src/cli/tasks.ts:116",
         "community": 4
       }
     },
@@ -1489,7 +1498,7 @@
       "label": "status",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:182",
+        "sourceLocation": "src/cli/tasks.ts:186",
         "community": 4
       }
     },
@@ -1499,7 +1508,7 @@
       "label": "taskTrail",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:209",
+        "sourceLocation": "src/cli/tasks.ts:213",
         "community": 4
       }
     },
@@ -1547,7 +1556,7 @@
       "label": "defaultBranch",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:20",
+        "sourceLocation": "src/cli/wave.ts:22",
         "community": 4
       }
     },
@@ -1557,7 +1566,7 @@
       "label": "ensureUnionMerge",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:37",
+        "sourceLocation": "src/cli/wave.ts:39",
         "community": 4
       }
     },
@@ -1567,7 +1576,7 @@
       "label": "WorktreeReport",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:45",
+        "sourceLocation": "src/cli/wave.ts:48",
         "community": 4
       }
     },
@@ -1577,7 +1586,7 @@
       "label": "waveStartAt",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:52",
+        "sourceLocation": "src/cli/wave.ts:55",
         "community": 4
       }
     },
@@ -1587,7 +1596,7 @@
       "label": "WaveDoneReport",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:66",
+        "sourceLocation": "src/cli/wave.ts:69",
         "community": 4
       }
     },
@@ -1597,7 +1606,7 @@
       "label": "waveDoneAt",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:77",
+        "sourceLocation": "src/cli/wave.ts:80",
         "community": 4
       }
     },
@@ -1607,7 +1616,7 @@
       "label": "waveDone",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:108",
+        "sourceLocation": "src/cli/wave.ts:115",
         "community": 4
       }
     },
@@ -1617,7 +1626,7 @@
       "label": "wavePlan",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:116",
+        "sourceLocation": "src/cli/wave.ts:125",
         "community": 4
       }
     },
@@ -1627,7 +1636,7 @@
       "label": "waveStart",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "sourceLocation": "src/cli/wave.ts:131",
+        "sourceLocation": "src/cli/wave.ts:142",
         "community": 4
       }
     },
@@ -1661,12 +1670,22 @@
       }
     },
     {
+      "id": "sym:src/cli/web.ts#safeReadConfig",
+      "kind": "codeNode",
+      "label": "safeReadConfig",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:64",
+        "community": 4
+      }
+    },
+    {
       "id": "sym:src/cli/web.ts#deepMerge",
       "kind": "codeNode",
       "label": "deepMerge",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "sourceLocation": "src/cli/web.ts:62",
+        "sourceLocation": "src/cli/web.ts:74",
         "community": 4
       }
     },
@@ -1676,7 +1695,17 @@
       "label": "json",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "sourceLocation": "src/cli/web.ts:82",
+        "sourceLocation": "src/cli/web.ts:94",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#BodyTooLarge",
+      "kind": "codeNode",
+      "label": "BodyTooLarge",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:101",
         "community": 4
       }
     },
@@ -1686,7 +1715,17 @@
       "label": "readBody",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "sourceLocation": "src/cli/web.ts:87",
+        "sourceLocation": "src/cli/web.ts:104",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#sameOrigin",
+      "kind": "codeNode",
+      "label": "sameOrigin",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:120",
         "community": 4
       }
     },
@@ -1696,7 +1735,7 @@
       "label": "createCockpitServer",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "sourceLocation": "src/cli/web.ts:93",
+        "sourceLocation": "src/cli/web.ts:130",
         "community": 4
       }
     },
@@ -1706,7 +1745,7 @@
       "label": "handle",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "sourceLocation": "src/cli/web.ts:101",
+        "sourceLocation": "src/cli/web.ts:142",
         "community": 4
       }
     },
@@ -1716,7 +1755,7 @@
       "label": "webCmd",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "sourceLocation": "src/cli/web.ts:186",
+        "sourceLocation": "src/cli/web.ts:235",
         "community": 4
       }
     },
@@ -1953,7 +1992,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
-        "sourceLocation": "src/engine/approvals.ts:98",
+        "sourceLocation": "src/engine/approvals.ts:100",
         "community": 4
       }
     },
@@ -1963,7 +2002,7 @@
       "label": "gitConfig",
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
-        "sourceLocation": "src/engine/approvals.ts:103",
+        "sourceLocation": "src/engine/approvals.ts:105",
         "community": 4
       }
     },
@@ -2072,7 +2111,7 @@
       "label": "manifestFromSchema",
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
-        "sourceLocation": "src/engine/config-manifest.ts:286",
+        "sourceLocation": "src/engine/config-manifest.ts:291",
         "community": 4
       }
     },
@@ -2082,7 +2121,7 @@
       "label": "generateManifest",
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
-        "sourceLocation": "src/engine/config-manifest.ts:322",
+        "sourceLocation": "src/engine/config-manifest.ts:327",
         "community": 4
       }
     },
@@ -2278,7 +2317,7 @@
       "label": "floorViolations",
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
-        "sourceLocation": "src/engine/gatepacks.ts:54",
+        "sourceLocation": "src/engine/gatepacks.ts:61",
         "community": 4
       }
     },
@@ -2288,7 +2327,7 @@
       "label": "applyGateFloor",
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
-        "sourceLocation": "src/engine/gatepacks.ts:66",
+        "sourceLocation": "src/engine/gatepacks.ts:73",
         "community": 4
       }
     },
@@ -2376,7 +2415,7 @@
       "label": "VTGSummary",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:105",
+        "sourceLocation": "src/engine/graph/build.ts:119",
         "community": 4
       }
     },
@@ -2386,7 +2425,7 @@
       "label": "RequirementRollup",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:118",
+        "sourceLocation": "src/engine/graph/build.ts:132",
         "community": 4
       }
     },
@@ -2396,7 +2435,7 @@
       "label": "rollupRequirements",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:127",
+        "sourceLocation": "src/engine/graph/build.ts:141",
         "community": 4
       }
     },
@@ -2406,7 +2445,7 @@
       "label": "DriftTarget",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:155",
+        "sourceLocation": "src/engine/graph/build.ts:169",
         "community": 4
       }
     },
@@ -2416,7 +2455,7 @@
       "label": "driftTargets",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:162",
+        "sourceLocation": "src/engine/graph/build.ts:176",
         "community": 4
       }
     },
@@ -2426,7 +2465,7 @@
       "label": "summarize",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:182",
+        "sourceLocation": "src/engine/graph/build.ts:196",
         "community": 4
       }
     },
@@ -2535,7 +2574,7 @@
       "label": "unimplementedRequirements",
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
-        "sourceLocation": "src/engine/graph/types.ts:109",
+        "sourceLocation": "src/engine/graph/types.ts:106",
         "community": 4
       }
     },
@@ -2545,7 +2584,7 @@
       "label": "untestedCriteria",
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
-        "sourceLocation": "src/engine/graph/types.ts:114",
+        "sourceLocation": "src/engine/graph/types.ts:111",
         "community": 4
       }
     },
@@ -2555,7 +2594,7 @@
       "label": "blastRadius",
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
-        "sourceLocation": "src/engine/graph/types.ts:124",
+        "sourceLocation": "src/engine/graph/types.ts:119",
         "community": 4
       }
     },
@@ -2565,7 +2604,7 @@
       "label": "driftedEdges",
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
-        "sourceLocation": "src/engine/graph/types.ts:131",
+        "sourceLocation": "src/engine/graph/types.ts:126",
         "community": 4
       }
     },
@@ -2783,7 +2822,7 @@
       "label": "tokens",
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
-        "sourceLocation": "src/engine/learnwarn.ts:28",
+        "sourceLocation": "src/engine/learnwarn.ts:40",
         "community": 4
       }
     },
@@ -2793,7 +2832,7 @@
       "label": "matchOpenLessons",
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
-        "sourceLocation": "src/engine/learnwarn.ts:38",
+        "sourceLocation": "src/engine/learnwarn.ts:50",
         "community": 4
       }
     },
@@ -2978,7 +3017,7 @@
       "label": "Unlock",
       "meta": {
         "sourceFile": "src/engine/protect.ts",
-        "sourceLocation": "src/engine/protect.ts:45",
+        "sourceLocation": "src/engine/protect.ts:49",
         "community": 4
       }
     },
@@ -2988,7 +3027,7 @@
       "label": "relativeTo",
       "meta": {
         "sourceFile": "src/engine/protect.ts",
-        "sourceLocation": "src/engine/protect.ts:50",
+        "sourceLocation": "src/engine/protect.ts:54",
         "community": 4
       }
     },
@@ -2998,7 +3037,7 @@
       "label": "isProtectedPath",
       "meta": {
         "sourceFile": "src/engine/protect.ts",
-        "sourceLocation": "src/engine/protect.ts:55",
+        "sourceLocation": "src/engine/protect.ts:59",
         "community": 4
       }
     },
@@ -3226,7 +3265,7 @@
       "label": "classifyEars",
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
-        "sourceLocation": "src/engine/spec/ears.ts:110",
+        "sourceLocation": "src/engine/spec/ears.ts:111",
         "community": 4
       }
     },
@@ -3236,7 +3275,7 @@
       "label": "looksLikeEars",
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
-        "sourceLocation": "src/engine/spec/ears.ts:118",
+        "sourceLocation": "src/engine/spec/ears.ts:119",
         "community": 4
       }
     },
@@ -3246,7 +3285,7 @@
       "label": "isNegativeCriterion",
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
-        "sourceLocation": "src/engine/spec/ears.ts:130",
+        "sourceLocation": "src/engine/spec/ears.ts:131",
         "community": 4
       }
     },
@@ -3256,7 +3295,7 @@
       "label": "lintCriteriaFormat",
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
-        "sourceLocation": "src/engine/spec/ears.ts:138",
+        "sourceLocation": "src/engine/spec/ears.ts:139",
         "community": 4
       }
     },
@@ -3275,7 +3314,7 @@
       "label": "ScenarioState",
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
-        "sourceLocation": "src/engine/spec/parse.ts:36",
+        "sourceLocation": "src/engine/spec/parse.ts:42",
         "community": 4
       }
     },
@@ -3285,7 +3324,7 @@
       "label": "parseSpec",
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
-        "sourceLocation": "src/engine/spec/parse.ts:45",
+        "sourceLocation": "src/engine/spec/parse.ts:51",
         "community": 4
       }
     },
@@ -3295,7 +3334,7 @@
       "label": "parseSpecsDir",
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
-        "sourceLocation": "src/engine/spec/parse.ts:195",
+        "sourceLocation": "src/engine/spec/parse.ts:201",
         "community": 4
       }
     },
@@ -3661,7 +3700,7 @@
       "label": "expandIncludes",
       "meta": {
         "sourceFile": "src/engine/steering.ts",
-        "sourceLocation": "src/engine/steering.ts:50",
+        "sourceLocation": "src/engine/steering.ts:52",
         "community": 4
       }
     },
@@ -3671,7 +3710,7 @@
       "label": "LoadLawsOptions",
       "meta": {
         "sourceFile": "src/engine/steering.ts",
-        "sourceLocation": "src/engine/steering.ts:62",
+        "sourceLocation": "src/engine/steering.ts:64",
         "community": 4
       }
     },
@@ -3681,7 +3720,7 @@
       "label": "loadLaws",
       "meta": {
         "sourceFile": "src/engine/steering.ts",
-        "sourceLocation": "src/engine/steering.ts:71",
+        "sourceLocation": "src/engine/steering.ts:73",
         "community": 4
       }
     },
@@ -3867,7 +3906,7 @@
       "label": "hasDep",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:64",
+        "sourceLocation": "src/engine/verify/runner.ts:65",
         "community": 4
       }
     },
@@ -3877,7 +3916,7 @@
       "label": "pickRunner",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:80",
+        "sourceLocation": "src/engine/verify/runner.ts:81",
         "community": 4
       }
     },
@@ -3887,7 +3926,7 @@
       "label": "resolveCommand",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:103",
+        "sourceLocation": "src/engine/verify/runner.ts:106",
         "community": 4
       }
     },
@@ -3897,7 +3936,7 @@
       "label": "splitRef",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:136",
+        "sourceLocation": "src/engine/verify/runner.ts:148",
         "community": 4
       }
     },
@@ -3907,7 +3946,7 @@
       "label": "RunOptions",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:142",
+        "sourceLocation": "src/engine/verify/runner.ts:154",
         "community": 4
       }
     },
@@ -3917,7 +3956,7 @@
       "label": "RunnerUnavailableError",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:151",
+        "sourceLocation": "src/engine/verify/runner.ts:163",
         "community": 4
       }
     },
@@ -3927,7 +3966,7 @@
       "label": "execute",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:159",
+        "sourceLocation": "src/engine/verify/runner.ts:171",
         "community": 4
       }
     },
@@ -3937,7 +3976,7 @@
       "label": "runCheck",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:195",
+        "sourceLocation": "src/engine/verify/runner.ts:207",
         "community": 4
       }
     },
@@ -4045,7 +4084,7 @@
       "label": "runVerify",
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
-        "sourceLocation": "src/engine/verify/verify-all.ts:113",
+        "sourceLocation": "src/engine/verify/verify-all.ts:118",
         "community": 4
       }
     },
@@ -4145,6 +4184,35 @@
       }
     },
     {
+      "id": "file:test/cockpit-hardening.test.ts",
+      "kind": "codeNode",
+      "label": "test/cockpit-hardening.test.ts",
+      "meta": {
+        "sourceFile": "test/cockpit-hardening.test.ts",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/cockpit-hardening.test.ts#project",
+      "kind": "codeNode",
+      "label": "project",
+      "meta": {
+        "sourceFile": "test/cockpit-hardening.test.ts",
+        "sourceLocation": "test/cockpit-hardening.test.ts:23",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/cockpit-hardening.test.ts#serve",
+      "kind": "codeNode",
+      "label": "serve",
+      "meta": {
+        "sourceFile": "test/cockpit-hardening.test.ts",
+        "sourceLocation": "test/cockpit-hardening.test.ts:49",
+        "community": 5
+      }
+    },
+    {
       "id": "file:test/cockpit-server.test.ts",
       "kind": "codeNode",
       "label": "test/cockpit-server.test.ts",
@@ -4235,6 +4303,25 @@
       "meta": {
         "sourceFile": "test/default-stack.test.ts",
         "sourceLocation": "test/default-stack.test.ts:13",
+        "community": 5
+      }
+    },
+    {
+      "id": "file:test/docs-refresh.test.ts",
+      "kind": "codeNode",
+      "label": "test/docs-refresh.test.ts",
+      "meta": {
+        "sourceFile": "test/docs-refresh.test.ts",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/docs-refresh.test.ts#project",
+      "kind": "codeNode",
+      "label": "project",
+      "meta": {
+        "sourceFile": "test/docs-refresh.test.ts",
+        "sourceLocation": "test/docs-refresh.test.ts:22",
         "community": 5
       }
     },
@@ -5080,13 +5167,13 @@
       "from": "test:test/cli-ux.test.ts::audits cli invocations into the journal",
       "to": "REQUIREMENT_AUDIT-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-12T07:05:22.806Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:14.578Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5104,13 +5191,13 @@
       "from": "test:test/cli-ux.test.ts::does not create journals outside Rivet projects",
       "to": "REQUIREMENT_AUDIT-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T07:05:23.574Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:15.358Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5128,13 +5215,13 @@
       "from": "test:test/cli-ux.test.ts::renders the audit trail with per-type emoji",
       "to": "REQUIREMENT_AUDIT-02-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-12T07:05:24.335Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:16.123Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5152,13 +5239,13 @@
       "from": "test:test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
       "to": "REQUIREMENT_AUDIT-02-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-12T07:05:25.101Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:16.897Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5176,13 +5263,13 @@
       "from": "test:test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
       "to": "REQUIREMENT_PROG-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-12T07:05:25.863Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:17.667Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5200,13 +5287,13 @@
       "from": "test:test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
       "to": "REQUIREMENT_PROG-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-12T07:05:26.635Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:18.436Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5224,13 +5311,13 @@
       "from": "test:test/cli-ux.test.ts::does not create journals outside Rivet projects",
       "to": "NFR_AUDIT-03-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T07:05:23.574Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:15.358Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5248,13 +5335,13 @@
       "from": "test:test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
       "to": "REQUIREMENT_COCKPIT-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
         "passed": true,
-        "at": "2026-06-12T07:05:27.210Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:19.015Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5272,13 +5359,13 @@
       "from": "test:test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
       "to": "REQUIREMENT_COCKPIT-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
         "passed": true,
-        "at": "2026-06-12T07:05:27.791Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:19.602Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5296,13 +5383,13 @@
       "from": "test:test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
       "to": "REQUIREMENT_COCKPIT-01-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
         "passed": true,
-        "at": "2026-06-12T07:05:28.371Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:20.189Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5320,13 +5407,13 @@
       "from": "test:test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
       "to": "REQUIREMENT_COCKPIT-02-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
         "passed": true,
-        "at": "2026-06-12T07:05:29.309Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:21.150Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5344,13 +5431,13 @@
       "from": "test:test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
       "to": "REQUIREMENT_COCKPIT-02-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:05:30.247Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:22.104Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5368,13 +5455,13 @@
       "from": "test:test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
       "to": "REQUIREMENT_COCKPIT-02-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:05:31.180Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:23.048Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5392,13 +5479,13 @@
       "from": "test:test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
       "to": "REQUIREMENT_COCKPIT-03-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
         "passed": true,
-        "at": "2026-06-12T07:05:32.250Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:24.144Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5416,13 +5503,13 @@
       "from": "test:test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
       "to": "REQUIREMENT_COCKPIT-03-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
         "passed": true,
-        "at": "2026-06-12T07:05:33.485Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:25.416Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5440,13 +5527,13 @@
       "from": "test:test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
       "to": "REQUIREMENT_COCKPIT-04-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
         "passed": true,
-        "at": "2026-06-12T07:05:34.978Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:27.188Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5464,14 +5551,14 @@
       "from": "test:test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
       "to": "REQUIREMENT_COCKPIT-04-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
         "passed": true,
-        "at": "2026-06-12T07:20:23.464Z",
-        "sha": "925c0e735d7c06b4643f40413c6d7e3a6de9ccd4",
-        "tree": "bad3adce4820bf4ee2f49bd7927495a171aa6d33",
-        "dirty": true,
+        "at": "2026-06-12T07:28:28.369Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
+        "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -5488,13 +5575,13 @@
       "from": "test:test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
       "to": "REQUIREMENT_COCKPIT-05-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
         "passed": true,
-        "at": "2026-06-12T07:05:36.908Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:29.227Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5512,13 +5599,13 @@
       "from": "test:test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
       "to": "REQUIREMENT_COCKPIT-05-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
         "passed": true,
-        "at": "2026-06-12T07:05:37.758Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:30.089Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5536,13 +5623,13 @@
       "from": "test:test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
       "to": "REQUIREMENT_COCKPIT-05-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
         "passed": true,
-        "at": "2026-06-12T07:05:38.670Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:31.025Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5560,13 +5647,13 @@
       "from": "test:test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
       "to": "REQUIREMENT_COCKPIT-05-AC4",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
         "passed": true,
-        "at": "2026-06-12T07:05:39.606Z",
-        "sha": "e28dc1fbbb5cbb623483742267c9b18de8531ed9",
-        "tree": "c6c5cfce3014c3fa47118e17de039f8fda1ddfde",
+        "at": "2026-06-12T07:28:31.978Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
         "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
@@ -5584,14 +5671,14 @@
       "from": "test:test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
       "to": "REQUIREMENT_DOCS-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:19:24.555Z",
-        "sha": "925c0e735d7c06b4643f40413c6d7e3a6de9ccd4",
-        "tree": "d8177340cd417186f65951fc95af07e82db617f6",
-        "dirty": true,
+        "at": "2026-06-12T07:28:33.021Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
+        "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -5608,14 +5695,14 @@
       "from": "test:test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
       "to": "REQUIREMENT_DOCS-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
         "passed": true,
-        "at": "2026-06-12T07:19:26.608Z",
-        "sha": "925c0e735d7c06b4643f40413c6d7e3a6de9ccd4",
-        "tree": "d8177340cd417186f65951fc95af07e82db617f6",
-        "dirty": true,
+        "at": "2026-06-12T07:28:34.236Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
+        "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -5632,14 +5719,14 @@
       "from": "test:test/docs-refresh.test.ts::read-only queries never create or touch documents",
       "to": "REQUIREMENT_DOCS-01-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::read-only queries never create or touch documents",
         "passed": true,
-        "at": "2026-06-12T07:19:28.353Z",
-        "sha": "925c0e735d7c06b4643f40413c6d7e3a6de9ccd4",
-        "tree": "d8177340cd417186f65951fc95af07e82db617f6",
-        "dirty": true,
+        "at": "2026-06-12T07:28:35.151Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
+        "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -5656,14 +5743,14 @@
       "from": "test:test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
       "to": "REQUIREMENT_DOCS-01-AC4",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:19:30.138Z",
-        "sha": "925c0e735d7c06b4643f40413c6d7e3a6de9ccd4",
-        "tree": "d8177340cd417186f65951fc95af07e82db617f6",
-        "dirty": true,
+        "at": "2026-06-12T07:28:36.123Z",
+        "sha": "f6e7dc549adf3dcf5bba9118c0520a5c33433fb1",
+        "tree": "d81b7bc7de2fa5a7ae81899a7849949cbced8737",
+        "dirty": false,
         "stack": "node-vitest",
         "kind": "unit"
       }
