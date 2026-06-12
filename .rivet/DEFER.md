@@ -35,3 +35,10 @@
 - **Why deferred:** Pratiyush (2026-06-12): the REAL app-dogfood phase (him + master prompt)
   supersedes a synthetic dry run.
 - **To revisit:** only if the app phase stalls and we need a cheap rehearsal first.
+
+## Behavioral cockpit e2e (Playwright against `rivet web`)
+- **Why deferred:** the cockpit shell is browser-only vanilla JS; FIX-COCKPIT-ASSETS-01 pins the
+  json-control (#4) and auto-reload-state (#9) wiring with a source-presence regression guard, which
+  covers the regression risk. A true behavioral test needs a browser driver.
+- **To revisit:** Phase D pre-publish hardening, alongside the docs pass — add Playwright (already
+  the recommended E2E tool in the electron/init best-practice pack) and drive a real `rivet web`.

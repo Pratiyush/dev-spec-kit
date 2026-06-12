@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**61/61 done (100%)**
+**62/62 done (100%)**
 
 - ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢
   📋 Evidence — FIX-ROUTE-01
@@ -16,19 +16,19 @@
   📋 Evidence — R-AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:14.578Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:10.127Z |
 
 - ✅ **R-AUDIT-02** the audit trail is readable 🟢
   📋 Evidence — R-AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:16.123Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:11.698Z |
 
 - ✅ **R-PROG-01** progress with emoji after completing a task 🟢
   📋 Evidence — R-PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:17.667Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:13.242Z |
 
 - ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢
   📋 Evidence — FIX-PRMATH-01
@@ -238,22 +238,22 @@
   📋 Evidence — REQUIREMENT_AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:14.578Z |
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:15.358Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:10.127Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:10.921Z |
 
 - ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢
   📋 Evidence — REQUIREMENT_AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:16.123Z |
-  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:16.897Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:11.698Z |
+  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:12.466Z |
 
 - ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢
   📋 Evidence — REQUIREMENT_PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:17.667Z |
-  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:18.436Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:13.242Z |
+  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:14.020Z |
 
 - ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢
   📋 Evidence — FEAT-GHERKIN-01
@@ -265,7 +265,7 @@
   📋 Evidence — NFR_AUDIT-03
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:15.358Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:10.921Z |
 
 - ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢
   📋 Evidence — FEAT-STACK-01
@@ -338,55 +338,61 @@
   📋 Evidence — REQUIREMENT_COCKPIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:19.015Z |
-  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:19.602Z |
-  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:20.189Z |
+  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:14.606Z |
+  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:15.195Z |
+  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:15.782Z |
 
 - ✅ **REQUIREMENT_COCKPIT-02** the RIVET data sidecar is the project's truth 🟢🟢🟢
   📋 Evidence — REQUIREMENT_COCKPIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:21.150Z |
-  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:22.104Z |
-  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:23.048Z |
+  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:16.737Z |
+  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:17.698Z |
+  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:18.655Z |
 
 - ✅ **REQUIREMENT_COCKPIT-03** static shell emission, written once 🟢🟢
   📋 Evidence — REQUIREMENT_COCKPIT-03
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:24.144Z |
-  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:25.416Z |
+  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:19.760Z |
+  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:21.048Z |
 
 - ✅ **REQUIREMENT_COCKPIT-04** live updates after every proof event 🟢🟢
   📋 Evidence — REQUIREMENT_COCKPIT-04
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:27.188Z |
-  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:28.369Z |
+  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:22.826Z |
+  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:24.024Z |
 
 - ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢
   📋 Evidence — REQUIREMENT_COCKPIT-05
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:29.227Z |
-  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:30.089Z |
-  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:31.025Z |
-  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:31.978Z |
+  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:24.887Z |
+  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:25.754Z |
+  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:26.677Z |
+  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:27.624Z |
 
 - ✅ **REQUIREMENT_DOCS-01** every mutation refreshes every generated document 🟢🟢🟢🟢
   📋 Evidence — REQUIREMENT_DOCS-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:33.021Z |
-  | `test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:34.236Z |
-  | `test/docs-refresh.test.ts::read-only queries never create or touch documents` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:35.151Z |
-  | `test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar` | unit | ✅ green | tree d81b7bc7 | 2026-06-12T07:28:36.123Z |
+  | `test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:28.659Z |
+  | `test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:29.883Z |
+  | `test/docs-refresh.test.ts::read-only queries never create or touch documents` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:30.803Z |
+  | `test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:38:31.761Z |
 
 - ✅ **FIX-COCKPIT-SEC-01** cockpit hardening: 12 adversarial-review findings (localhost bind, unlock match, parsed-write, body cap, CSRF, etc.) 🟢
   📋 Evidence — FIX-COCKPIT-SEC-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cockpit-hardening.test.ts` | unit | ✅ green | tree d81b7bc7* | 2026-06-12T07:27:26.942Z |
+  | `test/cockpit-hardening.test.ts` | unit | 🟣 stale | tree d81b7bc7* | 2026-06-12T07:27:26.942Z |
+
+- ✅ **FIX-COCKPIT-ASSETS-01** regression guard for browser-asset findings #4 (json control) + #9 (auto-reload state) 🟢
+  📋 Evidence — FIX-COCKPIT-ASSETS-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/cockpit-assets.test.ts` | unit | ✅ green | tree 261f2041* | 2026-06-12T07:37:44.774Z |
 
 
 ## Approvals & governance
@@ -408,13 +414,13 @@
 
 ## Recent activity
 
-- [2m2026-06-12 07:28:31[22m  ✅ check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode @ tree d81b7bc7 → REQUIREMENT_COCKPIT-05
-- [2m2026-06-12 07:28:33[22m  ✅ check test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar @ tree d81b7bc7 → REQUIREMENT_DOCS-01
-- [2m2026-06-12 07:28:34[22m  ✅ check test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving @ tree d81b7bc7 → REQUIREMENT_DOCS-01
-- [2m2026-06-12 07:28:35[22m  ✅ check test/docs-refresh.test.ts::read-only queries never create or touch documents @ tree d81b7bc7 → REQUIREMENT_DOCS-01
-- [2m2026-06-12 07:28:36[22m  ✅ check test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar @ tree d81b7bc7 → REQUIREMENT_DOCS-01
-- [2m2026-06-12 07:28:47[22m  🧾 graph build  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:29:02[22m  🧾 drift  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:29:02[22m  🧾 verify  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:29:08[22m  ✅ verify 4 step(s) @ tree d81b7bc7
-- [2m2026-06-12 07:29:08[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:38:24[22m  ✅ check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events @ tree 261f2041* → REQUIREMENT_COCKPIT-04
+- [2m2026-06-12 07:38:24[22m  ✅ check test/cockpit-server.test.ts::a valid POST saves config.json and journals governance @ tree 261f2041* → REQUIREMENT_COCKPIT-05
+- [2m2026-06-12 07:38:25[22m  ✅ check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes @ tree 261f2041* → REQUIREMENT_COCKPIT-05
+- [2m2026-06-12 07:38:26[22m  ✅ check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint @ tree 261f2041* → REQUIREMENT_COCKPIT-05
+- [2m2026-06-12 07:38:27[22m  ✅ check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode @ tree 261f2041* → REQUIREMENT_COCKPIT-05
+- [2m2026-06-12 07:38:28[22m  ✅ check test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar @ tree 261f2041* → REQUIREMENT_DOCS-01
+- [2m2026-06-12 07:38:29[22m  ✅ check test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving @ tree 261f2041* → REQUIREMENT_DOCS-01
+- [2m2026-06-12 07:38:30[22m  ✅ check test/docs-refresh.test.ts::read-only queries never create or touch documents @ tree 261f2041* → REQUIREMENT_DOCS-01
+- [2m2026-06-12 07:38:31[22m  ✅ check test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar @ tree 261f2041* → REQUIREMENT_DOCS-01
+- [2m2026-06-12 07:38:41[22m  🧾 graph build  [Pratiyush Kumar Singh]
