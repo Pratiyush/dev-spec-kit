@@ -31,8 +31,11 @@ file is read and written by the CLI — the UI must treat the disk as the source
   (`{ blocked: "GATE-PROTECT-01", reason, unlockHint: "rivet unlock .rivet/config.json --minutes 30" }`).
   Design that refusal state — it is a feature, not an error: the moat must not be editable by the
   thing it gates.
-- Opened as file:// (no server): everything renders, Save is disabled with a hint
-  ("read-only — run `rivet config --web` to edit").
+- Opened as file:// (no server): everything renders READ-ONLY from a script sidecar
+  (`config-data.js` → `window.RIVET_CONFIG_DATA = {...}`, same pattern as the dashboard's
+  `dashboard-data.js` — file:// cannot fetch() JSON, script tags work). Save is disabled with a
+  hint ("read-only — run `rivet config --web` to edit"). The SERVER exists only for the write
+  path: reads are static everywhere.
 
 ## The data contract (render from exactly this; sample values included)
 ```js

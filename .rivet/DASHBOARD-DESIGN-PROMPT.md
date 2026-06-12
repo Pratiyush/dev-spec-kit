@@ -19,6 +19,13 @@ dashboard is the cockpit where you SEE that truth.
    notes.
 
 ## The data contract (render from exactly this; sample values included)
+
+> ARCHITECTURE (2026-06-12, Pratiyush): the dashboard is a STATIC SHELL written once; the data
+> arrives as a sibling script sidecar the CLI keeps rewriting — `dashboard-data.js` containing
+> `window.RIVET_DATA = {...}` — loaded via `<script src="dashboard-data.js">` (file:// cannot
+> fetch() a .json, but script tags work). Auto-reload every DATA.refreshSeconds (default 15) via
+> location.reload(); persist active tab/filters/scroll in localStorage so reloads are invisible.
+> For the design session: embed DATA inline exactly as below — the port swaps it for the sidecar.
 ```js
 const DATA = {
   project: "rivet",
