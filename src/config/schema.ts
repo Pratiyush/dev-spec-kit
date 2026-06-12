@@ -221,6 +221,8 @@ export const RivetConfigSchema = z
     dashboard: z
       .object({
         enabled: z.boolean().default(true),
+        /** FEAT-COCKPIT: how often the cockpit shell reloads its data sidecar (seconds). */
+        refreshSeconds: z.number().int().min(5).max(300).default(15),
         form: z.enum(["web", "editor", "both"]).default("web"),
         updates: z.enum(["live", "on-demand"]).default("on-demand"),
         notify: z
