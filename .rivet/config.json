@@ -63,7 +63,16 @@
     "security": "on-demand",
     "lintTypes": "part-of-done",
     "flaky": "retry-flag",
-    "runners": {}
+    "runners": {},
+    "kindRunners": {
+      "lint": {
+        "cmd": "npx",
+        "args": [
+          "eslint",
+          "."
+        ]
+      }
+    }
   },
   "review": {
     "separateReviewer": true,

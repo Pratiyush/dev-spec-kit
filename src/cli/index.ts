@@ -72,7 +72,11 @@ program
   .command("init")
   .description("Initialize Rivet in the current project (.rivet/ config, laws, specs, journal)")
   .option("-f, --force", "overwrite the existing Rivet config")
-  .action(safe((opts: { force?: boolean }) => runInit(opts)));
+  .option(
+    "-p, --platforms <list>",
+    "comma-separated codebase platforms (typescript,electron,python,…) — seeds best-practice law packs",
+  )
+  .action(safe((opts: { force?: boolean; platforms?: string }) => runInit(opts)));
 
 const task = program.command("task").description("Evidence-bound tasks (done requires green checks)");
 task

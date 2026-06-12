@@ -1,5 +1,20 @@
 import { z } from "zod";
 
+/** Codebase platforms (descriptive) — exported so init --platforms can validate input. */
+export const PLATFORM_VALUES = [
+  "java-maven",
+  "java-gradle",
+  "spring",
+  "quarkus",
+  "node",
+  "typescript",
+  "electron",
+  "react",
+  "next",
+  "angular",
+  "python",
+] as const;
+
 /**
  * The Rivet per-project configuration — the "config-driven policy engine".
  *
@@ -20,23 +35,7 @@ export const RivetConfigSchema = z
          * belong to `check run --stack` / verify.runners. (Renamed from `stacks`; the old key is
          * ignored harmlessly. Dogfood lesson: one word must not name two disjoint enums.)
          */
-        platforms: z
-          .array(
-            z.enum([
-              "java-maven",
-              "java-gradle",
-              "spring",
-              "quarkus",
-              "node",
-              "typescript",
-              "electron",
-              "react",
-              "next",
-              "angular",
-              "python",
-            ]),
-          )
-          .default([]),
+        platforms: z.array(z.enum(PLATFORM_VALUES)).default([]),
       })
       .default({}),
 

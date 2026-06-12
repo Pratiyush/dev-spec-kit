@@ -98,7 +98,7 @@ export function parseSpec(content: string, warnings?: string[]): Requirement[] {
   };
 
   for (const raw of content.split(/\r?\n/)) {
-    let line = raw.trim();
+    const line = raw.trim();
     if (FENCE.test(line)) {
       inFence = !inFence;
       continue;

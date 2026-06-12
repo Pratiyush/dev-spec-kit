@@ -1,7 +1,7 @@
 {
   "name": "rivet",
   "version": "0.0.1",
-  "description": "Rivet — spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
+  "description": "Rivet \u2014 spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
   "type": "module",
   "bin": {
     "rivet": "dist/cli/index.js"
@@ -20,7 +20,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "start": "node dist/cli/index.js"
+    "start": "node dist/cli/index.js",
+    "lint": "eslint .",
+    "prepare": "husky"
   },
   "dependencies": {
     "commander": "^12.1.0",
@@ -29,8 +31,13 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "eslint": "^10.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.8.4",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
+    "typescript-eslint": "^8.61.0",
     "vitest": "^2.1.8"
   },
   "keywords": [
@@ -48,5 +55,11 @@
     "type": "git",
     "url": "git+https://github.com/Pratiyush/llm-dev-kit.git"
   },
-  "packageManager": "pnpm@11.5.3"
+  "packageManager": "pnpm@11.5.3",
+  "lint-staged": {
+    "*.{ts,tsx,mjs,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
 }

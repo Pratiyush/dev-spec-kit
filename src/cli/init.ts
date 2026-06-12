@@ -1,7 +1,9 @@
 import { existsSync, mkdirSync, writeFileSync, readFileSync, appendFileSync } from "node:fs";
 import { join } from "node:path";
 import pc from "picocolors";
-import { defaultConfig } from "../config/schema.js";
+import { defaultConfig, PLATFORM_VALUES } from "../config/schema.js";
+import { seedPractices } from "../engine/practices.js";
+import { label } from "./emoji.js";
 
 const LAWS_TEMPLATE = `# Project Laws
 
@@ -22,11 +24,26 @@ const LAWS_TEMPLATE = `# Project Laws
 
 interface InitOptions {
   force?: boolean;
+  platforms?: string;
+}
+
+/** Parse + validate the --platforms comma list against the schema vocabulary. */
+function parsePlatforms(raw: string): string[] {
+  const platforms = raw
+    .split(",")
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const bad = platforms.filter((p) => !(PLATFORM_VALUES as readonly string[]).includes(p));
+  if (bad.length > 0) {
+    throw new Error(`unknown platform(s): ${bad.join(", ")} — allowed: ${PLATFORM_VALUES.join(", ")}`);
+  }
+  return platforms;
 }
 
 /**
  * `rivet init` — initialize Rivet in the current project. Creates the committed `.rivet/` durable
- * state (config, laws, specs, journal) and ensures graphify's derived output is gitignored.
+ * state (config, laws, specs, journal), seeds per-platform best-practice law packs
+ * (FEAT-INITPACKS-01), and ensures graphify's derived output is gitignored.
  */
 export function runInit(opts: InitOptions): void {
   const cwd = process.cwd();
@@ -34,9 +51,19 @@ export function runInit(opts: InitOptions): void {
   const configPath = join(rivetDir, "config.json");
   const lawsPath = join(rivetDir, "laws.md");
   const journalPath = join(rivetDir, "journal.jsonl");
+  const platforms = opts.platforms ? parsePlatforms(opts.platforms) : [];
 
   if (existsSync(configPath) && !opts.force) {
-    console.log(pc.yellow("Rivet is already initialized here. Use --force to overwrite the config."));
+    if (platforms.length === 0) {
+      console.log(pc.yellow("Rivet is already initialized here. Use --force to overwrite the config."));
+      return;
+    }
+    // Re-run with --platforms: update ONLY project.platforms (never clobber a tuned config).
+    const existing = JSON.parse(readFileSync(configPath, "utf8")) as { project?: Record<string, unknown> };
+    existing.project = { ...(existing.project ?? {}), platforms };
+    writeFileSync(configPath, JSON.stringify(existing, null, 2) + "\n");
+    const packs = seedPractices(cwd, platforms, false);
+    printSeeded(platforms, packs);
     return;
   }
 
@@ -44,7 +71,9 @@ export function runInit(opts: InitOptions): void {
   mkdirSync(join(rivetDir, "intake"), { recursive: true });
   mkdirSync(join(rivetDir, "cache"), { recursive: true });
 
-  writeFileSync(configPath, JSON.stringify(defaultConfig(), null, 2) + "\n");
+  const config = defaultConfig();
+  if (platforms.length > 0) config.project.platforms = platforms as never;
+  writeFileSync(configPath, JSON.stringify(config, null, 2) + "\n");
   if (!existsSync(lawsPath) || opts.force) writeFileSync(lawsPath, LAWS_TEMPLATE);
   if (!existsSync(journalPath)) writeFileSync(journalPath, "");
 
@@ -53,7 +82,14 @@ export function runInit(opts: InitOptions): void {
 
   console.log(pc.green("✓ Initialized Rivet in ") + pc.bold(".rivet/"));
   console.log(pc.dim("  config.json · laws.md · specs/ · journal.jsonl"));
+  if (platforms.length > 0) printSeeded(platforms, seedPractices(cwd, platforms, opts.force ?? false));
   console.log("\nNext: " + pc.bold("rivet doctor") + pc.dim("  (check prerequisites, including graphify)"));
+}
+
+function printSeeded(platforms: string[], packs: { seeded: string[]; skipped: string[] }): void {
+  console.log(`${label("scaffold")} platforms: ${platforms.join(", ")}`);
+  for (const f of packs.seeded) console.log(pc.green(`  + .rivet/laws/${f}`));
+  for (const f of packs.skipped) console.log(pc.dim(`  = .rivet/laws/${f} (exists — kept; --force re-seeds)`));
 }
 
 /** Append any missing entries to the project's .gitignore (idempotent). */
