@@ -414,13 +414,13 @@
 
 ## Recent activity
 
-- [2m2026-06-12 07:38:24[22m  ✅ check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events @ tree 261f2041* → REQUIREMENT_COCKPIT-04
-- [2m2026-06-12 07:38:24[22m  ✅ check test/cockpit-server.test.ts::a valid POST saves config.json and journals governance @ tree 261f2041* → REQUIREMENT_COCKPIT-05
-- [2m2026-06-12 07:38:25[22m  ✅ check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes @ tree 261f2041* → REQUIREMENT_COCKPIT-05
-- [2m2026-06-12 07:38:26[22m  ✅ check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint @ tree 261f2041* → REQUIREMENT_COCKPIT-05
 - [2m2026-06-12 07:38:27[22m  ✅ check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode @ tree 261f2041* → REQUIREMENT_COCKPIT-05
 - [2m2026-06-12 07:38:28[22m  ✅ check test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar @ tree 261f2041* → REQUIREMENT_DOCS-01
 - [2m2026-06-12 07:38:29[22m  ✅ check test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving @ tree 261f2041* → REQUIREMENT_DOCS-01
 - [2m2026-06-12 07:38:30[22m  ✅ check test/docs-refresh.test.ts::read-only queries never create or touch documents @ tree 261f2041* → REQUIREMENT_DOCS-01
 - [2m2026-06-12 07:38:31[22m  ✅ check test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar @ tree 261f2041* → REQUIREMENT_DOCS-01
 - [2m2026-06-12 07:38:41[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:39:06[22m  🧾 drift  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:39:07[22m  🧾 verify  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:39:12[22m  ✅ verify 4 step(s) @ tree 261f2041
+- [2m2026-06-12 07:39:12[22m  🧾 graph build  [Pratiyush Kumar Singh]
