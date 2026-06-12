@@ -5,7 +5,10 @@ import type { CheckResult } from "../graph/types.js";
  * times; if it eventually passes, the result is marked `flaky: true` — it counts as proof, but the
  * flakiness is recorded, never hidden.
  */
-export function runWithRetry(run: () => CheckResult, retries: number): { result: CheckResult; attempts: number } {
+export function runWithRetry(
+  run: () => CheckResult,
+  retries: number,
+): { result: CheckResult; attempts: number } {
   let attempts = 1;
   let result = run();
   while (!result.passed && attempts <= retries) {

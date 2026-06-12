@@ -11,10 +11,7 @@ describe("graphify loader (tolerant of d3-style shapes)", () => {
     writeFileSync(
       p,
       JSON.stringify({
-        nodes: [
-          { id: "SessionService", type: "class" },
-          { name: "AuthController" },
-        ],
+        nodes: [{ id: "SessionService", type: "class" }, { name: "AuthController" }],
         links: [{ source: { id: "AuthController" }, target: "SessionService" }],
       }),
     );

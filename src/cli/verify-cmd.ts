@@ -17,7 +17,9 @@ export function verifyCmd(): void {
   console.log(pc.bold(`\n${label("build")} rivet verify — build ALL + run ALL kinds (full suites)\n`));
   const run = runVerify(cwd, config);
   if (run.steps.length === 0) {
-    console.log(pc.yellow("nothing to verify — configure verify.buildAll / verify.kinds / verify.kindRunners"));
+    console.log(
+      pc.yellow("nothing to verify — configure verify.buildAll / verify.kinds / verify.kindRunners"),
+    );
     process.exitCode = 1;
     return;
   }

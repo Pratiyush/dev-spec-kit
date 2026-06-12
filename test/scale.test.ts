@@ -97,7 +97,10 @@ describe("audit gating (memory.journal = milestones)", () => {
   function project(mode: "full" | "milestones"): string {
     const dir = mkdtempSync(join(tmpdir(), "rivet-gate-audit-"));
     mkdirSync(join(dir, ".rivet"), { recursive: true });
-    writeFileSync(join(dir, ".rivet", "config.json"), JSON.stringify({ version: 1, memory: { journal: mode } }));
+    writeFileSync(
+      join(dir, ".rivet", "config.json"),
+      JSON.stringify({ version: 1, memory: { journal: mode } }),
+    );
     return dir;
   }
 

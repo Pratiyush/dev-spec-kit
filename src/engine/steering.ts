@@ -40,7 +40,9 @@ function parseScoped(text: string): ScopedFile {
     const kv = line.match(/^(\w+):\s*(.+)$/);
     if (kv) fm[kv[1]!] = kv[2]!.trim();
   }
-  const inclusion = (["always", "fileMatch", "manual"].includes(fm.inclusion ?? "") ? fm.inclusion : "always") as ScopedFile["inclusion"];
+  const inclusion = (
+    ["always", "fileMatch", "manual"].includes(fm.inclusion ?? "") ? fm.inclusion : "always"
+  ) as ScopedFile["inclusion"];
   const scoped: ScopedFile = { inclusion, body: text.slice(m[0].length) };
   if (fm.pattern !== undefined) scoped.pattern = fm.pattern;
   if (fm.name !== undefined) scoped.name = fm.name;
@@ -79,12 +81,17 @@ export function loadLaws(projectDir: string, opts: LoadLawsOptions = {}): Effect
 
   const projectLaws = join(projectDir, ".rivet", "laws.md");
   if (existsSync(projectLaws)) {
-    sections.push({ source: "project", body: expandIncludes(readFileSync(projectLaws, "utf8"), projectDir, "laws.md", warnings) });
+    sections.push({
+      source: "project",
+      body: expandIncludes(readFileSync(projectLaws, "utf8"), projectDir, "laws.md", warnings),
+    });
   }
 
   const scopedDir = join(projectDir, ".rivet", "laws");
   if (existsSync(scopedDir)) {
-    for (const f of readdirSync(scopedDir).filter((f) => f.endsWith(".md")).sort()) {
+    for (const f of readdirSync(scopedDir)
+      .filter((f) => f.endsWith(".md"))
+      .sort()) {
       const scoped = parseScoped(readFileSync(join(scopedDir, f), "utf8"));
       const active =
         scoped.inclusion === "always" ||
@@ -92,9 +99,13 @@ export function loadLaws(projectDir: string, opts: LoadLawsOptions = {}): Effect
           opts.file !== undefined &&
           scoped.pattern !== undefined &&
           new RegExp(scoped.pattern).test(opts.file)) ||
-        (scoped.inclusion === "manual" && (opts.summon ?? []).includes(scoped.name ?? f.replace(/\.md$/, "")));
+        (scoped.inclusion === "manual" &&
+          (opts.summon ?? []).includes(scoped.name ?? f.replace(/\.md$/, "")));
       if (active) {
-        sections.push({ source: `laws/${f}`, body: expandIncludes(scoped.body, projectDir, `laws/${f}`, warnings) });
+        sections.push({
+          source: `laws/${f}`,
+          body: expandIncludes(scoped.body, projectDir, `laws/${f}`, warnings),
+        });
       }
     }
   }

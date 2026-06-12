@@ -28,21 +28,19 @@ describe("resolveCommand — stack mappings", () => {
 
 describe("resolveCommand — config-supplied runners (code never changes, only input)", () => {
   it("substitutes {ref}/{file}/{name} placeholders in an override", () => {
-    const r = resolveCommand(
-      { kind: "unit", ref: "pkg/foo_test.go::TestBar" },
-      "go-test",
-      { cmd: "go", args: ["test", "{file}", "-run={name}"] },
-    );
+    const r = resolveCommand({ kind: "unit", ref: "pkg/foo_test.go::TestBar" }, "go-test", {
+      cmd: "go",
+      args: ["test", "{file}", "-run={name}"],
+    });
     expect(r.cmd).toBe("go");
     expect(r.args).toEqual(["test", "pkg/foo_test.go", "-run=TestBar"]);
   });
 
   it("drops {name}-bearing args when the ref has no name part", () => {
-    const r = resolveCommand(
-      { kind: "unit", ref: "pkg/foo_test.go" },
-      "go-test",
-      { cmd: "go", args: ["test", "{file}", "-run={name}"] },
-    );
+    const r = resolveCommand({ kind: "unit", ref: "pkg/foo_test.go" }, "go-test", {
+      cmd: "go",
+      args: ["test", "{file}", "-run={name}"],
+    });
     expect(r.args).toEqual(["test", "pkg/foo_test.go"]);
   });
 

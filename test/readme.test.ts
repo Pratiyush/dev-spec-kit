@@ -13,7 +13,15 @@ describe("README matches the shipped surface", () => {
   });
 
   it("names the current capabilities", () => {
-    for (const term of ["Verified Traceability Graph", "wave", "laws", "dashboard", "drift", "rivet-kit", "graphify"]) {
+    for (const term of [
+      "Verified Traceability Graph",
+      "wave",
+      "laws",
+      "dashboard",
+      "drift",
+      "rivet-kit",
+      "graphify",
+    ]) {
       expect(README, `README should mention '${term}'`).toContain(term);
     }
   });

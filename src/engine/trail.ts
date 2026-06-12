@@ -81,7 +81,11 @@ export function deriveTrail(events: JournalEvent[], taskId: string): TaskTrail {
           detail: r.ref + (r.flaky ? " (flaky)" : ""),
         });
       }
-    } else if (e.type === "cli.run" && String(d.command) === "task done" && ((d.args as string[]) ?? [])[0] === taskId) {
+    } else if (
+      e.type === "cli.run" &&
+      String(d.command) === "task done" &&
+      ((d.args as string[]) ?? [])[0] === taskId
+    ) {
       flushBlocked(); // a previous attempt that never resolved is blocked
       pendingDoneAt = e.at;
     } else if (e.type === "approval.recorded" && ((d.taskIds as string[]) ?? []).includes(taskId)) {

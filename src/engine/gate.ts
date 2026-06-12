@@ -46,7 +46,10 @@ export function verifyVerdict(
   const d = (last.data ?? {}) as { passed?: boolean; tree?: string };
   if (!d.passed) return { ok: false, reasons: ["last `rivet verify` was RED — fix and re-run it"] };
   if (d.tree && currentTree && d.tree !== currentTree) {
-    return { ok: false, reasons: ["`rivet verify` is STALE — the code tree changed since it ran; re-run it"] };
+    return {
+      ok: false,
+      reasons: ["`rivet verify` is STALE — the code tree changed since it ran; re-run it"],
+    };
   }
   return { ok: true, reasons: [] };
 }

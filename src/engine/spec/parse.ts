@@ -1,6 +1,12 @@
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { classifyEars, type AcceptanceCriterion, type CheckBinding, type CheckKind, type Requirement } from "./ears.js";
+import {
+  classifyEars,
+  type AcceptanceCriterion,
+  type CheckBinding,
+  type CheckKind,
+  type Requirement,
+} from "./ears.js";
 
 /**
  * Spec-file parser — reads `.rivet/specs/*.md` into Requirements with EARS criteria and `@check`
@@ -196,7 +202,9 @@ export function parseSpecsDir(projectDir: string, warnings?: string[]): Requirem
   const dir = join(projectDir, ".rivet", "specs");
   if (!existsSync(dir)) return [];
   const out: Requirement[] = [];
-  for (const f of readdirSync(dir).filter((f) => f.endsWith(".md")).sort()) {
+  for (const f of readdirSync(dir)
+    .filter((f) => f.endsWith(".md"))
+    .sort()) {
     const fileWarnings: string[] = [];
     out.push(...parseSpec(readFileSync(join(dir, f), "utf8"), fileWarnings));
     warnings?.push(...fileWarnings.map((w) => `${f}: ${w}`));

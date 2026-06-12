@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**60/60 done (100%)**
+**61/61 done (100%)**
 
 - ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢
   📋 Evidence — FIX-ROUTE-01
@@ -362,7 +362,7 @@
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
   | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | 🟣 stale | tree c6c5cfce | 2026-06-12T07:05:34.978Z |
-  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | ✅ green | tree bad3adce* | 2026-06-12T07:20:23.464Z |
+  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | 🟣 stale | tree bad3adce* | 2026-06-12T07:20:23.464Z |
 
 - ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢
   📋 Evidence — REQUIREMENT_COCKPIT-05
@@ -382,6 +382,12 @@
   | `test/docs-refresh.test.ts::read-only queries never create or touch documents` | unit | 🟣 stale | tree d8177340* | 2026-06-12T07:19:28.353Z |
   | `test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar` | unit | 🟣 stale | tree d8177340* | 2026-06-12T07:19:30.138Z |
 
+- ✅ **FIX-COCKPIT-SEC-01** cockpit hardening: 12 adversarial-review findings (localhost bind, unlock match, parsed-write, body cap, CSRF, etc.) 🟢
+  📋 Evidence — FIX-COCKPIT-SEC-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/cockpit-hardening.test.ts` | unit | ✅ green | tree d81b7bc7* | 2026-06-12T07:27:26.942Z |
+
 
 ## Approvals & governance
 
@@ -397,16 +403,18 @@
 - 🛡️ 2026-06-12T05:01:36.612Z — unlock
 - 🛡️ 2026-06-12T07:00:16.579Z — unlock
 - 🛡️ 2026-06-12T07:20:18.537Z — unlock
+- 🔏 2026-06-12T07:21:29.214Z — Pratiyush Kumar Singh approved REQUIREMENT_COCKPIT-01, REQUIREMENT_COCKPIT-02, REQUIREMENT_COCKPIT-03, REQUIREMENT_COCKPIT-04, REQUIREMENT_COCKPIT-05, REQUIREMENT_DOCS-01
+- 🔏 2026-06-12T07:21:29.913Z — Pratiyush Kumar Singh approved FEAT-VERIFY-01, FEAT-GHERKIN-01, FEAT-IDS-01, FEAT-REPORT-01, FEAT-EMOJI-01, FEAT-INITPACKS-01, FEAT-PLATFORM-01, FEAT-STACK-01, FEAT-CCFIRST-01, FEAT-FLUSH-01, FEAT-REVITIFY-01, FEAT-REVITIFY-02
 
 ## Recent activity
 
-- [2m2026-06-12 07:19:27[22m  🧾 check run REQUIREMENT_DOCS-01 test/docs-refresh.test.ts::read-only queries never create or touch documents  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:19:28[22m  ✅ check test/docs-refresh.test.ts::read-only queries never create or touch documents @ tree d8177340* → REQUIREMENT_DOCS-01
-- [2m2026-06-12 07:19:29[22m  🧾 check run REQUIREMENT_DOCS-01 test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:19:30[22m  ✅ check test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar @ tree d8177340* → REQUIREMENT_DOCS-01
-- [2m2026-06-12 07:19:30[22m  🧾 task done REQUIREMENT_DOCS-01  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:19:31[22m  🏁 task REQUIREMENT_DOCS-01 → done
-- [2m2026-06-12 07:20:18[22m  🧾 unlock test/cockpit.test.ts  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:20:18[22m  🛡️ unlock {"paths":["test/cockpit.test.ts"],"until":"2026-06-12T07:50:18.537Z"}
-- [2m2026-06-12 07:20:22[22m  🧾 check run REQUIREMENT_COCKPIT-04 test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events  [Pratiyush Kumar Singh]
-- [2m2026-06-12 07:20:23[22m  ✅ check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events @ tree bad3adce* → REQUIREMENT_COCKPIT-04
+- [2m2026-06-12 07:22:29[22m  🧾 task create FIX-COCKPIT-SEC-01 cockpit hardening: 12 adversarial-review findings (localhost bind, unlock match, parsed-write, body cap, CSRF, etc.)  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:22:29[22m  📋 task FIX-COCKPIT-SEC-01 created — cockpit hardening: 12 adversarial-review findings (localhost bind, unlock match, parsed-write, body cap, CSRF, etc.)
+- [2m2026-06-12 07:22:30[22m  🧾 task start FIX-COCKPIT-SEC-01  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:22:30[22m  🔁 task FIX-COCKPIT-SEC-01 → in_progress
+- [2m2026-06-12 07:23:13[22m  🧾 check run FIX-COCKPIT-SEC-01 test/cockpit-hardening.test.ts  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:23:14[22m  ❌ check test/cockpit-hardening.test.ts @ tree 31367ede* → FIX-COCKPIT-SEC-01
+- [2m2026-06-12 07:27:25[22m  🧾 check run FIX-COCKPIT-SEC-01 test/cockpit-hardening.test.ts  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:27:26[22m  ✅ check test/cockpit-hardening.test.ts @ tree d81b7bc7* → FIX-COCKPIT-SEC-01
+- [2m2026-06-12 07:27:52[22m  🧾 task done FIX-COCKPIT-SEC-01  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:27:52[22m  🏁 task FIX-COCKPIT-SEC-01 → done

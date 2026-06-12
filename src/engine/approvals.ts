@@ -92,7 +92,9 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
 export function listApprovals(projectDir: string): string[] {
   const dir = join(projectDir, ".rivet", "approvals");
   if (!existsSync(dir)) return [];
-  return readdirSync(dir).filter((f) => f.endsWith(".md")).sort();
+  return readdirSync(dir)
+    .filter((f) => f.endsWith(".md"))
+    .sort();
 }
 
 function gitHead(cwd: string): string | undefined {

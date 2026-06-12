@@ -14,7 +14,9 @@ import { journalFor, configFor } from "./materialize.js";
  */
 
 function git(cwd: string, cmd: string): string {
-  return execSync(`git ${cmd}`, { cwd, stdio: ["ignore", "pipe", "pipe"] }).toString().trim();
+  return execSync(`git ${cmd}`, { cwd, stdio: ["ignore", "pipe", "pipe"] })
+    .toString()
+    .trim();
 }
 
 function defaultBranch(cwd: string): string {
@@ -39,7 +41,8 @@ function ensureUnionMerge(cwd: string): void {
   const wanted = [".rivet/journal.jsonl merge=union", ".rivet/learnings.md merge=union"];
   const current = existsSync(path) ? readFileSync(path, "utf8") : "";
   const missing = wanted.filter((w) => !current.includes(w));
-  if (missing.length > 0) appendFileSync(path, (current && !current.endsWith("\n") ? "\n" : "") + missing.join("\n") + "\n");
+  if (missing.length > 0)
+    appendFileSync(path, (current && !current.endsWith("\n") ? "\n" : "") + missing.join("\n") + "\n");
 }
 
 export interface WorktreeReport {
@@ -80,7 +83,9 @@ export function waveDoneAt(cwd: string, id: string, opts: { force?: boolean }): 
   }
   const path = join(cwd, ".worktrees", id);
   if (!existsSync(path)) {
-    throw new Error(`provenance check: ${path} does not exist — only .worktrees/<id> we created may be cleaned up`);
+    throw new Error(
+      `provenance check: ${path} does not exist — only .worktrees/<id> we created may be cleaned up`,
+    );
   }
   const branch = `rivet/${id}`;
   const forced = opts.force ?? false;
@@ -90,7 +95,9 @@ export function waveDoneAt(cwd: string, id: string, opts: { force?: boolean }): 
     try {
       git(cwd, `merge-base --is-ancestor ${branch} origin/${def}`);
     } catch {
-      throw new Error(`${branch} is not merged into origin/${def} — merge first, or pass --force to discard the work`);
+      throw new Error(
+        `${branch} is not merged into origin/${def} — merge first, or pass --force to discard the work`,
+      );
     }
   }
   git(cwd, `worktree remove ${forced ? "--force " : ""}"${path}"`);
@@ -109,7 +116,9 @@ export function waveDone(id: string, opts: { force?: boolean }): void {
   const r = waveDoneAt(process.cwd(), id, opts);
   console.log(
     pc.green(`✓ worktree ${id} cleaned`) +
-      pc.dim(` (branch ${r.branchDeleted ? "deleted" : "kept"}${r.forced ? " · FORCED discard" : " · merged"})`),
+      pc.dim(
+        ` (branch ${r.branchDeleted ? "deleted" : "kept"}${r.forced ? " · FORCED discard" : " · merged"})`,
+      ),
   );
 }
 
@@ -121,7 +130,9 @@ export function wavePlan(): void {
     console.log(pc.dim("no pending tasks — nothing to dispatch"));
     return;
   }
-  console.log(pc.bold(`\nWave plan (no shared files within a wave, cap ${configFor(cwd).parallel.waveSize}):\n`));
+  console.log(
+    pc.bold(`\nWave plan (no shared files within a wave, cap ${configFor(cwd).parallel.waveSize}):\n`),
+  );
   waves.forEach((wave, i) => {
     console.log(`  wave ${i + 1}: ${wave.map((t) => pc.bold(t.id)).join("  ")}`);
   });
@@ -131,7 +142,9 @@ export function wavePlan(): void {
 export function waveStart(ids: string[]): void {
   const cwd = process.cwd();
   const reports = waveStartAt(cwd, ids);
-  console.log(pc.bold(`\n${reports.length} worktree(s) ready (base ${reports[0]?.base.slice(0, 8)} = origin tip):\n`));
+  console.log(
+    pc.bold(`\n${reports.length} worktree(s) ready (base ${reports[0]?.base.slice(0, 8)} = origin tip):\n`),
+  );
   for (const r of reports) {
     console.log(`  ${pc.green("✓")} ${pc.bold(r.id)} → ${r.path}` + pc.dim(`  (branch rivet/${r.id})`));
   }

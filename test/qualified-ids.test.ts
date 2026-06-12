@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { parseSpec } from "../src/engine/spec/parse.js";
-import { isQualifiedId, requirementKind, lintQualifiedIds, unboundObligations } from "../src/engine/spec/ears.js";
+import {
+  isQualifiedId,
+  requirementKind,
+  lintQualifiedIds,
+  unboundObligations,
+} from "../src/engine/spec/ears.js";
 import { buildVTG } from "../src/engine/graph/build.js";
 
 /**

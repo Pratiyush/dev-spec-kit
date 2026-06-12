@@ -57,7 +57,11 @@ describe("journal tolerance", () => {
 describe("runner availability", () => {
   it("a missing runner binary throws RunnerUnavailableError — it is NOT recorded as a red proof", () => {
     expect(() =>
-      execute({ kind: "unit", ref: "x" }, { cmd: "rivet-definitely-not-a-binary-xyz", args: [] }, { cwd: process.cwd() }),
+      execute(
+        { kind: "unit", ref: "x" },
+        { cmd: "rivet-definitely-not-a-binary-xyz", args: [] },
+        { cwd: process.cwd() },
+      ),
     ).toThrowError(RunnerUnavailableError);
   });
 

@@ -55,7 +55,8 @@ export function resolveStack(
     return { stack, source: "inferred", reason };
   }
   if (platforms.includes("python")) return { stack: "python-pytest", source: "inferred", reason };
-  if (platforms.some((p) => MAVEN_PLATFORMS.includes(p))) return { stack: "java-maven", source: "inferred", reason };
+  if (platforms.some((p) => MAVEN_PLATFORMS.includes(p)))
+    return { stack: "java-maven", source: "inferred", reason };
   throw new Error(
     "no stack resolved — pass --stack <stack>, set verify.defaultStack in .rivet/config.json, or declare project.platforms so it can be inferred",
   );
@@ -78,7 +79,9 @@ function hasDep(cwd: string, name: string): boolean {
  * which beats the builtin mapping. Pure selection — testable, and the CLI just applies it.
  */
 export function pickRunner(
-  config: { verify: { kindRunners: Record<string, RunnerOverride>; runners: Record<string, RunnerOverride> } },
+  config: {
+    verify: { kindRunners: Record<string, RunnerOverride>; runners: Record<string, RunnerOverride> };
+  },
   kind: string,
   stack: string,
 ): { override?: RunnerOverride; source: "kind" | "stack" | "builtin" } {
@@ -100,12 +103,21 @@ export function pickRunner(
  * use {ref}, {file}, {name} placeholders — args referencing {name} are dropped when the ref has no
  * `::name` part.
  */
-export function resolveCommand(binding: CheckBinding, stack: string, override?: RunnerOverride): ResolvedCommand {
+export function resolveCommand(
+  binding: CheckBinding,
+  stack: string,
+  override?: RunnerOverride,
+): ResolvedCommand {
   if (override) {
     const [file, name] = splitRef(binding.ref);
     const args = override.args
       .filter((a) => !(a.includes("{name}") && name === undefined))
-      .map((a) => a.replaceAll("{ref}", binding.ref).replaceAll("{file}", file).replaceAll("{name}", name ?? ""));
+      .map((a) =>
+        a
+          .replaceAll("{ref}", binding.ref)
+          .replaceAll("{file}", file)
+          .replaceAll("{name}", name ?? ""),
+      );
     return { cmd: override.cmd, args };
   }
   if (!BUILTIN_STACKS.includes(stack as Stack)) {
@@ -192,6 +204,11 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
 }
 
 /** Resolve + execute in one step. */
-export function runCheck(binding: CheckBinding, stack: string, opts: RunOptions, override?: RunnerOverride): CheckResult {
+export function runCheck(
+  binding: CheckBinding,
+  stack: string,
+  opts: RunOptions,
+  override?: RunnerOverride,
+): CheckResult {
   return execute(binding, resolveCommand(binding, stack, override), opts);
 }

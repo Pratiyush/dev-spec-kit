@@ -51,7 +51,9 @@ describe("guard-facts hook (process-level)", () => {
 
   it("OFF by default-config: passes straight through", () => {
     const cwd = project("off");
-    expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "src", "a.ts") }, cwd }).status).toBe(0);
+    expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "src", "a.ts") }, cwd }).status).toBe(
+      0,
+    );
   });
 
   it("ON: first edit denied with a fact demand, retry allowed", () => {

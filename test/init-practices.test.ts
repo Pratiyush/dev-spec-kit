@@ -52,7 +52,8 @@ describe("FEAT-INITPACKS-01 — seeded content", () => {
     }
 
     const gates = readFileSync(join(dir, ".rivet", "laws", "best-practices-quality-gates.md"), "utf8");
-    for (const tool of ["Husky", "lint-staged", "SonarQube Community", "CodeQL"]) expect(gates).toContain(tool);
+    for (const tool of ["Husky", "lint-staged", "SonarQube Community", "CodeQL"])
+      expect(gates).toContain(tool);
     expect(gates).toMatch(/optional/i);
   });
 
@@ -60,7 +61,15 @@ describe("FEAT-INITPACKS-01 — seeded content", () => {
     const dir = tmp();
     seedPractices(dir, ["spring"], false);
     const java = readFileSync(join(dir, ".rivet", "laws", "best-practices-java.md"), "utf8");
-    for (const tool of ["Checkstyle", "SpotBugs", "PMD", "JaCoCo", "ArchUnit", "OWASP Dependency-Check", "Testcontainers"]) {
+    for (const tool of [
+      "Checkstyle",
+      "SpotBugs",
+      "PMD",
+      "JaCoCo",
+      "ArchUnit",
+      "OWASP Dependency-Check",
+      "Testcontainers",
+    ]) {
       expect(java).toContain(tool);
     }
     expect(java).toMatch(/controllers? MUST NOT call repositor/i);

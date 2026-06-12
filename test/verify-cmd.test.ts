@@ -55,7 +55,10 @@ describe("FEAT-VERIFY-01 — plan: everything configured, nothing twice", () => 
 
   it("falls back to package.json build/typecheck scripts for node-ish platforms", () => {
     const dir = tmp();
-    writeFileSync(join(dir, "package.json"), JSON.stringify({ scripts: { build: "tsc", typecheck: "tsc --noEmit" } }));
+    writeFileSync(
+      join(dir, "package.json"),
+      JSON.stringify({ scripts: { build: "tsc", typecheck: "tsc --noEmit" } }),
+    );
     const config = parseConfig({
       project: { platforms: ["typescript"] },
       verify: { kinds: ["unit"], kindRunners: { unit: ok } },

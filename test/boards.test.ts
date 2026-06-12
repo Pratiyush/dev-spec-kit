@@ -16,7 +16,11 @@ const task = (id: string, status: Task["status"], passed?: boolean): Task => ({
 });
 
 const events: JournalEvent[] = [
-  { at: "2026-06-12T09:00:00Z", type: "approval.recorded", data: { taskIds: ["R-1"], approver: "Pratiyush" } },
+  {
+    at: "2026-06-12T09:00:00Z",
+    type: "approval.recorded",
+    data: { taskIds: ["R-1"], approver: "Pratiyush" },
+  },
   { at: "2026-06-12T09:01:00Z", type: "governance", data: { kind: "unlock", paths: ["x"], until: "u" } },
   { at: "2026-06-12T09:02:00Z", type: "cli.run", data: { command: "task done", args: ["R-1"] } },
 ];
@@ -40,7 +44,13 @@ describe("renderTracking — per-requirement DoD table", () => {
     const spec = `## Requirement R-1 — login\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=c1\n\n## Requirement R-2 — logout\nWHEN p THEN the system SHALL q.\n@check kind=unit ref=c2\n`;
     const requirements = parseSpec(spec);
     const tasks: Task[] = [
-      { id: "R-1", title: "login", status: "done", boundChecks: ["c1"], results: { c1: { ref: "c1", passed: true, at: "t", sha: "S", tree: "T" } } },
+      {
+        id: "R-1",
+        title: "login",
+        status: "done",
+        boundChecks: ["c1"],
+        results: { c1: { ref: "c1", passed: true, at: "t", sha: "S", tree: "T" } },
+      },
       { id: "R-2", title: "logout", status: "in_progress", boundChecks: ["c2"], results: {} },
     ];
     const vtg = buildVTG({ requirements, tasks, currentSha: "S", currentTree: "T" });

@@ -394,3 +394,18 @@
 - Confidence: high (observed live; mechanism certain) · Scope: global (any repo with staged formatters)
 - Promoted to: skills/rivet-workflow hard rule (this entry) — "format before the final prove:
   commit-time formatters move the tree and stale fresh proofs"
+
+## 2026-06-12 The adversarial review found a LAN-exposed config-write server the checks could not see  ⟨P1⟩
+- Trigger: cockpit's `rivet web` shipped through 9 green bound checks; the deferred adversarial
+  review (laws.md hard rule) then found 12 issues — including TWO P1 security holes the checks
+  structurally could not catch: the server bound 0.0.0.0 (LAN-exposed, unauthenticated
+  GET /api/state leaking specs/laws/journal + POST /api/config writing disk), and the GATE-PROTECT
+  unlock over-matched so `rivet unlock tsconfig.json` opened the .rivet/config.json gate.
+- Lesson: "verification and review catch different bug classes" applies hardest to NETWORK surfaces
+  — bound tests prove behavior, only an adversary's eye proves the absence of a bypass. Any feature
+  that opens a socket or a gate MUST get the adversarial pass BEFORE merge, not after. Run it at the
+  feature boundary, never defer it past the PR.
+- Confidence: high (both P1s reproduced + pinned) · Scope: project
+- Promoted to: check:test/cockpit-hardening.test.ts (FIX-COCKPIT-SEC-01 — loopback bind, exact
+  unlock match, schema-clean write, body cap, CSRF/Origin check, + 5 robustness fixes; the two
+  browser-asset findings (#4 json control, #9 view-state) verified by inspection, browser-only)

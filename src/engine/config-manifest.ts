@@ -246,7 +246,12 @@ function classify(
   if (t === "ZodBoolean") return { path, type: "boolean" };
   if (t === "ZodString") return { path, type: "string", ...(nullable ? { nullable } : {}) };
   if (t === "ZodEnum")
-    return { path, type: "enum", allowed: (node as z.ZodEnum<[string, ...string[]]>)._def.values };
+    return {
+      path,
+      type: "enum",
+      allowed: (node as z.ZodEnum<[string, ...string[]]>)._def.values,
+      ...(nullable ? { nullable } : {}), // finding #12: a nullable enum keeps its null option
+    };
   if (t === "ZodNumber")
     return { path, type: "number", ...numberBounds(node as z.ZodNumber), ...(nullable ? { nullable } : {}) };
   if (t === "ZodArray") {

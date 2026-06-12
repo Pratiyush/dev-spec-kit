@@ -36,7 +36,9 @@ export function renderLedger(tasks: Task[], events: JournalEvent[], currentTree?
     "",
   ];
   for (const t of tasks) {
-    const lights = t.boundChecks.map((ref) => (!t.results[ref] ? "⚪" : t.results[ref]!.passed ? "🟢" : "🔴")).join("");
+    const lights = t.boundChecks
+      .map((ref) => (!t.results[ref] ? "⚪" : t.results[ref]!.passed ? "🟢" : "🔴"))
+      .join("");
     lines.push(`- ${STATUS_EMOJI[t.status]} **${t.id}** ${t.title} ${lights}`);
     // FEAT-REPORT-01: the per-task evidence table is the permanent tabular record.
     if (Object.keys(t.results).length > 0) {

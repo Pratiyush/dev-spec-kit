@@ -91,7 +91,8 @@ export function unverifiedCriteria(reqs: Requirement[]): AcceptanceCriterion[] {
 
 /** RUNNERS-01: the spec is where a ref's kind lives — execution looks it up here. */
 export function kindForRef(reqs: Requirement[], ref: string): CheckKind | undefined {
-  for (const r of reqs) for (const c of r.criteria) for (const ch of c.checks) if (ch.ref === ref) return ch.kind;
+  for (const r of reqs)
+    for (const c of r.criteria) for (const ch of c.checks) if (ch.ref === ref) return ch.kind;
   return undefined;
 }
 
@@ -142,9 +143,13 @@ export function lintCriteriaFormat(reqs: Requirement[], format: string): string[
     if (requirementKind(r.id) === "adr") continue;
     for (const c of r.criteria) {
       if (format === "gherkin" && c.pattern !== "gherkin") {
-        out.push(`${c.id}: EARS/plain criterion in a gherkin project — write a Scenario or set spec.criteriaFormat="mixed"`);
+        out.push(
+          `${c.id}: EARS/plain criterion in a gherkin project — write a Scenario or set spec.criteriaFormat="mixed"`,
+        );
       } else if (format === "ears" && c.pattern === "gherkin") {
-        out.push(`${c.id}: gherkin Scenario in an ears project — use WHEN/IF…SHALL or set spec.criteriaFormat="mixed"`);
+        out.push(
+          `${c.id}: gherkin Scenario in an ears project — use WHEN/IF…SHALL or set spec.criteriaFormat="mixed"`,
+        );
       }
     }
   }

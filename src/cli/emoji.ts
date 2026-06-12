@@ -9,8 +9,33 @@
 
 /** The set that was already in use across renderers before this map existed (frozen). */
 export const BASELINE_EMOJI = [
-  "✅", "❌", "⚪", "🟢", "🔴", "🟣", "⬜", "🚧", "🔨", "🏁", "🔗", "🔁", "💾", "🛡️", "🎯",
-  "📊", "🔏", "📋", "📝", "⚠", "🎉", "▶️", "⛔", "◇", "🔓", "❓", "🧾",
+  "✅",
+  "❌",
+  "⚪",
+  "🟢",
+  "🔴",
+  "🟣",
+  "⬜",
+  "🚧",
+  "🔨",
+  "🏁",
+  "🔗",
+  "🔁",
+  "💾",
+  "🛡️",
+  "🎯",
+  "📊",
+  "🔏",
+  "📋",
+  "📝",
+  "⚠",
+  "🎉",
+  "▶️",
+  "⛔",
+  "◇",
+  "🔓",
+  "❓",
+  "🧾",
 ] as const;
 
 export const EMOJI = {
@@ -58,7 +83,11 @@ const PLAIN: Record<EmojiKey, string> = {
 };
 
 /** Pure resolution: --plain flag > NO_EMOJI env (1/0) > TTY auto-detection. */
-export function resolvePlain(input: { argv: string[]; env: Record<string, string | undefined>; isTTY: boolean }): boolean {
+export function resolvePlain(input: {
+  argv: string[];
+  env: Record<string, string | undefined>;
+  isTTY: boolean;
+}): boolean {
   if (input.argv.includes("--plain")) return true;
   if (input.env.NO_EMOJI === "1") return true;
   if (input.env.NO_EMOJI === "0") return false;

@@ -95,6 +95,7 @@ export function taskDone(id: string): void {
             pc.dim(` — ${e.message} [verify.blockDoneOnFail=false]`),
         );
         console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
+        refreshDocs(cwd, config); // finding #7: the done-with-warnings path refreshes documents too
         return;
       }
       console.error(pc.red(`✗ BLOCKED: ${e.message}`));

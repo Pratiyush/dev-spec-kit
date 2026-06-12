@@ -39,7 +39,11 @@ describe("parser respects markdown reality", () => {
   });
 
   it("bulleted @check lines bind (list markers stripped)", () => {
-    const spec = ["## Requirement R-2 — t", "WHEN x THEN the system SHALL y.", "- @check kind=unit ref=B#x"].join("\n");
+    const spec = [
+      "## Requirement R-2 — t",
+      "WHEN x THEN the system SHALL y.",
+      "- @check kind=unit ref=B#x",
+    ].join("\n");
     const [r] = parseSpec(spec);
     expect(r!.criteria[0]!.checks.map((c) => c.ref)).toEqual(["B#x"]);
   });

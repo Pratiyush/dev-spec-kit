@@ -75,7 +75,9 @@ export function buildPrBody(input: PrBodyInput): string {
     "",
     `**Binding coverage:** ${provenCriteria}/${totalCriteria} acceptance criteria proven green (${coverage}%)` +
       (stamp ? ` at \`${stamp}\`` : ""),
-    drifted > 0 ? `\n> ⚠️ **${drifted} proof(s) red/stale** — this PR should not merge until re-verified.` : "",
+    drifted > 0
+      ? `\n> ⚠️ **${drifted} proof(s) red/stale** — this PR should not merge until re-verified.`
+      : "",
     "",
     "### Traceability (generated from the Verified Traceability Graph)",
     "",
@@ -85,9 +87,7 @@ export function buildPrBody(input: PrBodyInput): string {
     "",
     "### Tasks",
     "",
-    ...input.tasks.map(
-      (t) => `- ${t.status === "done" ? "✅" : "⬜"} **${t.id}** ${t.title} (${t.status})`,
-    ),
+    ...input.tasks.map((t) => `- ${t.status === "done" ? "✅" : "⬜"} **${t.id}** ${t.title} (${t.status})`),
     "",
     input.approvals.length > 0
       ? `### Recorded approvals\n\n${input.approvals.map((a) => `- \`${a}\``).join("\n")}`

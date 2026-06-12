@@ -229,9 +229,18 @@ export function buildRivet(cwd: string, opts: { serverMode?: boolean } = {}): Ri
   };
 }
 
-/** The sidecar source: `<` is escaped so no value can close the script tag or open one. */
+/**
+ * The sidecar source. `<` is escaped so no value can close/open a script tag (defense-in-depth:
+ * the sidecar is loaded as an EXTERNAL <script src>, where it can't break out anyway); U+2028 and
+ * U+2029 are escaped because JSON.stringify emits them raw and they are JS line terminators that
+ * break a parser if the bytes are ever inlined (finding #11).
+ */
 export function sidecarJs(data: RivetCockpitData): string {
-  return `window.RIVET = ${JSON.stringify(data, null, 2).replace(/</g, "\\u003c")};\n`;
+  const body = JSON.stringify(data, null, 2)
+    .replace(/</g, "\\u003c")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
+  return `window.RIVET = ${body};\n`;
 }
 
 export function writeSidecar(cwd: string, data: RivetCockpitData): string {

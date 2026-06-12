@@ -38,7 +38,9 @@ export function emitCockpit(cwd: string, opts: { serverMode?: boolean } = {}): E
   mkdirSync(dir, { recursive: true });
   const versionPath = join(dir, VERSION_FILE);
   const current = existsSync(versionPath) ? readFileSync(versionPath, "utf8").trim() : null;
-  const wroteShell = current !== SHELL_VERSION;
+  // finding #10: a bumped version OR any missing shell asset re-copies the shell (self-heal).
+  const missingAsset = SHELL_FILES.some((f) => !existsSync(join(dir, f)));
+  const wroteShell = current !== SHELL_VERSION || missingAsset;
   if (wroteShell) {
     const src = assetsDir();
     for (const f of SHELL_FILES) copyFileSync(join(src, f), join(dir, f));

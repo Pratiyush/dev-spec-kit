@@ -13,16 +13,40 @@ const skillDirs = readdirSync(SKILLS_DIR).filter((d) => existsSync(join(SKILLS_D
 
 /** The real CLI vocabulary — update when commands change, or this suite fails (that's the point). */
 const COMMANDS = new Set([
-  "doctor", "init", "task", "check", "status",
-  "verify", "graph", "spec", "approve", "pr", "route",
-  "guard", "unlock", "trace", "drift", "affected", "log", "resume",
+  "doctor",
+  "init",
+  "task",
+  "check",
+  "status",
+  "verify",
+  "graph",
+  "spec",
+  "approve",
+  "pr",
+  "route",
+  "guard",
+  "unlock",
+  "trace",
+  "drift",
+  "affected",
+  "log",
+  "resume",
 ]);
 const SUBCOMMANDS = new Set(["create", "start", "done", "run", "build", "tasks", "pr"]);
 const KNOWN_ARTIFACTS = [
   ".rivet/", // the project root marker itself ("if .rivet/ is missing, run rivet init")
-  ".rivet/specs/", ".rivet/config.json", ".rivet/journal.jsonl", ".rivet/graph.json",
-  ".rivet/approvals/", ".rivet/pr-body.md", ".rivet/intake/", ".rivet/laws.md",
-  ".rivet/learnings.md", ".rivet/RESUME.md", ".rivet/unlock.json", ".rivet/cache/",
+  ".rivet/specs/",
+  ".rivet/config.json",
+  ".rivet/journal.jsonl",
+  ".rivet/graph.json",
+  ".rivet/approvals/",
+  ".rivet/pr-body.md",
+  ".rivet/intake/",
+  ".rivet/laws.md",
+  ".rivet/learnings.md",
+  ".rivet/RESUME.md",
+  ".rivet/unlock.json",
+  ".rivet/cache/",
 ];
 
 describe("every shipped skill passes structural QA", () => {
@@ -46,7 +70,10 @@ describe("every shipped skill passes structural QA", () => {
         const cmd = m[1]!;
         expect(COMMANDS.has(cmd), `'rivet ${cmd}' referenced in ${dir} but not a real command`).toBe(true);
         const sub = m[2];
-        if (sub && (cmd === "task" || cmd === "check" || cmd === "graph" || cmd === "spec" || cmd === "guard")) {
+        if (
+          sub &&
+          (cmd === "task" || cmd === "check" || cmd === "graph" || cmd === "spec" || cmd === "guard")
+        ) {
           expect(SUBCOMMANDS.has(sub), `'rivet ${cmd} ${sub}' in ${dir} not a real subcommand`).toBe(true);
         }
       }
@@ -56,7 +83,9 @@ describe("every shipped skill passes structural QA", () => {
       for (const m of text.matchAll(/\.rivet\/[A-Za-z0-9._/-]*/g)) {
         const ref = m[0]!;
         expect(
-          KNOWN_ARTIFACTS.some((k) => ref === k || ref.startsWith(k) || k.startsWith(ref + "/") || ref + "/" === k),
+          KNOWN_ARTIFACTS.some(
+            (k) => ref === k || ref.startsWith(k) || k.startsWith(ref + "/") || ref + "/" === k,
+          ),
           `'${ref}' referenced in ${dir} is not a known Rivet artifact`,
         ).toBe(true);
       }

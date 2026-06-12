@@ -35,12 +35,20 @@ function taskWith(result: Task["results"][string]): Task {
 describe("proof identity = tested tree", () => {
   it("execute() records the content tree-hash and dirty flag", () => {
     const dir = tempRepo();
-    const clean = execute({ kind: "unit", ref: "A#a" }, { cmd: "node", args: ["-e", "process.exit(0)"] }, { cwd: dir });
+    const clean = execute(
+      { kind: "unit", ref: "A#a" },
+      { cmd: "node", args: ["-e", "process.exit(0)"] },
+      { cwd: dir },
+    );
     expect(clean.tree).toBeTruthy();
     expect(clean.dirty).toBe(false);
 
     writeFileSync(join(dir, "f.txt"), "v2\n");
-    const dirty = execute({ kind: "unit", ref: "A#a" }, { cmd: "node", args: ["-e", "process.exit(0)"] }, { cwd: dir });
+    const dirty = execute(
+      { kind: "unit", ref: "A#a" },
+      { cmd: "node", args: ["-e", "process.exit(0)"] },
+      { cwd: dir },
+    );
     expect(dirty.dirty).toBe(true);
     expect(dirty.tree).not.toBe(clean.tree); // different content => different identity
   });
@@ -48,7 +56,11 @@ describe("proof identity = tested tree", () => {
   it("a proof taken on a dirty tree SURVIVES the commit of that same content", () => {
     const dir = tempRepo();
     writeFileSync(join(dir, "f.txt"), "v2\n");
-    const proof = execute({ kind: "unit", ref: "A#a" }, { cmd: "node", args: ["-e", "process.exit(0)"] }, { cwd: dir });
+    const proof = execute(
+      { kind: "unit", ref: "A#a" },
+      { cmd: "node", args: ["-e", "process.exit(0)"] },
+      { cwd: dir },
+    );
     expect(proof.dirty).toBe(true);
 
     execSync("git add -A && git commit -qm c2", { cwd: dir, stdio: "pipe" }); // HEAD moves
@@ -73,7 +85,7 @@ describe("proof identity = tested tree", () => {
     });
     const before = gitTreeHash(dir);
     // Recording a proof appends to the tracked journal — identity MUST NOT move.
-    execSync("echo '{\"type\":\"check.run\"}' >> .rivet/journal.jsonl", { cwd: dir, stdio: "pipe" });
+    execSync('echo \'{"type":"check.run"}\' >> .rivet/journal.jsonl', { cwd: dir, stdio: "pipe" });
     expect(gitTreeHash(dir)).toBe(before);
     // …but a CODE change still moves it.
     writeFileSync(join(dir, "f.txt"), "v-changed\n");
@@ -90,13 +102,28 @@ describe("proof identity = tested tree", () => {
   it("changed content goes stale even at the same HEAD; legacy sha-only proofs still compare by sha", () => {
     const r = parseSpec(SPEC);
     const treeProof = { ref: "A#a", passed: true, at: "t", sha: "S1", tree: "T1" };
-    const changed = buildVTG({ requirements: r, tasks: [taskWith(treeProof)], currentSha: "S1", currentTree: "T2" });
+    const changed = buildVTG({
+      requirements: r,
+      tasks: [taskWith(treeProof)],
+      currentSha: "S1",
+      currentTree: "T2",
+    });
     expect(changed.edges.find((e) => e.kind === "validates")!.proof).toBe("stale");
 
     const legacy = { ref: "A#a", passed: true, at: "t", sha: "S1" }; // no tree recorded (old journal)
-    const sameSha = buildVTG({ requirements: r, tasks: [taskWith(legacy)], currentSha: "S1", currentTree: "T9" });
+    const sameSha = buildVTG({
+      requirements: r,
+      tasks: [taskWith(legacy)],
+      currentSha: "S1",
+      currentTree: "T9",
+    });
     expect(sameSha.edges.find((e) => e.kind === "validates")!.proof).toBe("green");
-    const movedSha = buildVTG({ requirements: r, tasks: [taskWith(legacy)], currentSha: "S2", currentTree: "T9" });
+    const movedSha = buildVTG({
+      requirements: r,
+      tasks: [taskWith(legacy)],
+      currentSha: "S2",
+      currentTree: "T9",
+    });
     expect(movedSha.edges.find((e) => e.kind === "validates")!.proof).toBe("stale");
   });
 });

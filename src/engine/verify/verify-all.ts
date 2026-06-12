@@ -59,7 +59,11 @@ export function planVerify(cwd: string, config: RivetConfig): VerifyStep[] {
   // Build ALL.
   if (config.verify.buildAll.length > 0) {
     config.verify.buildAll.forEach((b, i) =>
-      steps.push({ name: config.verify.buildAll.length > 1 ? `build#${i + 1}` : "build", cmd: b.cmd, args: b.args }),
+      steps.push({
+        name: config.verify.buildAll.length > 1 ? `build#${i + 1}` : "build",
+        cmd: b.cmd,
+        args: b.args,
+      }),
     );
   } else if (config.project.platforms.some((p) => NODE_PLATFORMS.includes(p))) {
     const pkgPath = join(cwd, "package.json");
@@ -67,7 +71,8 @@ export function planVerify(cwd: string, config: RivetConfig): VerifyStep[] {
       try {
         const pkg = JSON.parse(readFileSync(pkgPath, "utf8")) as { scripts?: Record<string, string> };
         for (const script of ["build", "typecheck"]) {
-          if (pkg.scripts?.[script]) steps.push({ name: `build:${script}`, cmd: "npm", args: ["run", "-s", script] });
+          if (pkg.scripts?.[script])
+            steps.push({ name: `build:${script}`, cmd: "npm", args: ["run", "-s", script] });
         }
       } catch {
         /* unreadable package.json — no fallback steps */
@@ -115,7 +120,12 @@ export function runVerify(cwd: string, config: RivetConfig): VerifyRun {
   const results: VerifyStepResult[] = steps.map((s) => {
     const t0 = Date.now();
     const res = spawnSync(s.cmd, s.args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
-    return { name: s.name, cmd: `${s.cmd} ${s.args.join(" ")}`.trim(), ok: res.status === 0, ms: Date.now() - t0 };
+    return {
+      name: s.name,
+      cmd: `${s.cmd} ${s.args.join(" ")}`.trim(),
+      ok: res.status === 0,
+      ms: Date.now() - t0,
+    };
   });
   const tree = gitTreeHash(cwd);
   const sha = gitHead(cwd);

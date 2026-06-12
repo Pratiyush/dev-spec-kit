@@ -89,7 +89,8 @@ export function runInit(opts: InitOptions): void {
 function printSeeded(platforms: string[], packs: { seeded: string[]; skipped: string[] }): void {
   console.log(`${label("scaffold")} platforms: ${platforms.join(", ")}`);
   for (const f of packs.seeded) console.log(pc.green(`  + .rivet/laws/${f}`));
-  for (const f of packs.skipped) console.log(pc.dim(`  = .rivet/laws/${f} (exists — kept; --force re-seeds)`));
+  for (const f of packs.skipped)
+    console.log(pc.dim(`  = .rivet/laws/${f} (exists — kept; --force re-seeds)`));
 }
 
 /** Append any missing entries to the project's .gitignore (idempotent). */

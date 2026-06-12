@@ -49,7 +49,9 @@ export function routeRequest(text: string): RouteResult {
   if (BIG_RE.test(text) || words > 60) {
     return {
       mode: "full-spec",
-      reason: BIG_RE.test(text) ? "feature-sized scope — earns the full spec pipeline" : "long, multi-part request",
+      reason: BIG_RE.test(text)
+        ? "feature-sized scope — earns the full spec pipeline"
+        : "long, multi-part request",
     };
   }
   if (words <= 12) {

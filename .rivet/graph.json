@@ -5464,7 +5464,7 @@
       "from": "test:test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
       "to": "REQUIREMENT_COCKPIT-04-AC2",
       "kind": "validates",
-      "proof": "green",
+      "proof": "stale",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
         "passed": true,

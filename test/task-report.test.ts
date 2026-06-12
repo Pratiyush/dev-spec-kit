@@ -15,11 +15,33 @@ const task: Task = {
   id: "FEAT-X-01",
   title: "does the thing",
   status: "done",
-  boundChecks: ["test/a.test.ts::happy", "test/a.test.ts::sad", "test/a.test.ts::stale", "test/a.test.ts::unrun"],
+  boundChecks: [
+    "test/a.test.ts::happy",
+    "test/a.test.ts::sad",
+    "test/a.test.ts::stale",
+    "test/a.test.ts::unrun",
+  ],
   results: {
-    "test/a.test.ts::happy": { ref: "test/a.test.ts::happy", passed: true, at: "2026-06-12T01:00:00Z", tree: TREE, kind: "unit" },
-    "test/a.test.ts::sad": { ref: "test/a.test.ts::sad", passed: false, at: "2026-06-12T01:01:00Z", tree: TREE, kind: "e2e" },
-    "test/a.test.ts::stale": { ref: "test/a.test.ts::stale", passed: true, at: "2026-06-12T00:00:00Z", tree: OLD_TREE },
+    "test/a.test.ts::happy": {
+      ref: "test/a.test.ts::happy",
+      passed: true,
+      at: "2026-06-12T01:00:00Z",
+      tree: TREE,
+      kind: "unit",
+    },
+    "test/a.test.ts::sad": {
+      ref: "test/a.test.ts::sad",
+      passed: false,
+      at: "2026-06-12T01:01:00Z",
+      tree: TREE,
+      kind: "e2e",
+    },
+    "test/a.test.ts::stale": {
+      ref: "test/a.test.ts::stale",
+      passed: true,
+      at: "2026-06-12T00:00:00Z",
+      tree: OLD_TREE,
+    },
   },
 };
 

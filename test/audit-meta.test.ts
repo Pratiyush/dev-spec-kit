@@ -14,7 +14,11 @@ function tempJournal(): Journal {
 describe("event metadata", () => {
   it("append() can stamp actor/model metadata and it roundtrips", () => {
     const j = tempJournal();
-    j.append("cli.run", { command: "task done", args: ["T1"] }, { meta: { actor: "Pratiyush", model: "claude-fable-5" } });
+    j.append(
+      "cli.run",
+      { command: "task done", args: ["T1"] },
+      { meta: { actor: "Pratiyush", model: "claude-fable-5" } },
+    );
     const [e] = j.read();
     expect(e!.meta).toEqual({ actor: "Pratiyush", model: "claude-fable-5" });
   });

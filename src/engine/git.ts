@@ -39,8 +39,14 @@ export function gitTreeHash(cwd: string): string | undefined {
   const env = { ...process.env, GIT_INDEX_FILE: tmpIndex };
   try {
     if (spawnSync("git", ["read-tree", "HEAD"], { cwd, env, stdio: "ignore" }).status !== 0) return undefined;
-    spawnSync("git", ["rm", "--cached", "-r", "-q", "--ignore-unmatch", ".rivet"], { cwd, env, stdio: "ignore" });
-    if (spawnSync("git", ["add", "-A", "--", ":(exclude).rivet"], { cwd, env, stdio: "ignore" }).status !== 0) {
+    spawnSync("git", ["rm", "--cached", "-r", "-q", "--ignore-unmatch", ".rivet"], {
+      cwd,
+      env,
+      stdio: "ignore",
+    });
+    if (
+      spawnSync("git", ["add", "-A", "--", ":(exclude).rivet"], { cwd, env, stdio: "ignore" }).status !== 0
+    ) {
       return undefined;
     }
     return git(cwd, ["write-tree"], env);

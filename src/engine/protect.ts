@@ -23,7 +23,11 @@ export function inFlightTasks(events: JournalEvent[]): InFlightTask[] {
     if (e.type === "task.created") {
       const id = String(d.id ?? "");
       if (id && !tasks.has(id)) {
-        tasks.set(id, { boundChecks: (d.boundChecks as string[]) ?? [], status: "pending", proven: new Set() });
+        tasks.set(id, {
+          boundChecks: (d.boundChecks as string[]) ?? [],
+          status: "pending",
+          proven: new Set(),
+        });
       }
     } else if (e.type === "task.bindings") {
       const t = tasks.get(String(d.id ?? ""));

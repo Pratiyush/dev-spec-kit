@@ -92,7 +92,14 @@ describe("FIX-PROOF-04 — every proof surface stamps the tree identity", () => 
     const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]);
-    store.recordCheck("T1", { ref: "c1", passed: true, at: "2026-06-12T01:00:00Z", sha: SHA, tree: TREE, dirty: false });
+    store.recordCheck("T1", {
+      ref: "c1",
+      passed: true,
+      at: "2026-06-12T01:00:00Z",
+      sha: SHA,
+      tree: TREE,
+      dirty: false,
+    });
     store.markDone("T1");
     const { markdown } = createApproval({ projectDir: dir, taskIds: ["T1"], store, journal, approver: "P" });
     expect(markdown).toContain(`✅ \`c1\` @ tree ${TREE.slice(0, 8)}`);

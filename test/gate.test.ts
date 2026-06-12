@@ -52,7 +52,10 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
     mkdirSync(join(dir, ".rivet"), { recursive: true });
     if (graph) writeFileSync(join(dir, ".rivet", "graph.json"), JSON.stringify(graph));
     if (journalLines.length > 0) {
-      writeFileSync(join(dir, ".rivet", "journal.jsonl"), journalLines.map((l) => JSON.stringify(l)).join("\n") + "\n");
+      writeFileSync(
+        join(dir, ".rivet", "journal.jsonl"),
+        journalLines.map((l) => JSON.stringify(l)).join("\n") + "\n",
+      );
     }
     return dir;
   }
@@ -68,7 +71,9 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
     const red = { edges: [{ kind: "validates", proof: "red", from: "test:X" }] };
     const cwd = rivetProject(red);
     expect(run({ tool_name: "Bash", tool_input: { command: `gh "pr" create` }, cwd })).toBe(2);
-    expect(run({ tool_name: "Bash", tool_input: { command: "gh api repos/o/r/pulls -f title=x" }, cwd })).toBe(2);
+    expect(
+      run({ tool_name: "Bash", tool_input: { command: "gh api repos/o/r/pulls -f title=x" }, cwd }),
+    ).toBe(2);
   });
 
   it("green graph + green verify passes even for quoted forms; non-PR commands never touched", () => {
@@ -81,10 +86,16 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
   // FEAT-VERIFY-01: a green graph alone is not enough — the project-level verify must exist + pass.
   it("green graph WITHOUT a recorded verify blocks; a red verify blocks too", () => {
     const green = { edges: [{ kind: "validates", proof: "green", from: "test:X" }] };
-    expect(run({ tool_name: "Bash", tool_input: { command: "gh pr create" }, cwd: rivetProject(green) })).toBe(2);
+    expect(
+      run({ tool_name: "Bash", tool_input: { command: "gh pr create" }, cwd: rivetProject(green) }),
+    ).toBe(2);
     const redVerify = { at: "t", type: "verify.run", data: { passed: false, tree: "T" } };
     expect(
-      run({ tool_name: "Bash", tool_input: { command: "gh pr create" }, cwd: rivetProject(green, [redVerify]) }),
+      run({
+        tool_name: "Bash",
+        tool_input: { command: "gh pr create" },
+        cwd: rivetProject(green, [redVerify]),
+      }),
     ).toBe(2);
   });
 });

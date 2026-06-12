@@ -23,7 +23,19 @@ export function parseLearnings(text: string): LessonEntry[] {
   return entries;
 }
 
-const STOP = new Set(["must", "never", "always", "their", "about", "after", "before", "which", "every", "lesson", "trigger"]);
+const STOP = new Set([
+  "must",
+  "never",
+  "always",
+  "their",
+  "about",
+  "after",
+  "before",
+  "which",
+  "every",
+  "lesson",
+  "trigger",
+]);
 
 function tokens(s: string): Set<string> {
   return new Set(

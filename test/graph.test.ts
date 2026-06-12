@@ -6,7 +6,12 @@ import {
   driftedEdges,
   type VerifiedTraceabilityGraph,
 } from "../src/engine/graph/types.js";
-import { classifyEars, looksLikeEars, unverifiedCriteria, type Requirement } from "../src/engine/spec/ears.js";
+import {
+  classifyEars,
+  looksLikeEars,
+  unverifiedCriteria,
+  type Requirement,
+} from "../src/engine/spec/ears.js";
 
 const graph: VerifiedTraceabilityGraph = {
   nodes: [
@@ -39,7 +44,9 @@ describe("Verified Traceability Graph queries", () => {
   });
 
   it("computes blast radius for a code node", () => {
-    const ids = blastRadius(graph, "C1").map((e) => e.id).sort();
+    const ids = blastRadius(graph, "C1")
+      .map((e) => e.id)
+      .sort();
     expect(ids).toEqual(["e1", "e3"]);
   });
 
@@ -66,7 +73,12 @@ describe("EARS", () => {
         id: "R1",
         title: "Sessions",
         criteria: [
-          { id: "AC1", pattern: "event", text: "WHEN x THEN the system SHALL y", checks: [{ kind: "unit", ref: "a::b" }] },
+          {
+            id: "AC1",
+            pattern: "event",
+            text: "WHEN x THEN the system SHALL y",
+            checks: [{ kind: "unit", ref: "a::b" }],
+          },
           { id: "AC2", pattern: "ubiquitous", text: "The system SHALL z", checks: [] },
         ],
       },

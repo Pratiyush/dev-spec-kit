@@ -98,10 +98,7 @@ function hasGreenEdge(
   dir: "in" | "out",
 ): boolean {
   return g.edges.some(
-    (e) =>
-      e.kind === kind &&
-      e.proof === "green" &&
-      (dir === "out" ? e.from === nodeId : e.to === nodeId),
+    (e) => e.kind === kind && e.proof === "green" && (dir === "out" ? e.from === nodeId : e.to === nodeId),
   );
 }
 
@@ -112,9 +109,7 @@ export function unimplementedRequirements(g: VerifiedTraceabilityGraph): GraphNo
 
 /** Acceptance criteria with no GREEN `validates` edge — not provably tested. */
 export function untestedCriteria(g: VerifiedTraceabilityGraph): GraphNode[] {
-  return g.nodes.filter(
-    (n) => n.kind === "acceptanceCriterion" && !hasGreenEdge(g, n.id, "validates", "in"),
-  );
+  return g.nodes.filter((n) => n.kind === "acceptanceCriterion" && !hasGreenEdge(g, n.id, "validates", "in"));
 }
 
 /**

@@ -53,13 +53,20 @@ describe("resume-save hook (PreCompact, process-level)", () => {
     mkdirSync(join(dir, ".rivet"), { recursive: true });
     writeFileSync(
       join(dir, ".rivet", "journal.jsonl"),
-      JSON.stringify({ at: "t", type: "task.created", data: { id: "T1", title: "open work", boundChecks: ["x::y"] } }) +
+      JSON.stringify({
+        at: "t",
+        type: "task.created",
+        data: { id: "T1", title: "open work", boundChecks: ["x::y"] },
+      }) +
         "\n" +
         JSON.stringify({ at: "t", type: "task.status", data: { id: "T1", status: "in_progress" } }) +
         "\n",
     );
     const hook = join(process.cwd(), "hooks", "resume-save.mjs");
-    const r = spawnSync("node", [hook], { input: JSON.stringify({ cwd: dir }), stdio: ["pipe", "pipe", "pipe"] });
+    const r = spawnSync("node", [hook], {
+      input: JSON.stringify({ cwd: dir }),
+      stdio: ["pipe", "pipe", "pipe"],
+    });
     expect(r.status).toBe(0);
     const resume = join(dir, ".rivet", "RESUME.md");
     expect(existsSync(resume)).toBe(true);

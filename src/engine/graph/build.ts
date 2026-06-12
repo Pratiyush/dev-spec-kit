@@ -53,12 +53,21 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
 
   const testNodes = new Map<string, GraphNode>();
   let edgeSeq = 0;
-  const edge = (from: string, to: string, kind: GraphEdge["kind"], proof: ProofState, lastCheck?: CheckResult) =>
-    edges.push({ id: `e${++edgeSeq}`, from, to, kind, proof, ...(lastCheck ? { lastCheck } : {}) });
+  const edge = (
+    from: string,
+    to: string,
+    kind: GraphEdge["kind"],
+    proof: ProofState,
+    lastCheck?: CheckResult,
+  ) => edges.push({ id: `e${++edgeSeq}`, from, to, kind, proof, ...(lastCheck ? { lastCheck } : {}) });
 
   for (const req of input.requirements) {
     // FEAT-IDS-01: ADR_ ids are decision records — first-class "adr" nodes in the graph.
-    nodes.push({ id: req.id, kind: requirementKind(req.id) === "adr" ? "adr" : "requirement", label: req.title });
+    nodes.push({
+      id: req.id,
+      kind: requirementKind(req.id) === "adr" ? "adr" : "requirement",
+      label: req.title,
+    });
     for (const c of req.criteria) {
       nodes.push({ id: c.id, kind: "acceptanceCriterion", label: c.text });
       edge(c.id, req.id, "derivedFrom", "unproven");
@@ -67,7 +76,12 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
         // One test node per distinct check ref.
         let test = testNodes.get(binding.ref);
         if (!test) {
-          test = { id: `test:${binding.ref}`, kind: "test", label: binding.ref, meta: { kind: binding.kind } };
+          test = {
+            id: `test:${binding.ref}`,
+            kind: "test",
+            label: binding.ref,
+            meta: { kind: binding.kind },
+          };
           testNodes.set(binding.ref, test);
           nodes.push(test);
 

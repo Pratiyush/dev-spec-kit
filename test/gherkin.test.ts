@@ -38,7 +38,9 @@ Examples:
 
 describe("FEAT-GHERKIN-01 — gherkin criteria", () => {
   it("classifies bare GIVEN/WHEN/THEN sentences as gherkin", () => {
-    expect(classifyEars("GIVEN a logged-in user WHEN the session idles THEN the system logs out")).toBe("gherkin");
+    expect(classifyEars("GIVEN a logged-in user WHEN the session idles THEN the system logs out")).toBe(
+      "gherkin",
+    );
     expect(classifyEars("WHEN x THEN the system SHALL y.")).toBe("event");
   });
 
@@ -89,7 +91,9 @@ describe("FEAT-GHERKIN-01 — gherkin is the default format; off-format lints, n
   });
 
   it("warns on EARS criteria in a gherkin project and vice versa; mixed is silent", () => {
-    const ears = parseSpec("## Requirement REQUIREMENT_X-01 — t\nWHEN a THEN the system SHALL b.\n@check kind=unit ref=a::1\n");
+    const ears = parseSpec(
+      "## Requirement REQUIREMENT_X-01 — t\nWHEN a THEN the system SHALL b.\n@check kind=unit ref=a::1\n",
+    );
     const gherkin = parseSpec(SCENARIO_SPEC);
     expect(lintCriteriaFormat(ears, "gherkin")[0]).toMatch(/criteriaFormat|mixed/);
     expect(lintCriteriaFormat(gherkin, "gherkin")).toEqual([]);

@@ -36,8 +36,16 @@ describe("R-AUDIT-02 — readable audit trail", () => {
   it("renders the audit trail with per-type emoji", () => {
     const lines = renderLog([
       { at: "2026-06-11T10:00:00Z", type: "cli.run", data: { command: "task done", args: ["T1"] } },
-      { at: "2026-06-11T10:01:00Z", type: "check.run", data: { taskId: "T1", result: { ref: "A#a", passed: true, at: "t" } } },
-      { at: "2026-06-11T10:02:00Z", type: "check.run", data: { taskId: "T1", result: { ref: "A#b", passed: false, at: "t" } } },
+      {
+        at: "2026-06-11T10:01:00Z",
+        type: "check.run",
+        data: { taskId: "T1", result: { ref: "A#a", passed: true, at: "t" } },
+      },
+      {
+        at: "2026-06-11T10:02:00Z",
+        type: "check.run",
+        data: { taskId: "T1", result: { ref: "A#b", passed: false, at: "t" } },
+      },
       { at: "2026-06-11T10:03:00Z", type: "task.created", data: { id: "T2", title: "t", boundChecks: [] } },
       { at: "2026-06-11T10:04:00Z", type: "approval.recorded", data: { taskIds: ["T1"], approver: "P" } },
     ]);

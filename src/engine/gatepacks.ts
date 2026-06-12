@@ -33,13 +33,20 @@ export function requiredPacks(text: string, config: RivetConfig): string[] {
 }
 
 /** Evaluate one pack against a spec: missing sections and missing check kinds are violations. */
-export function evaluatePack(specText: string, requirements: Requirement[], name: string, pack: PackDef): string[] {
+export function evaluatePack(
+  specText: string,
+  requirements: Requirement[],
+  name: string,
+  pack: PackDef,
+): string[] {
   const violations: string[] = [];
   for (const section of pack.sections) {
     const re = new RegExp(`^#{1,6}\\s+.*${escapeRe(section)}`, "im");
     if (!re.test(specText)) violations.push(`pack '${name}': missing required section '${section}'`);
   }
-  const present = new Set(requirements.flatMap((r) => r.criteria.flatMap((c) => c.checks.map((ch) => ch.kind))));
+  const present = new Set(
+    requirements.flatMap((r) => r.criteria.flatMap((c) => c.checks.map((ch) => ch.kind))),
+  );
   for (const kind of pack.kinds) {
     if (!present.has(kind as never)) violations.push(`pack '${name}': missing required check kind '${kind}'`);
   }

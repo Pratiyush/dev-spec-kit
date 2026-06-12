@@ -44,9 +44,13 @@ describe("evaluatePack: sections + check kinds", () => {
   });
 
   it("passes when the section heading and kind are present", () => {
-    const text = SPEC_TEXT + `\n## Security\nthreats considered.\n\n## Requirement R-2 — api\nWHEN q THEN the system SHALL r.\n@check kind=api ref=B#b\n`;
+    const text =
+      SPEC_TEXT +
+      `\n## Security\nthreats considered.\n\n## Requirement R-2 — api\nWHEN q THEN the system SHALL r.\n@check kind=api ref=B#b\n`;
     const reqs = parseSpec(text);
-    expect(evaluatePack(text, reqs, "security", { sections: ["Security"], kinds: ["api"], triggers: [] })).toEqual([]);
+    expect(
+      evaluatePack(text, reqs, "security", { sections: ["Security"], kinds: ["api"], triggers: [] }),
+    ).toEqual([]);
   });
 });
 

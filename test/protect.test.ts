@@ -65,11 +65,19 @@ describe("guard-protect hook (process-level)", () => {
     mkdirSync(join(dir, ".rivet"), { recursive: true });
     writeFileSync(
       join(dir, ".rivet", "journal.jsonl"),
-      JSON.stringify({ at: "t", type: "task.created", data: { id: "T1", title: "t", boundChecks: ["test/foo.test.ts::x"] } }) +
+      JSON.stringify({
+        at: "t",
+        type: "task.created",
+        data: { id: "T1", title: "t", boundChecks: ["test/foo.test.ts::x"] },
+      }) +
         "\n" +
         JSON.stringify({ at: "t", type: "task.status", data: { id: "T1", status: "in_progress" } }) +
         "\n" +
-        JSON.stringify({ at: "t", type: "check.run", data: { taskId: "T1", result: { ref: "test/foo.test.ts::x", passed: true, at: "t" } } }) +
+        JSON.stringify({
+          at: "t",
+          type: "check.run",
+          data: { taskId: "T1", result: { ref: "test/foo.test.ts::x", passed: true, at: "t" } },
+        }) +
         "\n",
     );
     return dir;
@@ -77,7 +85,9 @@ describe("guard-protect hook (process-level)", () => {
 
   it("blocks editing a bound test file while its task is in flight (exit 2)", () => {
     const cwd = project();
-    expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "test", "foo.test.ts") }, cwd })).toBe(2);
+    expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "test", "foo.test.ts") }, cwd })).toBe(
+      2,
+    );
   });
 
   it("allows unrelated files, allows after unlock, ignores non-edit tools", () => {
@@ -87,7 +97,9 @@ describe("guard-protect hook (process-level)", () => {
       join(cwd, ".rivet", "unlock.json"),
       JSON.stringify({ paths: ["test/foo.test.ts"], until: new Date(Date.now() + 60_000).toISOString() }),
     );
-    expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "test", "foo.test.ts") }, cwd })).toBe(0);
+    expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "test", "foo.test.ts") }, cwd })).toBe(
+      0,
+    );
     expect(run({ tool_name: "Bash", tool_input: { command: "ls" }, cwd })).toBe(0);
   });
 });
