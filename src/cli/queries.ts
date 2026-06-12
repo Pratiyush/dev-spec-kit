@@ -10,6 +10,7 @@ import { kindForRef } from "../engine/spec/ears.js";
 import { graphifyBin } from "../engine/graphify/index.js";
 import type { ProofState } from "../engine/graph/types.js";
 import { label } from "./emoji.js";
+import { refreshDocs } from "./refresh-docs.js";
 
 const LIGHT: Record<ProofState, string> = {
   green: pc.green("● green"),
@@ -58,7 +59,10 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
   }
   console.log(pc.bold(`\n${targets.length} drifted proof(s):`));
   for (const t of targets) {
-    console.log(`  ${t.proof === "red" ? pc.red("RED  ") : pc.magenta("STALE")} ${t.ref}` + pc.dim(` (${t.taskIds.join(", ") || "no task"})`));
+    console.log(
+      `  ${t.proof === "red" ? pc.red("RED  ") : pc.magenta("STALE")} ${t.ref}` +
+        pc.dim(` (${t.taskIds.join(", ") || "no task"})`),
+    );
   }
   if (opts.dryRun) {
     console.log(pc.dim("\n--dry-run: not re-running. Re-verify with: rivet drift"));
@@ -79,15 +83,22 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
     const picked = pickRunner(config, kind, stack);
     process.stdout.write(pc.dim(`  ${label("drift")} re-running ${t.ref} [${kind}] via ${stack} … `));
     const { result, attempts } = runWithRetry(
-      () => ({ ...runCheck({ kind: kind as never, ref: t.ref }, stack, { cwd }, picked.override), stack, kind }),
+      () => ({
+        ...runCheck({ kind: kind as never, ref: t.ref }, stack, { cwd }, picked.override),
+        stack,
+        kind,
+      }),
       config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0,
     );
     for (const taskId of t.taskIds.length > 0 ? t.taskIds : []) store.recordCheck(taskId, result);
     reran++;
-    console.log(result.passed ? pc.green(`PASS${result.flaky ? ` (flaky, attempt ${attempts})` : ""}`) : pc.red("FAIL"));
+    console.log(
+      result.passed ? pc.green(`PASS${result.flaky ? ` (flaky, attempt ${attempts})` : ""}`) : pc.red("FAIL"),
+    );
   }
 
   const after = materialize(cwd, { refresh: false });
+  refreshDocs(cwd, config, after); // REQUIREMENT_DOCS-01: re-proofs are exactly when documents change
   const remaining = driftTargets(after.vtg, after.tasks);
   const v = after.vtg.edges.filter((e) => e.kind === "validates");
   const green = v.filter((e) => e.proof === "green").length;
@@ -108,7 +119,9 @@ export function affected(label: string): void {
   );
   if (node) {
     const edges = blastRadius(m.vtg, node.id);
-    console.log(pc.bold(`\nProven edges touching ${node.label}:`) + (edges.length === 0 ? pc.dim(" none") : ""));
+    console.log(
+      pc.bold(`\nProven edges touching ${node.label}:`) + (edges.length === 0 ? pc.dim(" none") : ""),
+    );
     for (const e of edges) console.log(`  ${LIGHT[e.proof]} ${e.kind} ${pc.dim(`${e.from} → ${e.to}`)}`);
   } else {
     console.log(pc.yellow(`no code node matching '${label}' in the graph`));
@@ -118,6 +131,8 @@ export function affected(label: string): void {
     console.log(pc.bold("\ngraphify reverse traversal:"));
     const res = spawnSync(bin, ["affected", label], { cwd, stdio: ["ignore", "pipe", "pipe"] });
     const out = res.stdout?.toString().trim();
-    console.log(out ? pc.dim(out.split("\n").slice(0, 20).join("\n")) : pc.dim(res.stderr?.toString().trim() ?? ""));
+    console.log(
+      out ? pc.dim(out.split("\n").slice(0, 20).join("\n")) : pc.dim(res.stderr?.toString().trim() ?? ""),
+    );
   }
 }

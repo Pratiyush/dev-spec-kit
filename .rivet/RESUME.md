@@ -1,6 +1,6 @@
 # RESUME — state-only handoff (generated from the journal; do not edit)
 
-Board: 18/18 task(s) done.
+Board: 60/60 task(s) done.
 
 ✅ all task(s) done — nothing open. Next: `rivet graph build` → `rivet pr`.
 ## Rebuild truth

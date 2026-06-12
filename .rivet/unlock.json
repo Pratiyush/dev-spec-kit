@@ -1,7 +1,6 @@
 {
   "paths": [
-    "test/dashboard.test.ts",
-    "test/files-tab.test.ts"
+    "test/cockpit.test.ts"
   ],
-  "until": "2026-06-12T08:00:16.579Z"
+  "until": "2026-06-12T07:50:18.537Z"
 }

@@ -48,17 +48,3 @@ export function emitCockpit(cwd: string, opts: { serverMode?: boolean } = {}): E
   writeSidecar(cwd, data);
   return { dir, wroteShell, data };
 }
-
-/**
- * REQUIREMENT_COCKPIT-04 — live updates: when dashboard.updates="live", every proof event
- * rewrites the sidecar so the auto-reloading shell shows new truth within refreshSeconds.
- * Best-effort by design: the cockpit must never break the CLI.
- */
-export function liveSidecar(cwd: string, config: { dashboard: { updates: string } }): void {
-  if (config.dashboard.updates !== "live") return;
-  try {
-    writeSidecar(cwd, buildRivet(cwd));
-  } catch {
-    /* never block a task/check on dashboard bookkeeping */
-  }
-}

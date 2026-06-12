@@ -9,7 +9,7 @@ import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/ve
 import { proofStamp } from "../engine/verify/stamp.js";
 import { gitTreeHash } from "../engine/git.js";
 import { renderTaskReport } from "./task-report.js";
-import { liveSidecar } from "./cockpit.js";
+import { refreshDocs } from "./refresh-docs.js";
 import { label } from "./emoji.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
@@ -32,13 +32,15 @@ function store(cwd: string): TaskStore {
 }
 
 export function taskCreate(id: string, title: string, checks: string[]): void {
-  const t = store(process.cwd()).create(id, title, checks);
+  const cwd = process.cwd();
+  const t = store(cwd).create(id, title, checks);
   console.log(pc.green(`✓ Task ${t.id} created`) + pc.dim(` — ${t.title}`));
   if (checks.length === 0) {
     console.log(pc.yellow("  ⚠ no bound checks — this task can never be proven done; bind with --check"));
   } else {
     for (const c of checks) console.log(pc.dim(`  bound: ${c}`));
   }
+  refreshDocs(cwd, loadConfig(cwd)); // REQUIREMENT_DOCS-01
 }
 
 export function taskStart(id: string): void {
@@ -55,6 +57,7 @@ export function taskStart(id: string): void {
       console.log(pc.yellow(`  ⚠ open lesson may apply: ${hit.title}`) + pc.dim("  (.rivet/learnings.md)"));
     }
   }
+  refreshDocs(cwd, loadConfig(cwd)); // REQUIREMENT_DOCS-01
 }
 
 export function taskDone(id: string): void {
@@ -81,7 +84,7 @@ export function taskDone(id: string): void {
     // FEAT-REPORT-01: show the evidence at the moment of done — scannable, tree-stamped.
     console.log("\n" + renderTaskReport(t, gitTreeHash(cwd)));
     console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
-    liveSidecar(cwd, config); // REQUIREMENT_COCKPIT-04: the open cockpit learns within refreshSeconds
+    refreshDocs(cwd, config); // REQUIREMENT_DOCS-01: every mutation refreshes every document
   } catch (e) {
     if (e instanceof EvidenceError) {
       // Config knob verify.blockDoneOnFail=false -> done-with-warnings, journaled forever.
@@ -166,7 +169,7 @@ export async function checkRun(
     ? await withApp(config.verify.app, () => runWithRetry(exec, retries))
     : runWithRetry(exec, retries);
   store(cwd).recordCheck(taskId, result);
-  liveSidecar(cwd, config); // REQUIREMENT_COCKPIT-04
+  refreshDocs(cwd, config); // REQUIREMENT_DOCS-01
   if (result.passed) {
     const flaky = result.flaky ? pc.yellow(` (flaky — passed on attempt ${attempts})`) : "";
     console.log(pc.green(`✓ PASS ${ref}`) + flaky + pc.dim(proofStamp(result)));

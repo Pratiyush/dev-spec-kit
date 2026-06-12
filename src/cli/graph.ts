@@ -1,16 +1,11 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import pc from "picocolors";
-import { materialize, journalFor } from "./materialize.js";
-import { summarize, rollupRequirements } from "../engine/graph/build.js";
-import {
-  lintQualifiedIds,
-  lintCriteriaFormat,
-  unboundObligations,
-  requirementKind,
-} from "../engine/spec/ears.js";
+import { materialize } from "./materialize.js";
+import { summarize } from "../engine/graph/build.js";
+import { lintQualifiedIds, lintCriteriaFormat, unboundObligations } from "../engine/spec/ears.js";
 import { floorViolations } from "../engine/gatepacks.js";
-import { writeBoards } from "./boards.js";
+import { refreshDocs } from "./refresh-docs.js";
 import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
 import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
 
@@ -106,10 +101,8 @@ export function graphBuild(opts: { refresh?: boolean }): void {
       console.log(pc.dim(`  gate packs in force: ${packNames.join(", ")} — satisfied`));
     }
   }
-  // BOARDS-01: every graph build refreshes the generated boards — they can never drift from truth.
-  // ADR decision records carry no proof obligation, so they don't get TRACKING rows.
-  const obligated = m.requirements.filter((r) => requirementKind(r.id) !== "adr");
-  writeBoards(cwd, m.tasks, journalFor(cwd).read(), rollupRequirements(obligated, m.vtg));
-  console.log(pc.dim("  boards → .rivet/LEDGER.md · .rivet/TRACKING.md"));
+  // BOARDS-01 → REQUIREMENT_DOCS-01: every graph build refreshes EVERY generated document.
+  refreshDocs(cwd, m.config, m);
+  console.log(pc.dim("  docs → LEDGER · TRACKING · RESUME · cockpit sidecar"));
   console.log("");
 }

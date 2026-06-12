@@ -158,6 +158,7 @@ describe("REQUIREMENT_COCKPIT-04 — live updates after every proof event", () =
 
   it("on-demand mode never rewrites the sidecar on task events", async () => {
     const dir = project({
+      dashboard: { updates: "on-demand" }, // REQUIREMENT_DOCS-01 flipped the default to live
       verify: { kindRunners: { unit: { cmd: "node", args: ["-e", "process.exit(0)"] } } },
     });
     process.chdir(dir);
