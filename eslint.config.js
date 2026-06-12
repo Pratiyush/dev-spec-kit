@@ -13,6 +13,7 @@ export default tseslint.config(
       ".rivet/**",
       "hooks/**", // self-contained .mjs hooks, deliberately dependency-free
       ".design/**", // design-session handoffs — reference material, kept verbatim
+      "src/cli/cockpit-assets/**", // ported design shell (browser vanilla JS), kept verbatim
       "packages/*/dist/**",
     ],
   },

@@ -9,6 +9,7 @@ import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/ve
 import { proofStamp } from "../engine/verify/stamp.js";
 import { gitTreeHash } from "../engine/git.js";
 import { renderTaskReport } from "./task-report.js";
+import { liveSidecar } from "./cockpit.js";
 import { label } from "./emoji.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
@@ -80,6 +81,7 @@ export function taskDone(id: string): void {
     // FEAT-REPORT-01: show the evidence at the moment of done — scannable, tree-stamped.
     console.log("\n" + renderTaskReport(t, gitTreeHash(cwd)));
     console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
+    liveSidecar(cwd, config); // REQUIREMENT_COCKPIT-04: the open cockpit learns within refreshSeconds
   } catch (e) {
     if (e instanceof EvidenceError) {
       // Config knob verify.blockDoneOnFail=false -> done-with-warnings, journaled forever.
@@ -164,6 +166,7 @@ export async function checkRun(
     ? await withApp(config.verify.app, () => runWithRetry(exec, retries))
     : runWithRetry(exec, retries);
   store(cwd).recordCheck(taskId, result);
+  liveSidecar(cwd, config); // REQUIREMENT_COCKPIT-04
   if (result.passed) {
     const flaky = result.flaky ? pc.yellow(` (flaky — passed on attempt ${attempts})`) : "";
     console.log(pc.green(`✓ PASS ${ref}`) + flaky + pc.dim(proofStamp(result)));
