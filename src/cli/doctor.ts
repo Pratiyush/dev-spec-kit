@@ -1,6 +1,7 @@
 import { execSync } from "node:child_process";
 import pc from "picocolors";
 import { GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
+import { label } from "./emoji.js";
 
 export interface Check {
   name: string;
@@ -75,6 +76,19 @@ export function doctorChecks(probe: Probe = realProbe): Check[] {
 }
 
 /** `rivet doctor` — verify prerequisites; only REQUIRED misses fail the exit code. */
+/**
+ * FEAT-FLUSH-01 (worktree half) — isolation worktrees (.claude/worktrees/, wave .worktrees/)
+ * pile up invisibly. Pure parser over `git worktree list --porcelain`; doctor LISTS them with a
+ * cleanup hint. Visibility only — removal stays human.
+ */
+export function parseStaleWorktrees(porcelain: string): string[] {
+  return porcelain
+    .split("\n")
+    .filter((l) => l.startsWith("worktree "))
+    .map((l) => l.slice("worktree ".length).trim())
+    .filter((p) => p.includes("/.claude/worktrees/") || p.includes("/.worktrees/"));
+}
+
 export function runDoctor(): void {
   const checks = doctorChecks();
   console.log(pc.bold("\nRivet doctor — prerequisite check\n"));
@@ -84,6 +98,12 @@ export function runDoctor(): void {
     console.log(`  ${mark} ${c.name.padEnd(16)} ${pc.dim(c.detail)}`);
     if (!c.ok && c.hint) console.log(`      ${pc.dim("→ " + c.hint)}`);
     if (!c.ok && c.required) missingRequired++;
+  }
+  const stale = parseStaleWorktrees(realProbe("git worktree list --porcelain") ?? "");
+  if (stale.length > 0) {
+    console.log(`\n  ${label("cleanup")} ${stale.length} isolation worktree(s) lying around:`);
+    for (const p of stale) console.log(pc.dim(`      ${p}`));
+    console.log(pc.dim("      → clean up when merged: git worktree remove <path>  (wave dirs: rivet wave done <id>)"));
   }
   console.log("");
   if (missingRequired > 0) {

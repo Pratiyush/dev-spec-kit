@@ -1,6 +1,6 @@
 {
   "paths": [
-    "test/readme.test.ts"
+    "test/doctor-fix.test.ts"
   ],
-  "until": "2026-06-12T05:08:57.051Z"
+  "until": "2026-06-12T05:21:20.884Z"
 }

@@ -1,5 +1,6 @@
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
 import { parseSpecsDir } from "../engine/spec/parse.js";
@@ -13,11 +14,21 @@ import { applyGateFloor } from "../engine/gatepacks.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import { gateVerdict, verifyVerdict } from "../engine/gate.js";
 import { gitTreeHash, isDirty } from "../engine/git.js";
+import { needsFlush } from "../engine/flushwarn.js";
 import { loadConfig } from "./config-io.js";
 import { label } from "./emoji.js";
 
 function journal(cwd: string): Journal {
   return new Journal(join(cwd, ".rivet", "journal.jsonl"));
+}
+
+/** FEAT-FLUSH-01: the ledger this session's lessons belong in — the project's own learnings.md,
+ *  falling back to the TOOL repo's (dogfood sessions bank tool lessons, not app lessons). */
+function ledgerPath(cwd: string): string | null {
+  const project = join(cwd, ".rivet", "learnings.md");
+  if (existsSync(project)) return project;
+  const toolRepo = fileURLToPath(new URL("../../.rivet/learnings.md", import.meta.url));
+  return existsSync(toolRepo) ? toolRepo : null;
 }
 
 /** FEAT-IDS-01 lint printer — returns false when level=error and violations exist (caller stops). */
@@ -134,6 +145,15 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   const outPath = join(cwd, ".rivet", "pr-body.md");
   writeFileSync(outPath, body + "\n");
   console.log(pc.green(`${label("pr")} ✓ PR body generated`) + pc.dim(" → .rivet/pr-body.md"));
+
+  // FEAT-FLUSH-01: 📝 pre-flight — lessons must be banked before the work ships (warning, not a gate).
+  const ledger = ledgerPath(cwd);
+  if (ledger && needsFlush(journal(cwd).read(), statSync(ledger).mtime.toISOString())) {
+    console.log(
+      pc.yellow(`${label("flush")} flush session lessons before PR`) +
+        pc.dim(` — ${ledger.includes(cwd) ? ".rivet/learnings.md" : "the tool repo's learnings.md"} has no entry from this session`),
+    );
+  }
 
   // FIX-GATE-01: same predicate as the hook and `guard pr` — anything not green blocks --create.
   const verdict = gateVerdict(graph);
