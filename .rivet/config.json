@@ -108,7 +108,7 @@
   "dashboard": {
     "enabled": true,
     "form": "web",
-    "updates": "on-demand",
+    "updates": "live",
     "notify": {
       "channels": [],
       "on": []

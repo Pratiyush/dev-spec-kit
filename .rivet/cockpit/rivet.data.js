@@ -3,7 +3,7 @@ window.RIVET = {
     "project": "rivet",
     "tagline": "evidence-bound delivery",
     "configPath": ".rivet/config.json",
-    "generatedAt": "2026-06-12T07:03:33.721Z",
+    "generatedAt": "2026-06-12T07:09:22.361Z",
     "serverMode": false,
     "refreshSeconds": 15,
     "inFlightTasks": []
@@ -57,12 +57,12 @@ window.RIVET = {
       "total": 59
     },
     "validates": {
-      "green": 0,
+      "green": 21,
       "red": 0,
-      "stale": 21,
+      "stale": 0,
       "unproven": 0
     },
-    "drift": 21,
+    "drift": 0,
     "graphHtml": "../../graphify-out/graph.html",
     "tasks": [
       {
@@ -89,9 +89,8 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::audits cli invocations into the journal": {
             "passed": true,
-            "at": "2026-06-12T07:02:02.615Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:22.806Z",
+            "kind": "unit"
           }
         }
       },
@@ -105,9 +104,8 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders the audit trail with per-type emoji": {
             "passed": true,
-            "at": "2026-06-12T07:02:04.145Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:24.335Z",
+            "kind": "unit"
           }
         }
       },
@@ -121,9 +119,8 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up": {
             "passed": true,
-            "at": "2026-06-12T07:02:05.692Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:25.863Z",
+            "kind": "unit"
           }
         }
       },
@@ -667,15 +664,13 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::audits cli invocations into the journal": {
             "passed": true,
-            "at": "2026-06-12T07:02:02.615Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:22.806Z",
+            "kind": "unit"
           },
           "test/cli-ux.test.ts::does not create journals outside Rivet projects": {
             "passed": true,
-            "at": "2026-06-12T07:02:03.382Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:23.574Z",
+            "kind": "unit"
           }
         }
       },
@@ -690,15 +685,13 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders the audit trail with per-type emoji": {
             "passed": true,
-            "at": "2026-06-12T07:02:04.145Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:24.335Z",
+            "kind": "unit"
           },
           "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold": {
             "passed": true,
-            "at": "2026-06-12T07:02:04.922Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:25.101Z",
+            "kind": "unit"
           }
         }
       },
@@ -713,15 +706,13 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up": {
             "passed": true,
-            "at": "2026-06-12T07:02:05.692Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:25.863Z",
+            "kind": "unit"
           },
           "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks": {
             "passed": true,
-            "at": "2026-06-12T07:02:06.458Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:26.635Z",
+            "kind": "unit"
           }
         }
       },
@@ -751,9 +742,8 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::does not create journals outside Rivet projects": {
             "passed": true,
-            "at": "2026-06-12T07:02:03.382Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:23.574Z",
+            "kind": "unit"
           }
         }
       },
@@ -952,21 +942,18 @@ window.RIVET = {
         "results": {
           "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)": {
             "passed": true,
-            "at": "2026-06-12T07:02:07.037Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:27.210Z",
+            "kind": "unit"
           },
           "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape": {
             "passed": true,
-            "at": "2026-06-12T07:02:07.614Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:27.791Z",
+            "kind": "unit"
           },
           "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path": {
             "passed": true,
-            "at": "2026-06-12T07:02:08.195Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:28.371Z",
+            "kind": "unit"
           }
         }
       },
@@ -982,21 +969,18 @@ window.RIVET = {
         "results": {
           "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest": {
             "passed": true,
-            "at": "2026-06-12T07:02:09.129Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:29.309Z",
+            "kind": "unit"
           },
           "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar": {
             "passed": true,
-            "at": "2026-06-12T07:02:10.065Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:30.247Z",
+            "kind": "unit"
           },
           "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar": {
             "passed": true,
-            "at": "2026-06-12T07:02:11.000Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:31.180Z",
+            "kind": "unit"
           }
         }
       },
@@ -1011,15 +995,13 @@ window.RIVET = {
         "results": {
           "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar": {
             "passed": true,
-            "at": "2026-06-12T07:02:12.080Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:32.250Z",
+            "kind": "unit"
           },
           "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes": {
             "passed": true,
-            "at": "2026-06-12T07:02:13.333Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:33.485Z",
+            "kind": "unit"
           }
         }
       },
@@ -1034,15 +1016,13 @@ window.RIVET = {
         "results": {
           "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run": {
             "passed": true,
-            "at": "2026-06-12T07:02:14.832Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:34.978Z",
+            "kind": "unit"
           },
           "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events": {
             "passed": true,
-            "at": "2026-06-12T07:02:15.920Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:36.060Z",
+            "kind": "unit"
           }
         }
       },
@@ -1059,27 +1039,23 @@ window.RIVET = {
         "results": {
           "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode": {
             "passed": true,
-            "at": "2026-06-12T07:02:19.465Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:39.606Z",
+            "kind": "unit"
           },
           "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance": {
             "passed": true,
-            "at": "2026-06-12T07:02:16.774Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:36.908Z",
+            "kind": "unit"
           },
           "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes": {
             "passed": true,
-            "at": "2026-06-12T07:02:17.618Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:37.758Z",
+            "kind": "unit"
           },
           "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint": {
             "passed": true,
-            "at": "2026-06-12T07:02:18.528Z",
-            "kind": "unit",
-            "stale": true
+            "at": "2026-06-12T07:05:38.670Z",
+            "kind": "unit"
           }
         }
       }
@@ -1088,147 +1064,147 @@ window.RIVET = {
       {
         "id": "REQUIREMENT_AUDIT-01",
         "title": "every CLI invocation is audit-logged",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_AUDIT-02",
         "title": "the audit trail is readable",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_PROG-01",
         "title": "progress with emoji after completing a task",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "NFR_AUDIT-03",
         "title": "auditing never breaks the CLI",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_COCKPIT-01",
         "title": "config manifest generated from the schema",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC3",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_COCKPIT-02",
         "title": "the RIVET data sidecar is the project's truth",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC3",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_COCKPIT-03",
         "title": "static shell emission, written once",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_COCKPIT-04",
         "title": "live updates after every proof event",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       },
       {
         "id": "REQUIREMENT_COCKPIT-05",
         "title": "the config save server",
-        "proven": false,
+        "proven": true,
         "criteria": [
           {
             "id": "AC1",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC2",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC3",
-            "proof": "stale"
+            "proof": "green"
           },
           {
             "id": "AC4",
-            "proof": "stale"
+            "proof": "green"
           }
         ]
       }
@@ -1293,158 +1269,159 @@ window.RIVET = {
     ],
     "activity": [
       {
-        "at": "2026-06-12T07:03:33.610Z",
+        "at": "2026-06-12T07:09:22.252Z",
         "icon": "🧾",
         "text": "dashboard",
         "meta": "Pratiyush Kumar Singh"
       },
       {
-        "at": "2026-06-12T07:02:19.483Z",
-        "icon": "✅",
-        "text": "check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-12T07:02:18.546Z",
-        "icon": "✅",
-        "text": "check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-12T07:02:17.637Z",
-        "icon": "✅",
-        "text": "check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-12T07:02:16.792Z",
-        "icon": "✅",
-        "text": "check test/cockpit-server.test.ts::a valid POST saves config.json and journals governance → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-12T07:02:15.938Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events → REQUIREMENT_COCKPIT-04"
-      },
-      {
-        "at": "2026-06-12T07:02:14.851Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run → REQUIREMENT_COCKPIT-04"
-      },
-      {
-        "at": "2026-06-12T07:02:13.351Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes → REQUIREMENT_COCKPIT-03"
-      },
-      {
-        "at": "2026-06-12T07:02:12.097Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar → REQUIREMENT_COCKPIT-03"
-      },
-      {
-        "at": "2026-06-12T07:02:11.021Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar → REQUIREMENT_COCKPIT-02"
-      },
-      {
-        "at": "2026-06-12T07:02:10.083Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar → REQUIREMENT_COCKPIT-02"
-      },
-      {
-        "at": "2026-06-12T07:02:09.148Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest → REQUIREMENT_COCKPIT-02"
-      },
-      {
-        "at": "2026-06-12T07:02:08.214Z",
-        "icon": "✅",
-        "text": "check test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path → REQUIREMENT_COCKPIT-01"
-      },
-      {
-        "at": "2026-06-12T07:02:07.632Z",
-        "icon": "✅",
-        "text": "check test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape → REQUIREMENT_COCKPIT-01"
-      },
-      {
-        "at": "2026-06-12T07:02:07.056Z",
-        "icon": "✅",
-        "text": "check test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description) → REQUIREMENT_COCKPIT-01"
-      },
-      {
-        "at": "2026-06-12T07:02:06.478Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::renders an explicit empty state when there are no tasks → REQUIREMENT_PROG-01"
-      },
-      {
-        "at": "2026-06-12T07:02:05.711Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up → REQUIREMENT_PROG-01"
-      },
-      {
-        "at": "2026-06-12T07:02:05.710Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up → R-PROG-01"
-      },
-      {
-        "at": "2026-06-12T07:02:04.941Z",
-        "icon": "✅",
-        "text": "check test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold → REQUIREMENT_AUDIT-02"
-      },
-      {
-        "at": "2026-06-12T07:02:04.166Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::renders the audit trail with per-type emoji → REQUIREMENT_AUDIT-02"
-      },
-      {
-        "at": "2026-06-12T07:02:04.165Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::renders the audit trail with per-type emoji → R-AUDIT-02"
-      },
-      {
-        "at": "2026-06-12T07:02:03.403Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::does not create journals outside Rivet projects → NFR_AUDIT-03"
-      },
-      {
-        "at": "2026-06-12T07:02:03.402Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::does not create journals outside Rivet projects → REQUIREMENT_AUDIT-01"
-      },
-      {
-        "at": "2026-06-12T07:02:02.634Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::audits cli invocations into the journal → REQUIREMENT_AUDIT-01"
-      },
-      {
-        "at": "2026-06-12T07:02:02.633Z",
-        "icon": "✅",
-        "text": "check test/cli-ux.test.ts::audits cli invocations into the journal → R-AUDIT-01"
-      },
-      {
-        "at": "2026-06-12T07:02:01.769Z",
-        "icon": "🧾",
-        "text": "drift",
-        "meta": "Pratiyush Kumar Singh"
-      },
-      {
-        "at": "2026-06-12T07:02:00.958Z",
-        "icon": "🧾",
-        "text": "graph build",
-        "meta": "Pratiyush Kumar Singh"
-      },
-      {
-        "at": "2026-06-12T07:02:00.342Z",
+        "at": "2026-06-12T07:05:45.332Z",
         "icon": "✅",
         "text": "verify 4 step(s)"
       },
       {
-        "at": "2026-06-12T07:01:55.596Z",
+        "at": "2026-06-12T07:05:40.156Z",
         "icon": "🧾",
         "text": "verify",
         "meta": "Pratiyush Kumar Singh"
       },
       {
-        "at": "2026-06-12T07:00:16.579Z",
-        "icon": "🛡️",
-        "text": "unlock"
+        "at": "2026-06-12T07:05:39.864Z",
+        "icon": "🧾",
+        "text": "graph build",
+        "meta": "Pratiyush Kumar Singh"
+      },
+      {
+        "at": "2026-06-12T07:05:39.623Z",
+        "icon": "✅",
+        "text": "check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode → REQUIREMENT_COCKPIT-05"
+      },
+      {
+        "at": "2026-06-12T07:05:38.691Z",
+        "icon": "✅",
+        "text": "check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint → REQUIREMENT_COCKPIT-05"
+      },
+      {
+        "at": "2026-06-12T07:05:37.782Z",
+        "icon": "✅",
+        "text": "check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes → REQUIREMENT_COCKPIT-05"
+      },
+      {
+        "at": "2026-06-12T07:05:36.926Z",
+        "icon": "✅",
+        "text": "check test/cockpit-server.test.ts::a valid POST saves config.json and journals governance → REQUIREMENT_COCKPIT-05"
+      },
+      {
+        "at": "2026-06-12T07:05:36.078Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events → REQUIREMENT_COCKPIT-04"
+      },
+      {
+        "at": "2026-06-12T07:05:34.998Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run → REQUIREMENT_COCKPIT-04"
+      },
+      {
+        "at": "2026-06-12T07:05:33.503Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes → REQUIREMENT_COCKPIT-03"
+      },
+      {
+        "at": "2026-06-12T07:05:32.269Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar → REQUIREMENT_COCKPIT-03"
+      },
+      {
+        "at": "2026-06-12T07:05:31.198Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar → REQUIREMENT_COCKPIT-02"
+      },
+      {
+        "at": "2026-06-12T07:05:30.266Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar → REQUIREMENT_COCKPIT-02"
+      },
+      {
+        "at": "2026-06-12T07:05:29.326Z",
+        "icon": "✅",
+        "text": "check test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest → REQUIREMENT_COCKPIT-02"
+      },
+      {
+        "at": "2026-06-12T07:05:28.389Z",
+        "icon": "✅",
+        "text": "check test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path → REQUIREMENT_COCKPIT-01"
+      },
+      {
+        "at": "2026-06-12T07:05:27.810Z",
+        "icon": "✅",
+        "text": "check test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape → REQUIREMENT_COCKPIT-01"
+      },
+      {
+        "at": "2026-06-12T07:05:27.229Z",
+        "icon": "✅",
+        "text": "check test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description) → REQUIREMENT_COCKPIT-01"
+      },
+      {
+        "at": "2026-06-12T07:05:26.653Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::renders an explicit empty state when there are no tasks → REQUIREMENT_PROG-01"
+      },
+      {
+        "at": "2026-06-12T07:05:25.884Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up → REQUIREMENT_PROG-01"
+      },
+      {
+        "at": "2026-06-12T07:05:25.882Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up → R-PROG-01"
+      },
+      {
+        "at": "2026-06-12T07:05:25.120Z",
+        "icon": "✅",
+        "text": "check test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold → REQUIREMENT_AUDIT-02"
+      },
+      {
+        "at": "2026-06-12T07:05:24.355Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::renders the audit trail with per-type emoji → REQUIREMENT_AUDIT-02"
+      },
+      {
+        "at": "2026-06-12T07:05:24.354Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::renders the audit trail with per-type emoji → R-AUDIT-02"
+      },
+      {
+        "at": "2026-06-12T07:05:23.593Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::does not create journals outside Rivet projects → NFR_AUDIT-03"
+      },
+      {
+        "at": "2026-06-12T07:05:23.592Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::does not create journals outside Rivet projects → REQUIREMENT_AUDIT-01"
+      },
+      {
+        "at": "2026-06-12T07:05:22.825Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::audits cli invocations into the journal → REQUIREMENT_AUDIT-01"
+      },
+      {
+        "at": "2026-06-12T07:05:22.824Z",
+        "icon": "✅",
+        "text": "check test/cli-ux.test.ts::audits cli invocations into the journal → R-AUDIT-01"
+      },
+      {
+        "at": "2026-06-12T07:05:21.898Z",
+        "icon": "🧾",
+        "text": "drift",
+        "meta": "Pratiyush Kumar Singh"
+      },
+      {
+        "at": "2026-06-12T07:05:00.484Z",
+        "icon": "🧾",
+        "text": "graph build",
+        "meta": "Pratiyush Kumar Singh"
       }
     ],
     "files": [
@@ -1462,7 +1439,7 @@ window.RIVET = {
       },
       {
         "name": "learnings.md",
-        "content": "# Rivet learnings — append-only; a lesson counts once PROMOTED or HARDENED\n\n## 2026-06-11 Build-intent must veto research keywords in routing\n- Trigger: live demo routed \"i want a portfolio page … and compare with index\" to RESEARCH — the\n  word \"compare\" outweighed the explicit \"i want a … page\" build intent.\n- Lesson: investigative keywords are weak signals; build-intent (\"i/we want|need\", \"add/create/\n  implement\") must veto them. Misrouting a feature to research silently produces zero code.\n- Promoted to: check:test/workflow.test.ts::want-signals veto research routing (permanent\n  regression test, bound via task FIX-ROUTE-01 — red→fix→green through Rivet's own done-gate)\n\n## 2026-06-11 Proof identity must be the TESTED TREE, not the commit SHA  ⟨P1 · BLOCKER⟩\n- Trigger: adversarial review #1 (confirmed live): proofs stamp `git rev-parse HEAD` while the tree\n  is dirty — green can vouch for uncommitted code; and committing the tested code moves HEAD, so\n  every proof instantly flips stale.\n- Lesson: \"green means this code is proven\" requires the proof to identify the tree it ran against.\n  Stamp proofs with a content/tree hash (e.g. `git stash create` tree-hash or hash of bound files)\n  + a dirty flag; compute staleness against the tree hash; dirty-tree greens are `provisional`.\n- Promoted to: check:test/proof-identity.test.ts (HARDENED via FIX-PROOF-01 — proofs carry\n  tree+dirty; staleness compares trees with sha fallback for legacy entries; with tree identity a\n  dirty green is sound, so no provisional state was needed)\n\n## 2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩\n- Trigger: review #2/#3 (confirmed): `spec tasks` skips existing tasks so NEW `@check` obligations\n  are never enforced; bare `task create` on an existing id resets status and wipes recorded proofs.\n- Lesson: the spec is only the source of truth if re-derivation diffs bindings into existing tasks,\n  and `task.created` folds as create-if-absent — recorded evidence must be unclobberable.\n- Promoted to: check:test/spec-sync.test.ts (HARDENED via FIX-SPECSYNC-01 — create() refuses duplicates, fold is create-if-absent, syncBindings diffs spec refs in and reopens done tasks with new obligations)\n\n## 2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩\n- Trigger: review #4/#8/#5 (confirmed): malformed config.json or a data-less journal line → raw\n  stack traces across commands; missing runner binary (ENOENT, status null) recorded as a RED proof.\n- Lesson: parse all inputs defensively with one helper + clear message; spawn errors/status null are\n  tooling errors, never proofs — they must not enter the graph.\n- Promoted to: check:test/robust.test.ts (HARDENED via FIX-ROBUST-01 — one defensive loadConfig + safe() CLI wrapper, data-less journal lines tolerated, RunnerUnavailableError instead of fake red proofs; timeout stays a red proof)\n\n## 2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩\n- Trigger: review #6 (confirmed bypasses): `gh \"pr\" create`, `$GH pr create`, `gh api …/pulls`, and\n  `rm .rivet/graph.json` all sail past the guard; `rivet pr` blocks red/stale but not unproven —\n  three gates, three different predicates.\n- Lesson: one shared rule — \"anything not green blocks\" — applied by the hook, `guard pr`, and\n  `rivet pr` alike; in a Rivet project a MISSING graph blocks (state absence ≠ permission);\n  `rivet pr --create` must run the same guard it advertises.\n- Promoted to: check:test/gate.test.ts (HARDENED via FIX-GATE-01 — shared gateVerdict across hook/guard/pr, missing or unreadable graph BLOCKS, quote-stripped matcher + gh api …/pulls; $VAR indirection documented as known limit)\n\n## 2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩\n- Trigger: review #7 (confirmed): PR body counts a criterion proven if ANY binding is green; one\n  green + one red reports \"100% proven green\" exactly when a proof is failing.\n- Lesson: every consumer of proof state uses worst-of (`every(green)`), never any-of. The headline\n  number reviewers trust must be the strictest one.\n- Promoted to: check:test/workflow.test.ts::worst-of coverage in the PR body (HARDENED via FIX-PRMATH-01)\n\n## 2026-06-11 Parser must respect markdown reality  ⟨P2⟩\n- Trigger: review #11/#12/#13/#14 (confirmed): fenced code blocks become real requirements; blank-\n  line-separated EARS sentences merge into one criterion; bulleted/orphan `@check` lines silently\n  drop; `--mode bogus` accepted; `log -n 0` prints everything.\n- Lesson: silent loss of a proof obligation is the worst parser failure — fence-track, flush on\n  blank lines, strip list markers, warn on orphans, validate enums and numbers.\n- Promoted to: check:test/parse-fix.test.ts (HARDENED via FIX-PARSE-01 — fences invisible, blank lines separate criteria, bulleted @checks bind, orphan @checks WARN, assertMode + parseCount validate inputs)\n\n## 2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩\n- Trigger: review #15/#10/#9: `trace`/`affected`/`drift --dry-run` rewrite graph.json or trigger\n  re-index; TDD's expected red burns retryLimit+1 full Maven runs; equal-timestamp results resolve\n  by iteration order.\n- Lesson: queries take a no-write path; retry only on suspected flakiness (or `--expect-red` for\n  TDD); tie-break proofs deterministically toward the worse state.\n- Promoted to: check:test/query-fix.test.ts (HARDENED via FIX-QUERY-01 — materialize(write:false) for trace/affected/dry-run, --expect-red skips retry burn, equal-timestamp ties break toward the worse proof)\n\n## 2026-06-11 Scale & evidence quality backlog  ⟨P3⟩\n- Trigger: review #16-#19: full journal re-fold per command while audit events balloon the file;\n  red proofs carry no failure output; test anchors collide on same-named classes; concurrent\n  worktree waves can interleave journal writes and last-writer-wins graph.json.\n- Lesson: snapshot+tail folding; gate audit to mutating commands or honor memory.journal=\n  \"milestones\"; capture truncated failure tails in CheckResult; anchor by source path; file locking\n  before parallel waves ship.\n- Promoted to: check:test/scale.test.ts (HARDENED via SCALE-01 — withLock mkdir-mutex with stale-steal serializes journal appends across real processes; per-process (size,mtime)-keyed read cache; red proofs carry a 1500-char output tail; same-label code nodes each get anchor edges (ambiguity visible); memory.journal='milestones' skips read-only cli.run noise. Durable snapshot+tail folding deferred until journals measurably grow.)\n\n## 2026-06-11 Verification and review catch DIFFERENT bug classes — keep both\n- Trigger: during construction, bound checks caught 3 real bugs (stale Boot-3 import, ANSI-split\n  assertion, worst-of rollup); the adversarial review then found 20 MORE confirmed issues the\n  checks could not see (semantics, robustness, bypasses).\n- Lesson: evidence-bound done ≠ reviewed. The rivet-review skill's two-pass doctrine is load-\n  bearing, not ceremony; schedule adversarial review at feature boundaries.\n- Promoted to: constitution#hard-rules — \"every feature gets an adversarial review pass before PR\"\n  (APPROVED by Pratiyush 2026-06-11; recorded in .rivet/constitution.md)\n\n## 2026-06-11 The 17-gate proposal: menu yes, mandate no\n- Trigger: ChatGPT proposed 17 mandatory sequential checkbox gates before any coding.\n- Lesson: checkbox gates are enforcement-by-prose (tickable without truth) and mandatory ceremony\n  recreates the over-ceremony death spiral our research documented. But its CONTENT is valuable:\n  NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.\n- Promoted to: check:test/gate-packs.test.ts + check:test/audit-meta.test.ts (BOTH HARDENED — packs ship as editable config defaults, security trigger floors the mode, graph build enforces sections+kinds; journal meta + governance events landed). Its artifact\n  taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into\n  pack-required spec sections; ADR is already a VTG node type; \"AI Execution Plan\" = our task DAG.\n  Its \"no code before tests\" ordering: already stronger in Rivet (bindings at spec time, mechanical).\n\n## 2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)\n- Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the\n  first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes\n  the output, because \"the investigation itself creates context.\"\n- Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.\n- Promoted to: check:test/gate-facts.test.ts (HARDENED via GATE-FACTS-01 — DENY→FORCE→ALLOW in guard-facts.mjs + engine/facts.ts; opt-in gates.facts='on'; 30-min window; 500-entry bounded state)\n\n## 2026-06-11 Protect the gates from the agent (anti-gaming)\n- Trigger: ECC `pre:config-protection` blocks edits to linter configs (\"fix code instead of weakening\n  configs\"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.\n- Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config\n  require an explicit human-approved unlock — the moat must not be editable by the thing it gates.\n- Promoted to: check:test/protect.test.ts (HARDENED via GATE-PROTECT-01 — specs/config immutable while tasks in flight; bound test files lock AFTER their ref goes green (pre-green TDD stays free); human escape hatch `rivet unlock` is time-boxed + journaled)\n\n## 2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules\n- Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; \"anything touching a\n  security trigger or public API is AT LEAST standard\"; two named human gates; \"gated, not\n  autonomous\") + hookify-rules (markdown rules: event/pattern/conditions/action warn|block,\n  verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.\n- Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the\n  tier; packs are user-editable rule files, not code.\n- Promoted to: check:test/gate-packs.test.ts (HARDENED via GATE-PACKS-01 — packs as config data: sections+kinds+triggers; security floor in route; enforcement in graph build; require empty by default)\n\n## 2026-06-11 Journal upgrades: governance events + \"confidence is not approval\"\n- Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)\n  + governance-capture hook (secrets/policy-violation/approval-request as first-class events) +\n  provenance schema (source/created_at/confidence/author required on anything learned).\n- Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +\n  evidence and promotion requires beating the incumbent, never self-declared confidence.\n- Promoted to: check:test/audit-meta.test.ts (HARDENED via AUDIT-META-01 — EventMeta actor/model/sources on journal events, cli.run stamped with git user/RIVET_MODEL, governance first-class event type 🛡️, unlock journals as governance; pack-seeded content remains with GATE-PACKS-01)\n\n## 2026-06-11 Finishing ritual + phase chaining (superpowers)\n- Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;\n  typed confirmation to discard; provenance check before cleanup) + every phase skill pins its sole\n  successor + checklists compile into tracked tasks, not prose.\n- Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional\n  cleanup; skills should name their one successor so phases can't be silently skipped.\n- Promoted to: check:test/finish-skill.test.ts (HARDENED via FINISH-RITUAL-01 — skills/rivet-finish: fresh-evidence entry gate via rivet graph build, fixed 4-option menu, typed `discard`, provenance-checked cleanup, journaled landing)\n\n## 2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)\n- Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands\n  (~230 are stack packs & domain verticals, consciously skipped). Both MIT; adaptation as original\n  prose unencumbered. Independent pass confirmed all five prior promotions (GATE-FACTS/PROTECT/\n  PACKS-01, AUDIT-META-01, FINISH-RITUAL-01).\n- Lesson: Rivet is the enforcement/traceability layer; generic craft (brainstorming, systematic-\n  debugging, worktrees, parallel dispatch, TDD craft) stays in superpowers — recommend alongside,\n  never duplicate. Absorb only mechanics that strengthen the moat. Net-new from this pass:\n  review content (silent-failure hunt, behavioral-vs-line coverage, verify-feedback-before-\n  implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project\n  recurrence), phase-aware compaction, and compliance-QA of our own skills.\n- Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;\n  check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)\n\n## 2026-06-12 A grammar that can't spell its own kinds drops obligations silently\n- Trigger: RUNNERS-01's kind-resolution test failed — CHECK_LINE's kind pattern was [a-z]+, so\n  `kind=e2e` (digit!) never matched and e2e bindings had parsed as PROSE since day one. No error,\n  no warning: the obligation just vanished.\n- Lesson: grammar character classes must be derived from the actual vocabulary (e2e has a digit);\n  every enum the parser accepts needs at least one test using its trickiest member.\n- Confidence: high (reproduced; permanent test) · Scope: project\n- Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)\n\n## 2026-06-12 Test fixtures must pin every git assumption the host can override\n- Trigger: WAVE-01's fixture broke twice on this machine's `init.defaultBranch=master` — a push\n  refspec assumed a local `main`, and a bare origin's HEAD pointed at a branch we never pushed.\n- Lesson: fixtures that shell out to git must pin branch names (`init -b`, `push HEAD:\u003cbranch>`),\n  identity, and HEAD explicitly — host config is part of the environment under test.\n- Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)\n- Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)\n\n## 2026-06-12 The journal must not stale its own proofs\n- Trigger: first self-graph of the rivet repo — drift re-proved 3/3 PASS yet all stayed STALE\n  forever: recording a proof appends to the tracked journal, which changed the tree-hash the proof\n  was compared against. The bookkeeping invalidated the evidence it was keeping.\n- Lesson: proof identity = the CODE tree only. Build a temp index from HEAD, drop .rivet/, add the\n  working state (now INCLUDING untracked files — closes the stash-create blind spot), write-tree.\n  A system whose act of measurement changes the measurement is not a measurement system.\n- Confidence: high (reproduced live; permanent regression test) · Scope: project\n- Promoted to: check:test/proof-identity.test.ts (FIX-PROOF-02 — journal-append keeps identity,\n  code change moves it, untracked files count; drift now converges 3/3 green on this very repo)\n\n## 2026-06-11 Doctor's graphify install hint reads as a typosquat to security tooling\n- Trigger: dogfooding the notepad app — `rivet doctor` flags graphify as the only required red with\n  hint `pip install graphifyy && graphify install`. Claude Code's permission classifier auto-DENIED\n  the command as \"agent-chosen, typosquat-looking package … untrusted external code execution\"\n  (PyPI name 'graphifyy' ≠ CLI name 'graphify'), so an agent cannot self-heal doctor's one required\n  prerequisite; setup stalls on a human.\n- Lesson: a name-mismatched install hint is indistinguishable from a supply-chain attack to policy\n  bots and cautious humans. Options: publish under the CLI's own name, state provenance in the hint\n  (\"graphifyy is Rivet's companion package — \u003crepo url>\"), let doctor accept a vendored/bundled\n  graphify path, or degrade gracefully (graph features off with a clear enable message) instead of\n  a required red.\n- Confidence: medium (one environment, but the classifier's reasoning generalizes)\n- Scope: project\n- Promoted to: check:test/doctor-fix.test.ts (HARDENED via FIX-DOCTOR-01 — graphify is optional-with-consequences in doctor, never a required red; install hint carries provenance + source repo + 'optional' framing so classifiers and humans can trust it)\n\n## 2026-06-11 \"Stack\" names two disjoint enums — config rejects the runner vocabulary\n- Trigger: dogfooding the notepad setup — the project brief says \"stack node-vitest\" (matching\n  `check run --stack` / BUILTIN_STACKS in engine/verify/runner.ts), but `project.stacks` in\n  config.json is a different enum (java-maven|…|node|typescript|react|…). Setting\n  `\"stacks\": [\"node-vitest\"]` fails EVERY command with an enum error whose valid values share no\n  overlap with runner ids and no pointer to where runner stacks actually live.\n- Lesson: one word naming two disjoint enums guarantees mis-filing by users and agents alike.\n  Either unify/rename (e.g. `project.stacks` → `project.platforms`, runner ids stay \"stacks\"), or\n  make the config error disambiguate: \"node-vitest is a RUNNER stack — pass it to `check run\n  --stack` or configure verify.runners; project.stacks describes the codebase (typescript, react…)\".\n- Confidence: high (reproduced; the project's own brief conflates the two)\n- Scope: project\n- Promoted to: check:test/stacknames.test.ts (HARDENED via FIX-STACKNAMES-01 — project.stacks renamed to project.platforms (legacy key ignored harmlessly); filing a runner stack there now yields a disambiguating error pointing to `check run --stack` / verify.runners)\n\n## 2026-06-12 The printed proof stamp showed HEAD, not the proof's identity\n- Trigger: dogfooding the notepad vault feature — a TDD red and its green ran against DIFFERENT\n  code (stub → implementation, both uncommitted) yet both printed \"@ 9aa40ae2\": checkRun stamped\n  `result.sha` (HEAD) while the journal correctly recorded distinct `tree` hashes. Cost a live\n  P1-scare detour into the journal to rule out a proof-identity regression.\n- Lesson: every printed identity must be the SAME identity the system reasons with (FIX-PROOF-01/02\n  made that the tree) — a stale-but-familiar id invites false bug reports and, worse, false\n  confidence. Related: the PR-body stamp (workflow.test.ts pins \"@ abc12345\") may deserve the same\n  treatment.\n- Confidence: high (reproduced live; permanent test)\n- Scope: project\n- Promoted to: check:test/proof-display.test.ts::stamps the tree identity, not the commit sha\n  (FIX-PROOF-03 — red→green through Rivet's own done-gate; stamp = \"tree \u003chash8>\" + \"*\" dirty\n  marker, sha only as legacy fallback; landed in commit 96ce52a authored by Pratiyush)\n\n## 2026-06-12 Provenance lines must not pin facts that rot (or were never true)\n- Trigger: FIX-DOCTOR-01's improved graphify hint says \"Source: github.com/safishamsi/graphify\n  (213k★)\" — live GitHub API shows the repo is real but has ~65.6k stars. An inflated number\n  inside the very line meant to establish trust undercuts it; star counts hardcoded in CLI\n  strings are stale the day they ship.\n- Lesson: provenance = verifiable pointers (URL, package name, owner), never point-in-time\n  vanity metrics. If popularity matters, phrase it un-rottably (\"65k+ stars as of 2026-06\") or\n  let the reader click. (The repo itself checks out — graphifyy install is trustworthy.)\n- Confidence: high (checked via GitHub API live)\n- Scope: project\n- Promoted to: check:test/doctor-fix.test.ts::pins no point-in-time vanity metrics (HARDENED via\n  FIX-PROV-01 — hint is verifiable pointers only; revitify-first wording landed with FEAT-REVITIFY-01)\n\n## 2026-06-12 PR body and LEDGER still stamp commit sha (anticipated tail of the proof-display lesson)\n- Trigger: finishing vault-persistence in the notepad — `rivet pr` emitted \"proven green (100%) at\n  `3311f7bb`\" and LEDGER.md rows print \"@ 6903f20f\" (bare commit shas) while every proof in the\n  journal is identified by tree (`70786fd1`). Harmless this run (tree was clean, so sha↔tree map\n  1:1), but on any dirty-tree run these surfaces repeat the exact misdirection FIX-PROOF-03 cured\n  in the CLI stamp.\n- Lesson: \"printed identity = the identity the system reasons with\" wasn't applied to all\n  printers — when changing an identity scheme, sweep every surface that renders a proof (PR body,\n  LEDGER.md, TRACKING.md, dashboards), not just the surface that triggered the report.\n- Confidence: high (observed live; .rivet/pr-body.md + LEDGER.md on notepad branch worktree-vault-07-08)\n- Scope: project\n- Promoted to: check:test/proof-display.test.ts::FEAT-PROOF-04 sweep (HARDENED via FIX-PROOF-04 —\n  shared engine/verify/stamp.ts renders tree+dirty in PR body, approvals, audit log/LEDGER;\n  workflow.test.ts pin updated to tree identity)\n\n## 2026-06-12 A broken session must cost zero re-orientation  ⟨P2⟩\n- Trigger: the notepad dogfood session died mid-batch on connectivity; `rivet status` + `rivet\n  resume` + the journal re-oriented a fresh session losslessly — twice in one day — but only\n  because a human knew to run them first.\n- Lesson: \"resume-first after any break\" is tool knowledge, not human knowledge — the workflow and\n  finish skills must state it as a hard first step so any agent session starts from recorded truth.\n- Confidence: high (two live recoveries) · Scope: project\n- Promoted to: skills/rivet-workflow + rivet-finish hard rules (HARDENED via FEAT-VERIFY-01 —\n  resume-first is step zero in both; skill-qa enforces the files stay real)\n\n## 2026-06-12 Requirement ids are read by humans out of context — they must self-describe\n- Trigger: Pratiyush, reading boards/PR bodies from the notepad run: \"Don't use R-VAULT etc — use\n  FULLY QUALIFIED NAMES.\" `R-` carries zero meaning to anyone who didn't write the parser.\n- Lesson: ids travel without their spec (PR bodies, LEDGER, dashboards, chat). The prefix must\n  carry the noun: REQUIREMENT_VAULT-01, NFR_PERF-01, ADR_STORAGE-01. Enforce as a lint\n  (configurable warn|error|off) — never break parsing of old specs.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/qualified-ids.test.ts (HARDENED via FEAT-IDS-01 — REQUIREMENT_/NFR_/ADR_\n  prefixes, configurable lint, ADR exempt; own spec migrated and re-proven)\n\n## 2026-06-12 Edge-case coverage mandates in prose are ignorable — make absence detectable\n- Trigger: Pratiyush: \"Use Gherkin test cases but cover more ground — 100%, edge cases etc,\n  every test has to be very solid.\" The spec-author skill already says \"hunt unhappy paths\";\n  nothing notices when a spec ships without a single failure criterion.\n- Lesson: a requirement with zero negative/failure criteria is an UNVERIFIED-shaped hole the\n  graph must flag, exactly like an unbound criterion. Gherkin (Scenario + Scenario Outline with\n  Examples) becomes first-class and the default; the floor is mechanical, on everywhere.\n- Confidence: high (direct user feedback + matches FLOOR-C instinct) · Scope: project\n- Promoted to: check:test/gherkin.test.ts (HARDENED via FEAT-GHERKIN-01 — Scenario + Outline/Examples\n  expansion, gherkin default, off-format lint, gates.negativeFloor on everywhere; own spec grew\n  negative criteria incl. a Gherkin failure Scenario)\n\n## 2026-06-12 A green task is not a green project — \"Build ALL + run ALL kinds\" needs one command\n- Trigger: Pratiyush: \"Build ALL. Run All Type Test.\" Tasks prove their bound checks; nothing\n  proves the whole tree builds and every configured kind passes before a PR.\n- Lesson: one journaled `rivet verify` (build + every kind, full suites, report-all) carrying the\n  code-tree hash is the only honest PR precondition — and it must be a hard gate in guard-pr\n  (green + same tree), not skill prose.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/verify-cmd.test.ts (HARDENED via FEAT-VERIFY-01 — rivet verify runs\n  build+ALL kinds report-all, journaled with tree hash; verifyVerdict hard-gates guard-pr/pr;\n  hook gains the exists+green fast veto)\n\n## 2026-06-12 Post-task evidence must be scannable — table, not prose\n- Trigger: Pratiyush: \"Tabular format of report after task.\" `task done` prints a progress bar;\n  the actual evidence (which checks, what kind, what proof, which tree) is in the journal where\n  nobody looks.\n- Lesson: the moment of \"done\" is when evidence must be shown: a 📋 table (Check | Kind | State |\n  Proof | Proven at) in the terminal AND persisted per-task in LEDGER.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/task-report.test.ts (HARDENED via FEAT-REPORT-01 — 📋 table at task done\n  + persisted per-task in LEDGER, stale-honest, tree-stamped)\n\n## 2026-06-12 Emoji are an event-type grammar — central map with a plain fallback\n- Trigger: Pratiyush: \"Use more emojis, at least 6-10 more types.\" Current emoji are scattered\n  string literals; adding types means hunting call sites, and CI logs can't opt out.\n- Lesson: one emoji map keyed by event type (≥10 new: 🧪📋🧭✍️📦⏱️♻️🧰🔍🚀📝🧹), every renderer\n  reads it, and !TTY / NO_EMOJI=1 / --plain degrade to ASCII labels so logs stay greppable.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/emoji.test.ts (HARDENED via FEAT-EMOJI-01 — central map, 10 new types,\n  --plain/NO_EMOJI/TTY degradation, LEDGER legend)\n\n## 2026-06-12 Init must seed standards, not just folders — per-platform law packs\n- Trigger: Pratiyush: \"If project is initialized, add best practices for different types of\n  projects — TypeScript and Electron, and multiple langs can be used in a project.\" Today\n  `rivet init` writes config + an empty laws file; quality standards stay in the human's head.\n- Lesson: `init --platforms` seeds scoped law packs (TypeScript/Electron/Java/Python/\n  quality-gates/polyglot), 100% free/OSS tools, each ending with \"Bind these as Rivet checks\"\n  wiring — standards arrive pre-wired to enforcement, and platforms is an ARRAY (polyglot is\n  normal, not an edge case).\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/init-practices.test.ts (HARDENED via FEAT-INITPACKS-01 — init --platforms\n  seeds scoped law packs (ts/electron/java/python/quality-gates/polyglot), free/OSS-only, check\n  wiring included; this repo self-adopted: ESLint+Prettier+lint-staged, lint as a verify kind)\n\n## 2026-06-12 The graph layer must not depend on someone else's pip package\n- Trigger: Pratiyush: clone github.com/safishamsi/graphify and create a modular TS counterpart\n  named **revitify**. Root cause chain: doctor's graphify hint already burned us twice\n  (typosquat-looking install auto-DENIED; star count rotted) — the dependency itself is the\n  liability, not just its hint.\n- Lesson: anything moat-adjacent (the visual/queryable graph) needs a native, in-repo provider.\n  revitify = packages/revitify workspace pkg, same output contract as graphify (graph.json /\n  graph.html / GRAPH_REPORT.md) so the engine swaps providers invisibly; external graphify stays\n  available behind config for those who want its full multi-modal power.\n- Confidence: high (two prior lessons + direct instruction) · Scope: project\n- Promoted to: check:packages/revitify/test/revitify.test.ts (HARDENED via FEAT-REVITIFY-01 —\n  native TS provider, graphify output contract proven against loadCodeGraph, provider config,\n  445 code nodes self-hosted; upstream pinned in packages/revitify/.track @ 0.8.38/#1271)\n\n## 2026-06-12 Depth on one harness beats breadth — say it out loud\n- Trigger: Pratiyush: \"Focus it for only Claude Code now, later we extend it.\"\n- Lesson: docs/skills are already Claude-Code-only by construction; the README must SAY so\n  (\"Built for Claude Code first; other assistants later.\") so contributors don't generalize\n  early and dilute the hook/skill integration that is the moat.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/readme.test.ts::declares the Claude-Code-first focus explicitly\n  (HARDENED via FEAT-CCFIRST-01)\n\n## 2026-06-12 Piped CLI output swallows the exit code the gate depends on  ⟨P2⟩\n- Trigger: this batch — `rivet check run … | tail -1` let a && chain continue past a FAILING\n  check (tail exits 0), committing a broken test that only the done-gate caught one step later.\n- Lesson: every scripted/agent invocation of gate-bearing commands must run with `set -o pipefail`\n  (or capture status explicitly) — a gate whose exit code is eaten by a pipe is decoration.\n- Confidence: high (reproduced live this session) · Scope: global (any shell automation)\n- Promoted to: skills/rivet-workflow hard rule (\"Scripted check runs MUST preserve exit codes\") —\n  HARDENED; the done-gate caught the slipped commit, the rule prevents the next one\n\n## 2026-06-12 The done-gate accepted STALE evidence  ⟨P1 · found by our own 📋 table⟩\n- Trigger: closing FEAT-REVITIFY-01 this batch — the new per-task evidence table printed the bound\n  proof as 🟣 stale (tree had moved between the run and `task done`) yet the gate said DONE:\n  markDone only asks \"is there a passing run\", never \"does that run vouch for the CURRENT code\".\n- Lesson: worst-of must hold at the done-gate too — a pass recorded on an older tree is NOT green\n  evidence for the code being declared done. Block (or done-with-warnings under\n  verify.blockDoneOnFail=false) and tell the human exactly which refs to re-run.\n- Confidence: high (observed live in this session's own output) · Scope: project\n- Promoted to: check:test/stale-done.test.ts (FIX-STALEDONE-01, this session)\n\n## 2026-06-12 Untracked reference material must be gitignored the moment it lands  ⟨P2⟩\n- Trigger: a routine `git add -A` swept `_ref/` (9 embedded reference repos!) and `.claude/` into a\n  release commit; caught by the embedded-repo warnings and amended out.\n- Lesson: \"untracked but precious\" is a trap — anything meant to stay out of history gets its\n  .gitignore line in the SAME change that creates it, never later.\n- Confidence: high (live near-miss) · Scope: global\n- Promoted to: .gitignore (_ref/, .claude/worktrees/, .claude/settings.local.json) — structural;\n  the class is covered by this entry + memory note for future sessions.\n\n## 2026-06-12 A relative file: dependency breaks every worktree  ⟨P2 · found mid-fix⟩\n- Trigger: pnpm install inside the batch worktree failed — `file:../revitify` resolves relative to\n  the INSTALLING dir, so from `.claude/worktrees/\u003cname>/` it points at a void. Rivet's own wave\n  dispatch (one worktree per task) would hit this on every parallel task.\n- Lesson: location-relative dependencies and worktree-based parallelism are structurally at odds;\n  a machine-local sibling dep must be an ABSOLUTE file: path (it was already machine-local by\n  choice — the relative form only pretended to be portable).\n- Confidence: high (reproduced live) · Scope: global (any repo pairing file: deps with worktrees)\n- Promoted to: package.json (link:/Users/pratiyush/Github/revitify — pnpm's link: protocol; bare\n  absolute file: mis-parses) + this entry; revisit at\n  Phase E packaging when revitify ships to npm and the file: dep disappears entirely.\n"
+        "content": "# Rivet learnings — append-only; a lesson counts once PROMOTED or HARDENED\n\n## 2026-06-11 Build-intent must veto research keywords in routing\n- Trigger: live demo routed \"i want a portfolio page … and compare with index\" to RESEARCH — the\n  word \"compare\" outweighed the explicit \"i want a … page\" build intent.\n- Lesson: investigative keywords are weak signals; build-intent (\"i/we want|need\", \"add/create/\n  implement\") must veto them. Misrouting a feature to research silently produces zero code.\n- Promoted to: check:test/workflow.test.ts::want-signals veto research routing (permanent\n  regression test, bound via task FIX-ROUTE-01 — red→fix→green through Rivet's own done-gate)\n\n## 2026-06-11 Proof identity must be the TESTED TREE, not the commit SHA  ⟨P1 · BLOCKER⟩\n- Trigger: adversarial review #1 (confirmed live): proofs stamp `git rev-parse HEAD` while the tree\n  is dirty — green can vouch for uncommitted code; and committing the tested code moves HEAD, so\n  every proof instantly flips stale.\n- Lesson: \"green means this code is proven\" requires the proof to identify the tree it ran against.\n  Stamp proofs with a content/tree hash (e.g. `git stash create` tree-hash or hash of bound files)\n  + a dirty flag; compute staleness against the tree hash; dirty-tree greens are `provisional`.\n- Promoted to: check:test/proof-identity.test.ts (HARDENED via FIX-PROOF-01 — proofs carry\n  tree+dirty; staleness compares trees with sha fallback for legacy entries; with tree identity a\n  dirty green is sound, so no provisional state was needed)\n\n## 2026-06-11 The spec→gate link must never freeze or clobber  ⟨P1⟩\n- Trigger: review #2/#3 (confirmed): `spec tasks` skips existing tasks so NEW `@check` obligations\n  are never enforced; bare `task create` on an existing id resets status and wipes recorded proofs.\n- Lesson: the spec is only the source of truth if re-derivation diffs bindings into existing tasks,\n  and `task.created` folds as create-if-absent — recorded evidence must be unclobberable.\n- Promoted to: check:test/spec-sync.test.ts (HARDENED via FIX-SPECSYNC-01 — create() refuses duplicates, fold is create-if-absent, syncBindings diffs spec refs in and reopens done tasks with new obligations)\n\n## 2026-06-11 User-editable inputs must never crash; infra errors are not test failures  ⟨P1⟩\n- Trigger: review #4/#8/#5 (confirmed): malformed config.json or a data-less journal line → raw\n  stack traces across commands; missing runner binary (ENOENT, status null) recorded as a RED proof.\n- Lesson: parse all inputs defensively with one helper + clear message; spawn errors/status null are\n  tooling errors, never proofs — they must not enter the graph.\n- Promoted to: check:test/robust.test.ts (HARDENED via FIX-ROBUST-01 — one defensive loadConfig + safe() CLI wrapper, data-less journal lines tolerated, RunnerUnavailableError instead of fake red proofs; timeout stays a red proof)\n\n## 2026-06-11 All gates must share one predicate, and absence of state must block  ⟨P1⟩\n- Trigger: review #6 (confirmed bypasses): `gh \"pr\" create`, `$GH pr create`, `gh api …/pulls`, and\n  `rm .rivet/graph.json` all sail past the guard; `rivet pr` blocks red/stale but not unproven —\n  three gates, three different predicates.\n- Lesson: one shared rule — \"anything not green blocks\" — applied by the hook, `guard pr`, and\n  `rivet pr` alike; in a Rivet project a MISSING graph blocks (state absence ≠ permission);\n  `rivet pr --create` must run the same guard it advertises.\n- Promoted to: check:test/gate.test.ts (HARDENED via FIX-GATE-01 — shared gateVerdict across hook/guard/pr, missing or unreadable graph BLOCKS, quote-stripped matcher + gh api …/pulls; $VAR indirection documented as known limit)\n\n## 2026-06-11 Worst-of obligation semantics everywhere — including the PR headline  ⟨P1 · quick⟩\n- Trigger: review #7 (confirmed): PR body counts a criterion proven if ANY binding is green; one\n  green + one red reports \"100% proven green\" exactly when a proof is failing.\n- Lesson: every consumer of proof state uses worst-of (`every(green)`), never any-of. The headline\n  number reviewers trust must be the strictest one.\n- Promoted to: check:test/workflow.test.ts::worst-of coverage in the PR body (HARDENED via FIX-PRMATH-01)\n\n## 2026-06-11 Parser must respect markdown reality  ⟨P2⟩\n- Trigger: review #11/#12/#13/#14 (confirmed): fenced code blocks become real requirements; blank-\n  line-separated EARS sentences merge into one criterion; bulleted/orphan `@check` lines silently\n  drop; `--mode bogus` accepted; `log -n 0` prints everything.\n- Lesson: silent loss of a proof obligation is the worst parser failure — fence-track, flush on\n  blank lines, strip list markers, warn on orphans, validate enums and numbers.\n- Promoted to: check:test/parse-fix.test.ts (HARDENED via FIX-PARSE-01 — fences invisible, blank lines separate criteria, bulleted @checks bind, orphan @checks WARN, assertMode + parseCount validate inputs)\n\n## 2026-06-11 Read-only must be read-only; retries must not burn deterministic reds  ⟨P2⟩\n- Trigger: review #15/#10/#9: `trace`/`affected`/`drift --dry-run` rewrite graph.json or trigger\n  re-index; TDD's expected red burns retryLimit+1 full Maven runs; equal-timestamp results resolve\n  by iteration order.\n- Lesson: queries take a no-write path; retry only on suspected flakiness (or `--expect-red` for\n  TDD); tie-break proofs deterministically toward the worse state.\n- Promoted to: check:test/query-fix.test.ts (HARDENED via FIX-QUERY-01 — materialize(write:false) for trace/affected/dry-run, --expect-red skips retry burn, equal-timestamp ties break toward the worse proof)\n\n## 2026-06-11 Scale & evidence quality backlog  ⟨P3⟩\n- Trigger: review #16-#19: full journal re-fold per command while audit events balloon the file;\n  red proofs carry no failure output; test anchors collide on same-named classes; concurrent\n  worktree waves can interleave journal writes and last-writer-wins graph.json.\n- Lesson: snapshot+tail folding; gate audit to mutating commands or honor memory.journal=\n  \"milestones\"; capture truncated failure tails in CheckResult; anchor by source path; file locking\n  before parallel waves ship.\n- Promoted to: check:test/scale.test.ts (HARDENED via SCALE-01 — withLock mkdir-mutex with stale-steal serializes journal appends across real processes; per-process (size,mtime)-keyed read cache; red proofs carry a 1500-char output tail; same-label code nodes each get anchor edges (ambiguity visible); memory.journal='milestones' skips read-only cli.run noise. Durable snapshot+tail folding deferred until journals measurably grow.)\n\n## 2026-06-11 Verification and review catch DIFFERENT bug classes — keep both\n- Trigger: during construction, bound checks caught 3 real bugs (stale Boot-3 import, ANSI-split\n  assertion, worst-of rollup); the adversarial review then found 20 MORE confirmed issues the\n  checks could not see (semantics, robustness, bypasses).\n- Lesson: evidence-bound done ≠ reviewed. The rivet-review skill's two-pass doctrine is load-\n  bearing, not ceremony; schedule adversarial review at feature boundaries.\n- Promoted to: constitution#hard-rules — \"every feature gets an adversarial review pass before PR\"\n  (APPROVED by Pratiyush 2026-06-11; recorded in .rivet/constitution.md)\n\n## 2026-06-11 The 17-gate proposal: menu yes, mandate no\n- Trigger: ChatGPT proposed 17 mandatory sequential checkbox gates before any coding.\n- Lesson: checkbox gates are enforcement-by-prose (tickable without truth) and mandatory ceremony\n  recreates the over-ceremony death spiral our research documented. But its CONTENT is valuable:\n  NFR/security/threat-model/API+data-contract checklists, AI metadata in the audit trail.\n- Promoted to: check:test/gate-packs.test.ts + check:test/audit-meta.test.ts (BOTH HARDENED — packs ship as editable config defaults, security trigger floors the mode, graph build enforces sections+kinds; journal meta + governance events landed). Its artifact\n  taxonomy (business/tech spec split, ADR, API+data contracts, test strategy) folds into\n  pack-required spec sections; ADR is already a VTG node type; \"AI Execution Plan\" = our task DAG.\n  Its \"no code before tests\" ordering: already stronger in Rivet (bindings at spec time, mechanical).\n\n## 2026-06-11 Gates can FORCE investigation, not just block (ECC GateGuard)\n- Trigger: ECC's DENY→FORCE→ALLOW gate ships A/B evidence (gated 9.0 vs ungated 6.75): blocking the\n  first edit until the agent gathers named facts (importers, schemas, verbatim instruction) changes\n  the output, because \"the investigation itself creates context.\"\n- Lesson: Rivet's guards should be able to demand evidence-gathering before retry — not only refuse.\n- Promoted to: check:test/gate-facts.test.ts (HARDENED via GATE-FACTS-01 — DENY→FORCE→ALLOW in guard-facts.mjs + engine/facts.ts; opt-in gates.facts='on'; 30-min window; 500-entry bounded state)\n\n## 2026-06-11 Protect the gates from the agent (anti-gaming)\n- Trigger: ECC `pre:config-protection` blocks edits to linter configs (\"fix code instead of weakening\n  configs\"). Rivet today lets an agent edit a bound test or spec mid-task to turn red green.\n- Lesson: while a task is in flight, edits to its spec criteria, bound test files, and gate config\n  require an explicit human-approved unlock — the moat must not be editable by the thing it gates.\n- Promoted to: check:test/protect.test.ts (HARDENED via GATE-PROTECT-01 — specs/config immutable while tasks in flight; bound test files lock AFTER their ref goes green (pre-green TDD stays free); human escape hatch `rivet unlock` is time-boxed + journaled)\n\n## 2026-06-11 Gate packs: tier classifier + phase mask + security floor + YAML rules\n- Trigger: ECC orch-pipeline (trivial/small/standard/large → phase masks; \"anything touching a\n  security trigger or public API is AT LEAST standard\"; two named human gates; \"gated, not\n  autonomous\") + hookify-rules (markdown rules: event/pattern/conditions/action warn|block,\n  verb-first names) — our GATE-PACKS-01 design, independently convergent and field-tested.\n- Lesson: adopt this exact shape: routing tier picks the phase mask; security triggers floor the\n  tier; packs are user-editable rule files, not code.\n- Promoted to: check:test/gate-packs.test.ts (HARDENED via GATE-PACKS-01 — packs as config data: sections+kinds+triggers; security floor in route; enforcement in graph build; require empty by default)\n\n## 2026-06-11 Journal upgrades: governance events + \"confidence is not approval\"\n- Trigger: ECC decision-ledger (decision marks, coherence vs prior entries, promotion-gate results)\n  + governance-capture hook (secrets/policy-violation/approval-request as first-class events) +\n  provenance schema (source/created_at/confidence/author required on anything learned).\n- Lesson: journal event taxonomy should include governance kinds; learnings carry confidence +\n  evidence and promotion requires beating the incumbent, never self-declared confidence.\n- Promoted to: check:test/audit-meta.test.ts (HARDENED via AUDIT-META-01 — EventMeta actor/model/sources on journal events, cli.run stamped with git user/RIVET_MODEL, governance first-class event type 🛡️, unlock journals as governance; pack-seeded content remains with GATE-PACKS-01)\n\n## 2026-06-11 Finishing ritual + phase chaining (superpowers)\n- Trigger: finishing-a-development-branch (fresh test-evidence entry gate; fixed 4-option menu;\n  typed confirmation to discard; provenance check before cleanup) + every phase skill pins its sole\n  successor + checklists compile into tracked tasks, not prose.\n- Lesson: Rivet needs a completion ritual skill with evidence-gated entry and option-conditional\n  cleanup; skills should name their one successor so phases can't be silently skipped.\n- Promoted to: check:test/finish-skill.test.ts (HARDENED via FINISH-RITUAL-01 — skills/rivet-finish: fresh-evidence entry gate via rivet graph build, fixed 4-option menu, typed `discard`, provenance-checked cleanup, journaled landing)\n\n## 2026-06-11 Skill integration: COMPOSE, don't vendor (superpowers + ECC, both MIT)\n- Trigger: full catalog inventory — superpowers 14 skills, ECC 262 skills/64 agents/84 commands\n  (~230 are stack packs & domain verticals, consciously skipped). Both MIT; adaptation as original\n  prose unencumbered. Independent pass confirmed all five prior promotions (GATE-FACTS/PROTECT/\n  PACKS-01, AUDIT-META-01, FINISH-RITUAL-01).\n- Lesson: Rivet is the enforcement/traceability layer; generic craft (brainstorming, systematic-\n  debugging, worktrees, parallel dispatch, TDD craft) stays in superpowers — recommend alongside,\n  never duplicate. Absorb only mechanics that strengthen the moat. Net-new from this pass:\n  review content (silent-failure hunt, behavioral-vs-line coverage, verify-feedback-before-\n  implementing), retro instinct mechanics (confidence, project/global scope, promote on 2+ project\n  recurrence), phase-aware compaction, and compliance-QA of our own skills.\n- Promoted to: DONE this pass → rivet-review + rivet-retro skill enhancements + README pairing note;\n  check:test/compact.test.ts + check:test/skill-qa.test.ts (BOTH HARDENED — phaseBoundary + renderResume + rivet resume + PreCompact resume-save.mjs hook + 💾 checkpoint hint at 100%; structural skill QA validates frontmatter, RFC-2119 teeth, and that every referenced command/artifact exists — it caught a bare .rivet/ ref on first run. LLM-judged compliance scenarios remain a future layer.)\n\n## 2026-06-12 A grammar that can't spell its own kinds drops obligations silently\n- Trigger: RUNNERS-01's kind-resolution test failed — CHECK_LINE's kind pattern was [a-z]+, so\n  `kind=e2e` (digit!) never matched and e2e bindings had parsed as PROSE since day one. No error,\n  no warning: the obligation just vanished.\n- Lesson: grammar character classes must be derived from the actual vocabulary (e2e has a digit);\n  every enum the parser accepts needs at least one test using its trickiest member.\n- Confidence: high (reproduced; permanent test) · Scope: project\n- Promoted to: check:test/runners-kind.test.ts (kind=e2e resolution is now asserted forever)\n\n## 2026-06-12 Test fixtures must pin every git assumption the host can override\n- Trigger: WAVE-01's fixture broke twice on this machine's `init.defaultBranch=master` — a push\n  refspec assumed a local `main`, and a bare origin's HEAD pointed at a branch we never pushed.\n- Lesson: fixtures that shell out to git must pin branch names (`init -b`, `push HEAD:\u003cbranch>`),\n  identity, and HEAD explicitly — host config is part of the environment under test.\n- Confidence: high (two failures, same cause) · Scope: global (applies to any repo's git fixtures)\n- Promoted to: check:test/wave.test.ts (the fixture itself now pins -b main + HEAD:main)\n\n## 2026-06-12 The journal must not stale its own proofs\n- Trigger: first self-graph of the rivet repo — drift re-proved 3/3 PASS yet all stayed STALE\n  forever: recording a proof appends to the tracked journal, which changed the tree-hash the proof\n  was compared against. The bookkeeping invalidated the evidence it was keeping.\n- Lesson: proof identity = the CODE tree only. Build a temp index from HEAD, drop .rivet/, add the\n  working state (now INCLUDING untracked files — closes the stash-create blind spot), write-tree.\n  A system whose act of measurement changes the measurement is not a measurement system.\n- Confidence: high (reproduced live; permanent regression test) · Scope: project\n- Promoted to: check:test/proof-identity.test.ts (FIX-PROOF-02 — journal-append keeps identity,\n  code change moves it, untracked files count; drift now converges 3/3 green on this very repo)\n\n## 2026-06-11 Doctor's graphify install hint reads as a typosquat to security tooling\n- Trigger: dogfooding the notepad app — `rivet doctor` flags graphify as the only required red with\n  hint `pip install graphifyy && graphify install`. Claude Code's permission classifier auto-DENIED\n  the command as \"agent-chosen, typosquat-looking package … untrusted external code execution\"\n  (PyPI name 'graphifyy' ≠ CLI name 'graphify'), so an agent cannot self-heal doctor's one required\n  prerequisite; setup stalls on a human.\n- Lesson: a name-mismatched install hint is indistinguishable from a supply-chain attack to policy\n  bots and cautious humans. Options: publish under the CLI's own name, state provenance in the hint\n  (\"graphifyy is Rivet's companion package — \u003crepo url>\"), let doctor accept a vendored/bundled\n  graphify path, or degrade gracefully (graph features off with a clear enable message) instead of\n  a required red.\n- Confidence: medium (one environment, but the classifier's reasoning generalizes)\n- Scope: project\n- Promoted to: check:test/doctor-fix.test.ts (HARDENED via FIX-DOCTOR-01 — graphify is optional-with-consequences in doctor, never a required red; install hint carries provenance + source repo + 'optional' framing so classifiers and humans can trust it)\n\n## 2026-06-11 \"Stack\" names two disjoint enums — config rejects the runner vocabulary\n- Trigger: dogfooding the notepad setup — the project brief says \"stack node-vitest\" (matching\n  `check run --stack` / BUILTIN_STACKS in engine/verify/runner.ts), but `project.stacks` in\n  config.json is a different enum (java-maven|…|node|typescript|react|…). Setting\n  `\"stacks\": [\"node-vitest\"]` fails EVERY command with an enum error whose valid values share no\n  overlap with runner ids and no pointer to where runner stacks actually live.\n- Lesson: one word naming two disjoint enums guarantees mis-filing by users and agents alike.\n  Either unify/rename (e.g. `project.stacks` → `project.platforms`, runner ids stay \"stacks\"), or\n  make the config error disambiguate: \"node-vitest is a RUNNER stack — pass it to `check run\n  --stack` or configure verify.runners; project.stacks describes the codebase (typescript, react…)\".\n- Confidence: high (reproduced; the project's own brief conflates the two)\n- Scope: project\n- Promoted to: check:test/stacknames.test.ts (HARDENED via FIX-STACKNAMES-01 — project.stacks renamed to project.platforms (legacy key ignored harmlessly); filing a runner stack there now yields a disambiguating error pointing to `check run --stack` / verify.runners)\n\n## 2026-06-12 The printed proof stamp showed HEAD, not the proof's identity\n- Trigger: dogfooding the notepad vault feature — a TDD red and its green ran against DIFFERENT\n  code (stub → implementation, both uncommitted) yet both printed \"@ 9aa40ae2\": checkRun stamped\n  `result.sha` (HEAD) while the journal correctly recorded distinct `tree` hashes. Cost a live\n  P1-scare detour into the journal to rule out a proof-identity regression.\n- Lesson: every printed identity must be the SAME identity the system reasons with (FIX-PROOF-01/02\n  made that the tree) — a stale-but-familiar id invites false bug reports and, worse, false\n  confidence. Related: the PR-body stamp (workflow.test.ts pins \"@ abc12345\") may deserve the same\n  treatment.\n- Confidence: high (reproduced live; permanent test)\n- Scope: project\n- Promoted to: check:test/proof-display.test.ts::stamps the tree identity, not the commit sha\n  (FIX-PROOF-03 — red→green through Rivet's own done-gate; stamp = \"tree \u003chash8>\" + \"*\" dirty\n  marker, sha only as legacy fallback; landed in commit 96ce52a authored by Pratiyush)\n\n## 2026-06-12 Provenance lines must not pin facts that rot (or were never true)\n- Trigger: FIX-DOCTOR-01's improved graphify hint says \"Source: github.com/safishamsi/graphify\n  (213k★)\" — live GitHub API shows the repo is real but has ~65.6k stars. An inflated number\n  inside the very line meant to establish trust undercuts it; star counts hardcoded in CLI\n  strings are stale the day they ship.\n- Lesson: provenance = verifiable pointers (URL, package name, owner), never point-in-time\n  vanity metrics. If popularity matters, phrase it un-rottably (\"65k+ stars as of 2026-06\") or\n  let the reader click. (The repo itself checks out — graphifyy install is trustworthy.)\n- Confidence: high (checked via GitHub API live)\n- Scope: project\n- Promoted to: check:test/doctor-fix.test.ts::pins no point-in-time vanity metrics (HARDENED via\n  FIX-PROV-01 — hint is verifiable pointers only; revitify-first wording landed with FEAT-REVITIFY-01)\n\n## 2026-06-12 PR body and LEDGER still stamp commit sha (anticipated tail of the proof-display lesson)\n- Trigger: finishing vault-persistence in the notepad — `rivet pr` emitted \"proven green (100%) at\n  `3311f7bb`\" and LEDGER.md rows print \"@ 6903f20f\" (bare commit shas) while every proof in the\n  journal is identified by tree (`70786fd1`). Harmless this run (tree was clean, so sha↔tree map\n  1:1), but on any dirty-tree run these surfaces repeat the exact misdirection FIX-PROOF-03 cured\n  in the CLI stamp.\n- Lesson: \"printed identity = the identity the system reasons with\" wasn't applied to all\n  printers — when changing an identity scheme, sweep every surface that renders a proof (PR body,\n  LEDGER.md, TRACKING.md, dashboards), not just the surface that triggered the report.\n- Confidence: high (observed live; .rivet/pr-body.md + LEDGER.md on notepad branch worktree-vault-07-08)\n- Scope: project\n- Promoted to: check:test/proof-display.test.ts::FEAT-PROOF-04 sweep (HARDENED via FIX-PROOF-04 —\n  shared engine/verify/stamp.ts renders tree+dirty in PR body, approvals, audit log/LEDGER;\n  workflow.test.ts pin updated to tree identity)\n\n## 2026-06-12 A broken session must cost zero re-orientation  ⟨P2⟩\n- Trigger: the notepad dogfood session died mid-batch on connectivity; `rivet status` + `rivet\n  resume` + the journal re-oriented a fresh session losslessly — twice in one day — but only\n  because a human knew to run them first.\n- Lesson: \"resume-first after any break\" is tool knowledge, not human knowledge — the workflow and\n  finish skills must state it as a hard first step so any agent session starts from recorded truth.\n- Confidence: high (two live recoveries) · Scope: project\n- Promoted to: skills/rivet-workflow + rivet-finish hard rules (HARDENED via FEAT-VERIFY-01 —\n  resume-first is step zero in both; skill-qa enforces the files stay real)\n\n## 2026-06-12 Requirement ids are read by humans out of context — they must self-describe\n- Trigger: Pratiyush, reading boards/PR bodies from the notepad run: \"Don't use R-VAULT etc — use\n  FULLY QUALIFIED NAMES.\" `R-` carries zero meaning to anyone who didn't write the parser.\n- Lesson: ids travel without their spec (PR bodies, LEDGER, dashboards, chat). The prefix must\n  carry the noun: REQUIREMENT_VAULT-01, NFR_PERF-01, ADR_STORAGE-01. Enforce as a lint\n  (configurable warn|error|off) — never break parsing of old specs.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/qualified-ids.test.ts (HARDENED via FEAT-IDS-01 — REQUIREMENT_/NFR_/ADR_\n  prefixes, configurable lint, ADR exempt; own spec migrated and re-proven)\n\n## 2026-06-12 Edge-case coverage mandates in prose are ignorable — make absence detectable\n- Trigger: Pratiyush: \"Use Gherkin test cases but cover more ground — 100%, edge cases etc,\n  every test has to be very solid.\" The spec-author skill already says \"hunt unhappy paths\";\n  nothing notices when a spec ships without a single failure criterion.\n- Lesson: a requirement with zero negative/failure criteria is an UNVERIFIED-shaped hole the\n  graph must flag, exactly like an unbound criterion. Gherkin (Scenario + Scenario Outline with\n  Examples) becomes first-class and the default; the floor is mechanical, on everywhere.\n- Confidence: high (direct user feedback + matches FLOOR-C instinct) · Scope: project\n- Promoted to: check:test/gherkin.test.ts (HARDENED via FEAT-GHERKIN-01 — Scenario + Outline/Examples\n  expansion, gherkin default, off-format lint, gates.negativeFloor on everywhere; own spec grew\n  negative criteria incl. a Gherkin failure Scenario)\n\n## 2026-06-12 A green task is not a green project — \"Build ALL + run ALL kinds\" needs one command\n- Trigger: Pratiyush: \"Build ALL. Run All Type Test.\" Tasks prove their bound checks; nothing\n  proves the whole tree builds and every configured kind passes before a PR.\n- Lesson: one journaled `rivet verify` (build + every kind, full suites, report-all) carrying the\n  code-tree hash is the only honest PR precondition — and it must be a hard gate in guard-pr\n  (green + same tree), not skill prose.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/verify-cmd.test.ts (HARDENED via FEAT-VERIFY-01 — rivet verify runs\n  build+ALL kinds report-all, journaled with tree hash; verifyVerdict hard-gates guard-pr/pr;\n  hook gains the exists+green fast veto)\n\n## 2026-06-12 Post-task evidence must be scannable — table, not prose\n- Trigger: Pratiyush: \"Tabular format of report after task.\" `task done` prints a progress bar;\n  the actual evidence (which checks, what kind, what proof, which tree) is in the journal where\n  nobody looks.\n- Lesson: the moment of \"done\" is when evidence must be shown: a 📋 table (Check | Kind | State |\n  Proof | Proven at) in the terminal AND persisted per-task in LEDGER.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/task-report.test.ts (HARDENED via FEAT-REPORT-01 — 📋 table at task done\n  + persisted per-task in LEDGER, stale-honest, tree-stamped)\n\n## 2026-06-12 Emoji are an event-type grammar — central map with a plain fallback\n- Trigger: Pratiyush: \"Use more emojis, at least 6-10 more types.\" Current emoji are scattered\n  string literals; adding types means hunting call sites, and CI logs can't opt out.\n- Lesson: one emoji map keyed by event type (≥10 new: 🧪📋🧭✍️📦⏱️♻️🧰🔍🚀📝🧹), every renderer\n  reads it, and !TTY / NO_EMOJI=1 / --plain degrade to ASCII labels so logs stay greppable.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/emoji.test.ts (HARDENED via FEAT-EMOJI-01 — central map, 10 new types,\n  --plain/NO_EMOJI/TTY degradation, LEDGER legend)\n\n## 2026-06-12 Init must seed standards, not just folders — per-platform law packs\n- Trigger: Pratiyush: \"If project is initialized, add best practices for different types of\n  projects — TypeScript and Electron, and multiple langs can be used in a project.\" Today\n  `rivet init` writes config + an empty laws file; quality standards stay in the human's head.\n- Lesson: `init --platforms` seeds scoped law packs (TypeScript/Electron/Java/Python/\n  quality-gates/polyglot), 100% free/OSS tools, each ending with \"Bind these as Rivet checks\"\n  wiring — standards arrive pre-wired to enforcement, and platforms is an ARRAY (polyglot is\n  normal, not an edge case).\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/init-practices.test.ts (HARDENED via FEAT-INITPACKS-01 — init --platforms\n  seeds scoped law packs (ts/electron/java/python/quality-gates/polyglot), free/OSS-only, check\n  wiring included; this repo self-adopted: ESLint+Prettier+lint-staged, lint as a verify kind)\n\n## 2026-06-12 The graph layer must not depend on someone else's pip package\n- Trigger: Pratiyush: clone github.com/safishamsi/graphify and create a modular TS counterpart\n  named **revitify**. Root cause chain: doctor's graphify hint already burned us twice\n  (typosquat-looking install auto-DENIED; star count rotted) — the dependency itself is the\n  liability, not just its hint.\n- Lesson: anything moat-adjacent (the visual/queryable graph) needs a native, in-repo provider.\n  revitify = packages/revitify workspace pkg, same output contract as graphify (graph.json /\n  graph.html / GRAPH_REPORT.md) so the engine swaps providers invisibly; external graphify stays\n  available behind config for those who want its full multi-modal power.\n- Confidence: high (two prior lessons + direct instruction) · Scope: project\n- Promoted to: check:packages/revitify/test/revitify.test.ts (HARDENED via FEAT-REVITIFY-01 —\n  native TS provider, graphify output contract proven against loadCodeGraph, provider config,\n  445 code nodes self-hosted; upstream pinned in packages/revitify/.track @ 0.8.38/#1271)\n\n## 2026-06-12 Depth on one harness beats breadth — say it out loud\n- Trigger: Pratiyush: \"Focus it for only Claude Code now, later we extend it.\"\n- Lesson: docs/skills are already Claude-Code-only by construction; the README must SAY so\n  (\"Built for Claude Code first; other assistants later.\") so contributors don't generalize\n  early and dilute the hook/skill integration that is the moat.\n- Confidence: high (direct user feedback) · Scope: project\n- Promoted to: check:test/readme.test.ts::declares the Claude-Code-first focus explicitly\n  (HARDENED via FEAT-CCFIRST-01)\n\n## 2026-06-12 Piped CLI output swallows the exit code the gate depends on  ⟨P2⟩\n- Trigger: this batch — `rivet check run … | tail -1` let a && chain continue past a FAILING\n  check (tail exits 0), committing a broken test that only the done-gate caught one step later.\n- Lesson: every scripted/agent invocation of gate-bearing commands must run with `set -o pipefail`\n  (or capture status explicitly) — a gate whose exit code is eaten by a pipe is decoration.\n- Confidence: high (reproduced live this session) · Scope: global (any shell automation)\n- Promoted to: skills/rivet-workflow hard rule (\"Scripted check runs MUST preserve exit codes\") —\n  HARDENED; the done-gate caught the slipped commit, the rule prevents the next one\n\n## 2026-06-12 The done-gate accepted STALE evidence  ⟨P1 · found by our own 📋 table⟩\n- Trigger: closing FEAT-REVITIFY-01 this batch — the new per-task evidence table printed the bound\n  proof as 🟣 stale (tree had moved between the run and `task done`) yet the gate said DONE:\n  markDone only asks \"is there a passing run\", never \"does that run vouch for the CURRENT code\".\n- Lesson: worst-of must hold at the done-gate too — a pass recorded on an older tree is NOT green\n  evidence for the code being declared done. Block (or done-with-warnings under\n  verify.blockDoneOnFail=false) and tell the human exactly which refs to re-run.\n- Confidence: high (observed live in this session's own output) · Scope: project\n- Promoted to: check:test/stale-done.test.ts (FIX-STALEDONE-01, this session)\n\n## 2026-06-12 Untracked reference material must be gitignored the moment it lands  ⟨P2⟩\n- Trigger: a routine `git add -A` swept `_ref/` (9 embedded reference repos!) and `.claude/` into a\n  release commit; caught by the embedded-repo warnings and amended out.\n- Lesson: \"untracked but precious\" is a trap — anything meant to stay out of history gets its\n  .gitignore line in the SAME change that creates it, never later.\n- Confidence: high (live near-miss) · Scope: global\n- Promoted to: .gitignore (_ref/, .claude/worktrees/, .claude/settings.local.json) — structural;\n  the class is covered by this entry + memory note for future sessions.\n\n## 2026-06-12 A relative file: dependency breaks every worktree  ⟨P2 · found mid-fix⟩\n- Trigger: pnpm install inside the batch worktree failed — `file:../revitify` resolves relative to\n  the INSTALLING dir, so from `.claude/worktrees/\u003cname>/` it points at a void. Rivet's own wave\n  dispatch (one worktree per task) would hit this on every parallel task.\n- Lesson: location-relative dependencies and worktree-based parallelism are structurally at odds;\n  a machine-local sibling dep must be an ABSOLUTE file: path (it was already machine-local by\n  choice — the relative form only pretended to be portable).\n- Confidence: high (reproduced live) · Scope: global (any repo pairing file: deps with worktrees)\n- Promoted to: package.json (link:/Users/pratiyush/Github/revitify — pnpm's link: protocol; bare\n  absolute file: mis-parses) + this entry; revisit at\n  Phase E packaging when revitify ships to npm and the file: dep disappears entirely.\n\n## 2026-06-12 The commit-time formatter stales every pre-commit proof  ⟨P2⟩\n- Trigger: cockpit batch — lint-staged's `prettier --write` reformatted 4 staged files INSIDE the\n  commit, so the committed tree differed from the tree drift had just proved; main landed with\n  21/21 proofs stale despite an all-green pre-commit gauntlet.\n- Lesson: prove against the bytes that will actually land — format BEFORE the final prove/verify\n  (`npx prettier --write src test` then drift/verify), or expect one post-commit drift pass.\n  A formatter in the commit path is a tree-mover like any other edit.\n- Confidence: high (observed live; mechanism certain) · Scope: global (any repo with staged formatters)\n- Promoted to: skills/rivet-workflow hard rule (this entry) — \"format before the final prove:\n  commit-time formatters move the tree and stale fresh proofs\"\n"
       },
       {
         "name": "DEFER.md",
@@ -1478,11 +1455,11 @@ window.RIVET = {
       },
       {
         "name": "LEDGER.md",
-        "content": "# LEDGER — generated from the journal; do not edit\n\n> Legend: ✅ done · 🔨 in progress · 🚧 blocked · ⬜ pending — proofs: 🟢 green · 🔴 red · 🟣 stale · ⚪ unproven\n\n## Progress board\n\n**59/59 done (100%)**\n\n- ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢\n  📋 Evidence — FIX-ROUTE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::want-signals veto research routing` | — | ✅ green | d907fcfc | 2026-06-11T19:04:45.282Z |\n\n- ✅ **R-AUDIT-01** every CLI invocation is audit-logged 🟢\n  📋 Evidence — R-AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.166Z |\n\n- ✅ **R-AUDIT-02** the audit trail is readable 🟢\n  📋 Evidence — R-AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:14.699Z |\n\n- ✅ **R-PROG-01** progress with emoji after completing a task 🟢\n  📋 Evidence — R-PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:16.221Z |\n\n- ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢\n  📋 Evidence — FIX-PRMATH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::worst-of coverage in the PR body` | — | 🟣 stale | tree 821bc2c1* | 2026-06-11T19:40:40.285Z |\n\n- ✅ **FIX-PROOF-01** proof identity = tested tree hash, not commit SHA 🟢\n  📋 Evidence — FIX-PROOF-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | — | 🟣 stale | tree 841d50fa* | 2026-06-11T19:40:41.463Z |\n\n- ✅ **FIX-ROBUST-01** inputs never crash; infra errors are not proofs 🟢\n  📋 Evidence — FIX-ROBUST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/robust.test.ts` | — | 🟣 stale | tree fa8bf773* | 2026-06-11T20:03:40.197Z |\n\n- ✅ **FIX-SPECSYNC-01** spec re-derive syncs bindings; evidence unclobberable 🟢\n  📋 Evidence — FIX-SPECSYNC-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/spec-sync.test.ts` | — | 🟣 stale | tree d8286eac* | 2026-06-11T20:03:40.850Z |\n\n- ✅ **FIX-GATE-01** one not-green-blocks predicate; missing graph blocks 🟢\n  📋 Evidence — FIX-GATE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate.test.ts` | — | 🟣 stale | tree 0680725c* | 2026-06-11T20:03:41.706Z |\n\n- ✅ **GATE-PROTECT-01** in-flight specs/tests/config need human unlock 🟢\n  📋 Evidence — GATE-PROTECT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/protect.test.ts` | — | 🟣 stale | tree ab79494d* | 2026-06-11T20:03:42.509Z |\n\n- ✅ **FIX-PARSE-01** parser respects markdown reality 🟢\n  📋 Evidence — FIX-PARSE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/parse-fix.test.ts` | — | 🟣 stale | tree 42b08be2* | 2026-06-11T20:14:00.842Z |\n\n- ✅ **FIX-QUERY-01** read-only queries; no retry burn; deterministic ties 🟢\n  📋 Evidence — FIX-QUERY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/query-fix.test.ts` | — | 🟣 stale | tree 980ef995* | 2026-06-11T20:14:01.590Z |\n\n- ✅ **AUDIT-META-01** journal meta (actor/model) + governance events 🟢\n  📋 Evidence — AUDIT-META-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/audit-meta.test.ts` | — | 🟣 stale | tree 3688bfe5* | 2026-06-11T20:14:02.272Z |\n\n- ✅ **FINISH-RITUAL-01** rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢\n  📋 Evidence — FINISH-RITUAL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/finish-skill.test.ts` | — | 🟣 stale | tree 83d65b5d* | 2026-06-11T20:14:28.441Z |\n\n- ✅ **GATE-FACTS-01** DENY-FORCE-ALLOW investigative gate (opt-in) 🟢\n  📋 Evidence — GATE-FACTS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-facts.test.ts` | — | 🟣 stale | tree f61961e3* | 2026-06-11T20:20:54.347Z |\n\n- ✅ **GATE-PACKS-01** config gate packs: sections+kinds+security floor 🟢\n  📋 Evidence — GATE-PACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-packs.test.ts` | — | 🟣 stale | tree 03742674* | 2026-06-11T20:20:55.029Z |\n\n- ✅ **COMPACT-01** phase-aware checkpoints + PreCompact resume save 🟢\n  📋 Evidence — COMPACT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/compact.test.ts` | — | 🟣 stale | tree 9e3b4787* | 2026-06-11T20:26:12.832Z |\n\n- ✅ **SKILL-QA-01** mechanical QA: skills reference only real commands/artifacts 🟢\n  📋 Evidence — SKILL-QA-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | — | 🟣 stale | tree 61fd35cb* | 2026-06-11T20:26:46.486Z |\n\n- ✅ **SCALE-01** P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢\n  📋 Evidence — SCALE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/scale.test.ts` | — | 🟣 stale | tree 0a038ae6* | 2026-06-11T20:31:26.691Z |\n\n- ✅ **RUNNERS-01** multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢\n  📋 Evidence — RUNNERS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/runners-kind.test.ts` | unit | 🟣 stale | tree 53cbf304* | 2026-06-11T20:37:33.483Z |\n\n- ✅ **RENAME-LAWS-01** rename constitution → laws (user term) 🟢\n  📋 Evidence — RENAME-LAWS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | unit | 🟣 stale | tree 8953a0d0* | 2026-06-11T20:43:54.504Z |\n\n- ✅ **BOARDS-01** generated LEDGER.md + TRACKING.md boards 🟢\n  📋 Evidence — BOARDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/boards.test.ts` | unit | 🟣 stale | tree ff4f153d* | 2026-06-11T20:47:10.950Z |\n\n- ✅ **WAVE-01** worktree wave dispatcher: plan + fetch-first start 🟢\n  📋 Evidence — WAVE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave.test.ts` | unit | 🟣 stale | tree 72272126* | 2026-06-11T20:48:33.481Z |\n\n- ✅ **STEER-01** laws engine: 3 scopes + personal inheritance + file injection 🟢\n  📋 Evidence — STEER-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/steering.test.ts` | unit | 🟣 stale | tree 6e83b58f* | 2026-06-11T21:02:48.986Z |\n\n- ✅ **LEARN-01** warn-on-repeat: open lessons surface at task start 🟢\n  📋 Evidence — LEARN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/learnwarn.test.ts` | unit | 🟣 stale | tree 487cf5cd* | 2026-06-11T21:02:49.636Z |\n\n- ✅ **WAVE-02** wave done: provenance-checked worktree cleanup after merge 🟢\n  📋 Evidence — WAVE-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave-done.test.ts` | unit | 🟣 stale | tree 9f27b9ad* | 2026-06-11T21:02:51.136Z |\n\n- ✅ **DASH-01** dashboard v1: emoji + completion % + traffic lights + graph embed 🟢\n  📋 Evidence — DASH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | unit | 🟣 stale | tree 04802fe3* | 2026-06-11T21:11:19.414Z |\n\n- ✅ **FILES-01** dashboard files plumbing: collect .rivet md + safe renderer 🟢\n  📋 Evidence — FILES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/files-tab.test.ts` | unit | 🟣 stale | tree 62f3e904* | 2026-06-11T21:27:26.317Z |\n\n- ✅ **README-01** README refresh: match the real tool surface 🟢\n  📋 Evidence — README-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | unit | 🟣 stale | tree 6185e94a* | 2026-06-11T21:27:27.007Z |\n\n- ✅ **FIX-PROOF-02** proof identity excludes .rivet state (journal must not stale its own proofs) 🟢\n  📋 Evidence — FIX-PROOF-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | unit | 🟣 stale | tree f8ccd6b3* | 2026-06-11T21:29:15.431Z |\n\n- ✅ **TRAIL-01** per-task gate trail: minute-level done/blocked/skipped/pending 🟢\n  📋 Evidence — TRAIL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/trail.test.ts` | unit | 🟣 stale | tree 61afc144* | 2026-06-11T21:47:11.693Z |\n\n- ✅ **DASH-02** port design.html as the dashboard template with live data injection 🟢\n  📋 Evidence — DASH-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | unit | 🟣 stale | tree 61afc144* | 2026-06-11T21:47:12.413Z |\n\n- ✅ **FIX-DOCTOR-01** graphify optional in doctor + provenance hint (classifier-safe) 🟢\n  📋 Evidence — FIX-DOCTOR-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree 39bf63d7* | 2026-06-11T22:00:57.454Z |\n\n- ✅ **FIX-STACKNAMES-01** project.platforms rename + runner-stack disambiguation error 🟢\n  📋 Evidence — FIX-STACKNAMES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | unit | 🟣 stale | tree 39bf63d7* | 2026-06-11T22:00:58.187Z |\n\n- ✅ **FIX-PROOF-03** check-run stamp shows tree identity, not commit sha 🟢\n  📋 Evidence — FIX-PROOF-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts::stamps the tree identity, not the commit sha` | unit | 🟣 stale | tree 5c1f03a7* | 2026-06-11T22:04:59.081Z |\n\n- ✅ **FIX-PROOF-04** every proof surface stamps the tree identity (PR body, approvals, ledger log) 🟢\n  📋 Evidence — FIX-PROOF-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts` | unit | 🟣 stale | tree bfcd211e* | 2026-06-11T23:28:45.141Z |\n\n- ✅ **FIX-PROV-01** provenance hint carries no rotting vanity metrics (star count) 🟢\n  📋 Evidence — FIX-PROV-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree 13cbb36b* | 2026-06-11T23:30:11.511Z |\n\n- ✅ **FEAT-IDS-01** fully-qualified requirement ids (REQUIREMENT_/NFR_/ADR_) with configurable lint 🟢\n  📋 Evidence — FEAT-IDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/qualified-ids.test.ts` | unit | 🟣 stale | tree af88bfd0* | 2026-06-11T23:33:58.426Z |\n\n- ✅ **REQUIREMENT_AUDIT-01** every CLI invocation is audit-logged 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.166Z |\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.935Z |\n\n- ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:14.699Z |\n  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:15.459Z |\n\n- ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢\n  📋 Evidence — REQUIREMENT_PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:16.221Z |\n  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:16.985Z |\n\n- ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢\n  📋 Evidence — FEAT-GHERKIN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gherkin.test.ts` | unit | 🟣 stale | tree bda82c18* | 2026-06-11T23:40:54.391Z |\n\n- ✅ **NFR_AUDIT-03** auditing never breaks the CLI 🟢\n  📋 Evidence — NFR_AUDIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.935Z |\n\n- ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢\n  📋 Evidence — FEAT-STACK-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/default-stack.test.ts` | unit | 🟣 stale | tree f667aa68* | 2026-06-11T23:45:42.780Z |\n\n- ✅ **FEAT-REPORT-01** tabular post-task evidence report (terminal + LEDGER) 🟢\n  📋 Evidence — FEAT-REPORT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/task-report.test.ts` | unit | 🟣 stale | tree 95e2a25a* | 2026-06-11T23:47:39.111Z |\n\n- ✅ **FEAT-EMOJI-01** central emoji vocabulary (>=10 new) + plain mode for CI 🟢\n  📋 Evidence — FEAT-EMOJI-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/emoji.test.ts` | unit | 🟣 stale | tree fb84c373* | 2026-06-11T23:50:19.284Z |\n\n- ✅ **FEAT-VERIFY-01** rivet verify: build ALL + run ALL kinds, journaled; hard fresh-tree PR gate 🟢\n  📋 Evidence — FEAT-VERIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/verify-cmd.test.ts` | unit | 🟣 stale | tree d9d37e49* | 2026-06-11T23:54:53.789Z |\n\n- ✅ **FEAT-PLATFORM-01** electron platform; platforms is an ARRAY (polyglot normal) 🟢\n  📋 Evidence — FEAT-PLATFORM-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | unit | 🟣 stale | tree 255f2e33* | 2026-06-11T23:59:51.330Z |\n\n- ✅ **FEAT-INITPACKS-01** init --platforms seeds free/OSS best-practice law packs, pre-wired to checks 🟢\n  📋 Evidence — FEAT-INITPACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/init-practices.test.ts` | unit | 🟣 stale | tree 47c4f9b2* | 2026-06-12T04:46:02.585Z |\n\n- ✅ **FEAT-CCFIRST-01** README states Claude-Code-first explicitly 🟢\n  📋 Evidence — FEAT-CCFIRST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | unit | 🟣 stale | tree cdec907f* | 2026-06-12T04:50:02.948Z |\n\n- ✅ **FEAT-FLUSH-01** pr learnings-flush warn + doctor stale-worktree visibility 🟢🟢\n  📋 Evidence — FEAT-FLUSH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/pr-flush-warn.test.ts` | unit | 🟣 stale | tree d434b3db* | 2026-06-12T04:53:32.732Z |\n  | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree d434b3db* | 2026-06-12T04:53:33.680Z |\n\n- ✅ **FEAT-REVITIFY-01** revitify: native TS knowledge graph, graphify output contract, default provider 🟢\n  📋 Evidence — FEAT-REVITIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `packages/revitify/test/revitify.test.ts` | unit | 🟣 stale | tree 60ee0b6a* | 2026-06-12T05:05:39.506Z |\n\n- ✅ **FEAT-REVITIFY-02** revitify extracted to its own repo; consumer-side contract pinned 🟢\n  📋 Evidence — FEAT-REVITIFY-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/revitify-contract.test.ts` | unit | 🟣 stale | tree 76a8f022* | 2026-06-12T05:10:39.529Z |\n\n- ✅ **FIX-STALEDONE-01** done-gate refuses stale evidence (pass on an older tree is not green) 🟢\n  📋 Evidence — FIX-STALEDONE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stale-done.test.ts` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:05.329Z |\n\n- ✅ **REQUIREMENT_COCKPIT-01** config manifest generated from the schema 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | 🟣 stale | tree a50f73ee* | 2026-06-12T06:50:26.595Z |\n  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | 🟣 stale | tree a50f73ee* | 2026-06-12T06:50:44.508Z |\n  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | 🟣 stale | tree a50f73ee* | 2026-06-12T06:50:45.693Z |\n\n- ✅ **REQUIREMENT_COCKPIT-02** the RIVET data sidecar is the project's truth 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:49.556Z |\n  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:51.089Z |\n  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:52.628Z |\n\n- ✅ **REQUIREMENT_COCKPIT-03** static shell emission, written once 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:55.604Z |\n  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:57.449Z |\n\n- ✅ **REQUIREMENT_COCKPIT-04** live updates after every proof event 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:56:00.878Z |\n  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:56:02.576Z |\n\n- ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-05\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:22.454Z |\n  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:23.939Z |\n  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:25.483Z |\n  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:20.975Z |\n\n\n## Approvals & governance\n\n- 🛡️ 2026-06-11T23:25:31.905Z — unlock\n- 🛡️ 2026-06-11T23:29:29.462Z — unlock\n- 🛡️ 2026-06-11T23:34:24.469Z — unlock\n- 🛡️ 2026-06-11T23:41:27.273Z — unlock\n- 🛡️ 2026-06-11T23:55:10.102Z — unlock\n- 🛡️ 2026-06-11T23:58:14.741Z — unlock\n- 🛡️ 2026-06-11T23:58:59.298Z — unlock\n- 🛡️ 2026-06-12T04:48:57.051Z — unlock\n- 🛡️ 2026-06-12T04:51:20.884Z — unlock\n- 🛡️ 2026-06-12T05:01:36.612Z — unlock\n- 🛡️ 2026-06-12T07:00:16.579Z — unlock\n\n## Recent activity\n\n- \u001b[2m2026-06-12 06:59:23\u001b[22m  ✅ check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes @ tree f31a1b99* → REQUIREMENT_COCKPIT-05\n- \u001b[2m2026-06-12 06:59:24\u001b[22m  🧾 check run REQUIREMENT_COCKPIT-05 test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-12 06:59:25\u001b[22m  ✅ check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint @ tree f31a1b99* → REQUIREMENT_COCKPIT-05\n- \u001b[2m2026-06-12 06:59:26\u001b[22m  🧾 task done REQUIREMENT_COCKPIT-05  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-12 06:59:26\u001b[22m  🏁 task REQUIREMENT_COCKPIT-05 → done\n- \u001b[2m2026-06-12 07:00:16\u001b[22m  🧾 unlock test/dashboard.test.ts test/files-tab.test.ts  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-12 07:00:16\u001b[22m  🛡️ unlock {\"paths\":[\"test/dashboard.test.ts\",\"test/files-tab.test.ts\"],\"until\":\"2026-06-12T08:00:16.579Z\"}\n- \u001b[2m2026-06-12 07:01:55\u001b[22m  🧾 verify  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-12 07:02:00\u001b[22m  ✅ verify 4 step(s) @ tree f0882c8d*\n- \u001b[2m2026-06-12 07:02:00\u001b[22m  🧾 graph build  [Pratiyush Kumar Singh]\n"
+        "content": "# LEDGER — generated from the journal; do not edit\n\n> Legend: ✅ done · 🔨 in progress · 🚧 blocked · ⬜ pending — proofs: 🟢 green · 🔴 red · 🟣 stale · ⚪ unproven\n\n## Progress board\n\n**59/59 done (100%)**\n\n- ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢\n  📋 Evidence — FIX-ROUTE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::want-signals veto research routing` | — | ✅ green | d907fcfc | 2026-06-11T19:04:45.282Z |\n\n- ✅ **R-AUDIT-01** every CLI invocation is audit-logged 🟢\n  📋 Evidence — R-AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:22.806Z |\n\n- ✅ **R-AUDIT-02** the audit trail is readable 🟢\n  📋 Evidence — R-AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:24.335Z |\n\n- ✅ **R-PROG-01** progress with emoji after completing a task 🟢\n  📋 Evidence — R-PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:25.863Z |\n\n- ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢\n  📋 Evidence — FIX-PRMATH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::worst-of coverage in the PR body` | — | 🟣 stale | tree 821bc2c1* | 2026-06-11T19:40:40.285Z |\n\n- ✅ **FIX-PROOF-01** proof identity = tested tree hash, not commit SHA 🟢\n  📋 Evidence — FIX-PROOF-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | — | 🟣 stale | tree 841d50fa* | 2026-06-11T19:40:41.463Z |\n\n- ✅ **FIX-ROBUST-01** inputs never crash; infra errors are not proofs 🟢\n  📋 Evidence — FIX-ROBUST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/robust.test.ts` | — | 🟣 stale | tree fa8bf773* | 2026-06-11T20:03:40.197Z |\n\n- ✅ **FIX-SPECSYNC-01** spec re-derive syncs bindings; evidence unclobberable 🟢\n  📋 Evidence — FIX-SPECSYNC-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/spec-sync.test.ts` | — | 🟣 stale | tree d8286eac* | 2026-06-11T20:03:40.850Z |\n\n- ✅ **FIX-GATE-01** one not-green-blocks predicate; missing graph blocks 🟢\n  📋 Evidence — FIX-GATE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate.test.ts` | — | 🟣 stale | tree 0680725c* | 2026-06-11T20:03:41.706Z |\n\n- ✅ **GATE-PROTECT-01** in-flight specs/tests/config need human unlock 🟢\n  📋 Evidence — GATE-PROTECT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/protect.test.ts` | — | 🟣 stale | tree ab79494d* | 2026-06-11T20:03:42.509Z |\n\n- ✅ **FIX-PARSE-01** parser respects markdown reality 🟢\n  📋 Evidence — FIX-PARSE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/parse-fix.test.ts` | — | 🟣 stale | tree 42b08be2* | 2026-06-11T20:14:00.842Z |\n\n- ✅ **FIX-QUERY-01** read-only queries; no retry burn; deterministic ties 🟢\n  📋 Evidence — FIX-QUERY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/query-fix.test.ts` | — | 🟣 stale | tree 980ef995* | 2026-06-11T20:14:01.590Z |\n\n- ✅ **AUDIT-META-01** journal meta (actor/model) + governance events 🟢\n  📋 Evidence — AUDIT-META-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/audit-meta.test.ts` | — | 🟣 stale | tree 3688bfe5* | 2026-06-11T20:14:02.272Z |\n\n- ✅ **FINISH-RITUAL-01** rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢\n  📋 Evidence — FINISH-RITUAL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/finish-skill.test.ts` | — | 🟣 stale | tree 83d65b5d* | 2026-06-11T20:14:28.441Z |\n\n- ✅ **GATE-FACTS-01** DENY-FORCE-ALLOW investigative gate (opt-in) 🟢\n  📋 Evidence — GATE-FACTS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-facts.test.ts` | — | 🟣 stale | tree f61961e3* | 2026-06-11T20:20:54.347Z |\n\n- ✅ **GATE-PACKS-01** config gate packs: sections+kinds+security floor 🟢\n  📋 Evidence — GATE-PACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-packs.test.ts` | — | 🟣 stale | tree 03742674* | 2026-06-11T20:20:55.029Z |\n\n- ✅ **COMPACT-01** phase-aware checkpoints + PreCompact resume save 🟢\n  📋 Evidence — COMPACT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/compact.test.ts` | — | 🟣 stale | tree 9e3b4787* | 2026-06-11T20:26:12.832Z |\n\n- ✅ **SKILL-QA-01** mechanical QA: skills reference only real commands/artifacts 🟢\n  📋 Evidence — SKILL-QA-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | — | 🟣 stale | tree 61fd35cb* | 2026-06-11T20:26:46.486Z |\n\n- ✅ **SCALE-01** P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢\n  📋 Evidence — SCALE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/scale.test.ts` | — | 🟣 stale | tree 0a038ae6* | 2026-06-11T20:31:26.691Z |\n\n- ✅ **RUNNERS-01** multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢\n  📋 Evidence — RUNNERS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/runners-kind.test.ts` | unit | 🟣 stale | tree 53cbf304* | 2026-06-11T20:37:33.483Z |\n\n- ✅ **RENAME-LAWS-01** rename constitution → laws (user term) 🟢\n  📋 Evidence — RENAME-LAWS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | unit | 🟣 stale | tree 8953a0d0* | 2026-06-11T20:43:54.504Z |\n\n- ✅ **BOARDS-01** generated LEDGER.md + TRACKING.md boards 🟢\n  📋 Evidence — BOARDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/boards.test.ts` | unit | 🟣 stale | tree ff4f153d* | 2026-06-11T20:47:10.950Z |\n\n- ✅ **WAVE-01** worktree wave dispatcher: plan + fetch-first start 🟢\n  📋 Evidence — WAVE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave.test.ts` | unit | 🟣 stale | tree 72272126* | 2026-06-11T20:48:33.481Z |\n\n- ✅ **STEER-01** laws engine: 3 scopes + personal inheritance + file injection 🟢\n  📋 Evidence — STEER-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/steering.test.ts` | unit | 🟣 stale | tree 6e83b58f* | 2026-06-11T21:02:48.986Z |\n\n- ✅ **LEARN-01** warn-on-repeat: open lessons surface at task start 🟢\n  📋 Evidence — LEARN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/learnwarn.test.ts` | unit | 🟣 stale | tree 487cf5cd* | 2026-06-11T21:02:49.636Z |\n\n- ✅ **WAVE-02** wave done: provenance-checked worktree cleanup after merge 🟢\n  📋 Evidence — WAVE-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave-done.test.ts` | unit | 🟣 stale | tree 9f27b9ad* | 2026-06-11T21:02:51.136Z |\n\n- ✅ **DASH-01** dashboard v1: emoji + completion % + traffic lights + graph embed 🟢\n  📋 Evidence — DASH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | unit | 🟣 stale | tree 04802fe3* | 2026-06-11T21:11:19.414Z |\n\n- ✅ **FILES-01** dashboard files plumbing: collect .rivet md + safe renderer 🟢\n  📋 Evidence — FILES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/files-tab.test.ts` | unit | 🟣 stale | tree 62f3e904* | 2026-06-11T21:27:26.317Z |\n\n- ✅ **README-01** README refresh: match the real tool surface 🟢\n  📋 Evidence — README-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | unit | 🟣 stale | tree 6185e94a* | 2026-06-11T21:27:27.007Z |\n\n- ✅ **FIX-PROOF-02** proof identity excludes .rivet state (journal must not stale its own proofs) 🟢\n  📋 Evidence — FIX-PROOF-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | unit | 🟣 stale | tree f8ccd6b3* | 2026-06-11T21:29:15.431Z |\n\n- ✅ **TRAIL-01** per-task gate trail: minute-level done/blocked/skipped/pending 🟢\n  📋 Evidence — TRAIL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/trail.test.ts` | unit | 🟣 stale | tree 61afc144* | 2026-06-11T21:47:11.693Z |\n\n- ✅ **DASH-02** port design.html as the dashboard template with live data injection 🟢\n  📋 Evidence — DASH-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | unit | 🟣 stale | tree 61afc144* | 2026-06-11T21:47:12.413Z |\n\n- ✅ **FIX-DOCTOR-01** graphify optional in doctor + provenance hint (classifier-safe) 🟢\n  📋 Evidence — FIX-DOCTOR-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree 39bf63d7* | 2026-06-11T22:00:57.454Z |\n\n- ✅ **FIX-STACKNAMES-01** project.platforms rename + runner-stack disambiguation error 🟢\n  📋 Evidence — FIX-STACKNAMES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | unit | 🟣 stale | tree 39bf63d7* | 2026-06-11T22:00:58.187Z |\n\n- ✅ **FIX-PROOF-03** check-run stamp shows tree identity, not commit sha 🟢\n  📋 Evidence — FIX-PROOF-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts::stamps the tree identity, not the commit sha` | unit | 🟣 stale | tree 5c1f03a7* | 2026-06-11T22:04:59.081Z |\n\n- ✅ **FIX-PROOF-04** every proof surface stamps the tree identity (PR body, approvals, ledger log) 🟢\n  📋 Evidence — FIX-PROOF-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts` | unit | 🟣 stale | tree bfcd211e* | 2026-06-11T23:28:45.141Z |\n\n- ✅ **FIX-PROV-01** provenance hint carries no rotting vanity metrics (star count) 🟢\n  📋 Evidence — FIX-PROV-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree 13cbb36b* | 2026-06-11T23:30:11.511Z |\n\n- ✅ **FEAT-IDS-01** fully-qualified requirement ids (REQUIREMENT_/NFR_/ADR_) with configurable lint 🟢\n  📋 Evidence — FEAT-IDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/qualified-ids.test.ts` | unit | 🟣 stale | tree af88bfd0* | 2026-06-11T23:33:58.426Z |\n\n- ✅ **REQUIREMENT_AUDIT-01** every CLI invocation is audit-logged 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:22.806Z |\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:23.574Z |\n\n- ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:24.335Z |\n  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:25.101Z |\n\n- ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢\n  📋 Evidence — REQUIREMENT_PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:25.863Z |\n  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:26.635Z |\n\n- ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢\n  📋 Evidence — FEAT-GHERKIN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gherkin.test.ts` | unit | 🟣 stale | tree bda82c18* | 2026-06-11T23:40:54.391Z |\n\n- ✅ **NFR_AUDIT-03** auditing never breaks the CLI 🟢\n  📋 Evidence — NFR_AUDIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:23.574Z |\n\n- ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢\n  📋 Evidence — FEAT-STACK-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/default-stack.test.ts` | unit | 🟣 stale | tree f667aa68* | 2026-06-11T23:45:42.780Z |\n\n- ✅ **FEAT-REPORT-01** tabular post-task evidence report (terminal + LEDGER) 🟢\n  📋 Evidence — FEAT-REPORT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/task-report.test.ts` | unit | 🟣 stale | tree 95e2a25a* | 2026-06-11T23:47:39.111Z |\n\n- ✅ **FEAT-EMOJI-01** central emoji vocabulary (>=10 new) + plain mode for CI 🟢\n  📋 Evidence — FEAT-EMOJI-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/emoji.test.ts` | unit | 🟣 stale | tree fb84c373* | 2026-06-11T23:50:19.284Z |\n\n- ✅ **FEAT-VERIFY-01** rivet verify: build ALL + run ALL kinds, journaled; hard fresh-tree PR gate 🟢\n  📋 Evidence — FEAT-VERIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/verify-cmd.test.ts` | unit | 🟣 stale | tree d9d37e49* | 2026-06-11T23:54:53.789Z |\n\n- ✅ **FEAT-PLATFORM-01** electron platform; platforms is an ARRAY (polyglot normal) 🟢\n  📋 Evidence — FEAT-PLATFORM-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | unit | 🟣 stale | tree 255f2e33* | 2026-06-11T23:59:51.330Z |\n\n- ✅ **FEAT-INITPACKS-01** init --platforms seeds free/OSS best-practice law packs, pre-wired to checks 🟢\n  📋 Evidence — FEAT-INITPACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/init-practices.test.ts` | unit | 🟣 stale | tree 47c4f9b2* | 2026-06-12T04:46:02.585Z |\n\n- ✅ **FEAT-CCFIRST-01** README states Claude-Code-first explicitly 🟢\n  📋 Evidence — FEAT-CCFIRST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | unit | 🟣 stale | tree cdec907f* | 2026-06-12T04:50:02.948Z |\n\n- ✅ **FEAT-FLUSH-01** pr learnings-flush warn + doctor stale-worktree visibility 🟢🟢\n  📋 Evidence — FEAT-FLUSH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/pr-flush-warn.test.ts` | unit | 🟣 stale | tree d434b3db* | 2026-06-12T04:53:32.732Z |\n  | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree d434b3db* | 2026-06-12T04:53:33.680Z |\n\n- ✅ **FEAT-REVITIFY-01** revitify: native TS knowledge graph, graphify output contract, default provider 🟢\n  📋 Evidence — FEAT-REVITIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `packages/revitify/test/revitify.test.ts` | unit | 🟣 stale | tree 60ee0b6a* | 2026-06-12T05:05:39.506Z |\n\n- ✅ **FEAT-REVITIFY-02** revitify extracted to its own repo; consumer-side contract pinned 🟢\n  📋 Evidence — FEAT-REVITIFY-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/revitify-contract.test.ts` | unit | 🟣 stale | tree 76a8f022* | 2026-06-12T05:10:39.529Z |\n\n- ✅ **FIX-STALEDONE-01** done-gate refuses stale evidence (pass on an older tree is not green) 🟢\n  📋 Evidence — FIX-STALEDONE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stale-done.test.ts` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:05.329Z |\n\n- ✅ **REQUIREMENT_COCKPIT-01** config manifest generated from the schema 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:27.210Z |\n  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:27.791Z |\n  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:28.371Z |\n\n- ✅ **REQUIREMENT_COCKPIT-02** the RIVET data sidecar is the project's truth 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:29.309Z |\n  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:30.247Z |\n  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:31.180Z |\n\n- ✅ **REQUIREMENT_COCKPIT-03** static shell emission, written once 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:32.250Z |\n  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:33.485Z |\n\n- ✅ **REQUIREMENT_COCKPIT-04** live updates after every proof event 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:34.978Z |\n  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:36.060Z |\n\n- ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-05\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:36.908Z |\n  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:37.758Z |\n  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:38.670Z |\n  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | ✅ green | tree c6c5cfce | 2026-06-12T07:05:39.606Z |\n\n\n## Approvals & governance\n\n- 🛡️ 2026-06-11T23:25:31.905Z — unlock\n- 🛡️ 2026-06-11T23:29:29.462Z — unlock\n- 🛡️ 2026-06-11T23:34:24.469Z — unlock\n- 🛡️ 2026-06-11T23:41:27.273Z — unlock\n- 🛡️ 2026-06-11T23:55:10.102Z — unlock\n- 🛡️ 2026-06-11T23:58:14.741Z — unlock\n- 🛡️ 2026-06-11T23:58:59.298Z — unlock\n- 🛡️ 2026-06-12T04:48:57.051Z — unlock\n- 🛡️ 2026-06-12T04:51:20.884Z — unlock\n- 🛡️ 2026-06-12T05:01:36.612Z — unlock\n- 🛡️ 2026-06-12T07:00:16.579Z — unlock\n\n## Recent activity\n\n- \u001b[2m2026-06-12 07:05:31\u001b[22m  ✅ check test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar @ tree c6c5cfce → REQUIREMENT_COCKPIT-02\n- \u001b[2m2026-06-12 07:05:32\u001b[22m  ✅ check test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar @ tree c6c5cfce → REQUIREMENT_COCKPIT-03\n- \u001b[2m2026-06-12 07:05:33\u001b[22m  ✅ check test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes @ tree c6c5cfce → REQUIREMENT_COCKPIT-03\n- \u001b[2m2026-06-12 07:05:34\u001b[22m  ✅ check test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run @ tree c6c5cfce → REQUIREMENT_COCKPIT-04\n- \u001b[2m2026-06-12 07:05:36\u001b[22m  ✅ check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events @ tree c6c5cfce → REQUIREMENT_COCKPIT-04\n- \u001b[2m2026-06-12 07:05:36\u001b[22m  ✅ check test/cockpit-server.test.ts::a valid POST saves config.json and journals governance @ tree c6c5cfce → REQUIREMENT_COCKPIT-05\n- \u001b[2m2026-06-12 07:05:37\u001b[22m  ✅ check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes @ tree c6c5cfce → REQUIREMENT_COCKPIT-05\n- \u001b[2m2026-06-12 07:05:38\u001b[22m  ✅ check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint @ tree c6c5cfce → REQUIREMENT_COCKPIT-05\n- \u001b[2m2026-06-12 07:05:39\u001b[22m  ✅ check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode @ tree c6c5cfce → REQUIREMENT_COCKPIT-05\n- \u001b[2m2026-06-12 07:05:39\u001b[22m  🧾 graph build  [Pratiyush Kumar Singh]\n"
       },
       {
         "name": "TRACKING.md",
-        "content": "# TRACKING — per-requirement Definition of Done (generated; do not edit)\n\n| Requirement | Title | Criteria | Proof | Task | Approved |\n|---|---|---|---|---|---|\n| REQUIREMENT_AUDIT-01 | every CLI invocation is audit-logged | 2 | 🟣🟣 | done | — |\n| REQUIREMENT_AUDIT-02 | the audit trail is readable | 2 | 🟣🟣 | done | — |\n| REQUIREMENT_PROG-01 | progress with emoji after completing a task | 2 | 🟣🟣 | done | — |\n| NFR_AUDIT-03 | auditing never breaks the CLI | 1 | 🟣 | done | — |\n| REQUIREMENT_COCKPIT-01 | config manifest generated from the schema | 3 | 🟣🟣🟣 | done | — |\n| REQUIREMENT_COCKPIT-02 | the RIVET data sidecar is the project's truth | 3 | 🟣🟣🟣 | done | — |\n| REQUIREMENT_COCKPIT-03 | static shell emission, written once | 2 | 🟣🟣 | done | — |\n| REQUIREMENT_COCKPIT-04 | live updates after every proof event | 2 | 🟣🟣 | done | — |\n| REQUIREMENT_COCKPIT-05 | the config save server | 4 | 🟣🟣🟣🟣 | done | — |\n"
+        "content": "# TRACKING — per-requirement Definition of Done (generated; do not edit)\n\n| Requirement | Title | Criteria | Proof | Task | Approved |\n|---|---|---|---|---|---|\n| REQUIREMENT_AUDIT-01 | every CLI invocation is audit-logged | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_AUDIT-02 | the audit trail is readable | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_PROG-01 | progress with emoji after completing a task | 2 | 🟢🟢 | done | — |\n| NFR_AUDIT-03 | auditing never breaks the CLI | 1 | 🟢 | done | — |\n| REQUIREMENT_COCKPIT-01 | config manifest generated from the schema | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_COCKPIT-02 | the RIVET data sidecar is the project's truth | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_COCKPIT-03 | static shell emission, written once | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_COCKPIT-04 | live updates after every proof event | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_COCKPIT-05 | the config save server | 4 | 🟢🟢🟢🟢 | done | — |\n"
       },
       {
         "name": "RESUME.md",
@@ -2493,9 +2470,9 @@ window.RIVET = {
           "live",
           "on-demand"
         ],
-        "value": "on-demand",
+        "value": "live",
         "default": "on-demand",
-        "changed": false,
+        "changed": true,
         "description": "`live`: the data sidecar is rewritten automatically after every task done / check run, so the open cockpit stays current."
       },
       {
