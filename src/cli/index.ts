@@ -14,6 +14,7 @@ import { boardCmd } from "./board-cmd.js";
 import { lawsCmd } from "./laws-cmd.js";
 import { dashboardCmd } from "./dashboard.js";
 import { verifyCmd } from "./verify-cmd.js";
+import { webCmd } from "./web.js";
 import { auditCliRun } from "../engine/state/audit.js";
 import { InputError } from "./config-io.js";
 import { RunnerUnavailableError } from "../engine/verify/runner.js";
@@ -124,6 +125,13 @@ program
   .command("status")
   .description("Board generated from the journal — tasks with traffic-light proof states")
   .action(safe(() => status()));
+
+program
+  .command("web")
+  .description("Serve the cockpit (dashboard + config studio) with the validated save API")
+  .option("-p, --port <port>", "port (default 7341)")
+  .option("--open", "open it in the browser (macOS)")
+  .action(safe((opts: { port?: string; open?: boolean }) => webCmd(opts)));
 
 program
   .command("verify")
