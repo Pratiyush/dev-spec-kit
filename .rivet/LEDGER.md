@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**53/53 done (100%)**
+**59/59 done (100%)**
 
 - ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢
   📋 Evidence — FIX-ROUTE-01
@@ -16,19 +16,19 @@
   📋 Evidence — R-AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:01.508Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.166Z |
 
 - ✅ **R-AUDIT-02** the audit trail is readable 🟢
   📋 Evidence — R-AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:03.041Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:14.699Z |
 
 - ✅ **R-PROG-01** progress with emoji after completing a task 🟢
   📋 Evidence — R-PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:04.578Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:16.221Z |
 
 - ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢
   📋 Evidence — FIX-PRMATH-01
@@ -238,22 +238,22 @@
   📋 Evidence — REQUIREMENT_AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:01.508Z |
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:02.274Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.166Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.935Z |
 
 - ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢
   📋 Evidence — REQUIREMENT_AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:03.041Z |
-  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:03.813Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:14.699Z |
+  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:15.459Z |
 
 - ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢
   📋 Evidence — REQUIREMENT_PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:04.578Z |
-  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:05.340Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:16.221Z |
+  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:16.985Z |
 
 - ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢
   📋 Evidence — FEAT-GHERKIN-01
@@ -265,7 +265,7 @@
   📋 Evidence — NFR_AUDIT-03
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:02.274Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:13.935Z |
 
 - ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢
   📋 Evidence — FEAT-STACK-01
@@ -326,7 +326,52 @@
   📋 Evidence — FEAT-REVITIFY-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/revitify-contract.test.ts` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:10:39.529Z |
+  | `test/revitify-contract.test.ts` | unit | 🟣 stale | tree 76a8f022* | 2026-06-12T05:10:39.529Z |
+
+- ✅ **FIX-STALEDONE-01** done-gate refuses stale evidence (pass on an older tree is not green) 🟢
+  📋 Evidence — FIX-STALEDONE-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/stale-done.test.ts` | unit | 🟣 stale | tree e45f057f* | 2026-06-12T05:26:05.329Z |
+
+- ✅ **REQUIREMENT_COCKPIT-01** config manifest generated from the schema 🟢🟢🟢
+  📋 Evidence — REQUIREMENT_COCKPIT-01
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | 🟣 stale | tree a50f73ee* | 2026-06-12T06:50:26.595Z |
+  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | 🟣 stale | tree a50f73ee* | 2026-06-12T06:50:44.508Z |
+  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | 🟣 stale | tree a50f73ee* | 2026-06-12T06:50:45.693Z |
+
+- ✅ **REQUIREMENT_COCKPIT-02** the RIVET data sidecar is the project's truth 🟢🟢🟢
+  📋 Evidence — REQUIREMENT_COCKPIT-02
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:49.556Z |
+  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:51.089Z |
+  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:52.628Z |
+
+- ✅ **REQUIREMENT_COCKPIT-03** static shell emission, written once 🟢🟢
+  📋 Evidence — REQUIREMENT_COCKPIT-03
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:55.604Z |
+  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:55:57.449Z |
+
+- ✅ **REQUIREMENT_COCKPIT-04** live updates after every proof event 🟢🟢
+  📋 Evidence — REQUIREMENT_COCKPIT-04
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:56:00.878Z |
+  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | 🟣 stale | tree 4f88cc08* | 2026-06-12T06:56:02.576Z |
+
+- ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢
+  📋 Evidence — REQUIREMENT_COCKPIT-05
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:22.454Z |
+  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:23.939Z |
+  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:25.483Z |
+  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | 🟣 stale | tree f31a1b99* | 2026-06-12T06:59:20.975Z |
 
 
 ## Approvals & governance
@@ -341,16 +386,17 @@
 - 🛡️ 2026-06-12T04:48:57.051Z — unlock
 - 🛡️ 2026-06-12T04:51:20.884Z — unlock
 - 🛡️ 2026-06-12T05:01:36.612Z — unlock
+- 🛡️ 2026-06-12T07:00:16.579Z — unlock
 
 ## Recent activity
 
-- [2m2026-06-12 05:11:02[22m  ✅ check test/cli-ux.test.ts::does not create journals outside Rivet projects @ tree 76a8f022* → NFR_AUDIT-03
-- [2m2026-06-12 05:11:03[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ tree 76a8f022* → R-AUDIT-02
-- [2m2026-06-12 05:11:03[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ tree 76a8f022* → REQUIREMENT_AUDIT-02
-- [2m2026-06-12 05:11:03[22m  ✅ check test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold @ tree 76a8f022* → REQUIREMENT_AUDIT-02
-- [2m2026-06-12 05:11:04[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ tree 76a8f022* → R-PROG-01
-- [2m2026-06-12 05:11:04[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ tree 76a8f022* → REQUIREMENT_PROG-01
-- [2m2026-06-12 05:11:05[22m  ✅ check test/cli-ux.test.ts::renders an explicit empty state when there are no tasks @ tree 76a8f022* → REQUIREMENT_PROG-01
-- [2m2026-06-12 05:11:05[22m  🧾 verify  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:11:11[22m  ✅ verify 4 step(s) @ tree 76a8f022*
-- [2m2026-06-12 05:11:11[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-12 06:59:23[22m  ✅ check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes @ tree f31a1b99* → REQUIREMENT_COCKPIT-05
+- [2m2026-06-12 06:59:24[22m  🧾 check run REQUIREMENT_COCKPIT-05 test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint  [Pratiyush Kumar Singh]
+- [2m2026-06-12 06:59:25[22m  ✅ check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint @ tree f31a1b99* → REQUIREMENT_COCKPIT-05
+- [2m2026-06-12 06:59:26[22m  🧾 task done REQUIREMENT_COCKPIT-05  [Pratiyush Kumar Singh]
+- [2m2026-06-12 06:59:26[22m  🏁 task REQUIREMENT_COCKPIT-05 → done
+- [2m2026-06-12 07:00:16[22m  🧾 unlock test/dashboard.test.ts test/files-tab.test.ts  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:00:16[22m  🛡️ unlock {"paths":["test/dashboard.test.ts","test/files-tab.test.ts"],"until":"2026-06-12T08:00:16.579Z"}
+- [2m2026-06-12 07:01:55[22m  🧾 verify  [Pratiyush Kumar Singh]
+- [2m2026-06-12 07:02:00[22m  ✅ verify 4 step(s) @ tree f0882c8d*
+- [2m2026-06-12 07:02:00[22m  🧾 graph build  [Pratiyush Kumar Singh]

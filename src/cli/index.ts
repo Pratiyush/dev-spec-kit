@@ -236,7 +236,7 @@ program
 
 program
   .command("dashboard")
-  .description("Generate .rivet/dashboard.html — emoji board, completion %, traffic lights, code graph embed")
+  .description("Emit the cockpit (.rivet/cockpit/ — dashboard + config studio, auto-reloading data sidecar)")
   .option("--open", "open it in the browser after generating (macOS)")
   .action(safe((opts: { open?: boolean }) => dashboardCmd(opts)));
 

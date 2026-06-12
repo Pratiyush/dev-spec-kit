@@ -1,67 +1,30 @@
-import { describe, it, expect } from "vitest";
-import { renderDashboard, type DesignData } from "../src/cli/dashboard.js";
+import { afterEach, describe, expect, it } from "vitest";
+import { execSync } from "node:child_process";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { dashboardCmd } from "../src/cli/dashboard.js";
 
-/** DASH-02: Pratiyush's design.html is THE template — renderDashboard injects real data into its
- *  DATA block (sanitized), leaving his tabs/renderers untouched. */
+/** DASH-02 → FEAT-COCKPIT: `rivet dashboard` now emits the cockpit — static shell + data sidecar.
+ *  The injection-safety and rendering pins live with the cockpit suite; this pins the command. */
 
-const data: DesignData = {
-  project: "demo",
-  generatedAt: "2026-06-12T10:05:00Z",
-  completion: { done: 1, total: 2 },
-  validates: { green: 1, red: 0, stale: 1, unproven: 0 },
-  tasks: [
-    {
-      id: "R-1",
-      title: "login",
-      status: "done",
-      boundChecks: ["c1"],
-      results: { c1: { ref: "c1", passed: true, at: "t" } },
-      trail: {
-        summary: { binding: "done", tddRed: "done", proof: "green", doneGate: "passed (1 blocked)", approval: "recorded" },
-        timeline: [{ at: "2026-06-12T10:02:00Z", gate: "done-gate", outcome: "blocked" }],
-      },
-    },
-    {
-      id: "R-2",
-      title: "<script>alert(1)</script>",
-      status: "in_progress",
-      boundChecks: ["c2"],
-      results: {},
-      trail: { summary: { binding: "done", tddRed: "skipped", proof: "pending", doneGate: "pending", approval: "pending" }, timeline: [] },
-    },
-  ],
-  requirements: [{ id: "R-1", title: "login", proven: true, criteria: [{ id: "AC1", proof: "green" }] }],
-  approvals: [{ at: "t", approver: "Pratiyush", taskIds: ["R-1"] }],
-  governance: [],
-  activity: [{ at: "2026-06-12T10:10:01Z", icon: "🏁", text: "task R-1 → done" }],
-  graphHtml: null,
-  drift: 1,
-  files: [{ name: "laws.md", content: "# Laws" }],
-};
+describe("rivet dashboard emits the cockpit", () => {
+  const here = process.cwd();
+  afterEach(() => process.chdir(here));
 
-describe("renderDashboard (template injection)", () => {
-  const html = renderDashboard(data);
-
-  it("uses the design template (his tabs and views are present)", () => {
-    for (const id of ["view-overview", "view-tasks", "view-requirements", "view-graph", "view-activity", "view-files"]) {
-      expect(html).toContain(`id="${id}"`);
-    }
-  });
-
-  it("injects the real DATA (sample block fully replaced)", () => {
-    expect(html).toContain('"project":"demo"');
-    expect(html).toContain('"completion":{"done":1,"total":2}');
-    expect(html).not.toContain("DASH-01"); // sample data gone
-    expect(html).toContain('"trail"'); // gate trails ride along
-  });
-
-  it("sanitizes injected JSON — a title cannot break out of the script tag", () => {
-    expect(html).not.toContain("<script>alert(1)");
-    expect(html).toContain("\\u003cscript"); // < escaped inside the JSON string
-  });
-
-  it("renders gate-trail UI hooks in the template", () => {
-    expect(html).toContain("trail"); // taskCard consumes t.trail
-    expect(html).toMatch(/done-gate|gate-chip|trail-row/);
+  it("writes .rivet/cockpit (shell + sidecar) and reports the reload cadence", () => {
+    const dir = mkdtempSync(join(tmpdir(), "rivet-dash-"));
+    execSync(`git init -q -b main && git config user.email t@t && git config user.name T`, { cwd: dir });
+    writeFileSync(join(dir, "a.ts"), "export const a = 1;");
+    execSync("git add -A && git commit -qm init", { cwd: dir });
+    mkdirSync(join(dir, ".rivet"), { recursive: true });
+    writeFileSync(join(dir, ".rivet", "config.json"), JSON.stringify({ version: 1 }));
+    process.chdir(dir);
+    dashboardCmd({});
+    const cockpit = join(dir, ".rivet", "cockpit");
+    expect(existsSync(join(cockpit, "index.html"))).toBe(true);
+    expect(existsSync(join(cockpit, "rivet.data.js"))).toBe(true);
+    expect(readFileSync(join(cockpit, "index.html"), "utf8")).toContain('src="rivet.data.js"');
+    expect(readFileSync(join(cockpit, "rivet.data.js"), "utf8")).toContain('"refreshSeconds": 15');
   });
 });

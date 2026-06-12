@@ -555,6 +555,330 @@
       }
     },
     {
+      "id": "file:src/cli/cockpit-assets/rivet.app.js",
+      "kind": "codeNode",
+      "label": "src/cli/cockpit-assets/rivet.app.js",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.app.js",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/cockpit-assets/rivet.config.js",
+      "kind": "codeNode",
+      "label": "src/cli/cockpit-assets/rivet.config.js",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.config.js",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/cockpit-assets/rivet.core.js",
+      "kind": "codeNode",
+      "label": "src/cli/cockpit-assets/rivet.core.js",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#rel",
+      "kind": "codeNode",
+      "label": "rel",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:22",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#toast",
+      "kind": "codeNode",
+      "label": "toast",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:45",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#renderMarkdown",
+      "kind": "codeNode",
+      "label": "renderMarkdown",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:55",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#buildSidebar",
+      "kind": "codeNode",
+      "label": "buildSidebar",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:88",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#refreshRailBadges",
+      "kind": "codeNode",
+      "label": "refreshRailBadges",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:130",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#go",
+      "kind": "codeNode",
+      "label": "go",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:144",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#openRail",
+      "kind": "codeNode",
+      "label": "openRail",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:166",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#closeRail",
+      "kind": "codeNode",
+      "label": "closeRail",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:167",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#renderSync",
+      "kind": "codeNode",
+      "label": "renderSync",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:170",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#applyTheme",
+      "kind": "codeNode",
+      "label": "applyTheme",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:176",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#jsonHighlight",
+      "kind": "codeNode",
+      "label": "jsonHighlight",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:185",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#renderDrawer",
+      "kind": "codeNode",
+      "label": "renderDrawer",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:193",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#openDrawer",
+      "kind": "codeNode",
+      "label": "openDrawer",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:199",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-assets/rivet.core.js#closeDrawer",
+      "kind": "codeNode",
+      "label": "closeDrawer",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
+        "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:200",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/cockpit-assets/rivet.dashboard.js",
+      "kind": "codeNode",
+      "label": "src/cli/cockpit-assets/rivet.dashboard.js",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-assets/rivet.dashboard.js",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/cockpit-data.ts",
+      "kind": "codeNode",
+      "label": "src/cli/cockpit-data.ts",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#CockpitResult",
+      "kind": "codeNode",
+      "label": "CockpitResult",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:18",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#CockpitTask",
+      "kind": "codeNode",
+      "label": "CockpitTask",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:28",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#RivetCockpitData",
+      "kind": "codeNode",
+      "label": "RivetCockpitData",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:36",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#eventLine",
+      "kind": "codeNode",
+      "label": "eventLine",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:85",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#buildRivet",
+      "kind": "codeNode",
+      "label": "buildRivet",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:112",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#sidecarJs",
+      "kind": "codeNode",
+      "label": "sidecarJs",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:233",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit-data.ts#writeSidecar",
+      "kind": "codeNode",
+      "label": "writeSidecar",
+      "meta": {
+        "sourceFile": "src/cli/cockpit-data.ts",
+        "sourceLocation": "src/cli/cockpit-data.ts:237",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/cockpit.ts",
+      "kind": "codeNode",
+      "label": "src/cli/cockpit.ts",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit.ts#SHELL_VERSION",
+      "kind": "codeNode",
+      "label": "SHELL_VERSION",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "sourceLocation": "src/cli/cockpit.ts:13",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit.ts#SHELL_FILES",
+      "kind": "codeNode",
+      "label": "SHELL_FILES",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "sourceLocation": "src/cli/cockpit.ts:15",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit.ts#assetsDir",
+      "kind": "codeNode",
+      "label": "assetsDir",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "sourceLocation": "src/cli/cockpit.ts:26",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit.ts#EmitResult",
+      "kind": "codeNode",
+      "label": "EmitResult",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "sourceLocation": "src/cli/cockpit.ts:30",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit.ts#emitCockpit",
+      "kind": "codeNode",
+      "label": "emitCockpit",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "sourceLocation": "src/cli/cockpit.ts:36",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/cockpit.ts#liveSidecar",
+      "kind": "codeNode",
+      "label": "liveSidecar",
+      "meta": {
+        "sourceFile": "src/cli/cockpit.ts",
+        "sourceLocation": "src/cli/cockpit.ts:57",
+        "community": 4
+      }
+    },
+    {
       "id": "file:src/cli/config-io.ts",
       "kind": "codeNode",
       "label": "src/cli/config-io.ts",
@@ -598,37 +922,7 @@
       "label": "RivetFile",
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:19",
-        "community": 4
-      }
-    },
-    {
-      "id": "sym:src/cli/dashboard.ts#DesignTask",
-      "kind": "codeNode",
-      "label": "DesignTask",
-      "meta": {
-        "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:24",
-        "community": 4
-      }
-    },
-    {
-      "id": "sym:src/cli/dashboard.ts#DesignData",
-      "kind": "codeNode",
-      "label": "DesignData",
-      "meta": {
-        "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:33",
-        "community": 4
-      }
-    },
-    {
-      "id": "sym:src/cli/dashboard.ts#renderDashboard",
-      "kind": "codeNode",
-      "label": "renderDashboard",
-      "meta": {
-        "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:50",
+        "sourceLocation": "src/cli/dashboard.ts:15",
         "community": 4
       }
     },
@@ -638,27 +932,7 @@
       "label": "collectRivetFiles",
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:60",
-        "community": 4
-      }
-    },
-    {
-      "id": "sym:src/cli/dashboard.ts#mdToHtml",
-      "kind": "codeNode",
-      "label": "mdToHtml",
-      "meta": {
-        "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:90",
-        "community": 4
-      }
-    },
-    {
-      "id": "sym:src/cli/dashboard.ts#activityEntry",
-      "kind": "codeNode",
-      "label": "activityEntry",
-      "meta": {
-        "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:165",
+        "sourceLocation": "src/cli/dashboard.ts:23",
         "community": 4
       }
     },
@@ -668,7 +942,7 @@
       "label": "dashboardCmd",
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
-        "sourceLocation": "src/cli/dashboard.ts:206",
+        "sourceLocation": "src/cli/dashboard.ts:50",
         "community": 4
       }
     },
@@ -864,7 +1138,7 @@
       "label": "safe",
       "meta": {
         "sourceFile": "src/cli/index.ts",
-        "sourceLocation": "src/cli/index.ts:25",
+        "sourceLocation": "src/cli/index.ts:26",
         "community": 4
       }
     },
@@ -1165,7 +1439,7 @@
       "label": "store",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:29",
+        "sourceLocation": "src/cli/tasks.ts:30",
         "community": 4
       }
     },
@@ -1175,7 +1449,7 @@
       "label": "taskCreate",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:33",
+        "sourceLocation": "src/cli/tasks.ts:34",
         "community": 4
       }
     },
@@ -1185,7 +1459,7 @@
       "label": "taskStart",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:43",
+        "sourceLocation": "src/cli/tasks.ts:44",
         "community": 4
       }
     },
@@ -1195,7 +1469,7 @@
       "label": "taskDone",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:59",
+        "sourceLocation": "src/cli/tasks.ts:60",
         "community": 4
       }
     },
@@ -1205,7 +1479,7 @@
       "label": "checkRun",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:105",
+        "sourceLocation": "src/cli/tasks.ts:112",
         "community": 4
       }
     },
@@ -1215,7 +1489,7 @@
       "label": "status",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:172",
+        "sourceLocation": "src/cli/tasks.ts:182",
         "community": 4
       }
     },
@@ -1225,7 +1499,7 @@
       "label": "taskTrail",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:199",
+        "sourceLocation": "src/cli/tasks.ts:209",
         "community": 4
       }
     },
@@ -1354,6 +1628,95 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:131",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/cli/web.ts",
+      "kind": "codeNode",
+      "label": "src/cli/web.ts",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#GateRefusal",
+      "kind": "codeNode",
+      "label": "GateRefusal",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:33",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#gateRefusal",
+      "kind": "codeNode",
+      "label": "gateRefusal",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:40",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#deepMerge",
+      "kind": "codeNode",
+      "label": "deepMerge",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:62",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#json",
+      "kind": "codeNode",
+      "label": "json",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:82",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#readBody",
+      "kind": "codeNode",
+      "label": "readBody",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:87",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#createCockpitServer",
+      "kind": "codeNode",
+      "label": "createCockpitServer",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:93",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#handle",
+      "kind": "codeNode",
+      "label": "handle",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:101",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/cli/web.ts#webCmd",
+      "kind": "codeNode",
+      "label": "webCmd",
+      "meta": {
+        "sourceFile": "src/cli/web.ts",
+        "sourceLocation": "src/cli/web.ts:186",
         "community": 4
       }
     },
@@ -1511,7 +1874,7 @@
       "label": "RivetConfig",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "sourceLocation": "src/config/schema.ts:332",
+        "sourceLocation": "src/config/schema.ts:334",
         "community": 4
       }
     },
@@ -1521,7 +1884,7 @@
       "label": "defaultConfig",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "sourceLocation": "src/config/schema.ts:335",
+        "sourceLocation": "src/config/schema.ts:337",
         "community": 4
       }
     },
@@ -1531,7 +1894,7 @@
       "label": "parseConfig",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "sourceLocation": "src/config/schema.ts:340",
+        "sourceLocation": "src/config/schema.ts:342",
         "community": 4
       }
     },
@@ -1601,6 +1964,125 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:103",
+        "community": 4
+      }
+    },
+    {
+      "id": "file:src/engine/config-manifest.ts",
+      "kind": "codeNode",
+      "label": "src/engine/config-manifest.ts",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#KnobField",
+      "kind": "codeNode",
+      "label": "KnobField",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:12",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#Knob",
+      "kind": "codeNode",
+      "label": "Knob",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:22",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#SectionMeta",
+      "kind": "codeNode",
+      "label": "SectionMeta",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:41",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#SECTIONS",
+      "kind": "codeNode",
+      "label": "SECTIONS",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:48",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#Unwrapped",
+      "kind": "codeNode",
+      "label": "Unwrapped",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:185",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#unwrap",
+      "kind": "codeNode",
+      "label": "unwrap",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:190",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#numberBounds",
+      "kind": "codeNode",
+      "label": "numberBounds",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:214",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#classifyField",
+      "kind": "codeNode",
+      "label": "classifyField",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:225",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#classify",
+      "kind": "codeNode",
+      "label": "classify",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:240",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#manifestFromSchema",
+      "kind": "codeNode",
+      "label": "manifestFromSchema",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:286",
+        "community": 4
+      }
+    },
+    {
+      "id": "sym:src/engine/config-manifest.ts#generateManifest",
+      "kind": "codeNode",
+      "label": "generateManifest",
+      "meta": {
+        "sourceFile": "src/engine/config-manifest.ts",
+        "sourceLocation": "src/engine/config-manifest.ts:322",
         "community": 4
       }
     },
@@ -3050,7 +3532,7 @@
       "label": "get",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:87",
+        "sourceLocation": "src/engine/state/tasks.ts:93",
         "community": 4
       }
     },
@@ -3060,7 +3542,7 @@
       "label": "create",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:91",
+        "sourceLocation": "src/engine/state/tasks.ts:97",
         "community": 4
       }
     },
@@ -3070,7 +3552,7 @@
       "label": "syncBindings",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:107",
+        "sourceLocation": "src/engine/state/tasks.ts:113",
         "community": 4
       }
     },
@@ -3080,7 +3562,7 @@
       "label": "setStatus",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:116",
+        "sourceLocation": "src/engine/state/tasks.ts:122",
         "community": 4
       }
     },
@@ -3090,7 +3572,7 @@
       "label": "recordCheck",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:122",
+        "sourceLocation": "src/engine/state/tasks.ts:128",
         "community": 4
       }
     },
@@ -3100,7 +3582,7 @@
       "label": "markDone",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:134",
+        "sourceLocation": "src/engine/state/tasks.ts:140",
         "community": 4
       }
     },
@@ -3110,7 +3592,7 @@
       "label": "requireTask",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:160",
+        "sourceLocation": "src/engine/state/tasks.ts:166",
         "community": 4
       }
     },
@@ -3120,7 +3602,7 @@
       "label": "staleProofRefs",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:173",
+        "sourceLocation": "src/engine/state/tasks.ts:179",
         "community": 4
       }
     },
@@ -3663,11 +4145,68 @@
       }
     },
     {
+      "id": "file:test/cockpit-server.test.ts",
+      "kind": "codeNode",
+      "label": "test/cockpit-server.test.ts",
+      "meta": {
+        "sourceFile": "test/cockpit-server.test.ts",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/cockpit-server.test.ts#project",
+      "kind": "codeNode",
+      "label": "project",
+      "meta": {
+        "sourceFile": "test/cockpit-server.test.ts",
+        "sourceLocation": "test/cockpit-server.test.ts:18",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/cockpit-server.test.ts#serve",
+      "kind": "codeNode",
+      "label": "serve",
+      "meta": {
+        "sourceFile": "test/cockpit-server.test.ts",
+        "sourceLocation": "test/cockpit-server.test.ts:45",
+        "community": 5
+      }
+    },
+    {
+      "id": "file:test/cockpit.test.ts",
+      "kind": "codeNode",
+      "label": "test/cockpit.test.ts",
+      "meta": {
+        "sourceFile": "test/cockpit.test.ts",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/cockpit.test.ts#project",
+      "kind": "codeNode",
+      "label": "project",
+      "meta": {
+        "sourceFile": "test/cockpit.test.ts",
+        "sourceLocation": "test/cockpit.test.ts:22",
+        "community": 5
+      }
+    },
+    {
       "id": "file:test/compact.test.ts",
       "kind": "codeNode",
       "label": "test/compact.test.ts",
       "meta": {
         "sourceFile": "test/compact.test.ts",
+        "community": 5
+      }
+    },
+    {
+      "id": "file:test/config-manifest.test.ts",
+      "kind": "codeNode",
+      "label": "test/config-manifest.test.ts",
+      "meta": {
+        "sourceFile": "test/config-manifest.test.ts",
         "community": 5
       }
     },
@@ -4262,6 +4801,213 @@
       "id": "NFR_AUDIT-03-AC1",
       "kind": "acceptanceCriterion",
       "label": "IF rivet runs outside a Rivet project THEN the system SHALL NOT create a journal or write any audit event."
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-01",
+      "kind": "requirement",
+      "label": "config manifest generated from the schema"
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: every knob arrives explained — Given the zod config schema When the manifest is generated for a project Then every leaf knob carries section, path, type, default, current value, changed flag, and a non-empty description"
+    },
+    {
+      "id": "test:test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
+      "kind": "test",
+      "label": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: enum and record knobs carry their vocabulary — Given knobs like spec.criteriaFormat and verify.kindRunners When the manifest is generated Then enums list their allowed values and command-records expose the cmd/args record shape"
+    },
+    {
+      "id": "test:test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
+      "kind": "test",
+      "label": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-01-AC3",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: an undescribed or unsupported knob fails loudly, never silently — Given a schema node the walker does not understand or a leaf without a description When the manifest is generated Then generation throws naming the offending path instead of silently dropping the knob"
+    },
+    {
+      "id": "test:test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
+      "kind": "test",
+      "label": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-02",
+      "kind": "requirement",
+      "label": "the RIVET data sidecar is the project's truth"
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-02-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: the sidecar carries every surface the cockpit renders — Given a project with tasks, requirements, approvals, journal events, and .rivet markdown artifacts When the sidecar builds Then window.RIVET contains meta (refreshSeconds, inFlightTasks), dashboard (completion, validates, drift, tasks with failure tails, requirements with per-criterion proofs, approvals, governance, activity) and config (sections + manifest)"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-02-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: stale evidence renders stale, not green — Given a task whose passing result was recorded on an older code tree When the sidecar builds Then that check result is marked stale so the cockpit shows 🟣, never 🟢"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-02-AC3",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: hostile artifact content cannot escape the script tag — Given a .rivet markdown file containing a closing script tag When the sidecar is written Then the payload escapes it so the document cannot be broken or scripted"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-03",
+      "kind": "requirement",
+      "label": "static shell emission, written once"
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-03-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: the cockpit emits shell plus sidecar — Given a Rivet project When the cockpit is emitted Then .rivet/cockpit/ contains index.html, rivet.css, the four JS modules, and rivet.data.js, and index.html loads the sidecar via a script tag"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-03-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: re-emission refreshes data but never rewrites an unchanged shell — Given a cockpit emitted at the current shell version When the cockpit is emitted again Then rivet.data.js is rewritten while the shell files are left untouched And a bumped shell version rewrites the shell"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-04",
+      "kind": "requirement",
+      "label": "live updates after every proof event"
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-04-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: live mode keeps the open cockpit current — Given dashboard.updates is \"live\" When a task completes or a check records Then the sidecar is rewritten so the auto-reloading shell shows the new truth within refreshSeconds"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-04-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: on-demand mode stays quiet — Given dashboard.updates is \"on-demand\" When a task completes Then no sidecar write happens outside rivet dashboard"
+    },
+    {
+      "id": "test:test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
+      "kind": "test",
+      "label": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-05",
+      "kind": "requirement",
+      "label": "the config save server"
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-05-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: a valid save lands in config.json — Given the cockpit server is running with no tasks in flight When a valid config posts to /api/config Then .rivet/config.json is rewritten with the merged config and the save is journaled as governance"
+    },
+    {
+      "id": "test:test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
+      "kind": "test",
+      "label": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-05-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: an invalid save returns field errors and writes nothing — Given the cockpit server is running When a config with an invalid enum value posts to /api/config Then the response carries the offending path and message and config.json is unchanged"
+    },
+    {
+      "id": "test:test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
+      "kind": "test",
+      "label": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-05-AC3",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: GATE-PROTECT refuses saves while tasks are in flight — Given a task is in progress and no unlock window is active When any config posts to /api/config Then the save is refused with GATE-PROTECT-01 and the rivet unlock hint and config.json is unchanged"
+    },
+    {
+      "id": "test:test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
+      "kind": "test",
+      "label": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_COCKPIT-05-AC4",
+      "kind": "acceptanceCriterion",
+      "label": "Scenario: the state endpoint serves fresh truth — Given the cockpit server is running When GET /api/state is requested Then the full RIVET object returns with serverMode true"
+    },
+    {
+      "id": "test:test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
+      "kind": "test",
+      "label": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
+      "meta": {
+        "kind": "unit"
+      }
     }
   ],
   "edges": [
@@ -4281,9 +5027,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-12T05:26:13.166Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:02.615Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4305,9 +5051,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T05:26:13.935Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:03.382Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4329,9 +5075,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-12T05:26:14.699Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:04.145Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4353,9 +5099,9 @@
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-12T05:26:15.459Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:04.922Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4377,9 +5123,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-12T05:26:16.221Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:05.692Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4401,9 +5147,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-12T05:26:16.985Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:06.458Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4425,9 +5171,345 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T05:26:13.935Z",
-        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
-        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
+        "at": "2026-06-12T07:02:03.382Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e15",
+      "from": "REQUIREMENT_COCKPIT-01-AC1",
+      "to": "REQUIREMENT_COCKPIT-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e16",
+      "from": "test:test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
+      "to": "REQUIREMENT_COCKPIT-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
+        "passed": true,
+        "at": "2026-06-12T07:02:07.037Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e17",
+      "from": "REQUIREMENT_COCKPIT-01-AC2",
+      "to": "REQUIREMENT_COCKPIT-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e18",
+      "from": "test:test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
+      "to": "REQUIREMENT_COCKPIT-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
+        "passed": true,
+        "at": "2026-06-12T07:02:07.614Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e19",
+      "from": "REQUIREMENT_COCKPIT-01-AC3",
+      "to": "REQUIREMENT_COCKPIT-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e20",
+      "from": "test:test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
+      "to": "REQUIREMENT_COCKPIT-01-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
+        "passed": true,
+        "at": "2026-06-12T07:02:08.195Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e21",
+      "from": "REQUIREMENT_COCKPIT-02-AC1",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e22",
+      "from": "test:test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
+      "to": "REQUIREMENT_COCKPIT-02-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
+        "passed": true,
+        "at": "2026-06-12T07:02:09.129Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e23",
+      "from": "REQUIREMENT_COCKPIT-02-AC2",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e24",
+      "from": "test:test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
+      "to": "REQUIREMENT_COCKPIT-02-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
+        "passed": true,
+        "at": "2026-06-12T07:02:10.065Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e25",
+      "from": "REQUIREMENT_COCKPIT-02-AC3",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e26",
+      "from": "test:test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
+      "to": "REQUIREMENT_COCKPIT-02-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
+        "passed": true,
+        "at": "2026-06-12T07:02:11.000Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e27",
+      "from": "REQUIREMENT_COCKPIT-03-AC1",
+      "to": "REQUIREMENT_COCKPIT-03",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e28",
+      "from": "test:test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
+      "to": "REQUIREMENT_COCKPIT-03-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
+        "passed": true,
+        "at": "2026-06-12T07:02:12.080Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e29",
+      "from": "REQUIREMENT_COCKPIT-03-AC2",
+      "to": "REQUIREMENT_COCKPIT-03",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e30",
+      "from": "test:test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
+      "to": "REQUIREMENT_COCKPIT-03-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
+        "passed": true,
+        "at": "2026-06-12T07:02:13.333Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e31",
+      "from": "REQUIREMENT_COCKPIT-04-AC1",
+      "to": "REQUIREMENT_COCKPIT-04",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e32",
+      "from": "test:test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
+      "to": "REQUIREMENT_COCKPIT-04-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
+        "passed": true,
+        "at": "2026-06-12T07:02:14.832Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e33",
+      "from": "REQUIREMENT_COCKPIT-04-AC2",
+      "to": "REQUIREMENT_COCKPIT-04",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e34",
+      "from": "test:test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
+      "to": "REQUIREMENT_COCKPIT-04-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
+        "passed": true,
+        "at": "2026-06-12T07:02:15.920Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e35",
+      "from": "REQUIREMENT_COCKPIT-05-AC1",
+      "to": "REQUIREMENT_COCKPIT-05",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e36",
+      "from": "test:test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
+      "to": "REQUIREMENT_COCKPIT-05-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
+        "passed": true,
+        "at": "2026-06-12T07:02:16.774Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e37",
+      "from": "REQUIREMENT_COCKPIT-05-AC2",
+      "to": "REQUIREMENT_COCKPIT-05",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e38",
+      "from": "test:test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
+      "to": "REQUIREMENT_COCKPIT-05-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
+        "passed": true,
+        "at": "2026-06-12T07:02:17.618Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e39",
+      "from": "REQUIREMENT_COCKPIT-05-AC3",
+      "to": "REQUIREMENT_COCKPIT-05",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e40",
+      "from": "test:test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
+      "to": "REQUIREMENT_COCKPIT-05-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
+        "passed": true,
+        "at": "2026-06-12T07:02:18.528Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
+        "dirty": true,
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e41",
+      "from": "REQUIREMENT_COCKPIT-05-AC4",
+      "to": "REQUIREMENT_COCKPIT-05",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e42",
+      "from": "test:test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
+      "to": "REQUIREMENT_COCKPIT-05-AC4",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
+        "passed": true,
+        "at": "2026-06-12T07:02:19.465Z",
+        "sha": "3e09c5978ac7ce4a539dff783e77cf16f4499638",
+        "tree": "f0882c8dfff4b5c2c43662015b92b51144c72abf",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"

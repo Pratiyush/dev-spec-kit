@@ -33,3 +33,8 @@ shell + RIVET data sidecar; the prototype is already vanilla), NOT a React/Vite 
 framework suggestion applies only when no environment exists, and ours does. Items 1+2 above merge
 into the cockpit port; the design's module split (data/core/dashboard/config/app) maps onto the
 generated shell + sidecar + the config server.
+
+---
+DONE 2026-06-12: shipped as FEAT-COCKPIT (REQUIREMENT_COCKPIT-01..05, .rivet/specs/cockpit.md) —
+manifest-from-schema, RIVET sidecar, static shell emission, live updates, `rivet web` save server
+with GATE-PROTECT. `rivet dashboard` now emits the cockpit; the old single-file template retired.

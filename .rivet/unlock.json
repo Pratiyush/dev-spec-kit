@@ -1,6 +1,7 @@
 {
   "paths": [
-    "test/doctor-fix.test.ts"
+    "test/dashboard.test.ts",
+    "test/files-tab.test.ts"
   ],
-  "until": "2026-06-12T05:31:36.612Z"
+  "until": "2026-06-12T08:00:16.579Z"
 }
