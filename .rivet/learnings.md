@@ -352,3 +352,33 @@
 - Confidence: high (reproduced live this session) · Scope: global (any shell automation)
 - Promoted to: skills/rivet-workflow hard rule ("Scripted check runs MUST preserve exit codes") —
   HARDENED; the done-gate caught the slipped commit, the rule prevents the next one
+
+## 2026-06-12 The done-gate accepted STALE evidence  ⟨P1 · found by our own 📋 table⟩
+- Trigger: closing FEAT-REVITIFY-01 this batch — the new per-task evidence table printed the bound
+  proof as 🟣 stale (tree had moved between the run and `task done`) yet the gate said DONE:
+  markDone only asks "is there a passing run", never "does that run vouch for the CURRENT code".
+- Lesson: worst-of must hold at the done-gate too — a pass recorded on an older tree is NOT green
+  evidence for the code being declared done. Block (or done-with-warnings under
+  verify.blockDoneOnFail=false) and tell the human exactly which refs to re-run.
+- Confidence: high (observed live in this session's own output) · Scope: project
+- Promoted to: check:test/stale-done.test.ts (FIX-STALEDONE-01, this session)
+
+## 2026-06-12 Untracked reference material must be gitignored the moment it lands  ⟨P2⟩
+- Trigger: a routine `git add -A` swept `_ref/` (9 embedded reference repos!) and `.claude/` into a
+  release commit; caught by the embedded-repo warnings and amended out.
+- Lesson: "untracked but precious" is a trap — anything meant to stay out of history gets its
+  .gitignore line in the SAME change that creates it, never later.
+- Confidence: high (live near-miss) · Scope: global
+- Promoted to: .gitignore (_ref/, .claude/worktrees/, .claude/settings.local.json) — structural;
+  the class is covered by this entry + memory note for future sessions.
+
+## 2026-06-12 A relative file: dependency breaks every worktree  ⟨P2 · found mid-fix⟩
+- Trigger: pnpm install inside the batch worktree failed — `file:../revitify` resolves relative to
+  the INSTALLING dir, so from `.claude/worktrees/<name>/` it points at a void. Rivet's own wave
+  dispatch (one worktree per task) would hit this on every parallel task.
+- Lesson: location-relative dependencies and worktree-based parallelism are structurally at odds;
+  a machine-local sibling dep must be an ABSOLUTE file: path (it was already machine-local by
+  choice — the relative form only pretended to be portable).
+- Confidence: high (reproduced live) · Scope: global (any repo pairing file: deps with worktrees)
+- Promoted to: package.json (file:/Users/pratiyush/Github/revitify) + this entry; revisit at
+  Phase E packaging when revitify ships to npm and the file: dep disappears entirely.

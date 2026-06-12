@@ -4,7 +4,7 @@ import pc from "picocolors";
 import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
 import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
-import { TaskStore, EvidenceError } from "../engine/state/tasks.js";
+import { TaskStore, EvidenceError, staleProofRefs } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/verify/runner.js";
 import { proofStamp } from "../engine/verify/stamp.js";
 import { gitTreeHash } from "../engine/git.js";
@@ -59,6 +59,21 @@ export function taskStart(id: string): void {
 export function taskDone(id: string): void {
   const cwd = process.cwd();
   const config = loadConfig(cwd);
+  // FIX-STALEDONE-01: a pass on an OLDER tree is not green evidence for THIS code. Same knob as
+  // the fail gate: blockDoneOnFail=false degrades to done-with-warnings (journaled via the table).
+  const current = store(cwd).get(id);
+  const stale = current ? staleProofRefs(current, gitTreeHash(cwd)) : [];
+  if (stale.length > 0 && config.verify.blockDoneOnFail) {
+    console.error(pc.red(`✗ BLOCKED: ${stale.length} proof(s) are STALE — code moved after the run`));
+    for (const ref of stale) {
+      console.error(pc.dim(`   🟣 ${ref} — re-run: rivet check run ${id} "${ref}"`));
+    }
+    process.exitCode = 1;
+    return;
+  }
+  if (stale.length > 0) {
+    console.log(pc.yellow(`⚠ ${stale.length} stale proof(s) accepted [verify.blockDoneOnFail=false]`));
+  }
   try {
     const t = store(cwd).markDone(id);
     console.log(pc.green(`✓ Task ${t.id} DONE`) + pc.dim(" — every bound check has a passing run"));
@@ -70,12 +85,17 @@ export function taskDone(id: string): void {
       // Config knob verify.blockDoneOnFail=false -> done-with-warnings, journaled forever.
       if (!config.verify.blockDoneOnFail) {
         store(cwd).markDone(id, { force: true });
-        console.log(pc.yellow(`⚠ Task ${id} DONE-WITH-WARNINGS`) + pc.dim(` — ${e.message} [verify.blockDoneOnFail=false]`));
+        console.log(
+          pc.yellow(`⚠ Task ${id} DONE-WITH-WARNINGS`) +
+            pc.dim(` — ${e.message} [verify.blockDoneOnFail=false]`),
+        );
         console.log("\n" + renderProgress([...store(cwd).all().values()]) + "\n");
         return;
       }
       console.error(pc.red(`✗ BLOCKED: ${e.message}`));
-      console.error(pc.dim("  done is evidence-bound — run the checks: rivet check run <task> <ref> --stack <stack>"));
+      console.error(
+        pc.dim("  done is evidence-bound — run the checks: rivet check run <task> <ref> --stack <stack>"),
+      );
       process.exitCode = 1;
       return;
     }
@@ -113,7 +133,9 @@ export async function checkRun(
   if (picked.source === "builtin" && !BUILTIN_STACKS.includes(stackName as (typeof BUILTIN_STACKS)[number])) {
     console.error(
       pc.red(`unknown --stack '${stackName}'`) +
-        pc.dim(` — built-ins: ${BUILTIN_STACKS.join(", ")}; or define it in verify.runners / verify.kindRunners`),
+        pc.dim(
+          ` — built-ins: ${BUILTIN_STACKS.join(", ")}; or define it in verify.runners / verify.kindRunners`,
+        ),
     );
     process.exitCode = 2;
     return;
@@ -192,9 +214,20 @@ export function taskTrail(id: string): void {
       : v.startsWith("blocked") || v === "red"
         ? pc.red(v)
         : pc.yellow(v);
-  console.log(`  binding: ${badge(summary.binding)}   tdd-red: ${badge(summary.tddRed)}   proof: ${badge(summary.proof)}`);
+  console.log(
+    `  binding: ${badge(summary.binding)}   tdd-red: ${badge(summary.tddRed)}   proof: ${badge(summary.proof)}`,
+  );
   console.log(`  done-gate: ${badge(summary.doneGate)}   approval: ${badge(summary.approval)}\n`);
-  const ICON: Record<string, string> = { red: "🔴", green: "🟢", blocked: "⛔", passed: "🏁", recorded: "🔏", bound: "🔗", synced: "🔁", started: "▶️" };
+  const ICON: Record<string, string> = {
+    red: "🔴",
+    green: "🟢",
+    blocked: "⛔",
+    passed: "🏁",
+    recorded: "🔏",
+    bound: "🔗",
+    synced: "🔁",
+    started: "▶️",
+  };
   for (const ev of timeline) {
     console.log(
       `  ${pc.dim(ev.at.slice(11, 16))}  ${ICON[ev.outcome] ?? "·"} ${ev.gate.padEnd(9)} ${ev.outcome}` +

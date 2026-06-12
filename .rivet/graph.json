@@ -1205,7 +1205,7 @@
       "label": "checkRun",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:90",
+        "sourceLocation": "src/cli/tasks.ts:105",
         "community": 4
       }
     },
@@ -1215,7 +1215,7 @@
       "label": "status",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:157",
+        "sourceLocation": "src/cli/tasks.ts:172",
         "community": 4
       }
     },
@@ -1225,7 +1225,7 @@
       "label": "taskTrail",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:184",
+        "sourceLocation": "src/cli/tasks.ts:199",
         "community": 4
       }
     },
@@ -3115,6 +3115,16 @@
       }
     },
     {
+      "id": "sym:src/engine/state/tasks.ts#staleProofRefs",
+      "kind": "codeNode",
+      "label": "staleProofRefs",
+      "meta": {
+        "sourceFile": "src/engine/state/tasks.ts",
+        "sourceLocation": "src/engine/state/tasks.ts:173",
+        "community": 4
+      }
+    },
+    {
       "id": "file:src/engine/steering.ts",
       "kind": "codeNode",
       "label": "src/engine/steering.ts",
@@ -4001,6 +4011,25 @@
       }
     },
     {
+      "id": "file:test/stale-done.test.ts",
+      "kind": "codeNode",
+      "label": "test/stale-done.test.ts",
+      "meta": {
+        "sourceFile": "test/stale-done.test.ts",
+        "community": 5
+      }
+    },
+    {
+      "id": "sym:test/stale-done.test.ts#task",
+      "kind": "codeNode",
+      "label": "task",
+      "meta": {
+        "sourceFile": "test/stale-done.test.ts",
+        "sourceLocation": "test/stale-done.test.ts:15",
+        "community": 5
+      }
+    },
+    {
       "id": "file:test/state.test.ts",
       "kind": "codeNode",
       "label": "test/state.test.ts",
@@ -4252,9 +4281,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-12T05:11:01.508Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:13.166Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4276,9 +4305,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T05:11:02.274Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:13.935Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4300,9 +4329,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-12T05:11:03.041Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:14.699Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4324,9 +4353,9 @@
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-12T05:11:03.813Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:15.459Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4348,9 +4377,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-12T05:11:04.578Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:16.221Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4372,9 +4401,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-12T05:11:05.340Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:16.985Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4396,9 +4425,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T05:11:02.274Z",
-        "sha": "714a0ed27bcfaab7c3fa05be26f4887a5af63452",
-        "tree": "76a8f022dab6546d9f13599b07e7207191786dd1",
+        "at": "2026-06-12T05:26:13.935Z",
+        "sha": "e2ef299eb5ed5453271f28d98bc5c29bd939929c",
+        "tree": "e45f057fb48100c5114afd7e617701ea29a19e55",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"

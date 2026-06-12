@@ -1,11 +1,10 @@
 import { defineConfig } from "vitest/config";
-import { fileURLToPath } from "node:url";
-
 export default defineConfig({
   resolve: {
     alias: {
       // FEAT-REVITIFY-01: tests transform revitify from SOURCE — no dist build needed to test.
-      revitify: fileURLToPath(new URL("../revitify/src/index.ts", import.meta.url)),
+      // Absolute on purpose: relative forms break inside .claude/worktrees/* (see ledger 2026-06-12).
+      revitify: "/Users/pratiyush/Github/revitify/src/index.ts",
     },
   },
   test: {

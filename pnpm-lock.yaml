@@ -15,8 +15,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       revitify:
-        specifier: file:../revitify
-        version: file:../revitify
+        specifier: file:/Users/pratiyush/Github/revitify
+        version: file:../../../../revitify
       zod:
         specifier: ^3.23.8
         version: 3.25.76
@@ -988,8 +988,8 @@ packages:
     resolution: {integrity: sha512-oMA2dcrw6u0YfxJQXm342bFKX/E4sG9rbTzO9ptUcR/e8A33cHuvStiYOwH7fszkZlZ1z/ta9AAoPk2F4qIOHA==}
     engines: {node: '>=18'}
 
-  revitify@file:../revitify:
-    resolution: {directory: ../revitify, type: directory}
+  revitify@file:../../../../revitify:
+    resolution: {directory: ../../../../revitify, type: directory}
 
   rfdc@1.4.1:
     resolution: {integrity: sha512-q1b3N5QkRUWUl7iyylaaj3kOpIT0N2i9MqIEQXP73GVsN9cw3fdx8X63cEmWhJGi2PPCF23Ijp7ktmd39rawIA==}
@@ -1988,7 +1988,7 @@ snapshots:
       onetime: 7.0.0
       signal-exit: 4.1.0
 
-  revitify@file:../revitify:
+  revitify@file:../../../../revitify:
     dependencies:
       typescript: 5.9.3
 

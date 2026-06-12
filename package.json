@@ -28,7 +28,7 @@
     "commander": "^12.1.0",
     "picocolors": "^1.1.1",
     "zod": "^3.23.8",
-    "revitify": "file:../revitify"
+    "revitify": "link:/Users/pratiyush/Github/revitify"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
