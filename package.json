@@ -1,6 +1,6 @@
 {
   "name": "rivet",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Rivet \u2014 spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
   "type": "module",
   "bin": {

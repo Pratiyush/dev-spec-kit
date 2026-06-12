@@ -1,6 +1,35 @@
 {
   "nodes": [
     {
+      "id": "file:CHANGELOG.md",
+      "kind": "codeNode",
+      "label": "CHANGELOG.md",
+      "meta": {
+        "sourceFile": "CHANGELOG.md",
+        "community": 0
+      }
+    },
+    {
+      "id": "doc:CHANGELOG.md#Changelog",
+      "kind": "codeNode",
+      "label": "Changelog",
+      "meta": {
+        "sourceFile": "CHANGELOG.md",
+        "sourceLocation": "CHANGELOG.md:1",
+        "community": 0
+      }
+    },
+    {
+      "id": "doc:CHANGELOG.md#0.1.0 — 2026-06-12 (the feedback batch)",
+      "kind": "codeNode",
+      "label": "0.1.0 — 2026-06-12 (the feedback batch)",
+      "meta": {
+        "sourceFile": "CHANGELOG.md",
+        "sourceLocation": "CHANGELOG.md:3",
+        "community": 0
+      }
+    },
+    {
       "id": "file:README.md",
       "kind": "codeNode",
       "label": "README.md",
@@ -237,7 +266,7 @@
       "label": "RevitifyResult",
       "meta": {
         "sourceFile": "packages/revitify/src/index.ts",
-        "sourceLocation": "packages/revitify/src/index.ts:64",
+        "sourceLocation": "packages/revitify/src/index.ts:66",
         "community": 3
       }
     },
@@ -247,7 +276,7 @@
       "label": "revitify",
       "meta": {
         "sourceFile": "packages/revitify/src/index.ts",
-        "sourceLocation": "packages/revitify/src/index.ts:70",
+        "sourceLocation": "packages/revitify/src/index.ts:72",
         "community": 3
       }
     },
@@ -257,7 +286,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "packages/revitify/src/index.ts",
-        "sourceLocation": "packages/revitify/src/index.ts:81",
+        "sourceLocation": "packages/revitify/src/index.ts:83",
         "community": 3
       }
     },
@@ -316,7 +345,7 @@
       "label": "fileNode",
       "meta": {
         "sourceFile": "packages/revitify/src/ingest.ts",
-        "sourceLocation": "packages/revitify/src/ingest.ts:77",
+        "sourceLocation": "packages/revitify/src/ingest.ts:84",
         "community": 3
       }
     },
@@ -326,7 +355,7 @@
       "label": "ingestTs",
       "meta": {
         "sourceFile": "packages/revitify/src/ingest.ts",
-        "sourceLocation": "packages/revitify/src/ingest.ts:83",
+        "sourceLocation": "packages/revitify/src/ingest.ts:90",
         "community": 3
       }
     },
@@ -336,7 +365,7 @@
       "label": "normalizeImport",
       "meta": {
         "sourceFile": "packages/revitify/src/ingest.ts",
-        "sourceLocation": "packages/revitify/src/ingest.ts:139",
+        "sourceLocation": "packages/revitify/src/ingest.ts:150",
         "community": 3
       }
     },
@@ -346,7 +375,7 @@
       "label": "ingestLines",
       "meta": {
         "sourceFile": "packages/revitify/src/ingest.ts",
-        "sourceLocation": "packages/revitify/src/ingest.ts:155",
+        "sourceLocation": "packages/revitify/src/ingest.ts:171",
         "community": 3
       }
     },
@@ -356,7 +385,7 @@
       "label": "ingestMarkdown",
       "meta": {
         "sourceFile": "packages/revitify/src/ingest.ts",
-        "sourceLocation": "packages/revitify/src/ingest.ts:166",
+        "sourceLocation": "packages/revitify/src/ingest.ts:182",
         "community": 3
       }
     },
@@ -366,7 +395,7 @@
       "label": "ingest",
       "meta": {
         "sourceFile": "packages/revitify/src/ingest.ts",
-        "sourceLocation": "packages/revitify/src/ingest.ts:180",
+        "sourceLocation": "packages/revitify/src/ingest.ts:196",
         "community": 3
       }
     },
@@ -933,7 +962,7 @@
       "label": "firstLine",
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
-        "sourceLocation": "src/cli/doctor.ts:25",
+        "sourceLocation": "src/cli/doctor.ts:27",
         "community": 5
       }
     },
@@ -943,7 +972,7 @@
       "label": "doctorChecks",
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
-        "sourceLocation": "src/cli/doctor.ts:35",
+        "sourceLocation": "src/cli/doctor.ts:37",
         "community": 5
       }
     },
@@ -953,7 +982,7 @@
       "label": "parseStaleWorktrees",
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
-        "sourceLocation": "src/cli/doctor.ts:86",
+        "sourceLocation": "src/cli/doctor.ts:88",
         "community": 5
       }
     },
@@ -963,7 +992,7 @@
       "label": "runDoctor",
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
-        "sourceLocation": "src/cli/doctor.ts:94",
+        "sourceLocation": "src/cli/doctor.ts:96",
         "community": 5
       }
     },
@@ -1061,7 +1090,7 @@
       "label": "graphBuild",
       "meta": {
         "sourceFile": "src/cli/graph.ts",
-        "sourceLocation": "src/cli/graph.ts:17",
+        "sourceLocation": "src/cli/graph.ts:22",
         "community": 5
       }
     },
@@ -1226,7 +1255,7 @@
       "label": "Materialized",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:16",
+        "sourceLocation": "src/cli/materialize.ts:22",
         "community": 5
       }
     },
@@ -1236,7 +1265,7 @@
       "label": "materialize",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:27",
+        "sourceLocation": "src/cli/materialize.ts:33",
         "community": 5
       }
     },
@@ -1246,7 +1275,7 @@
       "label": "journalFor",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:60",
+        "sourceLocation": "src/cli/materialize.ts:74",
         "community": 5
       }
     },
@@ -1256,7 +1285,7 @@
       "label": "configFor",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:64",
+        "sourceLocation": "src/cli/materialize.ts:78",
         "community": 5
       }
     },
@@ -1266,7 +1295,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:68",
+        "sourceLocation": "src/cli/materialize.ts:82",
         "community": 5
       }
     },
@@ -1628,7 +1657,7 @@
       "label": "approve",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:100",
+        "sourceLocation": "src/cli/workflow.ts:101",
         "community": 5
       }
     },
@@ -1638,7 +1667,7 @@
       "label": "pr",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:122",
+        "sourceLocation": "src/cli/workflow.ts:123",
         "community": 5
       }
     },
@@ -1648,7 +1677,7 @@
       "label": "route",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:193",
+        "sourceLocation": "src/cli/workflow.ts:194",
         "community": 5
       }
     },
@@ -1658,7 +1687,7 @@
       "label": "gateGraph",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:242",
+        "sourceLocation": "src/cli/workflow.ts:243",
         "community": 5
       }
     },
@@ -1668,7 +1697,7 @@
       "label": "guardPr",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:254",
+        "sourceLocation": "src/cli/workflow.ts:255",
         "community": 5
       }
     },
@@ -1678,7 +1707,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:281",
+        "sourceLocation": "src/cli/workflow.ts:282",
         "community": 5
       }
     },
@@ -1688,7 +1717,7 @@
       "label": "unlock",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:291",
+        "sourceLocation": "src/cli/workflow.ts:292",
         "community": 5
       }
     },
@@ -1727,7 +1756,7 @@
       "label": "RivetConfig",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "sourceLocation": "src/config/schema.ts:323",
+        "sourceLocation": "src/config/schema.ts:332",
         "community": 5
       }
     },
@@ -1737,7 +1766,7 @@
       "label": "defaultConfig",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "sourceLocation": "src/config/schema.ts:326",
+        "sourceLocation": "src/config/schema.ts:335",
         "community": 5
       }
     },
@@ -1747,7 +1776,7 @@
       "label": "parseConfig",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "sourceLocation": "src/config/schema.ts:331",
+        "sourceLocation": "src/config/schema.ts:340",
         "community": 5
       }
     },
@@ -2358,7 +2387,7 @@
       "label": "CodeLink",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:53",
+        "sourceLocation": "src/engine/graphify/index.ts:60",
         "community": 5
       }
     },
@@ -2368,7 +2397,7 @@
       "label": "CodeGraph",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:59",
+        "sourceLocation": "src/engine/graphify/index.ts:66",
         "community": 5
       }
     },
@@ -2378,7 +2407,7 @@
       "label": "loadCodeGraph",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:68",
+        "sourceLocation": "src/engine/graphify/index.ts:75",
         "community": 5
       }
     },
@@ -2388,7 +2417,7 @@
       "label": "endpointId",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:88",
+        "sourceLocation": "src/engine/graphify/index.ts:95",
         "community": 5
       }
     },
@@ -2398,7 +2427,7 @@
       "label": "GraphFreshness",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:96",
+        "sourceLocation": "src/engine/graphify/index.ts:103",
         "community": 5
       }
     },
@@ -2408,7 +2437,7 @@
       "label": "readFreshness",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:102",
+        "sourceLocation": "src/engine/graphify/index.ts:109",
         "community": 5
       }
     },
@@ -2418,7 +2447,7 @@
       "label": "writeFreshness",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:112",
+        "sourceLocation": "src/engine/graphify/index.ts:119",
         "community": 5
       }
     },
@@ -2428,7 +2457,7 @@
       "label": "isStale",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:119",
+        "sourceLocation": "src/engine/graphify/index.ts:126",
         "community": 5
       }
     },
@@ -2438,7 +2467,7 @@
       "label": "refreshCodeGraph",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:130",
+        "sourceLocation": "src/engine/graphify/index.ts:137",
         "community": 5
       }
     },
@@ -2448,7 +2477,7 @@
       "label": "GraphProvider",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:143",
+        "sourceLocation": "src/engine/graphify/index.ts:150",
         "community": 5
       }
     },
@@ -2458,7 +2487,7 @@
       "label": "providerAvailable",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:146",
+        "sourceLocation": "src/engine/graphify/index.ts:153",
         "community": 5
       }
     },
@@ -2468,7 +2497,7 @@
       "label": "refreshCodeGraphVia",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:154",
+        "sourceLocation": "src/engine/graphify/index.ts:161",
         "community": 5
       }
     },
@@ -2478,7 +2507,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "sourceLocation": "src/engine/graphify/index.ts:166",
+        "sourceLocation": "src/engine/graphify/index.ts:173",
         "community": 5
       }
     },
@@ -4459,9 +4488,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-12T05:02:10.429Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:18.605Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4483,9 +4512,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T05:02:11.197Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:19.381Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4507,9 +4536,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-12T05:02:11.960Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:20.157Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4531,9 +4560,9 @@
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-12T05:02:12.728Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:20.918Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4555,9 +4584,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-12T05:02:13.490Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:21.687Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4579,9 +4608,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-12T05:02:14.257Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:22.459Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"
@@ -4603,9 +4632,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T05:02:11.197Z",
-        "sha": "b38e1185df0e4ead21342cef1ea7551dd443d172",
-        "tree": "0719867eef7ab296dc5b9cb1d44f7c4e93cfdb13",
+        "at": "2026-06-12T05:06:19.381Z",
+        "sha": "64dbee0433b04e140b0544ec64a88b11749c3ac8",
+        "tree": "60ee0b6aa9e65ee03983d1e4d058de46e9d090f3",
         "dirty": true,
         "stack": "node-vitest",
         "kind": "unit"

@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**51/52 done (98%)**
+**52/52 done (100%)**
 
 - ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢
   📋 Evidence — FIX-ROUTE-01
@@ -16,19 +16,19 @@
   📋 Evidence — R-AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:37.635Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:10.429Z |
 
 - ✅ **R-AUDIT-02** the audit trail is readable 🟢
   📋 Evidence — R-AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:38.840Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.960Z |
 
 - ✅ **R-PROG-01** progress with emoji after completing a task 🟢
   📋 Evidence — R-PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:40.041Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:13.490Z |
 
 - ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢
   📋 Evidence — FIX-PRMATH-01
@@ -238,22 +238,22 @@
   📋 Evidence — REQUIREMENT_AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:37.635Z |
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:38.238Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:10.429Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.197Z |
 
 - ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢
   📋 Evidence — REQUIREMENT_AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:38.840Z |
-  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:39.440Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.960Z |
+  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:12.728Z |
 
 - ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢
   📋 Evidence — REQUIREMENT_PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:40.041Z |
-  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:40.645Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:13.490Z |
+  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:14.257Z |
 
 - ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢
   📋 Evidence — FEAT-GHERKIN-01
@@ -265,7 +265,7 @@
   📋 Evidence — NFR_AUDIT-03
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree 134c3603* | 2026-06-11T23:43:38.238Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.197Z |
 
 - ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢
   📋 Evidence — FEAT-STACK-01
@@ -316,11 +316,11 @@
   | `test/pr-flush-warn.test.ts` | unit | 🟣 stale | tree d434b3db* | 2026-06-12T04:53:32.732Z |
   | `test/doctor-fix.test.ts` | unit | 🟣 stale | tree d434b3db* | 2026-06-12T04:53:33.680Z |
 
-- 🔨 **FEAT-REVITIFY-01** revitify: native TS knowledge graph, graphify output contract, default provider 🟢
+- ✅ **FEAT-REVITIFY-01** revitify: native TS knowledge graph, graphify output contract, default provider 🟢
   📋 Evidence — FEAT-REVITIFY-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `packages/revitify/test/revitify.test.ts` | unit | 🟣 stale | tree 1b568cec* | 2026-06-12T05:00:51.603Z |
+  | `packages/revitify/test/revitify.test.ts` | unit | ✅ green | tree 60ee0b6a* | 2026-06-12T05:05:39.506Z |
 
 
 ## Approvals & governance
@@ -338,13 +338,13 @@
 
 ## Recent activity
 
-- [2m2026-06-12 04:56:41[22m  📋 task FEAT-REVITIFY-01 created — revitify: native TS knowledge graph, graphify output contract, default provider
-- [2m2026-06-12 04:56:42[22m  🧾 task start FEAT-REVITIFY-01  [Pratiyush Kumar Singh]
-- [2m2026-06-12 04:56:42[22m  🔁 task FEAT-REVITIFY-01 → in_progress
-- [2m2026-06-12 04:56:42[22m  🧾 check run FEAT-REVITIFY-01 packages/revitify/test/revitify.test.ts  [Pratiyush Kumar Singh]
-- [2m2026-06-12 04:56:43[22m  ❌ check packages/revitify/test/revitify.test.ts @ tree 8945f630* → FEAT-REVITIFY-01
-- [2m2026-06-12 05:00:50[22m  🧾 check run FEAT-REVITIFY-01 packages/revitify/test/revitify.test.ts  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:00:51[22m  ✅ check packages/revitify/test/revitify.test.ts @ tree 1b568cec* → FEAT-REVITIFY-01
-- [2m2026-06-12 05:01:36[22m  🧾 unlock test/doctor-fix.test.ts  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:01:36[22m  🛡️ unlock {"paths":["test/doctor-fix.test.ts"],"until":"2026-06-12T05:31:36.612Z"}
-- [2m2026-06-12 05:01:54[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:02:13[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ tree 0719867e* → REQUIREMENT_PROG-01
+- [2m2026-06-12 05:02:14[22m  ✅ check test/cli-ux.test.ts::renders an explicit empty state when there are no tasks @ tree 0719867e* → REQUIREMENT_PROG-01
+- [2m2026-06-12 05:02:14[22m  🧾 dashboard  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:02:15[22m  🧾 task done FEAT-REVITIFY-01  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:02:15[22m  🏁 task FEAT-REVITIFY-01 → done
+- [2m2026-06-12 05:05:38[22m  🧾 check run FEAT-REVITIFY-01 packages/revitify/test/revitify.test.ts  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:05:39[22m  ✅ check packages/revitify/test/revitify.test.ts @ tree 60ee0b6a* → FEAT-REVITIFY-01
+- [2m2026-06-12 05:05:59[22m  🧾 verify  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:06:04[22m  ✅ verify 4 step(s) @ tree 60ee0b6a*
+- [2m2026-06-12 05:06:05[22m  🧾 graph build  [Pratiyush Kumar Singh]

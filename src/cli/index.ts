@@ -61,7 +61,7 @@ program
     "Rivet — spec-driven development with a Verified Traceability Graph.\n" +
       "Every requirement riveted to a passing check.",
   )
-  .version("0.0.1");
+  .version("0.1.0");
 
 program
   .command("doctor")
@@ -127,7 +127,9 @@ program
 
 program
   .command("verify")
-  .description("Build ALL + run EVERY configured kind (full suites) — journaled; the PR gate needs this green on the current tree")
+  .description(
+    "Build ALL + run EVERY configured kind (full suites) — journaled; the PR gate needs this green on the current tree",
+  )
   .action(safe(() => verifyCmd()));
 
 const graph = program.command("graph").description("The Verified Traceability Graph");
@@ -208,14 +210,18 @@ wave
   .action(safe((ids: string[]) => waveStart(ids)));
 wave
   .command("done")
-  .description("Provenance-checked cleanup: remove .worktrees/<id> after its branch reached origin (--force discards)")
+  .description(
+    "Provenance-checked cleanup: remove .worktrees/<id> after its branch reached origin (--force discards)",
+  )
   .argument("<id>")
   .option("--force", "discard unmerged work (destructive — requires explicit intent)")
   .action(safe((id: string, opts: { force?: boolean }) => waveDone(id, opts)));
 
 program
   .command("laws")
-  .description("Print the effective laws: personal → project → scoped (fileMatch via --for, manual via --summon)")
+  .description(
+    "Print the effective laws: personal → project → scoped (fileMatch via --for, manual via --summon)",
+  )
   .option("--for <file>", "activate fileMatch-scoped laws for this path")
   .option("--summon <names...>", "load manual-scope laws by name")
   .action(safe((opts: { for?: string; summon?: string[] }) => lawsCmd(opts)));
@@ -228,7 +234,9 @@ program
 
 program
   .command("board")
-  .description("Regenerate .rivet/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)")
+  .description(
+    "Regenerate .rivet/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)",
+  )
   .action(safe(() => boardCmd()));
 
 program

@@ -4,7 +4,12 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
 import { parseSpecsDir } from "../engine/spec/parse.js";
-import { lintQualifiedIds, lintCriteriaFormat, requirementKind, type Requirement } from "../engine/spec/ears.js";
+import {
+  lintQualifiedIds,
+  lintCriteriaFormat,
+  requirementKind,
+  type Requirement,
+} from "../engine/spec/ears.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -70,9 +75,12 @@ export function specTasks(): void {
       console.log(pc.dim(`◇ ${req.id} — decision record (ADR), no task derived`));
       continue;
     }
-    const refs = req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref));
+    // One @check under an Outline binds every row — the task's obligation list dedupes the ref.
+    const refs = [...new Set(req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref)))];
     if (refs.length === 0) {
-      console.log(pc.yellow(`⚠ ${req.id} has no @check bindings — UNVERIFIABLE, task not created; bind checks first`));
+      console.log(
+        pc.yellow(`⚠ ${req.id} has no @check bindings — UNVERIFIABLE, task not created; bind checks first`),
+      );
       continue;
     }
     const prior = existing.get(req.id);
@@ -85,15 +93,24 @@ export function specTasks(): void {
       }
       const updated = store.syncBindings(req.id, refs);
       synced++;
-      const reopened = prior.status === "done" && updated.status !== "done" ? pc.yellow(" (reopened — new obligations)") : "";
-      console.log(pc.cyan(`↻ ${req.id} bindings synced`) + pc.dim(` — now ${refs.length} check(s)`) + reopened);
+      const reopened =
+        prior.status === "done" && updated.status !== "done"
+          ? pc.yellow(" (reopened — new obligations)")
+          : "";
+      console.log(
+        pc.cyan(`↻ ${req.id} bindings synced`) + pc.dim(` — now ${refs.length} check(s)`) + reopened,
+      );
       continue;
     }
     store.create(req.id, req.title, refs);
     created++;
     console.log(pc.green(`✓ ${req.id}`) + pc.dim(` — ${req.title} (${refs.length} bound check(s))`));
   }
-  console.log(pc.dim(`\n${label("specSync")} ${created} created · ${synced} synced from spec — the spec is the source of truth`));
+  console.log(
+    pc.dim(
+      `\n${label("specSync")} ${created} created · ${synced} synced from spec — the spec is the source of truth`,
+    ),
+  );
 }
 
 /** `rivet approve <taskIds...>` — record the human gate as a signed artifact. */
@@ -151,7 +168,9 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   if (ledger && needsFlush(journal(cwd).read(), statSync(ledger).mtime.toISOString())) {
     console.log(
       pc.yellow(`${label("flush")} flush session lessons before PR`) +
-        pc.dim(` — ${ledger.includes(cwd) ? ".rivet/learnings.md" : "the tool repo's learnings.md"} has no entry from this session`),
+        pc.dim(
+          ` — ${ledger.includes(cwd) ? ".rivet/learnings.md" : "the tool repo's learnings.md"} has no entry from this session`,
+        ),
     );
   }
 
@@ -175,10 +194,14 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     }
   }
   if (opts.create) {
-    const res = spawnSync("gh", ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath], {
-      cwd,
-      stdio: "inherit",
-    });
+    const res = spawnSync(
+      "gh",
+      ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath],
+      {
+        cwd,
+        stdio: "inherit",
+      },
+    );
     if (res.status !== 0) process.exitCode = res.status ?? 1;
   } else {
     console.log(pc.dim(`  open it with: gh pr create --title "<title>" --body-file .rivet/pr-body.md`));
@@ -200,10 +223,14 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
       return;
     }
     // Strip YAML frontmatter; route on the body.
-    text = readFileSync(opts.file, "utf8").replace(/^---\n[\s\S]*?\n---\n/, "").trim();
+    text = readFileSync(opts.file, "utf8")
+      .replace(/^---\n[\s\S]*?\n---\n/, "")
+      .trim();
   }
   if (!text) {
-    console.error(pc.red("provide a request: rivet route \"<text>\" or rivet route --file .rivet/intake/<idea>.md"));
+    console.error(
+      pc.red('provide a request: rivet route "<text>" or rivet route --file .rivet/intake/<idea>.md'),
+    );
     process.exitCode = 1;
     return;
   }
@@ -224,7 +251,11 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
     return;
   }
   const badge =
-    result.mode === "research" ? pc.cyan("RESEARCH") : result.mode === "quick" ? pc.green("QUICK") : pc.magenta("FULL-SPEC");
+    result.mode === "research"
+      ? pc.cyan("RESEARCH")
+      : result.mode === "quick"
+        ? pc.green("QUICK")
+        : pc.magenta("FULL-SPEC");
   console.log(`${label("route")} ${badge} ${pc.dim("— " + result.reason)}`);
   if (config.mode.confirmFirst && !opts.mode) {
     console.log(pc.dim("confirm-first is on: proceed with this mode, or override via --mode"));
