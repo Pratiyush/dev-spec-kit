@@ -13,3 +13,8 @@ graphify-out/
 # Rivet ephemeral cache (durable state under .rivet/ IS committed)
 .rivet/cache/
 .rivet/tmp/
+
+# planning/reference material + session worktrees — never committed
+_ref/
+.claude/worktrees/
+.claude/settings.local.json

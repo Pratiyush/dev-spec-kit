@@ -4,7 +4,7 @@
 
 ## Progress board
 
-**52/52 done (100%)**
+**53/53 done (100%)**
 
 - ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢
   📋 Evidence — FIX-ROUTE-01
@@ -16,19 +16,19 @@
   📋 Evidence — R-AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:10.429Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:01.508Z |
 
 - ✅ **R-AUDIT-02** the audit trail is readable 🟢
   📋 Evidence — R-AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.960Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:03.041Z |
 
 - ✅ **R-PROG-01** progress with emoji after completing a task 🟢
   📋 Evidence — R-PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:13.490Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:04.578Z |
 
 - ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢
   📋 Evidence — FIX-PRMATH-01
@@ -238,22 +238,22 @@
   📋 Evidence — REQUIREMENT_AUDIT-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:10.429Z |
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.197Z |
+  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:01.508Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:02.274Z |
 
 - ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢
   📋 Evidence — REQUIREMENT_AUDIT-02
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.960Z |
-  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:12.728Z |
+  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:03.041Z |
+  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:03.813Z |
 
 - ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢
   📋 Evidence — REQUIREMENT_PROG-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:13.490Z |
-  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:14.257Z |
+  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:04.578Z |
+  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:05.340Z |
 
 - ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢
   📋 Evidence — FEAT-GHERKIN-01
@@ -265,7 +265,7 @@
   📋 Evidence — NFR_AUDIT-03
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | 🟣 stale | tree 0719867e* | 2026-06-12T05:02:11.197Z |
+  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:11:02.274Z |
 
 - ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢
   📋 Evidence — FEAT-STACK-01
@@ -320,7 +320,13 @@
   📋 Evidence — FEAT-REVITIFY-01
   | Check | Kind | State | Proof | Proven at |
   |---|---|---|---|---|
-  | `packages/revitify/test/revitify.test.ts` | unit | ✅ green | tree 60ee0b6a* | 2026-06-12T05:05:39.506Z |
+  | `packages/revitify/test/revitify.test.ts` | unit | 🟣 stale | tree 60ee0b6a* | 2026-06-12T05:05:39.506Z |
+
+- ✅ **FEAT-REVITIFY-02** revitify extracted to its own repo; consumer-side contract pinned 🟢
+  📋 Evidence — FEAT-REVITIFY-02
+  | Check | Kind | State | Proof | Proven at |
+  |---|---|---|---|---|
+  | `test/revitify-contract.test.ts` | unit | ✅ green | tree 76a8f022* | 2026-06-12T05:10:39.529Z |
 
 
 ## Approvals & governance
@@ -338,13 +344,13 @@
 
 ## Recent activity
 
-- [2m2026-06-12 05:02:13[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ tree 0719867e* → REQUIREMENT_PROG-01
-- [2m2026-06-12 05:02:14[22m  ✅ check test/cli-ux.test.ts::renders an explicit empty state when there are no tasks @ tree 0719867e* → REQUIREMENT_PROG-01
-- [2m2026-06-12 05:02:14[22m  🧾 dashboard  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:02:15[22m  🧾 task done FEAT-REVITIFY-01  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:02:15[22m  🏁 task FEAT-REVITIFY-01 → done
-- [2m2026-06-12 05:05:38[22m  🧾 check run FEAT-REVITIFY-01 packages/revitify/test/revitify.test.ts  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:05:39[22m  ✅ check packages/revitify/test/revitify.test.ts @ tree 60ee0b6a* → FEAT-REVITIFY-01
-- [2m2026-06-12 05:05:59[22m  🧾 verify  [Pratiyush Kumar Singh]
-- [2m2026-06-12 05:06:04[22m  ✅ verify 4 step(s) @ tree 60ee0b6a*
-- [2m2026-06-12 05:06:05[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:11:02[22m  ✅ check test/cli-ux.test.ts::does not create journals outside Rivet projects @ tree 76a8f022* → NFR_AUDIT-03
+- [2m2026-06-12 05:11:03[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ tree 76a8f022* → R-AUDIT-02
+- [2m2026-06-12 05:11:03[22m  ✅ check test/cli-ux.test.ts::renders the audit trail with per-type emoji @ tree 76a8f022* → REQUIREMENT_AUDIT-02
+- [2m2026-06-12 05:11:03[22m  ✅ check test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold @ tree 76a8f022* → REQUIREMENT_AUDIT-02
+- [2m2026-06-12 05:11:04[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ tree 76a8f022* → R-PROG-01
+- [2m2026-06-12 05:11:04[22m  ✅ check test/cli-ux.test.ts::renders progress with emoji, bar, and next-up @ tree 76a8f022* → REQUIREMENT_PROG-01
+- [2m2026-06-12 05:11:05[22m  ✅ check test/cli-ux.test.ts::renders an explicit empty state when there are no tasks @ tree 76a8f022* → REQUIREMENT_PROG-01
+- [2m2026-06-12 05:11:05[22m  🧾 verify  [Pratiyush Kumar Singh]
+- [2m2026-06-12 05:11:11[22m  ✅ verify 4 step(s) @ tree 76a8f022*
+- [2m2026-06-12 05:11:11[22m  🧾 graph build  [Pratiyush Kumar Singh]
