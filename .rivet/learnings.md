@@ -328,3 +328,12 @@
   early and dilute the hook/skill integration that is the moat.
 - Confidence: high (direct user feedback) · Scope: project
 - Promoted to: IN FLIGHT (this batch FEAT-CCFIRST-01)
+
+## 2026-06-12 Piped CLI output swallows the exit code the gate depends on  ⟨P2⟩
+- Trigger: this batch — `rivet check run … | tail -1` let a && chain continue past a FAILING
+  check (tail exits 0), committing a broken test that only the done-gate caught one step later.
+- Lesson: every scripted/agent invocation of gate-bearing commands must run with `set -o pipefail`
+  (or capture status explicitly) — a gate whose exit code is eaten by a pipe is decoration.
+- Confidence: high (reproduced live this session) · Scope: global (any shell automation)
+- Promoted to: rivet-workflow skill hard rule (this batch, FEAT-VERIFY-01 follow-up edit) —
+  "scripted check runs MUST preserve exit codes (set -o pipefail)"
