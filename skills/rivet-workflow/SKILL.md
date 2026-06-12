@@ -50,6 +50,8 @@ or a global install) and `rivet doctor` passing. If `.rivet/` is missing, run `r
 - You MUST NOT mark, claim, or imply a task is complete while any bound check is failing or unrun.
 - You MUST NOT weaken, skip, or delete a failing test to make it pass; fix the code or escalate.
 - You MUST show real command output for check runs — never paraphrase a result that did not happen.
+- Format BEFORE the final prove: commit-time formatters (lint-staged + prettier) move the code
+  tree and stale fresh proofs — run the formatter, then drift/verify, then commit.
 - Scripted check runs MUST preserve exit codes (`set -o pipefail` before piping the CLI's
   output) — a gate whose exit code a pipe eats is decoration.
 - After ANY session break, crash, or interruption you MUST run `rivet resume` FIRST, then

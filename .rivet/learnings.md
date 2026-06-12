@@ -383,3 +383,14 @@
 - Promoted to: package.json (link:/Users/pratiyush/Github/revitify — pnpm's link: protocol; bare
   absolute file: mis-parses) + this entry; revisit at
   Phase E packaging when revitify ships to npm and the file: dep disappears entirely.
+
+## 2026-06-12 The commit-time formatter stales every pre-commit proof  ⟨P2⟩
+- Trigger: cockpit batch — lint-staged's `prettier --write` reformatted 4 staged files INSIDE the
+  commit, so the committed tree differed from the tree drift had just proved; main landed with
+  21/21 proofs stale despite an all-green pre-commit gauntlet.
+- Lesson: prove against the bytes that will actually land — format BEFORE the final prove/verify
+  (`npx prettier --write src test` then drift/verify), or expect one post-commit drift pass.
+  A formatter in the commit path is a tree-mover like any other edit.
+- Confidence: high (observed live; mechanism certain) · Scope: global (any repo with staged formatters)
+- Promoted to: skills/rivet-workflow hard rule (this entry) — "format before the final prove:
+  commit-time formatters move the tree and stale fresh proofs"
