@@ -3,6 +3,7 @@ import { join } from "node:path";
 import pc from "picocolors";
 import { materialize } from "./materialize.js";
 import { summarize } from "../engine/graph/build.js";
+import { findDependencyCycles } from "../engine/graph/cycles.js";
 import { lintQualifiedIds, lintCriteriaFormat, unboundObligations } from "../engine/spec/ears.js";
 import { floorViolations } from "../engine/gatepacks.js";
 import { refreshDocs } from "./refresh-docs.js";
@@ -41,6 +42,13 @@ export function graphBuild(opts: { refresh?: boolean }): void {
     process.exitCode = 1;
   }
   if (v.red > 0) process.exitCode = 1;
+
+  // FEAT-CYCLE-01: a circular dependsOn chain never resolves — a proof loop with no entry point.
+  const cycles = findDependencyCycles(m.vtg.edges);
+  for (const c of cycles) {
+    console.error(pc.red(`  ✗ dependency cycle: ${c.join(" → ")}`) + pc.dim("  [FEAT-CYCLE-01]"));
+    process.exitCode = 1;
+  }
 
   for (const w of m.specWarnings) console.log(pc.yellow(`  ⚠ ${w}`));
 

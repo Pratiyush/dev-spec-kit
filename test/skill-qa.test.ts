@@ -32,7 +32,17 @@ const COMMANDS = new Set([
   "log",
   "resume",
 ]);
-const SUBCOMMANDS = new Set(["create", "start", "done", "run", "build", "tasks", "pr"]);
+const SUBCOMMANDS = new Set([
+  "create",
+  "start",
+  "done",
+  "run",
+  "build",
+  "tasks",
+  "pr",
+  "lint",
+  "draft-tests",
+]);
 const KNOWN_ARTIFACTS = [
   ".rivet/", // the project root marker itself ("if .rivet/ is missing, run rivet init")
   ".rivet/specs/",

@@ -130,3 +130,17 @@ supplies the verdict, free) — the common path never requires a key.
 
 @check kind=unit ref=test/judge.test.ts::auto resolves to api when a key is present, harness when not
 @check kind=unit ref=test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set
+
+## Requirement REQUIREMENT_CYCLE-01 — a circular dependency is flagged, not silently built
+
+WHEN the graph holds a circular `dependsOn` chain THEN the system SHALL report each cycle as a node
+path and fail the build — a proof loop with no entry point cannot resolve.
+
+@check kind=unit ref=test/cycles.test.ts::finds a simple A→B→A cycle
+@check kind=unit ref=test/cycles.test.ts::finds a longer A→B→C→A cycle
+
+WHEN the `dependsOn` edges are acyclic THEN the system SHALL report no cycle, and a non-dependsOn
+edge SHALL never be mistaken for a dependency cycle — no false positives.
+
+@check kind=unit ref=test/cycles.test.ts::returns nothing for an acyclic chain
+@check kind=unit ref=test/cycles.test.ts::ignores non-dependsOn edges (a validates/implements edge is never a dependency cycle)
