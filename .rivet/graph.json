@@ -670,6 +670,53 @@
       "meta": {
         "kind": "unit"
       }
+    },
+    {
+      "id": "REQUIREMENT_JUDGE-01",
+      "kind": "requirement",
+      "label": "an LLM judge verdict is a recorded, second-class proof"
+    },
+    {
+      "id": "REQUIREMENT_JUDGE-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN a `judge` check records a verdict THEN the system SHALL stamp it `kind=judge` carrying the model and reason — labelled distinctly so it is never rendered or counted as an executed green."
+    },
+    {
+      "id": "test:test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)",
+      "kind": "test",
+      "label": "test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "test:test/judge.test.ts::respects an explicit mode regardless of the key",
+      "kind": "test",
+      "label": "test/judge.test.ts::respects an explicit mode regardless of the key",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_JUDGE-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF no Anthropic API key is present THEN the system SHALL default `auto` mode to harness (the agent supplies the verdict, free) — the common path never requires a key."
+    },
+    {
+      "id": "test:test/judge.test.ts::auto resolves to api when a key is present, harness when not",
+      "kind": "test",
+      "label": "test/judge.test.ts::auto resolves to api when a key is present, harness when not",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "test:test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set",
+      "kind": "test",
+      "label": "test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set",
+      "meta": {
+        "kind": "unit"
+      }
     }
   ],
   "edges": [
@@ -689,9 +736,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -712,9 +759,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -735,9 +782,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -758,9 +805,9 @@
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -781,9 +828,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -804,9 +851,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -827,9 +874,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -850,9 +897,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -873,9 +920,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -896,9 +943,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -919,9 +966,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -942,9 +989,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -965,9 +1012,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -988,9 +1035,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1011,9 +1058,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1034,9 +1081,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1057,9 +1104,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1080,9 +1127,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1103,9 +1150,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1126,9 +1173,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1149,9 +1196,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1172,9 +1219,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1195,9 +1242,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1218,9 +1265,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::read-only queries never create or touch documents",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1241,9 +1288,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1264,9 +1311,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1280,9 +1327,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1303,9 +1350,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1326,9 +1373,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1349,9 +1396,9 @@
       "lastCheck": {
         "ref": "test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1372,9 +1419,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1395,9 +1442,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1411,9 +1458,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1434,9 +1481,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1457,9 +1504,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1480,9 +1527,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::flags a ref whose file is missing",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1496,9 +1543,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1519,9 +1566,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::passes a ref whose file and name both resolve",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1542,9 +1589,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1565,9 +1612,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1581,9 +1628,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is out of sync when the counts differ",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1604,9 +1651,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1627,9 +1674,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1643,9 +1690,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::takes the SHALL clause and drops 'the system'",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1666,9 +1713,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1689,9 +1736,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::advances a not-done task whose every check is green on the current tree",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1705,9 +1752,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::never re-advances an already-done task",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1728,9 +1775,87 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::does NOT advance a task proven on an OLDER tree (stale)",
         "passed": true,
-        "at": "2026-06-13T08:11:40.946Z",
-        "sha": "aac482e56e910f1fa733524e56d3d679d252a416",
-        "tree": "a8cad5cf0d2c417c571e52ae6b27e0157bd2a811",
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e91",
+      "from": "REQUIREMENT_JUDGE-01-AC1",
+      "to": "REQUIREMENT_JUDGE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e92",
+      "from": "test:test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)",
+      "to": "REQUIREMENT_JUDGE-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)",
+        "passed": true,
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e93",
+      "from": "test:test/judge.test.ts::respects an explicit mode regardless of the key",
+      "to": "REQUIREMENT_JUDGE-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/judge.test.ts::respects an explicit mode regardless of the key",
+        "passed": true,
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e94",
+      "from": "REQUIREMENT_JUDGE-01-AC2",
+      "to": "REQUIREMENT_JUDGE-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e95",
+      "from": "test:test/judge.test.ts::auto resolves to api when a key is present, harness when not",
+      "to": "REQUIREMENT_JUDGE-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/judge.test.ts::auto resolves to api when a key is present, harness when not",
+        "passed": true,
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e96",
+      "from": "test:test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set",
+      "to": "REQUIREMENT_JUDGE-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set",
+        "passed": true,
+        "at": "2026-06-13T12:12:32.019Z",
+        "sha": "7c1f203897b40b4c056597f59797b95f8b4c9b78",
+        "tree": "608f90e1b57e11d4bccad878d3e1406465caad67",
         "stack": "node-vitest",
         "kind": "unit"
       }

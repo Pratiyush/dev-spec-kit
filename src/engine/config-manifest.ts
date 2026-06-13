@@ -11,7 +11,7 @@ import { RivetConfigSchema, defaultConfig, type RivetConfig } from "../config/sc
 
 export interface KnobField {
   key: string;
-  type: "string" | "number" | "boolean" | "string[]" | "enum[]";
+  type: "string" | "number" | "boolean" | "string[]" | "enum" | "enum[]";
   allowed?: string[];
   min?: number;
   max?: number;
@@ -127,6 +127,8 @@ const DESCRIPTIONS: Record<string, string> = {
     "Kind-level runner templates (lint, audit, visual…) with the same placeholders. Precedence: kindRunners > runners > builtin.",
   "verify.app":
     "How to boot the app for runApp checks: start argv, readiness URL polled until it answers, and the wait budget.",
+  "verify.judge":
+    "The LLM `judge` kind (a second-class proof for the unmeasurable): mode (harness=the agent supplies the verdict free, api=the engine calls Anthropic headlessly, auto), the api model, and whether judge is allowed on full obligations (off by default).",
   "review.separateReviewer": "Review with a fresh agent that didn't write the code, to avoid author bias.",
   "review.angles": "Which review angles run on every change.",
   "review.passes": "Blind diff-only pass, full-context pass, or both.",
@@ -227,6 +229,8 @@ function classifyField(key: string, raw: z.ZodTypeAny, path: string): KnobField 
   const t = typeName(node);
   if (t === "ZodBoolean") return { key, type: "boolean" };
   if (t === "ZodString") return { key, type: "string" };
+  if (t === "ZodEnum")
+    return { key, type: "enum", allowed: (node as z.ZodEnum<[string, ...string[]]>)._def.values };
   if (t === "ZodNumber") return { key, type: "number", ...numberBounds(node as z.ZodNumber) };
   if (t === "ZodArray") {
     const el = unwrap((node as z.ZodArray<z.ZodTypeAny>)._def.type).node;

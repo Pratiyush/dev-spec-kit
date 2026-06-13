@@ -116,3 +116,17 @@ IF any bound check is missing, failing, or proven on an OLDER tree THEN the syst
 the task — only fully and freshly proven work qualifies (it reuses the done-gate's own evidence).
 
 @check kind=unit ref=test/done-msg.test.ts::does NOT advance a task proven on an OLDER tree (stale)
+
+## Requirement REQUIREMENT_JUDGE-01 — an LLM judge verdict is a recorded, second-class proof
+
+WHEN a `judge` check records a verdict THEN the system SHALL stamp it `kind=judge` carrying the model
+and reason — labelled distinctly so it is never rendered or counted as an executed green.
+
+@check kind=unit ref=test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)
+@check kind=unit ref=test/judge.test.ts::respects an explicit mode regardless of the key
+
+IF no Anthropic API key is present THEN the system SHALL default `auto` mode to harness (the agent
+supplies the verdict, free) — the common path never requires a key.
+
+@check kind=unit ref=test/judge.test.ts::auto resolves to api when a key is present, harness when not
+@check kind=unit ref=test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set

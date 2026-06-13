@@ -19,3 +19,4 @@
 | REQUIREMENT_DONE-01 | the done-gate tells a stale binding apart from a missing proof | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_DRAFT-01 | draft-tests scaffolds a failing, bound stub per unbound criterion | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_RECONCILE-01 | verify --stamp --advance reconciles trace with status | 2 | 🟢🟢 | done | — |
+| REQUIREMENT_JUDGE-01 | an LLM judge verdict is a recorded, second-class proof | 2 | 🟢🟢 | done | — |

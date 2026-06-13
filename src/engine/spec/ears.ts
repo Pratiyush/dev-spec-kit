@@ -9,7 +9,7 @@
 /** EARS clause patterns, plus "gherkin" for Given/When/Then criteria (FEAT-GHERKIN-01). */
 export type EarsPattern = "ubiquitous" | "event" | "state" | "optional" | "unwanted" | "complex" | "gherkin";
 
-export type CheckKind = "unit" | "integration" | "api" | "e2e" | "visual" | "parity";
+export type CheckKind = "unit" | "integration" | "api" | "e2e" | "visual" | "parity" | "judge";
 
 /** A binding from an acceptance criterion to an executable check (the criterion↔check edge). */
 export interface CheckBinding {
@@ -93,6 +93,20 @@ export function unverifiedCriteria(reqs: Requirement[]): AcceptanceCriterion[] {
 export function kindForRef(reqs: Requirement[], ref: string): CheckKind | undefined {
   for (const r of reqs)
     for (const c of r.criteria) for (const ch of c.checks) if (ch.ref === ref) return ch.kind;
+  return undefined;
+}
+
+/** The criterion text a ref proves — the rubric a `judge` check evaluates the evidence against. */
+export function criterionTextForRef(reqs: Requirement[], ref: string): string | undefined {
+  for (const r of reqs)
+    for (const c of r.criteria) for (const ch of c.checks) if (ch.ref === ref) return c.text;
+  return undefined;
+}
+
+/** The requirement id that owns a ref — so the judge gate can tell an obligation from an ADR. */
+export function requirementIdForRef(reqs: Requirement[], ref: string): string | undefined {
+  for (const r of reqs)
+    for (const c of r.criteria) for (const ch of c.checks) if (ch.ref === ref) return r.id;
   return undefined;
 }
 

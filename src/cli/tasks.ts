@@ -13,8 +13,22 @@ import { refreshDocs } from "./refresh-docs.js";
 import { label } from "./emoji.js";
 import { runWithRetry } from "../engine/verify/retry.js";
 import { withApp } from "../engine/verify/applife.js";
-import { kindForRef } from "../engine/spec/ears.js";
+import {
+  kindForRef,
+  criterionTextForRef,
+  requirementIdForRef,
+  requirementKind,
+  type Requirement,
+} from "../engine/spec/ears.js";
 import { parseSpecsDir } from "../engine/spec/parse.js";
+import {
+  resolveJudgeMode,
+  judgeResult,
+  judgeViaApi,
+  hasApiKey,
+  type JudgeVerdict,
+} from "../engine/verify/judge.js";
+import type { RivetConfig } from "../config/schema.js";
 import { loadConfig } from "./config-io.js";
 import { renderProgress } from "./progress.js";
 
@@ -141,11 +155,18 @@ export async function checkRun(
   taskId: string,
   ref: string,
   stackArg: string | undefined,
-  opts?: { expectRed?: boolean },
+  opts?: { expectRed?: boolean; verdict?: "pass" | "fail"; reason?: string },
 ): Promise<void> {
   const cwd = process.cwd();
   // Custom stacks come from config (verify.runners) — the tool's code never changes, only input.
   const config = loadConfig(cwd);
+  // FEAT-JUDGE-01: a `judge` ref is an LLM verdict, not a test run — branch before any stack/runner.
+  const specs = parseSpecsDir(cwd);
+  const kind = kindForRef(specs, ref) ?? "unit";
+  if (kind === "judge") {
+    await runJudge(cwd, config, specs, taskId, ref, opts);
+    return;
+  }
   // FEAT-STACK-01: flag → verify.defaultStack → inferred from platforms (notice) → clear error.
   const resolution = resolveStack(stackArg, config, cwd);
   const stackName = resolution.stack;
@@ -157,8 +178,7 @@ export async function checkRun(
       ),
     );
   }
-  // RUNNERS-01: the spec knows this ref's kind; the kind changes how it runs.
-  const kind = kindForRef(parseSpecsDir(cwd), ref) ?? "unit";
+  // RUNNERS-01: the spec knows this ref's kind; the kind changes how it runs (computed above).
   const picked = pickRunner(config, kind, stackName);
   if (picked.source === "builtin" && !BUILTIN_STACKS.includes(stackName as (typeof BUILTIN_STACKS)[number])) {
     console.error(
@@ -205,6 +225,75 @@ export async function checkRun(
     );
     process.exitCode = 1;
   }
+}
+
+/**
+ * FEAT-JUDGE-01 — record an LLM `judge` verdict as a SECOND-CLASS proof. The verdict comes from the
+ * harness agent (`--verdict`, free) or, in api mode, from the engine calling Anthropic. A refusal or
+ * unparseable verdict records NOTHING. Judge is blocked on full obligations unless explicitly allowed.
+ */
+async function runJudge(
+  cwd: string,
+  config: RivetConfig,
+  specs: Requirement[],
+  taskId: string,
+  ref: string,
+  opts?: { verdict?: "pass" | "fail"; reason?: string },
+): Promise<void> {
+  const cfg = config.verify.judge;
+  const owner = requirementIdForRef(specs, ref);
+  if (owner && requirementKind(owner) !== "adr" && !cfg.allowForObligations) {
+    console.error(
+      pc.red(`✗ judge blocked on ${owner}`) +
+        pc.dim(
+          " — judge is a second-class proof; a full obligation wants an executed check. " +
+            "Set verify.judge.allowForObligations=true to override.",
+        ),
+    );
+    process.exitCode = 2;
+    return;
+  }
+  const usedMode = opts?.verdict ? "harness" : resolveJudgeMode(cfg.mode, hasApiKey());
+  let verdict: JudgeVerdict;
+  try {
+    if (opts?.verdict) {
+      verdict = { passed: opts.verdict === "pass", reason: opts.reason ?? "(agent gave no reason)" };
+    } else if (usedMode === "api") {
+      const criterion = criterionTextForRef(specs, ref) ?? ref;
+      const [file] = ref.split("::");
+      let evidence = ref;
+      try {
+        evidence = readFileSync(join(cwd, file ?? ref), "utf8");
+      } catch {
+        /* ref isn't a file — judge the ref string itself */
+      }
+      verdict = await judgeViaApi(criterion, evidence, cfg.model);
+    } else {
+      console.error(
+        pc.red(`✗ judge ref needs a verdict`) +
+          pc.dim(
+            ` — the agent supplies it: rivet check run ${taskId} "${ref}" --verdict pass|fail --reason "…"` +
+              " (or set verify.judge.mode=api + ANTHROPIC_API_KEY for headless judging)",
+          ),
+      );
+      process.exitCode = 2;
+      return;
+    }
+  } catch (e) {
+    console.error(pc.red(`✗ judge unavailable`) + pc.dim(` — ${(e as Error).message}`));
+    process.exitCode = 2;
+    return;
+  }
+  const result = judgeResult(ref, verdict, { model: cfg.model, mode: usedMode, cwd });
+  store(cwd).recordCheck(taskId, result);
+  refreshDocs(cwd, config);
+  console.log(
+    (result.passed ? pc.yellow("⚖️  JUDGED PASS") : pc.red("⚖️  JUDGED FAIL")) +
+      ` ${ref}` +
+      pc.dim(proofStamp(result)),
+  );
+  console.log(pc.dim(`    ${verdict.reason}`));
+  if (!result.passed) process.exitCode = 1;
 }
 
 export function status(): void {

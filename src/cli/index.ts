@@ -118,9 +118,20 @@ check
       "(optional — falls back to verify.defaultStack, then platform inference)",
   )
   .option("-x, --expect-red", "TDD red phase: skip flaky retries for this run")
+  .option("--verdict <pass|fail>", "for a judge ref: the agent-supplied LLM verdict (harness mode)")
+  .option("--reason <text>", "for a judge ref: the one-line reason behind the verdict")
   .action(
-    safe((taskId: string, ref: string, opts: { stack?: string; expectRed?: boolean }) =>
-      checkRun(taskId, ref, opts.stack, { expectRed: opts.expectRed ?? false }),
+    safe(
+      (
+        taskId: string,
+        ref: string,
+        opts: { stack?: string; expectRed?: boolean; verdict?: string; reason?: string },
+      ) =>
+        checkRun(taskId, ref, opts.stack, {
+          expectRed: opts.expectRed ?? false,
+          ...(opts.verdict === "pass" || opts.verdict === "fail" ? { verdict: opts.verdict } : {}),
+          ...(opts.reason ? { reason: opts.reason } : {}),
+        }),
     ),
   );
 
