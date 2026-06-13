@@ -45,6 +45,26 @@ or a global install) and `rivet doctor` passing. If `.rivet/` is missing, run `r
    table + binding coverage). `--create` opens it via `gh`. The guard hook blocks PR creation while
    proofs are not green or the verify is missing/red/stale.
 
+## Specialized roles (spawn fresh; the engine orchestrates)
+
+For depth, delegate to a focused role skill in a fresh subagent — each thin, disposable, validated on
+return. They run as Claude Code subagents (free, no API key):
+- `rivet-clarify` — resolve ambiguity with ≤5 recommended-option questions, before step 2.
+- `rivet-architect` — a thin HLD + an ADR per non-obvious decision, between steps 2 and 3.
+- `rivet-test-author` — `rivet spec draft-tests` scaffolds failing stubs; flesh them with
+  behavior-asserting tests across the 4 edge categories, at step 4.
+- `rivet-analyze` — score complexity 1–10 and split a too-big requirement into bound sub-criteria.
+- `rivet-research` — cited web augmentation when the spec depends on outside knowledge.
+- `rivet-review` — the 3-lens, no-quota review before the PR.
+- `rivet-judge` — a `kind=judge` verdict for a criterion no test can assert (tone, copy, actionability).
+
+## Faster proving
+- The `--stamp` fast path: one suite run stamps a proof for EVERY bound criterion (instead of N cold
+  `check run`s); `--advance` then auto-advances fully-proven tasks to done. Prefer it once the tests
+  are green — it's how you keep `trace` honest cheaply.
+- `rivet spec lint` catches orphaned `@check` refs (renamed/moved tests) before a run, and gates
+  commits via the pre-commit hook so drift can't land.
+
 ## Hard rules (RFC-2119)
 
 - You MUST NOT mark, claim, or imply a task is complete while any bound check is failing or unrun.
