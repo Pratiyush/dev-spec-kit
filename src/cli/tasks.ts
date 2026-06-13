@@ -4,7 +4,7 @@ import pc from "picocolors";
 import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
 import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
-import { TaskStore, EvidenceError, staleProofRefs } from "../engine/state/tasks.js";
+import { TaskStore, EvidenceError, staleProofRefs, bindingsOutOfSync } from "../engine/state/tasks.js";
 import { runCheck, BUILTIN_STACKS, pickRunner, resolveStack } from "../engine/verify/runner.js";
 import { proofStamp } from "../engine/verify/stamp.js";
 import { gitTreeHash } from "../engine/git.js";
@@ -60,6 +60,22 @@ export function taskStart(id: string): void {
   refreshDocs(cwd, loadConfig(cwd)); // REQUIREMENT_DOCS-01
 }
 
+/**
+ * FIX-DONEMSG-01 — the message that unblocks the user. If the task's bound refs no longer match the
+ * spec's current `@check` refs for this requirement, the real fix is `rivet spec tasks` (re-sync),
+ * not re-running a ref that may no longer exist. Returns that hint, or null when the binding is in
+ * sync (then the refs are genuinely unproven and `verify --stamp` is the move). Free-floating tasks
+ * with no matching spec requirement get no spec-sync hint.
+ */
+function bindingDriftHint(cwd: string, taskId: string, taskRefs: string[]): string | null {
+  const req = parseSpecsDir(cwd).find((r) => r.id === taskId);
+  if (!req) return null;
+  const specRefs = req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref));
+  return bindingsOutOfSync(taskRefs, specRefs)
+    ? "the task's bound checks no longer match the spec — run `rivet spec tasks` to re-sync, then `rivet verify --stamp`"
+    : null;
+}
+
 export function taskDone(id: string): void {
   const cwd = process.cwd();
   const config = loadConfig(cwd);
@@ -72,6 +88,8 @@ export function taskDone(id: string): void {
     for (const ref of stale) {
       console.error(pc.dim(`   🟣 ${ref} — re-run: rivet check run ${id} "${ref}"`));
     }
+    const driftHint = bindingDriftHint(cwd, id, current?.boundChecks ?? []);
+    console.error(pc.dim(`   ↻ ${driftHint ?? "or re-prove every criterion at once: rivet verify --stamp"}`));
     process.exitCode = 1;
     return;
   }
@@ -99,8 +117,14 @@ export function taskDone(id: string): void {
         return;
       }
       console.error(pc.red(`✗ BLOCKED: ${e.message}`));
+      const driftHint = bindingDriftHint(cwd, id, current?.boundChecks ?? []);
       console.error(
-        pc.dim("  done is evidence-bound — run the checks: rivet check run <task> <ref> --stack <stack>"),
+        pc.dim(
+          driftHint
+            ? `  ${driftHint}`
+            : "  done is evidence-bound — prove every criterion at once with `rivet verify --stamp`" +
+                " (or one ref: `rivet check run <task> <ref>`)",
+        ),
       );
       process.exitCode = 1;
       return;

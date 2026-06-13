@@ -73,3 +73,17 @@ IF a ref is a selector-only form the linter cannot statically resolve (e.g. mave
 THEN the system SHALL NOT report it as orphaned — no false positives.
 
 @check kind=unit ref=test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)
+
+## Requirement REQUIREMENT_DONE-01 — the done-gate tells a stale binding apart from a missing proof
+
+WHEN a task's bound `@check` refs no longer match its requirement's current spec refs THEN the
+system SHALL report the binding as out of sync — so the done-gate points at `rivet spec tasks`
+(re-sync) instead of telling the user to re-run a ref that no longer exists.
+
+@check kind=unit ref=test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)
+@check kind=unit ref=test/done-msg.test.ts::is out of sync when the counts differ
+
+WHEN a task's bound refs match the spec (order aside) THEN the system SHALL report them in sync, so
+a genuinely-unproven task is NOT misreported as a binding problem.
+
+@check kind=unit ref=test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)
