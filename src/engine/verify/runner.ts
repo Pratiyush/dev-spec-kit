@@ -1,9 +1,17 @@
 import { spawnSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { CheckBinding } from "../spec/ears.js";
 import type { CheckResult } from "../graph/types.js";
 import { gitHead, gitTreeHash, isDirty } from "../git.js";
+import {
+  escapeTestNamePattern,
+  interpretCheckRun,
+  parseTestReport,
+  reportArgs,
+  type Reporter,
+} from "./report.js";
 
 /**
  * The verification runner — executes bound checks and captures REAL exit codes.
@@ -19,6 +27,12 @@ export interface ResolvedCommand {
   cmd: string;
   args: string[];
   env?: Record<string, string>;
+  /**
+   * When set, this is a JS test runner that emits a jest-shaped JSON report. `execute` adds the
+   * report flags, then derives the verdict from the report (so a zero-match is a FAILURE, never the
+   * exit-0 silent pass). Unset for maven/pytest/custom overrides, which keep exit-code semantics.
+   */
+  reporter?: Reporter;
 }
 
 /** A config-supplied runner: new stacks are pure input, never code changes. */
@@ -96,9 +110,13 @@ export function pickRunner(
  * Map a check binding to the concrete test-runner invocation for a stack.
  * Refs use the runner's own selector syntax:
  *  - java-maven:    "ClassName#method"  -> mvn -B test -Dtest=ClassName#method
- *  - node-vitest:   "file::name"        -> vitest run file -t name
- *  - node-jest:     "file::name"        -> jest file -t name
+ *  - node-vitest:   "file::name"        -> vitest run file --testNamePattern=<escaped name>
+ *  - node-jest:     "file::name"        -> jest file --testNamePattern=<escaped name>
  *  - python-pytest: "file::test"        -> python3 -m pytest file::test
+ * The name goes through `--testNamePattern=<value>` (equals form, never `-t <value>`): the equals
+ * form stops the CLI parser reading a leading `-` as an option (the old CACError), and the value is
+ * regex-escaped so metacharacters match literally. node runners also carry `reporter` so `execute`
+ * can reject a zero-match instead of trusting the exit code.
  * An override (from `.rivet/config.json` verify.runners) replaces or defines a stack; its args may
  * use {ref}, {file}, {name} placeholders — args referencing {name} are dropped when the ref has no
  * `::name` part.
@@ -134,11 +152,13 @@ export function resolveCommand(
     }
     case "node-vitest": {
       const [file, name] = splitRef(binding.ref);
-      return { cmd: "npx", args: ["vitest", "run", file, ...(name ? ["-t", name] : [])] };
+      const sel = name ? [`--testNamePattern=${escapeTestNamePattern(name)}`] : [];
+      return { cmd: "npx", args: ["vitest", "run", file, ...sel], reporter: "vitest" };
     }
     case "node-jest": {
       const [file, name] = splitRef(binding.ref);
-      return { cmd: "npx", args: ["jest", file, ...(name ? ["-t", name] : [])] };
+      const sel = name ? [`--testNamePattern=${escapeTestNamePattern(name)}`] : [];
+      return { cmd: "npx", args: ["jest", file, ...sel], reporter: "jest" };
     }
     case "python-pytest":
       return { cmd: "python3", args: ["-m", "pytest", binding.ref, "-q"] };
@@ -167,40 +187,76 @@ export class RunnerUnavailableError extends Error {
   }
 }
 
-/** Execute a resolved command and convert its exit code into a CheckResult (the proof). */
+/** Execute a resolved command and convert its result into a CheckResult (the proof). */
 export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: RunOptions): CheckResult {
-  const res = spawnSync(resolved.cmd, resolved.args, {
-    cwd: opts.cwd,
-    timeout: opts.timeoutMs ?? 10 * 60 * 1000,
-    stdio: ["ignore", "pipe", "pipe"],
-    env: { ...process.env, ...resolved.env },
-  });
-  // FIX-ROBUST-01: a missing/unspawnable runner is an infra error, not a red proof. A TIMEOUT,
-  // by contrast, means the test ran and hung — a hung test IS a failing test.
-  const timedOut = (res.error as NodeJS.ErrnoException | undefined)?.code === "ETIMEDOUT";
-  if (!timedOut && (res.error || res.status === null)) {
-    throw new RunnerUnavailableError(
-      `cannot execute '${resolved.cmd}': ${res.error?.message ?? `terminated by ${res.signal ?? "unknown signal"}`} — fix the tooling; nothing was recorded`,
-    );
+  // FIX-TRUST-01: a JS runner gets a JSON report so the verdict comes from what actually executed,
+  // not the exit code (vitest/jest exit 0 on a zero-match `--testNamePattern`). The report lands in
+  // a throwaway temp dir, removed in `finally` so it never touches the working tree / proof hash.
+  let reportDir: string | undefined;
+  let reportPath: string | undefined;
+  let args = resolved.args;
+  if (resolved.reporter) {
+    reportDir = mkdtempSync(join(tmpdir(), "rivet-check-"));
+    reportPath = join(reportDir, "report.json");
+    args = [...resolved.args, ...reportArgs(resolved.reporter, reportPath)];
   }
-  const passed = res.status === 0;
-  // SCALE-01: a red proof carries its own diagnostic — the truncated output tail.
-  let tail: string | undefined;
-  if (!passed) {
-    const combined = `${res.stdout?.toString() ?? ""}\n${res.stderr?.toString() ?? ""}`.trim();
-    if (combined) tail = combined.slice(-1500);
+  try {
+    const res = spawnSync(resolved.cmd, args, {
+      cwd: opts.cwd,
+      timeout: opts.timeoutMs ?? 10 * 60 * 1000,
+      stdio: ["ignore", "pipe", "pipe"],
+      env: { ...process.env, ...resolved.env },
+    });
+    // FIX-ROBUST-01: a missing/unspawnable runner is an infra error, not a red proof. A TIMEOUT,
+    // by contrast, means the test ran and hung — a hung test IS a failing test.
+    const timedOut = (res.error as NodeJS.ErrnoException | undefined)?.code === "ETIMEDOUT";
+    if (!timedOut && (res.error || res.status === null)) {
+      throw new RunnerUnavailableError(
+        `cannot execute '${resolved.cmd}': ${res.error?.message ?? `terminated by ${res.signal ?? "unknown signal"}`} — fix the tooling; nothing was recorded`,
+      );
+    }
+    const exit = res.status ?? 1;
+    let passed = exit === 0;
+    let reason: string | undefined;
+    if (resolved.reporter) {
+      // The report is the source of truth for a JS runner. If it's unreadable we CANNOT confirm a
+      // green (an exit 0 might be a zero-match); refuse rather than mint a vacuous proof.
+      let raw: string;
+      try {
+        raw = readFileSync(reportPath as string, "utf8");
+      } catch {
+        if (passed)
+          throw new RunnerUnavailableError(
+            `'${resolved.cmd}' wrote no JSON report — cannot confirm what ran; nothing was recorded`,
+          );
+        raw = "";
+      }
+      if (raw) {
+        const verdict = interpretCheckRun(parseTestReport(raw), exit);
+        passed = verdict.passed;
+        reason = verdict.reason;
+      }
+    }
+    // SCALE-01: a red proof carries its own diagnostic — the reason plus the truncated output tail.
+    let tail: string | undefined;
+    if (!passed) {
+      const combined = `${res.stdout?.toString() ?? ""}\n${res.stderr?.toString() ?? ""}`.trim();
+      tail = [reason, combined].filter(Boolean).join("\n").slice(-1500) || undefined;
+    }
+    // Proof identity = the content actually tested (tree hash), not just whatever HEAD was.
+    const tree = gitTreeHash(opts.cwd);
+    return {
+      ref: binding.ref,
+      passed,
+      at: new Date().toISOString(),
+      sha: opts.sha ?? gitHead(opts.cwd),
+      ...(tree ? { tree } : {}),
+      dirty: isDirty(opts.cwd),
+      ...(tail ? { tail } : {}),
+    };
+  } finally {
+    if (reportDir) rmSync(reportDir, { recursive: true, force: true });
   }
-  // Proof identity = the content actually tested (tree hash), not just whatever HEAD was.
-  const tree = gitTreeHash(opts.cwd);
-  return {
-    ref: binding.ref,
-    passed,
-    at: new Date().toISOString(),
-    sha: opts.sha ?? gitHead(opts.cwd),
-    ...(tree ? { tree } : {}),
-    dirty: isDirty(opts.cwd),
-    ...(tail ? { tail } : {}),
-  };
 }
 
 /** Resolve + execute in one step. */

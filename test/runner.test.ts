@@ -8,15 +8,24 @@ describe("resolveCommand — stack mappings", () => {
     expect(r.args).toEqual(["-B", "test", "-Dtest=SessionTest#idleTimeout"]);
   });
 
-  it("vitest: file::name selector", () => {
+  it("vitest: file::name selector uses the equals-form --testNamePattern (never -t)", () => {
     const r = resolveCommand({ kind: "unit", ref: "test/a.test.ts::does x" }, "node-vitest");
     expect(r.cmd).toBe("npx");
-    expect(r.args).toEqual(["vitest", "run", "test/a.test.ts", "-t", "does x"]);
+    // equals form so a leading `-` in the name can't be read as a CLI option (the CACError bug).
+    expect(r.args).toEqual(["vitest", "run", "test/a.test.ts", "--testNamePattern=does x"]);
+    expect(r.args).not.toContain("-t");
+    expect(r.reporter).toBe("vitest");
   });
 
-  it("vitest: file-only ref omits -t", () => {
+  it("vitest: a flag-like or regex-special name is escaped into the pattern", () => {
+    const r = resolveCommand({ kind: "unit", ref: "test/a.test.ts::--help (1+1)" }, "node-vitest");
+    expect(r.args).toEqual(["vitest", "run", "test/a.test.ts", "--testNamePattern=--help \\(1\\+1\\)"]);
+  });
+
+  it("vitest: file-only ref omits the name pattern", () => {
     const r = resolveCommand({ kind: "unit", ref: "test/a.test.ts" }, "node-vitest");
     expect(r.args).toEqual(["vitest", "run", "test/a.test.ts"]);
+    expect(r.reporter).toBe("vitest");
   });
 
   it("pytest: file::test selector passes through", () => {
