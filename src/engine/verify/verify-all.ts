@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { RivetConfig } from "../../config/schema.js";
 import { resolveStack, type RunnerOverride } from "./runner.js";
+import { reportArgs, type Reporter } from "./report.js";
 import { gitHead, gitTreeHash, isDirty } from "../git.js";
 
 /**
@@ -31,9 +32,17 @@ export interface VerifyStepResult {
   ms: number;
 }
 
+/** A JSON report a JS test step left behind, so `verify --stamp` can attribute it to criteria. */
+export interface StampSource {
+  reporter: Reporter;
+  path: string;
+}
+
 export interface VerifyRun {
   passed: boolean;
   steps: VerifyStepResult[];
+  /** present only when runVerify is asked to emit reports (verify --stamp). */
+  reports?: StampSource[];
   tree?: string;
   dirty?: boolean;
   sha?: string;
@@ -115,23 +124,43 @@ export function planVerify(cwd: string, config: RivetConfig): VerifyStep[] {
   return steps;
 }
 
-export function runVerify(cwd: string, config: RivetConfig): VerifyRun {
+/** vitest/jest steps can emit a JSON report; build/lint/maven/pytest steps cannot. */
+function stepReporter(s: VerifyStep): Reporter | undefined {
+  if (s.args.includes("vitest")) return "vitest";
+  if (s.args.includes("jest")) return "jest";
+  return undefined;
+}
+
+export function runVerify(cwd: string, config: RivetConfig, opts?: { reportDir?: string }): VerifyRun {
   const steps = planVerify(cwd, config);
-  const results: VerifyStepResult[] = steps.map((s) => {
+  const results: VerifyStepResult[] = [];
+  const reports: StampSource[] = [];
+  steps.forEach((s, i) => {
+    // For a JS test step under --stamp, emit a JSON report alongside the normal run so one suite
+    // execution can be attributed back to every bound criterion (FEAT-STAMP-01).
+    const reporter = opts?.reportDir ? stepReporter(s) : undefined;
+    let args = s.args;
+    let reportPath: string | undefined;
+    if (reporter && opts?.reportDir) {
+      reportPath = join(opts.reportDir, `step-${i}.json`);
+      args = [...s.args, ...reportArgs(reporter, reportPath)];
+    }
     const t0 = Date.now();
-    const res = spawnSync(s.cmd, s.args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
-    return {
+    const res = spawnSync(s.cmd, args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
+    results.push({
       name: s.name,
       cmd: `${s.cmd} ${s.args.join(" ")}`.trim(),
       ok: res.status === 0,
       ms: Date.now() - t0,
-    };
+    });
+    if (reporter && reportPath) reports.push({ reporter, path: reportPath });
   });
   const tree = gitTreeHash(cwd);
   const sha = gitHead(cwd);
   return {
     passed: results.length > 0 && results.every((r) => r.ok),
     steps: results,
+    ...(reports.length ? { reports } : {}),
     ...(tree ? { tree, dirty: isDirty(cwd) } : {}),
     ...(sha ? { sha } : {}),
   };

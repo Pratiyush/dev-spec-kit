@@ -36,3 +36,22 @@ IF a test name begins with `-` THEN the system SHALL NOT crash the runner CLI (t
 form raised "Unknown option"); the bound check SHALL still resolve to a passing proof.
 
 @check kind=unit ref=test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI
+
+## Requirement REQUIREMENT_STAMP-01 — one suite run stamps every bound criterion (kills the depth tax)
+
+WHEN `rivet verify --stamp` runs THEN the system SHALL execute the test suite ONCE and record a
+passing/failing `check.run` proof for every bound criterion whose test appears in the run, stamped
+with the same code tree the suite ran on — so `trace` reads them green without a per-criterion
+re-run (proving N criteria must cost one run, not N cold `check run`s).
+
+@check kind=unit ref=test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind
+@check kind=unit ref=test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)
+
+IF a bound ref names a test NOT present in the run (another runner, or renamed away) THEN the system
+SHALL leave that ref's existing proof untouched rather than fabricate or clear it.
+
+@check kind=unit ref=test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)
+
+IF a matched test only SKIPPED THEN the system SHALL NOT stamp a proof — skipped is not evidence.
+
+@check kind=unit ref=test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence

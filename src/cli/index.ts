@@ -138,7 +138,8 @@ program
   .description(
     "Build ALL + run EVERY configured kind (full suites) — journaled; the PR gate needs this green on the current tree",
   )
-  .action(safe(() => verifyCmd()));
+  .option("--stamp", "also stamp a per-criterion proof for every bound check from the one suite run")
+  .action(safe((opts: { stamp?: boolean }) => verifyCmd(opts)));
 
 const graph = program.command("graph").description("The Verified Traceability Graph");
 graph

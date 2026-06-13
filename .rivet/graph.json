@@ -449,6 +449,58 @@
       "meta": {
         "kind": "unit"
       }
+    },
+    {
+      "id": "REQUIREMENT_STAMP-01",
+      "kind": "requirement",
+      "label": "one suite run stamps every bound criterion (kills the depth tax)"
+    },
+    {
+      "id": "REQUIREMENT_STAMP-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN `rivet verify --stamp` runs THEN the system SHALL execute the test suite ONCE and record a passing/failing `check.run` proof for every bound criterion whose test appears in the run, stamped with the same code tree the suite ran on — so `trace` reads them green without a per-criterion re-run (proving N criteria must cost one run, not N cold `check run`s)."
+    },
+    {
+      "id": "test:test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
+      "kind": "test",
+      "label": "test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "test:test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
+      "kind": "test",
+      "label": "test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_STAMP-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF a bound ref names a test NOT present in the run (another runner, or renamed away) THEN the system SHALL leave that ref's existing proof untouched rather than fabricate or clear it."
+    },
+    {
+      "id": "test:test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
+      "kind": "test",
+      "label": "test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_STAMP-01-AC3",
+      "kind": "acceptanceCriterion",
+      "label": "IF a matched test only SKIPPED THEN the system SHALL NOT stamp a proof — skipped is not evidence."
+    },
+    {
+      "id": "test:test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
+      "kind": "test",
+      "label": "test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
+      "meta": {
+        "kind": "unit"
+      }
     }
   ],
   "edges": [
@@ -464,14 +516,13 @@
       "from": "test:test/cli-ux.test.ts::audits cli invocations into the journal",
       "to": "REQUIREMENT_AUDIT-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-12T07:38:10.127Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -488,14 +539,13 @@
       "from": "test:test/cli-ux.test.ts::does not create journals outside Rivet projects",
       "to": "REQUIREMENT_AUDIT-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T07:38:10.921Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -512,14 +562,13 @@
       "from": "test:test/cli-ux.test.ts::renders the audit trail with per-type emoji",
       "to": "REQUIREMENT_AUDIT-02-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-12T07:38:11.698Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -536,14 +585,13 @@
       "from": "test:test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
       "to": "REQUIREMENT_AUDIT-02-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-12T07:38:12.466Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -560,14 +608,13 @@
       "from": "test:test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
       "to": "REQUIREMENT_PROG-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-12T07:38:13.242Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -584,14 +631,13 @@
       "from": "test:test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
       "to": "REQUIREMENT_PROG-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-12T07:38:14.020Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -608,14 +654,13 @@
       "from": "test:test/cli-ux.test.ts::does not create journals outside Rivet projects",
       "to": "NFR_AUDIT-03-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside Rivet projects",
         "passed": true,
-        "at": "2026-06-12T07:38:10.921Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -632,14 +677,13 @@
       "from": "test:test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
       "to": "REQUIREMENT_COCKPIT-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
         "passed": true,
-        "at": "2026-06-12T07:38:14.606Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -656,14 +700,13 @@
       "from": "test:test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
       "to": "REQUIREMENT_COCKPIT-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
         "passed": true,
-        "at": "2026-06-12T07:38:15.195Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -680,14 +723,13 @@
       "from": "test:test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
       "to": "REQUIREMENT_COCKPIT-01-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
         "passed": true,
-        "at": "2026-06-12T07:38:15.782Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -704,14 +746,13 @@
       "from": "test:test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
       "to": "REQUIREMENT_COCKPIT-02-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
         "passed": true,
-        "at": "2026-06-12T07:38:16.737Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -728,14 +769,13 @@
       "from": "test:test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
       "to": "REQUIREMENT_COCKPIT-02-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:38:17.698Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -752,14 +792,13 @@
       "from": "test:test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
       "to": "REQUIREMENT_COCKPIT-02-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:38:18.655Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -776,14 +815,13 @@
       "from": "test:test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
       "to": "REQUIREMENT_COCKPIT-03-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
         "passed": true,
-        "at": "2026-06-12T07:38:19.760Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -800,14 +838,13 @@
       "from": "test:test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
       "to": "REQUIREMENT_COCKPIT-03-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
         "passed": true,
-        "at": "2026-06-12T07:38:21.048Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -824,14 +861,13 @@
       "from": "test:test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
       "to": "REQUIREMENT_COCKPIT-04-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
         "passed": true,
-        "at": "2026-06-12T07:38:22.826Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -848,14 +884,13 @@
       "from": "test:test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
       "to": "REQUIREMENT_COCKPIT-04-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
         "passed": true,
-        "at": "2026-06-12T07:38:24.024Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -872,14 +907,13 @@
       "from": "test:test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
       "to": "REQUIREMENT_COCKPIT-05-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
         "passed": true,
-        "at": "2026-06-12T07:38:24.887Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -896,14 +930,13 @@
       "from": "test:test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
       "to": "REQUIREMENT_COCKPIT-05-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
         "passed": true,
-        "at": "2026-06-12T07:38:25.754Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -920,14 +953,13 @@
       "from": "test:test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
       "to": "REQUIREMENT_COCKPIT-05-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
         "passed": true,
-        "at": "2026-06-12T07:38:26.677Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -944,14 +976,13 @@
       "from": "test:test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
       "to": "REQUIREMENT_COCKPIT-05-AC4",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
         "passed": true,
-        "at": "2026-06-12T07:38:27.624Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -968,14 +999,13 @@
       "from": "test:test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
       "to": "REQUIREMENT_DOCS-01-AC1",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:38:28.659Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -992,14 +1022,13 @@
       "from": "test:test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
       "to": "REQUIREMENT_DOCS-01-AC2",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
         "passed": true,
-        "at": "2026-06-12T07:38:29.883Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1016,14 +1045,13 @@
       "from": "test:test/docs-refresh.test.ts::read-only queries never create or touch documents",
       "to": "REQUIREMENT_DOCS-01-AC3",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::read-only queries never create or touch documents",
         "passed": true,
-        "at": "2026-06-12T07:38:30.803Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1040,14 +1068,13 @@
       "from": "test:test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
       "to": "REQUIREMENT_DOCS-01-AC4",
       "kind": "validates",
-      "proof": "stale",
+      "proof": "green",
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
         "passed": true,
-        "at": "2026-06-12T07:38:31.761Z",
-        "sha": "592e96b26bf01731f3336abf4fba7579837ba43a",
-        "tree": "261f20419b653ea300f518ae7438de280be27018",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1068,10 +1095,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0",
         "passed": true,
-        "at": "2026-06-13T06:35:42.205Z",
-        "sha": "f29586f48e0b1f29ed3024891da4f0087078f3a9",
-        "tree": "5e1ec7fbf18402cd0e3c8156aad4d319c9006a5d",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1085,10 +1111,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof",
         "passed": true,
-        "at": "2026-06-13T06:35:44.265Z",
-        "sha": "f29586f48e0b1f29ed3024891da4f0087078f3a9",
-        "tree": "5e1ec7fbf18402cd0e3c8156aad4d319c9006a5d",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1109,10 +1134,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof",
         "passed": true,
-        "at": "2026-06-13T06:35:46.322Z",
-        "sha": "f29586f48e0b1f29ed3024891da4f0087078f3a9",
-        "tree": "5e1ec7fbf18402cd0e3c8156aad4d319c9006a5d",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1133,10 +1157,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)",
         "passed": true,
-        "at": "2026-06-13T06:35:47.778Z",
-        "sha": "f29586f48e0b1f29ed3024891da4f0087078f3a9",
-        "tree": "5e1ec7fbf18402cd0e3c8156aad4d319c9006a5d",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1157,10 +1180,9 @@
       "lastCheck": {
         "ref": "test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern",
         "passed": true,
-        "at": "2026-06-13T06:36:01.581Z",
-        "sha": "f29586f48e0b1f29ed3024891da4f0087078f3a9",
-        "tree": "5e1ec7fbf18402cd0e3c8156aad4d319c9006a5d",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -1181,10 +1203,94 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI",
         "passed": true,
-        "at": "2026-06-13T06:36:03.654Z",
-        "sha": "f29586f48e0b1f29ed3024891da4f0087078f3a9",
-        "tree": "5e1ec7fbf18402cd0e3c8156aad4d319c9006a5d",
-        "dirty": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e62",
+      "from": "REQUIREMENT_STAMP-01-AC1",
+      "to": "REQUIREMENT_STAMP-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e63",
+      "from": "test:test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
+      "to": "REQUIREMENT_STAMP-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
+        "passed": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e64",
+      "from": "test:test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
+      "to": "REQUIREMENT_STAMP-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
+        "passed": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e65",
+      "from": "REQUIREMENT_STAMP-01-AC2",
+      "to": "REQUIREMENT_STAMP-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e66",
+      "from": "test:test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
+      "to": "REQUIREMENT_STAMP-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
+        "passed": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e67",
+      "from": "REQUIREMENT_STAMP-01-AC3",
+      "to": "REQUIREMENT_STAMP-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e68",
+      "from": "test:test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
+      "to": "REQUIREMENT_STAMP-01-AC3",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
+        "passed": true,
+        "at": "2026-06-13T06:58:11.804Z",
+        "sha": "bd032462d1284b6801140abba59040e118c75e01",
+        "tree": "1944b7593cbf9740584acdcdbbf7c7702c3a5b8c",
         "stack": "node-vitest",
         "kind": "unit"
       }

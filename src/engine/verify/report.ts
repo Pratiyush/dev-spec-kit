@@ -53,6 +53,12 @@ export function escapeTestNamePattern(name: string): string {
   return name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+/** Split a check ref "file::name" into [file, name]; name is undefined for a whole-file ref. */
+export function splitRef(ref: string): [string, string | undefined] {
+  const i = ref.indexOf("::");
+  return i === -1 ? [ref, undefined] : [ref.slice(0, i), ref.slice(i + 2)];
+}
+
 /** Parse a jest/vitest JSON report into the normalized shape both consumers use. */
 export function parseTestReport(raw: string): TestReport {
   const j = JSON.parse(raw) as {
