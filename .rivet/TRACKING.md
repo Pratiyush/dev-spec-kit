@@ -15,3 +15,4 @@
 | REQUIREMENT_TRUST-01 | a name-filtered run that matches zero tests is never a pass | 3 | 🟢🟢🟢 | done | — |
 | REQUIREMENT_TRUST-02 | flag-like and regex-special test names bind to exactly that test | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_STAMP-01 | one suite run stamps every bound criterion (kills the depth tax) | 3 | 🟢🟢🟢 | done | — |
+| REQUIREMENT_LINT-01 | static drift check flags orphaned refs before any run | 3 | 🟢🟢🟢 | done | — |

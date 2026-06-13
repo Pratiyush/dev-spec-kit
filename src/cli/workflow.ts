@@ -8,8 +8,10 @@ import {
   lintQualifiedIds,
   lintCriteriaFormat,
   requirementKind,
+  unboundObligations,
   type Requirement,
 } from "../engine/spec/ears.js";
+import { findDangling, specRefs, dedupeRefs } from "../engine/spec/lint.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -49,6 +51,53 @@ function lintIds(requirements: Requirement[], level: "warn" | "error" | "off"): 
     return false;
   }
   return true;
+}
+
+/**
+ * `rivet spec lint` — FEAT-LINT-01: static drift check, no run required. Resolves every `@check`
+ * ref (from specs AND from task bindings) against the actual test files — a missing file or a test
+ * name that no longer appears is ORPHANED (a rename Rivet would otherwise only meet at a check run).
+ * Unbound obligations (a criterion with no `@check`) are reported as UNCOVERED warnings. Orphaned
+ * refs exit 1 so a Stop/pre-commit hook can refuse to let the drift persist.
+ */
+export function specLint(): void {
+  const cwd = process.cwd();
+  const reqs = parseSpecsDir(cwd);
+  if (reqs.length === 0) {
+    console.log(pc.yellow("no specs in .rivet/specs/ — nothing to lint"));
+    return;
+  }
+  const store = new TaskStore(journal(cwd));
+  const taskRefs = [...store.all().values()].flatMap((t) =>
+    t.boundChecks.map((ref) => ({ owner: `task ${t.id}`, ref })),
+  );
+  const refs = dedupeRefs([...specRefs(reqs), ...taskRefs]);
+  const read = (rel: string): string | undefined => {
+    try {
+      return readFileSync(join(cwd, rel), "utf8");
+    } catch {
+      return undefined;
+    }
+  };
+  const dangling = findDangling(refs, read);
+  const unbound = unboundObligations(reqs);
+
+  console.log(pc.bold("\n🔎 rivet spec lint — static drift check\n"));
+  for (const d of dangling) {
+    const why = d.reason === "file-missing" ? "file not found" : "test name not in file — renamed?";
+    console.error(pc.red(`✗ ORPHANED   ${d.ref}`) + pc.dim(`  (${why}; ${d.owner})`));
+  }
+  for (const c of unbound) {
+    console.log(pc.yellow(`⚠ UNCOVERED  ${c.id}`) + pc.dim("  (criterion has no @check binding)"));
+  }
+  if (dangling.length === 0 && unbound.length === 0) {
+    console.log(pc.green("✓ clean — every @check ref resolves; every obligation is bound"));
+  } else {
+    console.log(
+      pc.dim(`\n${dangling.length} orphaned ref(s) · ${unbound.length} unbound criterion(criteria)`),
+    );
+  }
+  if (dangling.length > 0) process.exitCode = 1; // orphans are errors; unbound are warnings
 }
 
 /** `rivet spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */

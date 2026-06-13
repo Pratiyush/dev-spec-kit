@@ -55,3 +55,21 @@ SHALL leave that ref's existing proof untouched rather than fabricate or clear i
 IF a matched test only SKIPPED THEN the system SHALL NOT stamp a proof — skipped is not evidence.
 
 @check kind=unit ref=test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence
+
+## Requirement REQUIREMENT_LINT-01 — static drift check flags orphaned refs before any run
+
+WHEN `rivet spec lint` runs THEN the system SHALL resolve every `@check` ref (from specs AND task
+bindings) against the test files and report any whose file is missing, or whose test name no longer
+appears in the file, as ORPHANED — exiting non-zero so a Stop/pre-commit hook can refuse the drift.
+
+@check kind=unit ref=test/spec-lint.test.ts::flags a ref whose file is missing
+@check kind=unit ref=test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)
+
+WHEN every `@check` ref resolves THEN the system SHALL report a resolvable ref as clean.
+
+@check kind=unit ref=test/spec-lint.test.ts::passes a ref whose file and name both resolve
+
+IF a ref is a selector-only form the linter cannot statically resolve (e.g. maven `Class#method`)
+THEN the system SHALL NOT report it as orphaned — no false positives.
+
+@check kind=unit ref=test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)

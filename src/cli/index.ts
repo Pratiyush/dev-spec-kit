@@ -5,7 +5,7 @@ import { runDoctor } from "./doctor.js";
 import { runInit } from "./init.js";
 import { taskCreate, taskStart, taskDone, checkRun, status, taskTrail } from "./tasks.js";
 import { graphBuild } from "./graph.js";
-import { specTasks, approve, pr, route, guardPr, unlock } from "./workflow.js";
+import { specTasks, specLint, approve, pr, route, guardPr, unlock } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
 import { logCmd } from "./log.js";
 import { resumeCmd } from "./resume.js";
@@ -153,6 +153,12 @@ spec
   .command("tasks")
   .description("Create/sync evidence-bound tasks from .rivet/specs/*.md @check bindings (idempotent)")
   .action(safe(() => specTasks()));
+spec
+  .command("lint")
+  .description(
+    "Static drift check: orphaned @check refs (renamed/missing tests) + unbound criteria (exit 1 on orphans)",
+  )
+  .action(safe(() => specLint()));
 
 program
   .command("approve")
