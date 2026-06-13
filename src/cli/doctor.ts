@@ -1,6 +1,7 @@
 import { execSync } from "node:child_process";
 import pc from "picocolors";
 import { GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
+import { specHealth } from "./workflow.js";
 import { label } from "./emoji.js";
 
 export interface Check {
@@ -111,11 +112,31 @@ export function runDoctor(): void {
       pc.dim("      → clean up when merged: git worktree remove <path>  (wave dirs: rivet wave done <id>)"),
     );
   }
+  // FEAT-LINT-01 (feedback #1: "fold into rivet doctor") — spec drift is a health problem too.
+  let orphans = 0;
+  const health = specHealth(process.cwd());
+  if (health.hasSpecs) {
+    console.log(`\n  ${label("report")} spec health`);
+    orphans = health.dangling.length;
+    if (orphans === 0 && health.unbound.length === 0) {
+      console.log(pc.green("      ✓ every @check ref resolves; every obligation is bound"));
+    } else {
+      for (const d of health.dangling) {
+        const why = d.reason === "file-missing" ? "file not found" : "test renamed?";
+        console.log(pc.red(`      ✗ ORPHANED ${d.ref}`) + pc.dim(`  (${why}; ${d.owner})`));
+      }
+      for (const c of health.unbound) {
+        console.log(pc.yellow(`      ⚠ UNCOVERED ${c.id}`) + pc.dim("  (no @check)"));
+      }
+      console.log(pc.dim("      → run `rivet spec lint` / `rivet spec tasks` to fix"));
+    }
+  }
   console.log("");
-  if (missingRequired > 0) {
-    console.log(pc.red(`${missingRequired} required prerequisite(s) missing.`));
+  if (missingRequired > 0 || orphans > 0) {
+    if (missingRequired > 0) console.log(pc.red(`${missingRequired} required prerequisite(s) missing.`));
+    if (orphans > 0) console.log(pc.red(`${orphans} orphaned @check ref(s) — the spec has drifted.`));
     process.exitCode = 1;
   } else {
-    console.log(pc.green("All required prerequisites present."));
+    console.log(pc.green("All required prerequisites present; spec is in sync."));
   }
 }

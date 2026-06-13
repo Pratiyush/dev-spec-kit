@@ -61,13 +61,17 @@ function lintIds(requirements: Requirement[], level: "warn" | "error" | "off"): 
  * Unbound obligations (a criterion with no `@check`) are reported as UNCOVERED warnings. Orphaned
  * refs exit 1 so a Stop/pre-commit hook can refuse to let the drift persist.
  */
-export function specLint(): void {
-  const cwd = process.cwd();
+export interface SpecHealth {
+  hasSpecs: boolean;
+  dangling: ReturnType<typeof findDangling>;
+  unbound: ReturnType<typeof unboundObligations>;
+}
+
+/** Collect drift findings (orphaned @check refs + unbound criteria). Shared by `spec lint` (which
+ *  prints + exits) and `rivet doctor` (which folds it into the health check, feedback #1). */
+export function specHealth(cwd: string): SpecHealth {
   const reqs = parseSpecsDir(cwd);
-  if (reqs.length === 0) {
-    console.log(pc.yellow("no specs in .rivet/specs/ — nothing to lint"));
-    return;
-  }
+  if (reqs.length === 0) return { hasSpecs: false, dangling: [], unbound: [] };
   const store = new TaskStore(journal(cwd));
   const taskRefs = [...store.all().values()].flatMap((t) =>
     t.boundChecks.map((ref) => ({ owner: `task ${t.id}`, ref })),
@@ -80,9 +84,15 @@ export function specLint(): void {
       return undefined;
     }
   };
-  const dangling = findDangling(refs, read);
-  const unbound = unboundObligations(reqs);
+  return { hasSpecs: true, dangling: findDangling(refs, read), unbound: unboundObligations(reqs) };
+}
 
+export function specLint(): void {
+  const { hasSpecs, dangling, unbound } = specHealth(process.cwd());
+  if (!hasSpecs) {
+    console.log(pc.yellow("no specs in .rivet/specs/ — nothing to lint"));
+    return;
+  }
   console.log(pc.bold("\n🔎 rivet spec lint — static drift check\n"));
   for (const d of dangling) {
     const why = d.reason === "file-missing" ? "file not found" : "test name not in file — renamed?";
