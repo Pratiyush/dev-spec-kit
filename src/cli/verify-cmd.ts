@@ -8,7 +8,7 @@ import { runVerify, type VerifyRun } from "../engine/verify/verify-all.js";
 import { identityLabel } from "../engine/verify/stamp.js";
 import { parseTestReport, type TestReport } from "../engine/verify/report.js";
 import { matchProofs, type BatchBinding } from "../engine/verify/stamp-batch.js";
-import { TaskStore } from "../engine/state/tasks.js";
+import { TaskStore, provableTaskIds } from "../engine/state/tasks.js";
 import { parseSpecsDir } from "../engine/spec/parse.js";
 import { kindForRef } from "../engine/spec/ears.js";
 import { refreshDocs } from "./refresh-docs.js";
@@ -24,10 +24,12 @@ import { label } from "./emoji.js";
  * (one `vitest run` stamps N proofs) — the fast path that finally satisfies `trace`, instead of N
  * cold `check run`s. The verify step still runs once; the report is the only extra cost.
  */
-export function verifyCmd(opts?: { stamp?: boolean }): void {
+export function verifyCmd(opts?: { stamp?: boolean; advance?: boolean }): void {
   const cwd = process.cwd();
   const config = loadConfig(cwd);
-  const stamp = opts?.stamp ?? false;
+  // --advance reconciles the two surfaces (#7): it needs fresh proofs, so it implies --stamp.
+  const advance = opts?.advance ?? false;
+  const stamp = (opts?.stamp ?? false) || advance;
   console.log(
     pc.bold(
       `\n${label("build")} rivet verify — build ALL + run ALL kinds (full suites)` +
@@ -67,6 +69,7 @@ export function verifyCmd(opts?: { stamp?: boolean }): void {
       ...(run.sha ? { sha: run.sha } : {}),
     });
     if (stamp) stampProofs(cwd, config, journal, run);
+    if (advance) advanceTasks(cwd, config, journal, run);
     if (!run.passed) process.exitCode = 1;
   } finally {
     if (reportDir) rmSync(reportDir, { recursive: true, force: true });
@@ -115,5 +118,21 @@ function stampProofs(cwd: string, config: RivetConfig, journal: Journal, run: Ve
     `\n${label("checkRun")} stamped ${proofs.length} proof(s) from 1 run — ` +
       `${pc.green(`${green} green`)}${red ? `, ${pc.red(`${red} red`)}` : ""}` +
       (unstamped > 0 ? pc.dim(`; ${unstamped} ref(s) not in the JS suite (unchanged)`) : ""),
+  );
+}
+
+/**
+ * FIX-RECONCILE-01 — auto-advance every task whose bound checks are now all freshly green, so `trace`
+ * (criteria) and `status` (tasks) stop disagreeing. Reuses the done-gate's own evidence rule, so it
+ * only advances what `task done` would have accepted anyway — the human approval step still follows.
+ */
+function advanceTasks(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
+  const store = new TaskStore(journal);
+  const ids = provableTaskIds([...store.all().values()], run.tree);
+  if (ids.length === 0) return;
+  for (const id of ids) store.markDone(id);
+  refreshDocs(cwd, config);
+  console.log(
+    `${label("checkRun")} advanced ${ids.length} fully-proven task(s) to done — ${pc.dim(ids.join(", "))}`,
   );
 }

@@ -102,3 +102,17 @@ IF a criterion already binds a check (or the requirement is an ADR decision reco
 SHALL NOT draft a stub for it — drafting is only for unmet obligations.
 
 @check kind=unit ref=test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records
+
+## Requirement REQUIREMENT_RECONCILE-01 — verify --stamp --advance reconciles trace with status
+
+WHEN `rivet verify --stamp --advance` runs AND a not-done task has a fresh passing proof for every
+bound check THEN the system SHALL advance that task to done, so `trace` (criteria) and `status`
+(tasks) stop disagreeing (feedback #7: "trace green while 34 tasks TODO").
+
+@check kind=unit ref=test/done-msg.test.ts::advances a not-done task whose every check is green on the current tree
+@check kind=unit ref=test/done-msg.test.ts::never re-advances an already-done task
+
+IF any bound check is missing, failing, or proven on an OLDER tree THEN the system SHALL NOT advance
+the task — only fully and freshly proven work qualifies (it reuses the done-gate's own evidence).
+
+@check kind=unit ref=test/done-msg.test.ts::does NOT advance a task proven on an OLDER tree (stale)

@@ -18,3 +18,4 @@
 | REQUIREMENT_LINT-01 | static drift check flags orphaned refs before any run | 3 | 🟢🟢🟢 | done | — |
 | REQUIREMENT_DONE-01 | the done-gate tells a stale binding apart from a missing proof | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_DRAFT-01 | draft-tests scaffolds a failing, bound stub per unbound criterion | 2 | 🟢🟢 | done | — |
+| REQUIREMENT_RECONCILE-01 | verify --stamp --advance reconciles trace with status | 2 | 🟢🟢 | done | — |
