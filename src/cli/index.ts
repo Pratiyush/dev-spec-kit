@@ -47,6 +47,9 @@ const program = new Command();
 
 // R-AUDIT-01: every invocation inside a Rivet project lands in the journal (no-op elsewhere).
 program.hook("preAction", (_thisCommand, actionCommand) => {
+  // RIVET_NO_AUDIT=1 suppresses the audit write — set by the pre-commit gate so a read-only
+  // `spec lint` run doesn't dirty the journal on every commit (the hook would never settle).
+  if (process.env.RIVET_NO_AUDIT === "1") return;
   const path: string[] = [];
   for (let c: Command | null = actionCommand; c && c.name() !== "rivet"; c = c.parent) path.unshift(c.name());
   try {
