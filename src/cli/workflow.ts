@@ -12,6 +12,7 @@ import {
   type Requirement,
 } from "../engine/spec/ears.js";
 import { findDangling, specRefs, dedupeRefs } from "../engine/spec/lint.js";
+import { draftStubs, describeBlock, type DraftStub } from "../engine/spec/draft.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -98,6 +99,65 @@ export function specLint(): void {
     );
   }
   if (dangling.length > 0) process.exitCode = 1; // orphans are errors; unbound are warnings
+}
+
+/**
+ * `rivet spec draft-tests` — FEAT-DRAFT-01: the rule→test loop `acceptanceCriteria: "tool-drafts"`
+ * promises. For every UNBOUND criterion, write a FAILING vitest stub (carrying the criterion text +
+ * the edge-case mandate) and print the `@check` line to bind it. Idempotent: a stub whose name is
+ * already in the target file is skipped. The agent then fills the body; `spec tasks` + `verify
+ * --stamp` prove it. We print the bindings rather than editing the spec — the spec is yours to edit.
+ */
+export function specDraftTests(): void {
+  const cwd = process.cwd();
+  const reqs = parseSpecsDir(cwd);
+  if (reqs.length === 0) {
+    console.log(pc.yellow("no specs in .rivet/specs/ — write one first (EARS + criteria)"));
+    return;
+  }
+  const stubs = draftStubs(reqs);
+  if (stubs.length === 0) {
+    console.log(pc.green("✓ every criterion is already bound — nothing to draft"));
+    return;
+  }
+  console.log(pc.bold("\n✍️  rivet spec draft-tests — failing stubs for unbound criteria\n"));
+  const byFile = new Map<string, DraftStub[]>();
+  for (const s of stubs) {
+    const arr = byFile.get(s.file);
+    if (arr) arr.push(s);
+    else byFile.set(s.file, [s]);
+  }
+  let written = 0;
+  const checkLines: string[] = [];
+  for (const [file, fileStubs] of byFile) {
+    const abs = join(cwd, file);
+    const existing = existsSync(abs) ? readFileSync(abs, "utf8") : null;
+    const fresh = fileStubs.filter((s) => !existing?.includes(`it(${JSON.stringify(s.name)}`));
+    if (fresh.length === 0) {
+      console.log(pc.dim(`= ${file} — all ${fileStubs.length} stub(s) already present`));
+      continue;
+    }
+    const byReq = new Map<string, DraftStub[]>();
+    for (const s of fresh) {
+      const arr = byReq.get(s.reqId);
+      if (arr) arr.push(s);
+      else byReq.set(s.reqId, [s]);
+    }
+    const blocks = [...byReq.entries()].map(([reqId, ss]) => describeBlock(reqId, ss)).join("\n\n");
+    if (existing === null) {
+      writeFileSync(abs, `import { describe, it, expect } from "vitest";\n\n${blocks}\n`);
+      console.log(pc.green(`+ ${file}`) + pc.dim(` — created with ${fresh.length} stub(s)`));
+    } else {
+      writeFileSync(abs, `${existing.replace(/\s*$/, "")}\n\n${blocks}\n`);
+      console.log(pc.green(`+ ${file}`) + pc.dim(` — appended ${fresh.length} stub(s)`));
+    }
+    written += fresh.length;
+    for (const s of fresh) checkLines.push(`  ${s.reqId} → @check kind=unit ref=${s.checkRef}`);
+  }
+  if (written === 0) return;
+  console.log(pc.bold(`\n${written} stub(s) drafted (all failing). Add these @check bindings to the spec:`));
+  for (const l of checkLines) console.log(pc.dim(l));
+  console.log(pc.dim("\nthen fill the stub bodies, `rivet spec tasks`, and `rivet verify --stamp`."));
 }
 
 /** `rivet spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */

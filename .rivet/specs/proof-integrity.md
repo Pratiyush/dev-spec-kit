@@ -87,3 +87,18 @@ WHEN a task's bound refs match the spec (order aside) THEN the system SHALL repo
 a genuinely-unproven task is NOT misreported as a binding problem.
 
 @check kind=unit ref=test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)
+
+## Requirement REQUIREMENT_DRAFT-01 — draft-tests scaffolds a failing, bound stub per unbound criterion
+
+WHEN `rivet spec draft-tests` runs on a requirement with an unbound criterion THEN the system SHALL
+emit a FAILING test stub (named from the criterion's clause, carrying the criterion text + the
+edge-case mandate) plus the `@check` ref that binds it — the rule→test→proof loop the config's
+`acceptanceCriteria: "tool-drafts"` mode promises but never delivered.
+
+@check kind=unit ref=test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate
+@check kind=unit ref=test/draft.test.ts::takes the SHALL clause and drops 'the system'
+
+IF a criterion already binds a check (or the requirement is an ADR decision record) THEN the system
+SHALL NOT draft a stub for it — drafting is only for unmet obligations.
+
+@check kind=unit ref=test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records

@@ -3,7 +3,7 @@ window.RIVET = {
     "project": "rivet",
     "tagline": "evidence-bound delivery",
     "configPath": ".rivet/config.json",
-    "generatedAt": "2026-06-13T07:46:36.204Z",
+    "generatedAt": "2026-06-13T07:51:44.586Z",
     "serverMode": false,
     "refreshSeconds": 15,
     "inFlightTasks": []
@@ -53,11 +53,11 @@ window.RIVET = {
   ],
   "dashboard": {
     "completion": {
-      "done": 67,
-      "total": 67
+      "done": 68,
+      "total": 68
     },
     "validates": {
-      "green": 42,
+      "green": 45,
       "red": 0,
       "stale": 0,
       "unproven": 0
@@ -75,7 +75,7 @@ window.RIVET = {
         "results": {
           "test/workflow.test.ts::want-signals veto research routing": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -89,7 +89,7 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::audits cli invocations into the journal": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -104,7 +104,7 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders the audit trail with per-type emoji": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -119,7 +119,7 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -134,7 +134,7 @@ window.RIVET = {
         "results": {
           "test/workflow.test.ts::worst-of coverage in the PR body": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -148,7 +148,7 @@ window.RIVET = {
         "results": {
           "test/proof-identity.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -162,7 +162,7 @@ window.RIVET = {
         "results": {
           "test/robust.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -176,7 +176,7 @@ window.RIVET = {
         "results": {
           "test/spec-sync.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -190,7 +190,7 @@ window.RIVET = {
         "results": {
           "test/gate.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -204,7 +204,7 @@ window.RIVET = {
         "results": {
           "test/protect.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -218,7 +218,7 @@ window.RIVET = {
         "results": {
           "test/parse-fix.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -232,7 +232,7 @@ window.RIVET = {
         "results": {
           "test/query-fix.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -246,7 +246,7 @@ window.RIVET = {
         "results": {
           "test/audit-meta.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -260,7 +260,7 @@ window.RIVET = {
         "results": {
           "test/finish-skill.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -274,7 +274,7 @@ window.RIVET = {
         "results": {
           "test/gate-facts.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -288,7 +288,7 @@ window.RIVET = {
         "results": {
           "test/gate-packs.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -302,7 +302,7 @@ window.RIVET = {
         "results": {
           "test/compact.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -316,7 +316,7 @@ window.RIVET = {
         "results": {
           "test/skill-qa.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -330,7 +330,7 @@ window.RIVET = {
         "results": {
           "test/scale.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -344,7 +344,7 @@ window.RIVET = {
         "results": {
           "test/runners-kind.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -358,7 +358,7 @@ window.RIVET = {
         "results": {
           "test/skill-qa.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -372,7 +372,7 @@ window.RIVET = {
         "results": {
           "test/boards.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -386,7 +386,7 @@ window.RIVET = {
         "results": {
           "test/wave.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -400,7 +400,7 @@ window.RIVET = {
         "results": {
           "test/steering.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -414,7 +414,7 @@ window.RIVET = {
         "results": {
           "test/learnwarn.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -428,7 +428,7 @@ window.RIVET = {
         "results": {
           "test/wave-done.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -442,7 +442,7 @@ window.RIVET = {
         "results": {
           "test/dashboard.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -456,7 +456,7 @@ window.RIVET = {
         "results": {
           "test/files-tab.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -470,7 +470,7 @@ window.RIVET = {
         "results": {
           "test/readme.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -484,7 +484,7 @@ window.RIVET = {
         "results": {
           "test/proof-identity.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -498,7 +498,7 @@ window.RIVET = {
         "results": {
           "test/trail.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -512,7 +512,7 @@ window.RIVET = {
         "results": {
           "test/dashboard.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -526,7 +526,7 @@ window.RIVET = {
         "results": {
           "test/doctor-fix.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -540,7 +540,7 @@ window.RIVET = {
         "results": {
           "test/stacknames.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -554,7 +554,7 @@ window.RIVET = {
         "results": {
           "test/proof-display.test.ts::stamps the tree identity, not the commit sha": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -568,7 +568,7 @@ window.RIVET = {
         "results": {
           "test/proof-display.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -582,7 +582,7 @@ window.RIVET = {
         "results": {
           "test/doctor-fix.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -596,7 +596,7 @@ window.RIVET = {
         "results": {
           "test/qualified-ids.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -611,12 +611,12 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::audits cli invocations into the journal": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cli-ux.test.ts::does not create journals outside Rivet projects": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -632,12 +632,12 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders the audit trail with per-type emoji": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -653,12 +653,12 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -673,7 +673,7 @@ window.RIVET = {
         "results": {
           "test/gherkin.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -687,7 +687,7 @@ window.RIVET = {
         "results": {
           "test/cli-ux.test.ts::does not create journals outside Rivet projects": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -702,7 +702,7 @@ window.RIVET = {
         "results": {
           "test/default-stack.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -716,7 +716,7 @@ window.RIVET = {
         "results": {
           "test/task-report.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -730,7 +730,7 @@ window.RIVET = {
         "results": {
           "test/emoji.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -744,7 +744,7 @@ window.RIVET = {
         "results": {
           "test/verify-cmd.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -758,7 +758,7 @@ window.RIVET = {
         "results": {
           "test/stacknames.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -772,7 +772,7 @@ window.RIVET = {
         "results": {
           "test/init-practices.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -786,7 +786,7 @@ window.RIVET = {
         "results": {
           "test/readme.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -801,11 +801,11 @@ window.RIVET = {
         "results": {
           "test/pr-flush-warn.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           },
           "test/doctor-fix.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -825,7 +825,7 @@ window.RIVET = {
           },
           "test/revitify-contract.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -839,7 +839,7 @@ window.RIVET = {
         "results": {
           "test/revitify-contract.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -853,7 +853,7 @@ window.RIVET = {
         "results": {
           "test/stale-done.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -869,17 +869,17 @@ window.RIVET = {
         "results": {
           "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -896,17 +896,17 @@ window.RIVET = {
         "results": {
           "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -922,12 +922,12 @@ window.RIVET = {
         "results": {
           "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -943,12 +943,12 @@ window.RIVET = {
         "results": {
           "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -966,22 +966,22 @@ window.RIVET = {
         "results": {
           "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -999,22 +999,22 @@ window.RIVET = {
         "results": {
           "test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/docs-refresh.test.ts::read-only queries never create or touch documents": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -1029,7 +1029,7 @@ window.RIVET = {
         "results": {
           "test/cockpit-hardening.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -1043,7 +1043,7 @@ window.RIVET = {
         "results": {
           "test/cockpit-assets.test.ts": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z"
+            "at": "2026-06-13T07:51:43.133Z"
           }
         }
       },
@@ -1060,22 +1060,22 @@ window.RIVET = {
         "results": {
           "test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -1091,12 +1091,12 @@ window.RIVET = {
         "results": {
           "test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -1114,22 +1114,22 @@ window.RIVET = {
         "results": {
           "test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -1147,22 +1147,22 @@ window.RIVET = {
         "results": {
           "test/spec-lint.test.ts::flags a ref whose file is missing": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/spec-lint.test.ts::passes a ref whose file and name both resolve": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -1179,17 +1179,44 @@ window.RIVET = {
         "results": {
           "test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/done-msg.test.ts::is out of sync when the counts differ": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           },
           "test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)": {
             "passed": true,
-            "at": "2026-06-13T07:46:34.740Z",
+            "at": "2026-06-13T07:51:43.133Z",
+            "kind": "unit"
+          }
+        }
+      },
+      {
+        "id": "REQUIREMENT_DRAFT-01",
+        "title": "draft-tests scaffolds a failing, bound stub per unbound criterion",
+        "status": "done",
+        "boundChecks": [
+          "test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate",
+          "test/draft.test.ts::takes the SHALL clause and drops 'the system'",
+          "test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records"
+        ],
+        "results": {
+          "test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate": {
+            "passed": true,
+            "at": "2026-06-13T07:51:43.133Z",
+            "kind": "unit"
+          },
+          "test/draft.test.ts::takes the SHALL clause and drops 'the system'": {
+            "passed": true,
+            "at": "2026-06-13T07:51:43.133Z",
+            "kind": "unit"
+          },
+          "test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records": {
+            "passed": true,
+            "at": "2026-06-13T07:51:43.133Z",
             "kind": "unit"
           }
         }
@@ -1452,6 +1479,21 @@ window.RIVET = {
             "proof": "green"
           }
         ]
+      },
+      {
+        "id": "REQUIREMENT_DRAFT-01",
+        "title": "draft-tests scaffolds a failing, bound stub per unbound criterion",
+        "proven": true,
+        "criteria": [
+          {
+            "id": "AC1",
+            "proof": "green"
+          },
+          {
+            "id": "AC2",
+            "proof": "green"
+          }
+        ]
       }
     ],
     "approvals": [
@@ -1552,155 +1594,155 @@ window.RIVET = {
     ],
     "activity": [
       {
-        "at": "2026-06-13T07:46:35.906Z",
+        "at": "2026-06-13T07:51:44.289Z",
         "icon": "🏁",
-        "text": "task REQUIREMENT_DONE-01 → done"
+        "text": "task REQUIREMENT_DRAFT-01 → done"
       },
       {
-        "at": "2026-06-13T07:46:35.844Z",
+        "at": "2026-06-13T07:51:44.225Z",
         "icon": "🧾",
-        "text": "task done REQUIREMENT_DONE-01",
+        "text": "task done REQUIREMENT_DRAFT-01",
         "meta": "Pratiyush Kumar Singh"
       },
       {
-        "at": "2026-06-13T07:46:34.915Z",
+        "at": "2026-06-13T07:51:43.318Z",
+        "icon": "✅",
+        "text": "check test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records → REQUIREMENT_DRAFT-01"
+      },
+      {
+        "at": "2026-06-13T07:51:43.316Z",
+        "icon": "✅",
+        "text": "check test/draft.test.ts::takes the SHALL clause and drops 'the system' → REQUIREMENT_DRAFT-01"
+      },
+      {
+        "at": "2026-06-13T07:51:43.314Z",
+        "icon": "✅",
+        "text": "check test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate → REQUIREMENT_DRAFT-01"
+      },
+      {
+        "at": "2026-06-13T07:51:43.312Z",
         "icon": "✅",
         "text": "check test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent) → REQUIREMENT_DONE-01"
       },
       {
-        "at": "2026-06-13T07:46:34.913Z",
+        "at": "2026-06-13T07:51:43.310Z",
         "icon": "✅",
         "text": "check test/done-msg.test.ts::is out of sync when the counts differ → REQUIREMENT_DONE-01"
       },
       {
-        "at": "2026-06-13T07:46:34.911Z",
+        "at": "2026-06-13T07:51:43.309Z",
         "icon": "✅",
         "text": "check test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new) → REQUIREMENT_DONE-01"
       },
       {
-        "at": "2026-06-13T07:46:34.909Z",
+        "at": "2026-06-13T07:51:43.307Z",
         "icon": "✅",
         "text": "check test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method) → REQUIREMENT_LINT-01"
       },
       {
-        "at": "2026-06-13T07:46:34.908Z",
+        "at": "2026-06-13T07:51:43.305Z",
         "icon": "✅",
         "text": "check test/spec-lint.test.ts::passes a ref whose file and name both resolve → REQUIREMENT_LINT-01"
       },
       {
-        "at": "2026-06-13T07:46:34.906Z",
+        "at": "2026-06-13T07:51:43.303Z",
         "icon": "✅",
         "text": "check test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename) → REQUIREMENT_LINT-01"
       },
       {
-        "at": "2026-06-13T07:46:34.904Z",
+        "at": "2026-06-13T07:51:43.301Z",
         "icon": "✅",
         "text": "check test/spec-lint.test.ts::flags a ref whose file is missing → REQUIREMENT_LINT-01"
       },
       {
-        "at": "2026-06-13T07:46:34.902Z",
+        "at": "2026-06-13T07:51:43.299Z",
         "icon": "✅",
         "text": "check test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence → REQUIREMENT_STAMP-01"
       },
       {
-        "at": "2026-06-13T07:46:34.900Z",
+        "at": "2026-06-13T07:51:43.297Z",
         "icon": "✅",
         "text": "check test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run) → REQUIREMENT_STAMP-01"
       },
       {
-        "at": "2026-06-13T07:46:34.898Z",
+        "at": "2026-06-13T07:51:43.295Z",
         "icon": "✅",
         "text": "check test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run) → REQUIREMENT_STAMP-01"
       },
       {
-        "at": "2026-06-13T07:46:34.897Z",
+        "at": "2026-06-13T07:51:43.293Z",
         "icon": "✅",
         "text": "check test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind → REQUIREMENT_STAMP-01"
       },
       {
-        "at": "2026-06-13T07:46:34.895Z",
+        "at": "2026-06-13T07:51:43.291Z",
         "icon": "✅",
         "text": "check test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI → REQUIREMENT_TRUST-02"
       },
       {
-        "at": "2026-06-13T07:46:34.893Z",
+        "at": "2026-06-13T07:51:43.289Z",
         "icon": "✅",
         "text": "check test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern → REQUIREMENT_TRUST-02"
       },
       {
-        "at": "2026-06-13T07:46:34.891Z",
+        "at": "2026-06-13T07:51:43.287Z",
         "icon": "✅",
         "text": "check test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash) → REQUIREMENT_TRUST-01"
       },
       {
-        "at": "2026-06-13T07:46:34.889Z",
+        "at": "2026-06-13T07:51:43.285Z",
         "icon": "✅",
         "text": "check test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof → REQUIREMENT_TRUST-01"
       },
       {
-        "at": "2026-06-13T07:46:34.888Z",
+        "at": "2026-06-13T07:51:43.283Z",
         "icon": "✅",
         "text": "check test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof → REQUIREMENT_TRUST-01"
       },
       {
-        "at": "2026-06-13T07:46:34.886Z",
+        "at": "2026-06-13T07:51:43.281Z",
         "icon": "✅",
         "text": "check test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0 → REQUIREMENT_TRUST-01"
       },
       {
-        "at": "2026-06-13T07:46:34.884Z",
+        "at": "2026-06-13T07:51:43.279Z",
         "icon": "✅",
         "text": "check test/cockpit-assets.test.ts → FIX-COCKPIT-ASSETS-01"
       },
       {
-        "at": "2026-06-13T07:46:34.882Z",
+        "at": "2026-06-13T07:51:43.278Z",
         "icon": "✅",
         "text": "check test/cockpit-hardening.test.ts → FIX-COCKPIT-SEC-01"
       },
       {
-        "at": "2026-06-13T07:46:34.880Z",
+        "at": "2026-06-13T07:51:43.276Z",
         "icon": "✅",
         "text": "check test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar → REQUIREMENT_DOCS-01"
       },
       {
-        "at": "2026-06-13T07:46:34.879Z",
+        "at": "2026-06-13T07:51:43.274Z",
         "icon": "✅",
         "text": "check test/docs-refresh.test.ts::read-only queries never create or touch documents → REQUIREMENT_DOCS-01"
       },
       {
-        "at": "2026-06-13T07:46:34.877Z",
+        "at": "2026-06-13T07:51:43.272Z",
         "icon": "✅",
         "text": "check test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving → REQUIREMENT_DOCS-01"
       },
       {
-        "at": "2026-06-13T07:46:34.875Z",
+        "at": "2026-06-13T07:51:43.270Z",
         "icon": "✅",
         "text": "check test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar → REQUIREMENT_DOCS-01"
       },
       {
-        "at": "2026-06-13T07:46:34.873Z",
+        "at": "2026-06-13T07:51:43.268Z",
         "icon": "✅",
         "text": "check test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode → REQUIREMENT_COCKPIT-05"
       },
       {
-        "at": "2026-06-13T07:46:34.872Z",
+        "at": "2026-06-13T07:51:43.267Z",
         "icon": "✅",
         "text": "check test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-13T07:46:34.869Z",
-        "icon": "✅",
-        "text": "check test/cockpit-server.test.ts::an invalid POST returns field errors and never writes → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-13T07:46:34.868Z",
-        "icon": "✅",
-        "text": "check test/cockpit-server.test.ts::a valid POST saves config.json and journals governance → REQUIREMENT_COCKPIT-05"
-      },
-      {
-        "at": "2026-06-13T07:46:34.866Z",
-        "icon": "✅",
-        "text": "check test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events → REQUIREMENT_COCKPIT-04"
       }
     ],
     "files": [
@@ -1738,19 +1780,19 @@ window.RIVET = {
       },
       {
         "name": "specs/proof-integrity.md",
-        "content": "# Feature: Proof-layer integrity — the green light cannot lie\n\n> User story: As a Rivet user, I want a \"green\" check to mean a test actually executed and passed —\n> never a vacuous pass from a name that matched nothing, and never a crash from a flag-like test\n> name — so that the Verified Traceability Graph's edges are trustworthy by construction.\n> Intake: dogfood feedback 2026-06-13 — \"a bad -t match can silently pass with 0 tests, which is\n> worse than failing\"; \"vitest -t swallows ---prefixed names (CACError) … I had to rename the test.\"\n\n## Requirement REQUIREMENT_TRUST-01 — a name-filtered run that matches zero tests is never a pass\n\nWHEN a bound check runs a JS test runner (vitest/jest) with a `::name` selector AND the name matches\nno test THEN the system SHALL record the proof as FAILED, because a run in which zero tests executed\nproves nothing — an exit-0 \"no test matched\" is the most corrosive possible false-green.\n\n@check kind=unit ref=test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0\n@check kind=unit ref=test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof\n\nWHEN the named test exists and passes THEN the system SHALL record the proof as PASSED.\n\n@check kind=unit ref=test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof\n\nIF the JS runner exits 0 but writes no JSON report THEN the system SHALL refuse to record a proof\n(treat it as a tooling failure) rather than infer a green it cannot confirm.\n\n@check kind=unit ref=test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)\n\n## Requirement REQUIREMENT_TRUST-02 — flag-like and regex-special test names bind to exactly that test\n\nWHEN a check ref names a test whose name begins with `-` or contains regex metacharacters THEN the\nsystem SHALL pass it to the runner as an escaped `--testNamePattern=\u003cvalue>` (equals form) so the\nrunner's CLI parser binds that exact test and never reads the name as an option.\n\n@check kind=unit ref=test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern\n\nIF a test name begins with `-` THEN the system SHALL NOT crash the runner CLI (the old `-t \u003cname>`\nform raised \"Unknown option\"); the bound check SHALL still resolve to a passing proof.\n\n@check kind=unit ref=test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI\n\n## Requirement REQUIREMENT_STAMP-01 — one suite run stamps every bound criterion (kills the depth tax)\n\nWHEN `rivet verify --stamp` runs THEN the system SHALL execute the test suite ONCE and record a\npassing/failing `check.run` proof for every bound criterion whose test appears in the run, stamped\nwith the same code tree the suite ran on — so `trace` reads them green without a per-criterion\nre-run (proving N criteria must cost one run, not N cold `check run`s).\n\n@check kind=unit ref=test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind\n@check kind=unit ref=test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)\n\nIF a bound ref names a test NOT present in the run (another runner, or renamed away) THEN the system\nSHALL leave that ref's existing proof untouched rather than fabricate or clear it.\n\n@check kind=unit ref=test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)\n\nIF a matched test only SKIPPED THEN the system SHALL NOT stamp a proof — skipped is not evidence.\n\n@check kind=unit ref=test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence\n\n## Requirement REQUIREMENT_LINT-01 — static drift check flags orphaned refs before any run\n\nWHEN `rivet spec lint` runs THEN the system SHALL resolve every `@check` ref (from specs AND task\nbindings) against the test files and report any whose file is missing, or whose test name no longer\nappears in the file, as ORPHANED — exiting non-zero so a Stop/pre-commit hook can refuse the drift.\n\n@check kind=unit ref=test/spec-lint.test.ts::flags a ref whose file is missing\n@check kind=unit ref=test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)\n\nWHEN every `@check` ref resolves THEN the system SHALL report a resolvable ref as clean.\n\n@check kind=unit ref=test/spec-lint.test.ts::passes a ref whose file and name both resolve\n\nIF a ref is a selector-only form the linter cannot statically resolve (e.g. maven `Class#method`)\nTHEN the system SHALL NOT report it as orphaned — no false positives.\n\n@check kind=unit ref=test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)\n\n## Requirement REQUIREMENT_DONE-01 — the done-gate tells a stale binding apart from a missing proof\n\nWHEN a task's bound `@check` refs no longer match its requirement's current spec refs THEN the\nsystem SHALL report the binding as out of sync — so the done-gate points at `rivet spec tasks`\n(re-sync) instead of telling the user to re-run a ref that no longer exists.\n\n@check kind=unit ref=test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)\n@check kind=unit ref=test/done-msg.test.ts::is out of sync when the counts differ\n\nWHEN a task's bound refs match the spec (order aside) THEN the system SHALL report them in sync, so\na genuinely-unproven task is NOT misreported as a binding problem.\n\n@check kind=unit ref=test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)\n"
+        "content": "# Feature: Proof-layer integrity — the green light cannot lie\n\n> User story: As a Rivet user, I want a \"green\" check to mean a test actually executed and passed —\n> never a vacuous pass from a name that matched nothing, and never a crash from a flag-like test\n> name — so that the Verified Traceability Graph's edges are trustworthy by construction.\n> Intake: dogfood feedback 2026-06-13 — \"a bad -t match can silently pass with 0 tests, which is\n> worse than failing\"; \"vitest -t swallows ---prefixed names (CACError) … I had to rename the test.\"\n\n## Requirement REQUIREMENT_TRUST-01 — a name-filtered run that matches zero tests is never a pass\n\nWHEN a bound check runs a JS test runner (vitest/jest) with a `::name` selector AND the name matches\nno test THEN the system SHALL record the proof as FAILED, because a run in which zero tests executed\nproves nothing — an exit-0 \"no test matched\" is the most corrosive possible false-green.\n\n@check kind=unit ref=test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0\n@check kind=unit ref=test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof\n\nWHEN the named test exists and passes THEN the system SHALL record the proof as PASSED.\n\n@check kind=unit ref=test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof\n\nIF the JS runner exits 0 but writes no JSON report THEN the system SHALL refuse to record a proof\n(treat it as a tooling failure) rather than infer a green it cannot confirm.\n\n@check kind=unit ref=test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)\n\n## Requirement REQUIREMENT_TRUST-02 — flag-like and regex-special test names bind to exactly that test\n\nWHEN a check ref names a test whose name begins with `-` or contains regex metacharacters THEN the\nsystem SHALL pass it to the runner as an escaped `--testNamePattern=\u003cvalue>` (equals form) so the\nrunner's CLI parser binds that exact test and never reads the name as an option.\n\n@check kind=unit ref=test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern\n\nIF a test name begins with `-` THEN the system SHALL NOT crash the runner CLI (the old `-t \u003cname>`\nform raised \"Unknown option\"); the bound check SHALL still resolve to a passing proof.\n\n@check kind=unit ref=test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI\n\n## Requirement REQUIREMENT_STAMP-01 — one suite run stamps every bound criterion (kills the depth tax)\n\nWHEN `rivet verify --stamp` runs THEN the system SHALL execute the test suite ONCE and record a\npassing/failing `check.run` proof for every bound criterion whose test appears in the run, stamped\nwith the same code tree the suite ran on — so `trace` reads them green without a per-criterion\nre-run (proving N criteria must cost one run, not N cold `check run`s).\n\n@check kind=unit ref=test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind\n@check kind=unit ref=test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)\n\nIF a bound ref names a test NOT present in the run (another runner, or renamed away) THEN the system\nSHALL leave that ref's existing proof untouched rather than fabricate or clear it.\n\n@check kind=unit ref=test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)\n\nIF a matched test only SKIPPED THEN the system SHALL NOT stamp a proof — skipped is not evidence.\n\n@check kind=unit ref=test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence\n\n## Requirement REQUIREMENT_LINT-01 — static drift check flags orphaned refs before any run\n\nWHEN `rivet spec lint` runs THEN the system SHALL resolve every `@check` ref (from specs AND task\nbindings) against the test files and report any whose file is missing, or whose test name no longer\nappears in the file, as ORPHANED — exiting non-zero so a Stop/pre-commit hook can refuse the drift.\n\n@check kind=unit ref=test/spec-lint.test.ts::flags a ref whose file is missing\n@check kind=unit ref=test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)\n\nWHEN every `@check` ref resolves THEN the system SHALL report a resolvable ref as clean.\n\n@check kind=unit ref=test/spec-lint.test.ts::passes a ref whose file and name both resolve\n\nIF a ref is a selector-only form the linter cannot statically resolve (e.g. maven `Class#method`)\nTHEN the system SHALL NOT report it as orphaned — no false positives.\n\n@check kind=unit ref=test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)\n\n## Requirement REQUIREMENT_DONE-01 — the done-gate tells a stale binding apart from a missing proof\n\nWHEN a task's bound `@check` refs no longer match its requirement's current spec refs THEN the\nsystem SHALL report the binding as out of sync — so the done-gate points at `rivet spec tasks`\n(re-sync) instead of telling the user to re-run a ref that no longer exists.\n\n@check kind=unit ref=test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)\n@check kind=unit ref=test/done-msg.test.ts::is out of sync when the counts differ\n\nWHEN a task's bound refs match the spec (order aside) THEN the system SHALL report them in sync, so\na genuinely-unproven task is NOT misreported as a binding problem.\n\n@check kind=unit ref=test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)\n\n## Requirement REQUIREMENT_DRAFT-01 — draft-tests scaffolds a failing, bound stub per unbound criterion\n\nWHEN `rivet spec draft-tests` runs on a requirement with an unbound criterion THEN the system SHALL\nemit a FAILING test stub (named from the criterion's clause, carrying the criterion text + the\nedge-case mandate) plus the `@check` ref that binds it — the rule→test→proof loop the config's\n`acceptanceCriteria: \"tool-drafts\"` mode promises but never delivered.\n\n@check kind=unit ref=test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate\n@check kind=unit ref=test/draft.test.ts::takes the SHALL clause and drops 'the system'\n\nIF a criterion already binds a check (or the requirement is an ADR decision record) THEN the system\nSHALL NOT draft a stub for it — drafting is only for unmet obligations.\n\n@check kind=unit ref=test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records\n"
       },
       {
         "name": "LEDGER.md",
-        "content": "# LEDGER — generated from the journal; do not edit\n\n> Legend: ✅ done · 🔨 in progress · 🚧 blocked · ⬜ pending — proofs: 🟢 green · 🔴 red · 🟣 stale · ⚪ unproven\n\n## Progress board\n\n**67/67 done (100%)**\n\n- ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢\n  📋 Evidence — FIX-ROUTE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::want-signals veto research routing` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **R-AUDIT-01** every CLI invocation is audit-logged 🟢\n  📋 Evidence — R-AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **R-AUDIT-02** the audit trail is readable 🟢\n  📋 Evidence — R-AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **R-PROG-01** progress with emoji after completing a task 🟢\n  📋 Evidence — R-PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢\n  📋 Evidence — FIX-PRMATH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::worst-of coverage in the PR body` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PROOF-01** proof identity = tested tree hash, not commit SHA 🟢\n  📋 Evidence — FIX-PROOF-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-ROBUST-01** inputs never crash; infra errors are not proofs 🟢\n  📋 Evidence — FIX-ROBUST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/robust.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-SPECSYNC-01** spec re-derive syncs bindings; evidence unclobberable 🟢\n  📋 Evidence — FIX-SPECSYNC-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/spec-sync.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-GATE-01** one not-green-blocks predicate; missing graph blocks 🟢\n  📋 Evidence — FIX-GATE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **GATE-PROTECT-01** in-flight specs/tests/config need human unlock 🟢\n  📋 Evidence — GATE-PROTECT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/protect.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PARSE-01** parser respects markdown reality 🟢\n  📋 Evidence — FIX-PARSE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/parse-fix.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-QUERY-01** read-only queries; no retry burn; deterministic ties 🟢\n  📋 Evidence — FIX-QUERY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/query-fix.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **AUDIT-META-01** journal meta (actor/model) + governance events 🟢\n  📋 Evidence — AUDIT-META-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/audit-meta.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FINISH-RITUAL-01** rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢\n  📋 Evidence — FINISH-RITUAL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/finish-skill.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **GATE-FACTS-01** DENY-FORCE-ALLOW investigative gate (opt-in) 🟢\n  📋 Evidence — GATE-FACTS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-facts.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **GATE-PACKS-01** config gate packs: sections+kinds+security floor 🟢\n  📋 Evidence — GATE-PACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-packs.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **COMPACT-01** phase-aware checkpoints + PreCompact resume save 🟢\n  📋 Evidence — COMPACT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/compact.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **SKILL-QA-01** mechanical QA: skills reference only real commands/artifacts 🟢\n  📋 Evidence — SKILL-QA-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **SCALE-01** P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢\n  📋 Evidence — SCALE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/scale.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **RUNNERS-01** multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢\n  📋 Evidence — RUNNERS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/runners-kind.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **RENAME-LAWS-01** rename constitution → laws (user term) 🟢\n  📋 Evidence — RENAME-LAWS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **BOARDS-01** generated LEDGER.md + TRACKING.md boards 🟢\n  📋 Evidence — BOARDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/boards.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **WAVE-01** worktree wave dispatcher: plan + fetch-first start 🟢\n  📋 Evidence — WAVE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **STEER-01** laws engine: 3 scopes + personal inheritance + file injection 🟢\n  📋 Evidence — STEER-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/steering.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **LEARN-01** warn-on-repeat: open lessons surface at task start 🟢\n  📋 Evidence — LEARN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/learnwarn.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **WAVE-02** wave done: provenance-checked worktree cleanup after merge 🟢\n  📋 Evidence — WAVE-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave-done.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **DASH-01** dashboard v1: emoji + completion % + traffic lights + graph embed 🟢\n  📋 Evidence — DASH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FILES-01** dashboard files plumbing: collect .rivet md + safe renderer 🟢\n  📋 Evidence — FILES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/files-tab.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **README-01** README refresh: match the real tool surface 🟢\n  📋 Evidence — README-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PROOF-02** proof identity excludes .rivet state (journal must not stale its own proofs) 🟢\n  📋 Evidence — FIX-PROOF-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **TRAIL-01** per-task gate trail: minute-level done/blocked/skipped/pending 🟢\n  📋 Evidence — TRAIL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/trail.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **DASH-02** port design.html as the dashboard template with live data injection 🟢\n  📋 Evidence — DASH-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-DOCTOR-01** graphify optional in doctor + provenance hint (classifier-safe) 🟢\n  📋 Evidence — FIX-DOCTOR-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-STACKNAMES-01** project.platforms rename + runner-stack disambiguation error 🟢\n  📋 Evidence — FIX-STACKNAMES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PROOF-03** check-run stamp shows tree identity, not commit sha 🟢\n  📋 Evidence — FIX-PROOF-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts::stamps the tree identity, not the commit sha` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PROOF-04** every proof surface stamps the tree identity (PR body, approvals, ledger log) 🟢\n  📋 Evidence — FIX-PROOF-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-PROV-01** provenance hint carries no rotting vanity metrics (star count) 🟢\n  📋 Evidence — FIX-PROV-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-IDS-01** fully-qualified requirement ids (REQUIREMENT_/NFR_/ADR_) with configurable lint 🟢\n  📋 Evidence — FEAT-IDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/qualified-ids.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_AUDIT-01** every CLI invocation is audit-logged 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢\n  📋 Evidence — REQUIREMENT_PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢\n  📋 Evidence — FEAT-GHERKIN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gherkin.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **NFR_AUDIT-03** auditing never breaks the CLI 🟢\n  📋 Evidence — NFR_AUDIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢\n  📋 Evidence — FEAT-STACK-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/default-stack.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-REPORT-01** tabular post-task evidence report (terminal + LEDGER) 🟢\n  📋 Evidence — FEAT-REPORT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/task-report.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-EMOJI-01** central emoji vocabulary (>=10 new) + plain mode for CI 🟢\n  📋 Evidence — FEAT-EMOJI-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/emoji.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-VERIFY-01** rivet verify: build ALL + run ALL kinds, journaled; hard fresh-tree PR gate 🟢\n  📋 Evidence — FEAT-VERIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/verify-cmd.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-PLATFORM-01** electron platform; platforms is an ARRAY (polyglot normal) 🟢\n  📋 Evidence — FEAT-PLATFORM-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-INITPACKS-01** init --platforms seeds free/OSS best-practice law packs, pre-wired to checks 🟢\n  📋 Evidence — FEAT-INITPACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/init-practices.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-CCFIRST-01** README states Claude-Code-first explicitly 🟢\n  📋 Evidence — FEAT-CCFIRST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-FLUSH-01** pr learnings-flush warn + doctor stale-worktree visibility 🟢🟢\n  📋 Evidence — FEAT-FLUSH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/pr-flush-warn.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/doctor-fix.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-REVITIFY-01** revitify: native TS knowledge graph, graphify output contract, default provider 🟢\n  📋 Evidence — FEAT-REVITIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/revitify-contract.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FEAT-REVITIFY-02** revitify extracted to its own repo; consumer-side contract pinned 🟢\n  📋 Evidence — FEAT-REVITIFY-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/revitify-contract.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-STALEDONE-01** done-gate refuses stale evidence (pass on an older tree is not green) 🟢\n  📋 Evidence — FIX-STALEDONE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stale-done.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_COCKPIT-01** config manifest generated from the schema 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_COCKPIT-02** the RIVET data sidecar is the project's truth 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_COCKPIT-03** static shell emission, written once 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_COCKPIT-04** live updates after every proof event 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-05\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_DOCS-01** every mutation refreshes every generated document 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_DOCS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/docs-refresh.test.ts::read-only queries never create or touch documents` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-COCKPIT-SEC-01** cockpit hardening: 12 adversarial-review findings (localhost bind, unlock match, parsed-write, body cap, CSRF, etc.) 🟢\n  📋 Evidence — FIX-COCKPIT-SEC-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-hardening.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **FIX-COCKPIT-ASSETS-01** regression guard for browser-asset findings #4 (json control) + #9 (auto-reload state) 🟢\n  📋 Evidence — FIX-COCKPIT-ASSETS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-assets.test.ts` | — | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_TRUST-01** a name-filtered run that matches zero tests is never a pass 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_TRUST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_TRUST-02** flag-like and regex-special test names bind to exactly that test 🟢🟢\n  📋 Evidence — REQUIREMENT_TRUST-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_STAMP-01** one suite run stamps every bound criterion (kills the depth tax) 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_STAMP-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_LINT-01** static drift check flags orphaned refs before any run 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_LINT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/spec-lint.test.ts::flags a ref whose file is missing` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/spec-lint.test.ts::passes a ref whose file and name both resolve` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n- ✅ **REQUIREMENT_DONE-01** the done-gate tells a stale binding apart from a missing proof 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_DONE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/done-msg.test.ts::is out of sync when the counts differ` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n  | `test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)` | unit | ✅ green | tree e87b06d3 | 2026-06-13T07:46:34.740Z |\n\n\n## Approvals & governance\n\n- 🛡️ 2026-06-11T23:25:31.905Z — unlock\n- 🛡️ 2026-06-11T23:29:29.462Z — unlock\n- 🛡️ 2026-06-11T23:34:24.469Z — unlock\n- 🛡️ 2026-06-11T23:41:27.273Z — unlock\n- 🛡️ 2026-06-11T23:55:10.102Z — unlock\n- 🛡️ 2026-06-11T23:58:14.741Z — unlock\n- 🛡️ 2026-06-11T23:58:59.298Z — unlock\n- 🛡️ 2026-06-12T04:48:57.051Z — unlock\n- 🛡️ 2026-06-12T04:51:20.884Z — unlock\n- 🛡️ 2026-06-12T05:01:36.612Z — unlock\n- 🛡️ 2026-06-12T07:00:16.579Z — unlock\n- 🛡️ 2026-06-12T07:20:18.537Z — unlock\n- 🔏 2026-06-12T07:21:29.214Z — Pratiyush Kumar Singh approved REQUIREMENT_COCKPIT-01, REQUIREMENT_COCKPIT-02, REQUIREMENT_COCKPIT-03, REQUIREMENT_COCKPIT-04, REQUIREMENT_COCKPIT-05, REQUIREMENT_DOCS-01\n- 🔏 2026-06-12T07:21:29.913Z — Pratiyush Kumar Singh approved FEAT-VERIFY-01, FEAT-GHERKIN-01, FEAT-IDS-01, FEAT-REPORT-01, FEAT-EMOJI-01, FEAT-INITPACKS-01, FEAT-PLATFORM-01, FEAT-STACK-01, FEAT-CCFIRST-01, FEAT-FLUSH-01, FEAT-REVITIFY-01, FEAT-REVITIFY-02\n\n## Recent activity\n\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence @ tree e87b06d3 → REQUIREMENT_STAMP-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/spec-lint.test.ts::flags a ref whose file is missing @ tree e87b06d3 → REQUIREMENT_LINT-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename) @ tree e87b06d3 → REQUIREMENT_LINT-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/spec-lint.test.ts::passes a ref whose file and name both resolve @ tree e87b06d3 → REQUIREMENT_LINT-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method) @ tree e87b06d3 → REQUIREMENT_LINT-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new) @ tree e87b06d3 → REQUIREMENT_DONE-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/done-msg.test.ts::is out of sync when the counts differ @ tree e87b06d3 → REQUIREMENT_DONE-01\n- \u001b[2m2026-06-13 07:46:34\u001b[22m  ✅ check test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent) @ tree e87b06d3 → REQUIREMENT_DONE-01\n- \u001b[2m2026-06-13 07:46:35\u001b[22m  🧾 task done REQUIREMENT_DONE-01  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-13 07:46:35\u001b[22m  🏁 task REQUIREMENT_DONE-01 → done\n"
+        "content": "# LEDGER — generated from the journal; do not edit\n\n> Legend: ✅ done · 🔨 in progress · 🚧 blocked · ⬜ pending — proofs: 🟢 green · 🔴 red · 🟣 stale · ⚪ unproven\n\n## Progress board\n\n**68/68 done (100%)**\n\n- ✅ **FIX-ROUTE-01** route: build-intent must veto research keywords 🟢\n  📋 Evidence — FIX-ROUTE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::want-signals veto research routing` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **R-AUDIT-01** every CLI invocation is audit-logged 🟢\n  📋 Evidence — R-AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **R-AUDIT-02** the audit trail is readable 🟢\n  📋 Evidence — R-AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **R-PROG-01** progress with emoji after completing a task 🟢\n  📋 Evidence — R-PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PRMATH-01** PR coverage uses worst-of obligation semantics 🟢\n  📋 Evidence — FIX-PRMATH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/workflow.test.ts::worst-of coverage in the PR body` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PROOF-01** proof identity = tested tree hash, not commit SHA 🟢\n  📋 Evidence — FIX-PROOF-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-ROBUST-01** inputs never crash; infra errors are not proofs 🟢\n  📋 Evidence — FIX-ROBUST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/robust.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-SPECSYNC-01** spec re-derive syncs bindings; evidence unclobberable 🟢\n  📋 Evidence — FIX-SPECSYNC-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/spec-sync.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-GATE-01** one not-green-blocks predicate; missing graph blocks 🟢\n  📋 Evidence — FIX-GATE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **GATE-PROTECT-01** in-flight specs/tests/config need human unlock 🟢\n  📋 Evidence — GATE-PROTECT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/protect.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PARSE-01** parser respects markdown reality 🟢\n  📋 Evidence — FIX-PARSE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/parse-fix.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-QUERY-01** read-only queries; no retry burn; deterministic ties 🟢\n  📋 Evidence — FIX-QUERY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/query-fix.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **AUDIT-META-01** journal meta (actor/model) + governance events 🟢\n  📋 Evidence — AUDIT-META-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/audit-meta.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FINISH-RITUAL-01** rivet-finish skill: evidence gate, fixed menu, typed confirm 🟢\n  📋 Evidence — FINISH-RITUAL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/finish-skill.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **GATE-FACTS-01** DENY-FORCE-ALLOW investigative gate (opt-in) 🟢\n  📋 Evidence — GATE-FACTS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-facts.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **GATE-PACKS-01** config gate packs: sections+kinds+security floor 🟢\n  📋 Evidence — GATE-PACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gate-packs.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **COMPACT-01** phase-aware checkpoints + PreCompact resume save 🟢\n  📋 Evidence — COMPACT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/compact.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **SKILL-QA-01** mechanical QA: skills reference only real commands/artifacts 🟢\n  📋 Evidence — SKILL-QA-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **SCALE-01** P3: locking, fold cache, failure tails, anchor-by-path, audit gating 🟢\n  📋 Evidence — SCALE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/scale.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **RUNNERS-01** multi-kind verification: kind-aware runs + app lifecycle + kind runners 🟢\n  📋 Evidence — RUNNERS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/runners-kind.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **RENAME-LAWS-01** rename constitution → laws (user term) 🟢\n  📋 Evidence — RENAME-LAWS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/skill-qa.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **BOARDS-01** generated LEDGER.md + TRACKING.md boards 🟢\n  📋 Evidence — BOARDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/boards.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **WAVE-01** worktree wave dispatcher: plan + fetch-first start 🟢\n  📋 Evidence — WAVE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **STEER-01** laws engine: 3 scopes + personal inheritance + file injection 🟢\n  📋 Evidence — STEER-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/steering.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **LEARN-01** warn-on-repeat: open lessons surface at task start 🟢\n  📋 Evidence — LEARN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/learnwarn.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **WAVE-02** wave done: provenance-checked worktree cleanup after merge 🟢\n  📋 Evidence — WAVE-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/wave-done.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **DASH-01** dashboard v1: emoji + completion % + traffic lights + graph embed 🟢\n  📋 Evidence — DASH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FILES-01** dashboard files plumbing: collect .rivet md + safe renderer 🟢\n  📋 Evidence — FILES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/files-tab.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **README-01** README refresh: match the real tool surface 🟢\n  📋 Evidence — README-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PROOF-02** proof identity excludes .rivet state (journal must not stale its own proofs) 🟢\n  📋 Evidence — FIX-PROOF-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-identity.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **TRAIL-01** per-task gate trail: minute-level done/blocked/skipped/pending 🟢\n  📋 Evidence — TRAIL-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/trail.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **DASH-02** port design.html as the dashboard template with live data injection 🟢\n  📋 Evidence — DASH-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/dashboard.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-DOCTOR-01** graphify optional in doctor + provenance hint (classifier-safe) 🟢\n  📋 Evidence — FIX-DOCTOR-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-STACKNAMES-01** project.platforms rename + runner-stack disambiguation error 🟢\n  📋 Evidence — FIX-STACKNAMES-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PROOF-03** check-run stamp shows tree identity, not commit sha 🟢\n  📋 Evidence — FIX-PROOF-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts::stamps the tree identity, not the commit sha` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PROOF-04** every proof surface stamps the tree identity (PR body, approvals, ledger log) 🟢\n  📋 Evidence — FIX-PROOF-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/proof-display.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-PROV-01** provenance hint carries no rotting vanity metrics (star count) 🟢\n  📋 Evidence — FIX-PROV-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/doctor-fix.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-IDS-01** fully-qualified requirement ids (REQUIREMENT_/NFR_/ADR_) with configurable lint 🟢\n  📋 Evidence — FEAT-IDS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/qualified-ids.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_AUDIT-01** every CLI invocation is audit-logged 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::audits cli invocations into the journal` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_AUDIT-02** the audit trail is readable 🟢🟢\n  📋 Evidence — REQUIREMENT_AUDIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders the audit trail with per-type emoji` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_PROG-01** progress with emoji after completing a task 🟢🟢\n  📋 Evidence — REQUIREMENT_PROG-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::renders progress with emoji, bar, and next-up` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cli-ux.test.ts::renders an explicit empty state when there are no tasks` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-GHERKIN-01** gherkin first-class + default format + mechanical negative floor 🟢\n  📋 Evidence — FEAT-GHERKIN-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/gherkin.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **NFR_AUDIT-03** auditing never breaks the CLI 🟢\n  📋 Evidence — NFR_AUDIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cli-ux.test.ts::does not create journals outside Rivet projects` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-STACK-01** verify.defaultStack + platform inference; --stack optional 🟢\n  📋 Evidence — FEAT-STACK-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/default-stack.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-REPORT-01** tabular post-task evidence report (terminal + LEDGER) 🟢\n  📋 Evidence — FEAT-REPORT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/task-report.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-EMOJI-01** central emoji vocabulary (>=10 new) + plain mode for CI 🟢\n  📋 Evidence — FEAT-EMOJI-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/emoji.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-VERIFY-01** rivet verify: build ALL + run ALL kinds, journaled; hard fresh-tree PR gate 🟢\n  📋 Evidence — FEAT-VERIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/verify-cmd.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-PLATFORM-01** electron platform; platforms is an ARRAY (polyglot normal) 🟢\n  📋 Evidence — FEAT-PLATFORM-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stacknames.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-INITPACKS-01** init --platforms seeds free/OSS best-practice law packs, pre-wired to checks 🟢\n  📋 Evidence — FEAT-INITPACKS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/init-practices.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-CCFIRST-01** README states Claude-Code-first explicitly 🟢\n  📋 Evidence — FEAT-CCFIRST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/readme.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-FLUSH-01** pr learnings-flush warn + doctor stale-worktree visibility 🟢🟢\n  📋 Evidence — FEAT-FLUSH-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/pr-flush-warn.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/doctor-fix.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-REVITIFY-01** revitify: native TS knowledge graph, graphify output contract, default provider 🟢\n  📋 Evidence — FEAT-REVITIFY-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/revitify-contract.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FEAT-REVITIFY-02** revitify extracted to its own repo; consumer-side contract pinned 🟢\n  📋 Evidence — FEAT-REVITIFY-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/revitify-contract.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-STALEDONE-01** done-gate refuses stale evidence (pass on an older tree is not green) 🟢\n  📋 Evidence — FIX-STALEDONE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stale-done.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_COCKPIT-01** config manifest generated from the schema 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_COCKPIT-02** the RIVET data sidecar is the project's truth 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_COCKPIT-03** static shell emission, written once 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-03\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_COCKPIT-04** live updates after every proof event 🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-04\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_COCKPIT-05** the config save server 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_COCKPIT-05\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-server.test.ts::a valid POST saves config.json and journals governance` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit-server.test.ts::an invalid POST returns field errors and never writes` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_DOCS-01** every mutation refreshes every generated document 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_DOCS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/docs-refresh.test.ts::read-only queries never create or touch documents` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-COCKPIT-SEC-01** cockpit hardening: 12 adversarial-review findings (localhost bind, unlock match, parsed-write, body cap, CSRF, etc.) 🟢\n  📋 Evidence — FIX-COCKPIT-SEC-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-hardening.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **FIX-COCKPIT-ASSETS-01** regression guard for browser-asset findings #4 (json control) + #9 (auto-reload state) 🟢\n  📋 Evidence — FIX-COCKPIT-ASSETS-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/cockpit-assets.test.ts` | — | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_TRUST-01** a name-filtered run that matches zero tests is never a pass 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_TRUST-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_TRUST-02** flag-like and regex-special test names bind to exactly that test 🟢🟢\n  📋 Evidence — REQUIREMENT_TRUST-02\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_STAMP-01** one suite run stamps every bound criterion (kills the depth tax) 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_STAMP-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_LINT-01** static drift check flags orphaned refs before any run 🟢🟢🟢🟢\n  📋 Evidence — REQUIREMENT_LINT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/spec-lint.test.ts::flags a ref whose file is missing` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/spec-lint.test.ts::passes a ref whose file and name both resolve` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_DONE-01** the done-gate tells a stale binding apart from a missing proof 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_DONE-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/done-msg.test.ts::is out of sync when the counts differ` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n- ✅ **REQUIREMENT_DRAFT-01** draft-tests scaffolds a failing, bound stub per unbound criterion 🟢🟢🟢\n  📋 Evidence — REQUIREMENT_DRAFT-01\n  | Check | Kind | State | Proof | Proven at |\n  |---|---|---|---|---|\n  | `test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/draft.test.ts::takes the SHALL clause and drops 'the system'` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n  | `test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records` | unit | ✅ green | tree c8781071 | 2026-06-13T07:51:43.133Z |\n\n\n## Approvals & governance\n\n- 🛡️ 2026-06-11T23:25:31.905Z — unlock\n- 🛡️ 2026-06-11T23:29:29.462Z — unlock\n- 🛡️ 2026-06-11T23:34:24.469Z — unlock\n- 🛡️ 2026-06-11T23:41:27.273Z — unlock\n- 🛡️ 2026-06-11T23:55:10.102Z — unlock\n- 🛡️ 2026-06-11T23:58:14.741Z — unlock\n- 🛡️ 2026-06-11T23:58:59.298Z — unlock\n- 🛡️ 2026-06-12T04:48:57.051Z — unlock\n- 🛡️ 2026-06-12T04:51:20.884Z — unlock\n- 🛡️ 2026-06-12T05:01:36.612Z — unlock\n- 🛡️ 2026-06-12T07:00:16.579Z — unlock\n- 🛡️ 2026-06-12T07:20:18.537Z — unlock\n- 🔏 2026-06-12T07:21:29.214Z — Pratiyush Kumar Singh approved REQUIREMENT_COCKPIT-01, REQUIREMENT_COCKPIT-02, REQUIREMENT_COCKPIT-03, REQUIREMENT_COCKPIT-04, REQUIREMENT_COCKPIT-05, REQUIREMENT_DOCS-01\n- 🔏 2026-06-12T07:21:29.913Z — Pratiyush Kumar Singh approved FEAT-VERIFY-01, FEAT-GHERKIN-01, FEAT-IDS-01, FEAT-REPORT-01, FEAT-EMOJI-01, FEAT-INITPACKS-01, FEAT-PLATFORM-01, FEAT-STACK-01, FEAT-CCFIRST-01, FEAT-FLUSH-01, FEAT-REVITIFY-01, FEAT-REVITIFY-02\n\n## Recent activity\n\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/spec-lint.test.ts::passes a ref whose file and name both resolve @ tree c8781071 → REQUIREMENT_LINT-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method) @ tree c8781071 → REQUIREMENT_LINT-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new) @ tree c8781071 → REQUIREMENT_DONE-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/done-msg.test.ts::is out of sync when the counts differ @ tree c8781071 → REQUIREMENT_DONE-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent) @ tree c8781071 → REQUIREMENT_DONE-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate @ tree c8781071 → REQUIREMENT_DRAFT-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/draft.test.ts::takes the SHALL clause and drops 'the system' @ tree c8781071 → REQUIREMENT_DRAFT-01\n- \u001b[2m2026-06-13 07:51:43\u001b[22m  ✅ check test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records @ tree c8781071 → REQUIREMENT_DRAFT-01\n- \u001b[2m2026-06-13 07:51:44\u001b[22m  🧾 task done REQUIREMENT_DRAFT-01  [Pratiyush Kumar Singh]\n- \u001b[2m2026-06-13 07:51:44\u001b[22m  🏁 task REQUIREMENT_DRAFT-01 → done\n"
       },
       {
         "name": "TRACKING.md",
-        "content": "# TRACKING — per-requirement Definition of Done (generated; do not edit)\n\n| Requirement | Title | Criteria | Proof | Task | Approved |\n|---|---|---|---|---|---|\n| REQUIREMENT_AUDIT-01 | every CLI invocation is audit-logged | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_AUDIT-02 | the audit trail is readable | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_PROG-01 | progress with emoji after completing a task | 2 | 🟢🟢 | done | — |\n| NFR_AUDIT-03 | auditing never breaks the CLI | 1 | 🟢 | done | — |\n| REQUIREMENT_COCKPIT-01 | config manifest generated from the schema | 3 | 🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-02 | the RIVET data sidecar is the project's truth | 3 | 🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-03 | static shell emission, written once | 2 | 🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-04 | live updates after every proof event | 2 | 🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-05 | the config save server | 4 | 🟢🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_DOCS-01 | every mutation refreshes every generated document | 4 | 🟢🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_TRUST-01 | a name-filtered run that matches zero tests is never a pass | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_TRUST-02 | flag-like and regex-special test names bind to exactly that test | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_STAMP-01 | one suite run stamps every bound criterion (kills the depth tax) | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_LINT-01 | static drift check flags orphaned refs before any run | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_DONE-01 | the done-gate tells a stale binding apart from a missing proof | 2 | 🟢🟢 | done | — |\n"
+        "content": "# TRACKING — per-requirement Definition of Done (generated; do not edit)\n\n| Requirement | Title | Criteria | Proof | Task | Approved |\n|---|---|---|---|---|---|\n| REQUIREMENT_AUDIT-01 | every CLI invocation is audit-logged | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_AUDIT-02 | the audit trail is readable | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_PROG-01 | progress with emoji after completing a task | 2 | 🟢🟢 | done | — |\n| NFR_AUDIT-03 | auditing never breaks the CLI | 1 | 🟢 | done | — |\n| REQUIREMENT_COCKPIT-01 | config manifest generated from the schema | 3 | 🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-02 | the RIVET data sidecar is the project's truth | 3 | 🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-03 | static shell emission, written once | 2 | 🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-04 | live updates after every proof event | 2 | 🟢🟢 | done | ✅ |\n| REQUIREMENT_COCKPIT-05 | the config save server | 4 | 🟢🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_DOCS-01 | every mutation refreshes every generated document | 4 | 🟢🟢🟢🟢 | done | ✅ |\n| REQUIREMENT_TRUST-01 | a name-filtered run that matches zero tests is never a pass | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_TRUST-02 | flag-like and regex-special test names bind to exactly that test | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_STAMP-01 | one suite run stamps every bound criterion (kills the depth tax) | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_LINT-01 | static drift check flags orphaned refs before any run | 3 | 🟢🟢🟢 | done | — |\n| REQUIREMENT_DONE-01 | the done-gate tells a stale binding apart from a missing proof | 2 | 🟢🟢 | done | — |\n| REQUIREMENT_DRAFT-01 | draft-tests scaffolds a failing, bound stub per unbound criterion | 2 | 🟢🟢 | done | — |\n"
       },
       {
         "name": "RESUME.md",
-        "content": "# RESUME — state-only handoff (generated from the journal; do not edit)\n\nBoard: 67/67 task(s) done.\n\n✅ all task(s) done — nothing open. Next: `rivet graph build` → `rivet pr`.\n## Rebuild truth\n\n`rivet status` · `rivet graph build` · `rivet log -n 10`\n"
+        "content": "# RESUME — state-only handoff (generated from the journal; do not edit)\n\nBoard: 68/68 task(s) done.\n\n✅ all task(s) done — nothing open. Next: `rivet graph build` → `rivet pr`.\n## Rebuild truth\n\n`rivet status` · `rivet graph build` · `rivet log -n 10`\n"
       },
       {
         "name": "approvals/2026-06-12-FEAT-VERIFY-01-FEAT-GHERKIN-01-FEAT-IDS-01-FEAT-REPORT-01-FEAT-EMOJI-01-FEAT-INITPACKS-01-FEAT-PLATFORM-01-FEAT-STACK-01-FEAT-CCFIRST-01-FEAT-FLUSH-01-FEAT-REVITIFY-01-FEAT-REVITIFY-02.md",
