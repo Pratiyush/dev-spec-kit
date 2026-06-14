@@ -231,18 +231,23 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
   json(res, 404, { error: "not found" });
 }
 
-/** `rivet web [--port N] [--open]` — emit the cockpit and serve it with the save API. */
-export function webCmd(opts: { port?: string; open?: boolean }): void {
+/** `rivet web [--port N] [--open]` — emit the cockpit and serve it with the save API. Returns the
+ *  server (so callers/tests can close it); the CLI just leaves it listening until Ctrl-C. */
+export function webCmd(opts: { port?: string; open?: boolean }): Server {
   const cwd = process.cwd();
   emitCockpit(cwd, { serverMode: true });
   const port = Number(opts.port ?? 7341) || 7341;
   const server = createCockpitServer(cwd);
   server.listen(port, "127.0.0.1", () => {
-    const url = `http://localhost:${port}/`;
+    const addr = server.address();
+    const shown = typeof addr === "object" && addr ? addr.port : port;
+    const url = `http://localhost:${shown}/`;
     console.log(pc.green(`${label("pr")} rivet cockpit serving`) + pc.dim(` → ${url} (Ctrl-C to stop)`));
     console.log(
       pc.dim(`  ${label("report")} dashboard + config studio · saves validate + respect GATE-PROTECT`),
     );
+    /* c8 ignore next -- launches the OS browser; nothing to assert and not wanted in CI */
     if (opts.open) spawnSync("open", [url], { stdio: "ignore" });
   });
+  return server;
 }
