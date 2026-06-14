@@ -1,5 +1,5 @@
-import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
@@ -172,6 +172,9 @@ export function specDraftTests(): void {
     }
     const blocks = [...byReq.entries()].map(([reqId, ss]) => describeBlock(reqId, ss)).join("\n\n");
     if (existing === null) {
+      // FIX-DRAFT-02: a fresh project may not have the target dir (e.g. test/) yet — create it
+      // rather than crash with ENOENT.
+      mkdirSync(dirname(abs), { recursive: true });
       writeFileSync(abs, `import { describe, it, expect } from "vitest";\n\n${blocks}\n`);
       console.log(pc.green(`+ ${file}`) + pc.dim(` — created with ${fresh.length} stub(s)`));
     } else {
@@ -330,6 +333,8 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     }
   }
   if (opts.create) {
+    /* c8 ignore start -- shells out to `gh pr create`: needs the GitHub CLI + auth and would open a
+       real PR; never run in CI. Everything up to here (the gate that GUARDS this call) is tested. */
     const res = spawnSync(
       "gh",
       ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath],
@@ -339,6 +344,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
       },
     );
     if (res.status !== 0) process.exitCode = res.status ?? 1;
+    /* c8 ignore stop */
   } else {
     console.log(pc.dim(`  open it with: gh pr create --title "<title>" --body-file .rivet/pr-body.md`));
   }
