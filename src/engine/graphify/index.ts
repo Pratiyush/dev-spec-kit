@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, dirname } from "node:path";
@@ -155,8 +156,10 @@ export function providerAvailable(provider: GraphProvider): boolean {
 }
 
 /**
- * Provider-aware refresh: revitify runs in-process (bundled, native TS); graphify shells out to
- * the external CLI. Both emit the SAME graphify-out/ contract, so consumers never know.
+ * Provider-aware refresh: revitify's FULL engine (tree-sitter multi-language, cache, workers)
+ * runs via its CLI in a synchronous subprocess — the same shape as the external graphify
+ * provider, so materialize stays sync. The classic in-process sync call remains the fallback
+ * when the CLI is not resolvable (older revitify builds). Same graphify-out/ contract either way.
  */
 export function refreshCodeGraphVia(
   provider: GraphProvider,
@@ -164,10 +167,32 @@ export function refreshCodeGraphVia(
   outDir = "graphify-out",
 ): string | null {
   if (provider === "graphify") return refreshCodeGraph(projectDir, outDir);
-  const result = revitify(projectDir, outDir);
+  const cli = revitifyCli();
+  if (cli) {
+    const res = spawnSync(process.execPath, [cli, "build", projectDir, "--out", outDir], {
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+    if (res.status !== 0) {
+      throw new Error(`revitify build exited ${res.status}: ${res.stderr?.toString().slice(0, 500)}`);
+    }
+  } else {
+    revitify(projectDir, outDir);
+  }
   const head = gitHead(projectDir);
   if (head) writeFreshness(projectDir, head);
-  return result.graphJsonPath;
+  const graphJson = join(projectDir, outDir, "graph.json");
+  return existsSync(graphJson) ? graphJson : null;
+}
+
+/** revitify's CLI entry, resolved relative to the installed package (null on older builds). */
+function revitifyCli(): string | null {
+  try {
+    const pkg = createRequire(import.meta.url).resolve("revitify/package.json");
+    const cli = join(dirname(pkg), "dist", "cli", "main.js");
+    return existsSync(cli) ? cli : null;
+  } catch {
+    return null;
+  }
 }
 
 function gitHead(cwd: string): string | undefined {

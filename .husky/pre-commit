@@ -1,1 +1,6 @@
 npx lint-staged
+
+# FEAT-LINT-01 — static drift gate. Refuse a commit while any @check ref is ORPHANED (a renamed or
+# moved test), so green-tests-but-rotten-bindings can't land unnoticed. Fast (no test run). Re-sync
+# with `rivet spec tasks` or fix the spec/binding. Escape hatch for emergencies: git commit --no-verify.
+RIVET_NO_AUDIT=1 npx --no-install tsx src/cli/index.ts spec lint

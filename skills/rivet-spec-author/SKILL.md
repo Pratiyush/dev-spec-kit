@@ -44,6 +44,33 @@ every row unproven. EARS sentences (`WHEN/IF/WHILE/WHERE … the system SHALL �
 supported (`spec.criteriaFormat`: gherkin = default, ears, mixed); off-format criteria lint but
 always parse and bind.
 
+## Generating criteria from a one-line requirement (the scaffold)
+
+Given a rough requirement, produce the criteria — don't wait to be handed them:
+
+1. **Clarify first** if it's vague (`rivet-clarify`): resolve the ambiguity before writing scenarios.
+2. **Happy path** — one `Scenario:` (Given/When/Then) for the intended behavior, with an observable Then.
+3. **Derive the unhappy paths** — for that behavior, generate one criterion in EACH of the four edge
+   categories (the gate requires ≥1): invalid input · empty/boundary · failure-injection. Phrase each
+   as an `IF … THEN the system SHALL …` (or a failure `Scenario:`).
+4. **Name a `@check` for every criterion** — the test that would prove it. If you can't name it, the
+   criterion is still under-specified; sharpen it.
+5. **Bind + draft** — add the `@check` lines, then `rivet spec draft-tests` emits failing stubs and
+   `rivet-test-author` fleshes them. For a too-big requirement, `rivet-analyze` scores and splits it.
+
+Worked shape: "users can rename a note" →
+```
+Scenario: rename a note            # happy
+  Given a saved note "draft" When it is renamed to "final" Then it is listed as "final"
+@check kind=unit ref=test/notes.test.ts::renames a note
+IF the new title is empty THEN the system SHALL reject the rename and keep the old title.   # boundary
+@check kind=unit ref=test/notes.test.ts::rejects an empty rename
+IF a note with the new title already exists THEN the system SHALL refuse with a conflict.    # invalid
+@check kind=unit ref=test/notes.test.ts::refuses a duplicate-title rename
+IF the store write fails mid-rename THEN the system SHALL leave the original title intact.    # failure
+@check kind=unit ref=test/notes.test.ts::keeps the title when the write fails
+```
+
 ## Rules (RFC-2119)
 
 - Every criterion MUST be a Gherkin Scenario (Given/When/Then, one behavior) or a single EARS

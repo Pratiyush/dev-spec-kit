@@ -8,8 +8,11 @@ import {
   lintQualifiedIds,
   lintCriteriaFormat,
   requirementKind,
+  unboundObligations,
   type Requirement,
 } from "../engine/spec/ears.js";
+import { findDangling, specRefs, dedupeRefs } from "../engine/spec/lint.js";
+import { draftStubs, describeBlock, type DraftStub } from "../engine/spec/draft.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
 import { createApproval, listApprovals, ApprovalError } from "../engine/approvals.js";
@@ -49,6 +52,122 @@ function lintIds(requirements: Requirement[], level: "warn" | "error" | "off"): 
     return false;
   }
   return true;
+}
+
+/**
+ * `rivet spec lint` — FEAT-LINT-01: static drift check, no run required. Resolves every `@check`
+ * ref (from specs AND from task bindings) against the actual test files — a missing file or a test
+ * name that no longer appears is ORPHANED (a rename Rivet would otherwise only meet at a check run).
+ * Unbound obligations (a criterion with no `@check`) are reported as UNCOVERED warnings. Orphaned
+ * refs exit 1 so a Stop/pre-commit hook can refuse to let the drift persist.
+ */
+export interface SpecHealth {
+  hasSpecs: boolean;
+  dangling: ReturnType<typeof findDangling>;
+  unbound: ReturnType<typeof unboundObligations>;
+}
+
+/** Collect drift findings (orphaned @check refs + unbound criteria). Shared by `spec lint` (which
+ *  prints + exits) and `rivet doctor` (which folds it into the health check, feedback #1). */
+export function specHealth(cwd: string): SpecHealth {
+  const reqs = parseSpecsDir(cwd);
+  if (reqs.length === 0) return { hasSpecs: false, dangling: [], unbound: [] };
+  const store = new TaskStore(journal(cwd));
+  const taskRefs = [...store.all().values()].flatMap((t) =>
+    t.boundChecks.map((ref) => ({ owner: `task ${t.id}`, ref })),
+  );
+  const refs = dedupeRefs([...specRefs(reqs), ...taskRefs]);
+  const read = (rel: string): string | undefined => {
+    try {
+      return readFileSync(join(cwd, rel), "utf8");
+    } catch {
+      return undefined;
+    }
+  };
+  return { hasSpecs: true, dangling: findDangling(refs, read), unbound: unboundObligations(reqs) };
+}
+
+export function specLint(): void {
+  const { hasSpecs, dangling, unbound } = specHealth(process.cwd());
+  if (!hasSpecs) {
+    console.log(pc.yellow("no specs in .rivet/specs/ — nothing to lint"));
+    return;
+  }
+  console.log(pc.bold("\n🔎 rivet spec lint — static drift check\n"));
+  for (const d of dangling) {
+    const why = d.reason === "file-missing" ? "file not found" : "test name not in file — renamed?";
+    console.error(pc.red(`✗ ORPHANED   ${d.ref}`) + pc.dim(`  (${why}; ${d.owner})`));
+  }
+  for (const c of unbound) {
+    console.log(pc.yellow(`⚠ UNCOVERED  ${c.id}`) + pc.dim("  (criterion has no @check binding)"));
+  }
+  if (dangling.length === 0 && unbound.length === 0) {
+    console.log(pc.green("✓ clean — every @check ref resolves; every obligation is bound"));
+  } else {
+    console.log(
+      pc.dim(`\n${dangling.length} orphaned ref(s) · ${unbound.length} unbound criterion(criteria)`),
+    );
+  }
+  if (dangling.length > 0) process.exitCode = 1; // orphans are errors; unbound are warnings
+}
+
+/**
+ * `rivet spec draft-tests` — FEAT-DRAFT-01: the rule→test loop `acceptanceCriteria: "tool-drafts"`
+ * promises. For every UNBOUND criterion, write a FAILING vitest stub (carrying the criterion text +
+ * the edge-case mandate) and print the `@check` line to bind it. Idempotent: a stub whose name is
+ * already in the target file is skipped. The agent then fills the body; `spec tasks` + `verify
+ * --stamp` prove it. We print the bindings rather than editing the spec — the spec is yours to edit.
+ */
+export function specDraftTests(): void {
+  const cwd = process.cwd();
+  const reqs = parseSpecsDir(cwd);
+  if (reqs.length === 0) {
+    console.log(pc.yellow("no specs in .rivet/specs/ — write one first (EARS + criteria)"));
+    return;
+  }
+  const stubs = draftStubs(reqs);
+  if (stubs.length === 0) {
+    console.log(pc.green("✓ every criterion is already bound — nothing to draft"));
+    return;
+  }
+  console.log(pc.bold("\n✍️  rivet spec draft-tests — failing stubs for unbound criteria\n"));
+  const byFile = new Map<string, DraftStub[]>();
+  for (const s of stubs) {
+    const arr = byFile.get(s.file);
+    if (arr) arr.push(s);
+    else byFile.set(s.file, [s]);
+  }
+  let written = 0;
+  const checkLines: string[] = [];
+  for (const [file, fileStubs] of byFile) {
+    const abs = join(cwd, file);
+    const existing = existsSync(abs) ? readFileSync(abs, "utf8") : null;
+    const fresh = fileStubs.filter((s) => !existing?.includes(`it(${JSON.stringify(s.name)}`));
+    if (fresh.length === 0) {
+      console.log(pc.dim(`= ${file} — all ${fileStubs.length} stub(s) already present`));
+      continue;
+    }
+    const byReq = new Map<string, DraftStub[]>();
+    for (const s of fresh) {
+      const arr = byReq.get(s.reqId);
+      if (arr) arr.push(s);
+      else byReq.set(s.reqId, [s]);
+    }
+    const blocks = [...byReq.entries()].map(([reqId, ss]) => describeBlock(reqId, ss)).join("\n\n");
+    if (existing === null) {
+      writeFileSync(abs, `import { describe, it, expect } from "vitest";\n\n${blocks}\n`);
+      console.log(pc.green(`+ ${file}`) + pc.dim(` — created with ${fresh.length} stub(s)`));
+    } else {
+      writeFileSync(abs, `${existing.replace(/\s*$/, "")}\n\n${blocks}\n`);
+      console.log(pc.green(`+ ${file}`) + pc.dim(` — appended ${fresh.length} stub(s)`));
+    }
+    written += fresh.length;
+    for (const s of fresh) checkLines.push(`  ${s.reqId} → @check kind=unit ref=${s.checkRef}`);
+  }
+  if (written === 0) return;
+  console.log(pc.bold(`\n${written} stub(s) drafted (all failing). Add these @check bindings to the spec:`));
+  for (const l of checkLines) console.log(pc.dim(l));
+  console.log(pc.dim("\nthen fill the stub bodies, `rivet spec tasks`, and `rivet verify --stamp`."));
 }
 
 /** `rivet spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */

@@ -5,7 +5,7 @@ import { runDoctor } from "./doctor.js";
 import { runInit } from "./init.js";
 import { taskCreate, taskStart, taskDone, checkRun, status, taskTrail } from "./tasks.js";
 import { graphBuild } from "./graph.js";
-import { specTasks, approve, pr, route, guardPr, unlock } from "./workflow.js";
+import { specTasks, specLint, specDraftTests, approve, pr, route, guardPr, unlock } from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
 import { logCmd } from "./log.js";
 import { resumeCmd } from "./resume.js";
@@ -47,6 +47,9 @@ const program = new Command();
 
 // R-AUDIT-01: every invocation inside a Rivet project lands in the journal (no-op elsewhere).
 program.hook("preAction", (_thisCommand, actionCommand) => {
+  // RIVET_NO_AUDIT=1 suppresses the audit write — set by the pre-commit gate so a read-only
+  // `spec lint` run doesn't dirty the journal on every commit (the hook would never settle).
+  if (process.env.RIVET_NO_AUDIT === "1") return;
   const path: string[] = [];
   for (let c: Command | null = actionCommand; c && c.name() !== "rivet"; c = c.parent) path.unshift(c.name());
   try {
@@ -115,9 +118,20 @@ check
       "(optional — falls back to verify.defaultStack, then platform inference)",
   )
   .option("-x, --expect-red", "TDD red phase: skip flaky retries for this run")
+  .option("--verdict <pass|fail>", "for a judge ref: the agent-supplied LLM verdict (harness mode)")
+  .option("--reason <text>", "for a judge ref: the one-line reason behind the verdict")
   .action(
-    safe((taskId: string, ref: string, opts: { stack?: string; expectRed?: boolean }) =>
-      checkRun(taskId, ref, opts.stack, { expectRed: opts.expectRed ?? false }),
+    safe(
+      (
+        taskId: string,
+        ref: string,
+        opts: { stack?: string; expectRed?: boolean; verdict?: string; reason?: string },
+      ) =>
+        checkRun(taskId, ref, opts.stack, {
+          expectRed: opts.expectRed ?? false,
+          ...(opts.verdict === "pass" || opts.verdict === "fail" ? { verdict: opts.verdict } : {}),
+          ...(opts.reason ? { reason: opts.reason } : {}),
+        }),
     ),
   );
 
@@ -138,7 +152,9 @@ program
   .description(
     "Build ALL + run EVERY configured kind (full suites) — journaled; the PR gate needs this green on the current tree",
   )
-  .action(safe(() => verifyCmd()));
+  .option("--stamp", "also stamp a per-criterion proof for every bound check from the one suite run")
+  .option("--advance", "after stamping, auto-advance every fully-proven task to done (implies --stamp)")
+  .action(safe((opts: { stamp?: boolean; advance?: boolean }) => verifyCmd(opts)));
 
 const graph = program.command("graph").description("The Verified Traceability Graph");
 graph
@@ -152,6 +168,16 @@ spec
   .command("tasks")
   .description("Create/sync evidence-bound tasks from .rivet/specs/*.md @check bindings (idempotent)")
   .action(safe(() => specTasks()));
+spec
+  .command("lint")
+  .description(
+    "Static drift check: orphaned @check refs (renamed/missing tests) + unbound criteria (exit 1 on orphans)",
+  )
+  .action(safe(() => specLint()));
+spec
+  .command("draft-tests")
+  .description("Scaffold a failing, bound test stub for every unbound criterion (the rule→test→proof loop)")
+  .action(safe(() => specDraftTests()));
 
 program
   .command("approve")

@@ -119,7 +119,7 @@ export const RivetConfigSchema = z
       .object({
         /** Which kinds of proof a criterion may bind to. */
         kinds: z
-          .array(z.enum(["unit", "integration", "api", "e2e", "visual", "parity"]))
+          .array(z.enum(["unit", "integration", "api", "e2e", "visual", "parity", "judge"]))
           .default(["unit", "integration", "api", "e2e"]),
         /**
          * FEAT-STACK-01: the stack `check run` uses when -s/--stack is omitted. Resolution:
@@ -167,6 +167,20 @@ export const RivetConfigSchema = z
             /** URL polled until it answers; null = fixed 1s grace. */
             readyUrl: z.union([z.string(), z.null()]).default(null),
             readyTimeoutMs: z.number().int().min(1).default(30000),
+          })
+          .default({}),
+        /**
+         * FEAT-JUDGE-01: the `judge` kind — an LLM verdict for the genuinely-unmeasurable (tone, copy,
+         * "is this actionable"). A judge proof is recorded + labelled SECOND-CLASS, never an executed
+         * green. Default mode `harness` = the Claude Code agent supplies the verdict (free, no key);
+         * `api` = the engine calls Anthropic headlessly (needs ANTHROPIC_API_KEY); `auto` = api when a
+         * key is present, else harness.
+         */
+        judge: z
+          .object({
+            mode: z.enum(["harness", "api", "auto"]).default("harness"),
+            model: z.string().default("claude-haiku-4-5"),
+            allowForObligations: z.boolean().default(false),
           })
           .default({}),
       })

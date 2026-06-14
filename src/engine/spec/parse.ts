@@ -32,7 +32,15 @@ const REQ_HEADING = /^##\s+Requirement:?\s+([A-Za-z][A-Za-z0-9_-]*)\s*(?:[—–
 const CHECK_LINE = /^@check\s+kind=([a-z0-9]+)\s+ref=(.+)$/i;
 const FENCE = /^(```|~~~)/;
 const LIST_MARKER = /^(?:[-*+]|\d+\.)\s+/;
-const CHECK_KINDS: ReadonlySet<string> = new Set(["unit", "integration", "api", "e2e", "visual", "parity"]);
+const CHECK_KINDS: ReadonlySet<string> = new Set([
+  "unit",
+  "integration",
+  "api",
+  "e2e",
+  "visual",
+  "parity",
+  "judge",
+]);
 const OUTLINE_LINE = /^Scenario\s+Outline:\s*(.+)$/i;
 const SCENARIO_LINE = /^Scenario:\s*(.+)$/i;
 const STEP_LINE = /^(Given|When|Then|And|But)\b/i;
