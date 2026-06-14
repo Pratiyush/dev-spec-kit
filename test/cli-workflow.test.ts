@@ -175,3 +175,14 @@ describe("rivet unlock — the journaled escape hatch", () => {
     expect(text).toContain("unlocked for 30m");
   });
 });
+
+describe("rivet pr — verify-RED reasons", () => {
+  it("prints the gate reasons when proofs are green but the last verify was RED", () => {
+    const dir = tmpProject({ ".rivet/graph.json": validates("green") });
+    journal(dir).append("verify.run", { passed: false, steps: [{ name: "x", ok: false }] });
+    const { text, exitCode } = run(dir, () => pr({}));
+    expect(text).toContain("blocked by the gate");
+    expect(text).toContain("RED");
+    expect(exitCode).toBe(1);
+  });
+});

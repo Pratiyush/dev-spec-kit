@@ -68,3 +68,13 @@ describe("isStale / providerAvailable", () => {
     expect(typeof providerAvailable("graphify")).toBe("boolean");
   });
 });
+
+describe("loadCodeGraph — drops an edge whose endpoint object has no id", () => {
+  it("ignores a {source:{no id}} edge", () => {
+    const dir = tmp();
+    const p = join(dir, "g.json");
+    writeFileSync(p, JSON.stringify({ nodes: [{ id: "A" }], links: [{ source: { foo: 1 }, target: "A" }] }));
+    const g = loadCodeGraph(p);
+    expect(g.links).toHaveLength(0);
+  });
+});

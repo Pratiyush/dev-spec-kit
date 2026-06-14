@@ -244,3 +244,25 @@ describe("rivet web — defensive branches", () => {
     }
   });
 });
+
+describe("rivet web — a corrupt unlock.json is treated as no unlock", () => {
+  it("still GATE-PROTECT-01-refuses with an unreadable unlock file", async () => {
+    const dir = tmpProject();
+    const store = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+    store.create("T1", "t", ["c1"]);
+    store.setStatus("T1", "in_progress");
+    writeFileSync(join(dir, ".rivet", "unlock.json"), "{ not json");
+    const { base, close } = await serve(dir);
+    try {
+      const res = await fetch(`${base}/api/config`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ build: { retryLimit: 2 } }),
+      });
+      expect(res.status).toBe(403);
+      expect((await res.json()).blocked).toBe("GATE-PROTECT-01");
+    } finally {
+      await close();
+    }
+  });
+});
