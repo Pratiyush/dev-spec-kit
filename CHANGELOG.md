@@ -33,6 +33,16 @@ default). Every code unit built TDD-first and proven through Rivet's own loop.
 - README marks every capability built-or-planned (tooling honesty); the new commands, the `judge`
   kind, and the role skills are documented.
 
+### Testing & quality
+- **100% line/statement/function coverage** over the engine + CLI, now **enforced** by `vitest`
+  thresholds (`pnpm coverage` is a green gate). 560+ tests (was 364). Only the browser cockpit assets
+  and the commander entry table are excluded (vitest cannot execute them); every `c8 ignore` in the
+  source carries a stated reason (external-tool subprocess, concurrency race, real-app lifecycle, or a
+  defensive guard against an impossible state).
+- Review-fix sweep: `trace` now names the drift cure (FIX-TRACE-HINT-01); `learning.warnOnRepeat` is
+  wired (was display-only); `spec draft-tests` creates a missing target dir instead of crashing
+  (FIX-DRAFT-02); the no-orphan-evidence invariant is locked by test; `.revitify/cache` is gitignored.
+
 ## 0.1.0 — 2026-06-12 (the feedback batch)
 
 The notepad-dogfood feedback batch: every item driven through Rivet's own loop

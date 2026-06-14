@@ -133,9 +133,17 @@ Node ≥ 22 · git · Python ≥ 3.10 · graphify (`pip install graphifyy && gra
 everything with `rivet doctor`.
 
 ```bash
-pnpm install && pnpm build && pnpm test     # 360+ tests
+pnpm install && pnpm build && pnpm test     # 560+ tests
+pnpm coverage                                # 100% lines/statements/functions (enforced gate)
 node dist/cli/index.js doctor
 ```
+
+Coverage is a **gate**, not a vanity number: `vitest` enforces 100% line/statement/function coverage
+over the engine + CLI. The only exclusions are code vitest cannot execute — the browser cockpit
+assets (guarded at the emission boundary) and the commander entry table — and every `c8 ignore` in
+the source carries a reason (an external-tool subprocess, a concurrency race, a real-app lifecycle, or
+a defensive guard against an impossible state). Rivet's moat is verification-by-construction; its own
+suite holds to the same bar.
 
 Rivet dogfoods itself: this repo's own `.rivet/` carries its specs, journal, laws, learnings, and
 boards — every feature here went through the gate it ships.
