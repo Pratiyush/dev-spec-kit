@@ -66,3 +66,14 @@ describe("rivet affected", () => {
     expect(text).toContain("no code node matching");
   });
 });
+
+describe("rivet drift — no stack to re-run with", () => {
+  it("skips a drifted proof that has no recorded stack and no --stack fallback", () => {
+    const dir = tmpProject({ ".rivet/specs/x.md": SPEC });
+    const s = store(dir);
+    s.create("REQUIREMENT_X-01", "t", ["c1", "c2"]);
+    s.recordCheck("REQUIREMENT_X-01", { ref: "c1", passed: false, at: "x", sha: "S", tree: "T" }); // no stack
+    const { text } = run(dir, () => drift({}));
+    expect(text).toContain("no recorded stack");
+  });
+});

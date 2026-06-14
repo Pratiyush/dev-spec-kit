@@ -74,3 +74,23 @@ describe("deriveTrail — skipped and pending states", () => {
     expect(summary.doneGate).toBe("pending");
   });
 });
+
+describe("deriveTrail — bindings synced + a red proof", () => {
+  const evx = (at: string, type: JournalEvent["type"], data: unknown): JournalEvent => ({ at, type, data });
+  it("records a 'synced' binding event and a red proof summary", () => {
+    const events: JournalEvent[] = [
+      evx("2026-06-12T10:00:00Z", "task.created", { id: "T9", title: "t", boundChecks: ["a.test.ts::x"] }),
+      evx("2026-06-12T10:01:00Z", "task.bindings", {
+        id: "T9",
+        boundChecks: ["a.test.ts::x", "b.test.ts::y"],
+      }),
+      evx("2026-06-12T10:02:00Z", "check.run", {
+        taskId: "T9",
+        result: { ref: "a.test.ts::x", passed: false, at: "2026-06-12T10:02:00Z" },
+      }),
+    ];
+    const { timeline, summary } = deriveTrail(events, "T9");
+    expect(timeline.some((e) => e.outcome === "synced")).toBe(true);
+    expect(summary.proof).toBe("red");
+  });
+});

@@ -281,3 +281,24 @@ describe("rivet status / trail — remaining states", () => {
     expect(text).toContain("proof");
   });
 });
+
+describe("rivet task done — stale accepted with blockDoneOnFail=false", () => {
+  it("accepts a stale proof with a warning when the block is off", () => {
+    const dir = tmpProject({
+      "src/x.ts": "export const x = 1;\n",
+      ".rivet/config.json": JSON.stringify({ verify: { blockDoneOnFail: false } }),
+    });
+    for (const args of [
+      ["init"],
+      ["add", "-A"],
+      ["-c", "user.email=t@t.co", "-c", "user.name=t", "commit", "-m", "x"],
+    ])
+      spawnSync("git", args, { cwd: dir, stdio: "ignore" });
+    const s = store(dir);
+    s.create("T1", "t", ["c1"]);
+    s.recordCheck("T1", { ref: "c1", passed: true, at: "x", sha: "S", tree: "STALE_OLD" });
+    const { text } = run(dir, () => taskDone("T1"));
+    expect(text).toContain("stale proof(s) accepted");
+    expect(store(dir).get("T1")!.status).toBe("done");
+  });
+});

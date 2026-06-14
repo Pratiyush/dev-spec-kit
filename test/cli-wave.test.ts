@@ -78,3 +78,25 @@ describe("rivet wave start/done — fetch-first worktrees", () => {
     expect(() => waveDoneAt(work, "never-created", {})).toThrow(/does not exist/);
   });
 });
+
+describe("wave defaultBranch fallback", () => {
+  it("falls back to main when origin/HEAD is not set", () => {
+    const remote = mkdtempSync(join(tmpdir(), "rivet-remote-"));
+    spawnSync("git", ["init", "--bare", "-b", "main", remote], { stdio: "ignore" });
+    const work = tmpProject({ "src/x.ts": "export const x = 1;\n" });
+    const g = (a: string[]) =>
+      spawnSync("git", ["-c", "user.email=t@t.co", "-c", "user.name=t", ...a], {
+        cwd: work,
+        stdio: "ignore",
+      });
+    g(["init", "-b", "main"]);
+    g(["add", "-A"]);
+    g(["commit", "-m", "init"]);
+    g(["remote", "add", "origin", remote]);
+    g(["push", "-u", "origin", "main"]);
+    // deliberately NOT set-head — forces the main/master probe path
+    const reports = waveStartAt(work, ["WF"]);
+    expect(reports[0]!.base).toMatch(/^[0-9a-f]{7,}/);
+    waveDoneAt(work, "WF", { force: true });
+  });
+});

@@ -205,3 +205,42 @@ describe("webCmd — emits the cockpit and starts listening", () => {
     }
   });
 });
+
+describe("rivet web — defensive branches", () => {
+  it("a malformed config.json degrades to defaults for the outDir lookup (no crash)", async () => {
+    const dir = tmpProject({ ".rivet/config.json": "{ not json" });
+    const { base, close } = await serve(dir);
+    try {
+      // outDir resolution goes through safeReadConfig's catch → default 'graphify-out'
+      expect((await fetch(`${base}/graphify-out/missing.html`)).status).toBe(404);
+    } finally {
+      await close();
+    }
+  });
+
+  it("rejects a malformed Origin header as cross-origin", async () => {
+    const dir = tmpProject();
+    const { base, close } = await serve(dir);
+    try {
+      const res = await fetch(`${base}/api/config`, {
+        method: "POST",
+        headers: { "content-type": "application/json", origin: "http://[bad" },
+        body: "{}",
+      });
+      expect(res.status).toBe(403);
+    } finally {
+      await close();
+    }
+  });
+
+  it("404s a sibling-dir traversal that escapes the outDir", async () => {
+    const dir = tmpProject();
+    const { base, close } = await serve(dir);
+    try {
+      const res = await fetch(`${base}/graphify-out/../secret`);
+      expect(res.status).toBe(404);
+    } finally {
+      await close();
+    }
+  });
+});

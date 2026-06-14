@@ -72,3 +72,15 @@ describe("rivet doctor — the command", () => {
     expect(text).toContain("every @check ref resolves");
   });
 });
+
+describe("rivet doctor — uncovered criteria warning", () => {
+  it("lists an UNCOVERED criterion that has no @check", () => {
+    const dir = tmpProject({
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\nThe system SHALL also do z.\n",
+      "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
+    });
+    const { text } = run(dir, () => runDoctor());
+    expect(text).toContain("UNCOVERED");
+  });
+});
