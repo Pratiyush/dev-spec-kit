@@ -2,7 +2,7 @@ import pc from "picocolors";
 import { spawnSync } from "node:child_process";
 import { materialize, journalFor } from "./materialize.js";
 import { TaskStore } from "../engine/state/tasks.js";
-import { rollupRequirements, driftTargets } from "../engine/graph/build.js";
+import { rollupRequirements, driftTargets, type RequirementRollup } from "../engine/graph/build.js";
 import { blastRadius } from "../engine/graph/types.js";
 import { runCheck, pickRunner } from "../engine/verify/runner.js";
 import { runWithRetry } from "../engine/verify/retry.js";
@@ -18,6 +18,17 @@ const LIGHT: Record<ProofState, string> = {
   stale: pc.magenta("● stale"),
   unproven: pc.yellow("○ unproven"),
 };
+
+/**
+ * FIX-TRACE-HINT-01: a stale proof predates the working tree — `graph build` names the cure, so
+ * `trace` must too (parity), or the user is left staring at a magenta dot with no next move. Pure
+ * over the rollups; returns null when nothing is stale (red/unproven want a different remedy).
+ */
+export function staleRemedy(rollups: RequirementRollup[]): string | null {
+  const stale = rollups.reduce((n, r) => n + r.criteria.filter((c) => c.proof === "stale").length, 0);
+  if (stale === 0) return null;
+  return `${stale} proof(s) predate the working tree — re-verify with: rivet drift  (or: rivet verify --stamp)`;
+}
 
 /** `rivet trace` — requirement→criterion truth table + the gaps, straight from the graph. */
 export function trace(): void {
@@ -44,6 +55,8 @@ export function trace(): void {
       `${unbound.length} unbound criteria` +
       (m.codeGraphLoaded ? "" : pc.dim(" · code graph not loaded")),
   );
+  const remedy = staleRemedy(rollups);
+  if (remedy) console.log(pc.magenta(`  drift: ${remedy}`));
   if (unproven.length > 0) process.exitCode = 1;
 }
 
