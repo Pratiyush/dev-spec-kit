@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { parseLearnings, matchOpenLessons } from "../src/engine/learnwarn.js";
+import { parseLearnings, matchOpenLessons, lessonsToWarn } from "../src/engine/learnwarn.js";
 
 /** LEARN-01: logged-but-unpromoted lessons recur — so OPEN lessons surface BEFORE the work starts. */
 
@@ -33,5 +33,16 @@ describe("matchOpenLessons", () => {
     expect(hits[0]!.title).toContain("fetch first");
     expect(matchOpenLessons(entries, "tune the parser fences")).toHaveLength(0); // that one is HARDENED
     expect(matchOpenLessons(entries, "unrelated dashboard work")).toHaveLength(0);
+  });
+});
+
+/** FIX-CONFIG-WIRE-01: learning.warnOnRepeat now actually gates the warnings (it was display-only). */
+describe("lessonsToWarn honors the learning.warnOnRepeat toggle", () => {
+  const words = "WAVE-03 improve worktree dispatch ordering";
+  it("warns (matched open lessons) when the toggle is on", () => {
+    expect(lessonsToWarn(true, LEDGER, words)).toHaveLength(1);
+  });
+  it("warns nothing when the toggle is off — the user silenced warn-on-repeat", () => {
+    expect(lessonsToWarn(false, LEDGER, words)).toHaveLength(0);
   });
 });

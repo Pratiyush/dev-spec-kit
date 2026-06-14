@@ -46,6 +46,16 @@ function tokens(s: string): Set<string> {
   );
 }
 
+/**
+ * FIX-CONFIG-WIRE-01: the engine-enforced toggle for warn-on-repeat. `learning.warnOnRepeat` was a
+ * display-only knob — taskStart warned unconditionally. Now `false` genuinely silences it. Pure so
+ * the gate is unit-tested without the CLI.
+ */
+export function lessonsToWarn(enabled: boolean, ledgerText: string, taskWords: string): LessonEntry[] {
+  if (!enabled) return [];
+  return matchOpenLessons(parseLearnings(ledgerText), taskWords);
+}
+
 /** Open lessons whose TITLE overlaps the task's words — title is the lesson's signature. */
 export function matchOpenLessons(entries: LessonEntry[], taskWords: string): LessonEntry[] {
   const hay = tokens(taskWords);

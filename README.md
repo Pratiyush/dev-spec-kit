@@ -119,8 +119,13 @@ as a Claude Code skill (the disposable layer), not yet as durable engine logic:
 - **Learning-loop enforcement** — lessons warn-on-repeat and promote by hand; no gate blocks on an
   unpromoted lesson, and a fixed bug isn't auto-turned into a regression test yet.
 - **MCP server** — exposing Rivet's verbs as MCP tools is planned.
-- **Config honesty** — a few `.rivet/config.json` knobs are still display-only (not yet read by the
-  engine); they'll be wired or removed.
+- **Config honesty** — the engine hard-enforces the verification gates and the operational knobs
+  (TDD, retry budget, flaky policy, wave size, the done-gate, every-criterion-needs-a-check, the
+  negative-edge floor, gate packs, routing, runner stacks, `learning.warnOnRepeat`). The wider policy
+  menu (review angles/passes, learning promotion, code-style/reuse preferences, intake sources,
+  branch pattern) is **agent-facing** — surfaced to the Claude Code agent via the generated config
+  manifest (`config-manifest.ts`), which it reads and obeys. Those are deliberate agent policy, not
+  yet hard *engine* gates; this is stated, never pretended-enforced.
 
 ## Prerequisites & develop
 
