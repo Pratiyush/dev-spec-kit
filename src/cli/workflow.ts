@@ -297,6 +297,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     graph,
     tasks,
     approvals: listApprovals(cwd),
+    changedFiles: prChangedFiles(cwd), // FEAT-BLAST-01: what this PR touches, from the graph
     ...(head ? { headSha: head } : {}),
     ...(tree ? { tree, dirty: isDirty(cwd) } : {}),
   });
@@ -456,6 +457,34 @@ export function guardPr(): void {
 function gitHead(cwd: string): string | undefined {
   const res = spawnSync("git", ["rev-parse", "HEAD"], { cwd, stdio: ["ignore", "pipe", "ignore"] });
   return res.status === 0 ? res.stdout.toString().trim() : undefined;
+}
+
+/**
+ * FEAT-BLAST-01 — files changed on this branch since it forked from its base (tracking branch →
+ * origin's default → main/master, first that resolves), committed OR working. Empty when no base
+ * resolves (no remote / unrelated history) — the blast-radius section then says so honestly.
+ */
+export function prChangedFiles(cwd: string): string[] {
+  const gitOut = (args: string[]): string | undefined => {
+    const res = spawnSync("git", args, { cwd, stdio: ["ignore", "pipe", "ignore"] });
+    return res.status === 0 ? res.stdout.toString().trim() : undefined;
+  };
+  let base: string | undefined;
+  for (const cand of ["@{u}", "origin/HEAD", "origin/main", "main", "origin/master", "master"]) {
+    if (gitOut(["rev-parse", "--verify", "--quiet", cand]) !== undefined) {
+      base = cand;
+      break;
+    }
+  }
+  if (!base) return [];
+  const fork = gitOut(["merge-base", base, "HEAD"]) ?? base;
+  const diff = gitOut(["diff", "--name-only", fork]);
+  return diff
+    ? diff
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : [];
 }
 
 /**
