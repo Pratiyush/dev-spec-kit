@@ -265,7 +265,14 @@ async function runJudge(
       try {
         evidence = readFileSync(join(cwd, file ?? ref), "utf8");
       } catch {
-        /* ref isn't a file — judge the ref string itself */
+        // FIX-JUDGE-EVIDENCE-01: a file-looking ref that doesn't resolve would silently be judged as
+        // its own string (a typo'd/moved path → a misleading verdict). Warn so the evidence isn't a lie.
+        if (file && /[./]/.test(file)) {
+          console.error(
+            pc.yellow(`⚠ judge evidence "${file}" not found`) +
+              pc.dim(" — judging the ref TEXT, not file content (fix the path or the ref)"),
+          );
+        }
       }
       verdict = await judgeViaApi(criterion, evidence, cfg.model);
     } else {

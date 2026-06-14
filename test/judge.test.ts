@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { resolveJudgeMode, judgeResult, hasApiKey } from "../src/engine/verify/judge.js";
+import {
+  resolveJudgeMode,
+  judgeResult,
+  hasApiKey,
+  interpretJudgeResponse,
+} from "../src/engine/verify/judge.js";
 
 describe("resolveJudgeMode — harness is free; api only when a key exists (FEAT-JUDGE-01)", () => {
   it("auto resolves to api when a key is present, harness when not", () => {
@@ -41,5 +46,50 @@ describe("hasApiKey", () => {
   it("is true only when ANTHROPIC_API_KEY is set", () => {
     expect(hasApiKey({ ANTHROPIC_API_KEY: "sk-x" } as NodeJS.ProcessEnv)).toBe(true);
     expect(hasApiKey({} as NodeJS.ProcessEnv)).toBe(false);
+  });
+
+  it("falls back to process.env when called with no argument", () => {
+    const had = "ANTHROPIC_API_KEY" in process.env;
+    const prev = process.env.ANTHROPIC_API_KEY;
+    try {
+      delete process.env.ANTHROPIC_API_KEY;
+      expect(hasApiKey()).toBe(false);
+      process.env.ANTHROPIC_API_KEY = "sk-test";
+      expect(hasApiKey()).toBe(true);
+    } finally {
+      if (had) process.env.ANTHROPIC_API_KEY = prev;
+      else delete process.env.ANTHROPIC_API_KEY;
+    }
+  });
+});
+
+describe("interpretJudgeResponse — api-mode guards never fabricate a proof (FEAT-JUDGE-01)", () => {
+  it("throws on a safety refusal (records nothing)", () => {
+    expect(() => interpretJudgeResponse({ stop_reason: "refusal" })).toThrow(/refused/i);
+  });
+
+  it("throws when there is no structured verdict", () => {
+    expect(() => interpretJudgeResponse({})).toThrow(/no structured verdict/i);
+    expect(() => interpretJudgeResponse({ parsed_output: undefined })).toThrow(/no structured verdict/i);
+  });
+
+  it("throws when passed is not a boolean (malformed model output)", () => {
+    expect(() => interpretJudgeResponse({ parsed_output: { passed: "yes", reason: "x" } })).toThrow(
+      /no structured verdict/i,
+    );
+  });
+
+  it("returns a normalized verdict on a valid response", () => {
+    expect(interpretJudgeResponse({ parsed_output: { passed: true, reason: "clear" } })).toEqual({
+      passed: true,
+      reason: "clear",
+    });
+  });
+
+  it("coerces a missing reason to an empty string", () => {
+    expect(interpretJudgeResponse({ parsed_output: { passed: false } })).toEqual({
+      passed: false,
+      reason: "",
+    });
   });
 });
