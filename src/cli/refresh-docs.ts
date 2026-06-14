@@ -24,7 +24,10 @@ export function refreshDocs(cwd: string, config: RivetConfig, pre?: Materialized
     writeBoards(cwd, m.tasks, events, rollupRequirements(obligated, m.vtg));
     writeFileSync(join(cwd, ".rivet", "RESUME.md"), renderResume(m.tasks));
     if (config.dashboard.updates !== "on-demand") writeSidecar(cwd, buildRivet(cwd));
+    /* c8 ignore start -- docs are DERIVED; a write failure here must never break the command that did
+       the real work (the truth is already journaled). Best-effort by design. */
   } catch {
     /* the documents are derived; the journal already holds the truth */
   }
+  /* c8 ignore stop */
 }

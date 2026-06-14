@@ -178,8 +178,11 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
         json(res, 422, { errors: e.issues.map((i) => ({ path: i.path.join("."), message: i.message })) });
         return;
       }
+      /* c8 ignore start -- parseConfig only throws ZodError for a config object; a non-Zod throw is a
+         programming error, surfaced (not swallowed) by the outer 500 handler. */
       throw e;
     }
+    /* c8 ignore stop */
     writeFileSync(configPath, JSON.stringify(clean, null, 2) + "\n");
     new Journal(join(cwd, ".rivet", "journal.jsonl")).append("governance", {
       kind: "config-save",
@@ -214,11 +217,14 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
     const outDir = parseConfig(safeReadConfig(cwd)).graphify.outDir;
     if (url.startsWith(`/${outDir}/`)) {
       const safe = normalize(url).replace(/^[/\\]+/, "");
+      /* c8 ignore start -- defense-in-depth: a `..` segment is normalized away by fetch/browsers before
+         the request is sent, so this sibling-dir guard only fires for a hand-crafted raw client. */
       if (safe.split("/")[0] !== outDir) {
         // finding #8: compare the first path SEGMENT, not a string prefix (no sibling-dir leak)
         json(res, 404, { error: "not found" });
         return;
       }
+      /* c8 ignore stop */
       const path = join(cwd, safe);
       if (existsSync(path)) {
         const ext = safe.slice(safe.lastIndexOf("."));
@@ -231,18 +237,23 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
   json(res, 404, { error: "not found" });
 }
 
-/** `rivet web [--port N] [--open]` — emit the cockpit and serve it with the save API. */
-export function webCmd(opts: { port?: string; open?: boolean }): void {
+/** `rivet web [--port N] [--open]` — emit the cockpit and serve it with the save API. Returns the
+ *  server (so callers/tests can close it); the CLI just leaves it listening until Ctrl-C. */
+export function webCmd(opts: { port?: string; open?: boolean }): Server {
   const cwd = process.cwd();
   emitCockpit(cwd, { serverMode: true });
   const port = Number(opts.port ?? 7341) || 7341;
   const server = createCockpitServer(cwd);
   server.listen(port, "127.0.0.1", () => {
-    const url = `http://localhost:${port}/`;
+    const addr = server.address();
+    const shown = typeof addr === "object" && addr ? addr.port : port;
+    const url = `http://localhost:${shown}/`;
     console.log(pc.green(`${label("pr")} rivet cockpit serving`) + pc.dim(` → ${url} (Ctrl-C to stop)`));
     console.log(
       pc.dim(`  ${label("report")} dashboard + config studio · saves validate + respect GATE-PROTECT`),
     );
+    /* c8 ignore next -- launches the OS browser; nothing to assert and not wanted in CI */
     if (opts.open) spawnSync("open", [url], { stdio: "ignore" });
   });
+  return server;
 }

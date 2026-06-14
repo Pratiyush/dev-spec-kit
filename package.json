@@ -1,7 +1,7 @@
 {
   "name": "rivet",
   "version": "0.1.0",
-  "description": "Rivet \u2014 spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
+  "description": "Rivet — spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
   "type": "module",
   "bin": {
     "rivet": "dist/cli/index.js"
@@ -20,6 +20,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
     "start": "node dist/cli/index.js",
     "lint": "eslint .",
     "prepare": "husky"
@@ -27,11 +28,12 @@
   "dependencies": {
     "commander": "^12.1.0",
     "picocolors": "^1.1.1",
-    "zod": "^3.23.8",
-    "revitify": "link:/Users/pratiyush/Github/revitify"
+    "revitify": "link:/Users/pratiyush/Github/revitify",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^2.1.9",
     "eslint": "^10.4.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",

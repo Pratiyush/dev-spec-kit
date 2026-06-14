@@ -81,7 +81,7 @@ export function verifyCmd(opts?: { stamp?: boolean; advance?: boolean }): void {
  * for each — stamped with the SAME tree the verify ran on, so `trace` reads them green immediately.
  * A ref not present in the report (a pytest/maven check, or a test not run) is left untouched.
  */
-function stampProofs(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
+export function stampProofs(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
   const sources = run.reports ?? [];
   const reports = sources
     .map((s) => {
@@ -126,7 +126,7 @@ function stampProofs(cwd: string, config: RivetConfig, journal: Journal, run: Ve
  * (criteria) and `status` (tasks) stop disagreeing. Reuses the done-gate's own evidence rule, so it
  * only advances what `task done` would have accepted anyway — the human approval step still follows.
  */
-function advanceTasks(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
+export function advanceTasks(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
   const store = new TaskStore(journal);
   const ids = provableTaskIds([...store.all().values()], run.tree);
   if (ids.length === 0) return;

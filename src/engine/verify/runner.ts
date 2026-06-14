@@ -224,6 +224,8 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
       let raw: string;
       try {
         raw = readFileSync(reportPath as string, "utf8");
+        /* c8 ignore start -- guards a MISBEHAVING JS runner (exits 0 but writes no JSON report);
+           needs a real vitest/jest that lies, so not reproducible in a unit test. */
       } catch {
         if (passed)
           throw new RunnerUnavailableError(
@@ -231,6 +233,7 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
           );
         raw = "";
       }
+      /* c8 ignore stop */
       if (raw) {
         const verdict = interpretCheckRun(parseTestReport(raw), exit);
         passed = verdict.passed;
@@ -252,6 +255,9 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
       sha: opts.sha ?? gitHead(opts.cwd),
       ...(tree ? { tree } : {}),
       dirty: isDirty(opts.cwd),
+      // FIX-KIND-01: the proof self-describes its kind, so an executed proof is never confused with a
+      // judge verdict downstream (judge always sets kind="judge"; executed checks must too).
+      ...(binding.kind ? { kind: binding.kind } : {}),
       ...(tail ? { tail } : {}),
     };
   } finally {

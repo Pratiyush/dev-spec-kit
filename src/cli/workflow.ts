@@ -1,5 +1,5 @@
-import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import pc from "picocolors";
@@ -65,13 +65,17 @@ export interface SpecHealth {
   hasSpecs: boolean;
   dangling: ReturnType<typeof findDangling>;
   unbound: ReturnType<typeof unboundObligations>;
+  /** FIX-PARSE-02: parser warnings (e.g. an orphan `@check` with no criterion = a LOST proof
+   *  obligation). Previously only `graph build` printed these; now `spec lint`/`doctor` do too. */
+  parseWarnings: string[];
 }
 
-/** Collect drift findings (orphaned @check refs + unbound criteria). Shared by `spec lint` (which
- *  prints + exits) and `rivet doctor` (which folds it into the health check, feedback #1). */
+/** Collect drift findings (orphaned @check refs + unbound criteria + parser warnings). Shared by
+ *  `spec lint` (which prints + exits) and `rivet doctor` (which folds it into the health check). */
 export function specHealth(cwd: string): SpecHealth {
-  const reqs = parseSpecsDir(cwd);
-  if (reqs.length === 0) return { hasSpecs: false, dangling: [], unbound: [] };
+  const parseWarnings: string[] = [];
+  const reqs = parseSpecsDir(cwd, parseWarnings);
+  if (reqs.length === 0) return { hasSpecs: false, dangling: [], unbound: [], parseWarnings };
   const store = new TaskStore(journal(cwd));
   const taskRefs = [...store.all().values()].flatMap((t) =>
     t.boundChecks.map((ref) => ({ owner: `task ${t.id}`, ref })),
@@ -84,16 +88,25 @@ export function specHealth(cwd: string): SpecHealth {
       return undefined;
     }
   };
-  return { hasSpecs: true, dangling: findDangling(refs, read), unbound: unboundObligations(reqs) };
+  return {
+    hasSpecs: true,
+    dangling: findDangling(refs, read),
+    unbound: unboundObligations(reqs),
+    parseWarnings,
+  };
 }
 
 export function specLint(): void {
-  const { hasSpecs, dangling, unbound } = specHealth(process.cwd());
+  const { hasSpecs, dangling, unbound, parseWarnings } = specHealth(process.cwd());
   if (!hasSpecs) {
     console.log(pc.yellow("no specs in .rivet/specs/ — nothing to lint"));
     return;
   }
   console.log(pc.bold("\n🔎 rivet spec lint — static drift check\n"));
+  for (const w of parseWarnings) {
+    // FIX-PARSE-02: a dropped @check / parser issue is a lost proof obligation — surface it loudly.
+    console.error(pc.red(`✗ SPEC       ${w}`));
+  }
   for (const d of dangling) {
     const why = d.reason === "file-missing" ? "file not found" : "test name not in file — renamed?";
     console.error(pc.red(`✗ ORPHANED   ${d.ref}`) + pc.dim(`  (${why}; ${d.owner})`));
@@ -101,14 +114,18 @@ export function specLint(): void {
   for (const c of unbound) {
     console.log(pc.yellow(`⚠ UNCOVERED  ${c.id}`) + pc.dim("  (criterion has no @check binding)"));
   }
-  if (dangling.length === 0 && unbound.length === 0) {
+  if (dangling.length === 0 && unbound.length === 0 && parseWarnings.length === 0) {
     console.log(pc.green("✓ clean — every @check ref resolves; every obligation is bound"));
   } else {
     console.log(
-      pc.dim(`\n${dangling.length} orphaned ref(s) · ${unbound.length} unbound criterion(criteria)`),
+      pc.dim(
+        `\n${dangling.length} orphaned ref(s) · ${unbound.length} unbound criterion(criteria)` +
+          (parseWarnings.length ? ` · ${parseWarnings.length} spec parser warning(s)` : ""),
+      ),
     );
   }
-  if (dangling.length > 0) process.exitCode = 1; // orphans are errors; unbound are warnings
+  // Orphaned refs AND lost-obligation parser warnings are errors; unbound criteria are warnings.
+  if (dangling.length > 0 || parseWarnings.length > 0) process.exitCode = 1;
 }
 
 /**
@@ -155,6 +172,9 @@ export function specDraftTests(): void {
     }
     const blocks = [...byReq.entries()].map(([reqId, ss]) => describeBlock(reqId, ss)).join("\n\n");
     if (existing === null) {
+      // FIX-DRAFT-02: a fresh project may not have the target dir (e.g. test/) yet — create it
+      // rather than crash with ENOENT.
+      mkdirSync(dirname(abs), { recursive: true });
       writeFileSync(abs, `import { describe, it, expect } from "vitest";\n\n${blocks}\n`);
       console.log(pc.green(`+ ${file}`) + pc.dim(` — created with ${fresh.length} stub(s)`));
     } else {
@@ -250,8 +270,10 @@ export function approve(taskIds: string[], opts: { note?: string }): void {
       process.exitCode = 1;
       return;
     }
+    /* c8 ignore start -- rethrow a non-ApprovalError (an unexpected fault, surfaced not swallowed). */
     throw e;
   }
+  /* c8 ignore stop */
 }
 
 /** `rivet pr` — generate the graph-derived PR body; optionally create the PR via gh. */
@@ -313,6 +335,8 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     }
   }
   if (opts.create) {
+    /* c8 ignore start -- shells out to `gh pr create`: needs the GitHub CLI + auth and would open a
+       real PR; never run in CI. Everything up to here (the gate that GUARDS this call) is tested. */
     const res = spawnSync(
       "gh",
       ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath],
@@ -322,6 +346,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
       },
     );
     if (res.status !== 0) process.exitCode = res.status ?? 1;
+    /* c8 ignore stop */
   } else {
     console.log(pc.dim(`  open it with: gh pr create --title "<title>" --body-file .rivet/pr-body.md`));
   }

@@ -145,7 +145,7 @@ program
   .description("Serve the cockpit (dashboard + config studio) with the validated save API")
   .option("-p, --port <port>", "port (default 7341)")
   .option("--open", "open it in the browser (macOS)")
-  .action(safe((opts: { port?: string; open?: boolean }) => webCmd(opts)));
+  .action(safe((opts: { port?: string; open?: boolean }) => void webCmd(opts)));
 
 program
   .command("verify")

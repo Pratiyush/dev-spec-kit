@@ -2,7 +2,7 @@ import pc from "picocolors";
 import { spawnSync } from "node:child_process";
 import { materialize, journalFor } from "./materialize.js";
 import { TaskStore } from "../engine/state/tasks.js";
-import { rollupRequirements, driftTargets } from "../engine/graph/build.js";
+import { rollupRequirements, driftTargets, type RequirementRollup } from "../engine/graph/build.js";
 import { blastRadius } from "../engine/graph/types.js";
 import { runCheck, pickRunner } from "../engine/verify/runner.js";
 import { runWithRetry } from "../engine/verify/retry.js";
@@ -18,6 +18,17 @@ const LIGHT: Record<ProofState, string> = {
   stale: pc.magenta("● stale"),
   unproven: pc.yellow("○ unproven"),
 };
+
+/**
+ * FIX-TRACE-HINT-01: a stale proof predates the working tree — `graph build` names the cure, so
+ * `trace` must too (parity), or the user is left staring at a magenta dot with no next move. Pure
+ * over the rollups; returns null when nothing is stale (red/unproven want a different remedy).
+ */
+export function staleRemedy(rollups: RequirementRollup[]): string | null {
+  const stale = rollups.reduce((n, r) => n + r.criteria.filter((c) => c.proof === "stale").length, 0);
+  if (stale === 0) return null;
+  return `${stale} proof(s) predate the working tree — re-verify with: rivet drift  (or: rivet verify --stamp)`;
+}
 
 /** `rivet trace` — requirement→criterion truth table + the gaps, straight from the graph. */
 export function trace(): void {
@@ -44,6 +55,8 @@ export function trace(): void {
       `${unbound.length} unbound criteria` +
       (m.codeGraphLoaded ? "" : pc.dim(" · code graph not loaded")),
   );
+  const remedy = staleRemedy(rollups);
+  if (remedy) console.log(pc.magenta(`  drift: ${remedy}`));
   if (unproven.length > 0) process.exitCode = 1;
 }
 
@@ -117,16 +130,21 @@ export function affected(label: string): void {
   const node = m.vtg.nodes.find(
     (n) => n.kind === "codeNode" && (n.id.toLowerCase() === needle || n.label.toLowerCase().includes(needle)),
   );
+  /* c8 ignore start -- the matched-node render needs a LOADED code graph (graphify/revitify output)
+     to contain a codeNode; blastRadius itself is unit-tested in graph.test.ts. */
   if (node) {
     const edges = blastRadius(m.vtg, node.id);
     console.log(
       pc.bold(`\nProven edges touching ${node.label}:`) + (edges.length === 0 ? pc.dim(" none") : ""),
     );
     for (const e of edges) console.log(`  ${LIGHT[e.proof]} ${e.kind} ${pc.dim(`${e.from} → ${e.to}`)}`);
+    /* c8 ignore stop */
   } else {
     console.log(pc.yellow(`no code node matching '${label}' in the graph`));
   }
   const bin = graphifyBin();
+  /* c8 ignore start -- shells out to the external `graphify affected` (only when graphify is on PATH);
+     a subprocess to a tool that is absent in CI. */
   if (bin) {
     console.log(pc.bold("\ngraphify reverse traversal:"));
     const res = spawnSync(bin, ["affected", label], { cwd, stdio: ["ignore", "pipe", "pipe"] });
@@ -135,4 +153,5 @@ export function affected(label: string): void {
       out ? pc.dim(out.split("\n").slice(0, 20).join("\n")) : pc.dim(res.stderr?.toString().trim() ?? ""),
     );
   }
+  /* c8 ignore stop */
 }

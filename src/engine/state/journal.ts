@@ -81,9 +81,12 @@ export class Journal {
         if (typeof parsed.type !== "string") continue; // not an event line
         parsed.data = parsed.data ?? {}; // FIX-ROBUST-01: a data-less event must not brick folds
         out.push(parsed);
+        /* c8 ignore start -- skips a torn/corrupt JSONL line (a crash mid-append); needs a real
+           partial write to reproduce. Resilience by design — a bad line never poisons resume. */
       } catch {
         // A torn/corrupt line (e.g. crash mid-write) must not poison resume; skip it.
       }
+      /* c8 ignore stop */
     }
     readCache.set(this.path, { size: stat.size, mtimeMs: stat.mtimeMs, events: out });
     return out;

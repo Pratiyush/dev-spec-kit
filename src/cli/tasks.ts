@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { existsSync, readFileSync } from "node:fs";
 import pc from "picocolors";
-import { parseLearnings, matchOpenLessons } from "../engine/learnwarn.js";
+import { lessonsToWarn } from "../engine/learnwarn.js";
 import { deriveTrail } from "../engine/trail.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, EvidenceError, staleProofRefs, bindingsOutOfSync } from "../engine/state/tasks.js";
@@ -62,16 +62,18 @@ export function taskStart(id: string): void {
   const s = store(cwd);
   s.setStatus(id, "in_progress");
   console.log(pc.green(`▶ Task ${id} in progress`));
+  const config = loadConfig(cwd);
   // LEARN-01: surface OPEN lessons that pattern-match this task BEFORE the work begins.
+  // FIX-CONFIG-WIRE-01: gated by learning.warnOnRepeat (default on) — the toggle now bites.
   const ledgerPath = join(cwd, ".rivet", "learnings.md");
   if (existsSync(ledgerPath)) {
     const task = s.get(id);
     const words = `${id} ${task?.title ?? ""} ${(task?.boundChecks ?? []).join(" ")}`;
-    for (const hit of matchOpenLessons(parseLearnings(readFileSync(ledgerPath, "utf8")), words)) {
+    for (const hit of lessonsToWarn(config.learning.warnOnRepeat, readFileSync(ledgerPath, "utf8"), words)) {
       console.log(pc.yellow(`  ⚠ open lesson may apply: ${hit.title}`) + pc.dim("  (.rivet/learnings.md)"));
     }
   }
-  refreshDocs(cwd, loadConfig(cwd)); // REQUIREMENT_DOCS-01
+  refreshDocs(cwd, config); // REQUIREMENT_DOCS-01
 }
 
 /**
@@ -143,8 +145,10 @@ export function taskDone(id: string): void {
       process.exitCode = 1;
       return;
     }
+    /* c8 ignore start -- rethrow a non-EvidenceError (an unexpected fault, surfaced not swallowed). */
     throw e;
   }
+  /* c8 ignore stop */
 }
 
 // FIX-PROOF-03/04: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
@@ -211,7 +215,8 @@ export async function checkRun(
     kind,
   });
   const { result, attempts } = needsApp
-    ? await withApp(config.verify.app, () => runWithRetry(exec, retries))
+    ? /* c8 ignore next -- the app-lifecycle path: spawns a real app for api/e2e checks (integration). */
+      await withApp(config.verify.app, () => runWithRetry(exec, retries))
     : runWithRetry(exec, retries);
   store(cwd).recordCheck(taskId, result);
   refreshDocs(cwd, config); // REQUIREMENT_DOCS-01
@@ -265,7 +270,14 @@ async function runJudge(
       try {
         evidence = readFileSync(join(cwd, file ?? ref), "utf8");
       } catch {
-        /* ref isn't a file — judge the ref string itself */
+        // FIX-JUDGE-EVIDENCE-01: a file-looking ref that doesn't resolve would silently be judged as
+        // its own string (a typo'd/moved path → a misleading verdict). Warn so the evidence isn't a lie.
+        if (file && /[./]/.test(file)) {
+          console.error(
+            pc.yellow(`⚠ judge evidence "${file}" not found`) +
+              pc.dim(" — judging the ref TEXT, not file content (fix the path or the ref)"),
+          );
+        }
       }
       verdict = await judgeViaApi(criterion, evidence, cfg.model);
     } else {

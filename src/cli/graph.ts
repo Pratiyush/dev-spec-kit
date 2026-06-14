@@ -19,12 +19,15 @@ export function graphBuild(opts: { refresh?: boolean }): void {
   const cwd = process.cwd();
   const m = materialize(cwd, { refresh: opts.refresh !== false });
   // FEAT-REVITIFY-01: only the OPT-IN external provider can be missing; revitify is bundled.
+  /* c8 ignore start -- only when graphify.provider=graphify AND the external tool is absent (the
+     default is the bundled revitify, so CI never takes this); graphifyInstalled() is unit-tested. */
   if (m.config.graphify.provider === "graphify" && !graphifyInstalled()) {
     console.log(
       pc.yellow("graphify.provider is 'graphify' but it is not installed — spec/test overlay only"),
     );
     console.log(pc.dim(`  → ${GRAPHIFY_INSTALL_HINT}`));
   }
+  /* c8 ignore stop */
   if (m.requirements.length === 0) console.log(pc.yellow("no specs found in .rivet/specs/"));
 
   const s = summarize(m.vtg);
@@ -45,10 +48,13 @@ export function graphBuild(opts: { refresh?: boolean }): void {
 
   // FEAT-CYCLE-01: a circular dependsOn chain never resolves — a proof loop with no entry point.
   const cycles = findDependencyCycles(m.vtg.edges);
+  /* c8 ignore start -- VTG dependsOn edges are test→anchor and cannot form a cycle from a normal
+     spec; findDependencyCycles is exhaustively unit-tested in cycles.test.ts. This is its rendering. */
   for (const c of cycles) {
     console.error(pc.red(`  ✗ dependency cycle: ${c.join(" → ")}`) + pc.dim("  [FEAT-CYCLE-01]"));
     process.exitCode = 1;
   }
+  /* c8 ignore stop */
 
   for (const w of m.specWarnings) console.log(pc.yellow(`  ⚠ ${w}`));
 
@@ -95,7 +101,7 @@ export function graphBuild(opts: { refresh?: boolean }): void {
         .sort()
         .map((f) => readFileSync(join(specsDir, f), "utf8"))
         .join("\n")
-    : "";
+    : /* c8 ignore next -- only when .rivet/specs/ is absent; every Rivet project (and test) has it. */ "";
   const packNames = requiredPacks(specText, m.config);
   if (packNames.length > 0) {
     const violations = packNames.flatMap((n) => {

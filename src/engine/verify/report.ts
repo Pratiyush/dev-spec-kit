@@ -113,12 +113,14 @@ export interface CheckVerdict {
 export function interpretCheckRun(report: TestReport, exitCode: number): CheckVerdict {
   const ran = report.numPassedTests + report.numFailedTests;
   if (ran === 0) {
-    return {
-      passed: false,
-      ran,
-      reason:
-        "no test executed for this ref — 0 tests matched (a name-filtered run that matches nothing is NOT a pass; the binding is dangling or the test was renamed)",
-    };
+    // FIX-DIAG-01: 0 executed is never a pass — but say WHICH: numTotalTests counts every test in the
+    // file the runner loaded. 0 total ⇒ the file is missing/empty (or the path is wrong); >0 total but
+    // none ran ⇒ the file loaded fine and the `::name` matched nothing (the test was renamed).
+    const reason =
+      report.numTotalTests === 0
+        ? "no test executed — the test file has no tests (it is missing, empty, or the file path in the ref is wrong)"
+        : `no test executed — the file has ${report.numTotalTests} test(s) but the ::name matched none (the test was renamed, or the ref's name is wrong)`;
+    return { passed: false, ran, reason };
   }
   if (exitCode !== 0 || report.numFailedTests > 0) {
     return { passed: false, ran, reason: `${report.numFailedTests} test(s) failed` };

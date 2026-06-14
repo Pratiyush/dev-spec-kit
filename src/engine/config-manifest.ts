@@ -238,8 +238,11 @@ function classifyField(key: string, raw: z.ZodTypeAny, path: string): KnobField 
       return { key, type: "enum[]", allowed: (el as z.ZodEnum<[string, ...string[]]>)._def.values };
     if (typeName(el) === "ZodString") return { key, type: "string[]" };
   }
+  /* c8 ignore start -- a schema-shape guard: fires only if the zod schema gains a field type the
+     manifest doesn't model yet (a compile-time-ish invariant), forcing us to extend it. */
   throw new Error(`config-manifest: unsupported object field at ${path}.${key}`);
 }
+/* c8 ignore stop */
 
 function classify(
   path: string,
@@ -265,8 +268,11 @@ function classify(
       return { path, type: "enum[]", allowed: (el as z.ZodEnum<[string, ...string[]]>)._def.values };
     if (et === "ZodString") return { path, type: "string[]" };
     if (et === "ZodObject") return { path, type: "json" }; // e.g. verify.buildAll: [{cmd,args}]
+    /* c8 ignore start -- schema-shape guard: an array of an unmodeled element type would force us to
+       extend the manifest; not reachable from the current schema. */
     throw new Error(`config-manifest: unsupported array element at ${path}`);
   }
+  /* c8 ignore stop */
   if (t === "ZodRecord") {
     const val = unwrap((node as z.ZodRecord)._def.valueType).node;
     if (typeName(val) === "ZodObject") {

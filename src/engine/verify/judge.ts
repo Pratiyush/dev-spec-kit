@@ -66,6 +66,8 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
   let zodOutputFormat: any;
   try {
     Anthropic = (await import(sdkName)).default;
+    // SDK-present-only: the first import rejects in CI (no SDK) → straight to catch.
+    /* c8 ignore next */
     zodOutputFormat = (await import(helpersName)).zodOutputFormat;
   } catch {
     throw new Error(
@@ -73,6 +75,9 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
         "where the Claude Code agent supplies the verdict (free, no key)",
     );
   }
+  /* c8 ignore start -- live API path: only reachable with the optional @anthropic-ai/sdk installed
+     AND a network/key (never in CI). The verdict guard it delegates to (interpretJudgeResponse) and
+     the SDK-absent branch above are both unit-tested. */
   const { z } = await import("zod");
   const Verdict = z.object({ passed: z.boolean(), reason: z.string() });
   const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
@@ -85,11 +90,21 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
     messages: [{ role: "user", content: `CRITERION:\n${criterion}\n\nEVIDENCE:\n${evidence}` }],
     output_config: { format: zodOutputFormat(Verdict) },
   });
+  return interpretJudgeResponse(res);
+}
+/* c8 ignore stop */
+/* eslint-enable @typescript-eslint/no-explicit-any */
+
+/**
+ * The trust guards of an api-mode judge, extracted PURE so they're unit-testable without the SDK: a
+ * safety refusal or a missing/malformed verdict throws (the caller records NOTHING — never a
+ * fabricated proof, FIX-TRUST-01 spirit). A valid verdict is normalized.
+ */
+export function interpretJudgeResponse(res: { stop_reason?: string; parsed_output?: unknown }): JudgeVerdict {
   if (res?.stop_reason === "refusal")
     throw new Error("judge refused — no proof recorded (tooling state, not a red)");
-  const parsed = res?.parsed_output as JudgeVerdict | undefined;
+  const parsed = res?.parsed_output as { passed?: unknown; reason?: unknown } | undefined;
   if (!parsed || typeof parsed.passed !== "boolean")
     throw new Error("judge produced no structured verdict — no proof recorded");
   return { passed: parsed.passed, reason: String(parsed.reason ?? "") };
 }
-/* eslint-enable @typescript-eslint/no-explicit-any */
