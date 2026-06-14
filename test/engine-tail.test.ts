@@ -65,3 +65,12 @@ describe("approvals — listing + the no-recorded-run evidence line", () => {
     expect(listApprovals(dir).length).toBeGreaterThan(0);
   });
 });
+
+import { withApp } from "../src/engine/verify/applife.js";
+
+describe("withApp — no-app fast path", () => {
+  it("runs fn directly when there is no app to start", async () => {
+    const out = await withApp({ start: [], readyUrl: null, readyTimeoutMs: 1000 }, () => 42);
+    expect(out).toBe(42);
+  });
+});

@@ -18,6 +18,8 @@ import type { GraphNode } from "../graph/types.js";
 /** Resolve the graphify executable: PATH first, then uv's default install location. */
 export function graphifyBin(): string | null {
   if (spawnSync("graphify", ["--help"], { stdio: "ignore" }).status === 0) return "graphify";
+  /* c8 ignore next 2 -- the uv install-location fallback is reached only on a machine where graphify
+     is installed but off PATH; CI has neither, so PATH-miss → null is the covered path. */
   const uvPath = join(homedir(), ".local", "bin", "graphify");
   if (existsSync(uvPath)) return uvPath;
   return null;
@@ -135,6 +137,9 @@ export function isStale(projectDir: string): boolean {
  * freshness. Returns the graph.json path, or null when graphify is not installed (caller surfaces
  * the install hint — never silent).
  */
+/* c8 ignore start -- shells out to the external `graphify` CLI (PyPI). Unreachable in CI (the tool
+   is not installed) and would need a real codebase to index; the bundled revitify provider is the
+   default. Its pure helpers (writeFreshness/isStale/loadCodeGraph) are unit-tested. */
 export function refreshCodeGraph(projectDir: string, outDir = "graphify-out"): string | null {
   const bin = graphifyBin();
   if (!bin) return null;
@@ -147,6 +152,7 @@ export function refreshCodeGraph(projectDir: string, outDir = "graphify-out"): s
   const graphJson = join(projectDir, outDir, "graph.json");
   return existsSync(graphJson) ? graphJson : null;
 }
+/* c8 ignore stop */
 
 export type GraphProvider = "revitify" | "graphify";
 
@@ -166,6 +172,9 @@ export function refreshCodeGraphVia(
   projectDir: string,
   outDir = "graphify-out",
 ): string | null {
+  /* c8 ignore start -- runs revitify's FULL engine in a subprocess (or the in-process fallback) to
+     index a real codebase. Not exercised by unit tests (it spawns/needs a project); the dogfood repo
+     itself is the integration test. Pure helpers around it are covered. */
   if (provider === "graphify") return refreshCodeGraph(projectDir, outDir);
   const cli = revitifyCli();
   if (cli) {
@@ -182,6 +191,7 @@ export function refreshCodeGraphVia(
   if (head) writeFreshness(projectDir, head);
   const graphJson = join(projectDir, outDir, "graph.json");
   return existsSync(graphJson) ? graphJson : null;
+  /* c8 ignore stop */
 }
 
 /** revitify's CLI entry, resolved relative to the installed package (null on older builds). */
@@ -190,6 +200,8 @@ function revitifyCli(): string | null {
     const pkg = createRequire(import.meta.url).resolve("revitify/package.json");
     const cli = join(dirname(pkg), "dist", "cli", "main.js");
     return existsSync(cli) ? cli : null;
+    /* c8 ignore next 3 -- revitify is a hard dependency; the resolve only throws if the package tree
+       is broken, which the suite (importing revitify) would already fail on. */
   } catch {
     return null;
   }
