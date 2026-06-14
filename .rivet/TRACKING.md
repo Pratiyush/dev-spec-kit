@@ -21,3 +21,4 @@
 | REQUIREMENT_RECONCILE-01 | verify --stamp --advance reconciles trace with status | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_JUDGE-01 | an LLM judge verdict is a recorded, second-class proof | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_CYCLE-01 | a circular dependency is flagged, not silently built | 2 | 🟢🟢 | done | — |
+| REQUIREMENT_PRBLAST-01 | the PR body shows the change's blast radius | 2 | 🟢🟢 | done | — |
