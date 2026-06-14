@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- **Blast radius in the PR body (FEAT-BLAST-01)** — `rivet pr` now lists, per changed file, the proven
+  graph edges it touches (a changed test via its `validates` edge; a changed source file via its code
+  node), so a reviewer sees the diff's traceability impact without opening the graph. Pure
+  `prBlastRadius(graph, changedFiles)`; the change set comes from `git diff` since the branch's fork
+  point; honest when nothing maps. Dogfooded (REQUIREMENT_PRBLAST-01, 20/20 proven). Moves off the
+  "Planned" list.
+
 ## 0.2.0 — 2026-06-14 (proof-layer integrity + the LLM layer)
 
 Dogfood-feedback rework of the proof layer, plus an LLM layer (harness-first — free, no API key by
