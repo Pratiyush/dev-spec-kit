@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.2.0 — 2026-06-14 (proof-layer integrity + the LLM layer)
+
+Dogfood-feedback rework of the proof layer, plus an LLM layer (harness-first — free, no API key by
+default). Every code unit built TDD-first and proven through Rivet's own loop.
+
+### Added
+- **`rivet verify --stamp [--advance]`** — prove EVERY bound criterion from ONE suite run (maps the
+  JSON report back to each `@check`) instead of N cold `check run`s; `--advance` auto-advances
+  fully-proven tasks to done (never a blocked one).
+- **`rivet spec lint`** — static drift check: orphaned `@check` refs (renamed/moved tests), unbound
+  criteria, and lost-obligation parser warnings. Folded into `rivet doctor`, a pre-commit gate, and a
+  loop-safe Stop hook. Exit 1 on orphans.
+- **`rivet spec draft-tests`** — scaffold a failing, bound vitest stub per unbound criterion (the
+  rule→test→proof loop the `tool-drafts` config promised).
+- **The `judge` check kind** — an LLM verdict for the unmeasurable, recorded SECOND-CLASS
+  (`⚖️ judged`, never an executed green), blocked on full obligations by default. Harness mode is
+  free (the agent supplies the verdict, no key); optional api mode calls Anthropic (lazy SDK).
+- **Dependency-cycle detection** in `rivet graph build` (circular `dependsOn` chains exit 1).
+- **Specialized role skills** — clarify · architect · test-author · analyze · research · judge, plus
+  spec-author Gherkin/edge-case generation.
+
+### Fixed
+- A name-filtered check matching ZERO tests is a FAILED proof, not a silent exit-0 green; flag-like
+  test names bind via an escaped `--testNamePattern=` (no CACError).
+- `task done` distinguishes a stale binding ("run `spec tasks`") from a missing proof.
+- `--advance` no longer advances a blocked task; executed proofs self-describe their `kind`; the
+  zero-match diagnostic distinguishes a renamed name from a missing file; lost-obligation parser
+  warnings are surfaced by `spec lint`/`doctor`; api-mode judge warns on an unresolved evidence file.
+
+### Docs
+- README marks every capability built-or-planned (tooling honesty); the new commands, the `judge`
+  kind, and the role skills are documented.
+
 ## 0.1.0 — 2026-06-12 (the feedback batch)
 
 The notepad-dogfood feedback batch: every item driven through Rivet's own loop
