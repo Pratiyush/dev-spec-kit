@@ -220,3 +220,64 @@ describe("rivet task trail", () => {
     expect(text).toContain("no recorded gates");
   });
 });
+
+describe("rivet check run — stack resolution notice + judge evidence warning", () => {
+  it("prints a notice when the stack comes from verify.defaultStack (not a flag)", async () => {
+    const dir = tmpProject({
+      ".rivet/config.json": JSON.stringify({
+        verify: { defaultStack: "fake", runners: { fake: { cmd: "node", args: ["-e", "process.exit(0)"] } } },
+      }),
+    });
+    store(dir).create("T1", "t", ["c1"]);
+    const { text } = await runAsync(dir, () => checkRun("T1", "c1", undefined));
+    expect(text).toContain("from verify.defaultStack");
+  });
+
+  it("warns (api mode) when a file-looking judge ref does not resolve", async () => {
+    const dir = tmpProject({
+      ".rivet/config.json": JSON.stringify({ verify: { judge: { allowForObligations: true, mode: "api" } } }),
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_X-01 — t\nThe copy SHALL help.\n@check kind=judge ref=missing.ts::actionable\n",
+    });
+    store(dir).create("T1", "t", ["missing.ts::actionable"]);
+    const { text } = await runAsync(dir, () => checkRun("T1", "missing.ts::actionable", undefined));
+    expect(text).toContain("judge evidence");
+    expect(text).toContain("not found");
+  });
+});
+
+describe("rivet task done — binding-drift hint", () => {
+  it("points at `rivet spec tasks` when the task's bindings no longer match the spec", () => {
+    const dir = tmpProject({
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=c2\n",
+    });
+    store(dir).create("REQUIREMENT_X-01", "t", ["c1"]); // bound to c1, spec says c2 — out of sync
+    const { text, exitCode } = run(dir, () => taskDone("REQUIREMENT_X-01"));
+    expect(text).toContain("spec tasks");
+    expect(exitCode).toBe(1);
+  });
+});
+
+describe("rivet status / trail — remaining states", () => {
+  it("renders WORK and BLOCK badges", () => {
+    const dir = tmpProject();
+    const s = store(dir);
+    s.create("T1", "working", ["c1"]);
+    s.setStatus("T1", "in_progress");
+    s.create("T2", "blocked", ["c2"]);
+    s.setStatus("T2", "blocked");
+    const { text } = run(dir, () => status());
+    expect(text).toContain("WORK");
+    expect(text).toContain("BLOCK");
+  });
+
+  it("trail shows a red proof outcome", () => {
+    const dir = tmpProject();
+    const s = store(dir);
+    s.create("T1", "t", ["c1"]);
+    s.recordCheck("T1", { ref: "c1", passed: false, at: "x", sha: "S", tree: "T" });
+    const { text } = run(dir, () => taskTrail("T1"));
+    expect(text).toContain("proof");
+  });
+});

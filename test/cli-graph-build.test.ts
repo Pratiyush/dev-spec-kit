@@ -100,3 +100,40 @@ describe("rivet graph build — the graph + its gates", () => {
     expect(text).toContain("Verified Traceability Graph");
   });
 });
+
+import { spawnSync } from "node:child_process";
+import { TaskStore } from "../src/engine/state/tasks.js";
+import { Journal } from "../src/engine/state/journal.js";
+import { join } from "node:path";
+
+describe("rivet graph build — drift + satisfied gate packs", () => {
+  it("flags stale proofs that predate the working tree (exit 1)", () => {
+    const dir = tmpProject({
+      "src/x.ts": "export const x = 1;\n",
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=c1\nIF bad THEN the system SHALL NOT z.\n@check kind=unit ref=c2\n",
+    });
+    for (const args of [
+      ["init"],
+      ["add", "-A"],
+      ["-c", "user.email=t@t.co", "-c", "user.name=t", "commit", "-m", "x"],
+    ])
+      spawnSync("git", args, { cwd: dir, stdio: "ignore" });
+    const s = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+    s.create("REQUIREMENT_X-01", "t", ["c1", "c2"]);
+    s.recordCheck("REQUIREMENT_X-01", { ref: "c1", passed: true, at: "x", sha: "S", tree: "STALE_OLD_TREE" });
+    s.recordCheck("REQUIREMENT_X-01", { ref: "c2", passed: true, at: "x", sha: "S", tree: "STALE_OLD_TREE" });
+    const { text, exitCode } = run(dir, () => graphBuild({ refresh: false }));
+    expect(text).toContain("predate HEAD");
+    expect(exitCode).toBe(1);
+  });
+
+  it("reports a triggered gate pack as SATISFIED when its section is present", () => {
+    const dir = tmpProject({
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_AUTH-01 — password login\n## Security\n- threats handled\n\nWHEN a password is wrong THEN the system SHALL reject.\n@check kind=unit ref=a.test.ts::a\nIF locked THEN the system SHALL NOT accept.\n@check kind=unit ref=a.test.ts::b\n",
+    });
+    const { text } = run(dir, () => graphBuild({ refresh: false }));
+    expect(text).toContain("satisfied");
+  });
+});

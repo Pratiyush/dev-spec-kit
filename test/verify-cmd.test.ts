@@ -113,3 +113,57 @@ describe("FEAT-VERIFY-01 — the PR gate demands a fresh green verify (same code
     expect(verifyVerdict(events, "TREE").ok).toBe(false);
   });
 });
+
+describe("planVerify — build fallback + stack resolution branches", () => {
+  it("falls back to package.json build/typecheck scripts on a node platform with no buildAll", () => {
+    const dir = tmp();
+    writeFileSync(
+      join(dir, "package.json"),
+      JSON.stringify({ scripts: { build: "tsc", typecheck: "tsc --noEmit", other: "x" } }),
+    );
+    const steps = planVerify(dir, parseConfig({ project: { platforms: ["node"] }, verify: { kinds: [] } }));
+    const names = steps.map((s) => s.name);
+    expect(names).toContain("build:build");
+    expect(names).toContain("build:typecheck");
+  });
+
+  it("survives a malformed package.json (no fallback steps, no throw)", () => {
+    const dir = tmp();
+    writeFileSync(join(dir, "package.json"), "{ not json");
+    const steps = planVerify(dir, parseConfig({ project: { platforms: ["node"] }, verify: { kinds: [] } }));
+    expect(steps).toEqual([]);
+  });
+
+  it("resolves a kind through a configured stack runner (verify.runners[stack])", () => {
+    const dir = tmp();
+    const steps = planVerify(
+      dir,
+      parseConfig({
+        verify: {
+          defaultStack: "mystack",
+          kinds: ["unit"],
+          runners: { mystack: { cmd: "node", args: ["-e", "0"] } },
+        },
+      }),
+    );
+    expect(steps.some((s) => s.cmd === "node")).toBe(true);
+  });
+
+  it("resolves a kind through a builtin stack full-suite", () => {
+    const dir = tmp();
+    const steps = planVerify(dir, parseConfig({ verify: { defaultStack: "node-vitest", kinds: ["unit"] } }));
+    expect(steps.some((s) => s.name.startsWith("tests:"))).toBe(true);
+  });
+});
+
+describe("runVerify — emits a JSON report for a JS test step under --stamp", () => {
+  it("attributes a report path when the step args carry vitest", () => {
+    const dir = tmp();
+    const config = parseConfig({
+      verify: { kinds: ["unit"], kindRunners: { unit: { cmd: "node", args: ["-e", "0", "vitest"] } } },
+    });
+    const run = runVerify(dir, config, { reportDir: dir });
+    expect(run.reports && run.reports.length).toBeGreaterThan(0);
+    expect(run.reports![0]!.reporter).toBe("vitest");
+  });
+});
