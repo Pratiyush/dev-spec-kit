@@ -20,12 +20,22 @@
       }
     },
     {
+      "id": "doc:CHANGELOG.md#0.2.0 — 2026-06-14 (proof-layer integrity + the LLM layer)",
+      "kind": "codeNode",
+      "label": "0.2.0 — 2026-06-14 (proof-layer integrity + the LLM layer)",
+      "meta": {
+        "sourceFile": "CHANGELOG.md",
+        "sourceLocation": "CHANGELOG.md:3",
+        "community": 0
+      }
+    },
+    {
       "id": "doc:CHANGELOG.md#0.1.0 — 2026-06-12 (the feedback batch)",
       "kind": "codeNode",
       "label": "0.1.0 — 2026-06-12 (the feedback batch)",
       "meta": {
         "sourceFile": "CHANGELOG.md",
-        "sourceLocation": "CHANGELOG.md:3",
+        "sourceLocation": "CHANGELOG.md:36",
         "community": 0
       }
     },
@@ -64,7 +74,7 @@
       "label": "What's inside",
       "meta": {
         "sourceFile": "README.md",
-        "sourceLocation": "README.md:36",
+        "sourceLocation": "README.md:39",
         "community": 1
       }
     },
@@ -74,7 +84,7 @@
       "label": "Commands",
       "meta": {
         "sourceFile": "README.md",
-        "sourceLocation": "README.md:56",
+        "sourceLocation": "README.md:69",
         "community": 1
       }
     },
@@ -84,7 +94,7 @@
       "label": "The input contract — the tool never changes, only its inputs",
       "meta": {
         "sourceFile": "README.md",
-        "sourceLocation": "README.md:65",
+        "sourceLocation": "README.md:79",
         "community": 1
       }
     },
@@ -94,7 +104,27 @@
       "label": "Pairs well with",
       "meta": {
         "sourceFile": "README.md",
-        "sourceLocation": "README.md:79",
+        "sourceLocation": "README.md:93",
+        "community": 1
+      }
+    },
+    {
+      "id": "doc:README.md#Specialized roles (Claude Code skills)",
+      "kind": "codeNode",
+      "label": "Specialized roles (Claude Code skills)",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "README.md:98",
+        "community": 1
+      }
+    },
+    {
+      "id": "doc:README.md#Planned (not yet shipped)",
+      "kind": "codeNode",
+      "label": "Planned (not yet shipped)",
+      "meta": {
+        "sourceFile": "README.md",
+        "sourceLocation": "README.md:106",
         "community": 1
       }
     },
@@ -104,7 +134,7 @@
       "label": "Prerequisites & develop",
       "meta": {
         "sourceFile": "README.md",
-        "sourceLocation": "README.md:84",
+        "sourceLocation": "README.md:125",
         "community": 1
       }
     },
@@ -114,7 +144,7 @@
       "label": "License",
       "meta": {
         "sourceFile": "README.md",
-        "sourceLocation": "README.md:97",
+        "sourceLocation": "README.md:138",
         "community": 1
       }
     },
@@ -1976,7 +2006,7 @@
       "label": "status",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:299",
+        "sourceLocation": "src/cli/tasks.ts:306",
         "community": 33
       }
     },
@@ -1986,7 +2016,7 @@
       "label": "taskTrail",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "sourceLocation": "src/cli/tasks.ts:326",
+        "sourceLocation": "src/cli/tasks.ts:333",
         "community": 31
       }
     },
@@ -2312,7 +2342,7 @@
       "label": "specHealth",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:72",
+        "sourceLocation": "src/cli/workflow.ts:75",
         "community": 27
       }
     },
@@ -2322,7 +2352,7 @@
       "label": "specLint",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:90",
+        "sourceLocation": "src/cli/workflow.ts:99",
         "community": 27
       }
     },
@@ -2332,7 +2362,7 @@
       "label": "specDraftTests",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:121",
+        "sourceLocation": "src/cli/workflow.ts:138",
         "community": 27
       }
     },
@@ -2342,7 +2372,7 @@
       "label": "specTasks",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:174",
+        "sourceLocation": "src/cli/workflow.ts:191",
         "community": 28
       }
     },
@@ -2352,7 +2382,7 @@
       "label": "approve",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:236",
+        "sourceLocation": "src/cli/workflow.ts:253",
         "community": 27
       }
     },
@@ -2362,7 +2392,7 @@
       "label": "pr",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:258",
+        "sourceLocation": "src/cli/workflow.ts:275",
         "community": 27
       }
     },
@@ -2372,7 +2402,7 @@
       "label": "route",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:335",
+        "sourceLocation": "src/cli/workflow.ts:352",
         "community": 27
       }
     },
@@ -2382,7 +2412,7 @@
       "label": "gateGraph",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:392",
+        "sourceLocation": "src/cli/workflow.ts:409",
         "community": 27
       }
     },
@@ -2392,7 +2422,7 @@
       "label": "guardPr",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:404",
+        "sourceLocation": "src/cli/workflow.ts:421",
         "community": 27
       }
     },
@@ -2402,7 +2432,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:431",
+        "sourceLocation": "src/cli/workflow.ts:448",
         "community": 27
       }
     },
@@ -2412,7 +2442,7 @@
       "label": "unlock",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "sourceLocation": "src/cli/workflow.ts:441",
+        "sourceLocation": "src/cli/workflow.ts:458",
         "community": 27
       }
     },
@@ -4396,7 +4426,7 @@
       "label": "provableTaskIds",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "sourceLocation": "src/engine/state/tasks.ts:209",
+        "sourceLocation": "src/engine/state/tasks.ts:212",
         "community": 28
       }
     },
@@ -4633,6 +4663,16 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:60",
+        "community": 33
+      }
+    },
+    {
+      "id": "sym:src/engine/verify/judge.ts#interpretJudgeResponse",
+      "kind": "codeNode",
+      "label": "interpretJudgeResponse",
+      "meta": {
+        "sourceFile": "src/engine/verify/judge.ts",
+        "sourceLocation": "src/engine/verify/judge.ts:97",
         "community": 33
       }
     },
@@ -4909,7 +4949,7 @@
       "label": "runCheck",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "sourceLocation": "src/engine/verify/runner.ts:263",
+        "sourceLocation": "src/engine/verify/runner.ts:266",
         "community": 33
       }
     },

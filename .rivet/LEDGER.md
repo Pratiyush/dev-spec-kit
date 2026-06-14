@@ -490,9 +490,6 @@
 
 ## Recent activity
 
-- [2m2026-06-13 12:23:51[22m  ✅ check test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green) @ tree 88a98c15 → REQUIREMENT_JUDGE-01
-- [2m2026-06-13 12:23:51[22m  ✅ check test/judge.test.ts::respects an explicit mode regardless of the key @ tree 88a98c15 → REQUIREMENT_JUDGE-01
-- [2m2026-06-13 12:23:51[22m  ✅ check test/judge.test.ts::auto resolves to api when a key is present, harness when not @ tree 88a98c15 → REQUIREMENT_JUDGE-01
 - [2m2026-06-13 12:23:51[22m  ✅ check test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set @ tree 88a98c15 → REQUIREMENT_JUDGE-01
 - [2m2026-06-13 12:23:51[22m  ✅ check test/cycles.test.ts::finds a simple A→B→A cycle @ tree 88a98c15 → REQUIREMENT_CYCLE-01
 - [2m2026-06-13 12:23:51[22m  ✅ check test/cycles.test.ts::finds a longer A→B→C→A cycle @ tree 88a98c15 → REQUIREMENT_CYCLE-01
@@ -500,3 +497,6 @@
 - [2m2026-06-13 12:23:51[22m  ✅ check test/cycles.test.ts::ignores non-dependsOn edges (a validates/implements edge is never a dependency cycle) @ tree 88a98c15 → REQUIREMENT_CYCLE-01
 - [2m2026-06-13 12:23:54[22m  🧾 trace  [Pratiyush Kumar Singh]
 - [2m2026-06-14 08:02:59[22m  🧾 graph build  [Pratiyush Kumar Singh]
+- [2m2026-06-14 08:30:57[22m  🧾 spec lint  [Pratiyush Kumar Singh]
+- [2m2026-06-14 08:47:01[22m  🧾 trace  [Pratiyush Kumar Singh]
+- [2m2026-06-14 08:47:02[22m  🧾 graph build  [Pratiyush Kumar Singh]
