@@ -252,6 +252,9 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
       sha: opts.sha ?? gitHead(opts.cwd),
       ...(tree ? { tree } : {}),
       dirty: isDirty(opts.cwd),
+      // FIX-KIND-01: the proof self-describes its kind, so an executed proof is never confused with a
+      // judge verdict downstream (judge always sets kind="judge"; executed checks must too).
+      ...(binding.kind ? { kind: binding.kind } : {}),
       ...(tail ? { tail } : {}),
     };
   } finally {

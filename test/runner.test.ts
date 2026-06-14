@@ -77,4 +77,13 @@ describe("execute — real exit codes become proof", () => {
     );
     expect(result.passed).toBe(false);
   });
+
+  it("stamps the binding's kind on the proof so it self-describes (FIX-KIND-01)", () => {
+    const result = execute(
+      { kind: "integration", ref: "synthetic-kind" },
+      { cmd: "node", args: ["-e", "process.exit(0)"] },
+      { cwd: process.cwd() },
+    );
+    expect(result.kind).toBe("integration");
+  });
 });

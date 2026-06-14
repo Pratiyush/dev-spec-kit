@@ -39,7 +39,20 @@ describe("interpretCheckRun — a zero-match is NEVER a pass (FIX-TRUST-01)", ()
     const v = interpretCheckRun(report(0, 0), 0);
     expect(v.passed).toBe(false);
     expect(v.ran).toBe(0);
-    expect(v.reason).toMatch(/0 tests matched|dangling|renamed/i);
+    expect(v.reason).toMatch(/no test executed/i);
+  });
+
+  it("explains a MISSING/empty file when the runner loaded zero tests (FIX-DIAG-01)", () => {
+    // report(0,0) ⇒ numTotalTests 0 ⇒ the file is missing/empty or the path is wrong.
+    expect(interpretCheckRun(report(0, 0), 1).reason).toMatch(/missing, empty, or the file path/i);
+  });
+
+  it("explains a RENAMED ::name when the file loaded but none matched (FIX-DIAG-01)", () => {
+    // file has tests (numTotalTests > 0) but none ran ⇒ the ::name matched nothing.
+    const fileLoadedButNoMatch = { numTotalTests: 5, numPassedTests: 0, numFailedTests: 0, assertions: [] };
+    const v = interpretCheckRun(fileLoadedButNoMatch, 1);
+    expect(v.passed).toBe(false);
+    expect(v.reason).toMatch(/5 test\(s\) but the ::name matched none|renamed/i);
   });
 
   it("passes when a matched test ran and none failed", () => {

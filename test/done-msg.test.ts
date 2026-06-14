@@ -64,4 +64,12 @@ describe("provableTaskIds — reconcile trace vs status, only on fresh full proo
   it("ignores a task with no bound checks", () => {
     expect(provableTaskIds([task("A", "in_progress", [], {})], "T")).toEqual([]);
   });
+
+  it("never advances a BLOCKED task even when every proof is green (FIX-ADVANCE-01)", () => {
+    const blocked = task("A", "blocked", ["f::x"], { "f::x": green("f::x") });
+    expect(provableTaskIds([blocked], "T")).toEqual([]);
+    // sanity: the same task in_progress WOULD advance — so it's the block being honored, not the proof.
+    const inProgress = task("B", "in_progress", ["f::x"], { "f::x": green("f::x") });
+    expect(provableTaskIds([inProgress], "T")).toEqual(["B"]);
+  });
 });
