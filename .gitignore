@@ -14,6 +14,9 @@ graphify-out/
 .rivet/cache/
 .rivet/tmp/
 
+# revitify content-hash AST cache (regenerated from code; never committed)
+.revitify/cache/
+
 # planning/reference material + session worktrees — never committed
 _ref/
 .claude/worktrees/
