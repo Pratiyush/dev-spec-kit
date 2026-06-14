@@ -46,6 +46,8 @@ export function loadConfig(projectDir: string): RivetConfig {
       }
       throw new InputError(msg);
     }
+    /* c8 ignore start -- rethrow for a non-Zod error (a real bug, surfaced rather than swallowed). */
     throw e;
   }
+  /* c8 ignore stop */
 }

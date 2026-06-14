@@ -94,3 +94,33 @@ describe("deriveTrail — bindings synced + a red proof", () => {
     expect(summary.proof).toBe("red");
   });
 });
+
+describe("deriveTrail — a bound-but-unrun task is pending", () => {
+  const evp = (at: string, type: JournalEvent["type"], data: unknown): JournalEvent => ({ at, type, data });
+  it("reports proof=pending when checks are bound but never run", () => {
+    const { summary } = deriveTrail(
+      [evp("2026-06-12T10:00:00Z", "task.created", { id: "TP", title: "t", boundChecks: ["a::x"] })],
+      "TP",
+    );
+    expect(summary.proof).toBe("pending");
+  });
+});
+
+describe("deriveTrail — a clean done (no blocked attempt) reads 'passed'", () => {
+  const e = (at: string, type: JournalEvent["type"], data: unknown): JournalEvent => ({ at, type, data });
+  it("doneGate is plain 'passed' when the task was never prematurely done-attempted", () => {
+    const { summary } = deriveTrail(
+      [
+        e("2026-06-12T10:00:00Z", "task.created", { id: "TC", title: "t", boundChecks: ["a::x"] }),
+        e("2026-06-12T10:01:00Z", "check.run", {
+          taskId: "TC",
+          result: { ref: "a::x", passed: true, at: "2026-06-12T10:01:00Z" },
+        }),
+        e("2026-06-12T10:02:00Z", "cli.run", { command: "task done", args: ["TC"] }),
+        e("2026-06-12T10:02:01Z", "task.status", { id: "TC", status: "done" }),
+      ],
+      "TC",
+    );
+    expect(summary.doneGate).toBe("passed");
+  });
+});

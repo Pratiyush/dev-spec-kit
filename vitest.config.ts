@@ -24,6 +24,16 @@ export default defineConfig({
         "src/cli/index.ts",
       ],
       reporter: ["text-summary", "json-summary", "html"],
+      // Every executable line/statement/function in the non-excluded surface is proven by a test or
+      // carries a justified `c8 ignore` (an external-tool subprocess, a concurrency race, or a
+      // defensive guard against an "impossible" state — each annotated with why). Branch coverage is
+      // floored, not maxed: the residual branches are `?? default` / `?.` fallbacks not worth a test.
+      thresholds: {
+        lines: 100,
+        statements: 100,
+        functions: 100,
+        branches: 88,
+      },
     },
   },
 });

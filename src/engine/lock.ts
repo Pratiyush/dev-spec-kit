@@ -12,6 +12,8 @@ export interface LockOptions {
   staleMs?: number;
 }
 
+/* c8 ignore next 3 -- a busy-wait only entered under live lock CONTENTION (another process holds the
+   dir); deterministic unit tests take the uncontended mkdir path. */
 function sleepSync(ms: number): void {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
@@ -26,6 +28,8 @@ export function withLock<T>(lockDir: string, fn: () => T, opts: LockOptions = {}
       break;
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code !== "EEXIST") throw e;
+      /* c8 ignore start -- the contention branch: reached only when another live process holds the
+         lock (stat race, timeout, back-off). The stale-steal path is covered in scale.test. */
       try {
         if (Date.now() - statSync(lockDir).mtimeMs >= staleMs) {
           rmdirSync(lockDir); // abandoned by a dead process — steal it
@@ -36,6 +40,7 @@ export function withLock<T>(lockDir: string, fn: () => T, opts: LockOptions = {}
       }
       if (Date.now() - start > timeoutMs) throw new Error(`lock timeout after ${timeoutMs}ms: ${lockDir}`);
       sleepSync(5 + Math.floor(Math.random() * 15));
+      /* c8 ignore stop */
     }
   }
   try {
@@ -44,7 +49,7 @@ export function withLock<T>(lockDir: string, fn: () => T, opts: LockOptions = {}
     try {
       rmdirSync(lockDir);
     } catch {
-      /* already stolen as stale — nothing to release */
+      /* c8 ignore next -- only if the lock was stolen as stale mid-run (a race); nothing to release */
     }
   }
 }

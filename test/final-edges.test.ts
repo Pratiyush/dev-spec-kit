@@ -152,3 +152,21 @@ describe("spec tasks — warns (not errors) on an unqualified id by default", ()
     expect(exitCode).toBeUndefined();
   });
 });
+
+describe("routeRequest — a feature-sized keyword earns full-spec", () => {
+  it("routes 'build a new authentication system' to full-spec (feature-sized reason)", () => {
+    const r = routeRequest("build a new authentication system");
+    expect(r.mode).toBe("full-spec");
+    expect(r.reason).toContain("feature-sized");
+  });
+});
+
+describe("routeRequest — a long request (no big keyword) is full-spec via length", () => {
+  it("routes a 60+ word non-keyword request to full-spec (long multi-part reason)", () => {
+    const r = routeRequest(
+      "please go through every page on the site one by one and make sure each section reads clearly then double check the links all point where they should then confirm the images load on slow connections then verify the forms submit without errors then ensure the contact details are current everywhere and let me know what you find at the very end today",
+    );
+    expect(r.mode).toBe("full-spec");
+    expect(r.reason).toContain("long, multi-part");
+  });
+});

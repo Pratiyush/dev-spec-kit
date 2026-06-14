@@ -101,7 +101,7 @@ export function graphBuild(opts: { refresh?: boolean }): void {
         .sort()
         .map((f) => readFileSync(join(specsDir, f), "utf8"))
         .join("\n")
-    : "";
+    : /* c8 ignore next -- only when .rivet/specs/ is absent; every Rivet project (and test) has it. */ "";
   const packNames = requiredPacks(specText, m.config);
   if (packNames.length > 0) {
     const violations = packNames.flatMap((n) => {

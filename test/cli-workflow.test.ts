@@ -186,3 +186,12 @@ describe("rivet pr — verify-RED reasons", () => {
     expect(exitCode).toBe(1);
   });
 });
+
+describe("rivet guard pr — a malformed graph blocks (absence ≠ permission)", () => {
+  it("treats an unparseable graph.json as no graph and blocks", () => {
+    const dir = tmpProject({ ".rivet/graph.json": "{ not json" });
+    const { text, exitCode } = run(dir, () => guardPr());
+    expect(text).toContain("blocked");
+    expect(exitCode).toBe(2);
+  });
+});

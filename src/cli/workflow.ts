@@ -270,8 +270,10 @@ export function approve(taskIds: string[], opts: { note?: string }): void {
       process.exitCode = 1;
       return;
     }
+    /* c8 ignore start -- rethrow a non-ApprovalError (an unexpected fault, surfaced not swallowed). */
     throw e;
   }
+  /* c8 ignore stop */
 }
 
 /** `rivet pr` — generate the graph-derived PR body; optionally create the PR via gh. */

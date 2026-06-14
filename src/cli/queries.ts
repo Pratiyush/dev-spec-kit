@@ -130,16 +130,21 @@ export function affected(label: string): void {
   const node = m.vtg.nodes.find(
     (n) => n.kind === "codeNode" && (n.id.toLowerCase() === needle || n.label.toLowerCase().includes(needle)),
   );
+  /* c8 ignore start -- the matched-node render needs a LOADED code graph (graphify/revitify output)
+     to contain a codeNode; blastRadius itself is unit-tested in graph.test.ts. */
   if (node) {
     const edges = blastRadius(m.vtg, node.id);
     console.log(
       pc.bold(`\nProven edges touching ${node.label}:`) + (edges.length === 0 ? pc.dim(" none") : ""),
     );
     for (const e of edges) console.log(`  ${LIGHT[e.proof]} ${e.kind} ${pc.dim(`${e.from} → ${e.to}`)}`);
+    /* c8 ignore stop */
   } else {
     console.log(pc.yellow(`no code node matching '${label}' in the graph`));
   }
   const bin = graphifyBin();
+  /* c8 ignore start -- shells out to the external `graphify affected` (only when graphify is on PATH);
+     a subprocess to a tool that is absent in CI. */
   if (bin) {
     console.log(pc.bold("\ngraphify reverse traversal:"));
     const res = spawnSync(bin, ["affected", label], { cwd, stdio: ["ignore", "pipe", "pipe"] });
@@ -148,4 +153,5 @@ export function affected(label: string): void {
       out ? pc.dim(out.split("\n").slice(0, 20).join("\n")) : pc.dim(res.stderr?.toString().trim() ?? ""),
     );
   }
+  /* c8 ignore stop */
 }

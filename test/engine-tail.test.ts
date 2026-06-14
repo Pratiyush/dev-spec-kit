@@ -74,3 +74,14 @@ describe("withApp — no-app fast path", () => {
     expect(out).toBe(42);
   });
 });
+
+import { withLock } from "../src/engine/lock.js";
+import { mkdtempSync as mkd } from "node:fs";
+
+describe("withLock — deterministic uncontended happy path", () => {
+  it("acquires, runs fn, and releases (covers the lock lifecycle without contention)", () => {
+    const dir = mkd(join(tmpdir(), "rivet-lock1-"));
+    const out = withLock(join(dir, "x.lock"), () => "result");
+    expect(out).toBe("result");
+  });
+});

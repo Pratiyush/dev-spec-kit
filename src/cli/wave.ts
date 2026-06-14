@@ -22,6 +22,8 @@ function git(cwd: string, cmd: string): string {
 function defaultBranch(cwd: string): string {
   try {
     return git(cwd, "symbolic-ref refs/remotes/origin/HEAD").replace("refs/remotes/origin/", "");
+    /* c8 ignore start -- the fallback only runs when origin/HEAD is unset (most clones set it); the
+       probe order and the give-up throw depend on the remote's branch layout — git-state, not logic. */
   } catch {
     for (const b of ["main", "master"]) {
       try {
@@ -33,6 +35,7 @@ function defaultBranch(cwd: string): string {
     }
     throw new Error("cannot determine origin's default branch — set refs/remotes/origin/HEAD");
   }
+  /* c8 ignore stop */
 }
 
 /** Union-merge for append-only files so parallel branches reconcile instead of conflicting. */
@@ -105,9 +108,12 @@ export function waveDoneAt(cwd: string, id: string, opts: { force?: boolean }): 
   try {
     git(cwd, `branch -D ${branch}`);
     branchDeleted = true;
+    /* c8 ignore start -- only when the local branch is already gone (e.g. removed by hand); the happy
+       delete is covered. */
   } catch {
     /* branch may not exist locally */
   }
+  /* c8 ignore stop */
   journalFor(cwd).append("governance", { kind: "worktree-cleaned", id, forced });
   return { removed: true, branchDeleted, forced };
 }

@@ -105,6 +105,8 @@ export function runDoctor(): void {
     if (!c.ok && c.required) missingRequired++;
   }
   const stale = parseStaleWorktrees(realProbe("git worktree list --porcelain") ?? "");
+  /* c8 ignore start -- the listing only renders when the CWD repo actually has isolation worktrees
+     checked out; parseStaleWorktrees (the parser) is unit-tested directly. */
   if (stale.length > 0) {
     console.log(`\n  ${label("cleanup")} ${stale.length} isolation worktree(s) lying around:`);
     for (const p of stale) console.log(pc.dim(`      ${p}`));
@@ -112,6 +114,7 @@ export function runDoctor(): void {
       pc.dim("      → clean up when merged: git worktree remove <path>  (wave dirs: rivet wave done <id>)"),
     );
   }
+  /* c8 ignore stop */
   // FEAT-LINT-01 (feedback #1: "fold into rivet doctor") — spec drift is a health problem too.
   let orphans = 0;
   const health = specHealth(process.cwd());

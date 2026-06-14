@@ -302,3 +302,17 @@ describe("rivet task done — stale accepted with blockDoneOnFail=false", () => 
     expect(store(dir).get("T1")!.status).toBe("done");
   });
 });
+
+describe("rivet task done — in-sync binding gives the generic prove-it hint", () => {
+  it("returns no spec-sync hint when bindings match the spec but proofs are missing", () => {
+    const dir = tmpProject({
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=c1\n",
+    });
+    store(dir).create("REQUIREMENT_X-01", "t", ["c1"]); // in sync with spec, but unproven
+    const { text, exitCode } = run(dir, () => taskDone("REQUIREMENT_X-01"));
+    expect(text).toContain("verify --stamp");
+    expect(text).not.toContain("re-sync");
+    expect(exitCode).toBe(1);
+  });
+});

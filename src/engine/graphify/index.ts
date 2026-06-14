@@ -18,12 +18,13 @@ import type { GraphNode } from "../graph/types.js";
 /** Resolve the graphify executable: PATH first, then uv's default install location. */
 export function graphifyBin(): string | null {
   if (spawnSync("graphify", ["--help"], { stdio: "ignore" }).status === 0) return "graphify";
-  /* c8 ignore next 2 -- the uv install-location fallback is reached only on a machine where graphify
-     is installed but off PATH; CI has neither, so PATH-miss → null is the covered path. */
+  /* c8 ignore start -- the uv-path fallback + final null are environment-dependent: a machine with
+     graphify ON PATH returns above; one WITHOUT it has no uv copy either. Both ends are machine state. */
   const uvPath = join(homedir(), ".local", "bin", "graphify");
   if (existsSync(uvPath)) return uvPath;
   return null;
 }
+/* c8 ignore stop */
 
 export function graphifyInstalled(): boolean {
   return graphifyBin() !== null;
@@ -200,12 +201,13 @@ function revitifyCli(): string | null {
     const pkg = createRequire(import.meta.url).resolve("revitify/package.json");
     const cli = join(dirname(pkg), "dist", "cli", "main.js");
     return existsSync(cli) ? cli : null;
-    /* c8 ignore next 3 -- revitify is a hard dependency; the resolve only throws if the package tree
-       is broken, which the suite (importing revitify) would already fail on. */
+    /* c8 ignore start -- revitify is a hard dependency; resolve only throws if its package tree is
+       broken, which the suite (which imports revitify) would already fail on. */
   } catch {
     return null;
   }
 }
+/* c8 ignore stop */
 
 function gitHead(cwd: string): string | undefined {
   const res = spawnSync("git", ["rev-parse", "HEAD"], { cwd, stdio: ["ignore", "pipe", "ignore"] });

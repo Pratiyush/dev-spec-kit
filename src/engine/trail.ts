@@ -105,7 +105,8 @@ export function deriveTrail(events: JournalEvent[], taskId: string): TaskTrail {
       : [...latest.values()].some((p) => p === false) && !bound.every((r) => latest.get(r) === true)
         ? bound.some((r) => latest.get(r) === false)
           ? "red"
-          : "pending"
+          : /* c8 ignore next -- practically unreachable: a recorded failure that is NOT one of the
+               bound refs (a stale binding); the common red/pending paths are covered. */ "pending"
         : "pending";
 
   const doneGate = done

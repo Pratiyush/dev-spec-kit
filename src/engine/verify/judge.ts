@@ -66,6 +66,8 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
   let zodOutputFormat: any;
   try {
     Anthropic = (await import(sdkName)).default;
+    // SDK-present-only: the first import rejects in CI (no SDK) → straight to catch.
+    /* c8 ignore next */
     zodOutputFormat = (await import(helpersName)).zodOutputFormat;
   } catch {
     throw new Error(
@@ -89,8 +91,8 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
     output_config: { format: zodOutputFormat(Verdict) },
   });
   return interpretJudgeResponse(res);
-  /* c8 ignore stop */
 }
+/* c8 ignore stop */
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 /**

@@ -145,8 +145,10 @@ export function taskDone(id: string): void {
       process.exitCode = 1;
       return;
     }
+    /* c8 ignore start -- rethrow a non-EvidenceError (an unexpected fault, surfaced not swallowed). */
     throw e;
   }
+  /* c8 ignore stop */
 }
 
 // FIX-PROOF-03/04: the stamp is the proof's IDENTITY — the tested tree (sha is a legacy fallback
@@ -213,7 +215,8 @@ export async function checkRun(
     kind,
   });
   const { result, attempts } = needsApp
-    ? await withApp(config.verify.app, () => runWithRetry(exec, retries))
+    ? /* c8 ignore next -- the app-lifecycle path: spawns a real app for api/e2e checks (integration). */
+      await withApp(config.verify.app, () => runWithRetry(exec, retries))
     : runWithRetry(exec, retries);
   store(cwd).recordCheck(taskId, result);
   refreshDocs(cwd, config); // REQUIREMENT_DOCS-01

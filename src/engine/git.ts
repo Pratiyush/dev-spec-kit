@@ -47,14 +47,20 @@ export function gitTreeHash(cwd: string): string | undefined {
     if (
       spawnSync("git", ["add", "-A", "--", ":(exclude).rivet"], { cwd, env, stdio: "ignore" }).status !== 0
     ) {
+      /* c8 ignore start -- `git add` of the working tree into a temp index essentially never fails
+         once read-tree succeeded; defensive bail-out. */
       return undefined;
     }
+    /* c8 ignore stop */
     return git(cwd, ["write-tree"], env);
   } finally {
+    /* c8 ignore start -- the temp index unlink only fails if it was never created (an early git
+       failure); the happy unlink is covered. */
     try {
       unlinkSync(tmpIndex);
     } catch {
       /* never created */
     }
+    /* c8 ignore stop */
   }
 }

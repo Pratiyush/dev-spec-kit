@@ -175,3 +175,31 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
     expect(store(dir).get("R-1")).toBeUndefined();
   });
 });
+
+describe("spec lint / tasks — final branches", () => {
+  it("surfaces a lost-obligation parser warning (orphan @check with no criterion)", () => {
+    const dir = tmpProject({
+      ".rivet/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\n@check kind=unit ref=a::b\n",
+    });
+    const { text, exitCode } = run(dir, () => specLint());
+    expect(text).toContain("SPEC");
+    expect(exitCode).toBe(1);
+  });
+
+  it("reopens a DONE task when spec tasks adds a new unproven obligation", () => {
+    const dir = tmpProject({
+      ".rivet/specs/x.md":
+        "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=a::b\n",
+    });
+    const s = store(dir);
+    s.create("REQUIREMENT_X-01", "t", ["a::b"]);
+    s.recordCheck("REQUIREMENT_X-01", { ref: "a::b", passed: true, at: "x", sha: "S", tree: "T" });
+    s.markDone("REQUIREMENT_X-01");
+    writeFileSync(
+      join(dir, ".rivet", "specs", "x.md"),
+      "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=a::b\nIF bad THEN the system SHALL NOT z.\n@check kind=unit ref=a::c\n",
+    );
+    const { text } = run(dir, () => specTasks());
+    expect(text).toContain("reopened");
+  });
+});
