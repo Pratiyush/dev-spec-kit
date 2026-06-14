@@ -4,7 +4,17 @@ import {
   judgeResult,
   hasApiKey,
   interpretJudgeResponse,
+  judgeViaApi,
 } from "../src/engine/verify/judge.js";
+
+describe("judgeViaApi — the optional SDK is truly optional", () => {
+  it("throws an actionable error when @anthropic-ai/sdk is not installed (harness stays the default)", async () => {
+    // The SDK is NOT a dependency of this repo, so the lazy import rejects → the helpful message.
+    await expect(judgeViaApi("is the copy actionable?", "evidence", "claude-haiku-4-5")).rejects.toThrow(
+      /@anthropic-ai\/sdk|verify\.judge\.mode=harness/,
+    );
+  });
+});
 
 describe("resolveJudgeMode — harness is free; api only when a key exists (FEAT-JUDGE-01)", () => {
   it("auto resolves to api when a key is present, harness when not", () => {

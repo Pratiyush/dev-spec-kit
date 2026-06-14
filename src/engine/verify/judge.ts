@@ -73,6 +73,9 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
         "where the Claude Code agent supplies the verdict (free, no key)",
     );
   }
+  /* c8 ignore start -- live API path: only reachable with the optional @anthropic-ai/sdk installed
+     AND a network/key (never in CI). The verdict guard it delegates to (interpretJudgeResponse) and
+     the SDK-absent branch above are both unit-tested. */
   const { z } = await import("zod");
   const Verdict = z.object({ passed: z.boolean(), reason: z.string() });
   const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
@@ -86,6 +89,7 @@ export async function judgeViaApi(criterion: string, evidence: string, model: st
     output_config: { format: zodOutputFormat(Verdict) },
   });
   return interpretJudgeResponse(res);
+  /* c8 ignore stop */
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
