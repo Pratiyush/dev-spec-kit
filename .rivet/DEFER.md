@@ -8,12 +8,22 @@
   public launch when team usage begins. Config groundwork (`intake.sources`, `intake.jiraEpic`,
   `intake.writeBack`) already exists — only the adapters are missing.
 
-## Packaging & publish: npm `rivet-kit` + plugin marketplace listing (P7)
+## Packaging & publish: npm + plugin marketplace listing (P7)
 - **Why deferred:** Pratiyush (2026-06-12): "defer packaging… we can do it later, and plugin
   marketplace listing later." First: build real apps WITH Rivet, learn, and improve from those
   lessons before freezing a public artifact.
-- **To revisit:** after ≥1 app has been built end-to-end with Rivet and the resulting learnings are
-  promoted (the app-build dogfood phase). Then: check `rivet-kit` npm availability, docs pass,
+- **Dogfood trigger MET (2026-06-19):** revitify was built end-to-end *with* Rivet (the first real
+  app dogfood), so the "≥1 app built with Rivet" condition to revisit packaging is satisfied.
+- **Public-brand DECIDED (2026-06-19): `dev-spec-kit`.** An availability sweep (npm + GitHub +
+  .ai/.dev/.io) showed the "Rivet/RivetKit" brand is already occupied — `rivet` on npm is Pact's
+  API-contract tool, and `rivetkit` + rivet.io/.ai/.dev belong to **rivet.gg** (active company,
+  product literally "RivetKit"). So the planned `rivet-kit` name was dropped. `dev-spec-kit` is free
+  on every surface (npm `dev-spec-kit` & `devspeckit`, GitHub `devspeckit`, devspeckit.ai/.dev/.io).
+  **The local `rivet` command and `.rivet/` state dir stay unchanged** — this is the published
+  brand/npm identity only; a command→brand rename is a separate, deferred decision (it's a breaking
+  state-dir migration with no pre-publish benefit).
+- **Still human-gated (your explicit action):** registering devspeckit.ai/.dev/.io (paid), claiming
+  the GitHub `devspeckit` org/handle, the actual `npm publish` as `dev-spec-kit`, docs pass,
   marketplace listing.
 
 ## Durable journal snapshot+tail folding
