@@ -3775,3 +3775,5 @@
 {"at":"2026-06-19T21:39:49.823Z","type":"check.run","data":{"taskId":"REQUIREMENT_IMPL-01","result":{"ref":"test/implements-edges.test.ts::does not link a source the requirement's tests never import","passed":true,"at":"2026-06-19T21:39:49.325Z","sha":"a30210cae03aa02238634c7959859fcca7e20776","tree":"4b8912e2d3dfa9c74c31d6fe39e2f7e2f1c857f8","stack":"node-vitest","kind":"unit"}}}
 {"at":"2026-06-19T21:39:50.974Z","type":"cli.run","data":{"command":"graph build","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
 {"at":"2026-06-19T21:39:52.446Z","type":"cli.run","data":{"command":"trace","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-19T22:02:58.872Z","type":"cli.run","data":{"command":"doctor","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}
+{"at":"2026-06-19T22:03:00.392Z","type":"cli.run","data":{"command":"trace","args":[]},"meta":{"actor":"Pratiyush Kumar Singh"}}

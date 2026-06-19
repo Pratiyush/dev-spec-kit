@@ -128,7 +128,7 @@ export interface FileBlast {
   edges: GraphEdge[];
 }
 
-const normPath = (f: string): string => f.replace(/^\.?\/+/, "").replaceAll("\\", "/");
+export const normPath = (f: string): string => f.replace(/^\.?\/+/, "").replaceAll("\\", "/");
 
 /**
  * FEAT-BLAST-01 — the PR's blast radius: for each CHANGED file, the proven edges it touches, so a PR

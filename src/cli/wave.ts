@@ -63,7 +63,7 @@ export function waveStartAt(cwd: string, ids: string[]): WorktreeReport[] {
   const reports: WorktreeReport[] = [];
   for (const id of ids) {
     const path = join(cwd, ".worktrees", id);
-    git(cwd, `worktree add "${path}" -B rivet/${id} origin/${branch}`);
+    git(cwd, `worktree add "${path}" -B dev-spec-kit/${id} origin/${branch}`);
     reports.push({ id, path, base });
   }
   return reports;
@@ -90,7 +90,7 @@ export function waveDoneAt(cwd: string, id: string, opts: { force?: boolean }): 
       `provenance check: ${path} does not exist — only .worktrees/<id> we created may be cleaned up`,
     );
   }
-  const branch = `rivet/${id}`;
+  const branch = `dev-spec-kit/${id}`;
   const forced = opts.force ?? false;
   if (!forced) {
     const def = defaultBranch(cwd);
@@ -154,7 +154,9 @@ export function waveStart(ids: string[]): void {
     pc.bold(`\n${reports.length} worktree(s) ready (base ${reports[0]?.base.slice(0, 8)} = origin tip):\n`),
   );
   for (const r of reports) {
-    console.log(`  ${pc.green("✓")} ${pc.bold(r.id)} → ${r.path}` + pc.dim(`  (branch rivet/${r.id})`));
+    console.log(
+      `  ${pc.green("✓")} ${pc.bold(r.id)} → ${r.path}` + pc.dim(`  (branch dev-spec-kit/${r.id})`),
+    );
   }
   console.log(
     pc.dim(
