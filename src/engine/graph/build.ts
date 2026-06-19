@@ -113,7 +113,95 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
     }
   }
 
+  // FEAT-IMPL-01: proven `implements` edges (source file → requirement). The code graph records
+  // test→source imports; a requirement's bound test that imports a source file ties that file to the
+  // requirement, and the edge carries the requirement's OWN rollup proof (never greener than its
+  // checks). This lights up changed-SOURCE-file blast radius and makes unimplementedRequirements() live.
+  if (input.codeGraph) {
+    const worstByReq = new Map<string, ProofState>();
+    for (const r of rollupRequirements(input.requirements, { nodes, edges })) {
+      if (r.criteria.length === 0) continue;
+      worstByReq.set(
+        r.id,
+        r.criteria.reduce<ProofState>(
+          (acc, c) => (PROOF_RANK[c.proof] < PROOF_RANK[acc] ? c.proof : acc),
+          "green",
+        ),
+      );
+    }
+    for (const e of deriveImplementsEdges(input.requirements, input.codeGraph, worstByReq)) {
+      edge(e.from, e.to, "implements", e.proof);
+    }
+  }
+
   return { nodes, edges };
+}
+
+/** A path that is a JS/TS test file — the only side of an import the code graph anchors as a proof. */
+export function isTestFile(path: string): boolean {
+  return /\.(test|spec)\.[cm]?[jt]sx?$/.test(path);
+}
+
+export interface ImplementsEdgeSpec {
+  from: string;
+  to: string;
+  proof: ProofState;
+}
+
+/**
+ * FEAT-IMPL-01 — derive `implements` edges (source codeNode → requirement) from the code graph's
+ * test→source import links. The source files a requirement's bound tests import are its provable
+ * implementation; each gets ONE edge, anchored to a deterministic representative codeNode of that
+ * file, carrying the requirement's rollup proof.
+ *
+ * Honest limitation: an import is a structural tie, not line-coverage — a widely-imported module
+ * links to every requirement whose tests import it, so source blast radius is intentionally broad.
+ * The proof still comes only from the executed `validates` checks; an `implements` edge is never
+ * greener than the work behind it.
+ */
+export function deriveImplementsEdges(
+  requirements: Requirement[],
+  codeGraph: CodeGraph | undefined,
+  worstProofByReq: Map<string, ProofState>,
+): ImplementsEdgeSpec[] {
+  if (!codeGraph || codeGraph.nodes.length === 0) return [];
+
+  const sourceFileById = new Map<string, string>();
+  const repNodeByFile = new Map<string, string>();
+  for (const n of codeGraph.nodes) {
+    const sf = n.meta?.["sourceFile"];
+    if (typeof sf !== "string") continue;
+    sourceFileById.set(n.id, sf);
+    const rep = repNodeByFile.get(sf);
+    if (rep === undefined || n.id < rep) repNodeByFile.set(sf, n.id); // smallest id = a stable anchor
+  }
+
+  // test file → the NON-test source files it imports (the code graph emits imports test→source only).
+  const importsByTestFile = new Map<string, Set<string>>();
+  for (const l of codeGraph.links) {
+    if (l.relation !== "imports" && l.relation !== "imports_from") continue;
+    const fromSf = sourceFileById.get(l.from);
+    const toSf = sourceFileById.get(l.to);
+    if (!fromSf || !toSf) continue;
+    if (!isTestFile(fromSf) || isTestFile(toSf)) continue; // only test→source; a test is never an impl
+    (importsByTestFile.get(fromSf) ?? importsByTestFile.set(fromSf, new Set()).get(fromSf)!).add(toSf);
+  }
+
+  const out: ImplementsEdgeSpec[] = [];
+  for (const req of requirements) {
+    if (requirementKind(req.id) === "adr") continue; // decision records carry no implementation obligation
+    const proof = worstProofByReq.get(req.id);
+    if (!proof) continue; // a requirement with no criteria anchors nothing
+
+    const sources = new Set<string>();
+    for (const c of req.criteria)
+      for (const ch of c.checks) {
+        const file = ch.ref.split("::")[0];
+        if (file && isTestFile(file)) for (const s of importsByTestFile.get(file) ?? []) sources.add(s);
+      }
+    for (const sf of sources) out.push({ from: repNodeByFile.get(sf)!, to: req.id, proof });
+  }
+  return out;
 }
 
 export interface VTGSummary {

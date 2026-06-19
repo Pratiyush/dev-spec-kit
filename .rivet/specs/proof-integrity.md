@@ -160,3 +160,27 @@ section at all.
 
 @check kind=unit ref=test/pr-blast.test.ts::notes honestly when changed files map to no graph node
 @check kind=unit ref=test/pr-blast.test.ts::omits the section entirely when changedFiles is undefined (back-compat)
+
+## Requirement REQUIREMENT_IMPL-01 — proven implements edges tie changed source files to their requirements
+
+WHEN the Verified Traceability Graph is built with a code graph THEN the system SHALL emit a proven
+`implements` edge from each source file a requirement's bound test imports to that requirement — so a
+changed SOURCE file's blast radius and the `unimplementedRequirements` check stop being empty
+(closing the gap FEAT-BLAST-01 left: source files mapped to nothing because only `validates` edges
+existed).
+
+@check kind=unit ref=test/implements-edges.test.ts::links a source file a bound test imports to the requirement, carrying its rollup proof
+@check kind=unit ref=test/implements-edges.test.ts::buildVTG emits a green implements edge that makes unimplementedRequirements live
+@check kind=unit ref=test/implements-edges.test.ts::lights up a changed source file's blast radius through the implements edge
+
+WHEN a requirement is not fully proven THEN the system SHALL carry the WORST criterion proof onto its
+implements edges, so an `implements` edge is never greener than the executed checks behind it.
+
+@check kind=unit ref=test/implements-edges.test.ts::inherits the requirement's worst criterion proof — green only when every criterion is green
+
+IF a requirement's tests import only a TEST file, or import nothing the code graph indexes THEN the
+system SHALL NOT fabricate an implements edge — a test is never an implementation, and an unanchored
+requirement stays flagged as unimplemented.
+
+@check kind=unit ref=test/implements-edges.test.ts::never links a test→test import as an implementation
+@check kind=unit ref=test/implements-edges.test.ts::does not link a source the requirement's tests never import
