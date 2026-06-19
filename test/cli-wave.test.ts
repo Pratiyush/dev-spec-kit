@@ -8,11 +8,11 @@ import { TaskStore } from "../src/engine/state/tasks.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { tmpProject, run } from "./helpers/cli-harness.js";
 
-const store = (dir: string) => new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+const store = (dir: string) => new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
 
-/** A Rivet project that is a git clone with an `origin` remote (the fetch-first path needs one). */
+/** A dev-spec-kit project that is a git clone with an `origin` remote (the fetch-first path needs one). */
 function projectWithRemote(): string {
-  const remote = mkdtempSync(join(tmpdir(), "rivet-remote-"));
+  const remote = mkdtempSync(join(tmpdir(), "dev-spec-kit-remote-"));
   spawnSync("git", ["init", "--bare", "-b", "main", remote], { stdio: "ignore" });
   const work = tmpProject({ "src/x.ts": "export const x = 1;\n" });
   const g = (args: string[]) =>
@@ -29,7 +29,7 @@ function projectWithRemote(): string {
   return work;
 }
 
-describe("rivet wave plan", () => {
+describe("dev-spec-kit wave plan", () => {
   it("notes when there is nothing to dispatch", () => {
     const { text } = run(tmpProject(), () => wavePlan());
     expect(text).toContain("nothing to dispatch");
@@ -45,7 +45,7 @@ describe("rivet wave plan", () => {
   });
 });
 
-describe("rivet wave start/done — fetch-first worktrees", () => {
+describe("dev-spec-kit wave start/done — fetch-first worktrees", () => {
   it("creates a worktree branched from origin's tip, then cleans it up when merged", () => {
     const work = projectWithRemote();
     const reports = waveStartAt(work, ["W1"]);
@@ -57,7 +57,7 @@ describe("rivet wave start/done — fetch-first worktrees", () => {
     const done = waveDoneAt(work, "W1", {});
     expect(done.removed).toBe(true);
     expect(existsSync(join(work, ".worktrees", "W1"))).toBe(false);
-    expect(readFileSync(join(work, ".rivet", "journal.jsonl"), "utf8")).toContain("worktree-cleaned");
+    expect(readFileSync(join(work, ".dev-spec-kit", "journal.jsonl"), "utf8")).toContain("worktree-cleaned");
   });
 
   it("the CLI wrappers print their summaries", () => {
@@ -81,7 +81,7 @@ describe("rivet wave start/done — fetch-first worktrees", () => {
 
 describe("wave defaultBranch fallback", () => {
   it("falls back to main when origin/HEAD is not set", () => {
-    const remote = mkdtempSync(join(tmpdir(), "rivet-remote-"));
+    const remote = mkdtempSync(join(tmpdir(), "dev-spec-kit-remote-"));
     spawnSync("git", ["init", "--bare", "-b", "main", remote], { stdio: "ignore" });
     const work = tmpProject({ "src/x.ts": "export const x = 1;\n" });
     const g = (a: string[]) =>

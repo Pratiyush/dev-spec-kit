@@ -30,7 +30,7 @@ describe("FEAT-EMOJI-01 — central vocabulary", () => {
 
 describe("FEAT-EMOJI-01 — plain mode resolution (flag > env > TTY)", () => {
   it("--plain always wins", () => {
-    expect(resolvePlain({ argv: ["node", "rivet", "--plain"], env: {}, isTTY: true })).toBe(true);
+    expect(resolvePlain({ argv: ["node", "dev-spec-kit", "--plain"], env: {}, isTTY: true })).toBe(true);
   });
   it("NO_EMOJI=1 forces plain; NO_EMOJI=0 forces emoji even without a TTY", () => {
     expect(resolvePlain({ argv: [], env: { NO_EMOJI: "1" }, isTTY: true })).toBe(true);

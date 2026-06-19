@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { sessionStart, needsFlush } from "../src/engine/flushwarn.js";
 
 /**
- * FEAT-FLUSH-01 — the learnings-flush pre-flight (standing user rule, tool-ified): `rivet pr`
- * warns 📝 when .rivet/learnings.md carries nothing from THIS session — lessons must be banked
+ * FEAT-FLUSH-01 — the learnings-flush pre-flight (standing user rule, tool-ified): `dev-spec-kit pr`
+ * warns 📝 when .dev-spec-kit/learnings.md carries nothing from THIS session — lessons must be banked
  * before the work ships. A session = the trailing run of journal events with no gap > 30 min.
  * Warning only, never a gate (some sessions genuinely teach nothing).
  */

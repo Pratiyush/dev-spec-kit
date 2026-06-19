@@ -6,7 +6,7 @@ import { Journal } from "../src/engine/state/journal.js";
 import { TaskStore, EvidenceError } from "../src/engine/state/tasks.js";
 
 function tempJournal(): Journal {
-  return new Journal(join(mkdtempSync(join(tmpdir(), "rivet-test-")), "journal.jsonl"));
+  return new Journal(join(mkdtempSync(join(tmpdir(), "dev-spec-kit-test-")), "journal.jsonl"));
 }
 
 describe("Journal", () => {

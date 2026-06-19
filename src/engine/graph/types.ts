@@ -1,11 +1,11 @@
 /**
- * The Verified Traceability Graph (VTG) — Rivet's moat.
+ * The Verified Traceability Graph (VTG) — dev-spec-kit's moat.
  *
  * A graph of SDLC artifacts whose load-bearing edges are *gates proven by an executed check*, not
  * LLM-asserted links. An `implements`/`validates`/`satisfies` edge is only "green" when its bound
  * check last ran and passed; it goes "stale" when code on either end changed since the proof.
  *
- * graphify provides the code-side nodes/edges; Rivet overlays the spec/test/PR edges + proof states.
+ * graphify provides the code-side nodes/edges; dev-spec-kit overlays the spec/test/PR edges + proof states.
  */
 
 /** Node kinds (the SDLC artifacts). */

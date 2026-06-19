@@ -7,7 +7,7 @@ import { TaskStore } from "../src/engine/state/tasks.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { tmpProject, run } from "./helpers/cli-harness.js";
 
-const journal = (dir: string) => new Journal(join(dir, ".rivet", "journal.jsonl"));
+const journal = (dir: string) => new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
 const store = (dir: string) => new TaskStore(journal(dir));
 
 const validates = (proof: string) =>
@@ -20,7 +20,7 @@ const validates = (proof: string) =>
   });
 const ZERO = JSON.stringify({ nodes: [], edges: [] });
 
-describe("rivet approve", () => {
+describe("dev-spec-kit approve", () => {
   it("records an approval for a proven (done) task", () => {
     const dir = tmpProject();
     const s = store(dir);
@@ -39,38 +39,38 @@ describe("rivet approve", () => {
   });
 });
 
-describe("rivet pr — graph-derived body + the gate", () => {
+describe("dev-spec-kit pr — graph-derived body + the gate", () => {
   it("errors when there is no graph", () => {
     const dir = tmpProject();
     const { text, exitCode } = run(dir, () => pr({}));
-    expect(text).toContain("run `rivet graph build`");
+    expect(text).toContain("run `dev-spec-kit graph build`");
     expect(exitCode).toBe(1);
   });
 
   it("generates the body and notes zero-proof graphs (passes with a warning)", () => {
-    const dir = tmpProject({ ".rivet/graph.json": ZERO });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": ZERO });
     const { text } = run(dir, () => pr({ title: "x" }));
     expect(text).toContain("PR body generated");
     expect(text).toContain("zero bound proofs");
-    expect(existsSync(join(dir, ".rivet", "pr-body.md"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "pr-body.md"))).toBe(true);
   });
 
   it("is blocked by the gate when a proof is RED", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("red") });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("red") });
     const { text, exitCode } = run(dir, () => pr({}));
     expect(text).toContain("blocked by the gate");
     expect(exitCode).toBe(1);
   });
 
-  it("is blocked when proofs are green but no `rivet verify` is recorded", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("green") });
+  it("is blocked when proofs are green but no `dev-spec-kit verify` is recorded", () => {
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("green") });
     const { text, exitCode } = run(dir, () => pr({}));
     expect(text).toContain("blocked by the gate");
     expect(exitCode).toBe(1);
   });
 
   it("passes the gate (prints the gh hint) when green AND a fresh verify is journaled", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("green") });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("green") });
     journal(dir).append("verify.run", { passed: true, steps: [{ name: "x", ok: true }] });
     const { text, exitCode } = run(dir, () => pr({ title: "x" }));
     expect(text).toContain("gh pr create");
@@ -78,7 +78,7 @@ describe("rivet pr — graph-derived body + the gate", () => {
   });
 });
 
-describe("rivet route — the front door", () => {
+describe("dev-spec-kit route — the front door", () => {
   it("errors with no request text", () => {
     const dir = tmpProject();
     const { text, exitCode } = run(dir, () => route(undefined, {}));
@@ -107,8 +107,10 @@ describe("rivet route — the front door", () => {
   });
 
   it("routes the body of an intake --file (frontmatter stripped)", () => {
-    const dir = tmpProject({ ".rivet/intake/idea.md": "---\ntitle: x\n---\nbuild a quick thing\n" });
-    const { text } = run(dir, () => route(undefined, { file: join(dir, ".rivet", "intake", "idea.md") }));
+    const dir = tmpProject({ ".dev-spec-kit/intake/idea.md": "---\ntitle: x\n---\nbuild a quick thing\n" });
+    const { text } = run(dir, () =>
+      route(undefined, { file: join(dir, ".dev-spec-kit", "intake", "idea.md") }),
+    );
     expect(text).toMatch(/RESEARCH|QUICK|FULL-SPEC/);
   });
 
@@ -119,54 +121,54 @@ describe("rivet route — the front door", () => {
   });
 
   it("defers to the user when mode.routing=pick", () => {
-    const dir = tmpProject({ ".rivet/config.json": JSON.stringify({ mode: { routing: "pick" } }) });
+    const dir = tmpProject({ ".dev-spec-kit/config.json": JSON.stringify({ mode: { routing: "pick" } }) });
     const { text } = run(dir, () => route("do a thing", {}));
     expect(text).toContain("choose explicitly");
   });
 });
 
-describe("rivet guard pr — the shared PR predicate", () => {
-  it("does nothing outside a Rivet project", () => {
-    const bare = mkdtempSync(join(tmpdir(), "rivet-bare-"));
+describe("dev-spec-kit guard pr — the shared PR predicate", () => {
+  it("does nothing outside a dev-spec-kit project", () => {
+    const bare = mkdtempSync(join(tmpdir(), "dev-spec-kit-bare-"));
     const { text } = run(bare, () => guardPr());
-    expect(text).toContain("not a Rivet project");
+    expect(text).toContain("not a dev-spec-kit project");
   });
 
   it("passes with a notice when the graph has zero proofs", () => {
-    const dir = tmpProject({ ".rivet/graph.json": ZERO });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": ZERO });
     const { text } = run(dir, () => guardPr());
     expect(text).toContain("zero bound proofs");
   });
 
   it("blocks (exit 2) when a proof is red", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("red") });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("red") });
     const { text, exitCode } = run(dir, () => guardPr());
     expect(text).toContain("blocked");
     expect(exitCode).toBe(2);
   });
 
   it("blocks (exit 2) when green but no fresh verify exists", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("green") });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("green") });
     const { exitCode } = run(dir, () => guardPr());
     expect(exitCode).toBe(2);
   });
 
   it("allows the PR when green AND verify is fresh", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("green") });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("green") });
     journal(dir).append("verify.run", { passed: true, steps: [] });
     const { text } = run(dir, () => guardPr());
     expect(text).toContain("may proceed");
   });
 });
 
-describe("rivet unlock — the journaled escape hatch", () => {
+describe("dev-spec-kit unlock — the journaled escape hatch", () => {
   it("writes unlock.json, journals a governance event, and prints the window", () => {
     const dir = tmpProject();
     const { text } = run(dir, () => unlock(["spec/x.md"], { minutes: "15" }));
     expect(text).toContain("unlocked for 15m");
-    const unlockFile = JSON.parse(readFileSync(join(dir, ".rivet", "unlock.json"), "utf8"));
+    const unlockFile = JSON.parse(readFileSync(join(dir, ".dev-spec-kit", "unlock.json"), "utf8"));
     expect(unlockFile.paths).toEqual(["spec/x.md"]);
-    expect(readFileSync(join(dir, ".rivet", "journal.jsonl"), "utf8")).toContain("governance");
+    expect(readFileSync(join(dir, ".dev-spec-kit", "journal.jsonl"), "utf8")).toContain("governance");
   });
 
   it("defaults to a 30-minute window on a bad --minutes", () => {
@@ -176,9 +178,9 @@ describe("rivet unlock — the journaled escape hatch", () => {
   });
 });
 
-describe("rivet pr — verify-RED reasons", () => {
+describe("dev-spec-kit pr — verify-RED reasons", () => {
   it("prints the gate reasons when proofs are green but the last verify was RED", () => {
-    const dir = tmpProject({ ".rivet/graph.json": validates("green") });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("green") });
     journal(dir).append("verify.run", { passed: false, steps: [{ name: "x", ok: false }] });
     const { text, exitCode } = run(dir, () => pr({}));
     expect(text).toContain("blocked by the gate");
@@ -187,9 +189,9 @@ describe("rivet pr — verify-RED reasons", () => {
   });
 });
 
-describe("rivet guard pr — a malformed graph blocks (absence ≠ permission)", () => {
+describe("dev-spec-kit guard pr — a malformed graph blocks (absence ≠ permission)", () => {
   it("treats an unparseable graph.json as no graph and blocks", () => {
-    const dir = tmpProject({ ".rivet/graph.json": "{ not json" });
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": "{ not json" });
     const { text, exitCode } = run(dir, () => guardPr());
     expect(text).toContain("blocked");
     expect(exitCode).toBe(2);

@@ -1,10 +1,10 @@
 {
-  "name": "rivet",
+  "name": "dev-spec-kit",
   "version": "0.1.0",
-  "description": "Rivet — spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
+  "description": "dev-spec-kit — spec-driven development with a Verified Traceability Graph. Every requirement riveted to a passing check.",
   "type": "module",
   "bin": {
-    "rivet": "dist/cli/index.js"
+    "dev-spec-kit": "dist/cli/index.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

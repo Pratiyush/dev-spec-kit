@@ -12,11 +12,11 @@ import { emitCockpit, SHELL_FILES } from "./cockpit.js";
 import { label } from "./emoji.js";
 
 /**
- * REQUIREMENT_COCKPIT-05 — `rivet web`: the cockpit's ONE served path. Reads stay static
+ * REQUIREMENT_COCKPIT-05 — `dev-spec-kit web`: the cockpit's ONE served path. Reads stay static
  * (the same shell files; the sidecar is regenerated per request so every reload is fresh);
  * the server exists for the WRITE path only:
  *   GET  /api/state   → the RIVET object (serverMode: true)
- *   POST /api/config  → zod-validated save to .rivet/config.json, journaled as governance —
+ *   POST /api/config  → zod-validated save to .dev-spec-kit/config.json, journaled as governance —
  *                       REFUSED with GATE-PROTECT-01 while tasks are in flight and no human
  *                       unlock window is open. The moat is not editable by the thing it gates.
  */
@@ -28,7 +28,7 @@ const MIME: Record<string, string> = {
   ".json": "application/json; charset=utf-8",
 };
 
-const CONFIG_REL = ".rivet/config.json";
+const CONFIG_REL = ".dev-spec-kit/config.json";
 
 interface GateRefusal {
   blocked: "GATE-PROTECT-01";
@@ -38,10 +38,10 @@ interface GateRefusal {
 
 /** GATE-PROTECT-01 for the web save: in-flight tasks lock the config unless a human unlock is open. */
 function gateRefusal(cwd: string): GateRefusal | null {
-  const tasks = [...new TaskStore(new Journal(join(cwd, ".rivet", "journal.jsonl"))).all().values()];
+  const tasks = [...new TaskStore(new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl"))).all().values()];
   const inFlight = tasks.filter((t) => t.status === "in_progress").map((t) => t.id);
   if (inFlight.length === 0) return null;
-  const unlockPath = join(cwd, ".rivet", "unlock.json");
+  const unlockPath = join(cwd, ".dev-spec-kit", "unlock.json");
   if (existsSync(unlockPath)) {
     try {
       const u = JSON.parse(readFileSync(unlockPath, "utf8")) as { paths?: string[]; until?: string };
@@ -57,7 +57,7 @@ function gateRefusal(cwd: string): GateRefusal | null {
   return {
     blocked: "GATE-PROTECT-01",
     reason: `config is locked while ${inFlight.join(", ")} ${inFlight.length > 1 ? "are" : "is"} in flight`,
-    unlockHint: `rivet unlock ${CONFIG_REL} --minutes 30`,
+    unlockHint: `dev-spec-kit unlock ${CONFIG_REL} --minutes 30`,
   };
 }
 
@@ -184,7 +184,7 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
     }
     /* c8 ignore stop */
     writeFileSync(configPath, JSON.stringify(clean, null, 2) + "\n");
-    new Journal(join(cwd, ".rivet", "journal.jsonl")).append("governance", {
+    new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl")).append("governance", {
       kind: "config-save",
       via: "cockpit",
       paths: Object.keys(posted),
@@ -202,7 +202,7 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
     }
     const rel = url === "/" ? "index.html" : normalize(url).replace(/^[/\\]+/, "");
     if ((SHELL_FILES as readonly string[]).includes(rel)) {
-      const path = join(cwd, ".rivet", "cockpit", rel);
+      const path = join(cwd, ".dev-spec-kit", "cockpit", rel);
       if (existsSync(path)) {
         const ext = rel.slice(rel.lastIndexOf("."));
         res.writeHead(200, {
@@ -237,7 +237,7 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
   json(res, 404, { error: "not found" });
 }
 
-/** `rivet web [--port N] [--open]` — emit the cockpit and serve it with the save API. Returns the
+/** `dev-spec-kit web [--port N] [--open]` — emit the cockpit and serve it with the save API. Returns the
  *  server (so callers/tests can close it); the CLI just leaves it listening until Ctrl-C. */
 export function webCmd(opts: { port?: string; open?: boolean }): Server {
   const cwd = process.cwd();
@@ -248,7 +248,9 @@ export function webCmd(opts: { port?: string; open?: boolean }): Server {
     const addr = server.address();
     const shown = typeof addr === "object" && addr ? addr.port : port;
     const url = `http://localhost:${shown}/`;
-    console.log(pc.green(`${label("pr")} rivet cockpit serving`) + pc.dim(` → ${url} (Ctrl-C to stop)`));
+    console.log(
+      pc.green(`${label("pr")} dev-spec-kit cockpit serving`) + pc.dim(` → ${url} (Ctrl-C to stop)`),
+    );
     console.log(
       pc.dim(`  ${label("report")} dashboard + config studio · saves validate + respect GATE-PROTECT`),
     );

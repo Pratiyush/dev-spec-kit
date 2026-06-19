@@ -56,8 +56,8 @@ describe("reportArgs — vitest and jest JSON output flags", () => {
 describe("spec tasks / draft — remaining branches", () => {
   it("skips id-lint entirely when rules.requireQualifiedIds is off", () => {
     const dir = tmpProject({
-      ".rivet/config.json": JSON.stringify({ rules: { requireQualifiedIds: "off" } }),
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/config.json": JSON.stringify({ rules: { requireQualifiedIds: "off" } }),
+      ".dev-spec-kit/specs/x.md":
         "## Requirement R-1 — short\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=a::b\n",
     });
     const { text, exitCode } = run(dir, () => specTasks());
@@ -67,13 +67,13 @@ describe("spec tasks / draft — remaining branches", () => {
 
   it("appends stubs to an EXISTING test file rather than recreating it", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
+      ".dev-spec-kit/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
     });
     const first = run(dir, () => specDraftTests()); // creates test/<slug>.test.ts
     expect(first.text).toContain("created");
     // add another unbound criterion → second draft appends to the now-existing file
     writeFileSync(
-      join(dir, ".rivet", "specs", "x.md"),
+      join(dir, ".dev-spec-kit", "specs", "x.md"),
       "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\nThe system SHALL also persist data.\n",
     );
     const second = run(dir, () => specDraftTests());
@@ -86,7 +86,7 @@ describe("stampProofs — a malformed report is skipped, not crashed on", () => 
     const dir = tmpProject();
     const bad = join(dir, "bad.json");
     writeFileSync(bad, "{ not json");
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     new TaskStore(journal).create("T1", "t", ["c1"]);
     const vrun: VerifyRun = {
       passed: true,
@@ -144,7 +144,7 @@ describe("buildPrBody — an unbound criterion renders 'no check bound'", () => 
 describe("spec tasks — warns (not errors) on an unqualified id by default", () => {
   it("prints a yellow id warning without blocking", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement R-1 — short\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=a::b\n",
     });
     const { text, exitCode } = run(dir, () => specTasks2());

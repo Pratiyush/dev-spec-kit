@@ -1,7 +1,7 @@
 import tseslint from "typescript-eslint";
 
 // FEAT-INITPACKS-01 self-adoption — the typescript pack's lint baseline, eating our own cooking.
-// Correctness rules only (Prettier owns formatting); runs as the `lint` kind under `rivet verify`.
+// Correctness rules only (Prettier owns formatting); runs as the `lint` kind under `dev-spec-kit verify`.
 export default tseslint.config(
   {
     ignores: [
@@ -10,7 +10,7 @@ export default tseslint.config(
       "website/**",
       "_ref/**",
       "graphify-out/**",
-      ".rivet/**",
+      ".dev-spec-kit/**",
       "hooks/**", // self-contained .mjs hooks, deliberately dependency-free
       ".design/**", // design-session handoffs — reference material, kept verbatim
       "src/cli/cockpit-assets/**", // ported design shell (browser vanilla JS), kept verbatim

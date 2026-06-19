@@ -15,10 +15,10 @@ const roll = (proofs: ProofState[]): RequirementRollup => ({
 });
 
 describe("staleRemedy — trace names the drift cure (parity with graph build)", () => {
-  it("returns a `rivet drift` remedy counting every stale proof across requirements", () => {
+  it("returns a `dev-spec-kit drift` remedy counting every stale proof across requirements", () => {
     const r = staleRemedy([roll(["green", "stale"]), roll(["stale"])]);
     expect(r).not.toBeNull();
-    expect(r).toMatch(/rivet drift/);
+    expect(r).toMatch(/dev-spec-kit drift/);
     expect(r).toContain("2 proof(s)");
   });
 

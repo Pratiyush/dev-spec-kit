@@ -5,7 +5,7 @@ import type { CheckResult } from "../engine/graph/types.js";
 import { proofStamp } from "../engine/verify/stamp.js";
 
 /**
- * `rivet log` (R-AUDIT-02) — the audit trail, readable. One line per journal event, chronological,
+ * `dev-spec-kit log` (R-AUDIT-02) — the audit trail, readable. One line per journal event, chronological,
  * per-type emoji; `--json` emits the raw JSONL for machines.
  */
 
@@ -73,7 +73,7 @@ export function logCmd(opts: { json?: boolean; n?: string }): void {
     for (const e of slice) console.log(JSON.stringify(e));
     return;
   }
-  console.log(pc.bold(`\nRivet audit log — last ${slice.length} of ${events.length} event(s)\n`));
+  console.log(pc.bold(`\ndev-spec-kit audit log — last ${slice.length} of ${events.length} event(s)\n`));
   for (const line of renderLog(slice)) console.log("  " + line);
   console.log("");
 }

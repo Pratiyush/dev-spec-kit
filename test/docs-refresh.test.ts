@@ -20,13 +20,13 @@ import { TaskStore } from "../src/engine/state/tasks.js";
 const OLD_TREE = "fade1234567890fade1234567890fade12345678";
 
 function project(extraConfig: Record<string, unknown> = {}): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-docs-"));
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-docs-"));
   execSync(`git init -q -b main && git config user.email t@t && git config user.name T`, { cwd: dir });
   writeFileSync(join(dir, "app.ts"), "export const one = 1;\n");
   execSync("git add -A && git commit -qm init", { cwd: dir });
-  mkdirSync(join(dir, ".rivet", "specs"), { recursive: true });
+  mkdirSync(join(dir, ".dev-spec-kit", "specs"), { recursive: true });
   writeFileSync(
-    join(dir, ".rivet", "config.json"),
+    join(dir, ".dev-spec-kit", "config.json"),
     JSON.stringify({
       version: 1,
       verify: { kindRunners: { unit: { cmd: "node", args: ["-e", "process.exit(0)"] } } },
@@ -34,7 +34,7 @@ function project(extraConfig: Record<string, unknown> = {}): string {
     }),
   );
   writeFileSync(
-    join(dir, ".rivet", "specs", "feat.md"),
+    join(dir, ".dev-spec-kit", "specs", "feat.md"),
     [
       "## Requirement REQUIREMENT_FEAT-01 — the feature",
       "",
@@ -62,15 +62,17 @@ describe("REQUIREMENT_DOCS-01 — every mutation refreshes every generated docum
     process.chdir(dir);
     taskCreate("T1", "first thing", ["test/a.test.ts::works"]);
     for (const doc of ["LEDGER.md", "TRACKING.md", "RESUME.md", "graph.json", "cockpit/rivet.data.js"]) {
-      expect(existsSync(join(dir, ".rivet", doc)), `${doc} must exist after a mutation`).toBe(true);
+      expect(existsSync(join(dir, ".dev-spec-kit", doc)), `${doc} must exist after a mutation`).toBe(true);
     }
-    expect(readFileSync(join(dir, ".rivet", "LEDGER.md"), "utf8")).toContain("T1");
-    expect(readFileSync(join(dir, ".rivet", "cockpit", "rivet.data.js"), "utf8")).toContain("first thing");
+    expect(readFileSync(join(dir, ".dev-spec-kit", "LEDGER.md"), "utf8")).toContain("T1");
+    expect(readFileSync(join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js"), "utf8")).toContain(
+      "first thing",
+    );
   });
 
   it("drift refreshes the sidecar and boards after re-proving", async () => {
     const dir = project();
-    const store = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+    const store = new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
     store.create("REQUIREMENT_FEAT-01", "the feature", ["test/a.test.ts::works"]);
     store.recordCheck("REQUIREMENT_FEAT-01", {
       ref: "test/a.test.ts::works",
@@ -82,10 +84,10 @@ describe("REQUIREMENT_DOCS-01 — every mutation refreshes every generated docum
     });
     process.chdir(dir);
     drift({}); // re-runs the stale proof via the fake green runner
-    const sidecar = readFileSync(join(dir, ".rivet", "cockpit", "rivet.data.js"), "utf8");
+    const sidecar = readFileSync(join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js"), "utf8");
     expect(sidecar).toContain('"green": 2'); // two criteria bind the same ref — both edges green
     expect(sidecar).toContain('"stale": 0');
-    expect(readFileSync(join(dir, ".rivet", "LEDGER.md"), "utf8")).toContain("REQUIREMENT_FEAT-01");
+    expect(readFileSync(join(dir, ".dev-spec-kit", "LEDGER.md"), "utf8")).toContain("REQUIREMENT_FEAT-01");
   });
 
   it("read-only queries never create or touch documents", () => {
@@ -93,9 +95,10 @@ describe("REQUIREMENT_DOCS-01 — every mutation refreshes every generated docum
     process.chdir(dir);
     trace(); // FIX-QUERY-01: queries leave no fingerprints
     for (const doc of ["LEDGER.md", "RESUME.md", "graph.json", "cockpit"]) {
-      expect(existsSync(join(dir, ".rivet", doc)), `${doc} must NOT appear from a read-only query`).toBe(
-        false,
-      );
+      expect(
+        existsSync(join(dir, ".dev-spec-kit", doc)),
+        `${doc} must NOT appear from a read-only query`,
+      ).toBe(false);
     }
   });
 
@@ -103,8 +106,8 @@ describe("REQUIREMENT_DOCS-01 — every mutation refreshes every generated docum
     const dir = project({ dashboard: { updates: "on-demand" } });
     process.chdir(dir);
     taskCreate("T1", "first thing", ["test/a.test.ts::works"]);
-    expect(existsSync(join(dir, ".rivet", "LEDGER.md"))).toBe(true);
-    expect(existsSync(join(dir, ".rivet", "RESUME.md"))).toBe(true);
-    expect(existsSync(join(dir, ".rivet", "cockpit", "rivet.data.js"))).toBe(false);
+    expect(existsSync(join(dir, ".dev-spec-kit", "LEDGER.md"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "RESUME.md"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js"))).toBe(false);
   });
 });

@@ -8,13 +8,13 @@ import { parseConfig } from "../src/config/schema.js";
 
 /**
  * FEAT-REVITIFY-02 — revitify lives in its OWN repo (~/Github/revitify, consumed via file:
- * dependency); this is the CONSUMER-side contract: Rivet's loadCodeGraph must ingest revitify's
+ * dependency); this is the CONSUMER-side contract: dev-spec-kit's loadCodeGraph must ingest revitify's
  * graphify-out output unchanged, and revitify stays the default provider. Revitify's own
  * ingestion suite lives in its repo; this test pins the seam between the two.
  */
-describe("FEAT-REVITIFY-02 — the provider contract from Rivet's side", () => {
+describe("FEAT-REVITIFY-02 — the provider contract from dev-spec-kit's side", () => {
   it("loadCodeGraph ingests revitify output unchanged (provider-invisible)", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-revitify-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-revitify-"));
     mkdirSync(join(dir, "src"), { recursive: true });
     writeFileSync(
       join(dir, "src", "auth.ts"),

@@ -3,7 +3,7 @@ import { parseLearnings, matchOpenLessons, lessonsToWarn } from "../src/engine/l
 
 /** LEARN-01: logged-but-unpromoted lessons recur — so OPEN lessons surface BEFORE the work starts. */
 
-const LEDGER = `# Rivet learnings
+const LEDGER = `# dev-spec-kit learnings
 
 ## 2026-06-11 Worktree subagents must fetch first
 - Trigger: stale base reverted merged work.

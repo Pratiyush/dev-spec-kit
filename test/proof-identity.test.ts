@@ -17,7 +17,7 @@ import type { Task } from "../src/engine/state/tasks.js";
  */
 
 function tempRepo(): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-proof-"));
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-proof-"));
   const run = (cmd: string) => execSync(cmd, { cwd: dir, stdio: "pipe" });
   run("git init -q");
   run("git config user.name Test && git config user.email t@t");
@@ -77,15 +77,18 @@ describe("proof identity = tested tree", () => {
     expect(edge.proof).toBe("green"); // old behavior: stale. The moat's claim holds now.
   });
 
-  it("FIX-PROOF-02: the journal must not stale its own proofs — .rivet is excluded from identity", () => {
+  it("FIX-PROOF-02: the journal must not stale its own proofs — .dev-spec-kit is excluded from identity", () => {
     const dir = tempRepo();
-    execSync("mkdir -p .rivet && echo '{}' > .rivet/journal.jsonl && git add -A && git commit -qm rivet", {
-      cwd: dir,
-      stdio: "pipe",
-    });
+    execSync(
+      "mkdir -p .dev-spec-kit && echo '{}' > .dev-spec-kit/journal.jsonl && git add -A && git commit -qm rivet",
+      {
+        cwd: dir,
+        stdio: "pipe",
+      },
+    );
     const before = gitTreeHash(dir);
     // Recording a proof appends to the tracked journal — identity MUST NOT move.
-    execSync('echo \'{"type":"check.run"}\' >> .rivet/journal.jsonl', { cwd: dir, stdio: "pipe" });
+    execSync('echo \'{"type":"check.run"}\' >> .dev-spec-kit/journal.jsonl', { cwd: dir, stdio: "pipe" });
     expect(gitTreeHash(dir)).toBe(before);
     // …but a CODE change still moves it.
     writeFileSync(join(dir, "f.txt"), "v-changed\n");

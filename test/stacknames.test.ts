@@ -30,10 +30,10 @@ describe("project.platforms replaces project.stacks", () => {
 
 describe("filing a RUNNER stack under platforms produces a disambiguating error", () => {
   it("the error names both vocabularies and points to the right home", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-stacks-"));
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-stacks-"));
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
     writeFileSync(
-      join(dir, ".rivet", "config.json"),
+      join(dir, ".dev-spec-kit", "config.json"),
       JSON.stringify({ version: 1, project: { platforms: ["node-vitest"] } }),
     );
     let message = "";

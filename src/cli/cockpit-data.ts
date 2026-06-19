@@ -10,7 +10,7 @@ import type { JournalEvent } from "../engine/state/journal.js";
 
 /**
  * REQUIREMENT_COCKPIT-02 — the `window.RIVET` sidecar: ONE machine-written object carrying every
- * truth the cockpit renders (the design's exact contract, .design/rivet-cockpit/rivet.data.js).
+ * truth the cockpit renders (the design's exact contract, .design/dev-spec-kit-cockpit/rivet.data.js).
  * The shell is static; this file is what the CLI keeps rewriting. Truths that hurt stay in:
  * stale evidence is marked stale, failures carry their captured tails.
  */
@@ -189,9 +189,9 @@ export function buildRivet(cwd: string, opts: { serverMode?: boolean } = {}): Ri
 
   return {
     meta: {
-      project: m.config.project.name === "untitled" ? "rivet" : m.config.project.name,
+      project: m.config.project.name === "untitled" ? "dev-spec-kit" : m.config.project.name,
       tagline: "evidence-bound delivery",
-      configPath: ".rivet/config.json",
+      configPath: ".dev-spec-kit/config.json",
       generatedAt: new Date().toISOString(),
       serverMode: opts.serverMode ?? false,
       refreshSeconds: m.config.dashboard.refreshSeconds,
@@ -216,7 +216,7 @@ export function buildRivet(cwd: string, opts: { serverMode?: boolean } = {}): Ri
       completion: { done, total: m.tasks.length },
       validates,
       drift: validates.red + validates.stale,
-      // served/opened from .rivet/cockpit/ — the graph lives two levels up
+      // served/opened from .dev-spec-kit/cockpit/ — the graph lives two levels up
       graphHtml: existsSync(graphHtmlPath) ? `../../${m.config.graphify.outDir}/graph.html` : null,
       tasks,
       requirements,
@@ -244,7 +244,7 @@ export function sidecarJs(data: RivetCockpitData): string {
 }
 
 export function writeSidecar(cwd: string, data: RivetCockpitData): string {
-  const dir = join(cwd, ".rivet", "cockpit");
+  const dir = join(cwd, ".dev-spec-kit", "cockpit");
   mkdirSync(dir, { recursive: true });
   const path = join(dir, "rivet.data.js");
   writeFileSync(path, sidecarJs(data));

@@ -10,7 +10,7 @@ import type { GraphNode } from "../graph/types.js";
  * graphify integration — the code-side of the Verified Traceability Graph.
  *
  * graphify (PyPI `graphifyy`, CLI `graphify`) indexes the codebase into `graphify-out/graph.json`
- * (gitignored, derived). Code-only refresh needs no LLM key: `graphify update <path>`. Rivet ingests
+ * (gitignored, derived). Code-only refresh needs no LLM key: `graphify update <path>`. dev-spec-kit ingests
  * its nodes as `codeNode`s and overlays the proven spec/test/PR edges. Freshness: graphify stamps
  * `built_at_commit` in graph.json and we mirror the last-indexed SHA in committed state.
  */
@@ -33,7 +33,7 @@ export function graphifyInstalled(): boolean {
 // FIX-PROV-01: provenance is verifiable pointers only (repo URL, package name, owner) — never a
 // point-in-time vanity metric. The shipped star count was stale-by-construction AND wrong.
 export const GRAPHIFY_INSTALL_HINT =
-  "Optional — Rivet's graph features run on the BUNDLED revitify provider by default (zero installs). " +
+  "Optional — dev-spec-kit's graph features run on the BUNDLED revitify provider by default (zero installs). " +
   'To opt into the external tool instead (multi-modal: PDFs/images/video), set graphify.provider to "graphify" and ' +
   "pip install graphifyy && graphify install — 'graphifyy' (double-y) is graphify's official PyPI package name; " +
   "the CLI stays 'graphify'. Source: https://github.com/safishamsi/graphify (MIT — verify the repo yourself).";
@@ -69,13 +69,13 @@ export interface CodeLink {
 
 export interface CodeGraph {
   nodes: GraphNode[];
-  /** Raw code-to-code links (kept opaque; Rivet's proven edges are layered separately). */
+  /** Raw code-to-code links (kept opaque; dev-spec-kit's proven edges are layered separately). */
   links: CodeLink[];
   /** Commit the graph was built at, when graphify recorded it. */
   builtAtCommit?: string;
 }
 
-/** Load graphify's graph.json into Rivet codeNodes (tolerant of older/other shapes too). */
+/** Load graphify's graph.json into dev-spec-kit codeNodes (tolerant of older/other shapes too). */
 export function loadCodeGraph(graphJsonPath: string): CodeGraph {
   const raw = JSON.parse(readFileSync(graphJsonPath, "utf8")) as RawGraph;
   const nodes: GraphNode[] = (raw.nodes ?? []).map((n, i) => ({
@@ -108,7 +108,7 @@ export interface GraphFreshness {
   lastIndexedSha: string | null;
 }
 
-const FRESHNESS_FILE = join(".rivet", "graph-state.json");
+const FRESHNESS_FILE = join(".dev-spec-kit", "graph-state.json");
 
 export function readFreshness(projectDir: string): GraphFreshness {
   const p = join(projectDir, FRESHNESS_FILE);
@@ -157,7 +157,7 @@ export function refreshCodeGraph(projectDir: string, outDir = "graphify-out"): s
 
 export type GraphProvider = "revitify" | "graphify";
 
-/** FEAT-REVITIFY-01: revitify ships inside Rivet — it is ALWAYS available; pip never required. */
+/** FEAT-REVITIFY-01: revitify ships inside dev-spec-kit — it is ALWAYS available; pip never required. */
 export function providerAvailable(provider: GraphProvider): boolean {
   return provider === "revitify" ? true : graphifyInstalled();
 }

@@ -55,7 +55,7 @@ describe("renderLog — one readable line per event type", () => {
   });
 });
 
-describe("rivet log — the command", () => {
+describe("dev-spec-kit log — the command", () => {
   it("notes an empty journal", () => {
     const empty = tmpProject();
     const { text } = run(empty, () => logCmd({}));
@@ -64,16 +64,16 @@ describe("rivet log — the command", () => {
 
   it("prints a human audit log by default", () => {
     const dir = tmpProject();
-    const j = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const j = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     j.append("task.created", { id: "T1", title: "x" });
     const { text } = run(dir, () => logCmd({}));
-    expect(text).toContain("Rivet audit log");
+    expect(text).toContain("dev-spec-kit audit log");
     expect(text).toContain("task T1 created");
   });
 
   it("emits raw JSONL under --json", () => {
     const dir = tmpProject();
-    const j = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const j = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     j.append("task.created", { id: "T1", title: "x" });
     const { text } = run(dir, () => logCmd({ json: true }));
     expect(text).toContain('"type":"task.created"');
@@ -81,7 +81,7 @@ describe("rivet log — the command", () => {
 
   it("shows nothing when -n is 0 (but still reports the total)", () => {
     const dir = tmpProject();
-    const j = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const j = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     j.append("task.created", { id: "T1", title: "x" });
     const { text } = run(dir, () => logCmd({ n: "0" }));
     expect(text).toContain("last 0 of 1");

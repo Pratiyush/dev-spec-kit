@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Added
-- **Blast radius in the PR body (FEAT-BLAST-01)** — `rivet pr` now lists, per changed file, the proven
+- **Blast radius in the PR body (FEAT-BLAST-01)** — `dev-spec-kit pr` now lists, per changed file, the proven
   graph edges it touches (a changed test via its `validates` edge; a changed source file via its code
   node), so a reviewer sees the diff's traceability impact without opening the graph. Pure
   `prBlastRadius(graph, changedFiles)`; the change set comes from `git diff` since the branch's fork
@@ -13,21 +13,21 @@
 ## 0.2.0 — 2026-06-14 (proof-layer integrity + the LLM layer)
 
 Dogfood-feedback rework of the proof layer, plus an LLM layer (harness-first — free, no API key by
-default). Every code unit built TDD-first and proven through Rivet's own loop.
+default). Every code unit built TDD-first and proven through dev-spec-kit's own loop.
 
 ### Added
-- **`rivet verify --stamp [--advance]`** — prove EVERY bound criterion from ONE suite run (maps the
+- **`dev-spec-kit verify --stamp [--advance]`** — prove EVERY bound criterion from ONE suite run (maps the
   JSON report back to each `@check`) instead of N cold `check run`s; `--advance` auto-advances
   fully-proven tasks to done (never a blocked one).
-- **`rivet spec lint`** — static drift check: orphaned `@check` refs (renamed/moved tests), unbound
-  criteria, and lost-obligation parser warnings. Folded into `rivet doctor`, a pre-commit gate, and a
+- **`dev-spec-kit spec lint`** — static drift check: orphaned `@check` refs (renamed/moved tests), unbound
+  criteria, and lost-obligation parser warnings. Folded into `dev-spec-kit doctor`, a pre-commit gate, and a
   loop-safe Stop hook. Exit 1 on orphans.
-- **`rivet spec draft-tests`** — scaffold a failing, bound vitest stub per unbound criterion (the
+- **`dev-spec-kit spec draft-tests`** — scaffold a failing, bound vitest stub per unbound criterion (the
   rule→test→proof loop the `tool-drafts` config promised).
 - **The `judge` check kind** — an LLM verdict for the unmeasurable, recorded SECOND-CLASS
   (`⚖️ judged`, never an executed green), blocked on full obligations by default. Harness mode is
   free (the agent supplies the verdict, no key); optional api mode calls Anthropic (lazy SDK).
-- **Dependency-cycle detection** in `rivet graph build` (circular `dependsOn` chains exit 1).
+- **Dependency-cycle detection** in `dev-spec-kit graph build` (circular `dependsOn` chains exit 1).
 - **Specialized role skills** — clarify · architect · test-author · analyze · research · judge, plus
   spec-author Gherkin/edge-case generation.
 
@@ -55,35 +55,35 @@ default). Every code unit built TDD-first and proven through Rivet's own loop.
 
 ## 0.1.0 — 2026-06-12 (the feedback batch)
 
-The notepad-dogfood feedback batch: every item driven through Rivet's own loop
+The notepad-dogfood feedback batch: every item driven through dev-spec-kit's own loop
 (task → failing test → implement → green → done-gate), conventional commits.
 
 ### Added
-- **`rivet verify`** — Build ALL + run EVERY configured kind's full suite (custom kinds
+- **`dev-spec-kit verify`** — Build ALL + run EVERY configured kind's full suite (custom kinds
   included), sequential, report-all, 📋 summary with ⏱️ durations, journaled with the
-  code-tree hash. **Hard PR gate**: guard-pr / `rivet pr` require the last verify green
+  code-tree hash. **Hard PR gate**: guard-pr / `dev-spec-kit pr` require the last verify green
   on the CURRENT tree; the PreToolUse hook gains an exists+green fast veto.
 - **Gherkin first-class and the new default** — `Scenario:` blocks parse as bindable
   criteria; `Scenario Outline:` + `Examples:` expand one criterion per row, one `@check`
   binding them all (worst-of). Off-format criteria lint (warn-only).
 - **Mechanical edge-case floor** (`gates.negativeFloor`, on everywhere) — a requirement
-  with zero negative/failure criteria fails `rivet graph build`.
+  with zero negative/failure criteria fails `dev-spec-kit graph build`.
 - **Fully-qualified requirement ids** — `REQUIREMENT_<AREA>-NN`, `NFR_` (full obligations),
   `ADR_` (decision-record graph nodes, exempt). `rules.requireQualifiedIds: warn|error|off`.
-- **`revitify`** (workspace package) — Rivet's native TypeScript code-knowledge-graph
+- **`revitify`** (workspace package) — dev-spec-kit's native TypeScript code-knowledge-graph
   engine with graphify's exact output contract (graph.json · graph.html · GRAPH_REPORT.md).
   `graphify.provider: "revitify"` is the default: graph features with ZERO pip installs;
   external graphify stays available opt-in. Upstream pinned in `packages/revitify/.track`.
-- **`rivet init --platforms`** — seeds per-platform best-practice law packs (TypeScript,
+- **`dev-spec-kit init --platforms`** — seeds per-platform best-practice law packs (TypeScript,
   Electron security baseline, Java, Python, quality-gates, polyglot), 100% free/OSS tools,
-  each pre-wired with "Bind these as Rivet checks". Self-adopted: ESLint + Prettier +
+  each pre-wired with "Bind these as dev-spec-kit checks". Self-adopted: ESLint + Prettier +
   lint-staged + husky; lint runs as a verify kind.
 - **📋 per-task evidence table** at `task done` and persisted per task in LEDGER.md.
 - **Central emoji vocabulary** (10 new types) with plain-ASCII degradation
   (`--plain`, `NO_EMOJI=1`, auto when not a TTY).
 - **`verify.defaultStack` + platform inference** — `--stack` now optional.
 - **electron** platform; platforms documented as an ARRAY (polyglot is normal).
-- 📝 learnings-flush pre-flight warning in `rivet pr`; 🧹 doctor lists stale isolation
+- 📝 learnings-flush pre-flight warning in `dev-spec-kit pr`; 🧹 doctor lists stale isolation
   worktrees (visibility only).
 
 ### Fixed

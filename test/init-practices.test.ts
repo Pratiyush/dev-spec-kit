@@ -5,13 +5,13 @@ import { join } from "node:path";
 import { seedPractices, practicesFor } from "../src/engine/practices.js";
 
 /**
- * FEAT-INITPACKS-01 — `rivet init --platforms <list>` seeds per-platform best-practice LAW packs
+ * FEAT-INITPACKS-01 — `dev-spec-kit init --platforms <list>` seeds per-platform best-practice LAW packs
  * (scoped via the steering fileMatch mechanism), 100% free/OSS tools only, each ending with a
- * "Bind these as Rivet checks" section so the standards arrive pre-wired to enforcement.
+ * "Bind these as dev-spec-kit checks" section so the standards arrive pre-wired to enforcement.
  */
 
 function tmp(): string {
-  return mkdtempSync(join(tmpdir(), "rivet-packs-"));
+  return mkdtempSync(join(tmpdir(), "dev-spec-kit-packs-"));
 }
 
 describe("FEAT-INITPACKS-01 — pack selection", () => {
@@ -37,21 +37,21 @@ describe("FEAT-INITPACKS-01 — seeded content", () => {
     const seeded = seedPractices(dir, ["typescript", "electron"], false);
     expect(seeded.seeded.length).toBeGreaterThanOrEqual(3);
 
-    const ts = readFileSync(join(dir, ".rivet", "laws", "best-practices-typescript.md"), "utf8");
+    const ts = readFileSync(join(dir, ".dev-spec-kit", "laws", "best-practices-typescript.md"), "utf8");
     expect(ts).toMatch(/inclusion:\s*fileMatch/);
     expect(ts).toMatch(/pattern:.*tsx?/);
     expect(ts).toMatch(/free or open-source/i);
     for (const tool of ["ESLint", "Prettier", "noUncheckedIndexedAccess", "npm audit"]) {
       expect(ts).toContain(tool);
     }
-    expect(ts).toContain("Bind these as Rivet checks");
+    expect(ts).toContain("Bind these as dev-spec-kit checks");
 
-    const electron = readFileSync(join(dir, ".rivet", "laws", "best-practices-electron.md"), "utf8");
+    const electron = readFileSync(join(dir, ".dev-spec-kit", "laws", "best-practices-electron.md"), "utf8");
     for (const must of ["contextIsolation", "nodeIntegration", "contextBridge", "Playwright", "CSP"]) {
       expect(electron).toContain(must);
     }
 
-    const gates = readFileSync(join(dir, ".rivet", "laws", "best-practices-quality-gates.md"), "utf8");
+    const gates = readFileSync(join(dir, ".dev-spec-kit", "laws", "best-practices-quality-gates.md"), "utf8");
     for (const tool of ["Husky", "lint-staged", "SonarQube Community", "CodeQL"])
       expect(gates).toContain(tool);
     expect(gates).toMatch(/optional/i);
@@ -60,7 +60,7 @@ describe("FEAT-INITPACKS-01 — seeded content", () => {
   it("java pack carries the full free toolchain incl. ArchUnit rules", () => {
     const dir = tmp();
     seedPractices(dir, ["spring"], false);
-    const java = readFileSync(join(dir, ".rivet", "laws", "best-practices-java.md"), "utf8");
+    const java = readFileSync(join(dir, ".dev-spec-kit", "laws", "best-practices-java.md"), "utf8");
     for (const tool of [
       "Checkstyle",
       "SpotBugs",
@@ -78,14 +78,14 @@ describe("FEAT-INITPACKS-01 — seeded content", () => {
   it("python pack ships ruff, mypy strict, pytest, pip-audit", () => {
     const dir = tmp();
     seedPractices(dir, ["python"], false);
-    const py = readFileSync(join(dir, ".rivet", "laws", "best-practices-python.md"), "utf8");
+    const py = readFileSync(join(dir, ".dev-spec-kit", "laws", "best-practices-python.md"), "utf8");
     for (const tool of ["ruff", "mypy", "pytest", "pip-audit"]) expect(py).toContain(tool);
   });
 
   it("is idempotent: existing files are never clobbered without force", () => {
     const dir = tmp();
     seedPractices(dir, ["typescript"], false);
-    const path = join(dir, ".rivet", "laws", "best-practices-typescript.md");
+    const path = join(dir, ".dev-spec-kit", "laws", "best-practices-typescript.md");
     writeFileSync(path, "MY EDITS\n");
     const second = seedPractices(dir, ["typescript"], false);
     expect(readFileSync(path, "utf8")).toBe("MY EDITS\n");
@@ -97,9 +97,9 @@ describe("FEAT-INITPACKS-01 — seeded content", () => {
   it("polyglot pack demands per-language runners and ONE CI gate", () => {
     const dir = tmp();
     seedPractices(dir, ["typescript", "python"], false);
-    const poly = readFileSync(join(dir, ".rivet", "laws", "best-practices-polyglot.md"), "utf8");
+    const poly = readFileSync(join(dir, ".dev-spec-kit", "laws", "best-practices-polyglot.md"), "utf8");
     expect(poly).toMatch(/verify\.runners/);
     expect(poly).toMatch(/ONE CI gate/i);
-    expect(existsSync(join(dir, ".rivet", "laws", "best-practices-python.md"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "laws", "best-practices-python.md"))).toBe(true);
   });
 });

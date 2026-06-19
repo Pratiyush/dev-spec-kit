@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Rivet PreCompact hook (COMPACT-01) — before the conversation is compacted, write the state-only
- * handoff so the post-compact context rehydrates from ground truth: `.rivet/RESUME.md`, generated
+ * dev-spec-kit PreCompact hook (COMPACT-01) — before the conversation is compacted, write the state-only
+ * handoff so the post-compact context rehydrates from ground truth: `.dev-spec-kit/RESUME.md`, generated
  * from the journal (never hand-written). Self-contained mirror of src/engine/phase.ts renderResume —
  * keep in sync. Always exits 0: a failed save must never block compaction.
  */
@@ -26,7 +26,7 @@ try {
 let dir = payload.cwd || process.cwd();
 let root = null;
 for (let i = 0; i < 10; i++) {
-  if (existsSync(join(dir, ".rivet"))) {
+  if (existsSync(join(dir, ".dev-spec-kit"))) {
     root = dir;
     break;
   }
@@ -38,7 +38,7 @@ if (!root) process.exit(0);
 
 const tasks = new Map();
 try {
-  const lines = readFileSync(join(root, ".rivet", "journal.jsonl"), "utf8").split("\n").filter(Boolean);
+  const lines = readFileSync(join(root, ".dev-spec-kit", "journal.jsonl"), "utf8").split("\n").filter(Boolean);
   for (const line of lines) {
     let e;
     try {
@@ -72,16 +72,16 @@ const lines = [
   "",
 ];
 if (!open) {
-  lines.push("✅ all task(s) done — nothing open. Next: `rivet graph build` → `rivet pr`.");
+  lines.push("✅ all task(s) done — nothing open. Next: `dev-spec-kit graph build` → `dev-spec-kit pr`.");
 } else {
   lines.push("## THE ONE OPEN ACTION", "", `→ **${open.id}** — ${open.title} (${open.status})`);
   for (const ref of open.boundChecks.filter((r) => !open.proven.has(r))) lines.push(`  ○ unproven: \`${ref}\``);
   lines.push("");
 }
-lines.push("## Rebuild truth", "", "`rivet status` · `rivet graph build` · `rivet log -n 10`", "");
+lines.push("## Rebuild truth", "", "`dev-spec-kit status` · `dev-spec-kit graph build` · `dev-spec-kit log -n 10`", "");
 
 try {
-  writeFileSync(join(root, ".rivet", "RESUME.md"), lines.join("\n"));
+  writeFileSync(join(root, ".dev-spec-kit", "RESUME.md"), lines.join("\n"));
 } catch {
   /* never block compaction */
 }

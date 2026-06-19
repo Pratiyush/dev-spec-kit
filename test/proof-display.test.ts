@@ -88,8 +88,8 @@ describe("FIX-PROOF-04 — every proof surface stamps the tree identity", () => 
   });
 
   it("approval evidence rows stamp the recorded tree, not the recorded sha", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-stamp-"));
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-stamp-"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]);
     store.recordCheck("T1", {

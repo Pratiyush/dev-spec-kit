@@ -9,7 +9,7 @@ import {
 } from "./ears.js";
 
 /**
- * Spec-file parser — reads `.rivet/specs/*.md` into Requirements with EARS criteria and `@check`
+ * Spec-file parser — reads `.dev-spec-kit/specs/*.md` into Requirements with EARS criteria and `@check`
  * bindings. Markdown stays the human-editable source of truth; this parser is how it becomes
  * machine state (tasks, graph nodes, proof obligations).
  *
@@ -205,9 +205,9 @@ export function parseSpec(content: string, warnings?: string[]): Requirement[] {
   return requirements;
 }
 
-/** Parse every spec file in a project's `.rivet/specs/` directory. */
+/** Parse every spec file in a project's `.dev-spec-kit/specs/` directory. */
 export function parseSpecsDir(projectDir: string, warnings?: string[]): Requirement[] {
-  const dir = join(projectDir, ".rivet", "specs");
+  const dir = join(projectDir, ".dev-spec-kit", "specs");
   if (!existsSync(dir)) return [];
   const out: Requirement[] = [];
   for (const f of readdirSync(dir)

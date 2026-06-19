@@ -9,7 +9,7 @@ import { waveStartAt, waveDoneAt } from "../src/cli/wave.js";
  *  after origin has the work (or with an explicit --force discard). */
 
 function setup(): { work: string; sh: (c: string, d: string) => string } {
-  const root = mkdtempSync(join(tmpdir(), "rivet-wd-"));
+  const root = mkdtempSync(join(tmpdir(), "dev-spec-kit-wd-"));
   const sh = (cmd: string, cwd: string) => execSync(cmd, { cwd, stdio: "pipe" }).toString().trim();
   const bare = join(root, "origin.git");
   execSync(`git init -q --bare -b main ${bare}`);

@@ -1,5 +1,5 @@
 /**
- * Rivet — public library entry point.
+ * dev-spec-kit — public library entry point.
  *
  * Spec-driven development with a Verified Traceability Graph: every requirement is bound to an
  * executed check, and a task cannot be "done" until that check passes.

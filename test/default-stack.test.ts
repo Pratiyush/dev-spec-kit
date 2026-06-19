@@ -11,7 +11,7 @@ import { resolveStack } from "../src/engine/verify/runner.js";
  */
 
 function projectWith(deps: Record<string, string>): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-stack-"));
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-stack-"));
   writeFileSync(join(dir, "package.json"), JSON.stringify({ name: "x", devDependencies: deps }));
   return dir;
 }

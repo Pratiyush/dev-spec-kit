@@ -14,7 +14,7 @@ import { auditCliRun } from "../src/engine/state/audit.js";
 
 describe("withLock — cross-process mutual exclusion", () => {
   it("serializes concurrent journal appends from real child processes (no torn lines)", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-lock-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-lock-"));
     const journalPath = join(dir, "journal.jsonl");
     const journalUrl = new URL("../dist/engine/state/journal.js", import.meta.url).href;
     const script = `
@@ -34,7 +34,7 @@ describe("withLock — cross-process mutual exclusion", () => {
   });
 
   it("steals a stale lock instead of deadlocking", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-stale-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-stale-"));
     const lock = join(dir, "x.lock");
     mkdirSync(lock); // abandoned lock from a dead process
     const ran = withLock(lock, () => "ok", { timeoutMs: 2000, staleMs: 0 });
@@ -44,7 +44,7 @@ describe("withLock — cross-process mutual exclusion", () => {
 
 describe("journal read cache", () => {
   it("re-reads when the file grows (append invalidates)", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-cache-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-cache-"));
     const path = join(dir, "j.jsonl");
     const a = new Journal(path);
     a.append("note", { n: 1 });
@@ -95,10 +95,10 @@ describe("test-anchor by source path", () => {
 
 describe("audit gating (memory.journal = milestones)", () => {
   function project(mode: "full" | "milestones"): string {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-gate-audit-"));
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-gate-audit-"));
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
     writeFileSync(
-      join(dir, ".rivet", "config.json"),
+      join(dir, ".dev-spec-kit", "config.json"),
       JSON.stringify({ version: 1, memory: { journal: mode } }),
     );
     return dir;
@@ -107,14 +107,14 @@ describe("audit gating (memory.journal = milestones)", () => {
   it("milestones mode skips read-only commands but keeps mutating ones", () => {
     const dir = project("milestones");
     auditCliRun(dir, ["status"], []);
-    expect(existsSync(join(dir, ".rivet", "journal.jsonl"))).toBe(false);
+    expect(existsSync(join(dir, ".dev-spec-kit", "journal.jsonl"))).toBe(false);
     auditCliRun(dir, ["task", "done"], ["T1"]);
-    expect(new Journal(join(dir, ".rivet", "journal.jsonl")).read()).toHaveLength(1);
+    expect(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")).read()).toHaveLength(1);
   });
 
   it("full mode audits everything", () => {
     const dir = project("full");
     auditCliRun(dir, ["status"], []);
-    expect(new Journal(join(dir, ".rivet", "journal.jsonl")).read()).toHaveLength(1);
+    expect(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")).read()).toHaveLength(1);
   });
 });

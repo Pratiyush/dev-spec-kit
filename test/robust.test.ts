@@ -11,9 +11,9 @@ import { execute, RunnerUnavailableError } from "../src/engine/verify/runner.js"
 /** FIX-ROBUST-01: user-editable inputs never crash; infra errors are not proofs. */
 
 function projectWithConfig(content: string): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-robust-"));
-  mkdirSync(join(dir, ".rivet"), { recursive: true });
-  writeFileSync(join(dir, ".rivet", "config.json"), content);
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-robust-"));
+  mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
+  writeFileSync(join(dir, ".dev-spec-kit", "config.json"), content);
   return dir;
 }
 
@@ -31,16 +31,16 @@ describe("config loading", () => {
   });
 
   it("missing config yields defaults", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-robust-none-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-robust-none-"));
     expect(loadConfig(dir).verify.blockDoneOnFail).toBe(true);
   });
 });
 
 describe("journal tolerance", () => {
   it("a structurally-valid event missing `data` does not brick log or the task fold", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-robust-j-"));
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
-    const path = join(dir, ".rivet", "journal.jsonl");
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-robust-j-"));
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
+    const path = join(dir, ".dev-spec-kit", "journal.jsonl");
     writeFileSync(
       path,
       `{"at":"2026-06-11T10:00:00Z","type":"cli.run"}\n` + // no data
@@ -59,7 +59,7 @@ describe("runner availability", () => {
     expect(() =>
       execute(
         { kind: "unit", ref: "x" },
-        { cmd: "rivet-definitely-not-a-binary-xyz", args: [] },
+        { cmd: "dev-spec-kit-definitely-not-a-binary-xyz", args: [] },
         { cwd: process.cwd() },
       ),
     ).toThrowError(RunnerUnavailableError);

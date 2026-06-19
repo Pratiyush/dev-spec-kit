@@ -7,7 +7,7 @@ import { TaskStore } from "../engine/state/tasks.js";
 import { journalFor, configFor } from "./materialize.js";
 
 /**
- * WAVE-01 — the dispatcher. `rivet wave plan` groups independent tasks; `rivet wave start <ids>`
+ * WAVE-01 — the dispatcher. `dev-spec-kit wave plan` groups independent tasks; `dev-spec-kit wave start <ids>`
  * creates one worktree per task with the FETCH-FIRST guard: always `git fetch origin` and branch
  * from origin's CURRENT tip — never the possibly-stale local HEAD (the algo-trading disaster:
  * subagents on stale bases silently reverting merged work). Journals union-merge across branches.
@@ -41,7 +41,7 @@ function defaultBranch(cwd: string): string {
 /** Union-merge for append-only files so parallel branches reconcile instead of conflicting. */
 function ensureUnionMerge(cwd: string): void {
   const path = join(cwd, ".gitattributes");
-  const wanted = [".rivet/journal.jsonl merge=union", ".rivet/learnings.md merge=union"];
+  const wanted = [".dev-spec-kit/journal.jsonl merge=union", ".dev-spec-kit/learnings.md merge=union"];
   const current = existsSync(path) ? readFileSync(path, "utf8") : "";
   const missing = wanted.filter((w) => !current.includes(w));
   if (missing.length > 0)
@@ -142,7 +142,9 @@ export function wavePlan(): void {
   waves.forEach((wave, i) => {
     console.log(`  wave ${i + 1}: ${wave.map((t) => pc.bold(t.id)).join("  ")}`);
   });
-  console.log(pc.dim(`\nstart the first wave: rivet wave start ${waves[0]!.map((t) => t.id).join(" ")}`));
+  console.log(
+    pc.dim(`\nstart the first wave: dev-spec-kit wave start ${waves[0]!.map((t) => t.id).join(" ")}`),
+  );
 }
 
 export function waveStart(ids: string[]): void {
@@ -156,7 +158,7 @@ export function waveStart(ids: string[]): void {
   }
   console.log(
     pc.dim(
-      "\neach worktree: work the task → rivet check run … → rivet task done → merge via rivet-finish ritual.\n" +
+      "\neach worktree: work the task → dev-spec-kit check run … → dev-spec-kit task done → merge via dev-spec-kit-finish ritual.\n" +
         "journals union-merge; provenance rule: only .worktrees/ may be cleaned up.",
     ),
   );

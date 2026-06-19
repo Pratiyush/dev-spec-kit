@@ -35,7 +35,7 @@ describe("resolveCommand — builtin stacks (no override)", () => {
 
 describe("resolveStack — inference survives a malformed package.json", () => {
   it("infers node-vitest even when package.json is unparseable (hasDep catch)", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-stack-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-stack-"));
     writeFileSync(join(dir, "package.json"), "{ not json");
     const res = resolveStack(undefined, parseConfig({ project: { platforms: ["node"] } }), dir);
     expect(res.stack).toBe("node-vitest");
@@ -46,7 +46,7 @@ describe("resolveStack — inference survives a malformed package.json", () => {
 describe("approvals — listing + the no-recorded-run evidence line", () => {
   it("renders a bound check with no result as 'no recorded run' (done-with-warnings)", () => {
     const dir = tmpProject();
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]);
     store.markDone("T1", { force: true }); // done despite c1 having no run
@@ -56,7 +56,7 @@ describe("approvals — listing + the no-recorded-run evidence line", () => {
 
   it("lists the approval files on disk", () => {
     const dir = tmpProject();
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]);
     store.recordCheck("T1", { ref: "c1", passed: true, at: "x", sha: "S", tree: "T" });
@@ -80,7 +80,7 @@ import { mkdtempSync as mkd } from "node:fs";
 
 describe("withLock — deterministic uncontended happy path", () => {
   it("acquires, runs fn, and releases (covers the lock lifecycle without contention)", () => {
-    const dir = mkd(join(tmpdir(), "rivet-lock1-"));
+    const dir = mkd(join(tmpdir(), "dev-spec-kit-lock1-"));
     const out = withLock(join(dir, "x.lock"), () => "result");
     expect(out).toBe("result");
   });

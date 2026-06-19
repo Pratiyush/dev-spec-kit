@@ -34,7 +34,7 @@ export interface EmitResult {
 }
 
 export function emitCockpit(cwd: string, opts: { serverMode?: boolean } = {}): EmitResult {
-  const dir = join(cwd, ".rivet", "cockpit");
+  const dir = join(cwd, ".dev-spec-kit", "cockpit");
   mkdirSync(dir, { recursive: true });
   const versionPath = join(dir, VERSION_FILE);
   const current = existsSync(versionPath) ? readFileSync(versionPath, "utf8").trim() : null;

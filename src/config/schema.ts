@@ -16,11 +16,11 @@ export const PLATFORM_VALUES = [
 ] as const;
 
 /**
- * The Rivet per-project configuration — the "config-driven policy engine".
+ * The dev-spec-kit per-project configuration — the "config-driven policy engine".
  *
- * Every gate, autonomy level, and quality bar from the design interview is a knob here. Rivet ships
+ * Every gate, autonomy level, and quality bar from the design interview is a knob here. dev-spec-kit ships
  * opinionated defaults (TDD, reuse-first, gates on, even quick-mode writes a test) but EVERYTHING is
- * overridable in one file (`.rivet/config.json`). See the plan for the rationale behind each default.
+ * overridable in one file (`.dev-spec-kit/config.json`). See the plan for the rationale behind each default.
  */
 export const RivetConfigSchema = z
   .object({
@@ -127,7 +127,7 @@ export const RivetConfigSchema = z
          */
         defaultStack: z.string().optional(),
         /**
-         * FEAT-VERIFY-01: build steps `rivet verify` runs before the test kinds ("Build ALL").
+         * FEAT-VERIFY-01: build steps `dev-spec-kit verify` runs before the test kinds ("Build ALL").
          * Empty → node-ish platforms fall back to package.json build/typecheck scripts.
          */
         buildAll: z.array(z.object({ cmd: z.string(), args: z.array(z.string()).default([]) })).default([]),
@@ -250,7 +250,7 @@ export const RivetConfigSchema = z
 
     rules: z
       .object({
-        /** Use a laws/rules file (.rivet/laws.md). */
+        /** Use a laws/rules file (.dev-spec-kit/laws.md). */
         laws: z.boolean().default(true),
         /** On conflict with a rule: refuse or warn. */
         onConflict: z.enum(["refuse", "warn"]).default("warn"),
@@ -331,7 +331,7 @@ export const RivetConfigSchema = z
     graphify: z
       .object({
         /**
-         * FEAT-REVITIFY-01: who builds the code graph. "revitify" (default) is Rivet's bundled
+         * FEAT-REVITIFY-01: who builds the code graph. "revitify" (default) is dev-spec-kit's bundled
          * native-TS engine — zero pip, zero external installs; "graphify" shells out to the
          * external Python tool (full multi-modal power) for those who opt in.
          */

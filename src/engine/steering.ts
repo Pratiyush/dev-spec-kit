@@ -3,11 +3,11 @@ import { homedir } from "node:os";
 import { join } from "node:path";
 
 /**
- * STEER-01 — the laws layer made real (Kiro-steering shape, Rivet vocabulary).
- * Three scopes: ALWAYS (.rivet/laws.md + scoped files without/with inclusion:always),
- * FILE-MATCH (.rivet/laws/<x>.md with `inclusion: fileMatch` + `pattern:` regex over the file path),
+ * STEER-01 — the laws layer made real (Kiro-steering shape, dev-spec-kit vocabulary).
+ * Three scopes: ALWAYS (.dev-spec-kit/laws.md + scoped files without/with inclusion:always),
+ * FILE-MATCH (.dev-spec-kit/laws/<x>.md with `inclusion: fileMatch` + `pattern:` regex over the file path),
  * MANUAL (`inclusion: manual` + `name:` — loaded only when summoned). Personal defaults
- * (~/.rivet/laws.md) come FIRST and the project overrides by coming after. `#[[file:path]]`
+ * (~/.dev-spec-kit/laws.md) come FIRST and the project overrides by coming after. `#[[file:path]]`
  * injects external docs inline (size-capped). Laws are data; this engine only assembles them.
  */
 
@@ -66,7 +66,7 @@ export interface LoadLawsOptions {
   file?: string;
   /** Manual law names to summon. */
   summon?: string[];
-  /** Personal defaults path (default ~/.rivet/laws.md); injectable for tests. */
+  /** Personal defaults path (default ~/.dev-spec-kit/laws.md); injectable for tests. */
   personalPath?: string;
 }
 
@@ -74,12 +74,12 @@ export function loadLaws(projectDir: string, opts: LoadLawsOptions = {}): Effect
   const warnings: string[] = [];
   const sections: LawSection[] = [];
 
-  const personalPath = opts.personalPath ?? join(homedir(), ".rivet", "laws.md");
+  const personalPath = opts.personalPath ?? join(homedir(), ".dev-spec-kit", "laws.md");
   if (existsSync(personalPath)) {
     sections.push({ source: "personal", body: readFileSync(personalPath, "utf8") });
   }
 
-  const projectLaws = join(projectDir, ".rivet", "laws.md");
+  const projectLaws = join(projectDir, ".dev-spec-kit", "laws.md");
   if (existsSync(projectLaws)) {
     sections.push({
       source: "project",
@@ -87,7 +87,7 @@ export function loadLaws(projectDir: string, opts: LoadLawsOptions = {}): Effect
     });
   }
 
-  const scopedDir = join(projectDir, ".rivet", "laws");
+  const scopedDir = join(projectDir, ".dev-spec-kit", "laws");
   if (existsSync(scopedDir)) {
     for (const f of readdirSync(scopedDir)
       .filter((f) => f.endsWith(".md"))

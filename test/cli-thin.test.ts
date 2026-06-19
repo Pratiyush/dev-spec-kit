@@ -14,27 +14,27 @@ WHEN nothing THEN the system SHALL NOT z.
 @check kind=unit ref=A#b
 `;
 
-describe("rivet board — regenerate boards from ground truth", () => {
+describe("dev-spec-kit board — regenerate boards from ground truth", () => {
   it("writes LEDGER.md + TRACKING.md and reports success", () => {
-    const dir = tmpProject({ ".rivet/specs/x.md": SPEC });
+    const dir = tmpProject({ ".dev-spec-kit/specs/x.md": SPEC });
     const { text } = run(dir, () => boardCmd());
     expect(text).toContain("boards regenerated");
-    expect(existsSync(join(dir, ".rivet", "LEDGER.md"))).toBe(true);
-    expect(existsSync(join(dir, ".rivet", "TRACKING.md"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "LEDGER.md"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "TRACKING.md"))).toBe(true);
   });
 });
 
-describe("rivet resume — state-only handoff", () => {
+describe("dev-spec-kit resume — state-only handoff", () => {
   it("writes RESUME.md, prints it, and notes the auto-save", () => {
-    const dir = tmpProject({ ".rivet/specs/x.md": SPEC });
+    const dir = tmpProject({ ".dev-spec-kit/specs/x.md": SPEC });
     const { text } = run(dir, () => resumeCmd());
-    expect(existsSync(join(dir, ".rivet", "RESUME.md"))).toBe(true);
-    expect(text).toContain("saved to .rivet/RESUME.md");
-    expect(readFileSync(join(dir, ".rivet", "RESUME.md"), "utf8").length).toBeGreaterThan(0);
+    expect(existsSync(join(dir, ".dev-spec-kit", "RESUME.md"))).toBe(true);
+    expect(text).toContain("saved to .dev-spec-kit/RESUME.md");
+    expect(readFileSync(join(dir, ".dev-spec-kit", "RESUME.md"), "utf8").length).toBeGreaterThan(0);
   });
 });
 
-describe("rivet laws — effective laws with sources", () => {
+describe("dev-spec-kit laws — effective laws with sources", () => {
   const realHome = process.env.HOME;
   afterEach(() => {
     process.env.HOME = realHome;
@@ -42,7 +42,7 @@ describe("rivet laws — effective laws with sources", () => {
 
   it("reports nothing when no laws file exists anywhere", () => {
     const empty = tmpProject();
-    process.env.HOME = empty; // no ~/.rivet/laws.md under this HOME
+    process.env.HOME = empty; // no ~/.dev-spec-kit/laws.md under this HOME
     const { text } = run(empty, () => lawsCmd({}));
     expect(text).toContain("no laws found");
   });
@@ -50,7 +50,7 @@ describe("rivet laws — effective laws with sources", () => {
   it("prints each project law section under its source banner", () => {
     const home = tmpProject();
     process.env.HOME = home;
-    const dir = tmpProject({ ".rivet/laws.md": "# Laws\n\nAlways write a failing test first.\n" });
+    const dir = tmpProject({ ".dev-spec-kit/laws.md": "# Laws\n\nAlways write a failing test first.\n" });
     const { text } = run(dir, () => lawsCmd({}));
     expect(text).toContain("project");
     expect(text).toContain("Always write a failing test first.");
@@ -59,7 +59,7 @@ describe("rivet laws — effective laws with sources", () => {
   it("surfaces an unresolved include as a warning", () => {
     const home = tmpProject();
     process.env.HOME = home;
-    const dir = tmpProject({ ".rivet/laws.md": "# Laws\n\n#[[file:missing.md]]\n" });
+    const dir = tmpProject({ ".dev-spec-kit/laws.md": "# Laws\n\n#[[file:missing.md]]\n" });
     const { text } = run(dir, () => lawsCmd({}));
     expect(text).toContain("⚠");
     expect(text).toContain("missing.md");

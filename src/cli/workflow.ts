@@ -27,15 +27,15 @@ import { loadConfig } from "./config-io.js";
 import { label } from "./emoji.js";
 
 function journal(cwd: string): Journal {
-  return new Journal(join(cwd, ".rivet", "journal.jsonl"));
+  return new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl"));
 }
 
 /** FEAT-FLUSH-01: the ledger this session's lessons belong in — the project's own learnings.md,
  *  falling back to the TOOL repo's (dogfood sessions bank tool lessons, not app lessons). */
 function ledgerPath(cwd: string): string | null {
-  const project = join(cwd, ".rivet", "learnings.md");
+  const project = join(cwd, ".dev-spec-kit", "learnings.md");
   if (existsSync(project)) return project;
-  const toolRepo = fileURLToPath(new URL("../../.rivet/learnings.md", import.meta.url));
+  const toolRepo = fileURLToPath(new URL("../../.dev-spec-kit/learnings.md", import.meta.url));
   return existsSync(toolRepo) ? toolRepo : null;
 }
 
@@ -55,9 +55,9 @@ function lintIds(requirements: Requirement[], level: "warn" | "error" | "off"): 
 }
 
 /**
- * `rivet spec lint` — FEAT-LINT-01: static drift check, no run required. Resolves every `@check`
+ * `dev-spec-kit spec lint` — FEAT-LINT-01: static drift check, no run required. Resolves every `@check`
  * ref (from specs AND from task bindings) against the actual test files — a missing file or a test
- * name that no longer appears is ORPHANED (a rename Rivet would otherwise only meet at a check run).
+ * name that no longer appears is ORPHANED (a rename dev-spec-kit would otherwise only meet at a check run).
  * Unbound obligations (a criterion with no `@check`) are reported as UNCOVERED warnings. Orphaned
  * refs exit 1 so a Stop/pre-commit hook can refuse to let the drift persist.
  */
@@ -71,7 +71,7 @@ export interface SpecHealth {
 }
 
 /** Collect drift findings (orphaned @check refs + unbound criteria + parser warnings). Shared by
- *  `spec lint` (which prints + exits) and `rivet doctor` (which folds it into the health check). */
+ *  `spec lint` (which prints + exits) and `dev-spec-kit doctor` (which folds it into the health check). */
 export function specHealth(cwd: string): SpecHealth {
   const parseWarnings: string[] = [];
   const reqs = parseSpecsDir(cwd, parseWarnings);
@@ -99,10 +99,10 @@ export function specHealth(cwd: string): SpecHealth {
 export function specLint(): void {
   const { hasSpecs, dangling, unbound, parseWarnings } = specHealth(process.cwd());
   if (!hasSpecs) {
-    console.log(pc.yellow("no specs in .rivet/specs/ — nothing to lint"));
+    console.log(pc.yellow("no specs in .dev-spec-kit/specs/ — nothing to lint"));
     return;
   }
-  console.log(pc.bold("\n🔎 rivet spec lint — static drift check\n"));
+  console.log(pc.bold("\n🔎 dev-spec-kit spec lint — static drift check\n"));
   for (const w of parseWarnings) {
     // FIX-PARSE-02: a dropped @check / parser issue is a lost proof obligation — surface it loudly.
     console.error(pc.red(`✗ SPEC       ${w}`));
@@ -129,7 +129,7 @@ export function specLint(): void {
 }
 
 /**
- * `rivet spec draft-tests` — FEAT-DRAFT-01: the rule→test loop `acceptanceCriteria: "tool-drafts"`
+ * `dev-spec-kit spec draft-tests` — FEAT-DRAFT-01: the rule→test loop `acceptanceCriteria: "tool-drafts"`
  * promises. For every UNBOUND criterion, write a FAILING vitest stub (carrying the criterion text +
  * the edge-case mandate) and print the `@check` line to bind it. Idempotent: a stub whose name is
  * already in the target file is skipped. The agent then fills the body; `spec tasks` + `verify
@@ -139,7 +139,7 @@ export function specDraftTests(): void {
   const cwd = process.cwd();
   const reqs = parseSpecsDir(cwd);
   if (reqs.length === 0) {
-    console.log(pc.yellow("no specs in .rivet/specs/ — write one first (EARS + criteria)"));
+    console.log(pc.yellow("no specs in .dev-spec-kit/specs/ — write one first (EARS + criteria)"));
     return;
   }
   const stubs = draftStubs(reqs);
@@ -147,7 +147,7 @@ export function specDraftTests(): void {
     console.log(pc.green("✓ every criterion is already bound — nothing to draft"));
     return;
   }
-  console.log(pc.bold("\n✍️  rivet spec draft-tests — failing stubs for unbound criteria\n"));
+  console.log(pc.bold("\n✍️  dev-spec-kit spec draft-tests — failing stubs for unbound criteria\n"));
   const byFile = new Map<string, DraftStub[]>();
   for (const s of stubs) {
     const arr = byFile.get(s.file);
@@ -187,15 +187,17 @@ export function specDraftTests(): void {
   if (written === 0) return;
   console.log(pc.bold(`\n${written} stub(s) drafted (all failing). Add these @check bindings to the spec:`));
   for (const l of checkLines) console.log(pc.dim(l));
-  console.log(pc.dim("\nthen fill the stub bodies, `rivet spec tasks`, and `rivet verify --stamp`."));
+  console.log(
+    pc.dim("\nthen fill the stub bodies, `dev-spec-kit spec tasks`, and `dev-spec-kit verify --stamp`."),
+  );
 }
 
-/** `rivet spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */
+/** `dev-spec-kit spec tasks` — derive evidence-bound tasks from the spec's @check bindings (idempotent). */
 export function specTasks(): void {
   const cwd = process.cwd();
   const requirements = parseSpecsDir(cwd);
   if (requirements.length === 0) {
-    console.log(pc.yellow("no specs in .rivet/specs/ — write one first (EARS + @check bindings)"));
+    console.log(pc.yellow("no specs in .dev-spec-kit/specs/ — write one first (EARS + @check bindings)"));
     return;
   }
   // FEAT-IDS-01: ids must self-describe; severity comes from rules.requireQualifiedIds.
@@ -252,7 +254,7 @@ export function specTasks(): void {
   );
 }
 
-/** `rivet approve <taskIds...>` — record the human gate as a signed artifact. */
+/** `dev-spec-kit approve <taskIds...>` — record the human gate as a signed artifact. */
 export function approve(taskIds: string[], opts: { note?: string }): void {
   const cwd = process.cwd();
   try {
@@ -276,12 +278,12 @@ export function approve(taskIds: string[], opts: { note?: string }): void {
   /* c8 ignore stop */
 }
 
-/** `rivet pr` — generate the graph-derived PR body; optionally create the PR via gh. */
+/** `dev-spec-kit pr` — generate the graph-derived PR body; optionally create the PR via gh. */
 export function pr(opts: { title?: string; create?: boolean }): void {
   const cwd = process.cwd();
-  const graphPath = join(cwd, ".rivet", "graph.json");
+  const graphPath = join(cwd, ".dev-spec-kit", "graph.json");
   if (!existsSync(graphPath)) {
-    console.error(pc.red("no .rivet/graph.json — run `rivet graph build` first"));
+    console.error(pc.red("no .dev-spec-kit/graph.json — run `dev-spec-kit graph build` first"));
     process.exitCode = 1;
     return;
   }
@@ -292,7 +294,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
   // FIX-PROOF-04: the PR body claims coverage of the CODE TREE, so stamp that identity.
   const tree = gitTreeHash(cwd);
   const body = buildPrBody({
-    title: opts.title ?? "Rivet change",
+    title: opts.title ?? "dev-spec-kit change",
     requirements,
     graph,
     tasks,
@@ -301,9 +303,9 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     ...(head ? { headSha: head } : {}),
     ...(tree ? { tree, dirty: isDirty(cwd) } : {}),
   });
-  const outPath = join(cwd, ".rivet", "pr-body.md");
+  const outPath = join(cwd, ".dev-spec-kit", "pr-body.md");
   writeFileSync(outPath, body + "\n");
-  console.log(pc.green(`${label("pr")} ✓ PR body generated`) + pc.dim(" → .rivet/pr-body.md"));
+  console.log(pc.green(`${label("pr")} ✓ PR body generated`) + pc.dim(" → .dev-spec-kit/pr-body.md"));
 
   // FEAT-FLUSH-01: 📝 pre-flight — lessons must be banked before the work ships (warning, not a gate).
   const ledger = ledgerPath(cwd);
@@ -311,7 +313,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     console.log(
       pc.yellow(`${label("flush")} flush session lessons before PR`) +
         pc.dim(
-          ` — ${ledger.includes(cwd) ? ".rivet/learnings.md" : "the tool repo's learnings.md"} has no entry from this session`,
+          ` — ${ledger.includes(cwd) ? ".dev-spec-kit/learnings.md" : "the tool repo's learnings.md"} has no entry from this session`,
         ),
     );
   }
@@ -325,7 +327,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     return;
   }
   if (verdict.zeroProofs) console.log(pc.yellow("⚠ zero bound proofs in the graph — PR carries no evidence"));
-  // FEAT-VERIFY-01: with real proofs in play, a PR also needs a fresh green `rivet verify`.
+  // FEAT-VERIFY-01: with real proofs in play, a PR also needs a fresh green `dev-spec-kit verify`.
   if (!verdict.zeroProofs) {
     const vv = verifyVerdict(journal(cwd).read(), tree);
     if (!vv.ok) {
@@ -340,7 +342,7 @@ export function pr(opts: { title?: string; create?: boolean }): void {
        real PR; never run in CI. Everything up to here (the gate that GUARDS this call) is tested. */
     const res = spawnSync(
       "gh",
-      ["pr", "create", "--title", opts.title ?? "Rivet change", "--body-file", outPath],
+      ["pr", "create", "--title", opts.title ?? "dev-spec-kit change", "--body-file", outPath],
       {
         cwd,
         stdio: "inherit",
@@ -349,13 +351,15 @@ export function pr(opts: { title?: string; create?: boolean }): void {
     if (res.status !== 0) process.exitCode = res.status ?? 1;
     /* c8 ignore stop */
   } else {
-    console.log(pc.dim(`  open it with: gh pr create --title "<title>" --body-file .rivet/pr-body.md`));
+    console.log(
+      pc.dim(`  open it with: gh pr create --title "<title>" --body-file .dev-spec-kit/pr-body.md`),
+    );
   }
 }
 
 /**
- * `rivet route "<request>"` / `rivet route --file <idea.md>` — the front door.
- * Ideas live as external files (.rivet/intake/*.md, optional YAML frontmatter); the tool only ever
+ * `dev-spec-kit route "<request>"` / `dev-spec-kit route --file <idea.md>` — the front door.
+ * Ideas live as external files (.dev-spec-kit/intake/*.md, optional YAML frontmatter); the tool only ever
  * consumes input, it is never edited per project.
  */
 export function route(textArg: string | undefined, opts: { mode?: string; file?: string }): void {
@@ -374,7 +378,9 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
   }
   if (!text) {
     console.error(
-      pc.red('provide a request: rivet route "<text>" or rivet route --file .rivet/intake/<idea>.md'),
+      pc.red(
+        'provide a request: dev-spec-kit route "<text>" or dev-spec-kit route --file .dev-spec-kit/intake/<idea>.md',
+      ),
     );
     process.exitCode = 1;
     return;
@@ -409,14 +415,14 @@ export function route(textArg: string | undefined, opts: { mode?: string; file?:
     result.mode === "research"
       ? `${label("research")} investigate and report — no code changes`
       : result.mode === "quick"
-        ? "one delta + one test (quick mode still writes a test) → rivet check run → rivet task done"
-        : "write .rivet/specs/<feature>.md (EARS + @check) → rivet spec tasks → TDD → rivet graph build";
+        ? "one delta + one test (quick mode still writes a test) → dev-spec-kit check run → dev-spec-kit task done"
+        : "write .dev-spec-kit/specs/<feature>.md (EARS + @check) → dev-spec-kit spec tasks → TDD → dev-spec-kit graph build";
   console.log(pc.dim(`next: ${next}`));
 }
 
 /** Load the graph for gating: null when missing/unreadable (which BLOCKS — absence ≠ permission). */
 function gateGraph(cwd: string): VerifiedTraceabilityGraph | null {
-  const graphPath = join(cwd, ".rivet", "graph.json");
+  const graphPath = join(cwd, ".dev-spec-kit", "graph.json");
   if (!existsSync(graphPath)) return null;
   try {
     return JSON.parse(readFileSync(graphPath, "utf8")) as VerifiedTraceabilityGraph;
@@ -425,31 +431,33 @@ function gateGraph(cwd: string): VerifiedTraceabilityGraph | null {
   }
 }
 
-/** `rivet guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green.
- *  FEAT-VERIFY-01: once real proofs exist, the gate ALSO demands a fresh green `rivet verify`. */
+/** `dev-spec-kit guard pr` — FIX-GATE-01: the shared gateVerdict predicate; exit 2 on anything not green.
+ *  FEAT-VERIFY-01: once real proofs exist, the gate ALSO demands a fresh green `dev-spec-kit verify`. */
 export function guardPr(): void {
   const cwd = process.cwd();
-  if (!existsSync(join(cwd, ".rivet"))) {
-    console.log(pc.dim("rivet guard: not a Rivet project — nothing to enforce"));
+  if (!existsSync(join(cwd, ".dev-spec-kit"))) {
+    console.log(pc.dim("dev-spec-kit guard: not a dev-spec-kit project — nothing to enforce"));
     return;
   }
   const verdict = gateVerdict(gateGraph(cwd));
   if (verdict.ok) {
     if (verdict.zeroProofs) {
-      console.log(pc.yellow("rivet guard: graph has zero bound proofs — nothing to enforce (bind @checks!)"));
+      console.log(
+        pc.yellow("dev-spec-kit guard: graph has zero bound proofs — nothing to enforce (bind @checks!)"),
+      );
       return;
     }
     const vv = verifyVerdict(journal(cwd).read(), gitTreeHash(cwd));
     if (!vv.ok) {
-      console.error(pc.red("✗ rivet guard: blocked:"));
+      console.error(pc.red("✗ dev-spec-kit guard: blocked:"));
       for (const r of vv.reasons) console.error(pc.red(`   ${r}`));
       process.exitCode = 2;
       return;
     }
-    console.log(pc.green("✓ rivet guard: every proof green + fresh verify — PR may proceed"));
+    console.log(pc.green("✓ dev-spec-kit guard: every proof green + fresh verify — PR may proceed"));
     return;
   }
-  console.error(pc.red("✗ rivet guard: blocked:"));
+  console.error(pc.red("✗ dev-spec-kit guard: blocked:"));
   for (const r of verdict.reasons) console.error(pc.red(`   ${r}`));
   process.exitCode = 2;
 }
@@ -488,7 +496,7 @@ export function prChangedFiles(cwd: string): string[] {
 }
 
 /**
- * `rivet unlock <paths...> --minutes N` — GATE-PROTECT-01's human escape hatch: a time-boxed,
+ * `dev-spec-kit unlock <paths...> --minutes N` — GATE-PROTECT-01's human escape hatch: a time-boxed,
  * journaled unlock for protected files (specs / bound green tests / gate config). The unlock is
  * itself an auditable governance event — nothing is ever silently weakened.
  */
@@ -496,7 +504,7 @@ export function unlock(paths: string[], opts: { minutes?: string }): void {
   const cwd = process.cwd();
   const minutes = Math.max(1, Number(opts.minutes ?? 30) || 30);
   const until = new Date(Date.now() + minutes * 60_000).toISOString();
-  writeFileSync(join(cwd, ".rivet", "unlock.json"), JSON.stringify({ paths, until }, null, 2) + "\n");
+  writeFileSync(join(cwd, ".dev-spec-kit", "unlock.json"), JSON.stringify({ paths, until }, null, 2) + "\n");
   journal(cwd).append("governance", { kind: "unlock", paths, until });
   console.log(pc.yellow(`🔓 unlocked for ${minutes}m (until ${until}):`));
   for (const p of paths) console.log(pc.dim(`   ${p}`));

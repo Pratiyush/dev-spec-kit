@@ -27,15 +27,15 @@ const LIGHT: Record<ProofState, string> = {
 export function staleRemedy(rollups: RequirementRollup[]): string | null {
   const stale = rollups.reduce((n, r) => n + r.criteria.filter((c) => c.proof === "stale").length, 0);
   if (stale === 0) return null;
-  return `${stale} proof(s) predate the working tree — re-verify with: rivet drift  (or: rivet verify --stamp)`;
+  return `${stale} proof(s) predate the working tree — re-verify with: dev-spec-kit drift  (or: dev-spec-kit verify --stamp)`;
 }
 
-/** `rivet trace` — requirement→criterion truth table + the gaps, straight from the graph. */
+/** `dev-spec-kit trace` — requirement→criterion truth table + the gaps, straight from the graph. */
 export function trace(): void {
   const cwd = process.cwd();
   const m = materialize(cwd, { refresh: false, write: false }); // read-only truth table
   if (m.requirements.length === 0) {
-    console.log(pc.yellow("no specs in .rivet/specs/ — nothing to trace"));
+    console.log(pc.yellow("no specs in .dev-spec-kit/specs/ — nothing to trace"));
     return;
   }
   const rollups = rollupRequirements(m.requirements, m.vtg);
@@ -60,7 +60,7 @@ export function trace(): void {
   if (unproven.length > 0) process.exitCode = 1;
 }
 
-/** `rivet drift [--stack <fallback>]` — find red/stale proofs and re-verify them in one move. */
+/** `dev-spec-kit drift [--stack <fallback>]` — find red/stale proofs and re-verify them in one move. */
 export function drift(opts: { stack?: string; dryRun?: boolean }): void {
   const cwd = process.cwd();
   // --dry-run promised not to touch anything: no graphify re-index, no graph.json write.
@@ -78,7 +78,7 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
     );
   }
   if (opts.dryRun) {
-    console.log(pc.dim("\n--dry-run: not re-running. Re-verify with: rivet drift"));
+    console.log(pc.dim("\n--dry-run: not re-running. Re-verify with: dev-spec-kit drift"));
     process.exitCode = 1;
     return;
   }
@@ -122,7 +122,7 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
   if (remaining.length > 0) process.exitCode = 1;
 }
 
-/** `rivet affected <label>` — blast radius: our proven edges + graphify's reverse traversal. */
+/** `dev-spec-kit affected <label>` — blast radius: our proven edges + graphify's reverse traversal. */
 export function affected(label: string): void {
   const cwd = process.cwd();
   const m = materialize(cwd, { refresh: false, write: false }); // read-only blast radius

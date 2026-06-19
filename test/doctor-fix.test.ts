@@ -3,7 +3,7 @@ import { doctorChecks } from "../src/cli/doctor.js";
 import { GRAPHIFY_INSTALL_HINT } from "../src/engine/graphify/index.js";
 
 /** Dogfood lesson (notepad session): the graphifyy hint reads as a typosquat to permission
- *  classifiers, and a REQUIRED red stalls setup on a human. Rivet runs fully without graphify —
+ *  classifiers, and a REQUIRED red stalls setup on a human. dev-spec-kit runs fully without graphify —
  *  so doctor degrades gracefully and the hint carries provenance. */
 
 const probeMissingGraphify = (cmd: string): string | null =>

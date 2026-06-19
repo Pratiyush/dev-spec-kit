@@ -6,7 +6,7 @@ import { loadCodeGraph, readFreshness, writeFreshness, isStale } from "../src/en
 
 describe("graphify loader (tolerant of d3-style shapes)", () => {
   it("maps nodes/links with object endpoints into codeNodes", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-graph-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-graph-"));
     const p = join(dir, "graph.json");
     writeFileSync(
       p,
@@ -24,7 +24,7 @@ describe("graphify loader (tolerant of d3-style shapes)", () => {
 
 describe("graph freshness record", () => {
   it("roundtrips the last-indexed SHA and reports stale outside git", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-fresh-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-fresh-"));
     expect(readFreshness(dir)).toEqual({ lastIndexedSha: null });
     writeFreshness(dir, "abc123");
     expect(readFreshness(dir)).toEqual({ lastIndexedSha: "abc123" });

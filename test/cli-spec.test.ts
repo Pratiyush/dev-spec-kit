@@ -6,9 +6,9 @@ import { TaskStore } from "../src/engine/state/tasks.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { tmpProject, run } from "./helpers/cli-harness.js";
 
-const store = (dir: string) => new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+const store = (dir: string) => new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
 
-describe("rivet spec lint — static drift", () => {
+describe("dev-spec-kit spec lint — static drift", () => {
   it("says nothing to lint with no specs", () => {
     const { text } = run(tmpProject(), () => specLint());
     expect(text).toContain("nothing to lint");
@@ -17,7 +17,7 @@ describe("rivet spec lint — static drift", () => {
   it("is clean when every @check resolves and every obligation is bound", () => {
     const dir = tmpProject({
       "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\n",
     });
     const { text, exitCode } = run(dir, () => specLint());
@@ -27,7 +27,7 @@ describe("rivet spec lint — static drift", () => {
 
   it("flags an orphaned ref to a missing file and exits 1", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=gone.test.ts::works\n",
     });
     const { text, exitCode } = run(dir, () => specLint());
@@ -39,7 +39,7 @@ describe("rivet spec lint — static drift", () => {
   it("flags a renamed test (name missing from an existing file)", () => {
     const dir = tmpProject({
       "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::renamed\n",
     });
     const { text, exitCode } = run(dir, () => specLint());
@@ -50,7 +50,7 @@ describe("rivet spec lint — static drift", () => {
   it("warns (no exit) on an UNCOVERED criterion with no @check", () => {
     const dir = tmpProject({
       "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\nThe system SHALL also persist z.\n",
     });
     const { text, exitCode } = run(dir, () => specLint());
@@ -68,7 +68,7 @@ describe("specHealth — the shared structured finding", () => {
   it("includes task-binding refs (not just spec refs) when resolving dangling", () => {
     const dir = tmpProject({
       "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\n",
     });
     store(dir).create("REQUIREMENT_X-01", "t", ["missing.test.ts::ghost"]);
@@ -77,7 +77,7 @@ describe("specHealth — the shared structured finding", () => {
   });
 });
 
-describe("rivet spec draft-tests — failing stubs for unbound criteria", () => {
+describe("dev-spec-kit spec draft-tests — failing stubs for unbound criteria", () => {
   it("notes when there are no specs", () => {
     const { text } = run(tmpProject(), () => specDraftTests());
     expect(text).toContain("no specs");
@@ -85,7 +85,7 @@ describe("rivet spec draft-tests — failing stubs for unbound criteria", () => 
 
   it("says everything is bound when no criterion is unbound", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\n",
     });
     const { text } = run(dir, () => specDraftTests());
@@ -94,7 +94,7 @@ describe("rivet spec draft-tests — failing stubs for unbound criteria", () => 
 
   it("drafts a failing stub file for an unbound criterion and prints the @check to add", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
+      ".dev-spec-kit/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
     });
     const { text } = run(dir, () => specDraftTests());
     expect(text).toContain("stub(s) drafted");
@@ -103,7 +103,7 @@ describe("rivet spec draft-tests — failing stubs for unbound criteria", () => 
 
   it("is idempotent — a second run reports the stub already present", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
+      ".dev-spec-kit/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
     });
     run(dir, () => specDraftTests());
     const { text } = run(dir, () => specDraftTests());
@@ -111,7 +111,7 @@ describe("rivet spec draft-tests — failing stubs for unbound criteria", () => 
   });
 });
 
-describe("rivet spec tasks — derive evidence-bound tasks", () => {
+describe("dev-spec-kit spec tasks — derive evidence-bound tasks", () => {
   it("notes when there are no specs", () => {
     const { text } = run(tmpProject(), () => specTasks());
     expect(text).toContain("no specs");
@@ -119,7 +119,7 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
 
   it("creates a task per requirement, then reports it unchanged on re-run", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — login\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\n",
     });
     const first = run(dir, () => specTasks());
@@ -132,12 +132,12 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
 
   it("syncs bindings into an existing task when the spec's refs change", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::a\n",
     });
     run(dir, () => specTasks());
     writeFileSync(
-      join(dir, ".rivet", "specs", "x.md"),
+      join(dir, ".dev-spec-kit", "specs", "x.md"),
       "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::a\n@check kind=unit ref=foo.test.ts::b\n",
     );
     const { text } = run(dir, () => specTasks());
@@ -147,7 +147,8 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
 
   it("skips an ADR requirement (decision record, no task)", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md": "## Requirement ADR_X-01 — we chose Postgres\nThe system SHALL use Postgres.\n",
+      ".dev-spec-kit/specs/x.md":
+        "## Requirement ADR_X-01 — we chose Postgres\nThe system SHALL use Postgres.\n",
     });
     const { text } = run(dir, () => specTasks());
     expect(text).toContain("decision record");
@@ -156,7 +157,7 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
 
   it("warns and creates no task when a requirement has no @check bindings", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
+      ".dev-spec-kit/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n",
     });
     const { text } = run(dir, () => specTasks());
     expect(text).toContain("UNVERIFIABLE");
@@ -165,8 +166,8 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
 
   it("stops (exit 1, no tasks) when an unqualified id is configured as an error", () => {
     const dir = tmpProject({
-      ".rivet/config.json": JSON.stringify({ rules: { requireQualifiedIds: "error" } }),
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/config.json": JSON.stringify({ rules: { requireQualifiedIds: "error" } }),
+      ".dev-spec-kit/specs/x.md":
         "## Requirement R-1 — short\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\n",
     });
     const { text, exitCode } = run(dir, () => specTasks());
@@ -179,7 +180,7 @@ describe("rivet spec tasks — derive evidence-bound tasks", () => {
 describe("spec lint / tasks — final branches", () => {
   it("surfaces a lost-obligation parser warning (orphan @check with no criterion)", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\n@check kind=unit ref=a::b\n",
+      ".dev-spec-kit/specs/x.md": "## Requirement REQUIREMENT_X-01 — t\n@check kind=unit ref=a::b\n",
     });
     const { text, exitCode } = run(dir, () => specLint());
     expect(text).toContain("SPEC");
@@ -188,7 +189,7 @@ describe("spec lint / tasks — final branches", () => {
 
   it("reopens a DONE task when spec tasks adds a new unproven obligation", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=a::b\n",
     });
     const s = store(dir);
@@ -196,7 +197,7 @@ describe("spec lint / tasks — final branches", () => {
     s.recordCheck("REQUIREMENT_X-01", { ref: "a::b", passed: true, at: "x", sha: "S", tree: "T" });
     s.markDone("REQUIREMENT_X-01");
     writeFileSync(
-      join(dir, ".rivet", "specs", "x.md"),
+      join(dir, ".dev-spec-kit", "specs", "x.md"),
       "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=a::b\nIF bad THEN the system SHALL NOT z.\n@check kind=unit ref=a::c\n",
     );
     const { text } = run(dir, () => specTasks());

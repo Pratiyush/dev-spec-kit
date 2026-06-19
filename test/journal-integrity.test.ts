@@ -12,8 +12,8 @@ import { TaskStore } from "../src/engine/state/tasks.js";
  * need silent dropping on read. (The guards stay as defence against a hand-edited journal.)
  */
 function store(): { store: TaskStore; journalPath: string } {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-integrity-"));
-  const journalPath = join(dir, ".rivet", "journal.jsonl");
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-integrity-"));
+  const journalPath = join(dir, ".dev-spec-kit", "journal.jsonl");
   return { store: new TaskStore(new Journal(journalPath)), journalPath };
 }
 

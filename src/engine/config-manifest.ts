@@ -76,7 +76,7 @@ const DESCRIPTIONS: Record<string, string> = {
   "intake.sources":
     "Where new work is ingested from. `raw` = freeform prompts/files; the rest mirror external trackers.",
   "intake.jiraEpic":
-    "When a Jira epic lands: `mirror` it 1:1, `replan` into Rivet's own breakdown, or `ask` each time.",
+    "When a Jira epic lands: `mirror` it 1:1, `replan` into dev-spec-kit's own breakdown, or `ask` each time.",
   "intake.writeBack": "Push status and links back to the originating tracker as tasks complete.",
   "spec.style": "Shape of the spec: terse `checklist`, user `stories`, or `both` side by side.",
   "spec.acceptanceCriteria":
@@ -110,7 +110,7 @@ const DESCRIPTIONS: Record<string, string> = {
   "verify.defaultStack":
     "Stack used when `--stack` is omitted. Resolution: flag → this → inferred from platforms → error.",
   "verify.buildAll":
-    "Build steps `rivet verify` runs before the test kinds (`Build ALL`). Empty → node-ish platforms fall back to package.json build/typecheck scripts. Edited as JSON: an array of { cmd, args }.",
+    "Build steps `dev-spec-kit verify` runs before the test kinds (`Build ALL`). Empty → node-ish platforms fall back to package.json build/typecheck scripts. Edited as JSON: an array of { cmd, args }.",
   "verify.coverage": "Minimum coverage percentage gate; null = judge by criteria coverage, not a number.",
   "verify.blockDoneOnFail":
     "A task cannot be marked done while bound checks fail — or while a passing proof is STALE (recorded on an older code tree).",
@@ -156,9 +156,9 @@ const DESCRIPTIONS: Record<string, string> = {
   "dashboard.updates":
     "`live`: the data sidecar is rewritten automatically after every task done / check run, so the open cockpit stays current.",
   "dashboard.notify": "Where and when to send notifications about run events.",
-  "rules.laws": "Load the laws files (.rivet/laws.md + scoped laws) into every run.",
+  "rules.laws": "Load the laws files (.dev-spec-kit/laws.md + scoped laws) into every run.",
   "rules.onConflict": "When an instruction conflicts with a law: refuse, or warn and continue.",
-  "rules.inheritPersonal": "Layer your personal ~/.rivet laws underneath the project's.",
+  "rules.inheritPersonal": "Layer your personal ~/.dev-spec-kit laws underneath the project's.",
   "rules.requireQualifiedIds":
     "Requirement ids must self-describe: REQUIREMENT_/NFR_/ADR_. Legacy `R-` ids still parse but lint at this severity.",
   "learning.capture": "Record lessons into learnings.md as work proceeds.",
@@ -333,7 +333,7 @@ export function manifestFromSchema(
   return knobs;
 }
 
-/** The real thing: the full Rivet manifest for a resolved project config. */
+/** The real thing: the full dev-spec-kit manifest for a resolved project config. */
 export function generateManifest(config: RivetConfig): Knob[] {
   return manifestFromSchema(RivetConfigSchema, config, defaultConfig(), DESCRIPTIONS);
 }

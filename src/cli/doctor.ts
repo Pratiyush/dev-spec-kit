@@ -32,7 +32,7 @@ function firstLine(s: string | null): string {
 /**
  * The prerequisite matrix — pure, probe-injectable (testable).
  * Dogfood lesson (notepad session): graphify is OPTIONAL-with-consequences, never a required red —
- * Rivet runs fully without it (graph/dashboard-map features stay off), so setup can never stall on
+ * dev-spec-kit runs fully without it (graph/dashboard-map features stay off), so setup can never stall on
  * a permission classifier refusing the install.
  */
 export function doctorChecks(probe: Probe = realProbe): Check[] {
@@ -59,7 +59,7 @@ export function doctorChecks(probe: Probe = realProbe): Check[] {
       ok: graphifyPresent,
       detail: graphifyPresent
         ? "installed (external provider available)"
-        : "missing — graph features run on the bundled revitify provider; external graphify is opt-in (graphify.provider) and only then are its extras disabled (Rivet still fully works)",
+        : "missing — graph features run on the bundled revitify provider; external graphify is opt-in (graphify.provider) and only then are its extras disabled (dev-spec-kit still fully works)",
       required: false,
       hint: GRAPHIFY_INSTALL_HINT,
     },
@@ -80,7 +80,7 @@ export function doctorChecks(probe: Probe = realProbe): Check[] {
   ];
 }
 
-/** `rivet doctor` — verify prerequisites; only REQUIRED misses fail the exit code. */
+/** `dev-spec-kit doctor` — verify prerequisites; only REQUIRED misses fail the exit code. */
 /**
  * FEAT-FLUSH-01 (worktree half) — isolation worktrees (.claude/worktrees/, wave .worktrees/)
  * pile up invisibly. Pure parser over `git worktree list --porcelain`; doctor LISTS them with a
@@ -96,7 +96,7 @@ export function parseStaleWorktrees(porcelain: string): string[] {
 
 export function runDoctor(): void {
   const checks = doctorChecks();
-  console.log(pc.bold("\nRivet doctor — prerequisite check\n"));
+  console.log(pc.bold("\ndev-spec-kit doctor — prerequisite check\n"));
   let missingRequired = 0;
   for (const c of checks) {
     const mark = c.ok ? pc.green("✓") : c.required ? pc.red("✗") : pc.yellow("•");
@@ -111,11 +111,13 @@ export function runDoctor(): void {
     console.log(`\n  ${label("cleanup")} ${stale.length} isolation worktree(s) lying around:`);
     for (const p of stale) console.log(pc.dim(`      ${p}`));
     console.log(
-      pc.dim("      → clean up when merged: git worktree remove <path>  (wave dirs: rivet wave done <id>)"),
+      pc.dim(
+        "      → clean up when merged: git worktree remove <path>  (wave dirs: dev-spec-kit wave done <id>)",
+      ),
     );
   }
   /* c8 ignore stop */
-  // FEAT-LINT-01 (feedback #1: "fold into rivet doctor") — spec drift is a health problem too.
+  // FEAT-LINT-01 (feedback #1: "fold into dev-spec-kit doctor") — spec drift is a health problem too.
   let orphans = 0;
   const health = specHealth(process.cwd());
   if (health.hasSpecs) {
@@ -132,7 +134,7 @@ export function runDoctor(): void {
       for (const c of health.unbound) {
         console.log(pc.yellow(`      ⚠ UNCOVERED ${c.id}`) + pc.dim("  (no @check)"));
       }
-      console.log(pc.dim("      → run `rivet spec lint` / `rivet spec tasks` to fix"));
+      console.log(pc.dim("      → run `dev-spec-kit spec lint` / `dev-spec-kit spec tasks` to fix"));
     }
   }
   console.log("");

@@ -11,7 +11,7 @@ function git(dir: string, args: string[]): void {
 
 /** A git repo on `main` with one committed source file. */
 function repo(): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-changed-"));
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-changed-"));
   writeFileSync(join(dir, "a.ts"), "export const a = 1;\n");
   git(dir, ["init", "-b", "main"]);
   git(dir, ["add", "-A"]);
@@ -38,7 +38,7 @@ describe("prChangedFiles", () => {
   });
 
   it("is empty outside a git repository (no base resolves)", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-nogit-"));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-nogit-"));
     expect(prChangedFiles(dir)).toEqual([]);
   });
 });

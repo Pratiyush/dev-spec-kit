@@ -48,12 +48,12 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
     spawnSync("node", [hook], { input: JSON.stringify(payload), stdio: ["pipe", "pipe", "pipe"] }).status;
 
   function rivetProject(graph?: object, journalLines: object[] = []): string {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-gate-"));
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
-    if (graph) writeFileSync(join(dir, ".rivet", "graph.json"), JSON.stringify(graph));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-gate-"));
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
+    if (graph) writeFileSync(join(dir, ".dev-spec-kit", "graph.json"), JSON.stringify(graph));
     if (journalLines.length > 0) {
       writeFileSync(
-        join(dir, ".rivet", "journal.jsonl"),
+        join(dir, ".dev-spec-kit", "journal.jsonl"),
         journalLines.map((l) => JSON.stringify(l)).join("\n") + "\n",
       );
     }
@@ -62,8 +62,8 @@ describe("guard-pr hook — hardened matcher + missing-graph block", () => {
 
   const greenVerify = { at: "t", type: "verify.run", data: { passed: true, tree: "T" } };
 
-  it("missing graph in a Rivet project BLOCKS pr creation (exit 2)", () => {
-    const cwd = rivetProject(); // .rivet exists, no graph.json
+  it("missing graph in a dev-spec-kit project BLOCKS pr creation (exit 2)", () => {
+    const cwd = rivetProject(); // .dev-spec-kit exists, no graph.json
     expect(run({ tool_name: "Bash", tool_input: { command: "gh pr create -t x" }, cwd })).toBe(2);
   });
 

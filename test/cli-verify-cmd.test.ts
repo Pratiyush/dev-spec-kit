@@ -24,9 +24,11 @@ function vitestReport(file: string, title: string, status: "passed" | "failed"):
   });
 }
 
-describe("rivet verify — orchestration", () => {
+describe("dev-spec-kit verify — orchestration", () => {
   it("reports nothing to verify when no build steps or kinds are configured", () => {
-    const dir = tmpProject({ ".rivet/config.json": JSON.stringify({ verify: { kinds: [], buildAll: [] } }) });
+    const dir = tmpProject({
+      ".dev-spec-kit/config.json": JSON.stringify({ verify: { kinds: [], buildAll: [] } }),
+    });
     const { text, exitCode } = run(dir, () => verifyCmd());
     expect(text).toContain("nothing to verify");
     expect(exitCode).toBe(1);
@@ -34,7 +36,7 @@ describe("rivet verify — orchestration", () => {
 
   it("runs a build step, prints the summary, journals verify.run, and is GREEN", () => {
     const dir = tmpProject({
-      ".rivet/config.json": JSON.stringify({
+      ".dev-spec-kit/config.json": JSON.stringify({
         verify: { kinds: [], buildAll: [{ cmd: "node", args: ["-e", "0"] }] },
       }),
     });
@@ -42,13 +44,13 @@ describe("rivet verify — orchestration", () => {
     expect(text).toContain("verify summary");
     expect(text).toContain("verify GREEN");
     expect(exitCode).toBeUndefined();
-    const journal = readFileSync(join(dir, ".rivet", "journal.jsonl"), "utf8");
+    const journal = readFileSync(join(dir, ".dev-spec-kit", "journal.jsonl"), "utf8");
     expect(journal).toContain("verify.run");
   });
 
   it("is RED (exit 1) when a build step fails", () => {
     const dir = tmpProject({
-      ".rivet/config.json": JSON.stringify({
+      ".dev-spec-kit/config.json": JSON.stringify({
         verify: { kinds: [], buildAll: [{ cmd: "node", args: ["-e", "process.exit(1)"] }] },
       }),
     });
@@ -59,7 +61,7 @@ describe("rivet verify — orchestration", () => {
 
   it("--stamp with no JS test report says there is nothing to stamp", () => {
     const dir = tmpProject({
-      ".rivet/config.json": JSON.stringify({
+      ".dev-spec-kit/config.json": JSON.stringify({
         verify: { kinds: [], buildAll: [{ cmd: "node", args: ["-e", "0"] }] },
       }),
     });
@@ -73,7 +75,7 @@ describe("stampProofs — map one suite run onto every bound criterion", () => {
     const dir = tmpProject();
     const reportPath = join(dir, "report.json");
     writeFileSync(reportPath, vitestReport("/p/test/foo.test.ts", "does the thing", "passed"));
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["test/foo.test.ts::does the thing"]);
     const vrun: VerifyRun = {
@@ -92,7 +94,7 @@ describe("stampProofs — map one suite run onto every bound criterion", () => {
     const dir = tmpProject();
     const reportPath = join(dir, "report.json");
     writeFileSync(reportPath, vitestReport("/p/test/foo.test.ts", "does the thing", "failed"));
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["test/foo.test.ts::does the thing"]);
     const vrun: VerifyRun = {
@@ -108,7 +110,7 @@ describe("stampProofs — map one suite run onto every bound criterion", () => {
 
   it("says nothing to stamp when no report parses", () => {
     const dir = tmpProject();
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const vrun: VerifyRun = { passed: true, steps: [], reports: [], tree: TREE };
     const { text } = run(dir, () => stampProofs(dir, defaultConfig(), journal, vrun));
     expect(text).toContain("nothing to stamp");
@@ -118,7 +120,7 @@ describe("stampProofs — map one suite run onto every bound criterion", () => {
 describe("advanceTasks — auto-advance fully-proven tasks", () => {
   it("marks a task done when its bound checks are all green at the verified tree", () => {
     const dir = tmpProject();
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]);
     store.recordCheck("T1", { ref: "c1", passed: true, at: "2026-06-12T00:00:00Z", sha: "S", tree: TREE });
@@ -130,7 +132,7 @@ describe("advanceTasks — auto-advance fully-proven tasks", () => {
 
   it("advances nothing (and prints nothing) when no task is fully proven", () => {
     const dir = tmpProject();
-    const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]); // never proven
     const vrun: VerifyRun = { passed: true, steps: [], tree: TREE };
@@ -145,7 +147,7 @@ it("stamp refresh writes LEDGER", () => {
   const dir = tmpProject();
   const reportPath = join(dir, "r.json");
   writeFileSync(reportPath, vitestReport("/p/test/foo.test.ts", "t", "passed"));
-  const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+  const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
   const store = new TaskStore(journal);
   store.create("T1", "t", ["test/foo.test.ts::t"]);
   const vrun: VerifyRun = {
@@ -155,5 +157,5 @@ it("stamp refresh writes LEDGER", () => {
     tree: TREE,
   };
   run(dir, () => stampProofs(dir, defaultConfig(), journal, vrun));
-  expect(existsSync(join(dir, ".rivet", "LEDGER.md"))).toBe(true);
+  expect(existsSync(join(dir, ".dev-spec-kit", "LEDGER.md"))).toBe(true);
 });

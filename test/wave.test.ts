@@ -38,7 +38,7 @@ describe("planWaves — independence by bound-check files, capped wave size", ()
 
 describe("waveStartAt — fetch-first worktrees (process-level, real git)", () => {
   it("branches every worktree from origin's CURRENT tip, not the stale local clone", () => {
-    const root = mkdtempSync(join(tmpdir(), "rivet-wave-"));
+    const root = mkdtempSync(join(tmpdir(), "dev-spec-kit-wave-"));
     const sh = (cmd: string, cwd: string) => execSync(cmd, { cwd, stdio: "pipe" }).toString().trim();
 
     // bare origin + two clones; W goes stale while S advances origin.

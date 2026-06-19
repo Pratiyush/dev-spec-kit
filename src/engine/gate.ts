@@ -1,8 +1,8 @@
 import type { VerifiedTraceabilityGraph } from "./graph/types.js";
 
 /**
- * FIX-GATE-01: the ONE gate predicate. Every PR-blocking surface (PreToolUse hook, `rivet guard pr`,
- * `rivet pr`) uses this rule — "anything not green blocks", and the ABSENCE of a graph blocks too
+ * FIX-GATE-01: the ONE gate predicate. Every PR-blocking surface (PreToolUse hook, `dev-spec-kit guard pr`,
+ * `dev-spec-kit pr`) uses this rule — "anything not green blocks", and the ABSENCE of a graph blocks too
  * (state absence is not permission). hooks/guard-pr.mjs mirrors this logic self-contained; keep in sync.
  */
 
@@ -15,7 +15,10 @@ export interface GateVerdict {
 
 export function gateVerdict(graph: VerifiedTraceabilityGraph | null | undefined): GateVerdict {
   if (!graph) {
-    return { ok: false, reasons: ["no .rivet/graph.json — run `rivet graph build` before creating a PR"] };
+    return {
+      ok: false,
+      reasons: ["no .dev-spec-kit/graph.json — run `dev-spec-kit graph build` before creating a PR"],
+    };
   }
   const validates = graph.edges.filter((e) => e.kind === "validates");
   if (validates.length === 0) return { ok: true, reasons: [], zeroProofs: true };
@@ -40,15 +43,15 @@ export function verifyVerdict(
   if (!last) {
     return {
       ok: false,
-      reasons: ["no `rivet verify` recorded — run it (build ALL + every kind) before creating a PR"],
+      reasons: ["no `dev-spec-kit verify` recorded — run it (build ALL + every kind) before creating a PR"],
     };
   }
   const d = (last.data ?? {}) as { passed?: boolean; tree?: string };
-  if (!d.passed) return { ok: false, reasons: ["last `rivet verify` was RED — fix and re-run it"] };
+  if (!d.passed) return { ok: false, reasons: ["last `dev-spec-kit verify` was RED — fix and re-run it"] };
   if (d.tree && currentTree && d.tree !== currentTree) {
     return {
       ok: false,
-      reasons: ["`rivet verify` is STALE — the code tree changed since it ran; re-run it"],
+      reasons: ["`dev-spec-kit verify` is STALE — the code tree changed since it ran; re-run it"],
     };
   }
   return { ok: true, reasons: [] };

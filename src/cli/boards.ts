@@ -11,7 +11,7 @@ import { gitTreeHash } from "../engine/git.js";
 /**
  * BOARDS-01 — LEDGER.md and TRACKING.md are GENERATED views over the journal and the graph.
  * Hand-maintained boards drift ("DONE but columns empty" — the founding pain point); these cannot,
- * because they are rebuilt from ground truth on every `rivet board` / `rivet graph build`.
+ * because they are rebuilt from ground truth on every `dev-spec-kit board` / `dev-spec-kit graph build`.
  */
 
 const STATUS_EMOJI: Record<Task["status"], string> = {
@@ -94,6 +94,6 @@ export function writeBoards(
   events: JournalEvent[],
   rollups: RequirementRollup[],
 ): void {
-  writeFileSync(join(cwd, ".rivet", "LEDGER.md"), renderLedger(tasks, events, gitTreeHash(cwd)));
-  writeFileSync(join(cwd, ".rivet", "TRACKING.md"), renderTracking(rollups, tasks, events));
+  writeFileSync(join(cwd, ".dev-spec-kit", "LEDGER.md"), renderLedger(tasks, events, gitTreeHash(cwd)));
+  writeFileSync(join(cwd, ".dev-spec-kit", "TRACKING.md"), renderTracking(rollups, tasks, events));
 }

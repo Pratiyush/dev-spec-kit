@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Rivet Stop guard — surface spec drift before the agent declares done (FEAT-LINT-01, Stop half).
+ * dev-spec-kit Stop guard — surface spec drift before the agent declares done (FEAT-LINT-01, Stop half).
  *
- * Self-contained mirror of `rivet spec lint`'s dangling-ref check (keep in sync with
- * src/engine/spec/lint.ts): resolve every @check ref — from .rivet/specs/*.md AND from task
+ * Self-contained mirror of `dev-spec-kit spec lint`'s dangling-ref check (keep in sync with
+ * src/engine/spec/lint.ts): resolve every @check ref — from .dev-spec-kit/specs/*.md AND from task
  * bindings in the journal — against the test files; a missing file or a vanished test name is
  * ORPHANED. On drift, exit 2 to block the stop ONCE so it can't persist unnoticed; `stop_hook_active`
  * guards against a loop (a second stop is allowed through). Pure file reads — no spawn, cheap.
@@ -29,11 +29,11 @@ try {
 // Already inside a stop-hook retry — never loop; let the agent stop.
 if (payload.stop_hook_active) process.exit(0);
 
-// Find the Rivet project root (the .rivet dir) upward from cwd.
+// Find the dev-spec-kit project root (the .dev-spec-kit dir) upward from cwd.
 let dir = payload.cwd || process.cwd();
 let root = null;
 for (let i = 0; i < 12; i++) {
-  if (existsSync(join(dir, ".rivet"))) {
+  if (existsSync(join(dir, ".dev-spec-kit"))) {
     root = dir;
     break;
   }
@@ -41,12 +41,12 @@ for (let i = 0; i < 12; i++) {
   if (parent === dir) break;
   dir = parent;
 }
-if (!root) process.exit(0); // not a Rivet project — do not interfere
+if (!root) process.exit(0); // not a dev-spec-kit project — do not interfere
 
 const refs = new Map(); // ref -> owner
 
 // @check refs declared in the specs.
-const specsDir = join(root, ".rivet", "specs");
+const specsDir = join(root, ".dev-spec-kit", "specs");
 if (existsSync(specsDir)) {
   for (const f of readdirSync(specsDir)) {
     if (!f.endsWith(".md")) continue;
@@ -65,7 +65,7 @@ if (existsSync(specsDir)) {
 
 // Task boundChecks from the journal (last write wins; catches tasks whose ref left the spec).
 try {
-  const lines = readFileSync(join(root, ".rivet", "journal.jsonl"), "utf8").split("\n");
+  const lines = readFileSync(join(root, ".dev-spec-kit", "journal.jsonl"), "utf8").split("\n");
   const bound = new Map();
   for (const line of lines) {
     if (!line.trim()) continue;
@@ -107,8 +107,8 @@ for (const [ref, owner] of refs) {
 
 if (orphans.length === 0) process.exit(0);
 console.error(
-  `rivet guard: ${orphans.length} orphaned @check ref(s) — the spec has drifted. Fix before finishing:\n` +
+  `dev-spec-kit guard: ${orphans.length} orphaned @check ref(s) — the spec has drifted. Fix before finishing:\n` +
     orphans.map((o) => `  ✗ ${o}`).join("\n") +
-    `\nRun \`rivet spec lint\`, then re-sync with \`rivet spec tasks\`.`,
+    `\nRun \`dev-spec-kit spec lint\`, then re-sync with \`dev-spec-kit spec tasks\`.`,
 );
 process.exit(2);

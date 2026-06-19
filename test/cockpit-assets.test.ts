@@ -9,8 +9,8 @@ import { parseConfig } from "../src/config/schema.js";
  * FIX-COCKPIT-ASSETS-01 — the cockpit's browser shell is vanilla global-scope JS (not importable
  * for DOM unit tests), so adversarial-review findings #4 and #9 were originally only "verified by
  * inspection." This is the permanent regression GUARD: it pins the specific wiring in the shipped
- * assets so a future edit can't silently drop it. (A behavioral Playwright e2e against `rivet web`
- * remains a Phase-D item — see .rivet/DEFER.md.) Read the ACTUAL files Rivet ships, not a copy.
+ * assets so a future edit can't silently drop it. (A behavioral Playwright e2e against `dev-spec-kit web`
+ * remains a Phase-D item — see .dev-spec-kit/DEFER.md.) Read the ACTUAL files dev-spec-kit ships, not a copy.
  */
 
 const assetsDir = fileURLToPath(new URL("../src/cli/cockpit-assets/", import.meta.url));
