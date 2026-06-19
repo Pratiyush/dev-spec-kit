@@ -144,3 +144,19 @@ edge SHALL never be mistaken for a dependency cycle — no false positives.
 
 @check kind=unit ref=test/cycles.test.ts::returns nothing for an acyclic chain
 @check kind=unit ref=test/cycles.test.ts::ignores non-dependsOn edges (a validates/implements edge is never a dependency cycle)
+
+## Requirement REQUIREMENT_PRBLAST-01 — the PR body shows the change's blast radius
+
+WHEN a PR body is generated for a set of changed files THEN the system SHALL list, per changed file,
+the proven graph edges it touches — a changed test file via the `validates` edge it proves, a changed
+source file via its code node — so a reviewer sees the diff's traceability impact without the graph.
+
+@check kind=unit ref=test/pr-blast.test.ts::maps a changed TEST file to the validates edge it proves
+@check kind=unit ref=test/pr-blast.test.ts::renders the touched edges for changed files that map
+
+IF none of the changed files map to a graph node THEN the system SHALL say so honestly rather than
+claim zero impact, and IF the change set is unknown or empty THEN the system SHALL NOT render the
+section at all.
+
+@check kind=unit ref=test/pr-blast.test.ts::notes honestly when changed files map to no graph node
+@check kind=unit ref=test/pr-blast.test.ts::omits the section entirely when changedFiles is undefined (back-compat)

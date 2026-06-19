@@ -33,7 +33,7 @@ rivet spec lint                               # static drift: orphaned @check re
 rivet graph build                             # Verified Traceability Graph + boards (exit 1 on drift)
 rivet drift                                   # re-verify anything stale/red in one move
 rivet approve R-AUTH-03 --note "ship it"      # human gate as a signed artifact
-rivet pr --title "Session expiry"             # graph-derived PR body; guard hook blocks non-green PRs
+rivet pr --title "Session expiry"             # graph-derived PR body (+ blast radius); guard blocks non-green PRs
 ```
 
 ## What's inside
@@ -115,7 +115,6 @@ as a Claude Code skill (the disposable layer), not yet as durable engine logic:
 - **Architecture intelligence + ADR auto-emit** — ADR nodes are first-class *inputs*; generation isn't built.
 - **Engine-orchestrated multi-agent dispatch** — roles run as manual subagents; the engine doesn't yet
   spawn/sequence them (only `wave` parallelizes tasks).
-- **Blast-radius in the PR body** — available via `rivet affected <label>`, not yet auto-included.
 - **Learning-loop enforcement** — lessons warn-on-repeat and promote by hand; no gate blocks on an
   unpromoted lesson, and a fixed bug isn't auto-turned into a regression test yet.
 - **MCP server** — exposing Rivet's verbs as MCP tools is planned.

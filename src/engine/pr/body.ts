@@ -1,4 +1,5 @@
 import type { VerifiedTraceabilityGraph, GraphEdge, ProofState } from "../graph/types.js";
+import { prBlastRadius } from "../graph/types.js";
 import type { Requirement } from "../spec/ears.js";
 import type { Task } from "../state/tasks.js";
 import { identityLabel } from "../verify/stamp.js";
@@ -19,6 +20,31 @@ export interface PrBodyInput {
   /** FIX-PROOF-04: the code-tree hash the coverage claim refers to (the identity proofs use). */
   tree?: string;
   dirty?: boolean;
+  /** FEAT-BLAST-01: files changed in this PR — drives the blast-radius section. undefined ⇒ omit it. */
+  changedFiles?: string[];
+}
+
+/** FEAT-BLAST-01: render which proven edges the changed files touch (capped, deduped per file). */
+function blastSection(input: PrBodyInput): string {
+  // No section when the change set is unknown or empty (nothing to attribute).
+  if (!input.changedFiles || input.changedFiles.length === 0) return "";
+  const blast = prBlastRadius(input.graph, input.changedFiles);
+  if (blast.length === 0) {
+    return (
+      "### Blast radius\n\n" +
+      `- _none of the ${input.changedFiles.length} changed file(s) map to a graph node — the code ` +
+      "graph may be stale, or the change is outside tracked spec/test/code._"
+    );
+  }
+  const CAP = 15;
+  const lines = blast.slice(0, CAP).map((b) => {
+    const targets = [...new Map(b.edges.map((e) => [e.to, e.proof] as const)).entries()]
+      .map(([to, proof]) => `${LIGHT[proof]} \`${to}\``)
+      .join(", ");
+    return `- \`${b.file}\` → ${targets}`;
+  });
+  if (blast.length > CAP) lines.push(`- _…and ${blast.length - CAP} more file(s)_`);
+  return "### Blast radius (proven edges this change touches)\n\n" + lines.join("\n");
 }
 
 const LIGHT: Record<ProofState, string> = {
@@ -84,6 +110,8 @@ export function buildPrBody(input: PrBodyInput): string {
     "| Requirement | Criterion | Proof |",
     "|---|---|---|",
     ...rows,
+    "",
+    blastSection(input),
     "",
     "### Tasks",
     "",
