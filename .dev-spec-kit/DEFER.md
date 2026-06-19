@@ -15,13 +15,15 @@
 - **Dogfood trigger MET (2026-06-19):** revitify was built end-to-end *with* dev-spec-kit (the first real
   app dogfood), so the "≥1 app built with dev-spec-kit" condition to revisit packaging is satisfied.
 - **Public-brand DECIDED (2026-06-19): `dev-spec-kit`.** An availability sweep (npm + GitHub +
-  .ai/.dev/.io) showed the "dev-spec-kit/RivetKit" brand is already occupied — `rivet` on npm is Pact's
+  .ai/.dev/.io) showed the **"Rivet/RivetKit" brand is already occupied** — `rivet` on npm is Pact's
   API-contract tool, and `rivetkit` + rivet.io/.ai/.dev belong to **rivet.gg** (active company,
-  product literally "RivetKit"). So the planned `dev-spec-kit-kit` name was dropped. `dev-spec-kit` is free
-  on every surface (npm `dev-spec-kit` & `devspeckit`, GitHub `devspeckit`, devspeckit.ai/.dev/.io).
-  **The local `rivet` command and `.dev-spec-kit/` state dir stay unchanged** — this is the published
-  brand/npm identity only; a command→brand rename is a separate, deferred decision (it's a breaking
-  state-dir migration with no pre-publish benefit).
+  product literally "RivetKit"). So the originally-planned `rivet-kit` name was dropped. `dev-spec-kit`
+  is free on every surface (npm `dev-spec-kit` & `devspeckit`, GitHub `devspeckit`, devspeckit.ai/.dev/.io).
+- **FULL rename DONE (2026-06-19, PR #5):** to fully escape the collision, the tool was renamed
+  end-to-end — command `rivet`→`dev-spec-kit`, state dir `.rivet/`→`.dev-spec-kit/`, 12 skills, plugin,
+  env vars `RIVET_*`→`DEV_SPEC_KIT_*`, npm name+bin, hooks. (NOT renamed, separate follow-ups:
+  `website/**` tagline rework, the verbatim cockpit-assets/`.design` dashboard shell, internal type
+  symbols.)
 - **Still human-gated (your explicit action):** registering devspeckit.ai/.dev/.io (paid), claiming
   the GitHub `devspeckit` org/handle, the actual `npm publish` as `dev-spec-kit`, docs pass,
   marketplace listing.

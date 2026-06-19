@@ -9,7 +9,7 @@ dev-spec-kit's rule zero: **a claim of "done" is worthless; only an executed che
 this — `dev-spec-kit task done` physically refuses without green proofs. Your job is to follow the loop, not
 to fight it.
 
-Prerequisite: the `rivet` CLI (this plugin's repo, `npm run build`; run via `node <repo>/dist/cli/index.js`
+Prerequisite: the `dev-spec-kit` CLI (this plugin's repo, `npm run build`; run via `node <repo>/dist/cli/index.js`
 or a global install) and `dev-spec-kit doctor` passing. If `.dev-spec-kit/` is missing, run `dev-spec-kit init` first.
 
 ## The loop

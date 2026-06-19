@@ -1,6 +1,6 @@
 # dev-spec-kit
 
-> Spec-driven development with a **Verified Traceability Graph** — every requirement riveted to a passing check.
+> Spec-driven development with a **Verified Traceability Graph** — every requirement bound to a passing check.
 
 dev-spec-kit is a spec-driven development tool you drive from **Claude Code** (Spec-Kit-compatible layouts).
 Built for Claude Code first; other assistants later.
@@ -13,7 +13,7 @@ changed code goes stale — **drift** you can see and fix with one command.
 Built on [graphify](https://github.com/safishamsi/graphify) (the code knowledge graph) — dev-spec-kit
 overlays the proven spec/test/PR edges and their traffic-light states on top.
 
-**Status:** v0 — fully usable from source; npm publish as **`dev-spec-kit-kit`** is deferred until the
+**Status:** v0 — fully usable from source; npm publish as **`dev-spec-kit`** is deferred until the
 app-dogfood phase completes (see `.dev-spec-kit/DEFER.md`).
 
 ## The loop

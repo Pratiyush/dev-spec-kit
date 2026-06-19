@@ -64,7 +64,7 @@ program
   .name("dev-spec-kit")
   .description(
     "dev-spec-kit — spec-driven development with a Verified Traceability Graph.\n" +
-      "Every requirement riveted to a passing check.",
+      "Every requirement bound to a passing check.",
   )
   .version("0.1.0");
 

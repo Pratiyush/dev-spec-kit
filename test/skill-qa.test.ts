@@ -76,7 +76,9 @@ describe("every shipped skill passes structural QA", () => {
     });
 
     it(`${dir}: every referenced dev-spec-kit command exists in the CLI`, () => {
-      for (const m of text.matchAll(/\brivet\s+([a-z-]+)(?:\s+([a-z-]+))?/g)) {
+      // Match only backtick-wrapped command refs (`dev-spec-kit <cmd>`) — the doc convention for a
+      // real command. Bare prose ("dev-spec-kit reviews your diff") is the product name, not a command.
+      for (const m of text.matchAll(/`dev-spec-kit\s+([a-z-]+)(?:\s+([a-z-]+))?/g)) {
         const cmd = m[1]!;
         expect(COMMANDS.has(cmd), `'dev-spec-kit ${cmd}' referenced in ${dir} but not a real command`).toBe(
           true,

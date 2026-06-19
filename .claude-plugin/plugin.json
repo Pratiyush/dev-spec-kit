@@ -1,6 +1,6 @@
 {
   "name": "dev-spec-kit",
-  "description": "Spec-driven development with a Verified Traceability Graph — every requirement riveted to a passing check. EARS specs, evidence-bound done, drift detection, graph-derived PRs.",
+  "description": "Spec-driven development with a Verified Traceability Graph — every requirement bound to a passing check. EARS specs, evidence-bound done, drift detection, graph-derived PRs.",
   "version": "0.0.1",
   "author": {
     "name": "Pratiyush Kumar Singh",

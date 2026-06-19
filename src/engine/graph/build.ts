@@ -2,6 +2,7 @@ import { requirementKind, type Requirement } from "../spec/ears.js";
 import type { Task } from "../state/tasks.js";
 import type { CodeGraph } from "../graphify/index.js";
 import type { CheckResult, GraphEdge, GraphNode, ProofState, VerifiedTraceabilityGraph } from "./types.js";
+import { normPath } from "./types.js";
 
 /**
  * The overlay builder — fuses the three sources of truth into the Verified Traceability Graph:
@@ -169,8 +170,9 @@ export function deriveImplementsEdges(
   const sourceFileById = new Map<string, string>();
   const repNodeByFile = new Map<string, string>();
   for (const n of codeGraph.nodes) {
-    const sf = n.meta?.["sourceFile"];
-    if (typeof sf !== "string") continue;
+    const raw = n.meta?.["sourceFile"];
+    if (typeof raw !== "string") continue;
+    const sf = normPath(raw); // align with the spec ref + prBlastRadius normalization (./, separators)
     sourceFileById.set(n.id, sf);
     const rep = repNodeByFile.get(sf);
     if (rep === undefined || n.id < rep) repNodeByFile.set(sf, n.id); // smallest id = a stable anchor
@@ -196,7 +198,7 @@ export function deriveImplementsEdges(
     const sources = new Set<string>();
     for (const c of req.criteria)
       for (const ch of c.checks) {
-        const file = ch.ref.split("::")[0];
+        const file = normPath(ch.ref.split("::")[0] ?? "");
         if (file && isTestFile(file)) for (const s of importsByTestFile.get(file) ?? []) sources.add(s);
       }
     for (const sf of sources) out.push({ from: repNodeByFile.get(sf)!, to: req.id, proof });

@@ -62,7 +62,7 @@ describe("waveStartAt — fetch-first worktrees (process-level, real git)", () =
     expect(existsSync(report[0]!.path)).toBe(true);
     const wtHead = sh("git rev-parse HEAD", report[0]!.path);
     expect(wtHead).toBe(originTip); // FETCH-FIRST: based on origin's tip, stale local be damned
-    expect(sh("git branch --show-current", report[0]!.path)).toBe("rivet/T1");
+    expect(sh("git branch --show-current", report[0]!.path)).toBe("dev-spec-kit/T1");
     // journals union-merge so parallel branches reconcile instead of conflicting
     expect(readFileSync(join(work, ".gitattributes"), "utf8")).toContain("merge=union");
   });

@@ -53,7 +53,7 @@ describe("dev-spec-kit wave start/done — fetch-first worktrees", () => {
     expect(existsSync(join(work, ".worktrees", "W1"))).toBe(true);
     expect(readFileSync(join(work, ".gitattributes"), "utf8")).toContain("merge=union");
 
-    // rivet/W1 is at origin/main's tip → an ancestor → cleanup is allowed without --force.
+    // dev-spec-kit/W1 is at origin/main's tip → an ancestor → cleanup is allowed without --force.
     const done = waveDoneAt(work, "W1", {});
     expect(done.removed).toBe(true);
     expect(existsSync(join(work, ".worktrees", "W1"))).toBe(false);

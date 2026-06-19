@@ -32,12 +32,12 @@ describe("waveDoneAt", () => {
 
     expect(() => waveDoneAt(work, "T1", {})).toThrowError(/merged|force/i);
 
-    sh("git push -q origin rivet/T1:main", wt!.path); // the work lands on origin
+    sh("git push -q origin dev-spec-kit/T1:main", wt!.path); // the work lands on origin
     sh("git fetch -q origin", work);
     const report = waveDoneAt(work, "T1", {});
     expect(report.removed).toBe(true);
     expect(existsSync(wt!.path)).toBe(false);
-    expect(sh("git branch --list rivet/T1", work)).toBe(""); // branch gone too
+    expect(sh("git branch --list dev-spec-kit/T1", work)).toBe(""); // branch gone too
   });
 
   it("force discards unmerged work; provenance check refuses foreign paths", () => {
