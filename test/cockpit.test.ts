@@ -20,14 +20,14 @@ import { taskDone, checkRun } from "../src/cli/tasks.js";
 const OLD_TREE = "fade1234567890fade1234567890fade12345678";
 
 function project(extraConfig: Record<string, unknown> = {}): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-cockpit-"));
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-cockpit-"));
   execSync(`git init -q -b main && git config user.email t@t && git config user.name T`, { cwd: dir });
   writeFileSync(join(dir, "app.ts"), "export const one = 1;\n");
   execSync("git add -A && git commit -qm init", { cwd: dir });
-  mkdirSync(join(dir, ".rivet", "specs"), { recursive: true });
-  writeFileSync(join(dir, ".rivet", "config.json"), JSON.stringify({ version: 1, ...extraConfig }));
+  mkdirSync(join(dir, ".dev-spec-kit", "specs"), { recursive: true });
+  writeFileSync(join(dir, ".dev-spec-kit", "config.json"), JSON.stringify({ version: 1, ...extraConfig }));
   writeFileSync(
-    join(dir, ".rivet", "specs", "feat.md"),
+    join(dir, ".dev-spec-kit", "specs", "feat.md"),
     [
       "## Requirement REQUIREMENT_FEAT-01 — the feature",
       "",
@@ -45,10 +45,10 @@ function project(extraConfig: Record<string, unknown> = {}): string {
   );
   // an artifact carrying a hostile payload — must never escape the sidecar's script tag
   writeFileSync(
-    join(dir, ".rivet", "laws.md"),
+    join(dir, ".dev-spec-kit", "laws.md"),
     "# Laws\n\nNever trust `</script><script>alert(1)</script>`.\n",
   );
-  const store = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+  const store = new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
   store.create("REQUIREMENT_FEAT-01", "the feature", ["test/a.test.ts::works", "test/a.test.ts::rejects"]);
   store.setStatus("REQUIREMENT_FEAT-01", "in_progress");
   store.recordCheck("REQUIREMENT_FEAT-01", {
@@ -109,17 +109,17 @@ describe("REQUIREMENT_COCKPIT-03 — static shell emission, written once", () =>
     const dir = project();
     const res = emitCockpit(dir);
     expect(res.wroteShell).toBe(true);
-    for (const f of SHELL_FILES) expect(existsSync(join(dir, ".rivet", "cockpit", f)), f).toBe(true);
-    expect(existsSync(join(dir, ".rivet", "cockpit", "rivet.data.js"))).toBe(true);
-    const html = readFileSync(join(dir, ".rivet", "cockpit", "index.html"), "utf8");
+    for (const f of SHELL_FILES) expect(existsSync(join(dir, ".dev-spec-kit", "cockpit", f)), f).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js"))).toBe(true);
+    const html = readFileSync(join(dir, ".dev-spec-kit", "cockpit", "index.html"), "utf8");
     expect(html).toContain('src="rivet.data.js"');
   });
 
   it("re-emission touches only the sidecar until the shell version changes", () => {
     const dir = project();
     emitCockpit(dir);
-    const shellPath = join(dir, ".rivet", "cockpit", "rivet.core.js");
-    const dataPath = join(dir, ".rivet", "cockpit", "rivet.data.js");
+    const shellPath = join(dir, ".dev-spec-kit", "cockpit", "rivet.core.js");
+    const dataPath = join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js");
     writeFileSync(shellPath, "/* user-tweaked */\n"); // must survive a same-version re-emit
     const before = statSync(dataPath).mtimeMs;
     const res = emitCockpit(dir);
@@ -127,7 +127,7 @@ describe("REQUIREMENT_COCKPIT-03 — static shell emission, written once", () =>
     expect(readFileSync(shellPath, "utf8")).toBe("/* user-tweaked */\n");
     expect(statSync(dataPath).mtimeMs).toBeGreaterThanOrEqual(before);
     // a bumped shell version rewrites the shell
-    writeFileSync(join(dir, ".rivet", "cockpit", ".shell-version"), "0-old\n");
+    writeFileSync(join(dir, ".dev-spec-kit", "cockpit", ".shell-version"), "0-old\n");
     const res2 = emitCockpit(dir);
     expect(res2.wroteShell).toBe(true);
     expect(readFileSync(shellPath, "utf8")).not.toBe("/* user-tweaked */\n");
@@ -144,7 +144,7 @@ describe("REQUIREMENT_COCKPIT-04 — live updates after every proof event", () =
       verify: { kindRunners: { unit: { cmd: "node", args: ["-e", "process.exit(0)"] } } },
     });
     process.chdir(dir);
-    const dataPath = join(dir, ".rivet", "cockpit", "rivet.data.js");
+    const dataPath = join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js");
     expect(existsSync(dataPath)).toBe(false);
     await checkRun("REQUIREMENT_FEAT-01", "test/a.test.ts::works", "node-vitest", {});
     expect(existsSync(dataPath), "check run must write the sidecar in live mode").toBe(true);
@@ -163,6 +163,6 @@ describe("REQUIREMENT_COCKPIT-04 — live updates after every proof event", () =
     });
     process.chdir(dir);
     await checkRun("REQUIREMENT_FEAT-01", "test/a.test.ts::works", "node-vitest", {});
-    expect(existsSync(join(dir, ".rivet", "cockpit", "rivet.data.js"))).toBe(false);
+    expect(existsSync(join(dir, ".dev-spec-kit", "cockpit", "rivet.data.js"))).toBe(false);
   });
 });

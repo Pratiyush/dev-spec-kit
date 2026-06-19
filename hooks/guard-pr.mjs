@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Rivet PreToolUse guard — PR creation (FIX-GATE-01 hardened).
+ * dev-spec-kit PreToolUse guard — PR creation (FIX-GATE-01 hardened).
  *
- * Self-contained mirror of src/engine/gate.ts gateVerdict (keep in sync): in a Rivet project,
+ * Self-contained mirror of src/engine/gate.ts gateVerdict (keep in sync): in a dev-spec-kit project,
  * "anything not green blocks" — and a MISSING or unreadable graph blocks too (state absence is not
  * permission). Matcher is quote-stripped and also catches the REST route (`gh api …/pulls`).
  * Known limit: shell variable indirection ($GH pr create) cannot be resolved here; GATE-PROTECT
@@ -35,11 +35,11 @@ const command = String(rawCommand).replace(/["']/g, "").replace(/\s+/g, " ");
 const PR_RE = /\bgh\s+pr\s+create\b|\bglab\s+mr\s+create\b|\bgh\s+api\s+\S*\/pulls\b/i;
 if (!PR_RE.test(command)) process.exit(0);
 
-// Find the Rivet project root (the .rivet DIR — not the graph) upward from cwd.
+// Find the dev-spec-kit project root (the .dev-spec-kit DIR — not the graph) upward from cwd.
 let dir = payload.cwd || process.cwd();
 let rivetRoot = null;
 for (let i = 0; i < 10; i++) {
-  if (existsSync(join(dir, ".rivet"))) {
+  if (existsSync(join(dir, ".dev-spec-kit"))) {
     rivetRoot = dir;
     break;
   }
@@ -47,21 +47,21 @@ for (let i = 0; i < 10; i++) {
   if (parent === dir) break;
   dir = parent;
 }
-if (!rivetRoot) process.exit(0); // not a Rivet project — do not interfere
+if (!rivetRoot) process.exit(0); // not a dev-spec-kit project — do not interfere
 
 const block = (msg) => {
-  console.error(`rivet guard: blocking PR creation — ${msg}`);
+  console.error(`dev-spec-kit guard: blocking PR creation — ${msg}`);
   process.exit(2);
 };
 
-const graphPath = join(rivetRoot, ".rivet", "graph.json");
-if (!existsSync(graphPath)) block("no .rivet/graph.json. Run `rivet graph build` first (state absence is not permission).");
+const graphPath = join(rivetRoot, ".dev-spec-kit", "graph.json");
+if (!existsSync(graphPath)) block("no .dev-spec-kit/graph.json. Run `dev-spec-kit graph build` first (state absence is not permission).");
 
 let graph;
 try {
   graph = JSON.parse(readFileSync(graphPath, "utf8"));
 } catch {
-  block("unreadable .rivet/graph.json. Rebuild it with `rivet graph build`.");
+  block("unreadable .dev-spec-kit/graph.json. Rebuild it with `dev-spec-kit graph build`.");
 }
 
 const validates = (graph.edges ?? []).filter((e) => e.kind === "validates");
@@ -69,10 +69,10 @@ if (validates.length === 0) process.exit(0); // nothing bound — nothing to enf
 const bad = validates.filter((e) => e.proof !== "green");
 if (bad.length === 0) {
   // FEAT-VERIFY-01 fast veto: the LAST verify.run must exist and be green. (Tree-freshness is
-  // enforced strictly by `rivet guard pr` / `rivet pr`; the hook stays git-free and cheap.)
+  // enforced strictly by `dev-spec-kit guard pr` / `dev-spec-kit pr`; the hook stays git-free and cheap.)
   let lastVerify = null;
   try {
-    const lines = readFileSync(join(rivetRoot, ".rivet", "journal.jsonl"), "utf8").split("\n");
+    const lines = readFileSync(join(rivetRoot, ".dev-spec-kit", "journal.jsonl"), "utf8").split("\n");
     for (const line of lines) {
       if (!line.trim()) continue;
       try {
@@ -81,13 +81,13 @@ if (bad.length === 0) {
       } catch {}
     }
   } catch {}
-  if (!lastVerify) block("no `rivet verify` recorded — run it (build ALL + every kind) before a PR.");
-  if (!lastVerify.data?.passed) block("last `rivet verify` was RED — fix and re-run it before a PR.");
+  if (!lastVerify) block("no `dev-spec-kit verify` recorded — run it (build ALL + every kind) before a PR.");
+  if (!lastVerify.data?.passed) block("last `dev-spec-kit verify` was RED — fix and re-run it before a PR.");
   process.exit(0);
 }
 
 block(
   `${bad.length}/${validates.length} proof(s) not green:\n` +
     bad.map((e) => `  ${String(e.proof).toUpperCase()} ${e.lastCheck?.ref ?? e.from}`).join("\n") +
-    `\nRe-verify (rivet drift / rivet check run …) and rebuild (rivet graph build) first.`,
+    `\nRe-verify (dev-spec-kit drift / dev-spec-kit check run …) and rebuild (dev-spec-kit graph build) first.`,
 );

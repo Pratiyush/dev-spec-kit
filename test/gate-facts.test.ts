@@ -43,9 +43,12 @@ describe("guard-facts hook (process-level)", () => {
   };
 
   function project(facts: "on" | "off"): string {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-facts-"));
-    mkdirSync(join(dir, ".rivet", "cache"), { recursive: true });
-    writeFileSync(join(dir, ".rivet", "config.json"), JSON.stringify({ version: 1, gates: { facts } }));
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-facts-"));
+    mkdirSync(join(dir, ".dev-spec-kit", "cache"), { recursive: true });
+    writeFileSync(
+      join(dir, ".dev-spec-kit", "config.json"),
+      JSON.stringify({ version: 1, gates: { facts } }),
+    );
     return dir;
   }
 

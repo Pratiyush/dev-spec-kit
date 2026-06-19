@@ -11,7 +11,7 @@ import {
 } from "../src/engine/graphify/index.js";
 
 function tmp(): string {
-  return mkdtempSync(join(tmpdir(), "rivet-gfy-"));
+  return mkdtempSync(join(tmpdir(), "dev-spec-kit-gfy-"));
 }
 
 describe("loadCodeGraph — tolerant of graphify/d3 shapes", () => {
@@ -52,8 +52,8 @@ describe("freshness record", () => {
 
   it("treats a corrupt graph-state.json as not-yet-indexed (catch → null)", () => {
     const dir = tmp();
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
-    writeFileSync(join(dir, ".rivet", "graph-state.json"), "{ not json");
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
+    writeFileSync(join(dir, ".dev-spec-kit", "graph-state.json"), "{ not json");
     expect(readFreshness(dir).lastIndexedSha).toBeNull();
   });
 });

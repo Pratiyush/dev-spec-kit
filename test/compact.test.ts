@@ -39,7 +39,7 @@ describe("renderResume — state-only handoff, generated from ground truth", () 
     expect(out).toContain("B"); // first in-flight task is the open action
     expect(out).toContain("c1"); // its unproven ref is listed
     expect(out).toMatch(/1\/3/); // board summary
-    expect(out).toMatch(/rivet status/); // rebuild-truth instructions
+    expect(out).toMatch(/dev-spec-kit status/); // rebuild-truth instructions
   });
 
   it("celebrates a clean state when everything is done", () => {
@@ -48,11 +48,11 @@ describe("renderResume — state-only handoff, generated from ground truth", () 
 });
 
 describe("resume-save hook (PreCompact, process-level)", () => {
-  it("writes .rivet/RESUME.md from the journal", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-resume-"));
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
+  it("writes .dev-spec-kit/RESUME.md from the journal", () => {
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-resume-"));
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
     writeFileSync(
-      join(dir, ".rivet", "journal.jsonl"),
+      join(dir, ".dev-spec-kit", "journal.jsonl"),
       JSON.stringify({
         at: "t",
         type: "task.created",
@@ -68,7 +68,7 @@ describe("resume-save hook (PreCompact, process-level)", () => {
       stdio: ["pipe", "pipe", "pipe"],
     });
     expect(r.status).toBe(0);
-    const resume = join(dir, ".rivet", "RESUME.md");
+    const resume = join(dir, ".dev-spec-kit", "RESUME.md");
     expect(existsSync(resume)).toBe(true);
     const text = readFileSync(resume, "utf8");
     expect(text).toContain("T1");

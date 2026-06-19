@@ -6,7 +6,7 @@ import { TaskStore } from "../src/engine/state/tasks.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { tmpProject } from "./helpers/cli-harness.js";
 
-const journal = (dir: string) => new Journal(join(dir, ".rivet", "journal.jsonl"));
+const journal = (dir: string) => new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
 
 describe("buildRivet — the cockpit sidecar object", () => {
   it("renders an activity line for every event type, plus approvals + governance sections", () => {

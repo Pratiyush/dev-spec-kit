@@ -2,10 +2,10 @@ import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 /**
- * FEAT-INITPACKS-01 — per-platform best-practice packs, seeded by `rivet init --platforms` as
- * SCOPED LAW FILES (.rivet/laws/*.md, the STEER-01 fileMatch mechanism). Standards arrive
- * pre-wired to enforcement: every pack ends with a "Bind these as Rivet checks" section showing
- * the verify.runners / kindRunners wiring, so the tools run under `rivet verify` and are bindable
+ * FEAT-INITPACKS-01 — per-platform best-practice packs, seeded by `dev-spec-kit init --platforms` as
+ * SCOPED LAW FILES (.dev-spec-kit/laws/*.md, the STEER-01 fileMatch mechanism). Standards arrive
+ * pre-wired to enforcement: every pack ends with a "Bind these as dev-spec-kit checks" section showing
+ * the verify.runners / kindRunners wiring, so the tools run under `dev-spec-kit verify` and are bindable
  * as @check kinds. Hard constraint stated in every file: free or open-source tools only.
  */
 
@@ -37,11 +37,11 @@ ${CONSTRAINT}
 ## Tests & dependencies
 - **Vitest** co-located tests (\`foo.test.ts\` next to \`foo.ts\` or in \`test/\`); every bug fix
   starts with the failing test.
-- **npm audit** on dependencies — runs in \`rivet verify\` via the audit kind below.
+- **npm audit** on dependencies — runs in \`dev-spec-kit verify\` via the audit kind below.
 
-## Bind these as Rivet checks
+## Bind these as dev-spec-kit checks
 \`\`\`jsonc
-// .rivet/config.json → verify
+// .dev-spec-kit/config.json → verify
 "kindRunners": {
   "lint":  { "cmd": "npx", "args": ["eslint", "."] },
   "audit": { "cmd": "npm", "args": ["audit", "--audit-level=high"] }
@@ -70,7 +70,7 @@ ${CONSTRAINT}
 ## Tests
 - **Playwright** drives Electron for E2E (free, first-class Electron support).
 
-## Bind these as Rivet checks
+## Bind these as dev-spec-kit checks
 \`\`\`jsonc
 "kindRunners": {
   "e2e": { "cmd": "npx", "args": ["playwright", "test"] }
@@ -100,7 +100,7 @@ ${CONSTRAINT}
 - **JUnit 5** units · **Mockito** mocking · **Testcontainers** for real-dependency integration
   tests (DB, queues) — never mock what you can run in a container.
 
-## Bind these as Rivet checks
+## Bind these as dev-spec-kit checks
 \`\`\`jsonc
 "runners": {
   "java-maven": { "cmd": "mvn", "args": ["-B", "test", "-Dtest={ref}"] }
@@ -127,7 +127,7 @@ ${CONSTRAINT}
 - **pytest** with coverage; fixtures over setup methods; every bug fix starts with a failing test.
 - **pip-audit** — vulnerable dependencies.
 
-## Bind these as Rivet checks
+## Bind these as dev-spec-kit checks
 \`\`\`jsonc
 "runners": {
   "python-pytest": { "cmd": "python3", "args": ["-m", "pytest", "{ref}"] }
@@ -153,12 +153,12 @@ ${CONSTRAINT}
 ## Central dashboards — OPTIONAL, never required
 - **SonarQube Community Edition** (free): smells, bugs, duplication for Java + TS.
 - **GitHub CodeQL** (free for public repos; check terms for private): deep SAST.
-- These are optional add-ons; Rivet's verify gate is the required floor.
+- These are optional add-ons; dev-spec-kit's verify gate is the required floor.
 
-## Bind these as Rivet checks
+## Bind these as dev-spec-kit checks
 \`\`\`jsonc
 // the pre-commit hook simply runs what verify runs:
-//   .husky/pre-commit → npx lint-staged   (and rivet verify before push/PR)
+//   .husky/pre-commit → npx lint-staged   (and dev-spec-kit verify before push/PR)
 \`\`\`
 `;
 
@@ -173,10 +173,10 @@ ${CONSTRAINT}
   funnel one language's tests through another's toolchain.
 - Boundaries between languages carry **shared contracts** (OpenAPI/JSON Schema/protobuf) with
   contract checks on BOTH sides (\`@check kind=api\`).
-- **ONE CI gate** covers all languages: \`rivet verify\` runs every configured kind — a PR is
+- **ONE CI gate** covers all languages: \`dev-spec-kit verify\` runs every configured kind — a PR is
   green only when every language is green. No per-language merge buttons.
 
-## Bind these as Rivet checks
+## Bind these as dev-spec-kit checks
 \`\`\`jsonc
 "verify": {
   "runners":     { "node-vitest": { "cmd": "npx", "args": ["vitest", "run"] },
@@ -220,7 +220,7 @@ export function seedPractices(
   platforms: string[],
   force: boolean,
 ): { seeded: string[]; skipped: string[] } {
-  const lawsDir = join(cwd, ".rivet", "laws");
+  const lawsDir = join(cwd, ".dev-spec-kit", "laws");
   mkdirSync(lawsDir, { recursive: true });
   const seeded: string[] = [];
   const skipped: string[] = [];

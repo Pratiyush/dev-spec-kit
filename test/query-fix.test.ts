@@ -11,10 +11,10 @@ import type { Task } from "../src/engine/state/tasks.js";
 
 describe("materialize write control", () => {
   function project(): string {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-q-"));
-    mkdirSync(join(dir, ".rivet", "specs"), { recursive: true });
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-q-"));
+    mkdirSync(join(dir, ".dev-spec-kit", "specs"), { recursive: true });
     writeFileSync(
-      join(dir, ".rivet", "specs", "x.md"),
+      join(dir, ".dev-spec-kit", "specs", "x.md"),
       "## Requirement R-1 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=A#a\n",
     );
     return dir;
@@ -24,13 +24,13 @@ describe("materialize write control", () => {
     const dir = project();
     const m = materialize(dir, { refresh: false, write: false });
     expect(m.requirements).toHaveLength(1);
-    expect(existsSync(join(dir, ".rivet", "graph.json"))).toBe(false);
+    expect(existsSync(join(dir, ".dev-spec-kit", "graph.json"))).toBe(false);
   });
 
   it("write:true (builds) persists the graph", () => {
     const dir = project();
     materialize(dir, { refresh: false, write: true });
-    expect(existsSync(join(dir, ".rivet", "graph.json"))).toBe(true);
+    expect(existsSync(join(dir, ".dev-spec-kit", "graph.json"))).toBe(true);
   });
 });
 

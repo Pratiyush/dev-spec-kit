@@ -9,8 +9,8 @@ import { renderProgress } from "../src/cli/progress.js";
 import type { Task } from "../src/engine/state/tasks.js";
 
 function tempProject(): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-ux-"));
-  mkdirSync(join(dir, ".rivet"), { recursive: true });
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-ux-"));
+  mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
   return dir;
 }
 
@@ -18,17 +18,17 @@ describe("R-AUDIT-01 — cli audit events", () => {
   it("audits cli invocations into the journal", () => {
     const dir = tempProject();
     auditCliRun(dir, ["task", "done"], ["T1"]);
-    const events = new Journal(join(dir, ".rivet", "journal.jsonl")).read();
+    const events = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")).read();
     expect(events).toHaveLength(1);
     expect(events[0]!.type).toBe("cli.run");
     expect(events[0]!.data).toEqual({ command: "task done", args: ["T1"] });
     expect(typeof events[0]!.at).toBe("string");
   });
 
-  it("does not create journals outside Rivet projects", () => {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-ux-bare-"));
+  it("does not create journals outside dev-spec-kit projects", () => {
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-ux-bare-"));
     auditCliRun(dir, ["status"], []);
-    expect(new Journal(join(dir, ".rivet", "journal.jsonl")).read()).toEqual([]);
+    expect(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")).read()).toEqual([]);
   });
 });
 

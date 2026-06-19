@@ -8,7 +8,7 @@ import { TaskStore, EvidenceError } from "../src/engine/state/tasks.js";
 /** FIX-SPECSYNC-01: the spec→gate link must never freeze or clobber. */
 
 function fresh(): { journal: Journal; store: TaskStore } {
-  const journal = new Journal(join(mkdtempSync(join(tmpdir(), "rivet-sync-")), "j.jsonl"));
+  const journal = new Journal(join(mkdtempSync(join(tmpdir(), "dev-spec-kit-sync-")), "j.jsonl"));
   return { journal, store: new TaskStore(journal) };
 }
 

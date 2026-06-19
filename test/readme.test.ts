@@ -19,7 +19,7 @@ describe("README matches the shipped surface", () => {
       "laws",
       "dashboard",
       "drift",
-      "rivet-kit",
+      "dev-spec-kit-kit",
       "graphify",
     ]) {
       expect(README, `README should mention '${term}'`).toContain(term);

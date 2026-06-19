@@ -42,8 +42,8 @@ describe("in-flight protection (engine)", () => {
 
   it("specs and gate config are protected while ANY task is in flight", () => {
     const tasks = inFlightTasks(events);
-    expect(isProtectedPath("/p/.rivet/specs/greeting.md", tasks, "/p")).toBe(true);
-    expect(isProtectedPath("/p/.rivet/config.json", tasks, "/p")).toBe(true);
+    expect(isProtectedPath("/p/.dev-spec-kit/specs/greeting.md", tasks, "/p")).toBe(true);
+    expect(isProtectedPath("/p/.dev-spec-kit/config.json", tasks, "/p")).toBe(true);
   });
 
   it("an unexpired unlock entry releases a path", () => {
@@ -61,10 +61,10 @@ describe("guard-protect hook (process-level)", () => {
     spawnSync("node", [hook], { input: JSON.stringify(payload), stdio: ["pipe", "pipe", "pipe"] }).status;
 
   function project(): string {
-    const dir = mkdtempSync(join(tmpdir(), "rivet-protect-"));
-    mkdirSync(join(dir, ".rivet"), { recursive: true });
+    const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-protect-"));
+    mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
     writeFileSync(
-      join(dir, ".rivet", "journal.jsonl"),
+      join(dir, ".dev-spec-kit", "journal.jsonl"),
       JSON.stringify({
         at: "t",
         type: "task.created",
@@ -94,7 +94,7 @@ describe("guard-protect hook (process-level)", () => {
     const cwd = project();
     expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "src", "app.ts") }, cwd })).toBe(0);
     writeFileSync(
-      join(cwd, ".rivet", "unlock.json"),
+      join(cwd, ".dev-spec-kit", "unlock.json"),
       JSON.stringify({ paths: ["test/foo.test.ts"], until: new Date(Date.now() + 60_000).toISOString() }),
     );
     expect(run({ tool_name: "Edit", tool_input: { file_path: join(cwd, "test", "foo.test.ts") }, cwd })).toBe(

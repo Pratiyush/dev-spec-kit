@@ -5,7 +5,7 @@ import type { JournalEvent } from "./state/journal.js";
  * editing the proof itself. Protected while any task is in flight: the project's spec files and
  * gate config; plus each in-flight task's bound test files — but only AFTER that ref has a
  * recorded PASSING run (pre-green iteration is the normal TDD flow and stays free).
- * Escape hatch: a human-issued, time-boxed unlock (`rivet unlock`), journaled as governance.
+ * Escape hatch: a human-issued, time-boxed unlock (`dev-spec-kit unlock`), journaled as governance.
  * hooks/guard-protect.mjs mirrors this logic self-contained; keep in sync.
  */
 
@@ -71,7 +71,7 @@ export function isProtectedPath(
   }
 
   // The spec and the gate config are the law — immutable while work is in flight.
-  if (rel.startsWith(".rivet/specs/") || rel === ".rivet/config.json") return true;
+  if (rel.startsWith(".dev-spec-kit/specs/") || rel === ".dev-spec-kit/config.json") return true;
 
   // Bound test files: protected once their ref has gone green (post-green tampering is the attack).
   for (const t of tasks) {

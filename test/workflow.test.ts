@@ -11,8 +11,8 @@ import { parseSpec } from "../src/engine/spec/parse.js";
 import { buildVTG } from "../src/engine/graph/build.js";
 
 function tempProject(): { dir: string; journal: Journal; store: TaskStore } {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-wf-"));
-  const journal = new Journal(join(dir, ".rivet", "journal.jsonl"));
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-wf-"));
+  const journal = new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
   return { dir, journal, store: new TaskStore(journal) };
 }
 
@@ -171,7 +171,7 @@ describe("requirement rollup + drift targets + retry (engine queries)", () => {
     const { mkdtempSync } = await import("node:fs");
     const { tmpdir } = await import("node:os");
     const { join } = await import("node:path");
-    const journal = new Journal(join(mkdtempSync(join(tmpdir(), "rivet-force-")), "j.jsonl"));
+    const journal = new Journal(join(mkdtempSync(join(tmpdir(), "dev-spec-kit-force-")), "j.jsonl"));
     const store = new TaskStore(journal);
     store.create("T1", "t", ["c1"]);
     const t = store.markDone("T1", { force: true });

@@ -7,7 +7,7 @@ import { label } from "./emoji.js";
 
 const LAWS_TEMPLATE = `# Project Laws
 
-> The rules Rivet must always obey for this project. Three scopes are supported (Kiro-style steering):
+> The rules dev-spec-kit must always obey for this project. Three scopes are supported (Kiro-style steering):
 > always-on (this file), file-match, and on-summon. A personal default can be inherited and overridden here.
 
 ## Standards
@@ -41,13 +41,13 @@ function parsePlatforms(raw: string): string[] {
 }
 
 /**
- * `rivet init` — initialize Rivet in the current project. Creates the committed `.rivet/` durable
+ * `dev-spec-kit init` — initialize dev-spec-kit in the current project. Creates the committed `.dev-spec-kit/` durable
  * state (config, laws, specs, journal), seeds per-platform best-practice law packs
  * (FEAT-INITPACKS-01), and ensures graphify's derived output is gitignored.
  */
 export function runInit(opts: InitOptions): void {
   const cwd = process.cwd();
-  const rivetDir = join(cwd, ".rivet");
+  const rivetDir = join(cwd, ".dev-spec-kit");
   const configPath = join(rivetDir, "config.json");
   const lawsPath = join(rivetDir, "laws.md");
   const journalPath = join(rivetDir, "journal.jsonl");
@@ -55,7 +55,9 @@ export function runInit(opts: InitOptions): void {
 
   if (existsSync(configPath) && !opts.force) {
     if (platforms.length === 0) {
-      console.log(pc.yellow("Rivet is already initialized here. Use --force to overwrite the config."));
+      console.log(
+        pc.yellow("dev-spec-kit is already initialized here. Use --force to overwrite the config."),
+      );
       return;
     }
     // Re-run with --platforms: update ONLY project.platforms (never clobber a tuned config).
@@ -78,19 +80,21 @@ export function runInit(opts: InitOptions): void {
   if (!existsSync(journalPath)) writeFileSync(journalPath, "");
 
   // graphify's output is a derived index; keep it out of git (it is regenerated from code).
-  ensureGitignore(cwd, ["graphify-out/", ".graphify/", ".rivet/cache/", ".rivet/tmp/"]);
+  ensureGitignore(cwd, ["graphify-out/", ".graphify/", ".dev-spec-kit/cache/", ".dev-spec-kit/tmp/"]);
 
-  console.log(pc.green("✓ Initialized Rivet in ") + pc.bold(".rivet/"));
+  console.log(pc.green("✓ Initialized dev-spec-kit in ") + pc.bold(".dev-spec-kit/"));
   console.log(pc.dim("  config.json · laws.md · specs/ · journal.jsonl"));
   if (platforms.length > 0) printSeeded(platforms, seedPractices(cwd, platforms, opts.force ?? false));
-  console.log("\nNext: " + pc.bold("rivet doctor") + pc.dim("  (check prerequisites, including graphify)"));
+  console.log(
+    "\nNext: " + pc.bold("dev-spec-kit doctor") + pc.dim("  (check prerequisites, including graphify)"),
+  );
 }
 
 function printSeeded(platforms: string[], packs: { seeded: string[]; skipped: string[] }): void {
   console.log(`${label("scaffold")} platforms: ${platforms.join(", ")}`);
-  for (const f of packs.seeded) console.log(pc.green(`  + .rivet/laws/${f}`));
+  for (const f of packs.seeded) console.log(pc.green(`  + .dev-spec-kit/laws/${f}`));
   for (const f of packs.skipped)
-    console.log(pc.dim(`  = .rivet/laws/${f} (exists — kept; --force re-seeds)`));
+    console.log(pc.dim(`  = .dev-spec-kit/laws/${f} (exists — kept; --force re-seeds)`));
 }
 
 /** Append any missing entries to the project's .gitignore (idempotent). */
@@ -101,5 +105,8 @@ function ensureGitignore(cwd: string, entries: string[]): void {
   const missing = entries.filter((e) => !lines.includes(e));
   if (missing.length === 0) return;
   const prefix = content.length > 0 && !content.endsWith("\n") ? "\n" : "";
-  appendFileSync(path, `${prefix}\n# Rivet / graphify (derived, regenerated)\n${missing.join("\n")}\n`);
+  appendFileSync(
+    path,
+    `${prefix}\n# dev-spec-kit / graphify (derived, regenerated)\n${missing.join("\n")}\n`,
+  );
 }

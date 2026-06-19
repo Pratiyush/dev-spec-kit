@@ -8,10 +8,10 @@ import { withLock } from "../lock.js";
 const readCache = new Map<string, { size: number; mtimeMs: number; events: JournalEvent[] }>();
 
 /**
- * The append-only action journal — Rivet's "never loses its place" spine.
+ * The append-only action journal — dev-spec-kit's "never loses its place" spine.
  *
  * Every meaningful action (task transitions, check runs, approvals) is one JSON line in
- * `.rivet/journal.jsonl`, committed to git so a fresh clone resumes exactly. State is never stored
+ * `.dev-spec-kit/journal.jsonl`, committed to git so a fresh clone resumes exactly. State is never stored
  * mutably: it is *folded* from the journal, so boards are generated from ground truth, never claimed.
  */
 
@@ -28,7 +28,7 @@ export type JournalEventType =
 
 /** AUDIT-META-01: who/what acted is part of the audit trail. */
 export interface EventMeta {
-  /** Human or agent identity (git user.name, RIVET_ACTOR, …). */
+  /** Human or agent identity (git user.name, DEV_SPEC_KIT_ACTOR, …). */
   actor?: string;
   /** Model id when an AI performed the action. */
   model?: string;

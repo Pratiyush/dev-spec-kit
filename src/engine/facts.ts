@@ -4,7 +4,7 @@
  * The first edit to a file is DENIED with a demand for named facts; the retry (after the agent has
  * gathered them — the investigation itself creates the context that changes the output) is ALLOWED
  * within a 30-minute window. Opt-in via config `gates.facts: "on"`. State is bounded (500 entries)
- * and lives in .rivet/cache/ (gitignored). hooks/guard-facts.mjs mirrors this — keep in sync.
+ * and lives in .dev-spec-kit/cache/ (gitignored). hooks/guard-facts.mjs mirrors this — keep in sync.
  */
 
 const WINDOW_MS = 30 * 60_000;
@@ -27,7 +27,7 @@ export interface FactsVerdict {
 
 export function factsDemand(file: string): string[] {
   return [
-    `list every importer/usage of ${file} (grep it, or run: rivet affected <symbol>)`,
+    `list every importer/usage of ${file} (grep it, or run: dev-spec-kit affected <symbol>)`,
     "name the requirement id + criterion this edit serves (quote the EARS sentence)",
     "quote the user's current instruction verbatim",
     "then retry the edit — it will be allowed for 30 minutes",

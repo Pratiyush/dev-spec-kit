@@ -8,26 +8,26 @@ import { loadLaws } from "../src/engine/steering.js";
  *  inheritance, and #[[file:...]] injection. Rules are data; the engine only assembles them. */
 
 function project(): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-steer-"));
-  mkdirSync(join(dir, ".rivet", "laws"), { recursive: true });
-  writeFileSync(join(dir, ".rivet", "laws.md"), "# Project Laws\n- project rule one\n");
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-steer-"));
+  mkdirSync(join(dir, ".dev-spec-kit", "laws"), { recursive: true });
+  writeFileSync(join(dir, ".dev-spec-kit", "laws.md"), "# Project Laws\n- project rule one\n");
   writeFileSync(
-    join(dir, ".rivet", "laws", "security.md"),
+    join(dir, ".dev-spec-kit", "laws", "security.md"),
     "---\ninclusion: fileMatch\npattern: auth\n---\n- security: never log tokens\n",
   );
   writeFileSync(
-    join(dir, ".rivet", "laws", "notes.md"),
+    join(dir, ".dev-spec-kit", "laws", "notes.md"),
     "---\ninclusion: manual\nname: notes\n---\n- summoned-only guidance\n",
   );
   writeFileSync(join(dir, "snippet.md"), "INJECTED-CONTENT");
-  writeFileSync(join(dir, ".rivet", "laws", "withref.md"), "see #[[file:snippet.md]] inline\n");
+  writeFileSync(join(dir, ".dev-spec-kit", "laws", "withref.md"), "see #[[file:snippet.md]] inline\n");
   return dir;
 }
 
 describe("loadLaws", () => {
   it("personal laws come first, then project laws; scoped files obey their inclusion", () => {
     const dir = project();
-    const personal = join(mkdtempSync(join(tmpdir(), "rivet-personal-")), "laws.md");
+    const personal = join(mkdtempSync(join(tmpdir(), "dev-spec-kit-personal-")), "laws.md");
     writeFileSync(personal, "- personal default rule\n");
 
     const plain = loadLaws(dir, { personalPath: personal });
@@ -51,7 +51,7 @@ describe("loadLaws", () => {
     expect(withref.body).toContain("INJECTED-CONTENT");
     expect(withref.body).not.toContain("#[[file:snippet.md]]");
 
-    writeFileSync(join(dir, ".rivet", "laws", "broken.md"), "ref #[[file:missing.md]] here\n");
+    writeFileSync(join(dir, ".dev-spec-kit", "laws", "broken.md"), "ref #[[file:missing.md]] here\n");
     const second = loadLaws(dir, { personalPath: join(dir, "nope-personal.md") });
     expect(second.warnings.join(" ")).toContain("missing.md");
   });

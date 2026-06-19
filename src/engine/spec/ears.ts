@@ -1,7 +1,7 @@
 /**
  * EARS — Easy Approach to Requirements Syntax.
  *
- * The formal-but-readable acceptance-criteria syntax Rivet uses (Kiro's signature, adopted here and
+ * The formal-but-readable acceptance-criteria syntax dev-spec-kit uses (Kiro's signature, adopted here and
  * made *verifiable*): WHEN/IF/WHILE/WHERE ... the system SHALL ... Each criterion carries one or more
  * `@check` bindings to executable checks — a criterion with no binding is UNVERIFIED and gets flagged.
  */

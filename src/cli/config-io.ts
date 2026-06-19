@@ -17,13 +17,13 @@ export class InputError extends Error {
 }
 
 export function loadConfig(projectDir: string): RivetConfig {
-  const path = join(projectDir, ".rivet", "config.json");
+  const path = join(projectDir, ".dev-spec-kit", "config.json");
   if (!existsSync(path)) return parseConfig({});
   let raw: unknown;
   try {
     raw = JSON.parse(readFileSync(path, "utf8"));
   } catch (e) {
-    throw new InputError(`invalid .rivet/config.json: ${(e as Error).message}`);
+    throw new InputError(`invalid .dev-spec-kit/config.json: ${(e as Error).message}`);
   }
   try {
     return parseConfig(raw);
@@ -31,7 +31,7 @@ export function loadConfig(projectDir: string): RivetConfig {
     if (e instanceof ZodError) {
       const first = e.issues[0];
       const where = first?.path.join(".") || "(root)";
-      let msg = `invalid .rivet/config.json at ${where}: ${first?.message ?? "schema violation"}`;
+      let msg = `invalid .dev-spec-kit/config.json at ${where}: ${first?.message ?? "schema violation"}`;
       // Dogfood lesson: a RUNNER stack filed under project.platforms must get a pointer home.
       const received = (first as { received?: unknown } | undefined)?.received;
       if (
@@ -41,7 +41,7 @@ export function loadConfig(projectDir: string): RivetConfig {
         (BUILTIN_STACKS as readonly string[]).includes(received)
       ) {
         msg +=
-          `\n  ↳ '${received}' is a RUNNER stack — use it with \`rivet check run --stack ${received}\` ` +
+          `\n  ↳ '${received}' is a RUNNER stack — use it with \`dev-spec-kit check run --stack ${received}\` ` +
           `or define it in verify.runners. project.platforms describes the codebase (typescript, react, spring, …).`;
       }
       throw new InputError(msg);

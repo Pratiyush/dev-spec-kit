@@ -1,7 +1,7 @@
 /**
  * FEAT-FLUSH-01 — "flush session lessons before PR" (standing user rule, tool-ified).
  * A session is the trailing run of journal events with no gap over `gapMinutes`; the ledger
- * (.rivet/learnings.md) must have been touched during it, or `rivet pr` prints the 📝 warning.
+ * (.dev-spec-kit/learnings.md) must have been touched during it, or `dev-spec-kit pr` prints the 📝 warning.
  * Warning only — some sessions genuinely teach nothing; the human stays the judge.
  */
 

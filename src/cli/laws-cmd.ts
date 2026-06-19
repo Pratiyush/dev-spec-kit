@@ -1,14 +1,14 @@
 import pc from "picocolors";
 import { loadLaws } from "../engine/steering.js";
 
-/** `rivet laws` — show the effective laws the agent is bound by, with their sources. */
+/** `dev-spec-kit laws` — show the effective laws the agent is bound by, with their sources. */
 export function lawsCmd(opts: { for?: string; summon?: string[] }): void {
   const laws = loadLaws(process.cwd(), {
     ...(opts.for ? { file: opts.for } : {}),
     ...(opts.summon ? { summon: opts.summon } : {}),
   });
   if (laws.sections.length === 0) {
-    console.log(pc.yellow("no laws found — create .rivet/laws.md (rivet init does this)"));
+    console.log(pc.yellow("no laws found — create .dev-spec-kit/laws.md (dev-spec-kit init does this)"));
     return;
   }
   for (const s of laws.sections) {

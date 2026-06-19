@@ -10,9 +10,9 @@ coverage/
 graphify-out/
 .graphify/
 
-# Rivet ephemeral cache (durable state under .rivet/ IS committed)
-.rivet/cache/
-.rivet/tmp/
+# dev-spec-kit ephemeral cache (durable state under .dev-spec-kit/ IS committed)
+.dev-spec-kit/cache/
+.dev-spec-kit/tmp/
 
 # revitify content-hash AST cache (regenerated from code; never committed)
 .revitify/cache/

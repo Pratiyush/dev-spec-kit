@@ -8,10 +8,10 @@ import { tmpdir } from "node:os";
 import { join, dirname } from "node:path";
 import { vi } from "vitest";
 
-/** A temp dir with a `.rivet/specs/` skeleton; seed extra files via the map (paths relative to root). */
+/** A temp dir with a `.dev-spec-kit/specs/` skeleton; seed extra files via the map (paths relative to root). */
 export function tmpProject(files: Record<string, string> = {}): string {
-  const dir = mkdtempSync(join(tmpdir(), "rivet-cli-"));
-  mkdirSync(join(dir, ".rivet", "specs"), { recursive: true });
+  const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-cli-"));
+  mkdirSync(join(dir, ".dev-spec-kit", "specs"), { recursive: true });
   for (const [rel, content] of Object.entries(files)) {
     const p = join(dir, rel);
     mkdirSync(dirname(p), { recursive: true });

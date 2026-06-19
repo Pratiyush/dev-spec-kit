@@ -19,7 +19,7 @@ async function serve(dir: string): Promise<{ base: string; close: () => Promise<
   };
 }
 
-describe("rivet web — the cockpit server", () => {
+describe("dev-spec-kit web — the cockpit server", () => {
   it("GET /api/state returns the RIVET object in server mode", async () => {
     const dir = tmpProject();
     const { base, close } = await serve(dir);
@@ -34,7 +34,7 @@ describe("rivet web — the cockpit server", () => {
   });
 
   it("POST /api/config persists a schema-clean, deep-merged config and journals it", async () => {
-    const dir = tmpProject({ ".rivet/config.json": JSON.stringify({ project: { name: "keep" } }) });
+    const dir = tmpProject({ ".dev-spec-kit/config.json": JSON.stringify({ project: { name: "keep" } }) });
     const { base, close } = await serve(dir);
     try {
       const res = await fetch(`${base}/api/config`, {
@@ -43,10 +43,10 @@ describe("rivet web — the cockpit server", () => {
         body: JSON.stringify({ build: { retryLimit: 5 } }),
       });
       expect(res.status).toBe(200);
-      const saved = JSON.parse(readFileSync(join(dir, ".rivet", "config.json"), "utf8"));
+      const saved = JSON.parse(readFileSync(join(dir, ".dev-spec-kit", "config.json"), "utf8"));
       expect(saved.build.retryLimit).toBe(5);
       expect(saved.project.name).toBe("keep"); // deep-merged
-      expect(readFileSync(join(dir, ".rivet", "journal.jsonl"), "utf8")).toContain("config-save");
+      expect(readFileSync(join(dir, ".dev-spec-kit", "journal.jsonl"), "utf8")).toContain("config-save");
     } finally {
       await close();
     }
@@ -98,7 +98,7 @@ describe("rivet web — the cockpit server", () => {
 
   it("POST /api/config is GATE-PROTECT-01-refused while a task is in flight (no unlock)", async () => {
     const dir = tmpProject();
-    const store = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+    const store = new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
     store.create("T1", "t", ["c1"]);
     store.setStatus("T1", "in_progress");
     const { base, close } = await serve(dir);
@@ -117,12 +117,12 @@ describe("rivet web — the cockpit server", () => {
 
   it("an active unlock covering the config path opens the gate", async () => {
     const dir = tmpProject();
-    const store = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+    const store = new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
     store.create("T1", "t", ["c1"]);
     store.setStatus("T1", "in_progress");
     writeFileSync(
-      join(dir, ".rivet", "unlock.json"),
-      JSON.stringify({ paths: [".rivet/config.json"], until: "2999-01-01T00:00:00Z" }),
+      join(dir, ".dev-spec-kit", "unlock.json"),
+      JSON.stringify({ paths: [".dev-spec-kit/config.json"], until: "2999-01-01T00:00:00Z" }),
     );
     const { base, close } = await serve(dir);
     try {
@@ -199,16 +199,16 @@ describe("webCmd — emits the cockpit and starts listening", () => {
     try {
       await new Promise<void>((r) => (server.listening ? r() : server.on("listening", () => r())));
       expect(server.listening).toBe(true);
-      expect(existsSync(join(dir, ".rivet", "cockpit"))).toBe(true);
+      expect(existsSync(join(dir, ".dev-spec-kit", "cockpit"))).toBe(true);
     } finally {
       await new Promise<void>((r) => server.close(() => r()));
     }
   });
 });
 
-describe("rivet web — defensive branches", () => {
+describe("dev-spec-kit web — defensive branches", () => {
   it("a malformed config.json degrades to defaults for the outDir lookup (no crash)", async () => {
-    const dir = tmpProject({ ".rivet/config.json": "{ not json" });
+    const dir = tmpProject({ ".dev-spec-kit/config.json": "{ not json" });
     const { base, close } = await serve(dir);
     try {
       // outDir resolution goes through safeReadConfig's catch → default 'graphify-out'
@@ -245,13 +245,13 @@ describe("rivet web — defensive branches", () => {
   });
 });
 
-describe("rivet web — a corrupt unlock.json is treated as no unlock", () => {
+describe("dev-spec-kit web — a corrupt unlock.json is treated as no unlock", () => {
   it("still GATE-PROTECT-01-refuses with an unreadable unlock file", async () => {
     const dir = tmpProject();
-    const store = new TaskStore(new Journal(join(dir, ".rivet", "journal.jsonl")));
+    const store = new TaskStore(new Journal(join(dir, ".dev-spec-kit", "journal.jsonl")));
     store.create("T1", "t", ["c1"]);
     store.setStatus("T1", "in_progress");
-    writeFileSync(join(dir, ".rivet", "unlock.json"), "{ not json");
+    writeFileSync(join(dir, ".dev-spec-kit", "unlock.json"), "{ not json");
     const { base, close } = await serve(dir);
     try {
       const res = await fetch(`${base}/api/config`, {

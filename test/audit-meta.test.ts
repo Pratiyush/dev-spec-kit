@@ -8,7 +8,7 @@ import { renderLog } from "../src/cli/log.js";
 /** AUDIT-META-01: who/what acted is part of the audit; governance events are first-class. */
 
 function tempJournal(): Journal {
-  return new Journal(join(mkdtempSync(join(tmpdir(), "rivet-meta-")), "j.jsonl"));
+  return new Journal(join(mkdtempSync(join(tmpdir(), "dev-spec-kit-meta-")), "j.jsonl"));
 }
 
 describe("event metadata", () => {

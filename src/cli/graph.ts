@@ -11,9 +11,9 @@ import { requiredPacks, evaluatePack } from "../engine/gatepacks.js";
 import { graphifyInstalled, GRAPHIFY_INSTALL_HINT } from "../engine/graphify/index.js";
 
 /**
- * `rivet graph build` — materialize the Verified Traceability Graph:
+ * `dev-spec-kit graph build` — materialize the Verified Traceability Graph:
  * parse specs -> fold journal -> (re)index the code graph via graphify -> overlay proof states ->
- * write committed .rivet/graph.json and print a traffic-light summary.
+ * write committed .dev-spec-kit/graph.json and print a traffic-light summary.
  */
 export function graphBuild(opts: { refresh?: boolean }): void {
   const cwd = process.cwd();
@@ -28,10 +28,10 @@ export function graphBuild(opts: { refresh?: boolean }): void {
     console.log(pc.dim(`  → ${GRAPHIFY_INSTALL_HINT}`));
   }
   /* c8 ignore stop */
-  if (m.requirements.length === 0) console.log(pc.yellow("no specs found in .rivet/specs/"));
+  if (m.requirements.length === 0) console.log(pc.yellow("no specs found in .dev-spec-kit/specs/"));
 
   const s = summarize(m.vtg);
-  console.log(pc.bold("\nVerified Traceability Graph") + pc.dim(" → .rivet/graph.json"));
+  console.log(pc.bold("\nVerified Traceability Graph") + pc.dim(" → .dev-spec-kit/graph.json"));
   console.log(
     `  ${s.requirements} requirement(s) · ${s.criteria} criteria · ${s.tests} test(s) · ${s.codeNodes} code node(s)`,
   );
@@ -41,7 +41,7 @@ export function graphBuild(opts: { refresh?: boolean }): void {
       `${pc.magenta(`● ${v.stale} stale`)}  ${pc.yellow(`○ ${v.unproven} unproven`)}`,
   );
   if (v.stale > 0) {
-    console.log(pc.magenta(`  drift: ${v.stale} proof(s) predate HEAD — re-verify with: rivet drift`));
+    console.log(pc.magenta(`  drift: ${v.stale} proof(s) predate HEAD — re-verify with: dev-spec-kit drift`));
     process.exitCode = 1;
   }
   if (v.red > 0) process.exitCode = 1;
@@ -94,14 +94,14 @@ export function graphBuild(opts: { refresh?: boolean }): void {
   }
 
   // GATE-PACKS-01: packs in force (explicit require ∪ triggered by spec text) must be satisfied.
-  const specsDir = join(cwd, ".rivet", "specs");
+  const specsDir = join(cwd, ".dev-spec-kit", "specs");
   const specText = existsSync(specsDir)
     ? readdirSync(specsDir)
         .filter((f) => f.endsWith(".md"))
         .sort()
         .map((f) => readFileSync(join(specsDir, f), "utf8"))
         .join("\n")
-    : /* c8 ignore next -- only when .rivet/specs/ is absent; every Rivet project (and test) has it. */ "";
+    : /* c8 ignore next -- only when .dev-spec-kit/specs/ is absent; every dev-spec-kit project (and test) has it. */ "";
   const packNames = requiredPacks(specText, m.config);
   if (packNames.length > 0) {
     const violations = packNames.flatMap((n) => {

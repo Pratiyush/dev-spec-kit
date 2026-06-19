@@ -72,7 +72,7 @@ export function resolveStack(
   if (platforms.some((p) => MAVEN_PLATFORMS.includes(p)))
     return { stack: "java-maven", source: "inferred", reason };
   throw new Error(
-    "no stack resolved — pass --stack <stack>, set verify.defaultStack in .rivet/config.json, or declare project.platforms so it can be inferred",
+    "no stack resolved — pass --stack <stack>, set verify.defaultStack in .dev-spec-kit/config.json, or declare project.platforms so it can be inferred",
   );
 }
 
@@ -117,7 +117,7 @@ export function pickRunner(
  * form stops the CLI parser reading a leading `-` as an option (the old CACError), and the value is
  * regex-escaped so metacharacters match literally. node runners also carry `reporter` so `execute`
  * can reject a zero-match instead of trusting the exit code.
- * An override (from `.rivet/config.json` verify.runners) replaces or defines a stack; its args may
+ * An override (from `.dev-spec-kit/config.json` verify.runners) replaces or defines a stack; its args may
  * use {ref}, {file}, {name} placeholders — args referencing {name} are dropped when the ref has no
  * `::name` part.
  */
@@ -196,7 +196,7 @@ export function execute(binding: CheckBinding, resolved: ResolvedCommand, opts: 
   let reportPath: string | undefined;
   let args = resolved.args;
   if (resolved.reporter) {
-    reportDir = mkdtempSync(join(tmpdir(), "rivet-check-"));
+    reportDir = mkdtempSync(join(tmpdir(), "dev-spec-kit-check-"));
     reportPath = join(reportDir, "report.json");
     args = [...resolved.args, ...reportArgs(resolved.reporter, reportPath)];
   }

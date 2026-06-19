@@ -58,7 +58,7 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
   });
   // FIX-QUERY-01: queries pass write:false — read-only commands leave no fingerprints.
   if (opts.write !== false) {
-    writeFileSync(join(cwd, ".rivet", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
+    writeFileSync(join(cwd, ".dev-spec-kit", "graph.json"), JSON.stringify(vtg, null, 2) + "\n");
   }
   return {
     vtg,
@@ -72,7 +72,7 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
 }
 
 export function journalFor(cwd: string): Journal {
-  return new Journal(join(cwd, ".rivet", "journal.jsonl"));
+  return new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl"));
 }
 
 export function configFor(cwd: string): RivetConfig {

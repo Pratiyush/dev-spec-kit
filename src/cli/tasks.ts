@@ -34,15 +34,15 @@ import { renderProgress } from "./progress.js";
 
 /**
  * CLI surface for the evidence-bound task flow:
- *   rivet task create <id> <title> --check <ref> [--check <ref> ...]
- *   rivet task start <id>
- *   rivet task done <id>      <- THE GATE: refuses without green proofs (exit 1)
- *   rivet check run <taskId> <ref> --stack <stack>
- *   rivet status              <- board generated from the journal, never hand-claimed
+ *   dev-spec-kit task create <id> <title> --check <ref> [--check <ref> ...]
+ *   dev-spec-kit task start <id>
+ *   dev-spec-kit task done <id>      <- THE GATE: refuses without green proofs (exit 1)
+ *   dev-spec-kit check run <taskId> <ref> --stack <stack>
+ *   dev-spec-kit status              <- board generated from the journal, never hand-claimed
  */
 
 function store(cwd: string): TaskStore {
-  return new TaskStore(new Journal(join(cwd, ".rivet", "journal.jsonl")));
+  return new TaskStore(new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl")));
 }
 
 export function taskCreate(id: string, title: string, checks: string[]): void {
@@ -65,12 +65,14 @@ export function taskStart(id: string): void {
   const config = loadConfig(cwd);
   // LEARN-01: surface OPEN lessons that pattern-match this task BEFORE the work begins.
   // FIX-CONFIG-WIRE-01: gated by learning.warnOnRepeat (default on) — the toggle now bites.
-  const ledgerPath = join(cwd, ".rivet", "learnings.md");
+  const ledgerPath = join(cwd, ".dev-spec-kit", "learnings.md");
   if (existsSync(ledgerPath)) {
     const task = s.get(id);
     const words = `${id} ${task?.title ?? ""} ${(task?.boundChecks ?? []).join(" ")}`;
     for (const hit of lessonsToWarn(config.learning.warnOnRepeat, readFileSync(ledgerPath, "utf8"), words)) {
-      console.log(pc.yellow(`  ⚠ open lesson may apply: ${hit.title}`) + pc.dim("  (.rivet/learnings.md)"));
+      console.log(
+        pc.yellow(`  ⚠ open lesson may apply: ${hit.title}`) + pc.dim("  (.dev-spec-kit/learnings.md)"),
+      );
     }
   }
   refreshDocs(cwd, config); // REQUIREMENT_DOCS-01
@@ -78,7 +80,7 @@ export function taskStart(id: string): void {
 
 /**
  * FIX-DONEMSG-01 — the message that unblocks the user. If the task's bound refs no longer match the
- * spec's current `@check` refs for this requirement, the real fix is `rivet spec tasks` (re-sync),
+ * spec's current `@check` refs for this requirement, the real fix is `dev-spec-kit spec tasks` (re-sync),
  * not re-running a ref that may no longer exist. Returns that hint, or null when the binding is in
  * sync (then the refs are genuinely unproven and `verify --stamp` is the move). Free-floating tasks
  * with no matching spec requirement get no spec-sync hint.
@@ -88,7 +90,7 @@ function bindingDriftHint(cwd: string, taskId: string, taskRefs: string[]): stri
   if (!req) return null;
   const specRefs = req.criteria.flatMap((c) => c.checks.map((ch) => ch.ref));
   return bindingsOutOfSync(taskRefs, specRefs)
-    ? "the task's bound checks no longer match the spec — run `rivet spec tasks` to re-sync, then `rivet verify --stamp`"
+    ? "the task's bound checks no longer match the spec — run `dev-spec-kit spec tasks` to re-sync, then `dev-spec-kit verify --stamp`"
     : null;
 }
 
@@ -102,10 +104,12 @@ export function taskDone(id: string): void {
   if (stale.length > 0 && config.verify.blockDoneOnFail) {
     console.error(pc.red(`✗ BLOCKED: ${stale.length} proof(s) are STALE — code moved after the run`));
     for (const ref of stale) {
-      console.error(pc.dim(`   🟣 ${ref} — re-run: rivet check run ${id} "${ref}"`));
+      console.error(pc.dim(`   🟣 ${ref} — re-run: dev-spec-kit check run ${id} "${ref}"`));
     }
     const driftHint = bindingDriftHint(cwd, id, current?.boundChecks ?? []);
-    console.error(pc.dim(`   ↻ ${driftHint ?? "or re-prove every criterion at once: rivet verify --stamp"}`));
+    console.error(
+      pc.dim(`   ↻ ${driftHint ?? "or re-prove every criterion at once: dev-spec-kit verify --stamp"}`),
+    );
     process.exitCode = 1;
     return;
   }
@@ -138,8 +142,8 @@ export function taskDone(id: string): void {
         pc.dim(
           driftHint
             ? `  ${driftHint}`
-            : "  done is evidence-bound — prove every criterion at once with `rivet verify --stamp`" +
-                " (or one ref: `rivet check run <task> <ref>`)",
+            : "  done is evidence-bound — prove every criterion at once with `dev-spec-kit verify --stamp`" +
+                " (or one ref: `dev-spec-kit check run <task> <ref>`)",
         ),
       );
       process.exitCode = 1;
@@ -284,7 +288,7 @@ async function runJudge(
       console.error(
         pc.red(`✗ judge ref needs a verdict`) +
           pc.dim(
-            ` — the agent supplies it: rivet check run ${taskId} "${ref}" --verdict pass|fail --reason "…"` +
+            ` — the agent supplies it: dev-spec-kit check run ${taskId} "${ref}" --verdict pass|fail --reason "…"` +
               " (or set verify.judge.mode=api + ANTHROPIC_API_KEY for headless judging)",
           ),
       );
@@ -311,10 +315,10 @@ async function runJudge(
 export function status(): void {
   const tasks = [...store(process.cwd()).all().values()];
   if (tasks.length === 0) {
-    console.log(pc.dim("no tasks yet — rivet task create <id> <title> --check <ref>"));
+    console.log(pc.dim("no tasks yet — dev-spec-kit task create <id> <title> --check <ref>"));
     return;
   }
-  console.log(pc.bold("\nRivet status — generated from the journal (ground truth)\n"));
+  console.log(pc.bold("\ndev-spec-kit status — generated from the journal (ground truth)\n"));
   for (const t of tasks) {
     const badge =
       t.status === "done"
@@ -334,10 +338,10 @@ export function status(): void {
   console.log("");
 }
 
-/** TRAIL-01: `rivet task trail <id>` — every gate, minute-level, done/blocked/skipped/pending. */
+/** TRAIL-01: `dev-spec-kit task trail <id>` — every gate, minute-level, done/blocked/skipped/pending. */
 export function taskTrail(id: string): void {
   const cwd = process.cwd();
-  const events = new Journal(join(cwd, ".rivet", "journal.jsonl")).read();
+  const events = new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl")).read();
   const { timeline, summary } = deriveTrail(events, id);
   console.log(pc.bold(`\nGate trail — ${id}\n`));
   const badge = (v: string) =>

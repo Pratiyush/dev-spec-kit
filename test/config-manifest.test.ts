@@ -59,7 +59,7 @@ describe("REQUIREMENT_COCKPIT-01 — manifest from the schema", () => {
 
   it("changed flags flip when a value differs from the default", () => {
     const m = generateManifest(
-      parseConfig({ project: { name: "rivet" }, spec: { criteriaFormat: "mixed" } }),
+      parseConfig({ project: { name: "dev-spec-kit" }, spec: { criteriaFormat: "mixed" } }),
     );
     const by = new Map(m.map((k) => [k.path, k]));
     expect(by.get("project.name")!.changed).toBe(true);

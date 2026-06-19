@@ -6,10 +6,10 @@ import { emitCockpit } from "./cockpit.js";
 import { label } from "./emoji.js";
 
 /**
- * `rivet dashboard` — emits the COCKPIT (the design-handoff shell + the window.RIVET sidecar)
- * and optionally opens it. DASH-02's single-file template grew into .rivet/cockpit/ with
+ * `dev-spec-kit dashboard` — emits the COCKPIT (the design-handoff shell + the window.RIVET sidecar)
+ * and optionally opens it. DASH-02's single-file template grew into .dev-spec-kit/cockpit/ with
  * FEAT-COCKPIT: the shell is static (written once per version), rivet.data.js carries the truth,
- * and `rivet web` serves the same files with the validated save API.
+ * and `dev-spec-kit web` serves the same files with the validated save API.
  */
 
 export interface RivetFile {
@@ -19,9 +19,9 @@ export interface RivetFile {
 
 const FILE_CAP = 50_000;
 
-/** FILES-01: every human-readable .rivet markdown artifact, in stable reading order. */
+/** FILES-01: every human-readable .dev-spec-kit markdown artifact, in stable reading order. */
 export function collectRivetFiles(cwd: string): RivetFile[] {
-  const base = join(cwd, ".rivet");
+  const base = join(cwd, ".dev-spec-kit");
   const out: RivetFile[] = [];
   const add = (rel: string) => {
     const p = join(base, rel);
@@ -56,9 +56,9 @@ export function dashboardCmd(opts: { open?: boolean }): void {
   console.log(
     pc.green(`✓ cockpit ${res.wroteShell ? "generated" : "data refreshed"}`) +
       pc.dim(
-        ` → .rivet/cockpit/index.html (dashboard + config studio · reloads every ${res.data.meta.refreshSeconds}s)`,
+        ` → .dev-spec-kit/cockpit/index.html (dashboard + config studio · reloads every ${res.data.meta.refreshSeconds}s)`,
       ),
   );
-  console.log(pc.dim(`  ${label("report")} edit config with save + gates: rivet web`));
+  console.log(pc.dim(`  ${label("report")} edit config with save + gates: dev-spec-kit web`));
   if (opts.open) spawnSync("open", [join(res.dir, "index.html")], { stdio: "ignore" });
 }

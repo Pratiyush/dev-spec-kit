@@ -7,7 +7,7 @@ import { verifyVerdict } from "../src/engine/gate.js";
 import { parseConfig } from "../src/config/schema.js";
 
 /**
- * FEAT-VERIFY-01 — "Build ALL. Run All Type Test." One journaled `rivet verify` = build steps +
+ * FEAT-VERIFY-01 — "Build ALL. Run All Type Test." One journaled `dev-spec-kit verify` = build steps +
  * every configured kind's FULL suite (no -t filter), sequential, report-all (a red never hides the
  * later reds), summarized 📋 with ⏱️ durations. A green task is not a green project; this command
  * is the project-level truth, and the PR gate demands it green ON THE CURRENT CODE TREE.
@@ -17,7 +17,7 @@ const ok = { cmd: "node", args: ["-e", "process.exit(0)"] };
 const fail = { cmd: "node", args: ["-e", "process.exit(1)"] };
 
 function tmp(): string {
-  return mkdtempSync(join(tmpdir(), "rivet-verify-"));
+  return mkdtempSync(join(tmpdir(), "dev-spec-kit-verify-"));
 }
 
 describe("FEAT-VERIFY-01 — plan: everything configured, nothing twice", () => {
@@ -97,7 +97,7 @@ describe("FEAT-VERIFY-01 — the PR gate demands a fresh green verify (same code
   it("no verify recorded ⇒ blocked", () => {
     const v = verifyVerdict([], "TREE");
     expect(v.ok).toBe(false);
-    expect(v.reasons.join(" ")).toMatch(/rivet verify/);
+    expect(v.reasons.join(" ")).toMatch(/dev-spec-kit verify/);
   });
 
   it("red verify ⇒ blocked; stale tree ⇒ blocked; fresh green ⇒ ok", () => {

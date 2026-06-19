@@ -31,7 +31,7 @@ const BIG_RE =
   /\b(feature|system|platform|architecture|redesign|refactor|migration|integrate|new (service|module|api|endpoint)|build (a|an|the)|implement|dashboard|pipeline)\b/i;
 /**
  * Build-intent signals. A request that *wants something built* is never research, even when it
- * contains investigative words — lesson #1 in .rivet/learnings.md: "compare with index" inside a
+ * contains investigative words — lesson #1 in .dev-spec-kit/learnings.md: "compare with index" inside a
  * feature ask misrouted a portfolio page to research.
  */
 const WANT_RE = /\b(?:i|we)\s+(?:want|need|would like)\b|\b(?:add|create|implement|make me)\b/i;

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * Rivet PreToolUse guard — gate protection (GATE-PROTECT-01).
+ * dev-spec-kit PreToolUse guard — gate protection (GATE-PROTECT-01).
  *
  * While a task is in flight, the agent must not edit the things that judge it: spec files, the gate
  * config, and any bound test file whose ref has already gone GREEN (pre-green edits are normal TDD).
  * Fix the code, don't weaken the gate. Escape hatch: a human-issued, time-boxed
- * `rivet unlock <path> --minutes N` (journaled). Self-contained mirror of src/engine/protect.ts —
+ * `dev-spec-kit unlock <path> --minutes N` (journaled). Self-contained mirror of src/engine/protect.ts —
  * keep in sync. Exit 2 blocks the tool call.
  */
 import { readFileSync, existsSync } from "node:fs";
@@ -32,11 +32,11 @@ if (!EDIT_TOOLS.has(toolName)) process.exit(0);
 const filePath = payload.tool_input?.file_path ?? payload.tool_input?.notebook_path;
 if (!filePath) process.exit(0);
 
-// Find the Rivet project root upward from cwd.
+// Find the dev-spec-kit project root upward from cwd.
 let dir = payload.cwd || process.cwd();
 let root = null;
 for (let i = 0; i < 10; i++) {
-  if (existsSync(join(dir, ".rivet"))) {
+  if (existsSync(join(dir, ".dev-spec-kit"))) {
     root = dir;
     break;
   }
@@ -49,7 +49,7 @@ if (!root) process.exit(0);
 // Fold the journal minimally: in-flight tasks + which refs have a passing run.
 let events = [];
 try {
-  events = readFileSync(join(root, ".rivet", "journal.jsonl"), "utf8")
+  events = readFileSync(join(root, ".dev-spec-kit", "journal.jsonl"), "utf8")
     .split("\n")
     .filter(Boolean)
     .map((l) => {
@@ -85,7 +85,7 @@ const rel = String(filePath).startsWith(rootSlash) ? String(filePath).slice(root
 
 // Human-issued unlock?
 try {
-  const unlock = JSON.parse(readFileSync(join(root, ".rivet", "unlock.json"), "utf8"));
+  const unlock = JSON.parse(readFileSync(join(root, ".dev-spec-kit", "unlock.json"), "utf8"));
   if (Date.parse(unlock.until) > Date.now() && (unlock.paths ?? []).some((p) => rel === p || String(filePath).endsWith("/" + p))) {
     process.exit(0);
   }
@@ -95,14 +95,14 @@ try {
 
 const block = (what, ids) => {
   console.error(
-    `rivet guard: ${what} is protected while task(s) ${ids.join(", ")} are in flight — fix the code, don't weaken the gate.\n` +
-      `If this edit is legitimate, ask the human to run: rivet unlock ${rel} --minutes 30`,
+    `dev-spec-kit guard: ${what} is protected while task(s) ${ids.join(", ")} are in flight — fix the code, don't weaken the gate.\n` +
+      `If this edit is legitimate, ask the human to run: dev-spec-kit unlock ${rel} --minutes 30`,
   );
   process.exit(2);
 };
 
 const ids = inFlight.map(([id]) => id);
-if (rel.startsWith(".rivet/specs/") || rel === ".rivet/config.json") block(rel, ids);
+if (rel.startsWith(".dev-spec-kit/specs/") || rel === ".dev-spec-kit/config.json") block(rel, ids);
 
 for (const [id, t] of inFlight) {
   for (const ref of t.proven) {

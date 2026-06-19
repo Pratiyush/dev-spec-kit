@@ -31,13 +31,18 @@ export function renderResume(tasks: Task[]): string {
   ];
   const open = tasks.find((t) => t.status === "in_progress") ?? tasks.find((t) => t.status !== "done");
   if (!open) {
-    lines.push("✅ all task(s) done — nothing open. Next: `rivet graph build` → `rivet pr`.");
+    lines.push("✅ all task(s) done — nothing open. Next: `dev-spec-kit graph build` → `dev-spec-kit pr`.");
   } else {
     lines.push("## THE ONE OPEN ACTION", "", `→ **${open.id}** — ${open.title} (${open.status})`);
     const unproven = open.boundChecks.filter((ref) => !open.results[ref]?.passed);
     for (const ref of unproven) lines.push(`  ○ unproven: \`${ref}\``);
     lines.push("");
   }
-  lines.push("## Rebuild truth", "", "`rivet status` · `rivet graph build` · `rivet log -n 10`", "");
+  lines.push(
+    "## Rebuild truth",
+    "",
+    "`dev-spec-kit status` · `dev-spec-kit graph build` · `dev-spec-kit log -n 10`",
+    "",
+  );
   return lines.join("\n");
 }

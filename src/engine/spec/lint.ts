@@ -3,7 +3,7 @@ import { splitRef } from "../verify/report.js";
 
 /**
  * FEAT-LINT-01 — static drift detection. The dogfood lesson: a renamed test left a `@check` ref
- * pointing at a name that no longer exists, and Rivet only noticed on a check run — where a bad
+ * pointing at a name that no longer exists, and dev-spec-kit only noticed on a check run — where a bad
  * match can silently pass (now fixed by FIX-TRUST-01, but the binding was still rotten). A STATIC
  * lint catches it before any run: grep the test literal, flag the orphan. (OpenFastTrace's model:
  * ORPHANED = a reference to something that doesn't exist; UNCOVERED = an obligation with no check.)

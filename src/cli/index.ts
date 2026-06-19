@@ -45,13 +45,14 @@ function safe<A extends unknown[]>(fn: (...args: A) => void | Promise<void>): (.
 
 const program = new Command();
 
-// R-AUDIT-01: every invocation inside a Rivet project lands in the journal (no-op elsewhere).
+// R-AUDIT-01: every invocation inside a dev-spec-kit project lands in the journal (no-op elsewhere).
 program.hook("preAction", (_thisCommand, actionCommand) => {
-  // RIVET_NO_AUDIT=1 suppresses the audit write — set by the pre-commit gate so a read-only
+  // DEV_SPEC_KIT_NO_AUDIT=1 suppresses the audit write — set by the pre-commit gate so a read-only
   // `spec lint` run doesn't dirty the journal on every commit (the hook would never settle).
-  if (process.env.RIVET_NO_AUDIT === "1") return;
+  if (process.env.DEV_SPEC_KIT_NO_AUDIT === "1") return;
   const path: string[] = [];
-  for (let c: Command | null = actionCommand; c && c.name() !== "rivet"; c = c.parent) path.unshift(c.name());
+  for (let c: Command | null = actionCommand; c && c.name() !== "dev-spec-kit"; c = c.parent)
+    path.unshift(c.name());
   try {
     auditCliRun(process.cwd(), path, actionCommand.args.map(String));
   } catch {
@@ -60,9 +61,9 @@ program.hook("preAction", (_thisCommand, actionCommand) => {
 });
 
 program
-  .name("rivet")
+  .name("dev-spec-kit")
   .description(
-    "Rivet — spec-driven development with a Verified Traceability Graph.\n" +
+    "dev-spec-kit — spec-driven development with a Verified Traceability Graph.\n" +
       "Every requirement riveted to a passing check.",
   )
   .version("0.1.0");
@@ -74,8 +75,8 @@ program
 
 program
   .command("init")
-  .description("Initialize Rivet in the current project (.rivet/ config, laws, specs, journal)")
-  .option("-f, --force", "overwrite the existing Rivet config")
+  .description("Initialize dev-spec-kit in the current project (.dev-spec-kit/ config, laws, specs, journal)")
+  .option("-f, --force", "overwrite the existing dev-spec-kit config")
   .option(
     "-p, --platforms <list>",
     "comma-separated codebase platforms (typescript,electron,python,…) — seeds best-practice law packs",
@@ -159,14 +160,16 @@ program
 const graph = program.command("graph").description("The Verified Traceability Graph");
 graph
   .command("build")
-  .description("Fuse specs + journal + graphify code graph into .rivet/graph.json (exit 1 on red/stale)")
+  .description(
+    "Fuse specs + journal + graphify code graph into .dev-spec-kit/graph.json (exit 1 on red/stale)",
+  )
   .option("--no-refresh", "skip the graphify re-index even if the code graph is stale")
   .action(safe((opts: { refresh?: boolean }) => graphBuild(opts)));
 
 const spec = program.command("spec").description("Spec-driven flow (specs are the source of truth)");
 spec
   .command("tasks")
-  .description("Create/sync evidence-bound tasks from .rivet/specs/*.md @check bindings (idempotent)")
+  .description("Create/sync evidence-bound tasks from .dev-spec-kit/specs/*.md @check bindings (idempotent)")
   .action(safe(() => specTasks()));
 spec
   .command("lint")
@@ -181,14 +184,14 @@ spec
 
 program
   .command("approve")
-  .description("Record the human gate as a signed artifact (.rivet/approvals/) — tasks must be DONE")
+  .description("Record the human gate as a signed artifact (.dev-spec-kit/approvals/) — tasks must be DONE")
   .argument("<taskIds...>")
   .option("-n, --note <note>", "approval note")
   .action(safe((taskIds: string[], opts: { note?: string }) => approve(taskIds, opts)));
 
 program
   .command("pr")
-  .description("Generate the graph-derived PR body (.rivet/pr-body.md); --create opens it via gh")
+  .description("Generate the graph-derived PR body (.dev-spec-kit/pr-body.md); --create opens it via gh")
   .option("-t, --title <title>", "PR title")
   .option("--create", "create the PR with gh after generating the body")
   .action(safe((opts: { title?: string; create?: boolean }) => pr(opts)));
@@ -198,7 +201,7 @@ program
   .description("The front door — classify a request into research | quick | full-spec (config-aware)")
   .argument("[request]", "the raw request text (or use --file)")
   .option("-m, --mode <mode>", "override: research | quick | full-spec")
-  .option("-f, --file <path>", "route an external idea file (e.g. .rivet/intake/<idea>.md)")
+  .option("-f, --file <path>", "route an external idea file (e.g. .dev-spec-kit/intake/<idea>.md)")
   .action(safe((text: string | undefined, opts: { mode?: string; file?: string }) => route(text, opts)));
 
 const guard = program.command("guard").description("Hard gates (hook-friendly; exit 2 = block)");
@@ -262,20 +265,22 @@ program
 
 program
   .command("dashboard")
-  .description("Emit the cockpit (.rivet/cockpit/ — dashboard + config studio, auto-reloading data sidecar)")
+  .description(
+    "Emit the cockpit (.dev-spec-kit/cockpit/ — dashboard + config studio, auto-reloading data sidecar)",
+  )
   .option("--open", "open it in the browser after generating (macOS)")
   .action(safe((opts: { open?: boolean }) => dashboardCmd(opts)));
 
 program
   .command("board")
   .description(
-    "Regenerate .rivet/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)",
+    "Regenerate .dev-spec-kit/LEDGER.md + TRACKING.md from the journal and graph (boards that cannot lie)",
   )
   .action(safe(() => boardCmd()));
 
 program
   .command("resume")
-  .description("Write + print the state-only handoff (.rivet/RESUME.md), generated from the journal")
+  .description("Write + print the state-only handoff (.dev-spec-kit/RESUME.md), generated from the journal")
   .action(safe(() => resumeCmd()));
 
 program

@@ -16,9 +16,9 @@ import { loadConfig } from "./config-io.js";
 import { label } from "./emoji.js";
 
 /**
- * `rivet verify` — FEAT-VERIFY-01: Build ALL + run EVERY configured kind's full suite, sequential,
+ * `dev-spec-kit verify` — FEAT-VERIFY-01: Build ALL + run EVERY configured kind's full suite, sequential,
  * report-all, 📋 summary with ⏱️ durations, journaled as a `verify.run` event carrying the code
- * tree. The PR gate (hook, `rivet guard pr`, `rivet pr`) requires the last one green AND fresh.
+ * tree. The PR gate (hook, `dev-spec-kit guard pr`, `dev-spec-kit pr`) requires the last one green AND fresh.
  *
  * FEAT-STAMP-01: `--stamp` additionally maps the single suite run back onto every bound criterion
  * (one `vitest run` stamps N proofs) — the fast path that finally satisfies `trace`, instead of N
@@ -32,12 +32,12 @@ export function verifyCmd(opts?: { stamp?: boolean; advance?: boolean }): void {
   const stamp = (opts?.stamp ?? false) || advance;
   console.log(
     pc.bold(
-      `\n${label("build")} rivet verify — build ALL + run ALL kinds (full suites)` +
+      `\n${label("build")} dev-spec-kit verify — build ALL + run ALL kinds (full suites)` +
         (stamp ? " + stamp proofs" : "") +
         "\n",
     ),
   );
-  const reportDir = stamp ? mkdtempSync(join(tmpdir(), "rivet-stamp-")) : undefined;
+  const reportDir = stamp ? mkdtempSync(join(tmpdir(), "dev-spec-kit-stamp-")) : undefined;
   try {
     const run = runVerify(cwd, config, reportDir ? { reportDir } : undefined);
     if (run.steps.length === 0) {
@@ -60,7 +60,7 @@ export function verifyCmd(opts?: { stamp?: boolean; advance?: boolean }): void {
       (run.passed ? pc.green(`\n✅ verify GREEN`) : pc.red(`\n❌ verify RED`)) +
         pc.dim(`${idStamp ? ` @ ${idStamp}` : ""} — journaled`),
     );
-    const journal = new Journal(join(cwd, ".rivet", "journal.jsonl"));
+    const journal = new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl"));
     journal.append("verify.run", {
       passed: run.passed,
       steps: run.steps,

@@ -44,16 +44,16 @@ describe("parseStaleWorktrees — isolation dirs only", () => {
   });
 });
 
-describe("rivet doctor — the command", () => {
+describe("dev-spec-kit doctor — the command", () => {
   it("prints the prerequisite header and (in this env) passes the required checks", () => {
     const { text } = run(tmpProject(), () => runDoctor());
-    expect(text).toContain("Rivet doctor");
+    expect(text).toContain("dev-spec-kit doctor");
     expect(text).toContain("prerequisite");
   });
 
   it("reports drift and exits 1 when a spec has an orphaned @check", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=gone.test.ts::works\n",
     });
     const { text, exitCode } = run(dir, () => runDoctor());
@@ -65,7 +65,7 @@ describe("rivet doctor — the command", () => {
   it("reports spec in sync when every @check resolves", () => {
     const dir = tmpProject({
       "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\n",
     });
     const { text } = run(dir, () => runDoctor());
@@ -73,10 +73,10 @@ describe("rivet doctor — the command", () => {
   });
 });
 
-describe("rivet doctor — uncovered criteria warning", () => {
+describe("dev-spec-kit doctor — uncovered criteria warning", () => {
   it("lists an UNCOVERED criterion that has no @check", () => {
     const dir = tmpProject({
-      ".rivet/specs/x.md":
+      ".dev-spec-kit/specs/x.md":
         "## Requirement REQUIREMENT_X-01 — t\nWHEN x THEN the system SHALL y.\n@check kind=unit ref=foo.test.ts::works\nThe system SHALL also do z.\n",
       "foo.test.ts": 'import {it} from "vitest";\nit("works", () => {});\n',
     });

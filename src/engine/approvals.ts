@@ -9,7 +9,7 @@ import { identityLabel, proofStamp } from "./verify/stamp.js";
 /**
  * Recorded human approval — a signed, dated artifact in the repo, not a chat message.
  *
- * `rivet approve` requires the named tasks to be DONE (their checks already proved green by the
+ * `dev-spec-kit approve` requires the named tasks to be DONE (their checks already proved green by the
  * done-gate); the artifact then records WHO approved WHAT, WHEN, at WHICH commit, with the evidence
  * inline. Approval is the human gate ON TOP of verification, never a substitute for it.
  */
@@ -72,7 +72,7 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
   }
   const markdown = lines.join("\n");
 
-  const dir = join(input.projectDir, ".rivet", "approvals");
+  const dir = join(input.projectDir, ".dev-spec-kit", "approvals");
   mkdirSync(dir, { recursive: true });
   const slug = input.taskIds.join("-").replace(/[^A-Za-z0-9_-]+/g, "_");
   const path = join(dir, `${date.slice(0, 10)}-${slug}.md`);
@@ -90,7 +90,7 @@ export function createApproval(input: ApprovalInput): { path: string; markdown: 
 
 /** List approval artifact filenames (for the PR body). */
 export function listApprovals(projectDir: string): string[] {
-  const dir = join(projectDir, ".rivet", "approvals");
+  const dir = join(projectDir, ".dev-spec-kit", "approvals");
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith(".md"))

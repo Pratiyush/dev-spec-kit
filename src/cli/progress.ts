@@ -33,9 +33,11 @@ export function renderProgress(tasks: Task[]): string {
     lines.push(`  ${STATUS_EMOJI[t.status]} ${pc.bold(t.id)} ${t.title} ${lights}`);
   }
   if (done === tasks.length) {
-    lines.push(`🎉 all ${tasks.length} task(s) done (100%) — run \`rivet graph build\` then \`rivet pr\``);
     lines.push(
-      `💾 natural checkpoint — commit/push now; compaction is safe (.rivet/RESUME.md carries the handoff)`,
+      `🎉 all ${tasks.length} task(s) done (100%) — run \`dev-spec-kit graph build\` then \`dev-spec-kit pr\``,
+    );
+    lines.push(
+      `💾 natural checkpoint — commit/push now; compaction is safe (.dev-spec-kit/RESUME.md carries the handoff)`,
     );
   } else {
     const next = tasks.find((t) => t.status === "in_progress") ?? tasks.find((t) => t.status === "pending");
