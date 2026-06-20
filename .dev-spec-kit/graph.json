@@ -424,12 +424,51 @@
       }
     },
     {
+      "id": "file:backlog.md",
+      "kind": "codeNode",
+      "label": "backlog.md",
+      "meta": {
+        "sourceFile": "backlog.md",
+        "community": 5
+      }
+    },
+    {
+      "id": "doc:backlog.md#Backlog — dev-spec-kit",
+      "kind": "codeNode",
+      "label": "Backlog — dev-spec-kit",
+      "meta": {
+        "sourceFile": "backlog.md",
+        "sourceLocation": "backlog.md:1",
+        "community": 5
+      }
+    },
+    {
+      "id": "doc:backlog.md#Now / next",
+      "kind": "codeNode",
+      "label": "Now / next",
+      "meta": {
+        "sourceFile": "backlog.md",
+        "sourceLocation": "backlog.md:7",
+        "community": 5
+      }
+    },
+    {
+      "id": "doc:backlog.md#Deferred features — revisit on trigger (see `.dev-spec-kit/DEFER.md`)",
+      "kind": "codeNode",
+      "label": "Deferred features — revisit on trigger (see `.dev-spec-kit/DEFER.md`)",
+      "meta": {
+        "sourceFile": "backlog.md",
+        "sourceLocation": "backlog.md:19",
+        "community": 5
+      }
+    },
+    {
       "id": "file:commands/dev-spec-kit.md",
       "kind": "codeNode",
       "label": "commands/dev-spec-kit.md",
       "meta": {
         "sourceFile": "commands/dev-spec-kit.md",
-        "community": 5
+        "community": 6
       }
     },
     {
@@ -438,7 +477,7 @@
       "label": "eslint.config.js",
       "meta": {
         "sourceFile": "eslint.config.js",
-        "community": 6
+        "community": 7
       }
     },
     {
@@ -447,7 +486,7 @@
       "label": "hooks/guard-facts.mjs",
       "meta": {
         "sourceFile": "hooks/guard-facts.mjs",
-        "community": 7
+        "community": 8
       }
     },
     {
@@ -457,7 +496,7 @@
       "meta": {
         "sourceFile": "hooks/guard-facts.mjs",
         "sourceLocation": "hooks/guard-facts.mjs:16",
-        "community": 7
+        "community": 8
       }
     },
     {
@@ -466,7 +505,7 @@
       "label": "hooks/guard-lint.mjs",
       "meta": {
         "sourceFile": "hooks/guard-lint.mjs",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -476,7 +515,7 @@
       "meta": {
         "sourceFile": "hooks/guard-lint.mjs",
         "sourceLocation": "hooks/guard-lint.mjs:14",
-        "community": 8
+        "community": 9
       }
     },
     {
@@ -485,7 +524,7 @@
       "label": "hooks/guard-pr.mjs",
       "meta": {
         "sourceFile": "hooks/guard-pr.mjs",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -495,7 +534,7 @@
       "meta": {
         "sourceFile": "hooks/guard-pr.mjs",
         "sourceLocation": "hooks/guard-pr.mjs:14",
-        "community": 9
+        "community": 10
       }
     },
     {
@@ -504,7 +543,7 @@
       "label": "hooks/guard-protect.mjs",
       "meta": {
         "sourceFile": "hooks/guard-protect.mjs",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -514,7 +553,7 @@
       "meta": {
         "sourceFile": "hooks/guard-protect.mjs",
         "sourceLocation": "hooks/guard-protect.mjs:14",
-        "community": 10
+        "community": 11
       }
     },
     {
@@ -523,7 +562,7 @@
       "label": "hooks/hooks.json",
       "meta": {
         "sourceFile": "hooks/hooks.json",
-        "community": 11
+        "community": 12
       }
     },
     {
@@ -532,7 +571,7 @@
       "label": "hooks",
       "meta": {
         "sourceFile": "hooks/hooks.json",
-        "community": 11
+        "community": 12
       }
     },
     {
@@ -541,7 +580,7 @@
       "label": "hooks/resume-save.mjs",
       "meta": {
         "sourceFile": "hooks/resume-save.mjs",
-        "community": 12
+        "community": 13
       }
     },
     {
@@ -551,7 +590,26 @@
       "meta": {
         "sourceFile": "hooks/resume-save.mjs",
         "sourceLocation": "hooks/resume-save.mjs:11",
-        "community": 12
+        "community": 13
+      }
+    },
+    {
+      "id": "file:human-backlog.md",
+      "kind": "codeNode",
+      "label": "human-backlog.md",
+      "meta": {
+        "sourceFile": "human-backlog.md",
+        "community": 14
+      }
+    },
+    {
+      "id": "doc:human-backlog.md#Human backlog — dev-spec-kit (your actions, stepwise)",
+      "kind": "codeNode",
+      "label": "Human backlog — dev-spec-kit (your actions, stepwise)",
+      "meta": {
+        "sourceFile": "human-backlog.md",
+        "sourceLocation": "human-backlog.md:1",
+        "community": 14
       }
     },
     {
@@ -560,7 +618,7 @@
       "label": "package.json",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -569,7 +627,7 @@
       "label": "name",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -578,7 +636,7 @@
       "label": "version",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -587,7 +645,7 @@
       "label": "description",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -596,7 +654,7 @@
       "label": "type",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -605,7 +663,7 @@
       "label": "bin",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -614,7 +672,7 @@
       "label": "main",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -623,7 +681,7 @@
       "label": "types",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -632,7 +690,7 @@
       "label": "files",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -641,7 +699,7 @@
       "label": "engines",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -650,7 +708,7 @@
       "label": "scripts",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -659,7 +717,7 @@
       "label": "dependencies",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -668,7 +726,7 @@
       "label": "devDependencies",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -677,7 +735,7 @@
       "label": "keywords",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -686,7 +744,7 @@
       "label": "author",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -695,7 +753,7 @@
       "label": "license",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -704,7 +762,7 @@
       "label": "repository",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -713,7 +771,7 @@
       "label": "packageManager",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -722,7 +780,7 @@
       "label": "lint-staged",
       "meta": {
         "sourceFile": "package.json",
-        "community": 13
+        "community": 15
       }
     },
     {
@@ -731,7 +789,7 @@
       "label": "pnpm-lock.yaml",
       "meta": {
         "sourceFile": "pnpm-lock.yaml",
-        "community": 14
+        "community": 16
       }
     },
     {
@@ -740,7 +798,7 @@
       "label": "pnpm-workspace.yaml",
       "meta": {
         "sourceFile": "pnpm-workspace.yaml",
-        "community": 15
+        "community": 17
       }
     },
     {
@@ -749,7 +807,7 @@
       "label": "release-please-config.json",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -758,7 +816,7 @@
       "label": "$schema",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -767,7 +825,7 @@
       "label": "include-component-in-tag",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -776,7 +834,7 @@
       "label": "packages",
       "meta": {
         "sourceFile": "release-please-config.json",
-        "community": 16
+        "community": 18
       }
     },
     {
@@ -785,7 +843,7 @@
       "label": "skills/dev-spec-kit-analyze/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-analyze/SKILL.md",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -795,7 +853,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-analyze/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-analyze/SKILL.md:6",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -805,7 +863,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-analyze/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-analyze/SKILL.md:12",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -815,7 +873,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-analyze/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-analyze/SKILL.md:18",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -825,7 +883,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-analyze/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-analyze/SKILL.md:27",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -834,7 +892,7 @@
       "label": "skills/dev-spec-kit-architect/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-architect/SKILL.md",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -844,7 +902,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-architect/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-architect/SKILL.md:6",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -854,7 +912,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-architect/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-architect/SKILL.md:12",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -864,7 +922,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-architect/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-architect/SKILL.md:18",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -873,7 +931,7 @@
       "label": "skills/dev-spec-kit-clarify/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-clarify/SKILL.md",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -883,7 +941,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-clarify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-clarify/SKILL.md:6",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -893,7 +951,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-clarify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-clarify/SKILL.md:12",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -903,7 +961,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-clarify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-clarify/SKILL.md:20",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -913,7 +971,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-clarify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-clarify/SKILL.md:28",
-        "community": 18
+        "community": 20
       }
     },
     {
@@ -922,7 +980,7 @@
       "label": "skills/dev-spec-kit-finish/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-finish/SKILL.md",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -932,7 +990,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-finish/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-finish/SKILL.md:6",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -942,7 +1000,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-finish/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-finish/SKILL.md:10",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -952,7 +1010,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-finish/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-finish/SKILL.md:21",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -962,7 +1020,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-finish/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-finish/SKILL.md:30",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -972,7 +1030,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-finish/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-finish/SKILL.md:39",
-        "community": 19
+        "community": 21
       }
     },
     {
@@ -981,7 +1039,7 @@
       "label": "skills/dev-spec-kit-graph/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -991,7 +1049,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graph/SKILL.md:6",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1001,7 +1059,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graph/SKILL.md:18",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1011,7 +1069,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graph/SKILL.md:29",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1021,7 +1079,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graph/SKILL.md:40",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1031,7 +1089,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graph/SKILL.md:53",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1041,7 +1099,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graph/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graph/SKILL.md:68",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1050,7 +1108,7 @@
       "label": "skills/dev-spec-kit-graphify/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graphify/SKILL.md",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1060,7 +1118,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graphify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graphify/SKILL.md:6",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1070,7 +1128,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graphify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graphify/SKILL.md:13",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1080,7 +1138,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graphify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graphify/SKILL.md:20",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1090,7 +1148,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graphify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graphify/SKILL.md:30",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1100,7 +1158,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-graphify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-graphify/SKILL.md:37",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1109,7 +1167,7 @@
       "label": "skills/dev-spec-kit-intake/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-intake/SKILL.md",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1119,7 +1177,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-intake/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-intake/SKILL.md:6",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1129,7 +1187,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-intake/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-intake/SKILL.md:11",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1139,7 +1197,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-intake/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-intake/SKILL.md:28",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1148,7 +1206,7 @@
       "label": "skills/dev-spec-kit-judge/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-judge/SKILL.md",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1158,7 +1216,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-judge/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-judge/SKILL.md:6",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1168,7 +1226,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-judge/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-judge/SKILL.md:13",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1177,7 +1235,7 @@
       "label": "skills/dev-spec-kit-research/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-research/SKILL.md",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1187,7 +1245,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-research/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-research/SKILL.md:6",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1196,7 +1254,7 @@
       "label": "skills/dev-spec-kit-retro/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-retro/SKILL.md",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1206,7 +1264,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-retro/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-retro/SKILL.md:6",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1216,7 +1274,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-retro/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-retro/SKILL.md:11",
-        "community": 21
+        "community": 23
       }
     },
     {
@@ -1225,7 +1283,7 @@
       "label": "skills/dev-spec-kit-review/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-review/SKILL.md",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -1235,7 +1293,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-review/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-review/SKILL.md:6",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -1245,7 +1303,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-review/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-review/SKILL.md:11",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -1255,7 +1313,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-review/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-review/SKILL.md:27",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -1265,7 +1323,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-review/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-review/SKILL.md:41",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -1275,7 +1333,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-review/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-review/SKILL.md:48",
-        "community": 22
+        "community": 24
       }
     },
     {
@@ -1284,7 +1342,7 @@
       "label": "skills/dev-spec-kit-revitify/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-revitify/SKILL.md",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1294,7 +1352,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-revitify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-revitify/SKILL.md:6",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1304,7 +1362,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-revitify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-revitify/SKILL.md:13",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1314,7 +1372,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-revitify/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-revitify/SKILL.md:21",
-        "community": 20
+        "community": 22
       }
     },
     {
@@ -1323,7 +1381,7 @@
       "label": "skills/dev-spec-kit-spec-author/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-spec-author/SKILL.md",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1333,7 +1391,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-spec-author/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-spec-author/SKILL.md:6",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1343,7 +1401,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-spec-author/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-spec-author/SKILL.md:12",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1353,7 +1411,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-spec-author/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-spec-author/SKILL.md:47",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1363,7 +1421,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-spec-author/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-spec-author/SKILL.md:101",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1372,7 +1430,7 @@
       "label": "skills/dev-spec-kit-test-author/SKILL.md",
       "meta": {
         "sourceFile": "skills/dev-spec-kit-test-author/SKILL.md",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1382,7 +1440,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-test-author/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-test-author/SKILL.md:6",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1392,7 +1450,7 @@
       "meta": {
         "sourceFile": "skills/dev-spec-kit-test-author/SKILL.md",
         "sourceLocation": "skills/dev-spec-kit-test-author/SKILL.md:22",
-        "community": 17
+        "community": 19
       }
     },
     {
@@ -1450,7 +1508,7 @@
       "label": "src/cli/board-cmd.ts",
       "meta": {
         "sourceFile": "src/cli/board-cmd.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1460,7 +1518,7 @@
       "meta": {
         "sourceFile": "src/cli/board-cmd.ts",
         "sourceLocation": "src/cli/board-cmd.ts:7",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1469,7 +1527,7 @@
       "label": "src/cli/boards.ts",
       "meta": {
         "sourceFile": "src/cli/boards.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1479,7 +1537,7 @@
       "meta": {
         "sourceFile": "src/cli/boards.ts",
         "sourceLocation": "src/cli/boards.ts:25",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1489,7 +1547,7 @@
       "meta": {
         "sourceFile": "src/cli/boards.ts",
         "sourceLocation": "src/cli/boards.ts:67",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -1499,7 +1557,7 @@
       "meta": {
         "sourceFile": "src/cli/boards.ts",
         "sourceLocation": "src/cli/boards.ts:91",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1508,7 +1566,7 @@
       "label": "src/cli/cockpit-assets/index.html",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/index.html",
-        "community": 25
+        "community": 27
       }
     },
     {
@@ -1517,7 +1575,7 @@
       "label": "src/cli/cockpit-assets/rivet.app.js",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.app.js",
-        "community": 26
+        "community": 28
       }
     },
     {
@@ -1526,7 +1584,7 @@
       "label": "src/cli/cockpit-assets/rivet.config.js",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.config.js",
-        "community": 27
+        "community": 29
       }
     },
     {
@@ -1535,7 +1593,7 @@
       "label": "src/cli/cockpit-assets/rivet.core.js",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1545,7 +1603,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:23",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1555,7 +1613,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:49",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1565,7 +1623,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:63",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1575,7 +1633,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:153",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1585,7 +1643,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:232",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1595,7 +1653,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:246",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1605,7 +1663,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:281",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1615,7 +1673,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:285",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1625,7 +1683,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:291",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1635,7 +1693,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:302",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1645,7 +1703,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:320",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1655,7 +1713,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:328",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1665,7 +1723,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:337",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1675,7 +1733,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.core.js",
         "sourceLocation": "src/cli/cockpit-assets/rivet.core.js:344",
-        "community": 28
+        "community": 30
       }
     },
     {
@@ -1684,7 +1742,7 @@
       "label": "src/cli/cockpit-assets/rivet.css",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.css",
-        "community": 29
+        "community": 31
       }
     },
     {
@@ -1693,7 +1751,7 @@
       "label": "src/cli/cockpit-assets/rivet.dashboard.js",
       "meta": {
         "sourceFile": "src/cli/cockpit-assets/rivet.dashboard.js",
-        "community": 30
+        "community": 32
       }
     },
     {
@@ -1702,7 +1760,7 @@
       "label": "src/cli/cockpit-data.ts",
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1712,7 +1770,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:18",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1722,7 +1780,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:28",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1732,7 +1790,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:36",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1742,7 +1800,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:85",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1752,7 +1810,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:112",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -1762,7 +1820,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:238",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1772,7 +1830,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:246",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1781,7 +1839,7 @@
       "label": "src/cli/cockpit.ts",
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1791,7 +1849,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:13",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1801,7 +1859,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:15",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1811,7 +1869,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:26",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1821,7 +1879,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:30",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1831,7 +1889,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:36",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1840,7 +1898,7 @@
       "label": "src/cli/config-io.ts",
       "meta": {
         "sourceFile": "src/cli/config-io.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -1850,7 +1908,7 @@
       "meta": {
         "sourceFile": "src/cli/config-io.ts",
         "sourceLocation": "src/cli/config-io.ts:12",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -1860,7 +1918,7 @@
       "meta": {
         "sourceFile": "src/cli/config-io.ts",
         "sourceLocation": "src/cli/config-io.ts:19",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -1869,7 +1927,7 @@
       "label": "src/cli/dashboard.ts",
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1879,7 +1937,7 @@
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
         "sourceLocation": "src/cli/dashboard.ts:15",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1889,7 +1947,7 @@
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
         "sourceLocation": "src/cli/dashboard.ts:23",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1899,7 +1957,7 @@
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
         "sourceLocation": "src/cli/dashboard.ts:53",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -1908,7 +1966,7 @@
       "label": "src/cli/doctor.ts",
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1918,7 +1976,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:7",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1928,7 +1986,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:15",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1938,7 +1996,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:18",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1948,7 +2006,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:28",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1958,7 +2016,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:38",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1968,7 +2026,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:89",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1978,7 +2036,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:97",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -1987,7 +2045,7 @@
       "label": "src/cli/emoji.ts",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -1997,7 +2055,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:11",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -2007,7 +2065,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:41",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -2017,7 +2075,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:68",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -2027,7 +2085,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:86",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -2037,7 +2095,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:97",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -2047,7 +2105,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:101",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -2057,7 +2115,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:106",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2066,7 +2124,7 @@
       "label": "src/cli/graph.ts",
       "meta": {
         "sourceFile": "src/cli/graph.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2076,7 +2134,7 @@
       "meta": {
         "sourceFile": "src/cli/graph.ts",
         "sourceLocation": "src/cli/graph.ts:18",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2085,7 +2143,7 @@
       "label": "src/cli/index.ts",
       "meta": {
         "sourceFile": "src/cli/index.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2095,7 +2153,7 @@
       "meta": {
         "sourceFile": "src/cli/index.ts",
         "sourceLocation": "src/cli/index.ts:26",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2104,7 +2162,7 @@
       "label": "src/cli/init.ts",
       "meta": {
         "sourceFile": "src/cli/init.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2114,7 +2172,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:25",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2124,7 +2182,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:31",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2134,7 +2192,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:48",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2144,7 +2202,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:93",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2154,7 +2212,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:101",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2163,7 +2221,7 @@
       "label": "src/cli/laws-cmd.ts",
       "meta": {
         "sourceFile": "src/cli/laws-cmd.ts",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -2173,7 +2231,7 @@
       "meta": {
         "sourceFile": "src/cli/laws-cmd.ts",
         "sourceLocation": "src/cli/laws-cmd.ts:5",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -2182,7 +2240,7 @@
       "label": "src/cli/log.ts",
       "meta": {
         "sourceFile": "src/cli/log.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -2192,7 +2250,7 @@
       "meta": {
         "sourceFile": "src/cli/log.ts",
         "sourceLocation": "src/cli/log.ts:12",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -2202,7 +2260,7 @@
       "meta": {
         "sourceFile": "src/cli/log.ts",
         "sourceLocation": "src/cli/log.ts:24",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -2212,7 +2270,7 @@
       "meta": {
         "sourceFile": "src/cli/log.ts",
         "sourceLocation": "src/cli/log.ts:58",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -2222,7 +2280,7 @@
       "meta": {
         "sourceFile": "src/cli/log.ts",
         "sourceLocation": "src/cli/log.ts:64",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -2231,7 +2289,7 @@
       "label": "src/cli/materialize.ts",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -2241,7 +2299,7 @@
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
         "sourceLocation": "src/cli/materialize.ts:22",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -2251,7 +2309,7 @@
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
         "sourceLocation": "src/cli/materialize.ts:33",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2261,7 +2319,7 @@
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
         "sourceLocation": "src/cli/materialize.ts:74",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2271,7 +2329,7 @@
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
         "sourceLocation": "src/cli/materialize.ts:78",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2281,7 +2339,7 @@
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
         "sourceLocation": "src/cli/materialize.ts:82",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -2290,7 +2348,7 @@
       "label": "src/cli/progress.ts",
       "meta": {
         "sourceFile": "src/cli/progress.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2300,7 +2358,7 @@
       "meta": {
         "sourceFile": "src/cli/progress.ts",
         "sourceLocation": "src/cli/progress.ts:17",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2309,7 +2367,7 @@
       "label": "src/cli/queries.ts",
       "meta": {
         "sourceFile": "src/cli/queries.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2319,7 +2377,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:27",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2329,7 +2387,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:34",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2339,7 +2397,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:64",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2349,7 +2407,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:126",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2358,7 +2416,7 @@
       "label": "src/cli/refresh-docs.ts",
       "meta": {
         "sourceFile": "src/cli/refresh-docs.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2368,7 +2426,7 @@
       "meta": {
         "sourceFile": "src/cli/refresh-docs.ts",
         "sourceLocation": "src/cli/refresh-docs.ts:19",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2377,7 +2435,7 @@
       "label": "src/cli/resume.ts",
       "meta": {
         "sourceFile": "src/cli/resume.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -2387,7 +2445,7 @@
       "meta": {
         "sourceFile": "src/cli/resume.ts",
         "sourceLocation": "src/cli/resume.ts:9",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2396,7 +2454,7 @@
       "label": "src/cli/task-report.ts",
       "meta": {
         "sourceFile": "src/cli/task-report.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -2406,7 +2464,7 @@
       "meta": {
         "sourceFile": "src/cli/task-report.ts",
         "sourceLocation": "src/cli/task-report.ts:10",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -2415,7 +2473,7 @@
       "label": "src/cli/tasks.ts",
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2425,7 +2483,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:44",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2435,7 +2493,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:48",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2445,7 +2503,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:60",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2455,7 +2513,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:88",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2465,7 +2523,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:97",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2475,7 +2533,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:162",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2485,7 +2543,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:244",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -2495,7 +2553,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:315",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2505,7 +2563,7 @@
       "meta": {
         "sourceFile": "src/cli/tasks.ts",
         "sourceLocation": "src/cli/tasks.ts:342",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -2514,7 +2572,7 @@
       "label": "src/cli/verify-cmd.ts",
       "meta": {
         "sourceFile": "src/cli/verify-cmd.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2524,7 +2582,7 @@
       "meta": {
         "sourceFile": "src/cli/verify-cmd.ts",
         "sourceLocation": "src/cli/verify-cmd.ts:27",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2534,7 +2592,7 @@
       "meta": {
         "sourceFile": "src/cli/verify-cmd.ts",
         "sourceLocation": "src/cli/verify-cmd.ts:84",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2544,7 +2602,7 @@
       "meta": {
         "sourceFile": "src/cli/verify-cmd.ts",
         "sourceLocation": "src/cli/verify-cmd.ts:129",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2553,7 +2611,7 @@
       "label": "src/cli/wave.ts",
       "meta": {
         "sourceFile": "src/cli/wave.ts",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2563,7 +2621,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:16",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2573,7 +2631,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:22",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2583,7 +2641,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:42",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2593,7 +2651,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:51",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2603,7 +2661,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:58",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2613,7 +2671,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:72",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2623,7 +2681,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:83",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2633,7 +2691,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:121",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2643,7 +2701,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:131",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2653,7 +2711,7 @@
       "meta": {
         "sourceFile": "src/cli/wave.ts",
         "sourceLocation": "src/cli/wave.ts:150",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -2662,7 +2720,7 @@
       "label": "src/cli/web.ts",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2672,7 +2730,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:33",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2682,7 +2740,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:40",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2692,7 +2750,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:64",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2702,7 +2760,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:74",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2712,7 +2770,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:94",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2722,7 +2780,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:101",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2732,7 +2790,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:104",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2742,7 +2800,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:120",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2752,7 +2810,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:130",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2762,7 +2820,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:142",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2772,7 +2830,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:242",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2781,7 +2839,7 @@
       "label": "src/cli/workflow.ts",
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2791,7 +2849,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:29",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2801,7 +2859,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:35",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2811,7 +2869,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:43",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2821,7 +2879,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:64",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2831,7 +2889,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:75",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2841,7 +2899,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:99",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2851,7 +2909,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:138",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2861,7 +2919,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:196",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -2871,7 +2929,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:258",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2881,7 +2939,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:282",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2891,7 +2949,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:365",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2901,7 +2959,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:424",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2911,7 +2969,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:436",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2921,7 +2979,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:465",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2931,7 +2989,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:475",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2941,7 +2999,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:503",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -2950,7 +3008,7 @@
       "label": "src/config/schema.ts",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2960,7 +3018,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:4",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2970,7 +3028,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:25",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -2980,7 +3038,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:348",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -2990,7 +3048,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:351",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3000,7 +3058,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:356",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3009,7 +3067,7 @@
       "label": "src/engine/approvals.ts",
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3019,7 +3077,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:17",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3029,7 +3087,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:27",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3039,7 +3097,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:29",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3049,7 +3107,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:92",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -3059,7 +3117,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:100",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3069,7 +3127,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:105",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3078,7 +3136,7 @@
       "label": "src/engine/config-manifest.ts",
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3088,7 +3146,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:12",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3098,7 +3156,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:22",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3108,7 +3166,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:41",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3118,7 +3176,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:48",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3128,7 +3186,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:187",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3138,7 +3196,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:192",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3148,7 +3206,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:216",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3158,7 +3216,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:227",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3168,7 +3226,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:247",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3178,7 +3236,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:301",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3188,7 +3246,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:337",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -3197,7 +3255,7 @@
       "label": "src/engine/facts.ts",
       "meta": {
         "sourceFile": "src/engine/facts.ts",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -3207,7 +3265,7 @@
       "meta": {
         "sourceFile": "src/engine/facts.ts",
         "sourceLocation": "src/engine/facts.ts:13",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -3217,7 +3275,7 @@
       "meta": {
         "sourceFile": "src/engine/facts.ts",
         "sourceLocation": "src/engine/facts.ts:17",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -3227,7 +3285,7 @@
       "meta": {
         "sourceFile": "src/engine/facts.ts",
         "sourceLocation": "src/engine/facts.ts:21",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -3237,7 +3295,7 @@
       "meta": {
         "sourceFile": "src/engine/facts.ts",
         "sourceLocation": "src/engine/facts.ts:28",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -3247,7 +3305,7 @@
       "meta": {
         "sourceFile": "src/engine/facts.ts",
         "sourceLocation": "src/engine/facts.ts:37",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -3256,7 +3314,7 @@
       "label": "src/engine/flushwarn.ts",
       "meta": {
         "sourceFile": "src/engine/flushwarn.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -3266,7 +3324,7 @@
       "meta": {
         "sourceFile": "src/engine/flushwarn.ts",
         "sourceLocation": "src/engine/flushwarn.ts:8",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -3276,7 +3334,7 @@
       "meta": {
         "sourceFile": "src/engine/flushwarn.ts",
         "sourceLocation": "src/engine/flushwarn.ts:19",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -3285,7 +3343,7 @@
       "label": "src/engine/gate.ts",
       "meta": {
         "sourceFile": "src/engine/gate.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3295,7 +3353,7 @@
       "meta": {
         "sourceFile": "src/engine/gate.ts",
         "sourceLocation": "src/engine/gate.ts:9",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3305,7 +3363,7 @@
       "meta": {
         "sourceFile": "src/engine/gate.ts",
         "sourceLocation": "src/engine/gate.ts:16",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -3315,7 +3373,7 @@
       "meta": {
         "sourceFile": "src/engine/gate.ts",
         "sourceLocation": "src/engine/gate.ts:38",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -3324,7 +3382,7 @@
       "label": "src/engine/gatepacks.ts",
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3334,7 +3392,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:12",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3344,7 +3402,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:18",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3354,7 +3412,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:22",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3364,7 +3422,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:31",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3374,7 +3432,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:36",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3384,7 +3442,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:61",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3394,7 +3452,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:73",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3403,7 +3461,7 @@
       "label": "src/engine/git.ts",
       "meta": {
         "sourceFile": "src/engine/git.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -3413,7 +3471,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:16",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -3423,7 +3481,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:23",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -3433,7 +3491,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:28",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -3443,7 +3501,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:37",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -3452,7 +3510,7 @@
       "label": "src/engine/graph/build.ts",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3462,7 +3520,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:19",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3472,7 +3530,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:29",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3482,7 +3540,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:142",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3492,7 +3550,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:146",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3502,7 +3560,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:163",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3512,7 +3570,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:209",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3522,7 +3580,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:222",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3532,7 +3590,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:231",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3542,7 +3600,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:259",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3552,7 +3610,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:266",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3562,7 +3620,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:286",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3571,7 +3629,7 @@
       "label": "src/engine/graph/cycles.ts",
       "meta": {
         "sourceFile": "src/engine/graph/cycles.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3581,7 +3639,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/cycles.ts",
         "sourceLocation": "src/engine/graph/cycles.ts:10",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3591,7 +3649,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/cycles.ts",
         "sourceLocation": "src/engine/graph/cycles.ts:16",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3600,7 +3658,7 @@
       "label": "src/engine/graph/types.ts",
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3610,7 +3668,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:12",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3620,7 +3678,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:31",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3630,7 +3688,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:40",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3640,7 +3698,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:42",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3650,7 +3708,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:49",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3660,7 +3718,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:71",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3670,7 +3728,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:82",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3680,7 +3738,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:88",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3690,7 +3748,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:94",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3700,7 +3758,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:106",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3710,7 +3768,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:111",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3720,7 +3778,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:119",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3730,7 +3788,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:126",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3740,7 +3798,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:131",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3750,7 +3808,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:140",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3760,7 +3818,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:169",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3769,7 +3827,7 @@
       "label": "src/engine/graphify/index.ts",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3779,7 +3837,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:19",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3789,7 +3847,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:29",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3799,7 +3857,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:35",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3809,7 +3867,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:42",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3819,7 +3877,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:64",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3829,7 +3887,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:70",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -3839,7 +3897,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:79",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3849,7 +3907,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:99",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3859,7 +3917,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:107",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3869,7 +3927,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:113",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3879,7 +3937,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:123",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3889,7 +3947,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:130",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3899,7 +3957,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:144",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3909,7 +3967,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:158",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3919,7 +3977,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:161",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -3929,7 +3987,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:171",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3939,7 +3997,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:199",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3949,7 +4007,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:212",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -3958,7 +4016,7 @@
       "label": "src/engine/learnwarn.ts",
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3968,7 +4026,7 @@
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
         "sourceLocation": "src/engine/learnwarn.ts:7",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3978,7 +4036,7 @@
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
         "sourceLocation": "src/engine/learnwarn.ts:13",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3988,7 +4046,7 @@
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
         "sourceLocation": "src/engine/learnwarn.ts:40",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3998,7 +4056,7 @@
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
         "sourceLocation": "src/engine/learnwarn.ts:54",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -4008,7 +4066,7 @@
       "meta": {
         "sourceFile": "src/engine/learnwarn.ts",
         "sourceLocation": "src/engine/learnwarn.ts:60",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -4017,7 +4075,7 @@
       "label": "src/engine/lock.ts",
       "meta": {
         "sourceFile": "src/engine/lock.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4027,7 +4085,7 @@
       "meta": {
         "sourceFile": "src/engine/lock.ts",
         "sourceLocation": "src/engine/lock.ts:10",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4037,7 +4095,7 @@
       "meta": {
         "sourceFile": "src/engine/lock.ts",
         "sourceLocation": "src/engine/lock.ts:17",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4047,7 +4105,7 @@
       "meta": {
         "sourceFile": "src/engine/lock.ts",
         "sourceLocation": "src/engine/lock.ts:21",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4056,7 +4114,7 @@
       "label": "src/engine/phase.ts",
       "meta": {
         "sourceFile": "src/engine/phase.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4066,7 +4124,7 @@
       "meta": {
         "sourceFile": "src/engine/phase.ts",
         "sourceLocation": "src/engine/phase.ts:10",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4076,7 +4134,7 @@
       "meta": {
         "sourceFile": "src/engine/phase.ts",
         "sourceLocation": "src/engine/phase.ts:14",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4086,7 +4144,7 @@
       "meta": {
         "sourceFile": "src/engine/phase.ts",
         "sourceLocation": "src/engine/phase.ts:24",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4095,7 +4153,7 @@
       "label": "src/engine/pr/body.ts",
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4105,7 +4163,7 @@
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
         "sourceLocation": "src/engine/pr/body.ts:12",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4115,7 +4173,7 @@
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
         "sourceLocation": "src/engine/pr/body.ts:28",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4125,7 +4183,7 @@
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
         "sourceLocation": "src/engine/pr/body.ts:57",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4134,7 +4192,7 @@
       "label": "src/engine/practices.ts",
       "meta": {
         "sourceFile": "src/engine/practices.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -4144,7 +4202,7 @@
       "meta": {
         "sourceFile": "src/engine/practices.ts",
         "sourceLocation": "src/engine/practices.ts:12",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -4154,7 +4212,7 @@
       "meta": {
         "sourceFile": "src/engine/practices.ts",
         "sourceLocation": "src/engine/practices.ts:204",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -4164,7 +4222,7 @@
       "meta": {
         "sourceFile": "src/engine/practices.ts",
         "sourceLocation": "src/engine/practices.ts:218",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -4173,7 +4231,7 @@
       "label": "src/engine/protect.ts",
       "meta": {
         "sourceFile": "src/engine/protect.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4183,7 +4241,7 @@
       "meta": {
         "sourceFile": "src/engine/protect.ts",
         "sourceLocation": "src/engine/protect.ts:12",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4193,7 +4251,7 @@
       "meta": {
         "sourceFile": "src/engine/protect.ts",
         "sourceLocation": "src/engine/protect.ts:19",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4203,7 +4261,7 @@
       "meta": {
         "sourceFile": "src/engine/protect.ts",
         "sourceLocation": "src/engine/protect.ts:49",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4213,7 +4271,7 @@
       "meta": {
         "sourceFile": "src/engine/protect.ts",
         "sourceLocation": "src/engine/protect.ts:54",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4223,7 +4281,7 @@
       "meta": {
         "sourceFile": "src/engine/protect.ts",
         "sourceLocation": "src/engine/protect.ts:59",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4232,7 +4290,7 @@
       "label": "src/engine/route/classify.ts",
       "meta": {
         "sourceFile": "src/engine/route/classify.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4242,7 +4300,7 @@
       "meta": {
         "sourceFile": "src/engine/route/classify.ts",
         "sourceLocation": "src/engine/route/classify.ts:9",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4252,7 +4310,7 @@
       "meta": {
         "sourceFile": "src/engine/route/classify.ts",
         "sourceLocation": "src/engine/route/classify.ts:11",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4262,7 +4320,7 @@
       "meta": {
         "sourceFile": "src/engine/route/classify.ts",
         "sourceLocation": "src/engine/route/classify.ts:14",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4272,7 +4330,7 @@
       "meta": {
         "sourceFile": "src/engine/route/classify.ts",
         "sourceLocation": "src/engine/route/classify.ts:21",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4282,7 +4340,7 @@
       "meta": {
         "sourceFile": "src/engine/route/classify.ts",
         "sourceLocation": "src/engine/route/classify.ts:39",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4291,7 +4349,7 @@
       "label": "src/engine/spec/draft.ts",
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4301,7 +4359,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
         "sourceLocation": "src/engine/spec/draft.ts:12",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4311,7 +4369,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
         "sourceLocation": "src/engine/spec/draft.ts:25",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4321,7 +4379,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
         "sourceLocation": "src/engine/spec/draft.ts:32",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4331,7 +4389,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
         "sourceLocation": "src/engine/spec/draft.ts:45",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4341,7 +4399,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
         "sourceLocation": "src/engine/spec/draft.ts:60",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4351,7 +4409,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/draft.ts",
         "sourceLocation": "src/engine/spec/draft.ts:72",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4360,7 +4418,7 @@
       "label": "src/engine/spec/ears.ts",
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4370,7 +4428,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:10",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4380,7 +4438,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:12",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4390,7 +4448,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:15",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4400,7 +4458,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:21",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4410,7 +4468,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:31",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4420,7 +4478,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:37",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4430,7 +4488,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:49",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4440,7 +4498,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:51",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4450,7 +4508,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:53",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4460,7 +4518,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:57",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4470,7 +4528,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:65",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4480,7 +4538,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:76",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4490,7 +4548,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:83",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4500,7 +4558,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:88",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4510,7 +4568,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:93",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4520,7 +4578,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:100",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -4530,7 +4588,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:107",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -4540,7 +4598,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:125",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4550,7 +4608,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:133",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4560,7 +4618,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:145",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4570,7 +4628,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:153",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4579,7 +4637,7 @@
       "label": "src/engine/spec/lint.ts",
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4589,7 +4647,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
         "sourceLocation": "src/engine/spec/lint.ts:15",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4599,7 +4657,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
         "sourceLocation": "src/engine/spec/lint.ts:21",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4609,7 +4667,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
         "sourceLocation": "src/engine/spec/lint.ts:29",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4619,7 +4677,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
         "sourceLocation": "src/engine/spec/lint.ts:33",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4629,7 +4687,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
         "sourceLocation": "src/engine/spec/lint.ts:54",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4639,7 +4697,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/lint.ts",
         "sourceLocation": "src/engine/spec/lint.ts:64",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4648,7 +4706,7 @@
       "label": "src/engine/spec/parse.ts",
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4658,7 +4716,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
         "sourceLocation": "src/engine/spec/parse.ts:50",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4668,7 +4726,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
         "sourceLocation": "src/engine/spec/parse.ts:59",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4678,7 +4736,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
         "sourceLocation": "src/engine/spec/parse.ts:209",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -4687,7 +4745,7 @@
       "label": "src/engine/state/audit.ts",
       "meta": {
         "sourceFile": "src/engine/state/audit.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4697,7 +4755,7 @@
       "meta": {
         "sourceFile": "src/engine/state/audit.ts",
         "sourceLocation": "src/engine/state/audit.ts:14",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4707,7 +4765,7 @@
       "meta": {
         "sourceFile": "src/engine/state/audit.ts",
         "sourceLocation": "src/engine/state/audit.ts:29",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4717,7 +4775,7 @@
       "meta": {
         "sourceFile": "src/engine/state/audit.ts",
         "sourceLocation": "src/engine/state/audit.ts:35",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4726,7 +4784,7 @@
       "label": "src/engine/state/journal.ts",
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4736,7 +4794,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:18",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4746,7 +4804,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:30",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4756,7 +4814,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:39",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4766,7 +4824,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:47",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4776,7 +4834,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:52",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4786,7 +4844,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:56",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4796,7 +4854,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:70",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -4806,7 +4864,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:96",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4815,7 +4873,7 @@
       "label": "src/engine/state/tasks.ts",
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4825,7 +4883,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:11",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4835,7 +4893,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:13",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4845,7 +4903,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:23",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -4855,7 +4913,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:34",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4865,7 +4923,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:39",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4875,7 +4933,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:43",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4885,7 +4943,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:47",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -4895,7 +4953,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:52",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4905,7 +4963,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:56",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4915,7 +4973,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:93",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4925,7 +4983,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:97",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4935,7 +4993,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:113",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4945,7 +5003,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:122",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4955,7 +5013,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:128",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4965,7 +5023,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:140",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4975,7 +5033,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:166",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -4985,7 +5043,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:180",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -4995,7 +5053,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:192",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5005,7 +5063,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:212",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5014,7 +5072,7 @@
       "label": "src/engine/steering.ts",
       "meta": {
         "sourceFile": "src/engine/steering.ts",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5024,7 +5082,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:14",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5034,7 +5092,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:19",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5044,7 +5102,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:24",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5054,7 +5112,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:35",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5064,7 +5122,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:52",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5074,7 +5132,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:64",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5084,7 +5142,7 @@
       "meta": {
         "sourceFile": "src/engine/steering.ts",
         "sourceLocation": "src/engine/steering.ts:73",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5093,7 +5151,7 @@
       "label": "src/engine/trail.ts",
       "meta": {
         "sourceFile": "src/engine/trail.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5103,7 +5161,7 @@
       "meta": {
         "sourceFile": "src/engine/trail.ts",
         "sourceLocation": "src/engine/trail.ts:9",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5113,7 +5171,7 @@
       "meta": {
         "sourceFile": "src/engine/trail.ts",
         "sourceLocation": "src/engine/trail.ts:16",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5123,7 +5181,7 @@
       "meta": {
         "sourceFile": "src/engine/trail.ts",
         "sourceLocation": "src/engine/trail.ts:24",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5133,7 +5191,7 @@
       "meta": {
         "sourceFile": "src/engine/trail.ts",
         "sourceLocation": "src/engine/trail.ts:29",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5142,7 +5200,7 @@
       "label": "src/engine/verify/applife.ts",
       "meta": {
         "sourceFile": "src/engine/verify/applife.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5152,7 +5210,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/applife.ts",
         "sourceLocation": "src/engine/verify/applife.ts:9",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5162,7 +5220,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/applife.ts",
         "sourceLocation": "src/engine/verify/applife.ts:19",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5172,7 +5230,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/applife.ts",
         "sourceLocation": "src/engine/verify/applife.ts:34",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5181,7 +5239,7 @@
       "label": "src/engine/verify/judge.ts",
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5191,7 +5249,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:15",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5201,7 +5259,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:20",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5211,7 +5269,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:23",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5221,7 +5279,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:31",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5231,7 +5289,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:50",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5241,7 +5299,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:60",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5251,7 +5309,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/judge.ts",
         "sourceLocation": "src/engine/verify/judge.ts:103",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5260,7 +5318,7 @@
       "label": "src/engine/verify/report.ts",
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5270,7 +5328,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:12",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5280,7 +5338,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:14",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5290,7 +5348,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:25",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5300,7 +5358,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:33",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5310,7 +5368,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:36",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5320,7 +5378,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:52",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5330,7 +5388,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:57",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5340,7 +5398,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:63",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5350,7 +5408,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:100",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5360,7 +5418,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/report.ts",
         "sourceLocation": "src/engine/verify/report.ts:113",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5369,7 +5427,7 @@
       "label": "src/engine/verify/retry.ts",
       "meta": {
         "sourceFile": "src/engine/verify/retry.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5379,7 +5437,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/retry.ts",
         "sourceLocation": "src/engine/verify/retry.ts:8",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -5388,7 +5446,7 @@
       "label": "src/engine/verify/runner.ts",
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5398,7 +5456,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:23",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5408,7 +5466,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:24",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5418,7 +5476,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:26",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5428,7 +5486,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:39",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5438,7 +5496,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:49",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5448,7 +5506,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:58",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5458,7 +5516,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:79",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5468,7 +5526,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:95",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -5478,7 +5536,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:124",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5488,7 +5546,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:168",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5498,7 +5556,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:174",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5508,7 +5566,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:183",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5518,7 +5576,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:191",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5528,7 +5586,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/runner.ts",
         "sourceLocation": "src/engine/verify/runner.ts:269",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5537,7 +5595,7 @@
       "label": "src/engine/verify/stamp-batch.ts",
       "meta": {
         "sourceFile": "src/engine/verify/stamp-batch.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5547,7 +5605,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp-batch.ts",
         "sourceLocation": "src/engine/verify/stamp-batch.ts:16",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5557,7 +5615,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp-batch.ts",
         "sourceLocation": "src/engine/verify/stamp-batch.ts:23",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5567,7 +5625,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp-batch.ts",
         "sourceLocation": "src/engine/verify/stamp-batch.ts:30",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5577,7 +5635,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp-batch.ts",
         "sourceLocation": "src/engine/verify/stamp-batch.ts:36",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5587,7 +5645,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp-batch.ts",
         "sourceLocation": "src/engine/verify/stamp-batch.ts:41",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5596,7 +5654,7 @@
       "label": "src/engine/verify/stamp.ts",
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5606,7 +5664,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
         "sourceLocation": "src/engine/verify/stamp.ts:10",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5616,7 +5674,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
         "sourceLocation": "src/engine/verify/stamp.ts:17",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5626,7 +5684,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
         "sourceLocation": "src/engine/verify/stamp.ts:24",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5635,7 +5693,7 @@
       "label": "src/engine/verify/verify-all.ts",
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5645,7 +5703,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:21",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5655,7 +5713,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:28",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5665,7 +5723,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:36",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5675,7 +5733,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:41",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5685,7 +5743,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:61",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5695,7 +5753,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:65",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5705,7 +5763,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:128",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5715,7 +5773,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/verify-all.ts",
         "sourceLocation": "src/engine/verify/verify-all.ts:134",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -5724,7 +5782,7 @@
       "label": "src/engine/wave.ts",
       "meta": {
         "sourceFile": "src/engine/wave.ts",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -5734,7 +5792,7 @@
       "meta": {
         "sourceFile": "src/engine/wave.ts",
         "sourceLocation": "src/engine/wave.ts:7",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -5744,7 +5802,7 @@
       "meta": {
         "sourceFile": "src/engine/wave.ts",
         "sourceLocation": "src/engine/wave.ts:14",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -5754,7 +5812,7 @@
       "meta": {
         "sourceFile": "src/engine/wave.ts",
         "sourceLocation": "src/engine/wave.ts:27",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -5763,7 +5821,7 @@
       "label": "src/index.ts",
       "meta": {
         "sourceFile": "src/index.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5772,7 +5830,7 @@
       "label": "test/audit-meta.test.ts",
       "meta": {
         "sourceFile": "test/audit-meta.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5782,7 +5840,7 @@
       "meta": {
         "sourceFile": "test/audit-meta.test.ts",
         "sourceLocation": "test/audit-meta.test.ts:10",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5791,7 +5849,7 @@
       "label": "test/boards.test.ts",
       "meta": {
         "sourceFile": "test/boards.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -5800,7 +5858,7 @@
       "label": "test/cli-cockpit-data.test.ts",
       "meta": {
         "sourceFile": "test/cli-cockpit-data.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5809,7 +5867,7 @@
       "label": "test/cli-doctor.test.ts",
       "meta": {
         "sourceFile": "test/cli-doctor.test.ts",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -5818,7 +5876,7 @@
       "label": "test/cli-graph-build.test.ts",
       "meta": {
         "sourceFile": "test/cli-graph-build.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5827,7 +5885,7 @@
       "label": "test/cli-init.test.ts",
       "meta": {
         "sourceFile": "test/cli-init.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -5836,7 +5894,7 @@
       "label": "test/cli-log.test.ts",
       "meta": {
         "sourceFile": "test/cli-log.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5845,7 +5903,7 @@
       "label": "test/cli-queries.test.ts",
       "meta": {
         "sourceFile": "test/cli-queries.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -5854,7 +5912,7 @@
       "label": "test/cli-spec.test.ts",
       "meta": {
         "sourceFile": "test/cli-spec.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -5863,7 +5921,7 @@
       "label": "test/cli-tasks.test.ts",
       "meta": {
         "sourceFile": "test/cli-tasks.test.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5873,7 +5931,7 @@
       "meta": {
         "sourceFile": "test/cli-tasks.test.ts",
         "sourceLocation": "test/cli-tasks.test.ts:17",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -5882,7 +5940,7 @@
       "label": "test/cli-thin.test.ts",
       "meta": {
         "sourceFile": "test/cli-thin.test.ts",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -5891,7 +5949,7 @@
       "label": "test/cli-ux.test.ts",
       "meta": {
         "sourceFile": "test/cli-ux.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5901,7 +5959,7 @@
       "meta": {
         "sourceFile": "test/cli-ux.test.ts",
         "sourceLocation": "test/cli-ux.test.ts:11",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -5910,7 +5968,7 @@
       "label": "test/cli-verify-cmd.test.ts",
       "meta": {
         "sourceFile": "test/cli-verify-cmd.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -5920,7 +5978,7 @@
       "meta": {
         "sourceFile": "test/cli-verify-cmd.test.ts",
         "sourceLocation": "test/cli-verify-cmd.test.ts:13",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -5929,7 +5987,7 @@
       "label": "test/cli-wave.test.ts",
       "meta": {
         "sourceFile": "test/cli-wave.test.ts",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -5939,7 +5997,7 @@
       "meta": {
         "sourceFile": "test/cli-wave.test.ts",
         "sourceLocation": "test/cli-wave.test.ts:14",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -5948,7 +6006,7 @@
       "label": "test/cli-web.test.ts",
       "meta": {
         "sourceFile": "test/cli-web.test.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -5958,7 +6016,7 @@
       "meta": {
         "sourceFile": "test/cli-web.test.ts",
         "sourceLocation": "test/cli-web.test.ts:11",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -5967,7 +6025,7 @@
       "label": "test/cli-workflow.test.ts",
       "meta": {
         "sourceFile": "test/cli-workflow.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -5976,7 +6034,7 @@
       "label": "test/cockpit-assets.test.ts",
       "meta": {
         "sourceFile": "test/cockpit-assets.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -5985,7 +6043,7 @@
       "label": "test/cockpit-hardening.test.ts",
       "meta": {
         "sourceFile": "test/cockpit-hardening.test.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -5995,7 +6053,7 @@
       "meta": {
         "sourceFile": "test/cockpit-hardening.test.ts",
         "sourceLocation": "test/cockpit-hardening.test.ts:23",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6005,7 +6063,7 @@
       "meta": {
         "sourceFile": "test/cockpit-hardening.test.ts",
         "sourceLocation": "test/cockpit-hardening.test.ts:52",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6014,7 +6072,7 @@
       "label": "test/cockpit-server.test.ts",
       "meta": {
         "sourceFile": "test/cockpit-server.test.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6024,7 +6082,7 @@
       "meta": {
         "sourceFile": "test/cockpit-server.test.ts",
         "sourceLocation": "test/cockpit-server.test.ts:18",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6034,7 +6092,7 @@
       "meta": {
         "sourceFile": "test/cockpit-server.test.ts",
         "sourceLocation": "test/cockpit-server.test.ts:51",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6043,7 +6101,7 @@
       "label": "test/cockpit.test.ts",
       "meta": {
         "sourceFile": "test/cockpit.test.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6053,7 +6111,7 @@
       "meta": {
         "sourceFile": "test/cockpit.test.ts",
         "sourceLocation": "test/cockpit.test.ts:22",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6062,7 +6120,7 @@
       "label": "test/compact.test.ts",
       "meta": {
         "sourceFile": "test/compact.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6071,7 +6129,7 @@
       "label": "test/config-manifest.test.ts",
       "meta": {
         "sourceFile": "test/config-manifest.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6080,7 +6138,7 @@
       "label": "test/cycles.test.ts",
       "meta": {
         "sourceFile": "test/cycles.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -6089,7 +6147,7 @@
       "label": "test/dashboard.test.ts",
       "meta": {
         "sourceFile": "test/dashboard.test.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6098,7 +6156,7 @@
       "label": "test/default-stack.test.ts",
       "meta": {
         "sourceFile": "test/default-stack.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6108,7 +6166,7 @@
       "meta": {
         "sourceFile": "test/default-stack.test.ts",
         "sourceLocation": "test/default-stack.test.ts:13",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6117,7 +6175,7 @@
       "label": "test/docs-refresh.test.ts",
       "meta": {
         "sourceFile": "test/docs-refresh.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -6127,7 +6185,7 @@
       "meta": {
         "sourceFile": "test/docs-refresh.test.ts",
         "sourceLocation": "test/docs-refresh.test.ts:22",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -6136,7 +6194,7 @@
       "label": "test/doctor-fix.test.ts",
       "meta": {
         "sourceFile": "test/doctor-fix.test.ts",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -6145,7 +6203,7 @@
       "label": "test/done-msg.test.ts",
       "meta": {
         "sourceFile": "test/done-msg.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6154,7 +6212,7 @@
       "label": "test/draft.test.ts",
       "meta": {
         "sourceFile": "test/draft.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6163,7 +6221,7 @@
       "label": "test/emoji.test.ts",
       "meta": {
         "sourceFile": "test/emoji.test.ts",
-        "community": 34
+        "community": 36
       }
     },
     {
@@ -6172,7 +6230,7 @@
       "label": "test/engine-tail.test.ts",
       "meta": {
         "sourceFile": "test/engine-tail.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6181,7 +6239,7 @@
       "label": "test/files-tab.test.ts",
       "meta": {
         "sourceFile": "test/files-tab.test.ts",
-        "community": 31
+        "community": 33
       }
     },
     {
@@ -6190,7 +6248,7 @@
       "label": "test/final-edges.test.ts",
       "meta": {
         "sourceFile": "test/final-edges.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6199,7 +6257,7 @@
       "label": "test/finish-skill.test.ts",
       "meta": {
         "sourceFile": "test/finish-skill.test.ts",
-        "community": 42
+        "community": 44
       }
     },
     {
@@ -6208,7 +6266,7 @@
       "label": "test/gate-facts.test.ts",
       "meta": {
         "sourceFile": "test/gate-facts.test.ts",
-        "community": 41
+        "community": 43
       }
     },
     {
@@ -6217,7 +6275,7 @@
       "label": "test/gate-packs.test.ts",
       "meta": {
         "sourceFile": "test/gate-packs.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -6226,7 +6284,7 @@
       "label": "test/gate.test.ts",
       "meta": {
         "sourceFile": "test/gate.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6235,7 +6293,7 @@
       "label": "test/gherkin.test.ts",
       "meta": {
         "sourceFile": "test/gherkin.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -6244,7 +6302,7 @@
       "label": "test/graph.test.ts",
       "meta": {
         "sourceFile": "test/graph.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6253,7 +6311,7 @@
       "label": "test/graphify-helpers.test.ts",
       "meta": {
         "sourceFile": "test/graphify-helpers.test.ts",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -6263,7 +6321,7 @@
       "meta": {
         "sourceFile": "test/graphify-helpers.test.ts",
         "sourceLocation": "test/graphify-helpers.test.ts:13",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -6272,7 +6330,7 @@
       "label": "test/graphify.test.ts",
       "meta": {
         "sourceFile": "test/graphify.test.ts",
-        "community": 33
+        "community": 35
       }
     },
     {
@@ -6281,7 +6339,7 @@
       "label": "test/helpers/cli-harness.ts",
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6291,7 +6349,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:12",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6301,7 +6359,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:24",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6311,7 +6369,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:27",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6321,7 +6379,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:41",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6331,7 +6389,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:51",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6341,7 +6399,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:57",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6351,7 +6409,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:71",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6360,7 +6418,7 @@
       "label": "test/implements-edges.test.ts",
       "meta": {
         "sourceFile": "test/implements-edges.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6369,7 +6427,7 @@
       "label": "test/init-practices.test.ts",
       "meta": {
         "sourceFile": "test/init-practices.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6379,7 +6437,7 @@
       "meta": {
         "sourceFile": "test/init-practices.test.ts",
         "sourceLocation": "test/init-practices.test.ts:13",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6388,7 +6446,7 @@
       "label": "test/journal-integrity.test.ts",
       "meta": {
         "sourceFile": "test/journal-integrity.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6398,7 +6456,7 @@
       "meta": {
         "sourceFile": "test/journal-integrity.test.ts",
         "sourceLocation": "test/journal-integrity.test.ts:14",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6407,7 +6465,7 @@
       "label": "test/judge.test.ts",
       "meta": {
         "sourceFile": "test/judge.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6416,7 +6474,7 @@
       "label": "test/learnwarn.test.ts",
       "meta": {
         "sourceFile": "test/learnwarn.test.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -6425,7 +6483,7 @@
       "label": "test/parse-fix.test.ts",
       "meta": {
         "sourceFile": "test/parse-fix.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6434,7 +6492,7 @@
       "label": "test/pr-blast.test.ts",
       "meta": {
         "sourceFile": "test/pr-blast.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6443,7 +6501,7 @@
       "label": "test/pr-changed-files.test.ts",
       "meta": {
         "sourceFile": "test/pr-changed-files.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6453,7 +6511,7 @@
       "meta": {
         "sourceFile": "test/pr-changed-files.test.ts",
         "sourceLocation": "test/pr-changed-files.test.ts:8",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6463,7 +6521,7 @@
       "meta": {
         "sourceFile": "test/pr-changed-files.test.ts",
         "sourceLocation": "test/pr-changed-files.test.ts:13",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6472,7 +6530,7 @@
       "label": "test/pr-flush-warn.test.ts",
       "meta": {
         "sourceFile": "test/pr-flush-warn.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6481,7 +6539,7 @@
       "label": "test/proof-display.test.ts",
       "meta": {
         "sourceFile": "test/proof-display.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6490,7 +6548,7 @@
       "label": "test/proof-identity.test.ts",
       "meta": {
         "sourceFile": "test/proof-identity.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6500,7 +6558,7 @@
       "meta": {
         "sourceFile": "test/proof-identity.test.ts",
         "sourceLocation": "test/proof-identity.test.ts:19",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6510,7 +6568,7 @@
       "meta": {
         "sourceFile": "test/proof-identity.test.ts",
         "sourceLocation": "test/proof-identity.test.ts:31",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6519,7 +6577,7 @@
       "label": "test/protect.test.ts",
       "meta": {
         "sourceFile": "test/protect.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6528,7 +6586,7 @@
       "label": "test/qualified-ids.test.ts",
       "meta": {
         "sourceFile": "test/qualified-ids.test.ts",
-        "community": 23
+        "community": 25
       }
     },
     {
@@ -6537,7 +6595,7 @@
       "label": "test/query-fix.test.ts",
       "meta": {
         "sourceFile": "test/query-fix.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6546,7 +6604,7 @@
       "label": "test/readme.test.ts",
       "meta": {
         "sourceFile": "test/readme.test.ts",
-        "community": 43
+        "community": 45
       }
     },
     {
@@ -6555,7 +6613,7 @@
       "label": "test/report.test.ts",
       "meta": {
         "sourceFile": "test/report.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6564,7 +6622,7 @@
       "label": "test/revitify-contract.test.ts",
       "meta": {
         "sourceFile": "test/revitify-contract.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6573,7 +6631,7 @@
       "label": "test/robust.test.ts",
       "meta": {
         "sourceFile": "test/robust.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6583,7 +6641,7 @@
       "meta": {
         "sourceFile": "test/robust.test.ts",
         "sourceLocation": "test/robust.test.ts:13",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6592,7 +6650,7 @@
       "label": "test/runner-trust.test.ts",
       "meta": {
         "sourceFile": "test/runner-trust.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6601,7 +6659,7 @@
       "label": "test/runner.test.ts",
       "meta": {
         "sourceFile": "test/runner.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6610,7 +6668,7 @@
       "label": "test/runners-kind.test.ts",
       "meta": {
         "sourceFile": "test/runners-kind.test.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -6619,7 +6677,7 @@
       "label": "test/scale.test.ts",
       "meta": {
         "sourceFile": "test/scale.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6628,7 +6686,7 @@
       "label": "test/skill-qa.test.ts",
       "meta": {
         "sourceFile": "test/skill-qa.test.ts",
-        "community": 44
+        "community": 46
       }
     },
     {
@@ -6637,7 +6695,7 @@
       "label": "test/spec-lint.test.ts",
       "meta": {
         "sourceFile": "test/spec-lint.test.ts",
-        "community": 40
+        "community": 42
       }
     },
     {
@@ -6646,7 +6704,7 @@
       "label": "test/spec-parse.test.ts",
       "meta": {
         "sourceFile": "test/spec-parse.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6655,7 +6713,7 @@
       "label": "test/spec-sync.test.ts",
       "meta": {
         "sourceFile": "test/spec-sync.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6665,7 +6723,7 @@
       "meta": {
         "sourceFile": "test/spec-sync.test.ts",
         "sourceLocation": "test/spec-sync.test.ts:10",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6674,7 +6732,7 @@
       "label": "test/stacknames.test.ts",
       "meta": {
         "sourceFile": "test/stacknames.test.ts",
-        "community": 32
+        "community": 34
       }
     },
     {
@@ -6683,7 +6741,7 @@
       "label": "test/stale-done.test.ts",
       "meta": {
         "sourceFile": "test/stale-done.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6693,7 +6751,7 @@
       "meta": {
         "sourceFile": "test/stale-done.test.ts",
         "sourceLocation": "test/stale-done.test.ts:15",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6702,7 +6760,7 @@
       "label": "test/stamp-batch.test.ts",
       "meta": {
         "sourceFile": "test/stamp-batch.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6711,7 +6769,7 @@
       "label": "test/state.test.ts",
       "meta": {
         "sourceFile": "test/state.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6721,7 +6779,7 @@
       "meta": {
         "sourceFile": "test/state.test.ts",
         "sourceLocation": "test/state.test.ts:8",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6730,7 +6788,7 @@
       "label": "test/steering.test.ts",
       "meta": {
         "sourceFile": "test/steering.test.ts",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -6740,7 +6798,7 @@
       "meta": {
         "sourceFile": "test/steering.test.ts",
         "sourceLocation": "test/steering.test.ts:10",
-        "community": 35
+        "community": 37
       }
     },
     {
@@ -6749,7 +6807,7 @@
       "label": "test/task-report.test.ts",
       "meta": {
         "sourceFile": "test/task-report.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6758,7 +6816,7 @@
       "label": "test/trace-hint.test.ts",
       "meta": {
         "sourceFile": "test/trace-hint.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6767,7 +6825,7 @@
       "label": "test/trail.test.ts",
       "meta": {
         "sourceFile": "test/trail.test.ts",
-        "community": 36
+        "community": 38
       }
     },
     {
@@ -6776,7 +6834,7 @@
       "label": "test/trust-fixtures.test.ts",
       "meta": {
         "sourceFile": "test/trust-fixtures.test.ts",
-        "community": 45
+        "community": 47
       }
     },
     {
@@ -6785,7 +6843,7 @@
       "label": "test/verify-cmd.test.ts",
       "meta": {
         "sourceFile": "test/verify-cmd.test.ts",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6795,7 +6853,7 @@
       "meta": {
         "sourceFile": "test/verify-cmd.test.ts",
         "sourceLocation": "test/verify-cmd.test.ts:19",
-        "community": 38
+        "community": 40
       }
     },
     {
@@ -6804,7 +6862,7 @@
       "label": "test/wave-done.test.ts",
       "meta": {
         "sourceFile": "test/wave-done.test.ts",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -6814,7 +6872,7 @@
       "meta": {
         "sourceFile": "test/wave-done.test.ts",
         "sourceLocation": "test/wave-done.test.ts:11",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -6823,7 +6881,7 @@
       "label": "test/wave.test.ts",
       "meta": {
         "sourceFile": "test/wave.test.ts",
-        "community": 37
+        "community": 39
       }
     },
     {
@@ -6832,7 +6890,7 @@
       "label": "test/workflow.test.ts",
       "meta": {
         "sourceFile": "test/workflow.test.ts",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6842,7 +6900,7 @@
       "meta": {
         "sourceFile": "test/workflow.test.ts",
         "sourceLocation": "test/workflow.test.ts:13",
-        "community": 24
+        "community": 26
       }
     },
     {
@@ -6851,7 +6909,7 @@
       "label": "tsconfig.json",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 46
+        "community": 48
       }
     },
     {
@@ -6860,7 +6918,7 @@
       "label": "compilerOptions",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 46
+        "community": 48
       }
     },
     {
@@ -6869,7 +6927,7 @@
       "label": "include",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 46
+        "community": 48
       }
     },
     {
@@ -6878,7 +6936,7 @@
       "label": "exclude",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 46
+        "community": 48
       }
     },
     {
@@ -6887,7 +6945,7 @@
       "label": "vitest.config.ts",
       "meta": {
         "sourceFile": "vitest.config.ts",
-        "community": 47
+        "community": 49
       }
     },
     {
@@ -6896,7 +6954,7 @@
       "label": "website/assets/docs.css",
       "meta": {
         "sourceFile": "website/assets/docs.css",
-        "community": 48
+        "community": 50
       }
     },
     {
@@ -6905,7 +6963,7 @@
       "label": "website/assets/style.css",
       "meta": {
         "sourceFile": "website/assets/style.css",
-        "community": 49
+        "community": 51
       }
     },
     {
@@ -6914,7 +6972,7 @@
       "label": "website/docs/commands.html",
       "meta": {
         "sourceFile": "website/docs/commands.html",
-        "community": 50
+        "community": 52
       }
     },
     {
@@ -6923,7 +6981,7 @@
       "label": "website/docs/concepts.html",
       "meta": {
         "sourceFile": "website/docs/concepts.html",
-        "community": 51
+        "community": 53
       }
     },
     {
@@ -6932,7 +6990,7 @@
       "label": "website/docs/configuration.html",
       "meta": {
         "sourceFile": "website/docs/configuration.html",
-        "community": 52
+        "community": 54
       }
     },
     {
@@ -6941,7 +6999,7 @@
       "label": "website/docs/getting-started.html",
       "meta": {
         "sourceFile": "website/docs/getting-started.html",
-        "community": 53
+        "community": 55
       }
     },
     {
@@ -6950,7 +7008,7 @@
       "label": "website/docs/internals.html",
       "meta": {
         "sourceFile": "website/docs/internals.html",
-        "community": 54
+        "community": 56
       }
     },
     {
@@ -6959,7 +7017,7 @@
       "label": "website/docs/skills.html",
       "meta": {
         "sourceFile": "website/docs/skills.html",
-        "community": 55
+        "community": 57
       }
     },
     {
@@ -6968,7 +7026,7 @@
       "label": "website/docs/workflow.html",
       "meta": {
         "sourceFile": "website/docs/workflow.html",
-        "community": 56
+        "community": 58
       }
     },
     {
@@ -6977,7 +7035,7 @@
       "label": "website/index.html",
       "meta": {
         "sourceFile": "website/index.html",
-        "community": 57
+        "community": 59
       }
     },
     {
@@ -7878,9 +7936,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7901,9 +7959,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside dev-spec-kit projects",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7924,9 +7982,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7947,9 +8005,9 @@
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7970,9 +8028,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7993,9 +8051,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8016,9 +8074,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside dev-spec-kit projects",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8039,9 +8097,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8062,9 +8120,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8085,9 +8143,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8108,9 +8166,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8131,9 +8189,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8154,9 +8212,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8177,9 +8235,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8200,9 +8258,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8223,9 +8281,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8246,9 +8304,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8269,9 +8327,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8292,9 +8350,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8315,9 +8373,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8338,9 +8396,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8361,9 +8419,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8384,9 +8442,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8407,9 +8465,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::read-only queries never create or touch documents",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8430,9 +8488,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8453,9 +8511,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8469,9 +8527,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8492,9 +8550,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8515,9 +8573,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8538,9 +8596,9 @@
       "lastCheck": {
         "ref": "test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8561,9 +8619,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8584,9 +8642,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8600,9 +8658,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8623,9 +8681,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8646,9 +8704,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8669,9 +8727,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::flags a ref whose file is missing",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8685,9 +8743,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8708,9 +8766,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::passes a ref whose file and name both resolve",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8731,9 +8789,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8754,9 +8812,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8770,9 +8828,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is out of sync when the counts differ",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8793,9 +8851,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8816,9 +8874,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8832,9 +8890,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::takes the SHALL clause and drops 'the system'",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8855,9 +8913,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8878,9 +8936,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::advances a not-done task whose every check is green on the current tree",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8894,9 +8952,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::never re-advances an already-done task",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8917,9 +8975,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::does NOT advance a task proven on an OLDER tree (stale)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8940,9 +8998,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8956,9 +9014,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::respects an explicit mode regardless of the key",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8979,9 +9037,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::auto resolves to api when a key is present, harness when not",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8995,9 +9053,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9018,9 +9076,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::finds a simple A→B→A cycle",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9034,9 +9092,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::finds a longer A→B→C→A cycle",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9057,9 +9115,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::returns nothing for an acyclic chain",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9073,9 +9131,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::ignores non-dependsOn edges (a validates/implements edge is never a dependency cycle)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9096,9 +9154,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::maps a changed TEST file to the validates edge it proves",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9112,9 +9170,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::renders the touched edges for changed files that map",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9135,9 +9193,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::notes honestly when changed files map to no graph node",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9151,9 +9209,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::omits the section entirely when changedFiles is undefined (back-compat)",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9174,9 +9232,9 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::links a source file a bound test imports to the requirement, carrying its rollup proof",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9190,9 +9248,9 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::buildVTG emits a green implements edge that makes unimplementedRequirements live",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9206,9 +9264,9 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::lights up a changed source file's blast radius through the implements edge",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9229,9 +9287,9 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::inherits the requirement's worst criterion proof — green only when every criterion is green",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9252,9 +9310,9 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::never links a test→test import as an implementation",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9268,9 +9326,9 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::does not link a source the requirement's tests never import",
         "passed": true,
-        "at": "2026-06-20T10:03:04.544Z",
-        "sha": "eebe7e69022673d79b6154cad6a88b0ced68574a",
-        "tree": "f65b9bd51af23d7c42539e0f650f3976b64dbca6",
+        "at": "2026-06-20T10:15:14.350Z",
+        "sha": "4d56d25d2f6cc27f2b62a9dc01df586708e5aba2",
+        "tree": "193ed920f6bcef83e27b2e4e4caba3522ad4ebc9",
         "stack": "node-vitest",
         "kind": "unit"
       }
