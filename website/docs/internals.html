@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internals — dev-spec-kit Docs</title>
+  <meta name="description" content="How dev-spec-kit works under the hood: the journal, how a proof is recorded, tree-hash staleness, the PR gate, the provider contract, and how to extend it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <link rel="stylesheet" href="../assets/docs.css" />
+  <style>
+    .pipe {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      margin: 24px 0; padding: 20px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--radius); overflow-x: auto;
+    }
+    .pipe-box {
+      padding: 8px 14px; border-radius: 8px; border: 1px solid;
+      font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+    }
+    .pipe-arrow { color: var(--text-dimmer); font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+
+  <header class="docs-topnav">
+    <a class="brand" href="../index.html">
+      <span class="logo-mark">R</span>
+      dev-spec-kit
+    </a>
+    <nav>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="internals.html" class="active">Internals</a>
+      <a href="skills.html">Skills</a>
+    </nav>
+  </header>
+
+  <aside class="docs-sidebar">
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Start here</div>
+      <a href="getting-started.html">Getting Started</a>
+      <a href="workflow.html">Full Workflow</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">Reference</div>
+      <a href="commands.html">Commands</a>
+      <a href="configuration.html">Configuration</a>
+      <a href="concepts.html">Concepts</a>
+      <a href="internals.html" class="active">Internals</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <div class="sidebar-group">
+      <div class="sidebar-group-label">On this page</div>
+      <a href="#architecture">Three sources of truth</a>
+      <a href="#journal">The journal</a>
+      <a href="#proof">How a proof is recorded</a>
+      <a href="#staleness">Tree-hash &amp; staleness</a>
+      <a href="#gate">The PR gate</a>
+      <a href="#provider-contract">The provider contract</a>
+      <a href="#extend-stack">Extend: add a test stack</a>
+      <a href="#re-prove">The re-prove dance</a>
+    </div>
+  </aside>
+
+  <main class="docs-content">
+    <div class="page-header">
+      <div class="badge">Technical</div>
+      <h1>How dev-spec-kit works</h1>
+      <p>Under the hood: the journal, how a proof is recorded and aged, what the gate actually checks, and how to extend the tool without touching its code.</p>
+    </div>
+
+    <div class="prose">
+
+      <!-- ARCHITECTURE -->
+      <h2 id="architecture">Three sources of truth, one graph</h2>
+      <p>
+        dev-spec-kit holds <strong>no opinions in memory</strong>. Every command re-derives the world from three durable
+        sources and fuses them into the <a href="concepts.html#vtg">Verified Traceability Graph</a>:
+      </p>
+
+      <div class="pipe">
+        <span class="pipe-box" style="background:rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.4);color:var(--accent-light);">specs/*.md<br><small>requirements + EARS + @check</small></span>
+        <span class="pipe-arrow">×</span>
+        <span class="pipe-box" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.35);color:var(--green);">journal.jsonl<br><small>executed check results</small></span>
+        <span class="pipe-arrow">×</span>
+        <span class="pipe-box" style="background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.35);color:#60a5fa;">graphify-out/graph.json<br><small>code nodes + imports</small></span>
+        <span class="pipe-arrow">→</span>
+        <span class="pipe-box" style="background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.35);color:#fb923c;">graph.json<br><small>the VTG</small></span>
+      </div>
+
+      <p>
+        The builder (<code>src/engine/graph/build.ts</code>) is a pure function over those three inputs. There is no hidden
+        database — delete <code>graph.json</code> and <code>dev-spec-kit graph build</code> recreates it byte-for-byte from the journal,
+        specs, and code graph. That is what makes the boards "unable to lie": they are derivations, not assertions.
+      </p>
+
+      <!-- JOURNAL -->
+      <h2 id="journal">The journal: append-only truth</h2>
+      <p>
+        <code>.dev-spec-kit/journal.jsonl</code> is an append-only log of typed events — one JSON object per line. Task state,
+        proof state, approvals, and governance events are never stored directly; they are <em>folded</em> from the journal on
+        every read (<code>src/engine/state/journal.ts</code> → <code>tasks.ts</code>). Corrupt or partial lines are skipped, so an
+        interrupted write never bricks the project.
+      </p>
+      <ul>
+        <li><strong>You never edit it.</strong> Proofs are recorded by real runs; rewriting history is the one thing the tool refuses to let you do quietly.</li>
+        <li><strong>Equal-timestamp ties break toward the worse result</strong> — proof state must never depend on iteration order, and when in doubt the gate stays shut.</li>
+        <li><strong>It is committed.</strong> The journal travels with the repo, so proofs are reviewable in the PR and reproducible on another machine.</li>
+      </ul>
+
+      <!-- PROOF -->
+      <h2 id="proof">How a proof is recorded</h2>
+      <p>When you run <code>dev-spec-kit check run &lt;taskId&gt; &lt;ref&gt; --stack &lt;stack&gt;</code>, the engine:</p>
+      <ol>
+        <li>Resolves the <strong>runner</strong> for the check's kind and stack (precedence: <code>verify.kindRunners</code> &gt; <code>verify.runners[stack]</code> &gt; builtin).</li>
+        <li>Substitutes the <code>ref</code> into the runner's command template and executes the <strong>real</strong> test process.</li>
+        <li>Interprets the result — a structured reporter (vitest/jest JSON) when available, otherwise the process exit code. A zero-match selector is a <em>fail</em>, never a silent pass.</li>
+        <li>Stamps a <code>CheckResult</code> into the journal:</li>
+      </ol>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out">// the proof carries its own identity + diagnostics</div>
+          <div class="term-line out">interface CheckResult {</div>
+          <div class="term-line out">&nbsp;&nbsp;ref:     string;   // "SessionTest#idle" — the bound selector</div>
+          <div class="term-line out">&nbsp;&nbsp;passed:  boolean;</div>
+          <div class="term-line out">&nbsp;&nbsp;at:      string;   // ISO timestamp of the run</div>
+          <div class="term-line out">&nbsp;&nbsp;sha?:    string;   // commit at proof time (legacy fallback)</div>
+          <div class="term-line green">&nbsp;&nbsp;tree?:   string;   // content tree-hash of the tested state — the REAL identity</div>
+          <div class="term-line out">&nbsp;&nbsp;dirty?:  boolean;  // were there uncommitted changes?</div>
+          <div class="term-line out">&nbsp;&nbsp;stack?:  string;   // recorded so drift can re-run without asking</div>
+          <div class="term-line out">&nbsp;&nbsp;kind?:   string;   // unit | integration | api | e2e | visual | parity | judge</div>
+          <div class="term-line out">&nbsp;&nbsp;flaky?:  boolean;  // passed only after retries?</div>
+          <div class="term-line out">&nbsp;&nbsp;tail?:   string;   // truncated stdout/stderr on FAILURE</div>
+          <div class="term-line out">}</div>
+        </div>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>A failed proof carries its own diagnosis.</strong>
+        On failure the <code>tail</code> captures the last lines of output, so a red edge in the graph tells you <em>why</em> it is red
+        without re-running anything.
+      </div>
+
+      <!-- STALENESS -->
+      <h2 id="staleness">Tree-hash identity &amp; staleness</h2>
+      <p>
+        A proof is bound to the <strong>content it tested</strong>, not the commit it happened on. The builder compares the proof's
+        recorded <code>tree</code> against the working tree's current hash (the <code>.dev-spec-kit/</code> directory is excluded, so
+        recording a proof never invalidates the proof):
+      </p>
+
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out">no recorded run          → unproven</div>
+          <div class="term-line red">last run failed          → red</div>
+          <div class="term-line green">passed &amp; tree matches    → green</div>
+          <div class="term-line yellow">passed &amp; tree differs    → stale   // code moved since the proof</div>
+        </div>
+      </div>
+
+      <p>
+        Each criterion rolls up to its <strong>worst</strong> proof, and each requirement is green only when <em>every</em> criterion is
+        green. The ranking is fixed in <code>build.ts</code>:
+      </p>
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out">const PROOF_RANK = { unproven: 0, red: 1, stale: 2, green: 3 };</div>
+          <div class="term-line out">// a criterion with green + stale bindings rolls up to STALE, never green</div>
+        </div>
+      </div>
+      <p>This is why one weak binding can never be hidden behind nine strong ones — the rollup always reports the strictest state.</p>
+
+      <!-- GATE -->
+      <h2 id="gate">The PR gate: one predicate</h2>
+      <p>
+        Every block path — the <code>PreToolUse</code> hook, <code>dev-spec-kit guard pr</code>, and <code>dev-spec-kit pr --create</code> —
+        funnels through a single predicate in <code>src/engine/gate.ts</code>, so there is exactly one definition of "ready". It blocks
+        unless <strong>all three</strong> hold:
+      </p>
+      <ol>
+        <li><strong>The graph exists and is readable.</strong> A missing graph blocks — absence of state is never permission.</li>
+        <li><strong>Every proven edge is green.</strong> Any <code>validates</code> / <code>implements</code> / <code>satisfies</code> edge that is red, stale, or unproven blocks.</li>
+        <li><strong>The last <code>verify</code> is green at the current tree.</strong> A green per-task gate is not a green project; the whole suite must have passed on the code you are shipping (any change since re-arms it).</li>
+      </ol>
+      <div class="callout callout-tip">
+        <strong>Exit code 2 = deny.</strong>
+        The guard returns exit 2, which Claude Code interprets as "deny this tool call" — so a non-green PR is stopped at the moment
+        <code>gh pr create</code> is attempted, not discovered in review.
+      </div>
+
+      <!-- PROVIDER CONTRACT -->
+      <h2 id="provider-contract">The provider contract</h2>
+      <p>
+        The code side of the graph is pluggable behind one file: <code>graphify-out/graph.json</code>. Both
+        <a href="concepts.html#providers">providers</a> — bundled revitify and external graphify — emit the same shape, and the
+        builder reads it through <code>loadCodeGraph()</code> (<code>src/engine/graphify/index.ts</code>), tolerant of either vocabulary:
+      </p>
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out">{</div>
+          <div class="term-line out">&nbsp;&nbsp;"built_at_commit": "a7f3c91…",</div>
+          <div class="term-line out">&nbsp;&nbsp;"nodes": [{ "id": "sym:…", "label": "SessionService", "source_file": "src/…", "community": 3 }],</div>
+          <div class="term-line out">&nbsp;&nbsp;"links": [{ "source": "…", "target": "…", "relation": "imports", "confidence": "EXTRACTED" }]</div>
+          <div class="term-line out">}</div>
+        </div>
+      </div>
+      <p>
+        revitify is invoked as <code>revitify build &lt;dir&gt; --out graphify-out</code> (or its in-process API); graphify as
+        <code>graphify update .</code>. dev-spec-kit re-indexes only when <code>HEAD</code> has moved since the last index, tracked in
+        <code>.dev-spec-kit/graph-state.json</code>. Because the contract is identical, switching providers is a one-line config change
+        plus a rebuild.
+      </p>
+
+      <!-- EXTEND -->
+      <h2 id="extend-stack">Extend: add a test stack with zero code</h2>
+      <p>
+        dev-spec-kit's engine never changes for a new language — only the inputs do. A new test runner is a config entry under
+        <code>verify.runners</code>, a command template with placeholders the engine substitutes per check:
+      </p>
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line out">// .dev-spec-kit/config.json</div>
+          <div class="term-line out">"verify": {</div>
+          <div class="term-line out">&nbsp;&nbsp;"runners": {</div>
+          <div class="term-line purple">&nbsp;&nbsp;&nbsp;&nbsp;"go-test": {</div>
+          <div class="term-line out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"cmd": "go",</div>
+          <div class="term-line out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"args": ["test", "-run", "{test}", "./{pkg}"]</div>
+          <div class="term-line out">&nbsp;&nbsp;&nbsp;&nbsp;}</div>
+          <div class="term-line out">&nbsp;&nbsp;}</div>
+          <div class="term-line out">}</div>
+          <div class="term-line out">&nbsp;</div>
+          <div class="term-line out"># then bind a criterion to it:</div>
+          <div class="term-line purple">@check kind=unit ref=sessions::TestIdleTimeout</div>
+          <div class="term-line out"># and prove it:</div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T1 sessions::TestIdleTimeout --stack go-test</span></div>
+        </div>
+      </div>
+      <p>
+        Built-in stacks (<code>java-maven</code>, <code>node-vitest</code>, <code>node-jest</code>, <code>python-pytest</code>) ship with their
+        selector syntax; a config-defined stack uses whatever placeholders its template declares. The seven <strong>check kinds</strong>
+        (<code>unit · integration · api · e2e · visual · parity · judge</code>) let one criterion demand the <em>right shape</em> of
+        evidence — an API contract test, a visual snapshot, or an LLM <code>judge</code> verdict for the unmeasurable.
+      </p>
+
+      <!-- RE-PROVE -->
+      <h2 id="re-prove">The re-prove dance</h2>
+      <p>
+        Because a proof's identity is the working tree, <strong>any</strong> code or doc change after a green proof makes it stale. The
+        loop back to green is mechanical:
+      </p>
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit verify --stamp</span><span class="out">   # re-run the suites, stamp fresh proofs in one pass</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit graph build</span><span class="out">      # re-fuse; confirm 0 red / 0 stale</span></div>
+          <div class="term-line out"># commit the refreshed .dev-spec-kit/ state</div>
+        </div>
+      </div>
+      <p>
+        A state-only commit (just <code>.dev-spec-kit/</code>) does <em>not</em> re-stale anything — that directory is excluded from the
+        proof hash — so the dance always terminates. <code>verify --stamp</code> proves every bound criterion from a single suite run,
+        which is far cheaper than per-criterion cold starts once your tests are green.
+      </p>
+
+      <p style="margin-top:32px;">Next: the <a href="commands.html">command reference</a>, or the <a href="configuration.html">configuration</a> for every policy knob.</p>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>
