@@ -60,4 +60,7 @@ jobs:
         run: DEV_SPEC_KIT_NO_AUDIT=1 node dist/cli/index.js spec lint
       - name: Test + coverage gate (100% lines/fns/stmts, branches floor)
         working-directory: dev-spec-kit
+        # vitest aliases `revitify` to its source; point that at the sibling checkout.
+        env:
+          REVITIFY_SRC: ${{ github.workspace }}/revitify/src/index.ts
         run: pnpm run coverage
