@@ -71,10 +71,24 @@ before committing.
 
 ## Pull requests
 
+- **Open a GitHub issue first.** Describe the change, then reference it from the PR (`Closes #NN`).
+  Don't start without an issue — it keeps work traceable.
 - **Branch** from `main` (it's protected — no direct pushes; PR + green CI required).
 - Keep PRs **scoped to one change**. Fill in the PR template.
 - CI must be **green** before merge. We **squash-merge** to keep `main` linear.
-- Conventional-ish commit titles are appreciated (`feat:`, `fix:`, `docs:`, `refactor:`, `chore:`).
+- **Conventional Commit titles are required** — they drive the automated release (see below).
+
+## Releases
+
+Releases are automated. On every push to `main`, the `release` workflow computes the next version
+from [Conventional Commits](https://www.conventionalcommits.org/) and creates a git tag + GitHub
+Release:
+
+- `feat:` → **minor** · `fix:` → **patch** · `feat!:` / `BREAKING CHANGE:` → **major**
+- `chore:` / `docs:` / `refactor:` / `test:` / `ci:` alone → **no release**
+
+Don't tag by hand — the workflow owns versioning. Since we squash-merge, the **PR title is what the
+release reads**, so make it a clean Conventional Commit.
 
 ## Conventions
 
