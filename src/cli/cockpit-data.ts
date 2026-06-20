@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { materialize, journalFor } from "./materialize.js";
-import { collectRivetFiles } from "./dashboard.js";
+import { collectCockpitFiles } from "./dashboard.js";
 import { rollupRequirements } from "../engine/graph/build.js";
 import { requirementKind } from "../engine/spec/ears.js";
 import { gitTreeHash } from "../engine/git.js";
@@ -33,7 +33,7 @@ export interface CockpitTask {
   results: Record<string, CockpitResult>;
 }
 
-export interface RivetCockpitData {
+export interface CockpitData {
   meta: {
     project: string;
     tagline: string;
@@ -109,7 +109,7 @@ function eventLine(e: JournalEvent): { icon: string; text: string } {
   }
 }
 
-export function buildRivet(cwd: string, opts: { serverMode?: boolean } = {}): RivetCockpitData {
+export function buildCockpitData(cwd: string, opts: { serverMode?: boolean } = {}): CockpitData {
   const m = materialize(cwd, { refresh: false, write: false });
   const events = journalFor(cwd).read();
   const tree = gitTreeHash(cwd);
@@ -223,7 +223,7 @@ export function buildRivet(cwd: string, opts: { serverMode?: boolean } = {}): Ri
       approvals,
       governance,
       activity,
-      files: collectRivetFiles(cwd),
+      files: collectCockpitFiles(cwd),
     },
     config: { sections: SECTIONS, manifest: generateManifest(m.config) },
   };
@@ -235,7 +235,7 @@ export function buildRivet(cwd: string, opts: { serverMode?: boolean } = {}): Ri
  * U+2029 are escaped because JSON.stringify emits them raw and they are JS line terminators that
  * break a parser if the bytes are ever inlined (finding #11).
  */
-export function sidecarJs(data: RivetCockpitData): string {
+export function sidecarJs(data: CockpitData): string {
   const body = JSON.stringify(data, null, 2)
     .replace(/</g, "\\u003c")
     .replace(/\u2028/g, "\\u2028")
@@ -243,7 +243,7 @@ export function sidecarJs(data: RivetCockpitData): string {
   return `window.RIVET = ${body};\n`;
 }
 
-export function writeSidecar(cwd: string, data: RivetCockpitData): string {
+export function writeSidecar(cwd: string, data: CockpitData): string {
   const dir = join(cwd, ".dev-spec-kit", "cockpit");
   mkdirSync(dir, { recursive: true });
   const path = join(dir, "rivet.data.js");

@@ -7,7 +7,7 @@ import type { AddressInfo } from "node:net";
 import type { Server } from "node:http";
 import { createCockpitServer } from "../src/cli/web.js";
 import { emitCockpit } from "../src/cli/cockpit.js";
-import { sidecarJs, type RivetCockpitData } from "../src/cli/cockpit-data.js";
+import { sidecarJs, type CockpitData } from "../src/cli/cockpit-data.js";
 import { manifestFromSchema } from "../src/engine/config-manifest.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { TaskStore } from "../src/engine/state/tasks.js";
@@ -143,7 +143,7 @@ describe("FIX-COCKPIT-SEC-01 — robustness findings", () => {
   it("the sidecar escapes JS line separators U+2028/U+2029 (finding #11)", () => {
     const data = {
       dashboard: { files: [{ name: "x.md", content: "a\u2028b\u2029c" }] },
-    } as unknown as RivetCockpitData;
+    } as unknown as CockpitData;
     const js = sidecarJs(data);
     expect(js).not.toMatch(/[\u2028\u2029]/);
     expect(js).toContain("\\u2028");

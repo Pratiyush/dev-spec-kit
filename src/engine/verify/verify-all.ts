@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { RivetConfig } from "../../config/schema.js";
+import type { DevSpecKitConfig } from "../../config/schema.js";
 import { resolveStack, type RunnerOverride } from "./runner.js";
 import { reportArgs, type Reporter } from "./report.js";
 import { gitHead, gitTreeHash, isDirty } from "../git.js";
@@ -62,7 +62,7 @@ function fullSuite(override: RunnerOverride): { cmd: string; args: string[] } {
   return { cmd: override.cmd, args: override.args.filter((a) => !/\{(ref|file|name)\}/.test(a)) };
 }
 
-export function planVerify(cwd: string, config: RivetConfig): VerifyStep[] {
+export function planVerify(cwd: string, config: DevSpecKitConfig): VerifyStep[] {
   const steps: VerifyStep[] = [];
 
   // Build ALL.
@@ -131,7 +131,7 @@ function stepReporter(s: VerifyStep): Reporter | undefined {
   return undefined;
 }
 
-export function runVerify(cwd: string, config: RivetConfig, opts?: { reportDir?: string }): VerifyRun {
+export function runVerify(cwd: string, config: DevSpecKitConfig, opts?: { reportDir?: string }): VerifyRun {
   const steps = planVerify(cwd, config);
   const results: VerifyStepResult[] = [];
   const reports: StampSource[] = [];

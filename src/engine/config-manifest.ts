@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { RivetConfigSchema, defaultConfig, type RivetConfig } from "../config/schema.js";
+import { DevSpecKitConfigSchema, defaultConfig, type DevSpecKitConfig } from "../config/schema.js";
 
 /**
  * REQUIREMENT_COCKPIT-01 — the config-studio manifest, GENERATED from the zod schema so types,
@@ -334,6 +334,6 @@ export function manifestFromSchema(
 }
 
 /** The real thing: the full dev-spec-kit manifest for a resolved project config. */
-export function generateManifest(config: RivetConfig): Knob[] {
-  return manifestFromSchema(RivetConfigSchema, config, defaultConfig(), DESCRIPTIONS);
+export function generateManifest(config: DevSpecKitConfig): Knob[] {
+  return manifestFromSchema(DevSpecKitConfigSchema, config, defaultConfig(), DESCRIPTIONS);
 }

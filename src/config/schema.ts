@@ -22,7 +22,7 @@ export const PLATFORM_VALUES = [
  * opinionated defaults (TDD, reuse-first, gates on, even quick-mode writes a test) but EVERYTHING is
  * overridable in one file (`.dev-spec-kit/config.json`). See the plan for the rationale behind each default.
  */
-export const RivetConfigSchema = z
+export const DevSpecKitConfigSchema = z
   .object({
     /** Schema version, for forward-compatible migrations. */
     version: z.literal(1).default(1),
@@ -345,14 +345,14 @@ export const RivetConfigSchema = z
   })
   .default({});
 
-export type RivetConfig = z.infer<typeof RivetConfigSchema>;
+export type DevSpecKitConfig = z.infer<typeof DevSpecKitConfigSchema>;
 
 /** The fully-resolved default config (every field populated). */
-export function defaultConfig(): RivetConfig {
-  return RivetConfigSchema.parse({});
+export function defaultConfig(): DevSpecKitConfig {
+  return DevSpecKitConfigSchema.parse({});
 }
 
 /** Parse + validate a raw config object, applying defaults for anything omitted. */
-export function parseConfig(raw: unknown): RivetConfig {
-  return RivetConfigSchema.parse(raw ?? {});
+export function parseConfig(raw: unknown): DevSpecKitConfig {
+  return DevSpecKitConfigSchema.parse(raw ?? {});
 }

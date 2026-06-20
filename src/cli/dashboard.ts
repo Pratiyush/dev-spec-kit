@@ -12,7 +12,7 @@ import { label } from "./emoji.js";
  * and `dev-spec-kit web` serves the same files with the validated save API.
  */
 
-export interface RivetFile {
+export interface CockpitFile {
   name: string;
   content: string;
 }
@@ -20,9 +20,9 @@ export interface RivetFile {
 const FILE_CAP = 50_000;
 
 /** FILES-01: every human-readable .dev-spec-kit markdown artifact, in stable reading order. */
-export function collectRivetFiles(cwd: string): RivetFile[] {
+export function collectCockpitFiles(cwd: string): CockpitFile[] {
   const base = join(cwd, ".dev-spec-kit");
-  const out: RivetFile[] = [];
+  const out: CockpitFile[] = [];
   const add = (rel: string) => {
     const p = join(base, rel);
     if (!existsSync(p)) return;

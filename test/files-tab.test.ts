@@ -2,11 +2,11 @@ import { describe, it, expect } from "vitest";
 import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { collectRivetFiles } from "../src/cli/dashboard.js";
+import { collectCockpitFiles } from "../src/cli/dashboard.js";
 
 /** FILES-01: every .dev-spec-kit markdown artifact, collected + rendered READABLE (and injection-safe). */
 
-describe("collectRivetFiles", () => {
+describe("collectCockpitFiles", () => {
   it("collects laws/learnings/specs/boards/approvals in stable order, skipping machine files", () => {
     const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-files-"));
     for (const d of [".dev-spec-kit/specs", ".dev-spec-kit/approvals", ".dev-spec-kit/laws"])
@@ -20,7 +20,7 @@ describe("collectRivetFiles", () => {
     writeFileSync(join(dir, ".dev-spec-kit", "journal.jsonl"), "{}"); // machine state — excluded
     writeFileSync(join(dir, ".dev-spec-kit", "config.json"), "{}"); // excluded
 
-    const files = collectRivetFiles(dir);
+    const files = collectCockpitFiles(dir);
     const names = files.map((f) => f.name);
     expect(names[0]).toBe("laws.md"); // laws lead
     expect(names).toContain("laws/security.md");
@@ -34,7 +34,7 @@ describe("collectRivetFiles", () => {
     const dir = mkdtempSync(join(tmpdir(), "dev-spec-kit-files-big-"));
     mkdirSync(join(dir, ".dev-spec-kit"), { recursive: true });
     writeFileSync(join(dir, ".dev-spec-kit", "laws.md"), "x".repeat(60_000));
-    const [f] = collectRivetFiles(dir);
+    const [f] = collectCockpitFiles(dir);
     expect(f!.content.length).toBeLessThan(55_000);
     expect(f!.content).toContain("truncated");
   });

@@ -3,7 +3,7 @@ import { execSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { buildRivet, sidecarJs } from "../src/cli/cockpit-data.js";
+import { buildCockpitData, sidecarJs } from "../src/cli/cockpit-data.js";
 import { emitCockpit, SHELL_FILES } from "../src/cli/cockpit.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { TaskStore } from "../src/engine/state/tasks.js";
@@ -70,7 +70,7 @@ function project(extraConfig: Record<string, unknown> = {}): string {
 
 describe("REQUIREMENT_COCKPIT-02 — the RIVET sidecar is the project's truth", () => {
   const dir = project();
-  const data = buildRivet(dir);
+  const data = buildCockpitData(dir);
 
   it("the RIVET sidecar carries meta, dashboard truth, and the config manifest", () => {
     expect(data.meta.refreshSeconds).toBe(15);

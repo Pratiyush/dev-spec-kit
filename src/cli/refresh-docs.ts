@@ -5,8 +5,8 @@ import { writeBoards } from "./boards.js";
 import { renderResume } from "../engine/phase.js";
 import { rollupRequirements } from "../engine/graph/build.js";
 import { requirementKind } from "../engine/spec/ears.js";
-import { buildRivet, writeSidecar } from "./cockpit-data.js";
-import type { RivetConfig } from "../config/schema.js";
+import { buildCockpitData, writeSidecar } from "./cockpit-data.js";
+import type { DevSpecKitConfig } from "../config/schema.js";
 
 /**
  * REQUIREMENT_DOCS-01 — "every time we change anything, it should update the documents."
@@ -16,14 +16,14 @@ import type { RivetConfig } from "../config/schema.js";
  * dashboard.updates="on-demand" opts only the sidecar out. Best-effort by design: refreshing
  * documents must never break the command that did the real work.
  */
-export function refreshDocs(cwd: string, config: RivetConfig, pre?: Materialized): void {
+export function refreshDocs(cwd: string, config: DevSpecKitConfig, pre?: Materialized): void {
   try {
     const m = pre ?? materialize(cwd, { refresh: false }); // writes .dev-spec-kit/graph.json
     const events = journalFor(cwd).read();
     const obligated = m.requirements.filter((r) => requirementKind(r.id) !== "adr");
     writeBoards(cwd, m.tasks, events, rollupRequirements(obligated, m.vtg));
     writeFileSync(join(cwd, ".dev-spec-kit", "RESUME.md"), renderResume(m.tasks));
-    if (config.dashboard.updates !== "on-demand") writeSidecar(cwd, buildRivet(cwd));
+    if (config.dashboard.updates !== "on-demand") writeSidecar(cwd, buildCockpitData(cwd));
     /* c8 ignore start -- docs are DERIVED; a write failure here must never break the command that did
        the real work (the truth is already journaled). Best-effort by design. */
   } catch {

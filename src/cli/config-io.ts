@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ZodError } from "zod";
-import { parseConfig, type RivetConfig } from "../config/schema.js";
+import { parseConfig, type DevSpecKitConfig } from "../config/schema.js";
 import { BUILTIN_STACKS } from "../engine/verify/runner.js";
 
 /**
@@ -16,7 +16,7 @@ export class InputError extends Error {
   }
 }
 
-export function loadConfig(projectDir: string): RivetConfig {
+export function loadConfig(projectDir: string): DevSpecKitConfig {
   const path = join(projectDir, ".dev-spec-kit", "config.json");
   if (!existsSync(path)) return parseConfig({});
   let raw: unknown;
