@@ -35,7 +35,8 @@ or a global install) and `dev-spec-kit doctor` passing. If `.dev-spec-kit/` is m
 6. **Done.** `dev-spec-kit task done <taskId>`. If it blocks, the task is NOT done — fix and re-prove. Do not
    argue with the gate; it is correct by construction.
 7. **Graph.** `dev-spec-kit graph build`. Red/stale proofs exit 1 — stale means code moved after the proof:
-   re-run those checks. The graph MUST be green before any PR.
+   re-run those checks. The graph MUST be green before any PR. For provider choice (revitify vs
+   graphify), freshness, and reading blast radius / implements-edges, see the `dev-spec-kit-graph` skill.
 8. **Verify ALL.** `dev-spec-kit verify` — Build ALL + run EVERY configured kind's full suite, journaled.
    A green task is not a green project; the PR gate requires the last verify green ON THE CURRENT
    code tree (any code change after it ⇒ re-run). MUST be green before approve/PR.
