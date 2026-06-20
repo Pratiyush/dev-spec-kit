@@ -26,6 +26,7 @@
       <a href="commands.html">Commands</a>
       <a href="configuration.html">Configuration</a>
       <a href="concepts.html">Concepts</a>
+      <a href="internals.html">Internals</a>
       <a href="skills.html">Skills</a>
     </nav>
   </header>
@@ -42,6 +43,7 @@
       <a href="commands.html">Commands</a>
       <a href="configuration.html">Configuration</a>
       <a href="concepts.html">Concepts</a>
+      <a href="internals.html">Internals</a>
       <a href="skills.html">Skills</a>
     </div>
     <div class="sidebar-group">
@@ -65,17 +67,17 @@
     <div class="prose">
 
       <h2 id="prerequisites">Prerequisites</h2>
-      <p>dev-spec-kit requires three things to be present on your machine. Run <code>dev-spec-kit doctor</code> after installing to confirm all are found.</p>
+      <p>dev-spec-kit needs only <strong>two</strong> things on your machine. The code graph runs on the <strong>bundled revitify provider</strong> — zero install, no Python, no API key. Run <code>dev-spec-kit doctor</code> after installing to confirm.</p>
 
       <table>
         <thead>
-          <tr><th>Tool</th><th>Minimum version</th><th>Purpose</th></tr>
+          <tr><th>Tool</th><th>Minimum version</th><th>Required?</th><th>Purpose</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Node.js</strong></td><td>≥ 22</td><td>dev-spec-kit CLI runtime</td></tr>
-          <tr><td><strong>git</strong></td><td>any modern</td><td>tree-hash proofs, worktrees, PR creation</td></tr>
-          <tr><td><strong>Python</strong></td><td>≥ 3.10</td><td>graphify code-graph indexer</td></tr>
-          <tr><td><strong>graphify</strong></td><td>latest</td><td>20+ language code-knowledge graph</td></tr>
+          <tr><td><strong>Node.js</strong></td><td>≥ 22</td><td>Required</td><td>dev-spec-kit CLI runtime</td></tr>
+          <tr><td><strong>git</strong></td><td>any modern</td><td>Required</td><td>tree-hash proofs, worktrees, PR creation</td></tr>
+          <tr><td><strong>revitify</strong></td><td>bundled</td><td>Built in</td><td>the default code-graph engine — ships inside dev-spec-kit, nothing to install</td></tr>
+          <tr><td><strong>Python + graphify</strong></td><td>≥ 3.10 / latest</td><td>Optional</td><td>opt-in only for <em>multi-modal</em> indexing (PDFs, images, video) — see <a href="concepts.html#providers">providers</a></td></tr>
         </tbody>
       </table>
 
@@ -83,22 +85,8 @@
 
       <h2 id="install">Install</h2>
 
-      <h3>1. Install graphify</h3>
-      <p>The PyPI package is named <code>graphifyy</code> (double y); the CLI command is <code>graphify</code>.</p>
-
-      <div class="terminal">
-        <div class="terminal-bar">
-          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-        </div>
-        <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">pip install graphifyy</span></div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">graphify install</span></div>
-          <div class="term-line green">✓ graphify installed</div>
-        </div>
-      </div>
-
-      <h3>2. Install the dev-spec-kit CLI</h3>
-      <p>dev-spec-kit is built from source (Phase 0 — not yet on npm). Clone the repo and build:</p>
+      <h3>1. Install the dev-spec-kit CLI</h3>
+      <p>dev-spec-kit is built from source today (the npm name <code>dev-spec-kit</code> is reserved; publish is pending). The revitify code-graph engine ships <strong>bundled</strong>, so this is the <strong>only required install</strong> — no Python, no separate indexer.</p>
 
       <div class="terminal">
         <div class="terminal-bar">
@@ -110,7 +98,21 @@
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">pnpm install</span></div>
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">pnpm build</span></div>
           <div class="term-line out"># Use via: node dist/cli/index.js  OR  pnpm dev</div>
-          <div class="term-line out"># Or symlink: npm link  (installs `rivet` globally)</div>
+          <div class="term-line out"># Or symlink: npm link  (installs `dev-spec-kit` globally)</div>
+        </div>
+      </div>
+
+      <h3>2. (Optional) Install graphify for multi-modal indexing</h3>
+      <p>Only needed if your specs depend on <em>non-code</em> artifacts (PDFs, images, video) — the bundled revitify provider covers all source on its own. The PyPI package is <code>graphifyy</code> (double&nbsp;y); the CLI command is <code>graphify</code>. After installing, set <code>graphify.provider</code> to <code>graphify</code> in <code>.dev-spec-kit/config.json</code>.</p>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        </div>
+        <div class="terminal-body">
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">pip install graphifyy</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">graphify install</span></div>
+          <div class="term-line green">✓ graphify installed</div>
         </div>
       </div>
 
@@ -152,10 +154,10 @@
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit doctor</span></div>
           <div class="term-line green">✓ Node.js 22.4.0</div>
           <div class="term-line green">✓ git 2.43.0</div>
-          <div class="term-line green">✓ Python 3.11.7</div>
-          <div class="term-line green">✓ graphify 1.2.0</div>
+          <div class="term-line green">✓ revitify — bundled provider ready</div>
+          <div class="term-line dim">○ graphify — not installed (optional; multi-modal indexing only)</div>
           <div class="term-line green">✓ .dev-spec-kit/ present</div>
-          <div class="term-line green">✓ All prerequisites met.</div>
+          <div class="term-line green">✓ All required prerequisites met.</div>
         </div>
       </div>
 

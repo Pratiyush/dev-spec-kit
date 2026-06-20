@@ -46,6 +46,7 @@
       <a href="commands.html">Commands</a>
       <a href="configuration.html">Configuration</a>
       <a href="concepts.html" class="active">Concepts</a>
+      <a href="internals.html">Internals</a>
       <a href="skills.html">Skills</a>
     </nav>
   </header>
@@ -61,11 +62,13 @@
       <a href="commands.html">Commands</a>
       <a href="configuration.html">Configuration</a>
       <a href="concepts.html" class="active">Concepts</a>
+      <a href="internals.html">Internals</a>
       <a href="skills.html">Skills</a>
     </div>
     <div class="sidebar-group">
       <div class="sidebar-group-label">On this page</div>
       <a href="#vtg">Verified Traceability Graph</a>
+      <a href="#providers">Code-graph providers</a>
       <a href="#proof-states">Proof states</a>
       <a href="#ears">EARS criteria</a>
       <a href="#laws">Laws</a>
@@ -88,8 +91,8 @@
       <!-- VTG -->
       <h2 id="vtg">The Verified Traceability Graph</h2>
       <p>
-        The VTG is dev-spec-kit's central data structure. It overlays <strong>specification, proof, and code</strong> edges on top of
-        <a href="https://github.com/safishamsi/graphify">graphify</a>'s code-knowledge graph (Java, TypeScript, Python, and 20+ more languages).
+        The VTG is dev-spec-kit's central data structure. It overlays <strong>specification, proof, and code</strong> edges on top of a
+        <a href="#providers">code-knowledge graph</a> — built by the bundled <strong>revitify</strong> engine (TypeScript, Python, Java, and more), or the optional external graphify provider.
         The result is a single structure that answers: "is every requirement proven, by which check, at which tree-hash, touching which code nodes?"
       </p>
 
@@ -111,6 +114,30 @@
       <p>The graph is written to <code>.dev-spec-kit/graph.json</code> by <code>dev-spec-kit graph build</code>. Every edge carries metadata: proof state, tree-hash, timestamp, and actor. The guard hook reads this graph before any PR creation.</p>
 
       <p>The graph is <strong>append-only in principle</strong> — evidence accrues. The <code>board</code> command renders the graph as human-readable boards; the <code>trace</code> command prints the requirement→criterion truth table; <code>affected</code> traverses the code-graph reverse edges.</p>
+
+      <!-- PROVIDERS -->
+      <h2 id="providers">Code-graph providers</h2>
+      <p>The code side of the VTG — the nodes and import/call links your proofs attach to — is built by a <strong>provider</strong>. dev-spec-kit ships with two, behind one identical <code>graphify-out/graph.json</code> contract, selected by <code>graphify.provider</code> in config:</p>
+
+      <table>
+        <thead><tr><th></th><th>revitify <span style="color:var(--green);font-weight:600;">(default)</span></th><th>graphify <span style="color:var(--text-dimmer);font-weight:600;">(opt-in)</span></th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ships</strong></td><td>Bundled inside dev-spec-kit</td><td>External Python tool</td></tr>
+          <tr><td><strong>Install</strong></td><td>None — zero pip, zero key</td><td><code>pip install graphifyy &amp;&amp; graphify install</code></td></tr>
+          <tr><td><strong>Reach</strong></td><td>All source code (tree-sitter, multi-language)</td><td>Code <em>plus</em> multi-modal: PDFs, images, video</td></tr>
+          <tr><td><strong>When</strong></td><td>Every normal project</td><td>Only when a spec depends on non-code artifacts</td></tr>
+        </tbody>
+      </table>
+
+      <p>revitify is an independent MIT port of <a href="https://github.com/safishamsi/graphify">graphify</a>, so the default needs no external install. Switching providers is just a config change plus a rebuild — specs and proofs are untouched. The Claude Code skills <code>dev-spec-kit-revitify</code> and <code>dev-spec-kit-graphify</code> document each in depth.</p>
+
+      <h3>Implements edges &amp; source blast radius</h3>
+      <p>
+        Beyond <code>validates</code> edges (test → criterion), dev-spec-kit derives proven <code>implements</code> edges
+        (source file → requirement) from the code graph's test→source imports. They carry the requirement's
+        <strong>worst-of-chain</strong> proof — never greener than the checks behind them — so a changed <em>source</em> file,
+        not just a changed test, lights up its blast radius in a PR body. <code>dev-spec-kit affected &lt;label&gt;</code> traverses them.
+      </p>
 
       <!-- PROOF STATES -->
       <h2 id="proof-states">Proof states</h2>
