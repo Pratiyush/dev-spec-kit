@@ -1,6 +1,6 @@
 ---
 name: dev-spec-kit-graph
-description: Build, refresh, and read dev-spec-kit's code graph — the code-side of the Verified Traceability Graph. Pick the provider (bundled revitify by default, external graphify for multi-modal), keep it fresh, and use blast radius / implements-edges / drift to answer "what breaks if this changes?". Use whenever the graph is stale, a provider question comes up, or you need source→requirement traceability.
+description: Build, refresh, and read dev-spec-kit's Verified Traceability Graph — provider-agnostic. Keep it fresh with the build wrapper, read blast radius / implements-edges / drift to answer "what breaks if this changes?", and run the staleness re-prove dance. For choosing and configuring the code-graph engine itself, see the dev-spec-kit-revitify and dev-spec-kit-graphify skills.
 ---
 
 # dev-spec-kit graph — the code-side of the moat
@@ -15,24 +15,16 @@ dev-spec-kit's graph has two layers fused into one artifact:
 The provider answers "what is the code?"; the overlay answers "what is *proven* about it?". Your job
 is to keep both fresh and to read the second one — never to hand-author either.
 
-## Providers — the default is already right
+## Providers — separate skills own this
 
-| | `revitify` (default) | `graphify` (opt-in) |
-|---|---|---|
-| Ships | **Bundled** inside dev-spec-kit | External Python tool |
-| Install | none, zero key | `pip install graphifyy && graphify install` |
-| Reach | code-only, tree-sitter multi-language | multi-modal: PDFs / images / video too |
-| When | every normal project | only when the spec depends on non-code artifacts |
+Two engines can feed the **same** `graphify-out/graph.json` contract, so the graph loop below is
+identical no matter which is configured (via `graphify.provider`):
 
-- revitify is **always** available — it is bundled. You MUST NOT switch to `graphify` merely to
-  avoid an install; that trades a working default for an external dependency and gains nothing for a
-  code-only project.
-- Opt into graphify **only** for multi-modal ingestion: set `graphify.provider` to `graphify` in
-  `.dev-spec-kit/config.json`, install it (the PyPI package is `graphifyy` — double-y — but the CLI
-  stays `graphify`), then confirm with `dev-spec-kit doctor` before you rely on it. graphify is MIT
-  (source: github.com/safishamsi/graphify) — verify the repo yourself.
-- Both providers honor the **same** `graphify-out/graph.json` contract, so switching is just a
-  rebuild — no spec or proof changes.
+- **revitify** — the bundled default, zero install. See the `dev-spec-kit-revitify` skill.
+- **graphify** — the external, multi-modal opt-in. See the `dev-spec-kit-graphify` skill.
+
+Picking or switching a provider is just a config change plus a rebuild; it never touches specs or
+proofs. Everything below is provider-agnostic.
 
 ## Build & refresh — the wrapper
 
@@ -77,6 +69,6 @@ built on an unexecuted check defeats the entire tool.
 
 - The graph MUST be green before any PR.
 - You MUST run `dev-spec-kit graph build` after any code change that could move a proof.
-- You MUST run `dev-spec-kit doctor` before opting into the graphify provider.
 - NEVER commit `graphify-out/` — it is gitignored, derived, and regenerated from code.
-- NEVER switch providers to dodge an install; revitify is bundled and needs none.
+- Provider choice is owned by `dev-spec-kit-revitify` / `dev-spec-kit-graphify`; this skill stays
+  agnostic — never hard-code one provider's mechanics into the graph loop.
