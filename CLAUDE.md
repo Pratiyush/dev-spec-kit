@@ -35,8 +35,9 @@ node dist/cli/index.js <cmd>   # run the CLI (e.g. verify --stamp, graph build, 
   excluded), so the dance terminates. Do this even for docs-only changes.
 - **Issue-first + protected `main`.** Open a GitHub issue before working (reference it with
   `Closes #NN`); no direct pushes — branch, open a PR, let CI go green, then **squash-merge**. Use
-  **Conventional Commit** titles: the `release` workflow tags + releases on push to `main` from them
-  (`feat:` minor, `fix:` patch, `feat!:` major). Never hand-create tags.
+  **Conventional Commit** titles: **release-please** maintains a release PR from them (`feat:` minor,
+  `fix:` patch, `feat!:` major) that bumps package.json + CHANGELOG and, on merge, tags + releases.
+  Never hand-bump versions or create tags. (Merging a release PR stales the proofs — re-prove after.)
 - **Don't restyle the verbatim surfaces:** `src/cli/cockpit-assets/**` and `.design/**` (the browser
   cockpit shell — `window.RIVET` / `.rivet` CSS / `rivet.*.js` are intentionally kept) are pinned by a
   presence regression guard.
