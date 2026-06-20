@@ -5,7 +5,9 @@ export default defineConfig({
     alias: {
       // FEAT-REVITIFY-01: tests transform revitify from SOURCE — no dist build needed to test.
       // Absolute on purpose: relative forms break inside .claude/worktrees/* (see ledger 2026-06-12).
-      revitify: "/Users/pratiyush/Github/revitify/src/index.ts",
+      // REVITIFY_SRC overrides the path so CI (where the sibling lives elsewhere) resolves too; the
+      // local default keeps the worktree-safe absolute path.
+      revitify: process.env["REVITIFY_SRC"] ?? "/Users/pratiyush/Github/revitify/src/index.ts",
     },
   },
   test: {

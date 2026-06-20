@@ -1,0 +1,66 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Cancel superseded runs on the same ref to save CI minutes.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      # dev-spec-kit bundles the revitify code-graph engine via a local `link:` dependency
+      # (resolved as `../revitify` in the lockfile). Check both out as siblings under the
+      # workspace and build revitify first so the link resolves for tsc, vitest, and the CLI.
+      - name: Checkout dev-spec-kit
+        uses: actions/checkout@v4
+        with:
+          path: dev-spec-kit
+      - name: Checkout revitify (bundled provider)
+        uses: actions/checkout@v4
+        with:
+          repository: Pratiyush/revitify
+          path: revitify
+
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: dev-spec-kit/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: |
+            dev-spec-kit/pnpm-lock.yaml
+            revitify/pnpm-lock.yaml
+
+      - name: Build revitify (so the `revitify` link resolves)
+        working-directory: revitify
+        run: pnpm install --frozen-lockfile && pnpm run build
+
+      - name: Install dev-spec-kit
+        working-directory: dev-spec-kit
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        working-directory: dev-spec-kit
+        run: pnpm run build
+      - name: Typecheck
+        working-directory: dev-spec-kit
+        run: pnpm run typecheck
+      - name: Lint
+        working-directory: dev-spec-kit
+        run: pnpm run lint
+      - name: Spec lint (dogfood — every @check ref must resolve)
+        working-directory: dev-spec-kit
+        run: DEV_SPEC_KIT_NO_AUDIT=1 node dist/cli/index.js spec lint
+      - name: Test + coverage gate (100% lines/fns/stmts, branches floor)
+        working-directory: dev-spec-kit
+        # vitest aliases `revitify` to its source; point that at the sibling checkout.
+        env:
+          REVITIFY_SRC: ${{ github.workspace }}/revitify/src/index.ts
+        run: pnpm run coverage
