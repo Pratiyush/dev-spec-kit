@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/Pratiyush/dev-spec-kit/tree/main/website
+    about: The full guide — getting started, workflow, commands, concepts, internals.
+  - name: Question / discussion
+    url: https://github.com/Pratiyush/dev-spec-kit/discussions
+    about: Ask a question or propose an idea before filing an issue.

@@ -1,0 +1,37 @@
+name: Bug report
+description: Something in dev-spec-kit didn't work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report. Please run `dev-spec-kit doctor` and include the output below — it captures the environment that explains most issues.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+      placeholder: Running `dev-spec-kit graph build` exits 1 even though…
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands, in order.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: "`dev-spec-kit doctor` output"
+      render: shell
+    validations:
+      required: false
+  - type: input
+    id: version
+    attributes:
+      label: dev-spec-kit version / commit
+      placeholder: "commit sha or git describe"
+    validations:
+      required: false
