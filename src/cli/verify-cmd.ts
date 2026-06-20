@@ -2,7 +2,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import pc from "picocolors";
-import type { RivetConfig } from "../config/schema.js";
+import type { DevSpecKitConfig } from "../config/schema.js";
 import { Journal } from "../engine/state/journal.js";
 import { runVerify, type VerifyRun } from "../engine/verify/verify-all.js";
 import { identityLabel } from "../engine/verify/stamp.js";
@@ -81,7 +81,7 @@ export function verifyCmd(opts?: { stamp?: boolean; advance?: boolean }): void {
  * for each — stamped with the SAME tree the verify ran on, so `trace` reads them green immediately.
  * A ref not present in the report (a pytest/maven check, or a test not run) is left untouched.
  */
-export function stampProofs(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
+export function stampProofs(cwd: string, config: DevSpecKitConfig, journal: Journal, run: VerifyRun): void {
   const sources = run.reports ?? [];
   const reports = sources
     .map((s) => {
@@ -126,7 +126,7 @@ export function stampProofs(cwd: string, config: RivetConfig, journal: Journal, 
  * (criteria) and `status` (tasks) stop disagreeing. Reuses the done-gate's own evidence rule, so it
  * only advances what `task done` would have accepted anyway — the human approval step still follows.
  */
-export function advanceTasks(cwd: string, config: RivetConfig, journal: Journal, run: VerifyRun): void {
+export function advanceTasks(cwd: string, config: DevSpecKitConfig, journal: Journal, run: VerifyRun): void {
   const store = new TaskStore(journal);
   const ids = provableTaskIds([...store.all().values()], run.tree);
   if (ids.length === 0) return;

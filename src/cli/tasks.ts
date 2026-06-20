@@ -28,7 +28,7 @@ import {
   hasApiKey,
   type JudgeVerdict,
 } from "../engine/verify/judge.js";
-import type { RivetConfig } from "../config/schema.js";
+import type { DevSpecKitConfig } from "../config/schema.js";
 import { loadConfig } from "./config-io.js";
 import { renderProgress } from "./progress.js";
 
@@ -243,7 +243,7 @@ export async function checkRun(
  */
 async function runJudge(
   cwd: string,
-  config: RivetConfig,
+  config: DevSpecKitConfig,
   specs: Requirement[],
   taskId: string,
   ref: string,

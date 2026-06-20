@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildRivet, writeSidecar, type RivetCockpitData } from "./cockpit-data.js";
+import { buildCockpitData, writeSidecar, type CockpitData } from "./cockpit-data.js";
 
 /**
  * REQUIREMENT_COCKPIT-03 — static shell emission. The shell (the design handoff, ported with
@@ -30,7 +30,7 @@ function assetsDir(): string {
 export interface EmitResult {
   dir: string;
   wroteShell: boolean;
-  data: RivetCockpitData;
+  data: CockpitData;
 }
 
 export function emitCockpit(cwd: string, opts: { serverMode?: boolean } = {}): EmitResult {
@@ -46,7 +46,7 @@ export function emitCockpit(cwd: string, opts: { serverMode?: boolean } = {}): E
     for (const f of SHELL_FILES) copyFileSync(join(src, f), join(dir, f));
     writeFileSync(versionPath, SHELL_VERSION + "\n");
   }
-  const data = buildRivet(cwd, opts);
+  const data = buildCockpitData(cwd, opts);
   writeSidecar(cwd, data);
   return { dir, wroteShell, data };
 }

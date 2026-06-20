@@ -7,7 +7,7 @@ import pc from "picocolors";
 import { parseConfig } from "../config/schema.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore } from "../engine/state/tasks.js";
-import { buildRivet, sidecarJs } from "./cockpit-data.js";
+import { buildCockpitData, sidecarJs } from "./cockpit-data.js";
 import { emitCockpit, SHELL_FILES } from "./cockpit.js";
 import { label } from "./emoji.js";
 
@@ -143,7 +143,7 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
   const url = (req.url ?? "/").split("?")[0]!;
 
   if (req.method === "GET" && url === "/api/state") {
-    json(res, 200, buildRivet(cwd, { serverMode: true }));
+    json(res, 200, buildCockpitData(cwd, { serverMode: true }));
     return;
   }
 
@@ -197,7 +197,7 @@ async function handle(cwd: string, req: IncomingMessage, res: ServerResponse): P
   if (req.method === "GET") {
     if (url === "/rivet.data.js") {
       res.writeHead(200, { "Content-Type": MIME[".js"], "Cache-Control": "no-store" });
-      res.end(sidecarJs(buildRivet(cwd, { serverMode: true })));
+      res.end(sidecarJs(buildCockpitData(cwd, { serverMode: true })));
       return;
     }
     const rel = url === "/" ? "index.html" : normalize(url).replace(/^[/\\]+/, "");

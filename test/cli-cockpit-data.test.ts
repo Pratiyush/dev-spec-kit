@@ -1,14 +1,14 @@
 import { describe, it, expect } from "vitest";
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
-import { buildRivet, sidecarJs } from "../src/cli/cockpit-data.js";
+import { buildCockpitData, sidecarJs } from "../src/cli/cockpit-data.js";
 import { TaskStore } from "../src/engine/state/tasks.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { tmpProject } from "./helpers/cli-harness.js";
 
 const journal = (dir: string) => new Journal(join(dir, ".dev-spec-kit", "journal.jsonl"));
 
-describe("buildRivet — the cockpit sidecar object", () => {
+describe("buildCockpitData — the cockpit sidecar object", () => {
   it("renders an activity line for every event type, plus approvals + governance sections", () => {
     const dir = tmpProject();
     const j = journal(dir);
@@ -20,7 +20,7 @@ describe("buildRivet — the cockpit sidecar object", () => {
     j.append("approval.recorded", { approver: "Pat", taskIds: ["T1"], sha: "abcdef1234567890" });
     j.append("governance", { kind: "unlock", paths: ["spec.md"], until: "2999-01-01" });
 
-    const data = buildRivet(dir);
+    const data = buildCockpitData(dir);
     const acts = data.dashboard.activity.map((a) => a.text).join(" | ");
     expect(acts).toContain("verify --stamp");
     expect(acts).toContain("verify 2 step(s)");
@@ -44,7 +44,7 @@ describe("buildRivet — the cockpit sidecar object", () => {
     const store = new TaskStore(journal(dir));
     store.create("T1", "t", ["c1"]);
     store.recordCheck("T1", { ref: "c1", passed: true, at: "x", sha: "S", tree: "OLD_TREE_HASH" });
-    const data = buildRivet(dir);
+    const data = buildCockpitData(dir);
     expect(data.dashboard.tasks[0]!.results["c1"]!.stale).toBe(true);
   });
 });

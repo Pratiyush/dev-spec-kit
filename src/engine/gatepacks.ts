@@ -1,5 +1,5 @@
 import { isNegativeCriterion, requirementKind, type Requirement } from "./spec/ears.js";
-import type { RivetConfig } from "../config/schema.js";
+import type { DevSpecKitConfig } from "../config/schema.js";
 import type { Mode } from "./route/classify.js";
 
 /**
@@ -19,7 +19,7 @@ function escapeRe(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function triggered(text: string, config: RivetConfig): string[] {
+function triggered(text: string, config: DevSpecKitConfig): string[] {
   const out: string[] = [];
   for (const [name, pack] of Object.entries(config.gates.packs)) {
     if (pack.triggers.some((t) => new RegExp(`\\b${escapeRe(t)}`, "i").test(text))) out.push(name);
@@ -28,7 +28,7 @@ function triggered(text: string, config: RivetConfig): string[] {
 }
 
 /** Packs in force for this text: explicit require ∪ trigger-matched. */
-export function requiredPacks(text: string, config: RivetConfig): string[] {
+export function requiredPacks(text: string, config: DevSpecKitConfig): string[] {
   return [...new Set([...config.gates.require, ...triggered(text, config)])].sort();
 }
 
@@ -58,7 +58,7 @@ export function evaluatePack(
  * isn't covered": every obligated requirement (ADRs exempt) must carry at least one negative/
  * failure criterion. Returned messages are graph-build violations (exit 1), not warnings.
  */
-export function floorViolations(reqs: Requirement[], config: RivetConfig): string[] {
+export function floorViolations(reqs: Requirement[], config: DevSpecKitConfig): string[] {
   if (config.gates.negativeFloor !== "on") return [];
   return reqs
     .filter((r) => requirementKind(r.id) !== "adr" && r.criteria.length > 0)
@@ -73,7 +73,7 @@ export function floorViolations(reqs: Requirement[], config: RivetConfig): strin
 export function applyGateFloor(
   text: string,
   mode: Mode,
-  config: RivetConfig,
+  config: DevSpecKitConfig,
 ): { mode: Mode; reason: string; packs: string[] } {
   const packs = triggered(text, config);
   if (packs.length > 0 && mode !== "full-spec") {

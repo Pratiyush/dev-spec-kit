@@ -15,7 +15,7 @@ import {
   isStale,
   type CodeGraph,
 } from "../engine/graphify/index.js";
-import { type RivetConfig } from "../config/schema.js";
+import { type DevSpecKitConfig } from "../config/schema.js";
 import { loadConfig } from "./config-io.js";
 
 /** Shared materialization: specs + journal + (optionally refreshed) code graph -> VTG on disk. */
@@ -24,7 +24,7 @@ export interface Materialized {
   requirements: Requirement[];
   tasks: Task[];
   head?: string;
-  config: RivetConfig;
+  config: DevSpecKitConfig;
   codeGraphLoaded: boolean;
   /** Parser warnings (orphan @checks etc.) — surfaced, never swallowed. */
   specWarnings: string[];
@@ -75,7 +75,7 @@ export function journalFor(cwd: string): Journal {
   return new Journal(join(cwd, ".dev-spec-kit", "journal.jsonl"));
 }
 
-export function configFor(cwd: string): RivetConfig {
+export function configFor(cwd: string): DevSpecKitConfig {
   return loadConfig(cwd); // FIX-ROBUST-01: one defensive loader everywhere
 }
 
