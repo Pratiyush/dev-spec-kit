@@ -14,13 +14,21 @@ guide gets you productive fast.
 
 ## Setup
 
+dev-spec-kit bundles the **revitify** code-graph engine via a local link (until revitify is published
+to npm), so clone it as a **sibling** directory first and build it:
+
 ```sh
+git clone https://github.com/Pratiyush/revitify.git
 git clone https://github.com/Pratiyush/dev-spec-kit.git
+( cd revitify && pnpm install && pnpm run build )   # the bundled provider
 cd dev-spec-kit
-pnpm install
+pnpm install --frozen-lockfile
 pnpm run build
 pnpm test
 ```
+
+The lockfile resolves `revitify` to `../revitify`, so the two repos must sit side by side. (CI does
+the same: it checks out both and builds revitify before dev-spec-kit.)
 
 ## The quality bar (what CI enforces)
 
