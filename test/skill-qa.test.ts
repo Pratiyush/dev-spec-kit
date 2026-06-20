@@ -49,6 +49,7 @@ const KNOWN_ARTIFACTS = [
   ".dev-spec-kit/config.json",
   ".dev-spec-kit/journal.jsonl",
   ".dev-spec-kit/graph.json",
+  ".dev-spec-kit/graph-state.json",
   ".dev-spec-kit/approvals/",
   ".dev-spec-kit/pr-body.md",
   ".dev-spec-kit/intake/",

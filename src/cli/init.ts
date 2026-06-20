@@ -80,13 +80,7 @@ export function runInit(opts: InitOptions): void {
   if (!existsSync(journalPath)) writeFileSync(journalPath, "");
 
   // graphify's output is a derived index; keep it out of git (it is regenerated from code).
-  ensureGitignore(cwd, [
-    "graphify-out/",
-    ".graphify/",
-    ".revitify/cache/",
-    ".dev-spec-kit/cache/",
-    ".dev-spec-kit/tmp/",
-  ]);
+  ensureGitignore(cwd, ["graphify-out/", ".graphify/", ".dev-spec-kit/cache/", ".dev-spec-kit/tmp/"]);
 
   console.log(pc.green("✓ Initialized dev-spec-kit in ") + pc.bold(".dev-spec-kit/"));
   console.log(pc.dim("  config.json · laws.md · specs/ · journal.jsonl"));
