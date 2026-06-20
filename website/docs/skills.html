@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skills — Rivet Docs</title>
-  <meta name="description" content="The 6 Rivet Claude Code skills — when each fires and what it does." />
+  <title>Skills — dev-spec-kit Docs</title>
+  <meta name="description" content="The 6 dev-spec-kit Claude Code skills — when each fires and what it does." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -64,7 +64,7 @@
   <header class="docs-topnav">
     <a class="brand" href="../index.html">
       <span class="logo-mark">R</span>
-      Rivet
+      dev-spec-kit
     </a>
     <nav>
       <a href="getting-started.html">Getting Started</a>
@@ -91,12 +91,12 @@
     </div>
     <div class="sidebar-group">
       <div class="sidebar-group-label">Skills</div>
-      <a href="#rivet-workflow">rivet-workflow</a>
-      <a href="#rivet-intake">rivet-intake</a>
-      <a href="#rivet-spec-author">rivet-spec-author</a>
-      <a href="#rivet-review">rivet-review</a>
-      <a href="#rivet-retro">rivet-retro</a>
-      <a href="#rivet-finish">rivet-finish</a>
+      <a href="#dev-spec-kit-workflow">dev-spec-kit-workflow</a>
+      <a href="#dev-spec-kit-intake">dev-spec-kit-intake</a>
+      <a href="#dev-spec-kit-spec-author">dev-spec-kit-spec-author</a>
+      <a href="#dev-spec-kit-review">dev-spec-kit-review</a>
+      <a href="#dev-spec-kit-retro">dev-spec-kit-retro</a>
+      <a href="#dev-spec-kit-finish">dev-spec-kit-finish</a>
     </div>
   </aside>
 
@@ -104,7 +104,7 @@
     <div class="page-header">
       <div class="badge">Reference</div>
       <h1>Skills</h1>
-      <p>Rivet's 6 Claude Code skills — the tool's voice and workflow definitions, versioned under <code>skills/</code>.</p>
+      <p>dev-spec-kit's 6 Claude Code skills — the tool's voice and workflow definitions, versioned under <code>skills/</code>.</p>
     </div>
 
     <div class="prose">
@@ -112,7 +112,7 @@
       <div class="compose-banner">
         <h3>Compose, don't vendor</h3>
         <p>
-          Rivet is the <strong>enforcement + traceability layer</strong>; it deliberately does not duplicate generic dev craft.
+          dev-spec-kit is the <strong>enforcement + traceability layer</strong>; it deliberately does not duplicate generic dev craft.
           Skills compose with <a href="https://github.com/obra/superpowers">superpowers</a> (MIT) — brainstorming, systematic debugging,
           git-worktree discipline, parallel subagent dispatch — and pick up where superpowers stops: proofs, gates, and the graph.
           Install both alongside each other.
@@ -120,21 +120,21 @@
       </div>
 
       <!-- ── RIVET-WORKFLOW ── -->
-      <div class="skill-card" id="rivet-workflow">
+      <div class="skill-card" id="dev-spec-kit-workflow">
         <div class="skill-header">
           <div class="skill-icon">⚙️</div>
           <div class="skill-meta">
-            <h3>rivet-workflow</h3>
-            <code class="skill-name-code">skills/rivet-workflow/SKILL.md</code>
-            <div class="trigger-pill">Auto-fires in Rivet projects</div>
+            <h3>dev-spec-kit-workflow</h3>
+            <code class="skill-name-code">skills/dev-spec-kit-workflow/SKILL.md</code>
+            <div class="trigger-pill">Auto-fires in dev-spec-kit projects</div>
           </div>
         </div>
         <div class="skill-body">
-          <p>The main event. Drives spec-driven development with Rivet — route the request, write EARS specs with <code>@check</code> bindings, derive evidence-bound tasks, TDD, prove checks with real test runs, build the Verified Traceability Graph, record approvals, and generate graph-derived PR bodies.</p>
+          <p>The main event. Drives spec-driven development with dev-spec-kit — route the request, write EARS specs with <code>@check</code> bindings, derive evidence-bound tasks, TDD, prove checks with real test runs, build the Verified Traceability Graph, record approvals, and generate graph-derived PR bodies.</p>
           <h4>Fires when</h4>
           <ul>
-            <li>The user asks to build or change code in a project with <code>.rivet/</code> present</li>
-            <li>The user mentions "rivet", "specs", "EARS", or "traceability"</li>
+            <li>The user asks to build or change code in a project with <code>.dev-spec-kit/</code> present</li>
+            <li>The user mentions "dev-spec-kit", "specs", "EARS", or "traceability"</li>
           </ul>
           <h4>Hard rules (RFC-2119)</h4>
           <ul>
@@ -146,22 +146,22 @@
             <li>Quick mode still writes at least one test — no exceptions.</li>
           </ul>
           <h4>The loop</h4>
-          <p>Route → Spec → <code>rivet spec tasks</code> → TDD red → Prove green → <code>rivet task done</code> → <code>rivet graph build</code> → <code>rivet approve</code> → <code>rivet pr</code></p>
+          <p>Route → Spec → <code>dev-spec-kit spec tasks</code> → TDD red → Prove green → <code>dev-spec-kit task done</code> → <code>dev-spec-kit graph build</code> → <code>dev-spec-kit approve</code> → <code>dev-spec-kit pr</code></p>
         </div>
       </div>
 
       <!-- ── RIVET-INTAKE ── -->
-      <div class="skill-card" id="rivet-intake">
+      <div class="skill-card" id="dev-spec-kit-intake">
         <div class="skill-header">
           <div class="skill-icon">📥</div>
           <div class="skill-meta">
-            <h3>rivet-intake</h3>
-            <code class="skill-name-code">skills/rivet-intake/SKILL.md</code>
+            <h3>dev-spec-kit-intake</h3>
+            <code class="skill-name-code">skills/dev-spec-kit-intake/SKILL.md</code>
             <div class="trigger-pill">Brain-dumps · tickets · raw ideas</div>
           </div>
         </div>
         <div class="skill-body">
-          <p>Turn a raw idea, voice-dump, or ticket into a Rivet intake file and route it. Raw ideas live as files under <code>.rivet/intake/</code> — versioned, re-routable, never lost.</p>
+          <p>Turn a raw idea, voice-dump, or ticket into a dev-spec-kit intake file and route it. Raw ideas live as files under <code>.dev-spec-kit/intake/</code> — versioned, re-routable, never lost.</p>
           <h4>Fires when</h4>
           <ul>
             <li>The user brain-dumps a request without structure</li>
@@ -169,30 +169,30 @@
             <li>The user points at an idea that has no spec yet</li>
           </ul>
           <h4>Intake file shape</h4>
-          <p>Files go in <code>.rivet/intake/&lt;slug&gt;.md</code> with YAML frontmatter: <code>id</code>, <code>source</code> (raw|github#123|gitlab#45|jira:ABC-7), <code>date</code>. The user's words are captured verbatim first — messy is fine; the original is never lost.</p>
+          <p>Files go in <code>.dev-spec-kit/intake/&lt;slug&gt;.md</code> with YAML frontmatter: <code>id</code>, <code>source</code> (raw|github#123|gitlab#45|jira:ABC-7), <code>date</code>. The user's words are captured verbatim first — messy is fine; the original is never lost.</p>
           <h4>Process rules</h4>
           <ul>
             <li>Capture verbatim first, then refine.</li>
-            <li>Run <code>rivet route --file</code> and report the mode + reason.</li>
+            <li>Run <code>dev-spec-kit route --file</code> and report the mode + reason.</li>
             <li>If vague: ask clarifying questions, one at a time, ≤5, each with a recommended answer.</li>
-            <li>Branch by mode: research → report only, no code; quick → create task directly; full-spec → hand off to rivet-spec-author.</li>
+            <li>Branch by mode: research → report only, no code; quick → create task directly; full-spec → hand off to dev-spec-kit-spec-author.</li>
             <li>Write-back to ticket only if <code>intake.writeBack</code> allows.</li>
           </ul>
         </div>
       </div>
 
       <!-- ── RIVET-SPEC-AUTHOR ── -->
-      <div class="skill-card" id="rivet-spec-author">
+      <div class="skill-card" id="dev-spec-kit-spec-author">
         <div class="skill-header">
           <div class="skill-icon">📐</div>
           <div class="skill-meta">
-            <h3>rivet-spec-author</h3>
-            <code class="skill-name-code">skills/rivet-spec-author/SKILL.md</code>
+            <h3>dev-spec-kit-spec-author</h3>
+            <code class="skill-name-code">skills/dev-spec-kit-spec-author/SKILL.md</code>
             <div class="trigger-pill">Writing or revising specs</div>
           </div>
         </div>
         <div class="skill-body">
-          <p>Write high-quality Rivet specs — EARS acceptance criteria with <code>@check</code> bindings in <code>.rivet/specs/*.md</code>. The spec is the source of truth: <code>rivet spec tasks</code> derives evidence-bound tasks from it, and every criterion's <code>@check</code> binding becomes a proof obligation in the graph.</p>
+          <p>Write high-quality dev-spec-kit specs — EARS acceptance criteria with <code>@check</code> bindings in <code>.dev-spec-kit/specs/*.md</code>. The spec is the source of truth: <code>dev-spec-kit spec tasks</code> derives evidence-bound tasks from it, and every criterion's <code>@check</code> binding becomes a proof obligation in the graph.</p>
           <h4>Fires when</h4>
           <ul>
             <li>Authoring or revising a spec</li>
@@ -217,21 +217,21 @@
       </div>
 
       <!-- ── RIVET-REVIEW ── -->
-      <div class="skill-card" id="rivet-review">
+      <div class="skill-card" id="dev-spec-kit-review">
         <div class="skill-header">
           <div class="skill-icon">🔍</div>
           <div class="skill-meta">
-            <h3>rivet-review</h3>
-            <code class="skill-name-code">skills/rivet-review/SKILL.md</code>
+            <h3>dev-spec-kit-review</h3>
+            <code class="skill-name-code">skills/dev-spec-kit-review/SKILL.md</code>
             <div class="trigger-pill">Before any PR · after graph build is green</div>
           </div>
         </div>
         <div class="skill-body">
-          <p>Two-pass adversarial code review for Rivet changes. <strong>Verification proves the criteria; review hunts what criteria can't see.</strong> Run after <code>rivet graph build</code> is green — review is not a substitute for proofs, and proofs are not a substitute for review.</p>
+          <p>Two-pass adversarial code review for dev-spec-kit changes. <strong>Verification proves the criteria; review hunts what criteria can't see.</strong> Run after <code>dev-spec-kit graph build</code> is green — review is not a substitute for proofs, and proofs are not a substitute for review.</p>
           <h4>Fires when</h4>
           <ul>
             <li>The user asks for a review or adversarial review</li>
-            <li>Before any PR (<code>rivet graph build</code> green first)</li>
+            <li>Before any PR (<code>dev-spec-kit graph build</code> green first)</li>
           </ul>
           <h4>Pass 1 — blind (diff only)</h4>
           <p>Read ONLY the diff (<code>git diff main...HEAD</code>) in a fresh subagent with no spec or prior conversation. Hunt: logic errors, edge cases, security smells, concurrency, resource leaks, error-handling gaps. The implementer finished suspiciously confidently — do NOT take their word for anything.</p>
@@ -248,17 +248,17 @@
       </div>
 
       <!-- ── RIVET-RETRO ── -->
-      <div class="skill-card" id="rivet-retro">
+      <div class="skill-card" id="dev-spec-kit-retro">
         <div class="skill-header">
           <div class="skill-icon">🔁</div>
           <div class="skill-meta">
-            <h3>rivet-retro</h3>
-            <code class="skill-name-code">skills/rivet-retro/SKILL.md</code>
+            <h3>dev-spec-kit-retro</h3>
+            <code class="skill-name-code">skills/dev-spec-kit-retro/SKILL.md</code>
             <div class="trigger-pill">After features · after failures · on /retro</div>
           </div>
         </div>
         <div class="skill-body">
-          <p>Run the Rivet learning loop — capture lessons after a feature or incident into <code>.rivet/learnings.md</code>, propose promotions into the laws, and turn fixed bugs into permanent regression checks.</p>
+          <p>Run the dev-spec-kit learning loop — capture lessons after a feature or incident into <code>.dev-spec-kit/learnings.md</code>, propose promotions into the laws, and turn fixed bugs into permanent regression checks.</p>
           <h4>Fires when</h4>
           <ul>
             <li>After completing a feature (default: per-feature from config)</li>
@@ -279,12 +279,12 @@
       </div>
 
       <!-- ── RIVET-FINISH ── -->
-      <div class="skill-card" id="rivet-finish">
+      <div class="skill-card" id="dev-spec-kit-finish">
         <div class="skill-header">
           <div class="skill-icon">🏁</div>
           <div class="skill-meta">
-            <h3>rivet-finish</h3>
-            <code class="skill-name-code">skills/rivet-finish/SKILL.md</code>
+            <h3>dev-spec-kit-finish</h3>
+            <code class="skill-name-code">skills/dev-spec-kit-finish/SKILL.md</code>
             <div class="trigger-pill">finish · land · merge · wrap up</div>
           </div>
         </div>
@@ -293,32 +293,32 @@
           <h4>Fires when</h4>
           <ul>
             <li>The user says "finish", "land", "merge", or "wrap up"</li>
-            <li>After <code>rivet pr</code> is ready and the human wants to close the loop</li>
+            <li>After <code>dev-spec-kit pr</code> is ready and the human wants to close the loop</li>
           </ul>
           <h4>Entry gate (fresh evidence only)</h4>
           <ol>
-            <li>Run <code>rivet graph build</code> — MUST exit 0. Old green output does not count.</li>
-            <li>Run <code>rivet status</code> — all tasks for this feature DONE.</li>
-            <li>Run <code>rivet pr --title "..."</code> — gate verdict green.</li>
+            <li>Run <code>dev-spec-kit graph build</code> — MUST exit 0. Old green output does not count.</li>
+            <li>Run <code>dev-spec-kit status</code> — all tasks for this feature DONE.</li>
+            <li>Run <code>dev-spec-kit pr --title "..."</code> — gate verdict green.</li>
           </ol>
           <p>If any step fails: STOP. Report what blocked. Do not present the menu.</p>
           <h4>The fixed menu (exactly 4 options)</h4>
           <ol>
             <li><strong>Merge locally</strong> — merge to the base branch, verify the suite on the merged result.</li>
-            <li><strong>Push + PR</strong> — push and open the PR with the generated body (<code>rivet pr --create</code>).</li>
+            <li><strong>Push + PR</strong> — push and open the PR with the generated body (<code>dev-spec-kit pr --create</code>).</li>
             <li><strong>Keep as-is</strong> — leave the branch; record why in the journal.</li>
             <li><strong>Discard</strong> — destructive. The human MUST type <code>discard</code> exactly. Anything else aborts.</li>
           </ol>
           <p>No fifth option. No commentary or recommendations. Wait for the choice.</p>
           <h4>Provenance-checked cleanup</h4>
-          <p>On Discard: delete branch; remove the worktree ONLY if it lives under <code>.worktrees/</code> or <code>.claude/worktrees/</code>. Never clean up a workspace Rivet did not create.</p>
+          <p>On Discard: delete branch; remove the worktree ONLY if it lives under <code>.worktrees/</code> or <code>.claude/worktrees/</code>. Never clean up a workspace dev-spec-kit did not create.</p>
         </div>
       </div>
 
       <!-- SUPERPOWERS NOTE -->
       <div class="callout callout-tip">
         <strong>Pairs well with superpowers</strong>
-        Rivet handles enforcement and traceability. For brainstorming, systematic debugging, git-worktree discipline, and parallel subagent dispatch — install <a href="https://github.com/obra/superpowers">superpowers</a> (MIT) alongside. Rivet's skills compose with superpowers skills and pick up where they stop: proofs, gates, and the graph.
+        dev-spec-kit handles enforcement and traceability. For brainstorming, systematic debugging, git-worktree discipline, and parallel subagent dispatch — install <a href="https://github.com/obra/superpowers">superpowers</a> (MIT) alongside. dev-spec-kit's skills compose with superpowers skills and pick up where they stop: proofs, gates, and the graph.
       </div>
 
     </div>
