@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration — Rivet Docs</title>
-  <meta name="description" content="Complete .rivet/config.json reference — every knob, its default, and what it does. Sourced from src/config/schema.ts." />
+  <title>Configuration — dev-spec-kit Docs</title>
+  <meta name="description" content="Complete .dev-spec-kit/config.json reference — every knob, its default, and what it does. Sourced from src/config/schema.ts." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -36,7 +36,7 @@
   <header class="docs-topnav">
     <a class="brand" href="../index.html">
       <span class="logo-mark">R</span>
-      Rivet
+      dev-spec-kit
     </a>
     <nav>
       <a href="getting-started.html">Getting Started</a>
@@ -85,14 +85,14 @@
     <div class="page-header">
       <div class="badge">Reference</div>
       <h1>Configuration reference</h1>
-      <p>Every knob in <code>.rivet/config.json</code>, its default value, and what it controls. All defaults are sourced directly from <code>src/config/schema.ts</code> (zod schema).</p>
+      <p>Every knob in <code>.dev-spec-kit/config.json</code>, its default value, and what it controls. All defaults are sourced directly from <code>src/config/schema.ts</code> (zod schema).</p>
     </div>
 
     <div class="prose">
 
       <div class="callout callout-info">
         <strong>How config works</strong>
-        Rivet ships with opinionated defaults — TDD on, gates on, even quick-mode writes a test. Every knob is overridable in <code>.rivet/config.json</code>. The schema version is <code>1</code>; Rivet applies defaults for any omitted field.
+        dev-spec-kit ships with opinionated defaults — TDD on, gates on, even quick-mode writes a test. Every knob is overridable in <code>.dev-spec-kit/config.json</code>. The schema version is <code>1</code>; dev-spec-kit applies defaults for any omitted field.
       </div>
 
       <div class="callout callout-tip">
@@ -186,7 +186,7 @@
             <div class="config-key">intake.jiraEpic</div>
             <div class="config-default">"ask"</div>
             <div class="config-desc">
-              How a Jira epic maps to Rivet's hierarchy.
+              How a Jira epic maps to dev-spec-kit's hierarchy.
               <div class="allowed">mirror — copy as-is; replan — decompose fresh; ask — prompt the user</div>
             </div>
           </div>
@@ -220,7 +220,7 @@
             <div class="config-default">"tool-drafts"</div>
             <div class="config-desc">
               Who authors acceptance criteria.
-              <div class="allowed">tool-drafts — Rivet writes a draft for human review; user-writes — human writes criteria directly</div>
+              <div class="allowed">tool-drafts — dev-spec-kit writes a draft for human review; user-writes — human writes criteria directly</div>
             </div>
           </div>
           <div class="config-row">
@@ -407,7 +407,7 @@
           <div class="config-row">
             <div class="config-key">verify.everyCriterionNeedsCheck</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Every acceptance criterion must bind to ≥1 executed check. Unbound criteria are flagged UNVERIFIED by <code>rivet spec tasks</code>.</div>
+            <div class="config-desc">Every acceptance criterion must bind to ≥1 executed check. Unbound criteria are flagged UNVERIFIED by <code>dev-spec-kit spec tasks</code>.</div>
           </div>
           <div class="config-row">
             <div class="config-key">verify.runApp</div>
@@ -491,7 +491,7 @@
         <div class="section-block-header">
           <div>
             <h3>review</h3>
-            <p>Code review policy (rivet-review skill)</p>
+            <p>Code review policy (dev-spec-kit-review skill)</p>
           </div>
         </div>
         <div class="section-block-body">
@@ -539,7 +539,7 @@
           <div class="config-row">
             <div class="config-key">pr.autoBody</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Auto-generate the PR body from the graph on <code>rivet pr</code>.</div>
+            <div class="config-desc">Auto-generate the PR body from the graph on <code>dev-spec-kit pr</code>.</div>
           </div>
           <div class="config-row">
             <div class="config-key">pr.branchPattern</div>
@@ -570,7 +570,7 @@
           <div class="config-row">
             <div class="config-key">pr.cleanupAfterMerge</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Delete the branch and worktree (if Rivet-created) after a successful merge.</div>
+            <div class="config-desc">Delete the branch and worktree (if dev-spec-kit-created) after a successful merge.</div>
           </div>
         </div>
       </div>
@@ -620,7 +620,7 @@
           <div class="config-row">
             <div class="config-key">parallel.enabled</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Enable wave parallelism. When true, <code>rivet wave plan/start</code> can dispatch tasks concurrently.</div>
+            <div class="config-desc">Enable wave parallelism. When true, <code>dev-spec-kit wave plan/start</code> can dispatch tasks concurrently.</div>
           </div>
           <div class="config-row">
             <div class="config-key">parallel.waveSize</div>
@@ -663,7 +663,7 @@
           <div class="config-row">
             <div class="config-key">dashboard.enabled</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Enable board generation (<code>rivet board</code>).</div>
+            <div class="config-desc">Enable board generation (<code>dev-spec-kit board</code>).</div>
           </div>
           <div class="config-row">
             <div class="config-key">dashboard.form</div>
@@ -712,7 +712,7 @@
           <div class="config-row">
             <div class="config-key">rules.laws</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Use the <code>.rivet/laws.md</code> steering file. The agent must always obey laws.</div>
+            <div class="config-desc">Use the <code>.dev-spec-kit/laws.md</code> steering file. The agent must always obey laws.</div>
           </div>
           <div class="config-row">
             <div class="config-key">rules.onConflict</div>
@@ -742,7 +742,7 @@
           <div class="config-row">
             <div class="config-key">learning.capture</div>
             <div class="config-default">true</div>
-            <div class="config-desc">Capture lessons after each feature into <code>.rivet/learnings.md</code>.</div>
+            <div class="config-desc">Capture lessons after each feature into <code>.dev-spec-kit/learnings.md</code>.</div>
           </div>
           <div class="config-row">
             <div class="config-key">learning.promoteToRules</div>

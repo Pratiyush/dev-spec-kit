@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started — Rivet Docs</title>
-  <meta name="description" content="Install Rivet, run your first verified change end-to-end." />
+  <title>Getting Started — dev-spec-kit Docs</title>
+  <meta name="description" content="Install dev-spec-kit, run your first verified change end-to-end." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -18,7 +18,7 @@
   <header class="docs-topnav">
     <a class="brand" href="../index.html">
       <span class="logo-mark">R</span>
-      Rivet
+      dev-spec-kit
     </a>
     <nav>
       <a href="getting-started.html" class="active">Getting Started</a>
@@ -65,14 +65,14 @@
     <div class="prose">
 
       <h2 id="prerequisites">Prerequisites</h2>
-      <p>Rivet requires three things to be present on your machine. Run <code>rivet doctor</code> after installing to confirm all are found.</p>
+      <p>dev-spec-kit requires three things to be present on your machine. Run <code>dev-spec-kit doctor</code> after installing to confirm all are found.</p>
 
       <table>
         <thead>
           <tr><th>Tool</th><th>Minimum version</th><th>Purpose</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Node.js</strong></td><td>≥ 22</td><td>Rivet CLI runtime</td></tr>
+          <tr><td><strong>Node.js</strong></td><td>≥ 22</td><td>dev-spec-kit CLI runtime</td></tr>
           <tr><td><strong>git</strong></td><td>any modern</td><td>tree-hash proofs, worktrees, PR creation</td></tr>
           <tr><td><strong>Python</strong></td><td>≥ 3.10</td><td>graphify code-graph indexer</td></tr>
           <tr><td><strong>graphify</strong></td><td>latest</td><td>20+ language code-knowledge graph</td></tr>
@@ -97,8 +97,8 @@
         </div>
       </div>
 
-      <h3>2. Install the Rivet CLI</h3>
-      <p>Rivet is built from source (Phase 0 — not yet on npm). Clone the repo and build:</p>
+      <h3>2. Install the dev-spec-kit CLI</h3>
+      <p>dev-spec-kit is built from source (Phase 0 — not yet on npm). Clone the repo and build:</p>
 
       <div class="terminal">
         <div class="terminal-bar">
@@ -116,11 +116,11 @@
 
       <div class="callout callout-info">
         <strong>Claude Code plugin</strong>
-        Rivet is designed to be driven from <strong>Claude Code</strong>. Install the plugin (see <a href="skills.html">Skills</a>) and the <code>rivet-workflow</code> skill fires automatically whenever you're in a project with <code>.rivet/</code> present.
+        dev-spec-kit is designed to be driven from <strong>Claude Code</strong>. Install the plugin (see <a href="skills.html">Skills</a>) and the <code>dev-spec-kit-workflow</code> skill fires automatically whenever you're in a project with <code>.dev-spec-kit/</code> present.
       </div>
 
       <h2 id="init">Initialize your project</h2>
-      <p>Run <code>rivet init</code> in any git repo. It creates the <code>.rivet/</code> directory with a default config, empty laws file, specs and intake folders, and an empty journal.</p>
+      <p>Run <code>dev-spec-kit init</code> in any git repo. It creates the <code>.dev-spec-kit/</code> directory with a default config, empty laws file, specs and intake folders, and an empty journal.</p>
 
       <div class="terminal">
         <div class="terminal-bar">
@@ -128,33 +128,33 @@
         </div>
         <div class="terminal-body">
           <div class="term-line"><span class="prompt">$ </span><span class="cmd">cd my-project</span></div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet init</span></div>
-          <div class="term-line green">✓ .rivet/config.json</div>
-          <div class="term-line green">✓ .rivet/laws.md</div>
-          <div class="term-line green">✓ .rivet/specs/  (empty)</div>
-          <div class="term-line green">✓ .rivet/intake/ (empty)</div>
-          <div class="term-line green">✓ .rivet/journal.jsonl</div>
-          <div class="term-line green">✓ .rivet/learnings.md</div>
-          <div class="term-line out">Rivet initialized. Run `rivet doctor` to verify prerequisites.</div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit init</span></div>
+          <div class="term-line green">✓ .dev-spec-kit/config.json</div>
+          <div class="term-line green">✓ .dev-spec-kit/laws.md</div>
+          <div class="term-line green">✓ .dev-spec-kit/specs/  (empty)</div>
+          <div class="term-line green">✓ .dev-spec-kit/intake/ (empty)</div>
+          <div class="term-line green">✓ .dev-spec-kit/journal.jsonl</div>
+          <div class="term-line green">✓ .dev-spec-kit/learnings.md</div>
+          <div class="term-line out">dev-spec-kit initialized. Run `dev-spec-kit doctor` to verify prerequisites.</div>
         </div>
       </div>
 
       <p>Use <code>--force</code> to overwrite an existing config.</p>
 
       <h2 id="doctor">Doctor check</h2>
-      <p>Always run <code>rivet doctor</code> after init to verify everything is wired correctly.</p>
+      <p>Always run <code>dev-spec-kit doctor</code> after init to verify everything is wired correctly.</p>
 
       <div class="terminal">
         <div class="terminal-bar">
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet doctor</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit doctor</span></div>
           <div class="term-line green">✓ Node.js 22.4.0</div>
           <div class="term-line green">✓ git 2.43.0</div>
           <div class="term-line green">✓ Python 3.11.7</div>
           <div class="term-line green">✓ graphify 1.2.0</div>
-          <div class="term-line green">✓ .rivet/ present</div>
+          <div class="term-line green">✓ .dev-spec-kit/ present</div>
           <div class="term-line green">✓ All prerequisites met.</div>
         </div>
       </div>
@@ -163,14 +163,14 @@
       <p>This walkthrough adds an idle-session timeout to a Spring Boot project, proving every step with a real Maven test run.</p>
 
       <h3>Step 1 — Route the request</h3>
-      <p>Feed the raw idea to Rivet's front door. It classifies the work and confirms before proceeding.</p>
+      <p>Feed the raw idea to dev-spec-kit's front door. It classifies the work and confirms before proceeding.</p>
 
       <div class="terminal">
         <div class="terminal-bar">
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet route "add idle-session timeout after 30 minutes"</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit route "add idle-session timeout after 30 minutes"</span></div>
           <div class="term-line out">Mode: full-spec</div>
           <div class="term-line out">Reason: new observable behaviour, not a contained fix</div>
           <div class="term-line out">Confirm? [y/n]: y</div>
@@ -178,7 +178,7 @@
       </div>
 
       <h3>Step 2 — Write the spec</h3>
-      <p>Create <code>.rivet/specs/session.md</code>. Every acceptance criterion is an EARS sentence with at least one <code>@check</code> binding.</p>
+      <p>Create <code>.dev-spec-kit/specs/session.md</code>. Every acceptance criterion is an EARS sentence with at least one <code>@check</code> binding.</p>
 
       <div class="terminal">
         <div class="terminal-bar">
@@ -201,7 +201,7 @@
 
       <div class="callout callout-tip">
         <strong>Tip — every criterion needs a check</strong>
-        If you can't name the test that would prove a criterion, the criterion isn't done being written. Unbound criteria are flagged UNVERIFIED by <code>rivet spec tasks</code> and never become tasks.
+        If you can't name the test that would prove a criterion, the criterion isn't done being written. Unbound criteria are flagged UNVERIFIED by <code>dev-spec-kit spec tasks</code> and never become tasks.
       </div>
 
       <h3>Step 3 — Derive evidence-bound tasks</h3>
@@ -211,9 +211,9 @@
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet spec tasks</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit spec tasks</span></div>
           <div class="term-line green">✓ T1  REQUIREMENT_SESSION-01 — idle timeout  [bound: SessionTest#idleTimeout, SessionIT#expiredSessionReturns401]</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task start T1</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit task start T1</span></div>
         </div>
       </div>
 
@@ -225,7 +225,7 @@
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T1 SessionTest#idleTimeout --stack java-maven --expect-red</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T1 SessionTest#idleTimeout --stack java-maven --expect-red</span></div>
           <div class="term-line red">✗ FAILED  (expected — TDD red phase)  tree: a3b2c11  dirty: true</div>
           <div class="term-line dim">  → implement the feature, then re-run without --expect-red</div>
         </div>
@@ -239,9 +239,9 @@
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T1 SessionTest#idleTimeout --stack java-maven</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T1 SessionTest#idleTimeout --stack java-maven</span></div>
           <div class="term-line green">✓ SessionTest#idleTimeout PASSED  (tree: a7f3c91  dirty: false)</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T1 SessionIT#expiredSessionReturns401 --stack java-maven</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T1 SessionIT#expiredSessionReturns401 --stack java-maven</span></div>
           <div class="term-line green">✓ SessionIT#expiredSessionReturns401 PASSED  (tree: a7f3c91  dirty: false)</div>
         </div>
       </div>
@@ -254,7 +254,7 @@
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task done T1</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit task done T1</span></div>
           <div class="term-line green">✓ T1 done  🎉  (2/2 checks green)</div>
         </div>
       </div>
@@ -266,11 +266,11 @@
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
         </div>
         <div class="terminal-body">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet graph build</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit graph build</span></div>
           <div class="term-line green">✓ graph green  (1 requirement · 2 criteria · 2 proofs · all GREEN)</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet approve T1 --note "reviewed; timing logic correct"</span></div>
-          <div class="term-line purple">🛡️ approval recorded → .rivet/approvals/T1-2026-06-12.json</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet pr --title "feat: idle session timeout" --create</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit approve T1 --note "reviewed; timing logic correct"</span></div>
+          <div class="term-line purple">🛡️ approval recorded → .dev-spec-kit/approvals/T1-2026-06-12.json</div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit pr --title "feat: idle session timeout" --create</span></div>
           <div class="term-line green">✓ guard pr — all proofs GREEN</div>
           <div class="term-line out">https://github.com/org/repo/pull/42</div>
         </div>
@@ -278,7 +278,7 @@
 
       <div class="callout callout-info">
         <strong>What just happened?</strong>
-        The PR body at <code>.rivet/pr-body.md</code> contains a full traceability table: every requirement → criterion → check → proof state. Reviewers see exactly what was proved and at which tree-hash.
+        The PR body at <code>.dev-spec-kit/pr-body.md</code> contains a full traceability table: every requirement → criterion → check → proof state. Reviewers see exactly what was proved and at which tree-hash.
       </div>
 
       <p>Next: read the <a href="workflow.html">full workflow reference</a> for every stage in detail, or jump to the <a href="commands.html">command reference</a>.</p>

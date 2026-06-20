@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rivet — Every requirement riveted to a passing check</title>
+  <title>dev-spec-kit — Every requirement bound to a passing check</title>
   <meta name="description" content="Spec-driven development with a Verified Traceability Graph. EARS specs with @check bindings; evidence-bound done; drift detection; hard gates." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -200,7 +200,7 @@
     }
     .compare-table th:first-child { border-radius: var(--radius) 0 0 0; }
     .compare-table th:last-child  { border-radius: 0 var(--radius) 0 0; }
-    .compare-table th.rivet-col { color: var(--accent-light); }
+    .compare-table th.dev-spec-kit-col { color: var(--accent-light); }
     .compare-table td {
       padding: 14px 20px; border-bottom: 1px solid var(--border-soft); font-size: 0.875rem;
       color: var(--text-dim);
@@ -244,7 +244,7 @@
 <nav class="nav" id="nav">
   <a class="brand" href="index.html">
     <span class="logo-mark">R</span>
-    Rivet
+    dev-spec-kit
   </a>
   <div class="nav-links">
     <a href="docs/getting-started.html">Docs</a>
@@ -263,9 +263,9 @@
     <div class="hero-eyebrow">
       <span>🔏</span> Spec-driven · Evidence-bound · Verified
     </div>
-    <h1>Every requirement<br><span class="accent">riveted</span> to a passing check.</h1>
+    <h1>Every requirement<br><span class="accent">bound</span> to a passing check.</h1>
     <p class="hero-sub">
-      Rivet turns raw ideas into EARS acceptance criteria, decomposes them into tasks, and <strong>proves</strong>
+      dev-spec-kit turns raw ideas into EARS acceptance criteria, decomposes them into tasks, and <strong>proves</strong>
       every requirement→code→test→PR edge with a real, executed check.
       A task literally cannot be marked done until its bound checks pass.
     </p>
@@ -282,13 +282,13 @@
           <span style="color:var(--text-dimmer);font-size:0.75rem;margin-left:8px;">rivet</span>
         </div>
         <div class="terminal-body" id="heroTerm">
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task done T3</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit task done T3</span></div>
           <div class="term-line red" id="ht-block">✗ T3 BLOCKED — bound checks not all green:</div>
           <div class="term-line dim" id="ht-check1">  🔴 SessionTest#idleTimeout — last run: RED</div>
-          <div class="term-line pause" id="ht-hint">  Run: rivet check run T3 SessionTest#idleTimeout --stack java-maven</div>
-          <div class="term-line" id="ht-run" style="display:none"><span class="prompt">$ </span><span class="cmd">rivet check run T3 SessionTest#idleTimeout --stack java-maven</span></div>
+          <div class="term-line pause" id="ht-hint">  Run: dev-spec-kit check run T3 SessionTest#idleTimeout --stack java-maven</div>
+          <div class="term-line" id="ht-run" style="display:none"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T3 SessionTest#idleTimeout --stack java-maven</span></div>
           <div class="term-line green" id="ht-pass" style="display:none">✓ SessionTest#idleTimeout PASSED  (tree: a7f3c91  dirty: false)</div>
-          <div class="term-line" id="ht-done2" style="display:none"><span class="prompt">$ </span><span class="cmd">rivet task done T3</span></div>
+          <div class="term-line" id="ht-done2" style="display:none"><span class="prompt">$ </span><span class="cmd">dev-spec-kit task done T3</span></div>
           <div class="term-line green" id="ht-done-ok" style="display:none">✓ T3 done  🎉  (1/1 checks green)</div>
           <div class="term-line" id="ht-cursor" style="display:none"><span class="prompt">$ </span><span class="cursor"></span></div>
         </div>
@@ -335,7 +335,7 @@
         <h3>Evidence-bound done</h3>
         <p>
           Every task is bound to one or more <code>@check</code> refs at creation time.
-          <code>rivet task done</code> is a hard gate — it reads the live proof graph and <strong>refuses</strong>
+          <code>dev-spec-kit task done</code> is a hard gate — it reads the live proof graph and <strong>refuses</strong>
           if any bound check has not produced a passing run. Not a lint warning. Not a suggestion.
           An exit-code-1 refusal.
         </p>
@@ -349,8 +349,8 @@
         <p>
           Proofs stamp the <strong>tested tree-hash</strong>, not the commit SHA. When you change code
           after a green run, that proof goes stale automatically — the moat can't be gamed by committing
-          already-tested code. <code>rivet drift</code> finds stale proofs and re-runs their checks in one move.
-          <code>rivet graph build</code> exits 1 while any proof is red or stale.
+          already-tested code. <code>dev-spec-kit drift</code> finds stale proofs and re-runs their checks in one move.
+          <code>dev-spec-kit graph build</code> exits 1 while any proof is red or stale.
         </p>
         <span class="moat-caption">memory.driftDetection: true</span>
       </div>
@@ -360,7 +360,7 @@
         <span class="moat-icon">🛡️</span>
         <h3>Hard gate hooks</h3>
         <p>
-          <code>PreToolUse</code> hooks run <code>rivet guard pr</code> before every
+          <code>PreToolUse</code> hooks run <code>dev-spec-kit guard pr</code> before every
           <code>gh pr create</code> call — blocking PR creation while any proof is not green.
           Missing graph also blocks (absence of state ≠ permission). An anti-tamper lock prevents
           the agent from editing specs or bound test files while a task is in flight — the moat
@@ -384,44 +384,44 @@
       <div class="terminal" style="max-width:760px;margin:0 auto;">
         <div class="terminal-bar">
           <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-          <span style="color:var(--text-dimmer);font-size:0.75rem;margin-left:8px;">Rivet workflow demo</span>
+          <span style="color:var(--text-dimmer);font-size:0.75rem;margin-left:8px;">dev-spec-kit workflow demo</span>
         </div>
         <div class="terminal-body">
 
           <!-- ROUTE -->
           <div class="term-line dim"># 1 · Route the request</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet route "add idle-session timeout after 30 min"</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit route "add idle-session timeout after 30 min"</span></div>
           <div class="term-line out">Mode: full-spec  (reason: new behaviour, not a tiny fix)</div>
           <div class="term-line pause out">Confirm? [y/n]: y</div>
 
           <!-- SPEC -->
           <div class="term-line dim"># 2 · Spec</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">cat .rivet/specs/session.md</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">cat .dev-spec-kit/specs/session.md</span></div>
           <div class="term-line out">## Requirement R-SESSION-01 — idle timeout</div>
           <div class="term-line out">WHEN a user session has been idle for &gt;= 30 min THEN the system SHALL invalidate it.</div>
           <div class="term-line pause out">@check kind=unit ref=SessionTest#idleTimeout</div>
 
           <!-- TASKS -->
           <div class="term-line dim"># 3 · Derive tasks</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet spec tasks</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit spec tasks</span></div>
           <div class="term-line green">✓ T3  idle timeout  [bound: SessionTest#idleTimeout]</div>
-          <div class="term-line pause"><span class="prompt">$ </span><span class="cmd">rivet task start T3</span></div>
+          <div class="term-line pause"><span class="prompt">$ </span><span class="cmd">dev-spec-kit task start T3</span></div>
 
           <!-- TDD RED -->
           <div class="term-line dim"># 4 · TDD red phase</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T3 SessionTest#idleTimeout --stack java-maven --expect-red</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T3 SessionTest#idleTimeout --stack java-maven --expect-red</span></div>
           <div class="term-line red">✗ FAILED  (expected red — TDD phase)  tree: a3b2c11  dirty: true</div>
           <div class="term-line pause out">  → implement, then re-run without --expect-red</div>
 
           <!-- GREEN -->
           <div class="term-line dim"># 5 · Prove</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet check run T3 SessionTest#idleTimeout --stack java-maven</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit check run T3 SessionTest#idleTimeout --stack java-maven</span></div>
           <div class="term-line green">✓ SessionTest#idleTimeout PASSED  tree: a7f3c91  dirty: false</div>
           <div class="term-line pause out">  proof recorded in journal (worst-of rollup: GREEN)</div>
 
           <!-- DONE GATE -->
           <div class="term-line dim"># 6 · Done gate</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet task done T3</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit task done T3</span></div>
           <div class="term-line green">✓ T3 done  🎉  (1/1 checks green)</div>
           <div class="term-line pause">
             <div class="progress-label"><span>T3 — idle timeout</span><span class="pct">100%</span></div>
@@ -430,11 +430,11 @@
 
           <!-- GRAPH + PR -->
           <div class="term-line dim"># 7 · Build graph · Approve · PR</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet graph build</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit graph build</span></div>
           <div class="term-line green">✓ graph green  (1 requirement · 1 criterion · 1 proof all GREEN)</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet approve T3 --note "timing verified; logic correct"</span></div>
-          <div class="term-line purple">🛡️ approval recorded → .rivet/approvals/T3-2026-06-11.json</div>
-          <div class="term-line"><span class="prompt">$ </span><span class="cmd">rivet pr --title "feat: idle session timeout" --create</span></div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit approve T3 --note "timing verified; logic correct"</span></div>
+          <div class="term-line purple">🛡️ approval recorded → .dev-spec-kit/approvals/T3-2026-06-11.json</div>
+          <div class="term-line"><span class="prompt">$ </span><span class="cmd">dev-spec-kit pr --title "feat: idle session timeout" --create</span></div>
           <div class="term-line green">✓ guard pr — all proofs GREEN · creating PR…</div>
           <div class="term-line out">https://github.com/org/repo/pull/42</div>
           <div class="term-line"><span class="prompt">$ </span><span class="cursor"></span></div>
@@ -492,7 +492,7 @@
         <div class="feature-emoji">🛡️</div>
         <div class="feature-body">
           <h4>Anti-tamper lock</h4>
-          <p>Specs and bound test files lock once green. Human escape hatch: <code>rivet unlock</code>, time-boxed, journaled.</p>
+          <p>Specs and bound test files lock once green. Human escape hatch: <code>dev-spec-kit unlock</code>, time-boxed, journaled.</p>
         </div>
       </div>
       <div class="feature-card reveal" style="transition-delay:0.3s">
@@ -520,7 +520,7 @@
         <div class="feature-emoji">📓</div>
         <div class="feature-body">
           <h4>Journal audit trail</h4>
-          <p>Every CLI invocation is a timestamped JSONL event. <code>rivet log</code> replays the history with emoji lane.</p>
+          <p>Every CLI invocation is a timestamped JSONL event. <code>dev-spec-kit log</code> replays the history with emoji lane.</p>
         </div>
       </div>
       <div class="feature-card reveal" style="transition-delay:0.5s">
@@ -547,14 +547,14 @@
     <div class="section-head reveal">
       <div class="section-label">Versus</div>
       <h2>The verification hole</h2>
-      <p>Every other SDD tool writes acceptance criteria as <em>text</em> and trusts the model to honor them. Rivet closes the hole.</p>
+      <p>Every other SDD tool writes acceptance criteria as <em>text</em> and trusts the model to honor them. dev-spec-kit closes the hole.</p>
     </div>
     <div class="compare-wrap reveal">
       <table class="compare-table">
         <thead>
           <tr>
             <th>Feature</th>
-            <th class="rivet-col">Rivet</th>
+            <th class="dev-spec-kit-col">dev-spec-kit</th>
             <th>Spec Kit</th>
             <th>Kiro</th>
             <th>Task Master</th>
@@ -629,10 +629,10 @@
     <div class="cta-inner reveal">
       <div class="section-label" style="text-align:center">Get started</div>
       <h2>Your first verified change in 10 minutes</h2>
-      <p>Install the prerequisites, init Rivet in your repo, and run <code>rivet doctor</code>. That's it — the first proof is waiting for you.</p>
+      <p>Install the prerequisites, init dev-spec-kit in your repo, and run <code>dev-spec-kit doctor</code>. That's it — the first proof is waiting for you.</p>
       <div class="cta-install">
         <span class="prompt-char">$</span>
-        <span>pip install graphifyy &amp;&amp; graphify install &amp;&amp; npm install -g rivet-kit  # coming soon — build from source today</span>
+        <span>pip install graphifyy &amp;&amp; graphify install &amp;&amp; npm install -g dev-spec-kit  # coming soon — build from source today</span>
       </div>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
         <a class="btn btn-primary" href="docs/getting-started.html">Read the guide →</a>
@@ -646,7 +646,7 @@
 <footer>
   <div class="brand">
     <span class="logo-mark" style="width:24px;height:24px;font-size:12px;border-radius:6px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;">R</span>
-    Rivet
+    dev-spec-kit
   </div>
   <nav>
     <a href="docs/getting-started.html">Getting Started</a>

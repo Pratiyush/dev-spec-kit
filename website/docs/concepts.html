@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Concepts — Rivet Docs</title>
-  <meta name="description" content="Core Rivet concepts: Verified Traceability Graph, proof states, laws, gate packs, learnings loop, boards." />
+  <title>Concepts — dev-spec-kit Docs</title>
+  <meta name="description" content="Core dev-spec-kit concepts: Verified Traceability Graph, proof states, laws, gate packs, learnings loop, boards." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -38,7 +38,7 @@
   <header class="docs-topnav">
     <a class="brand" href="../index.html">
       <span class="logo-mark">R</span>
-      Rivet
+      dev-spec-kit
     </a>
     <nav>
       <a href="getting-started.html">Getting Started</a>
@@ -80,7 +80,7 @@
     <div class="page-header">
       <div class="badge">Concepts</div>
       <h1>Core concepts</h1>
-      <p>The ideas behind Rivet's architecture — why each piece exists and how they fit together.</p>
+      <p>The ideas behind dev-spec-kit's architecture — why each piece exists and how they fit together.</p>
     </div>
 
     <div class="prose">
@@ -88,7 +88,7 @@
       <!-- VTG -->
       <h2 id="vtg">The Verified Traceability Graph</h2>
       <p>
-        The VTG is Rivet's central data structure. It overlays <strong>specification, proof, and code</strong> edges on top of
+        The VTG is dev-spec-kit's central data structure. It overlays <strong>specification, proof, and code</strong> edges on top of
         <a href="https://github.com/safishamsi/graphify">graphify</a>'s code-knowledge graph (Java, TypeScript, Python, and 20+ more languages).
         The result is a single structure that answers: "is every requirement proven, by which check, at which tree-hash, touching which code nodes?"
       </p>
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <p>The graph is written to <code>.rivet/graph.json</code> by <code>rivet graph build</code>. Every edge carries metadata: proof state, tree-hash, timestamp, and actor. The guard hook reads this graph before any PR creation.</p>
+      <p>The graph is written to <code>.dev-spec-kit/graph.json</code> by <code>dev-spec-kit graph build</code>. Every edge carries metadata: proof state, tree-hash, timestamp, and actor. The guard hook reads this graph before any PR creation.</p>
 
       <p>The graph is <strong>append-only in principle</strong> — evidence accrues. The <code>board</code> command renders the graph as human-readable boards; the <code>trace</code> command prints the requirement→criterion truth table; <code>affected</code> traverses the code-graph reverse edges.</p>
 
@@ -129,7 +129,7 @@
       <div class="proof-state">
         <div class="proof-dot" style="background:var(--yellow);"></div>
         <div class="proof-label" style="color:var(--yellow);">STALE</div>
-        <div class="proof-desc">Code changed after this proof was recorded. The tree-hash no longer matches. Run <code>rivet drift</code> to re-prove.</div>
+        <div class="proof-desc">Code changed after this proof was recorded. The tree-hash no longer matches. Run <code>dev-spec-kit drift</code> to re-prove.</div>
       </div>
       <div class="proof-state">
         <div class="proof-dot" style="background:var(--gray);"></div>
@@ -139,17 +139,17 @@
 
       <h3>Tree-hash identity</h3>
       <p>
-        The key insight behind Rivet's proof model: proofs stamp the <strong>tested tree</strong>, not the commit SHA. This solves two subtle problems:
+        The key insight behind dev-spec-kit's proof model: proofs stamp the <strong>tested tree</strong>, not the commit SHA. This solves two subtle problems:
       </p>
       <ol>
-        <li><strong>Dirty-tree greens:</strong> if a proof stamped HEAD while the tree was dirty, it was vouching for uncommitted code. Rivet stamps the tree-hash + a dirty flag, so a dirty-tree run's status is tracked accurately.</li>
-        <li><strong>Commit invalidation:</strong> if a proof stamped the commit SHA, committing the tested code would move HEAD and instantly invalidate every proof. By comparing tree-hashes, Rivet detects drift (tree changed) vs stability (tree unchanged, different commit) correctly.</li>
+        <li><strong>Dirty-tree greens:</strong> if a proof stamped HEAD while the tree was dirty, it was vouching for uncommitted code. dev-spec-kit stamps the tree-hash + a dirty flag, so a dirty-tree run's status is tracked accurately.</li>
+        <li><strong>Commit invalidation:</strong> if a proof stamped the commit SHA, committing the tested code would move HEAD and instantly invalidate every proof. By comparing tree-hashes, dev-spec-kit detects drift (tree changed) vs stability (tree unchanged, different commit) correctly.</li>
       </ol>
 
       <!-- EARS -->
       <h2 id="ears">EARS acceptance criteria</h2>
       <p>
-        Every acceptance criterion in a Rivet spec is written in <strong>EARS syntax</strong> (Easy Approach to Requirements Syntax). EARS sentences are machine-parseable and force observable, testable behavior.
+        Every acceptance criterion in a dev-spec-kit spec is written in <strong>EARS syntax</strong> (Easy Approach to Requirements Syntax). EARS sentences are machine-parseable and force observable, testable behavior.
       </p>
 
       <div class="terminal">
@@ -173,7 +173,7 @@
         </div>
       </div>
 
-      <p>Rules for EARS criteria in Rivet:</p>
+      <p>Rules for EARS criteria in dev-spec-kit:</p>
       <ul>
         <li>One behaviour per criterion. Split compound sentences.</li>
         <li>The SHALL clause must be observable from outside — a response, a state change, or an emitted event.</li>
@@ -185,10 +185,10 @@
       <!-- LAWS -->
       <h2 id="laws">Laws</h2>
       <p>
-        <code>.rivet/laws.md</code> is the agent's constitution — the rules it must always obey, regardless of the request. Laws are checked before any action. Conflicts between a request and a law trigger a refusal or warning (configurable via <code>rules.onConflict</code>).
+        <code>.dev-spec-kit/laws.md</code> is the agent's constitution — the rules it must always obey, regardless of the request. Laws are checked before any action. Conflicts between a request and a law trigger a refusal or warning (configurable via <code>rules.onConflict</code>).
       </p>
 
-      <p>Rivet's own hard rules (from <code>.rivet/laws.md</code>):</p>
+      <p>dev-spec-kit's own hard rules (from <code>.dev-spec-kit/laws.md</code>):</p>
       <ul>
         <li>Commits are authored by the human, never co-authored by the AI.</li>
         <li>A task is not "done" until its bound checks pass (evidence-bound completion).</li>
@@ -224,7 +224,7 @@
       <!-- LEARNINGS -->
       <h2 id="learnings">The learning loop</h2>
       <p>
-        <code>.rivet/learnings.md</code> is an append-only lesson ledger. After each feature (or surprising failure), lessons are added with a trigger, lesson text, confidence level, and scope. Unpromoted lessons are OPEN; they must be PROMOTED (into laws) or HARDENED (into permanent regression tests) to count.
+        <code>.dev-spec-kit/learnings.md</code> is an append-only lesson ledger. After each feature (or surprising failure), lessons are added with a trigger, lesson text, confidence level, and scope. Unpromoted lessons are OPEN; they must be PROMOTED (into laws) or HARDENED (into permanent regression tests) to count.
       </p>
 
       <blockquote>A lesson only counts once it is PROMOTED or HARDENED. Logged-but-unpromoted lessons recur — that is the failure mode this loop exists to kill.</blockquote>
@@ -241,22 +241,22 @@
       <!-- BOARDS -->
       <h2 id="boards">Boards: LEDGER + TRACKING</h2>
       <p>
-        <code>rivet board</code> regenerates two board files from the journal and graph:
+        <code>dev-spec-kit board</code> regenerates two board files from the journal and graph:
       </p>
       <ul>
         <li><strong>LEDGER.md</strong> — the complete traceability ledger: every requirement, criterion, proof state, and evidence link.</li>
         <li><strong>TRACKING.md</strong> — task-level progress board with traffic-light proof states, assigned tasks, and wave groupings.</li>
       </ul>
 
-      <p>These boards are derived — they cannot lie. Unlike manually edited markdown, their content is always consistent with the proof record. Run <code>rivet board</code> whenever you want a fresh view.</p>
+      <p>These boards are derived — they cannot lie. Unlike manually edited markdown, their content is always consistent with the proof record. Run <code>dev-spec-kit board</code> whenever you want a fresh view.</p>
 
       <!-- INPUT CONTRACT -->
       <h2 id="input-contract">The input contract</h2>
-      <p>Rivet's architecture separates three things:</p>
+      <p>dev-spec-kit's architecture separates three things:</p>
       <ul>
-        <li><strong>Engine code</strong> — changes only when Rivet itself evolves. Lives in <code>src/</code>.</li>
-        <li><strong>Skills</strong> — Rivet's voice and workflow definitions, versioned under <code>skills/</code>.</li>
-        <li><strong>Project inputs</strong> — the only thing that changes per project. Lives in <code>.rivet/</code>.</li>
+        <li><strong>Engine code</strong> — changes only when dev-spec-kit itself evolves. Lives in <code>src/</code>.</li>
+        <li><strong>Skills</strong> — dev-spec-kit's voice and workflow definitions, versioned under <code>skills/</code>.</li>
+        <li><strong>Project inputs</strong> — the only thing that changes per project. Lives in <code>.dev-spec-kit/</code>.</li>
       </ul>
 
       <p>The tool never changes for a new stack or project — only the inputs do. This means:</p>
@@ -270,16 +270,16 @@
       <table>
         <thead><tr><th>Input</th><th>Format</th><th>Purpose</th></tr></thead>
         <tbody>
-          <tr><td><code>.rivet/config.json</code></td><td>JSON (zod-validated)</td><td>Every policy knob</td></tr>
-          <tr><td><code>.rivet/specs/*.md</code></td><td>Markdown + EARS + @check</td><td>Requirements; source of truth for tasks &amp; proofs</td></tr>
-          <tr><td><code>.rivet/intake/*.md</code></td><td>Markdown + YAML frontmatter</td><td>Raw ideas/tickets; verbatim; <code>rivet route --file</code></td></tr>
-          <tr><td><code>.rivet/laws.md</code></td><td>Markdown</td><td>Rules the agent must always obey</td></tr>
-          <tr><td><code>.rivet/learnings.md</code></td><td>Markdown (append-only)</td><td>The retro loop; lessons promote into rules/checks</td></tr>
+          <tr><td><code>.dev-spec-kit/config.json</code></td><td>JSON (zod-validated)</td><td>Every policy knob</td></tr>
+          <tr><td><code>.dev-spec-kit/specs/*.md</code></td><td>Markdown + EARS + @check</td><td>Requirements; source of truth for tasks &amp; proofs</td></tr>
+          <tr><td><code>.dev-spec-kit/intake/*.md</code></td><td>Markdown + YAML frontmatter</td><td>Raw ideas/tickets; verbatim; <code>dev-spec-kit route --file</code></td></tr>
+          <tr><td><code>.dev-spec-kit/laws.md</code></td><td>Markdown</td><td>Rules the agent must always obey</td></tr>
+          <tr><td><code>.dev-spec-kit/learnings.md</code></td><td>Markdown (append-only)</td><td>The retro loop; lessons promote into rules/checks</td></tr>
           <tr><td><code>verify.runners</code></td><td>JSON command templates</td><td>New test stacks with zero code changes</td></tr>
         </tbody>
       </table>
 
-      <p>State that Rivet writes (also in-repo, committed): <code>journal.jsonl</code>, <code>graph.json</code>, <code>approvals/</code>, <code>pr-body.md</code>, <code>LEDGER.md</code>, <code>TRACKING.md</code>, <code>RESUME.md</code>.</p>
+      <p>State that dev-spec-kit writes (also in-repo, committed): <code>journal.jsonl</code>, <code>graph.json</code>, <code>approvals/</code>, <code>pr-body.md</code>, <code>LEDGER.md</code>, <code>TRACKING.md</code>, <code>RESUME.md</code>.</p>
 
     </div>
   </main>
