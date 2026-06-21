@@ -10,6 +10,9 @@ with `@check` bindings) × executed check results (the journal) × the code grap
 fuse into proven `validates`/`implements`/`satisfies` edges. The tool **dogfoods itself** — its own
 features live in `.dev-spec-kit/specs/` and are proven through its own loop.
 
+> **Field report:** [`OCTAVO-DOGFOOD.md`](./OCTAVO-DOGFOOD.md) — learnings + 3 ranked bug candidates from
+> building a real app (Octavo `v0.1.0`: 40 requirements / 120 proofs / 0 drift) entirely on the loop.
+
 ## Commands
 
 ```sh
