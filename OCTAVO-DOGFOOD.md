@@ -41,3 +41,12 @@ the **analysis phase** (`route` → clarify → analyze → architect — we han
 `verify` (batch), `affected`, `wave`, or `guard`/`laws`. A "zero to first proof" guide threading
 `route → spec → loop` would surface them. We also layered a **refinement + gap-analysis ritual** on top
 (see Octavo's `plans/REFINEMENT.md`) — a kit-native `refine` step could formalize it.
+
+## Process extension: end-of-milestone guides (adopt in the kit?)
+On top of refine → build → review → gap-analysis, Octavo added a standing **end-of-milestone ritual**
+(`plans/REFINEMENT.md`): at every milestone close, **update four living guides** — User · Developer · Feature ·
+Product (`docs/`) — plus a visual-QA screenshot pass, then bump + tag + checkpoint. The guides stay current for
+free because they're refreshed every milestone instead of rotting. A kit-native `docs` phase (or a `release`
+checklist that asserts "guides updated") would formalize this — it pairs with the proposed `refine` step and
+the existing `release-please` flow. (Through Octavo M03/`v0.4.0`: 4 milestones, ~24 requirements, 245 checks,
+100% coverage, 0 drift — the loop held across all of it.)
