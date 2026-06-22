@@ -50,3 +50,13 @@ free because they're refreshed every milestone instead of rotting. A kit-native 
 checklist that asserts "guides updated") would formalize this — it pairs with the proposed `refine` step and
 the existing `release-please` flow. (Through Octavo M03/`v0.4.0`: 4 milestones, ~24 requirements, 245 checks,
 100% coverage, 0 drift — the loop held across all of it.)
+
+## Process extension: multi-angle + security review (adopt in the kit?)
+Octavo upgraded the milestone-close review from one broad adversarial pass to a **multi-angle review** —
+parallel agents, one per angle: **Correctness · Security · Performance · Accessibility/UX** — with a
+**dedicated security angle every milestone**. This caught real issues the single pass missed: on M03 the broad
+pass cleared the code, but the a11y angle found a HIGH blocker (keyboard-dead wiki-links) and the security
+angle deep-checked prototype-pollution / IPC DoS / injection. A kit-native `review` phase that fans out
+per-angle agents (security always included) would bake this in — it composes with the proposed `refine`/`docs`
+steps. (Octavo M03 → `v0.4.1`: the 3-angle review found 1 HIGH a11y + 1 MED security + 1 MED perf, all fixed;
+XSS / prototype-pollution / traversal / Electron-boundary confirmed safe.)
