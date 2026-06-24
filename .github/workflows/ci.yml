@@ -18,11 +18,11 @@ jobs:
       # (resolved as `../revitify` in the lockfile). Check both out as siblings under the
       # workspace and build revitify first so the link resolves for tsc, vitest, and the CLI.
       - name: Checkout dev-spec-kit
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: dev-spec-kit
       - name: Checkout revitify (bundled provider)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: Pratiyush/revitify
           path: revitify
