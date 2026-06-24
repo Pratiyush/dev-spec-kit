@@ -27,7 +27,7 @@ jobs:
           repository: Pratiyush/revitify
           path: revitify
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         with:
           package_json_file: dev-spec-kit/package.json
       - uses: actions/setup-node@v4
