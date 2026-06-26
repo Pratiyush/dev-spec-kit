@@ -24,6 +24,13 @@ export interface BuildInput {
   /** Content tree-hash of the current working state — the REAL identity proofs compare against. */
   currentTree?: string;
   codeGraph?: CodeGraph;
+  /**
+   * FEAT-INCR-01: per distinct proof-tree, the files that changed vs `currentTree` (excluding the kit's own
+   * bookkeeping). When present, `buildVTG` relaxes a `stale` proof back to green if none of the files it
+   * covers changed — affected-aware staleness. Absent → the conservative whole-tree compare (every proof
+   * goes stale on any change).
+   */
+  treeChanges?: Record<string, string[]>;
 }
 
 export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
@@ -114,6 +121,12 @@ export function buildVTG(input: BuildInput): VerifiedTraceabilityGraph {
     }
   }
 
+  // FEAT-INCR-01: affected-aware staleness — relax unaffected `stale` validates edges to green BEFORE the
+  // implements rollup below, so a requirement whose only "drift" is an unrelated edit reads green end-to-end.
+  if (input.treeChanges && input.codeGraph) {
+    relaxAffectedStaleness(edges, input.treeChanges, input.codeGraph);
+  }
+
   // FEAT-IMPL-01: proven `implements` edges (source file → requirement). The code graph records
   // test→source imports; a requirement's bound test that imports a source file ties that file to the
   // requirement, and the edge carries the requirement's OWN rollup proof (never greener than its
@@ -167,27 +180,16 @@ export function deriveImplementsEdges(
 ): ImplementsEdgeSpec[] {
   if (!codeGraph || codeGraph.nodes.length === 0) return [];
 
-  const sourceFileById = new Map<string, string>();
   const repNodeByFile = new Map<string, string>();
   for (const n of codeGraph.nodes) {
     const raw = n.meta?.["sourceFile"];
     if (typeof raw !== "string") continue;
     const sf = normPath(raw); // align with the spec ref + prBlastRadius normalization (./, separators)
-    sourceFileById.set(n.id, sf);
     const rep = repNodeByFile.get(sf);
     if (rep === undefined || n.id < rep) repNodeByFile.set(sf, n.id); // smallest id = a stable anchor
   }
 
-  // test file → the NON-test source files it imports (the code graph emits imports test→source only).
-  const importsByTestFile = new Map<string, Set<string>>();
-  for (const l of codeGraph.links) {
-    if (l.relation !== "imports" && l.relation !== "imports_from") continue;
-    const fromSf = sourceFileById.get(l.from);
-    const toSf = sourceFileById.get(l.to);
-    if (!fromSf || !toSf) continue;
-    if (!isTestFile(fromSf) || isTestFile(toSf)) continue; // only test→source; a test is never an impl
-    (importsByTestFile.get(fromSf) ?? importsByTestFile.set(fromSf, new Set()).get(fromSf)!).add(toSf);
-  }
+  const imports = importsByTestFile(codeGraph);
 
   const out: ImplementsEdgeSpec[] = [];
   for (const req of requirements) {
@@ -199,11 +201,64 @@ export function deriveImplementsEdges(
     for (const c of req.criteria)
       for (const ch of c.checks) {
         const file = normPath(ch.ref.split("::")[0] ?? "");
-        if (file && isTestFile(file)) for (const s of importsByTestFile.get(file) ?? []) sources.add(s);
+        if (file && isTestFile(file)) for (const s of imports.get(file) ?? []) sources.add(s);
       }
     for (const sf of sources) out.push({ from: repNodeByFile.get(sf)!, to: req.id, proof });
   }
   return out;
+}
+
+/**
+ * test file → the NON-test source files it imports (the code graph emits test→source import links only).
+ * Shared by `deriveImplementsEdges` (FEAT-IMPL-01) and `relaxAffectedStaleness` (FEAT-INCR-01) so both read
+ * coverage the same way.
+ */
+export function importsByTestFile(codeGraph: CodeGraph): Map<string, Set<string>> {
+  const sourceFileById = new Map<string, string>();
+  for (const n of codeGraph.nodes) {
+    const raw = n.meta?.["sourceFile"];
+    if (typeof raw === "string") sourceFileById.set(n.id, normPath(raw));
+  }
+  const map = new Map<string, Set<string>>();
+  for (const l of codeGraph.links) {
+    if (l.relation !== "imports" && l.relation !== "imports_from") continue;
+    const fromSf = sourceFileById.get(l.from);
+    const toSf = sourceFileById.get(l.to);
+    if (!fromSf || !toSf) continue;
+    if (!isTestFile(fromSf) || isTestFile(toSf)) continue; // only test→source; a test is never an impl
+    (map.get(fromSf) ?? map.set(fromSf, new Set()).get(fromSf)!).add(toSf);
+  }
+  return map;
+}
+
+/**
+ * FEAT-INCR-01 — affected-aware staleness. A `validates` edge marked `stale` ONLY because the tree moved,
+ * but whose covered files (its test file + the sources that test imports) are byte-identical between the
+ * proof's tree and the current one, still HOLDS → relax it to `green`. Mutates `edges` in place.
+ *
+ * Strictly conservative: only `stale`→`green`, never touching red/unproven; and only when the proof's tree
+ * is diffable (in `treeChanges`) and its ref resolves to a test file — any uncertainty leaves it stale. The
+ * honest gap is structural import-coverage (a non-imported runtime dep won't stale a proof); `guard pr`'s
+ * mandatory full `verify` is the net for that before a PR merges.
+ */
+export function relaxAffectedStaleness(
+  edges: GraphEdge[],
+  treeChanges: Record<string, string[]>,
+  codeGraph: CodeGraph,
+): void {
+  const imports = importsByTestFile(codeGraph);
+  for (const e of edges) {
+    if (e.kind !== "validates" || e.proof !== "stale") continue;
+    const ref = e.lastCheck?.ref;
+    const tree = e.lastCheck?.tree;
+    if (!ref || !tree) continue; // no identity to reason about → stay stale
+    const changed = treeChanges[tree];
+    if (!changed) continue; // this tree isn't diffable (e.g. GC'd) → stay stale
+    const testFile = normPath(ref.split("::")[0] ?? "");
+    const covered = new Set<string>([testFile, ...(imports.get(testFile) ?? [])]);
+    const changedSet = new Set(changed.map(normPath));
+    if (![...covered].some((f) => changedSet.has(f))) e.proof = "green";
+  }
 }
 
 export interface VTGSummary {

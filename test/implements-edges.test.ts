@@ -1,6 +1,17 @@
 import { describe, it, expect } from "vitest";
-import { buildVTG, deriveImplementsEdges, isTestFile } from "../src/engine/graph/build.js";
-import { unimplementedRequirements, prBlastRadius, type ProofState } from "../src/engine/graph/types.js";
+import {
+  buildVTG,
+  deriveImplementsEdges,
+  importsByTestFile,
+  isTestFile,
+  relaxAffectedStaleness,
+} from "../src/engine/graph/build.js";
+import {
+  unimplementedRequirements,
+  prBlastRadius,
+  type GraphEdge,
+  type ProofState,
+} from "../src/engine/graph/types.js";
 import type { Requirement } from "../src/engine/spec/ears.js";
 import type { Task } from "../src/engine/state/tasks.js";
 import type { CodeGraph } from "../src/engine/graphify/index.js";
@@ -99,6 +110,72 @@ describe("deriveImplementsEdges", () => {
 
   it("emits no implements edges when no code graph is present", () => {
     expect(deriveImplementsEdges([req(FOO, "test/foo.test.ts::works")], undefined, green)).toEqual([]);
+  });
+});
+
+describe("importsByTestFile (shared coverage map)", () => {
+  it("maps a test file to the non-test sources it imports (skips test→test, calls, dangling, no-source)", () => {
+    const map = importsByTestFile(codeGraph);
+    expect([...(map.get("test/foo.test.ts") ?? [])]).toEqual(["src/foo.ts"]);
+    expect(map.has("test/helper.test.ts")).toBe(false); // imported nothing impl
+  });
+});
+
+describe("relaxAffectedStaleness (FEAT-INCR-01)", () => {
+  const staleEdge = (ref: string, tree: string): GraphEdge => ({
+    id: "e1",
+    from: `test:${ref}`,
+    to: "AC1",
+    kind: "validates",
+    proof: "stale",
+    lastCheck: { ref, passed: true, at: "2026-06-26T00:00:00Z", tree },
+  });
+
+  it("relaxes a stale proof to green when the change misses its covered files", () => {
+    const edges = [staleEdge("test/foo.test.ts::works", "T1")];
+    relaxAffectedStaleness(edges, { T1: ["src/other.ts"] }, codeGraph); // other.ts is NOT imported by the test
+    expect(edges[0]!.proof).toBe("green");
+  });
+
+  it("keeps it stale when an imported source changed", () => {
+    const edges = [staleEdge("test/foo.test.ts::works", "T1")];
+    relaxAffectedStaleness(edges, { T1: ["src/foo.ts"] }, codeGraph); // foo.ts IS imported by the test
+    expect(edges[0]!.proof).toBe("stale");
+  });
+
+  it("keeps it stale when the test file itself changed", () => {
+    const edges = [staleEdge("test/foo.test.ts::works", "T1")];
+    relaxAffectedStaleness(edges, { T1: ["test/foo.test.ts"] }, codeGraph);
+    expect(edges[0]!.proof).toBe("stale");
+  });
+
+  it("stays conservative (stale) when the proof's tree isn't diffable", () => {
+    const edges = [staleEdge("test/foo.test.ts::works", "T1")];
+    relaxAffectedStaleness(edges, {}, codeGraph); // no diff recorded for T1
+    expect(edges[0]!.proof).toBe("stale");
+  });
+
+  it("never touches non-stale edges, nor a stale edge missing a ref/tree identity", () => {
+    const red: GraphEdge = {
+      id: "e2",
+      from: "t",
+      to: "AC1",
+      kind: "validates",
+      proof: "red",
+      lastCheck: { ref: "test/foo.test.ts::works", passed: false, at: "x", tree: "T1" },
+    };
+    const noTree: GraphEdge = {
+      id: "e3",
+      from: "t",
+      to: "AC1",
+      kind: "validates",
+      proof: "stale",
+      lastCheck: { ref: "test/foo.test.ts::works", passed: true, at: "x" }, // no tree → no identity
+    };
+    const edges = [red, noTree];
+    relaxAffectedStaleness(edges, { T1: ["src/other.ts"] }, codeGraph);
+    expect(edges[0]!.proof).toBe("red");
+    expect(edges[1]!.proof).toBe("stale");
   });
 });
 

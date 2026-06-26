@@ -161,6 +161,21 @@ section at all.
 @check kind=unit ref=test/pr-blast.test.ts::notes honestly when changed files map to no graph node
 @check kind=unit ref=test/pr-blast.test.ts::omits the section entirely when changedFiles is undefined (back-compat)
 
+## Requirement REQUIREMENT_INCR-01 — affected-aware staleness keeps unrelated proofs green
+
+WHEN the working tree changes THEN a green proof SHALL go `stale` only if a file it covers — its test file, or a
+source that test imports — changed between the proof's tree and the current tree; an edit elsewhere SHALL keep
+the proof green, so `drift` re-verifies only the affected proofs instead of the whole suite.
+
+@check kind=unit ref=test/implements-edges.test.ts::relaxes a stale proof to green when the change misses its covered files
+@check kind=unit ref=test/implements-edges.test.ts::keeps it stale when an imported source changed
+
+IF a stale proof's tree cannot be diffed, or its ref/tree identity is unknown, THEN the system SHALL leave it
+stale — never relaxing a proof it cannot prove unaffected — and it SHALL never alter a red or unproven edge.
+
+@check kind=unit ref=test/implements-edges.test.ts::stays conservative (stale) when the proof's tree isn't diffable
+@check kind=unit ref=test/implements-edges.test.ts::never touches non-stale edges, nor a stale edge missing a ref/tree identity
+
 ## Requirement REQUIREMENT_IMPL-01 — proven implements edges tie changed source files to their requirements
 
 WHEN the Verified Traceability Graph is built with a code graph THEN the system SHALL emit a proven
