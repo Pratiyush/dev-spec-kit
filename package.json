@@ -1,6 +1,6 @@
 {
   "name": "dev-spec-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "dev-spec-kit — spec-driven development with a Verified Traceability Graph. Every requirement bound to a passing check.",
   "type": "module",
   "bin": {
