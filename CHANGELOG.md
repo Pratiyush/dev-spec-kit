@@ -10,6 +10,19 @@
   point; honest when nothing maps. Dogfooded (REQUIREMENT_PRBLAST-01, 20/20 proven). Moves off the
   "Planned" list.
 
+## [0.2.0](https://github.com/Pratiyush/dev-spec-kit/compare/v0.1.0...v0.2.0) (2026-06-26)
+
+
+### Features
+
+* add a lean `gate` exit-code command (retires the green-check grep) ([#28](https://github.com/Pratiyush/dev-spec-kit/issues/28)) ([dbdc8e1](https://github.com/Pratiyush/dev-spec-kit/commit/dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12)), closes [#27](https://github.com/Pratiyush/dev-spec-kit/issues/27)
+* affected-aware staleness — unrelated edits keep proofs green (incremental drift) ([#30](https://github.com/Pratiyush/dev-spec-kit/issues/30)) ([c938ba9](https://github.com/Pratiyush/dev-spec-kit/commit/c938ba9817614675eeb5ca8b2f91a62008839a29)), closes [#29](https://github.com/Pratiyush/dev-spec-kit/issues/29)
+
+
+### Bug Fixes
+
+* exclude .revitify from the proof identity (graph build self-stale) ([#25](https://github.com/Pratiyush/dev-spec-kit/issues/25)) ([b54de8b](https://github.com/Pratiyush/dev-spec-kit/commit/b54de8bfa75b3509f179f29be3b6c22807dcb68b)), closes [#24](https://github.com/Pratiyush/dev-spec-kit/issues/24)
+
 ## 0.2.0 — 2026-06-14 (proof-layer integrity + the LLM layer)
 
 Dogfood-feedback rework of the proof layer, plus an LLM layer (harness-first — free, no API key by
