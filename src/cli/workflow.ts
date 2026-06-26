@@ -21,6 +21,7 @@ import { routeRequest, assertMode } from "../engine/route/classify.js";
 import { applyGateFloor } from "../engine/gatepacks.js";
 import type { VerifiedTraceabilityGraph } from "../engine/graph/types.js";
 import { gateVerdict, verifyVerdict } from "../engine/gate.js";
+import { summarize } from "../engine/graph/build.js";
 import { gitTreeHash, isDirty } from "../engine/git.js";
 import { needsFlush } from "../engine/flushwarn.js";
 import { loadConfig } from "./config-io.js";
@@ -459,6 +460,46 @@ export function guardPr(): void {
   }
   console.error(pc.red("✗ dev-spec-kit guard: blocked:"));
   for (const r of verdict.reasons) console.error(pc.red(`   ${r}`));
+  process.exitCode = 2;
+}
+
+/**
+ * `dev-spec-kit gate` — FIX-GATE-01, the lean per-commit graph-clean check. Loads the graph, runs the shared
+ * `gateVerdict` predicate, prints the validates summary, and exits **2** on ANY non-green proof (red / stale /
+ * unproven) or a missing graph (absence ≠ permission). Unlike `guard pr` it does NOT require a fresh `verify`,
+ * so it's the fast inner build→commit gate — and a real exit code retires the fragile hand-rolled `grep` of the
+ * graph-build output (which false-matched "...4`0 stale`" as `0 stale`). `--quiet` = exit code only.
+ */
+export function gateCmd(opts?: { quiet?: boolean }): void {
+  const cwd = process.cwd();
+  const quiet = opts?.quiet === true;
+  if (!existsSync(join(cwd, ".dev-spec-kit"))) {
+    if (!quiet) console.log(pc.dim("dev-spec-kit gate: not a dev-spec-kit project — nothing to enforce"));
+    return;
+  }
+  const graph = gateGraph(cwd);
+  if (!quiet && graph) {
+    const v = summarize(graph).validates;
+    console.log(
+      `  validates: ${pc.green(`● ${v.green} green`)}  ${pc.red(`● ${v.red} red`)}  ` +
+        `${pc.magenta(`● ${v.stale} stale`)}  ${pc.yellow(`○ ${v.unproven} unproven`)}`,
+    );
+  }
+  const verdict = gateVerdict(graph);
+  if (verdict.ok) {
+    if (!quiet) {
+      console.log(
+        verdict.zeroProofs
+          ? pc.yellow("✓ dev-spec-kit gate: zero bound proofs — nothing to enforce (bind @checks!)")
+          : pc.green("✓ dev-spec-kit gate: every proof green"),
+      );
+    }
+    return;
+  }
+  if (!quiet) {
+    console.error(pc.red("✗ dev-spec-kit gate: blocked:"));
+    for (const r of verdict.reasons) console.error(pc.red(`   ${r}`));
+  }
   process.exitCode = 2;
 }
 

@@ -5,7 +5,17 @@ import { runDoctor } from "./doctor.js";
 import { runInit } from "./init.js";
 import { taskCreate, taskStart, taskDone, checkRun, status, taskTrail } from "./tasks.js";
 import { graphBuild } from "./graph.js";
-import { specTasks, specLint, specDraftTests, approve, pr, route, guardPr, unlock } from "./workflow.js";
+import {
+  specTasks,
+  specLint,
+  specDraftTests,
+  approve,
+  pr,
+  route,
+  guardPr,
+  gateCmd,
+  unlock,
+} from "./workflow.js";
 import { trace, drift, affected } from "./queries.js";
 import { logCmd } from "./log.js";
 import { resumeCmd } from "./resume.js";
@@ -209,6 +219,12 @@ guard
   .command("pr")
   .description("Block PR creation unless every proof is green (missing graph also blocks)")
   .action(safe(() => guardPr()));
+
+program
+  .command("gate")
+  .description("Fast graph-clean check — exit 2 if any proof is red/stale/unproven (no fresh-verify gate)")
+  .option("--quiet", "exit code only (no output)")
+  .action(safe((opts: { quiet?: boolean }) => gateCmd(opts)));
 
 program
   .command("unlock")
