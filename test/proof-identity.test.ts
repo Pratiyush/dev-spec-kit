@@ -95,6 +95,22 @@ describe("proof identity = tested tree", () => {
     expect(gitTreeHash(dir)).not.toBe(before);
   });
 
+  it("the revitify code-graph cache is excluded from identity — graph build must not stale its own proofs", () => {
+    const dir = tempRepo();
+    execSync(
+      "mkdir -p .revitify/cache && echo '{}' > .revitify/cache/stat-index.json && git add -A && git commit -qm revitify",
+      { cwd: dir, stdio: "pipe" },
+    );
+    const before = gitTreeHash(dir);
+    // `graph build` regenerates the cache — identity MUST NOT move (the self-stale bug), and it isn't "dirty" either.
+    execSync("echo '{\"changed\":1}' > .revitify/cache/stat-index.json", { cwd: dir, stdio: "pipe" });
+    expect(gitTreeHash(dir)).toBe(before);
+    expect(isDirty(dir)).toBe(false);
+    // …but a CODE change still moves it.
+    writeFileSync(join(dir, "f.txt"), "v-changed\n");
+    expect(gitTreeHash(dir)).not.toBe(before);
+  });
+
   it("untracked code files now COUNT toward identity (closes the old stash-create blind spot)", () => {
     const dir = tempRepo();
     const before = gitTreeHash(dir);
