@@ -1,7 +1,7 @@
 import { existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import { gitTreeHash } from "../engine/git.js";
+import { gitDiffFiles, gitTreeHash } from "../engine/git.js";
 import { parseSpecsDir } from "../engine/spec/parse.js";
 import { Journal } from "../engine/state/journal.js";
 import { TaskStore, type Task } from "../engine/state/tasks.js";
@@ -49,12 +49,16 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
 
   const head = gitHead(cwd);
   const tree = gitTreeHash(cwd);
+  // FEAT-INCR-01: diff each distinct proof-tree against the current one so buildVTG can relax unaffected
+  // stale proofs to green (only meaningful with a code graph to resolve each proof's coverage).
+  const treeChanges = tree && codeGraph ? computeTreeChanges(cwd, tasks, tree) : undefined;
   const vtg = buildVTG({
     requirements,
     tasks,
     ...(head ? { currentSha: head } : {}),
     ...(tree ? { currentTree: tree } : {}),
     ...(codeGraph ? { codeGraph } : {}),
+    ...(treeChanges ? { treeChanges } : {}),
   });
   // FIX-QUERY-01: queries pass write:false — read-only commands leave no fingerprints.
   if (opts.write !== false) {
@@ -69,6 +73,25 @@ export function materialize(cwd: string, opts: { refresh: boolean; write?: boole
     codeGraphLoaded: !!codeGraph,
     specWarnings,
   };
+}
+
+/**
+ * FEAT-INCR-01: for each distinct proof-tree among recorded checks, the files changed vs the current tree —
+ * the input that lets `buildVTG` relax unaffected stale proofs. Undiffable trees (e.g. a GC'd tree object)
+ * are omitted, so their proofs stay stale (conservative).
+ */
+function computeTreeChanges(cwd: string, tasks: Task[], currentTree: string): Record<string, string[]> {
+  const trees = new Set<string>();
+  for (const t of tasks)
+    for (const r of Object.values(t.results)) {
+      if (r.tree && r.tree !== currentTree) trees.add(r.tree);
+    }
+  const out: Record<string, string[]> = {};
+  for (const tree of trees) {
+    const files = gitDiffFiles(cwd, tree, currentTree);
+    if (files) out[tree] = files;
+  }
+  return out;
 }
 
 export function journalFor(cwd: string): Journal {

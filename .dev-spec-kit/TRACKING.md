@@ -22,4 +22,5 @@
 | REQUIREMENT_JUDGE-01 | an LLM judge verdict is a recorded, second-class proof | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_CYCLE-01 | a circular dependency is flagged, not silently built | 2 | 🟢🟢 | done | — |
 | REQUIREMENT_PRBLAST-01 | the PR body shows the change's blast radius | 2 | 🟢🟢 | done | — |
+| REQUIREMENT_INCR-01 | affected-aware staleness keeps unrelated proofs green | 2 | 🟢🟢 | pending | — |
 | REQUIREMENT_IMPL-01 | proven implements edges tie changed source files to their requirements | 3 | 🟢🟢🟢 | pending | — |

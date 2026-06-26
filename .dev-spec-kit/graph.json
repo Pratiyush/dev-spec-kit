@@ -1790,7 +1790,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit-data.ts",
         "sourceLocation": "src/cli/cockpit-data.ts:36",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1839,7 +1839,7 @@
       "label": "src/cli/cockpit.ts",
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1849,7 +1849,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:13",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1859,7 +1859,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:15",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1869,7 +1869,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:26",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1879,7 +1879,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:30",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1889,7 +1889,7 @@
       "meta": {
         "sourceFile": "src/cli/cockpit.ts",
         "sourceLocation": "src/cli/cockpit.ts:36",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -1898,7 +1898,7 @@
       "label": "src/cli/config-io.ts",
       "meta": {
         "sourceFile": "src/cli/config-io.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -1908,7 +1908,7 @@
       "meta": {
         "sourceFile": "src/cli/config-io.ts",
         "sourceLocation": "src/cli/config-io.ts:12",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -1918,7 +1918,7 @@
       "meta": {
         "sourceFile": "src/cli/config-io.ts",
         "sourceLocation": "src/cli/config-io.ts:19",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -1927,7 +1927,7 @@
       "label": "src/cli/dashboard.ts",
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
-        "community": 25
+        "community": 35
       }
     },
     {
@@ -1937,7 +1937,7 @@
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
         "sourceLocation": "src/cli/dashboard.ts:15",
-        "community": 25
+        "community": 35
       }
     },
     {
@@ -1947,7 +1947,7 @@
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
         "sourceLocation": "src/cli/dashboard.ts:23",
-        "community": 25
+        "community": 35
       }
     },
     {
@@ -1957,7 +1957,7 @@
       "meta": {
         "sourceFile": "src/cli/dashboard.ts",
         "sourceLocation": "src/cli/dashboard.ts:53",
-        "community": 25
+        "community": 35
       }
     },
     {
@@ -1966,7 +1966,7 @@
       "label": "src/cli/doctor.ts",
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -1976,7 +1976,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:7",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -1986,7 +1986,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:15",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -1996,7 +1996,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:18",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2006,7 +2006,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:28",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2016,7 +2016,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:38",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2026,7 +2026,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:89",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2036,7 +2036,7 @@
       "meta": {
         "sourceFile": "src/cli/doctor.ts",
         "sourceLocation": "src/cli/doctor.ts:97",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2045,7 +2045,7 @@
       "label": "src/cli/emoji.ts",
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2055,7 +2055,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:11",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2065,7 +2065,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:41",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2075,7 +2075,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:68",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2085,7 +2085,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:86",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2095,7 +2095,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:97",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2105,7 +2105,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:101",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2115,7 +2115,7 @@
       "meta": {
         "sourceFile": "src/cli/emoji.ts",
         "sourceLocation": "src/cli/emoji.ts:106",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -2124,7 +2124,7 @@
       "label": "src/cli/graph.ts",
       "meta": {
         "sourceFile": "src/cli/graph.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -2134,7 +2134,7 @@
       "meta": {
         "sourceFile": "src/cli/graph.ts",
         "sourceLocation": "src/cli/graph.ts:18",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -2152,7 +2152,7 @@
       "label": "safe",
       "meta": {
         "sourceFile": "src/cli/index.ts",
-        "sourceLocation": "src/cli/index.ts:26",
+        "sourceLocation": "src/cli/index.ts:36",
         "community": 36
       }
     },
@@ -2162,7 +2162,7 @@
       "label": "src/cli/init.ts",
       "meta": {
         "sourceFile": "src/cli/init.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -2172,7 +2172,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:25",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -2182,7 +2182,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:31",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -2192,7 +2192,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:48",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -2202,7 +2202,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:93",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -2212,7 +2212,7 @@
       "meta": {
         "sourceFile": "src/cli/init.ts",
         "sourceLocation": "src/cli/init.ts:101",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -2289,7 +2289,7 @@
       "label": "src/cli/materialize.ts",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -2313,12 +2313,22 @@
       }
     },
     {
+      "id": "sym:src/cli/materialize.ts#computeTreeChanges",
+      "kind": "codeNode",
+      "label": "computeTreeChanges",
+      "meta": {
+        "sourceFile": "src/cli/materialize.ts",
+        "sourceLocation": "src/cli/materialize.ts:83",
+        "community": 25
+      }
+    },
+    {
       "id": "sym:src/cli/materialize.ts#journalFor",
       "kind": "codeNode",
       "label": "journalFor",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:74",
+        "sourceLocation": "src/cli/materialize.ts:97",
         "community": 25
       }
     },
@@ -2328,7 +2338,7 @@
       "label": "configFor",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:78",
+        "sourceLocation": "src/cli/materialize.ts:101",
         "community": 38
       }
     },
@@ -2338,7 +2348,7 @@
       "label": "gitHead",
       "meta": {
         "sourceFile": "src/cli/materialize.ts",
-        "sourceLocation": "src/cli/materialize.ts:82",
+        "sourceLocation": "src/cli/materialize.ts:105",
         "community": 39
       }
     },
@@ -2367,7 +2377,7 @@
       "label": "src/cli/queries.ts",
       "meta": {
         "sourceFile": "src/cli/queries.ts",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -2377,7 +2387,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:27",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -2387,7 +2397,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:34",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -2407,7 +2417,7 @@
       "meta": {
         "sourceFile": "src/cli/queries.ts",
         "sourceLocation": "src/cli/queries.ts:126",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -2602,7 +2612,7 @@
       "meta": {
         "sourceFile": "src/cli/verify-cmd.ts",
         "sourceLocation": "src/cli/verify-cmd.ts:129",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2720,7 +2730,7 @@
       "label": "src/cli/web.ts",
       "meta": {
         "sourceFile": "src/cli/web.ts",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2730,7 +2740,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:33",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2740,7 +2750,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:40",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2750,7 +2760,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:64",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2760,7 +2770,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:74",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2770,7 +2780,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:94",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2780,7 +2790,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:101",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2790,7 +2800,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:104",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2800,7 +2810,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:120",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2810,7 +2820,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:130",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2820,7 +2830,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:142",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2830,7 +2840,7 @@
       "meta": {
         "sourceFile": "src/cli/web.ts",
         "sourceLocation": "src/cli/web.ts:242",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -2869,7 +2879,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:44",
-        "community": 25
+        "community": 40
       }
     },
     {
@@ -2919,7 +2929,7 @@
       "meta": {
         "sourceFile": "src/cli/workflow.ts",
         "sourceLocation": "src/cli/workflow.ts:197",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -3018,7 +3028,7 @@
       "label": "src/config/schema.ts",
       "meta": {
         "sourceFile": "src/config/schema.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3028,7 +3038,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:4",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3038,7 +3048,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:25",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3048,7 +3058,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:348",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3058,7 +3068,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:351",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3068,7 +3078,7 @@
       "meta": {
         "sourceFile": "src/config/schema.ts",
         "sourceLocation": "src/config/schema.ts:356",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3077,7 +3087,7 @@
       "label": "src/engine/approvals.ts",
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -3087,7 +3097,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:17",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -3097,7 +3107,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:27",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -3107,7 +3117,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:29",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -3127,7 +3137,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:100",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -3137,7 +3147,7 @@
       "meta": {
         "sourceFile": "src/engine/approvals.ts",
         "sourceLocation": "src/engine/approvals.ts:105",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -3146,7 +3156,7 @@
       "label": "src/engine/config-manifest.ts",
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3156,7 +3166,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:12",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3166,7 +3176,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:22",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3176,7 +3186,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:41",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3186,7 +3196,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:48",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3196,7 +3206,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:187",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3206,7 +3216,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:192",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3216,7 +3226,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:216",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3226,7 +3236,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:227",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3236,7 +3246,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:247",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3246,7 +3256,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:301",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3256,7 +3266,7 @@
       "meta": {
         "sourceFile": "src/engine/config-manifest.ts",
         "sourceLocation": "src/engine/config-manifest.ts:337",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -3353,7 +3363,7 @@
       "label": "src/engine/gate.ts",
       "meta": {
         "sourceFile": "src/engine/gate.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3363,7 +3373,7 @@
       "meta": {
         "sourceFile": "src/engine/gate.ts",
         "sourceLocation": "src/engine/gate.ts:9",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3392,7 +3402,7 @@
       "label": "src/engine/gatepacks.ts",
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3402,7 +3412,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:12",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3412,7 +3422,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:18",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3422,7 +3432,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:22",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3432,7 +3442,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:31",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3442,7 +3452,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:36",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3452,7 +3462,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:61",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3462,7 +3472,7 @@
       "meta": {
         "sourceFile": "src/engine/gatepacks.ts",
         "sourceLocation": "src/engine/gatepacks.ts:73",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -3471,7 +3481,7 @@
       "label": "src/engine/git.ts",
       "meta": {
         "sourceFile": "src/engine/git.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3481,7 +3491,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:17",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3491,7 +3501,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:24",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3501,7 +3511,7 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:29",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -3511,7 +3521,17 @@
       "meta": {
         "sourceFile": "src/engine/git.ts",
         "sourceLocation": "src/engine/git.ts:42",
-        "community": 25
+        "community": 41
+      }
+    },
+    {
+      "id": "sym:src/engine/git.ts#gitDiffFiles",
+      "kind": "codeNode",
+      "label": "gitDiffFiles",
+      "meta": {
+        "sourceFile": "src/engine/git.ts",
+        "sourceLocation": "src/engine/git.ts:83",
+        "community": 41
       }
     },
     {
@@ -3520,7 +3540,7 @@
       "label": "src/engine/graph/build.ts",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3530,7 +3550,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
         "sourceLocation": "src/engine/graph/build.ts:19",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3539,8 +3559,8 @@
       "label": "buildVTG",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:29",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:36",
+        "community": 25
       }
     },
     {
@@ -3549,8 +3569,8 @@
       "label": "isTestFile",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:142",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:155",
+        "community": 25
       }
     },
     {
@@ -3559,8 +3579,8 @@
       "label": "ImplementsEdgeSpec",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:146",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:159",
+        "community": 25
       }
     },
     {
@@ -3569,8 +3589,28 @@
       "label": "deriveImplementsEdges",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:163",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:176",
+        "community": 25
+      }
+    },
+    {
+      "id": "sym:src/engine/graph/build.ts#importsByTestFile",
+      "kind": "codeNode",
+      "label": "importsByTestFile",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "src/engine/graph/build.ts:216",
+        "community": 25
+      }
+    },
+    {
+      "id": "sym:src/engine/graph/build.ts#relaxAffectedStaleness",
+      "kind": "codeNode",
+      "label": "relaxAffectedStaleness",
+      "meta": {
+        "sourceFile": "src/engine/graph/build.ts",
+        "sourceLocation": "src/engine/graph/build.ts:244",
+        "community": 25
       }
     },
     {
@@ -3579,8 +3619,8 @@
       "label": "VTGSummary",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:209",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:264",
+        "community": 25
       }
     },
     {
@@ -3589,8 +3629,8 @@
       "label": "RequirementRollup",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:222",
-        "community": 36
+        "sourceLocation": "src/engine/graph/build.ts:277",
+        "community": 25
       }
     },
     {
@@ -3599,7 +3639,7 @@
       "label": "rollupRequirements",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:231",
+        "sourceLocation": "src/engine/graph/build.ts:286",
         "community": 25
       }
     },
@@ -3609,8 +3649,8 @@
       "label": "DriftTarget",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:259",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:314",
+        "community": 25
       }
     },
     {
@@ -3619,8 +3659,8 @@
       "label": "driftTargets",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:266",
-        "community": 36
+        "sourceLocation": "src/engine/graph/build.ts:321",
+        "community": 25
       }
     },
     {
@@ -3629,8 +3669,8 @@
       "label": "summarize",
       "meta": {
         "sourceFile": "src/engine/graph/build.ts",
-        "sourceLocation": "src/engine/graph/build.ts:286",
-        "community": 35
+        "sourceLocation": "src/engine/graph/build.ts:341",
+        "community": 25
       }
     },
     {
@@ -3639,7 +3679,7 @@
       "label": "src/engine/graph/cycles.ts",
       "meta": {
         "sourceFile": "src/engine/graph/cycles.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3649,7 +3689,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/cycles.ts",
         "sourceLocation": "src/engine/graph/cycles.ts:10",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3659,7 +3699,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/cycles.ts",
         "sourceLocation": "src/engine/graph/cycles.ts:16",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3668,7 +3708,7 @@
       "label": "src/engine/graph/types.ts",
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3678,7 +3718,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:12",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3688,7 +3728,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:31",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3698,7 +3738,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:40",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -3708,7 +3748,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:42",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3728,7 +3768,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:71",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3738,7 +3778,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:82",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3748,7 +3788,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:88",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3758,7 +3798,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:94",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3768,7 +3808,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:106",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3778,7 +3818,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:111",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3788,7 +3828,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:119",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3798,7 +3838,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:126",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3808,7 +3848,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:131",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3818,7 +3858,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:140",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -3828,7 +3868,7 @@
       "meta": {
         "sourceFile": "src/engine/graph/types.ts",
         "sourceLocation": "src/engine/graph/types.ts:169",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3837,7 +3877,7 @@
       "label": "src/engine/graphify/index.ts",
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3847,7 +3887,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:19",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3857,7 +3897,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:29",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3867,7 +3907,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:35",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -3877,7 +3917,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:42",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3887,7 +3927,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:64",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3897,7 +3937,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:70",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3907,7 +3947,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:79",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3917,7 +3957,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:99",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3927,7 +3967,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:107",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3937,7 +3977,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:113",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3947,7 +3987,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:123",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3957,7 +3997,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:130",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3967,7 +4007,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:144",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3977,7 +4017,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:158",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3987,7 +4027,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:161",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -3997,7 +4037,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:171",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4007,7 +4047,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:199",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4017,7 +4057,7 @@
       "meta": {
         "sourceFile": "src/engine/graphify/index.ts",
         "sourceLocation": "src/engine/graphify/index.ts:212",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4163,7 +4203,7 @@
       "label": "src/engine/pr/body.ts",
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -4173,7 +4213,7 @@
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
         "sourceLocation": "src/engine/pr/body.ts:12",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -4183,7 +4223,7 @@
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
         "sourceLocation": "src/engine/pr/body.ts:28",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -4193,7 +4233,7 @@
       "meta": {
         "sourceFile": "src/engine/pr/body.ts",
         "sourceLocation": "src/engine/pr/body.ts:57",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -4202,7 +4242,7 @@
       "label": "src/engine/practices.ts",
       "meta": {
         "sourceFile": "src/engine/practices.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -4212,7 +4252,7 @@
       "meta": {
         "sourceFile": "src/engine/practices.ts",
         "sourceLocation": "src/engine/practices.ts:12",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -4222,7 +4262,7 @@
       "meta": {
         "sourceFile": "src/engine/practices.ts",
         "sourceLocation": "src/engine/practices.ts:204",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -4232,7 +4272,7 @@
       "meta": {
         "sourceFile": "src/engine/practices.ts",
         "sourceLocation": "src/engine/practices.ts:218",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -4428,7 +4468,7 @@
       "label": "src/engine/spec/ears.ts",
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4438,7 +4478,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:10",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4448,7 +4488,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:12",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4458,7 +4498,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:15",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4468,7 +4508,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:21",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4478,7 +4518,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:31",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4488,7 +4528,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:37",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4498,7 +4538,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:49",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4508,7 +4548,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:51",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4518,7 +4558,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:53",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4528,7 +4568,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:57",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4538,7 +4578,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:65",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4548,7 +4588,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:76",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4558,7 +4598,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:83",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4568,7 +4608,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:88",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4608,7 +4648,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:125",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4618,7 +4658,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:133",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4628,7 +4668,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:145",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4638,7 +4678,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/ears.ts",
         "sourceLocation": "src/engine/spec/ears.ts:153",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -4716,7 +4756,7 @@
       "label": "src/engine/spec/parse.ts",
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4726,7 +4766,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
         "sourceLocation": "src/engine/spec/parse.ts:50",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -4736,7 +4776,7 @@
       "meta": {
         "sourceFile": "src/engine/spec/parse.ts",
         "sourceLocation": "src/engine/spec/parse.ts:59",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -4854,7 +4894,7 @@
       "meta": {
         "sourceFile": "src/engine/state/journal.ts",
         "sourceLocation": "src/engine/state/journal.ts:56",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -4963,7 +5003,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:52",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -4973,7 +5013,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:56",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -4983,7 +5023,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:93",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -4993,7 +5033,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:97",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -5003,7 +5043,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:113",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -5013,7 +5053,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:122",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -5023,7 +5063,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:128",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -5033,7 +5073,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:140",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -5043,7 +5083,7 @@
       "meta": {
         "sourceFile": "src/engine/state/tasks.ts",
         "sourceLocation": "src/engine/state/tasks.ts:166",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -5664,7 +5704,7 @@
       "label": "src/engine/verify/stamp.ts",
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -5674,7 +5714,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
         "sourceLocation": "src/engine/verify/stamp.ts:10",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -5684,7 +5724,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
         "sourceLocation": "src/engine/verify/stamp.ts:17",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -5694,7 +5734,7 @@
       "meta": {
         "sourceFile": "src/engine/verify/stamp.ts",
         "sourceLocation": "src/engine/verify/stamp.ts:24",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -5877,7 +5917,7 @@
       "label": "test/cli-doctor.test.ts",
       "meta": {
         "sourceFile": "test/cli-doctor.test.ts",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -5886,7 +5926,7 @@
       "label": "test/cli-graph-build.test.ts",
       "meta": {
         "sourceFile": "test/cli-graph-build.test.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -5895,7 +5935,7 @@
       "label": "test/cli-init.test.ts",
       "meta": {
         "sourceFile": "test/cli-init.test.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -5913,7 +5953,7 @@
       "label": "test/cli-queries.test.ts",
       "meta": {
         "sourceFile": "test/cli-queries.test.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -5922,7 +5962,7 @@
       "label": "test/cli-spec.test.ts",
       "meta": {
         "sourceFile": "test/cli-spec.test.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -5950,7 +5990,7 @@
       "label": "test/cli-thin.test.ts",
       "meta": {
         "sourceFile": "test/cli-thin.test.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -5978,7 +6018,7 @@
       "label": "test/cli-verify-cmd.test.ts",
       "meta": {
         "sourceFile": "test/cli-verify-cmd.test.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -5988,7 +6028,7 @@
       "meta": {
         "sourceFile": "test/cli-verify-cmd.test.ts",
         "sourceLocation": "test/cli-verify-cmd.test.ts:13",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6016,7 +6056,7 @@
       "label": "test/cli-web.test.ts",
       "meta": {
         "sourceFile": "test/cli-web.test.ts",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6026,7 +6066,7 @@
       "meta": {
         "sourceFile": "test/cli-web.test.ts",
         "sourceLocation": "test/cli-web.test.ts:11",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6044,7 +6084,7 @@
       "label": "test/cockpit-assets.test.ts",
       "meta": {
         "sourceFile": "test/cockpit-assets.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6053,7 +6093,7 @@
       "label": "test/cockpit-hardening.test.ts",
       "meta": {
         "sourceFile": "test/cockpit-hardening.test.ts",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6063,7 +6103,7 @@
       "meta": {
         "sourceFile": "test/cockpit-hardening.test.ts",
         "sourceLocation": "test/cockpit-hardening.test.ts:23",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6073,7 +6113,7 @@
       "meta": {
         "sourceFile": "test/cockpit-hardening.test.ts",
         "sourceLocation": "test/cockpit-hardening.test.ts:52",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6082,7 +6122,7 @@
       "label": "test/cockpit-server.test.ts",
       "meta": {
         "sourceFile": "test/cockpit-server.test.ts",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6092,7 +6132,7 @@
       "meta": {
         "sourceFile": "test/cockpit-server.test.ts",
         "sourceLocation": "test/cockpit-server.test.ts:18",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6102,7 +6142,7 @@
       "meta": {
         "sourceFile": "test/cockpit-server.test.ts",
         "sourceLocation": "test/cockpit-server.test.ts:51",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6111,7 +6151,7 @@
       "label": "test/cockpit.test.ts",
       "meta": {
         "sourceFile": "test/cockpit.test.ts",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6121,7 +6161,7 @@
       "meta": {
         "sourceFile": "test/cockpit.test.ts",
         "sourceLocation": "test/cockpit.test.ts:22",
-        "community": 25
+        "community": 33
       }
     },
     {
@@ -6139,7 +6179,7 @@
       "label": "test/config-manifest.test.ts",
       "meta": {
         "sourceFile": "test/config-manifest.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6148,7 +6188,7 @@
       "label": "test/cycles.test.ts",
       "meta": {
         "sourceFile": "test/cycles.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6157,7 +6197,7 @@
       "label": "test/dashboard.test.ts",
       "meta": {
         "sourceFile": "test/dashboard.test.ts",
-        "community": 25
+        "community": 35
       }
     },
     {
@@ -6166,7 +6206,7 @@
       "label": "test/default-stack.test.ts",
       "meta": {
         "sourceFile": "test/default-stack.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6176,7 +6216,7 @@
       "meta": {
         "sourceFile": "test/default-stack.test.ts",
         "sourceLocation": "test/default-stack.test.ts:13",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6185,7 +6225,7 @@
       "label": "test/docs-refresh.test.ts",
       "meta": {
         "sourceFile": "test/docs-refresh.test.ts",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -6195,7 +6235,7 @@
       "meta": {
         "sourceFile": "test/docs-refresh.test.ts",
         "sourceLocation": "test/docs-refresh.test.ts:22",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -6204,7 +6244,7 @@
       "label": "test/doctor-fix.test.ts",
       "meta": {
         "sourceFile": "test/doctor-fix.test.ts",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -6231,7 +6271,7 @@
       "label": "test/emoji.test.ts",
       "meta": {
         "sourceFile": "test/emoji.test.ts",
-        "community": 34
+        "community": 35
       }
     },
     {
@@ -6249,7 +6289,7 @@
       "label": "test/files-tab.test.ts",
       "meta": {
         "sourceFile": "test/files-tab.test.ts",
-        "community": 25
+        "community": 35
       }
     },
     {
@@ -6267,7 +6307,7 @@
       "label": "test/finish-skill.test.ts",
       "meta": {
         "sourceFile": "test/finish-skill.test.ts",
-        "community": 41
+        "community": 42
       }
     },
     {
@@ -6285,7 +6325,7 @@
       "label": "test/gate-packs.test.ts",
       "meta": {
         "sourceFile": "test/gate-packs.test.ts",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -6294,7 +6334,7 @@
       "label": "test/gate.test.ts",
       "meta": {
         "sourceFile": "test/gate.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6303,7 +6343,7 @@
       "label": "test/gherkin.test.ts",
       "meta": {
         "sourceFile": "test/gherkin.test.ts",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -6312,7 +6352,7 @@
       "label": "test/graph.test.ts",
       "meta": {
         "sourceFile": "test/graph.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6321,7 +6361,7 @@
       "label": "test/graphify-helpers.test.ts",
       "meta": {
         "sourceFile": "test/graphify-helpers.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6331,7 +6371,7 @@
       "meta": {
         "sourceFile": "test/graphify-helpers.test.ts",
         "sourceLocation": "test/graphify-helpers.test.ts:13",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6340,7 +6380,7 @@
       "label": "test/graphify.test.ts",
       "meta": {
         "sourceFile": "test/graphify.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6349,7 +6389,7 @@
       "label": "test/helpers/cli-harness.ts",
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6359,7 +6399,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:12",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6369,7 +6409,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:24",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6379,7 +6419,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:27",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6389,7 +6429,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:41",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6399,7 +6439,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:51",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6409,7 +6449,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:57",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6419,7 +6459,7 @@
       "meta": {
         "sourceFile": "test/helpers/cli-harness.ts",
         "sourceLocation": "test/helpers/cli-harness.ts:71",
-        "community": 38
+        "community": 26
       }
     },
     {
@@ -6428,7 +6468,7 @@
       "label": "test/implements-edges.test.ts",
       "meta": {
         "sourceFile": "test/implements-edges.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6437,7 +6477,7 @@
       "label": "test/init-practices.test.ts",
       "meta": {
         "sourceFile": "test/init-practices.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6447,7 +6487,7 @@
       "meta": {
         "sourceFile": "test/init-practices.test.ts",
         "sourceLocation": "test/init-practices.test.ts:13",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6502,7 +6542,7 @@
       "label": "test/pr-blast.test.ts",
       "meta": {
         "sourceFile": "test/pr-blast.test.ts",
-        "community": 35
+        "community": 41
       }
     },
     {
@@ -6549,7 +6589,7 @@
       "label": "test/proof-display.test.ts",
       "meta": {
         "sourceFile": "test/proof-display.test.ts",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -6558,7 +6598,7 @@
       "label": "test/proof-identity.test.ts",
       "meta": {
         "sourceFile": "test/proof-identity.test.ts",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -6568,7 +6608,7 @@
       "meta": {
         "sourceFile": "test/proof-identity.test.ts",
         "sourceLocation": "test/proof-identity.test.ts:19",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -6578,7 +6618,7 @@
       "meta": {
         "sourceFile": "test/proof-identity.test.ts",
         "sourceLocation": "test/proof-identity.test.ts:31",
-        "community": 39
+        "community": 41
       }
     },
     {
@@ -6596,7 +6636,7 @@
       "label": "test/qualified-ids.test.ts",
       "meta": {
         "sourceFile": "test/qualified-ids.test.ts",
-        "community": 35
+        "community": 40
       }
     },
     {
@@ -6605,7 +6645,7 @@
       "label": "test/query-fix.test.ts",
       "meta": {
         "sourceFile": "test/query-fix.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6614,7 +6654,7 @@
       "label": "test/readme.test.ts",
       "meta": {
         "sourceFile": "test/readme.test.ts",
-        "community": 42
+        "community": 43
       }
     },
     {
@@ -6632,7 +6672,7 @@
       "label": "test/revitify-contract.test.ts",
       "meta": {
         "sourceFile": "test/revitify-contract.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6641,7 +6681,7 @@
       "label": "test/robust.test.ts",
       "meta": {
         "sourceFile": "test/robust.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6651,7 +6691,7 @@
       "meta": {
         "sourceFile": "test/robust.test.ts",
         "sourceLocation": "test/robust.test.ts:13",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6696,7 +6736,7 @@
       "label": "test/skill-qa.test.ts",
       "meta": {
         "sourceFile": "test/skill-qa.test.ts",
-        "community": 43
+        "community": 44
       }
     },
     {
@@ -6714,7 +6754,7 @@
       "label": "test/spec-parse.test.ts",
       "meta": {
         "sourceFile": "test/spec-parse.test.ts",
-        "community": 35
+        "community": 25
       }
     },
     {
@@ -6742,7 +6782,7 @@
       "label": "test/stacknames.test.ts",
       "meta": {
         "sourceFile": "test/stacknames.test.ts",
-        "community": 33
+        "community": 34
       }
     },
     {
@@ -6826,7 +6866,7 @@
       "label": "test/trace-hint.test.ts",
       "meta": {
         "sourceFile": "test/trace-hint.test.ts",
-        "community": 36
+        "community": 25
       }
     },
     {
@@ -6844,7 +6884,7 @@
       "label": "test/trust-fixtures.test.ts",
       "meta": {
         "sourceFile": "test/trust-fixtures.test.ts",
-        "community": 44
+        "community": 45
       }
     },
     {
@@ -6900,7 +6940,7 @@
       "label": "test/workflow.test.ts",
       "meta": {
         "sourceFile": "test/workflow.test.ts",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -6910,7 +6950,7 @@
       "meta": {
         "sourceFile": "test/workflow.test.ts",
         "sourceLocation": "test/workflow.test.ts:13",
-        "community": 26
+        "community": 41
       }
     },
     {
@@ -6919,7 +6959,7 @@
       "label": "tsconfig.json",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 45
+        "community": 46
       }
     },
     {
@@ -6928,7 +6968,7 @@
       "label": "compilerOptions",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 45
+        "community": 46
       }
     },
     {
@@ -6937,7 +6977,7 @@
       "label": "include",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 45
+        "community": 46
       }
     },
     {
@@ -6946,7 +6986,7 @@
       "label": "exclude",
       "meta": {
         "sourceFile": "tsconfig.json",
-        "community": 45
+        "community": 46
       }
     },
     {
@@ -6955,7 +6995,7 @@
       "label": "vitest.config.ts",
       "meta": {
         "sourceFile": "vitest.config.ts",
-        "community": 46
+        "community": 47
       }
     },
     {
@@ -6964,7 +7004,7 @@
       "label": "website/assets/docs.css",
       "meta": {
         "sourceFile": "website/assets/docs.css",
-        "community": 47
+        "community": 48
       }
     },
     {
@@ -6973,7 +7013,7 @@
       "label": "website/assets/style.css",
       "meta": {
         "sourceFile": "website/assets/style.css",
-        "community": 48
+        "community": 49
       }
     },
     {
@@ -6982,7 +7022,7 @@
       "label": "website/docs/commands.html",
       "meta": {
         "sourceFile": "website/docs/commands.html",
-        "community": 49
+        "community": 50
       }
     },
     {
@@ -6991,7 +7031,7 @@
       "label": "website/docs/concepts.html",
       "meta": {
         "sourceFile": "website/docs/concepts.html",
-        "community": 50
+        "community": 51
       }
     },
     {
@@ -7000,7 +7040,7 @@
       "label": "website/docs/configuration.html",
       "meta": {
         "sourceFile": "website/docs/configuration.html",
-        "community": 51
+        "community": 52
       }
     },
     {
@@ -7009,7 +7049,7 @@
       "label": "website/docs/getting-started.html",
       "meta": {
         "sourceFile": "website/docs/getting-started.html",
-        "community": 52
+        "community": 53
       }
     },
     {
@@ -7018,7 +7058,7 @@
       "label": "website/docs/internals.html",
       "meta": {
         "sourceFile": "website/docs/internals.html",
-        "community": 53
+        "community": 54
       }
     },
     {
@@ -7027,7 +7067,7 @@
       "label": "website/docs/skills.html",
       "meta": {
         "sourceFile": "website/docs/skills.html",
-        "community": 54
+        "community": 55
       }
     },
     {
@@ -7036,7 +7076,7 @@
       "label": "website/docs/workflow.html",
       "meta": {
         "sourceFile": "website/docs/workflow.html",
-        "community": 55
+        "community": 56
       }
     },
     {
@@ -7045,7 +7085,7 @@
       "label": "website/index.html",
       "meta": {
         "sourceFile": "website/index.html",
-        "community": 56
+        "community": 57
       }
     },
     {
@@ -7861,6 +7901,53 @@
       }
     },
     {
+      "id": "REQUIREMENT_INCR-01",
+      "kind": "requirement",
+      "label": "affected-aware staleness keeps unrelated proofs green"
+    },
+    {
+      "id": "REQUIREMENT_INCR-01-AC1",
+      "kind": "acceptanceCriterion",
+      "label": "WHEN the working tree changes THEN a green proof SHALL go `stale` only if a file it covers — its test file, or a source that test imports — changed between the proof's tree and the current tree; an edit elsewhere SHALL keep the proof green, so `drift` re-verifies only the affected proofs instead of the whole suite."
+    },
+    {
+      "id": "test:test/implements-edges.test.ts::relaxes a stale proof to green when the change misses its covered files",
+      "kind": "test",
+      "label": "test/implements-edges.test.ts::relaxes a stale proof to green when the change misses its covered files",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "test:test/implements-edges.test.ts::keeps it stale when an imported source changed",
+      "kind": "test",
+      "label": "test/implements-edges.test.ts::keeps it stale when an imported source changed",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "REQUIREMENT_INCR-01-AC2",
+      "kind": "acceptanceCriterion",
+      "label": "IF a stale proof's tree cannot be diffed, or its ref/tree identity is unknown, THEN the system SHALL leave it stale — never relaxing a proof it cannot prove unaffected — and it SHALL never alter a red or unproven edge."
+    },
+    {
+      "id": "test:test/implements-edges.test.ts::stays conservative (stale) when the proof's tree isn't diffable",
+      "kind": "test",
+      "label": "test/implements-edges.test.ts::stays conservative (stale) when the proof's tree isn't diffable",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "test:test/implements-edges.test.ts::never touches non-stale edges, nor a stale edge missing a ref/tree identity",
+      "kind": "test",
+      "label": "test/implements-edges.test.ts::never touches non-stale edges, nor a stale edge missing a ref/tree identity",
+      "meta": {
+        "kind": "unit"
+      }
+    },
+    {
       "id": "REQUIREMENT_IMPL-01",
       "kind": "requirement",
       "label": "proven implements edges tie changed source files to their requirements"
@@ -7946,9 +8033,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::audits cli invocations into the journal",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7969,9 +8056,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside dev-spec-kit projects",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -7992,9 +8079,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders the audit trail with per-type emoji",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8015,9 +8102,9 @@
       "lastCheck": {
         "ref": "test/robust.test.ts::a structurally-valid event missing `data` does not brick log or the task fold",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8038,9 +8125,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders progress with emoji, bar, and next-up",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8061,9 +8148,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::renders an explicit empty state when there are no tasks",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8084,9 +8171,9 @@
       "lastCheck": {
         "ref": "test/cli-ux.test.ts::does not create journals outside dev-spec-kit projects",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8107,9 +8194,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::every leaf knob is fully described (type, default, value, changed, description)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8130,9 +8217,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::enums carry allowed values; runner records carry the cmd-args shape",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8153,9 +8240,9 @@
       "lastCheck": {
         "ref": "test/config-manifest.test.ts::unsupported or undescribed schema nodes throw with the offending path",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8176,9 +8263,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::the RIVET sidecar carries meta, dashboard truth, and the config manifest",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8199,9 +8286,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::passing results from an older tree are marked stale in the sidecar",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8222,9 +8309,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::a closing script tag in artifact content is escaped in the sidecar",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8245,9 +8332,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::emission writes the shell once plus a fresh sidecar",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8268,9 +8355,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::re-emission touches only the sidecar until the shell version changes",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8291,9 +8378,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::live mode rewrites the sidecar on task done and check run",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8314,9 +8401,9 @@
       "lastCheck": {
         "ref": "test/cockpit.test.ts::on-demand mode never rewrites the sidecar on task events",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8337,9 +8424,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::a valid POST saves config.json and journals governance",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8360,9 +8447,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::an invalid POST returns field errors and never writes",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8383,9 +8470,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::in-flight tasks refuse the save with GATE-PROTECT-01 and the unlock hint",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8406,9 +8493,9 @@
       "lastCheck": {
         "ref": "test/cockpit-server.test.ts::GET /api/state returns the RIVET object in server mode",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8429,9 +8516,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::task mutations refresh boards, resume, graph, and the sidecar",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8452,9 +8539,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::drift refreshes the sidecar and boards after re-proving",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8475,9 +8562,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::read-only queries never create or touch documents",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8498,9 +8585,9 @@
       "lastCheck": {
         "ref": "test/docs-refresh.test.ts::on-demand keeps boards fresh without writing the sidecar",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8521,9 +8608,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::treats a run where 0 tests executed as failed, even on exit 0",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8537,9 +8624,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name matches no test as a FAILED proof",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8560,9 +8647,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::records a real vitest check whose name DOES match as a passing proof",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8583,9 +8670,9 @@
       "lastCheck": {
         "ref": "test/report.test.ts::fails on a non-zero exit even if the report shows no failures (e.g. a crash)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8606,9 +8693,9 @@
       "lastCheck": {
         "ref": "test/runner.test.ts::vitest: a flag-like or regex-special name is escaped into the pattern",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8629,9 +8716,9 @@
       "lastCheck": {
         "ref": "test/runner-trust.test.ts::binds a test whose name begins with '-' without crashing the runner CLI",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8652,9 +8739,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::stamps a file::name ref green from its matching passing test, carrying tree/sha/stack/kind",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8668,9 +8755,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::stamps every binding in one pass (the whole point — N criteria, one run)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8691,9 +8778,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::leaves a ref absent from the report UNSTAMPED (it belongs to another runner / run)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8714,9 +8801,9 @@
       "lastCheck": {
         "ref": "test/stamp-batch.test.ts::does NOT stamp a ref whose only match was skipped — skipped is not evidence",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8737,9 +8824,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::flags a ref whose file is missing",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8753,9 +8840,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::flags a ref whose test NAME no longer appears in the file (a rename)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8776,9 +8863,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::passes a ref whose file and name both resolve",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8799,9 +8886,9 @@
       "lastCheck": {
         "ref": "test/spec-lint.test.ts::skips a selector-only ref it cannot statically resolve (e.g. maven Class#method)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8822,9 +8909,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is OUT OF sync when a test was renamed (task holds the old ref, spec the new)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8838,9 +8925,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is out of sync when the counts differ",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8861,9 +8948,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::is in sync when the task's refs match the spec's (order-independent)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8884,9 +8971,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::emits a stub that FAILS until implemented and carries the criterion + edge-case mandate",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8900,9 +8987,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::takes the SHALL clause and drops 'the system'",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8923,9 +9010,9 @@
       "lastCheck": {
         "ref": "test/draft.test.ts::drafts only the unbound criterion, skipping bound ones and ADR records",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8946,9 +9033,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::advances a not-done task whose every check is green on the current tree",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8962,9 +9049,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::never re-advances an already-done task",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -8985,9 +9072,9 @@
       "lastCheck": {
         "ref": "test/done-msg.test.ts::does NOT advance a task proven on an OLDER tree (stale)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9008,9 +9095,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::records kind=judge with provenance + reason in the tail (never an executed green)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9024,9 +9111,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::respects an explicit mode regardless of the key",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9047,9 +9134,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::auto resolves to api when a key is present, harness when not",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9063,9 +9150,9 @@
       "lastCheck": {
         "ref": "test/judge.test.ts::is true only when ANTHROPIC_API_KEY is set",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9086,9 +9173,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::finds a simple A→B→A cycle",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9102,9 +9189,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::finds a longer A→B→C→A cycle",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9125,9 +9212,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::returns nothing for an acyclic chain",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9141,9 +9228,9 @@
       "lastCheck": {
         "ref": "test/cycles.test.ts::ignores non-dependsOn edges (a validates/implements edge is never a dependency cycle)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9164,9 +9251,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::maps a changed TEST file to the validates edge it proves",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9180,9 +9267,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::renders the touched edges for changed files that map",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9203,9 +9290,9 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::notes honestly when changed files map to no graph node",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
@@ -9219,22 +9306,100 @@
       "lastCheck": {
         "ref": "test/pr-blast.test.ts::omits the section entirely when changedFiles is undefined (back-compat)",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
       "id": "e109",
+      "from": "REQUIREMENT_INCR-01-AC1",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e110",
+      "from": "test:test/implements-edges.test.ts::relaxes a stale proof to green when the change misses its covered files",
+      "to": "REQUIREMENT_INCR-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/implements-edges.test.ts::relaxes a stale proof to green when the change misses its covered files",
+        "passed": true,
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e111",
+      "from": "test:test/implements-edges.test.ts::keeps it stale when an imported source changed",
+      "to": "REQUIREMENT_INCR-01-AC1",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/implements-edges.test.ts::keeps it stale when an imported source changed",
+        "passed": true,
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e112",
+      "from": "REQUIREMENT_INCR-01-AC2",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "derivedFrom",
+      "proof": "unproven"
+    },
+    {
+      "id": "e113",
+      "from": "test:test/implements-edges.test.ts::stays conservative (stale) when the proof's tree isn't diffable",
+      "to": "REQUIREMENT_INCR-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/implements-edges.test.ts::stays conservative (stale) when the proof's tree isn't diffable",
+        "passed": true,
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e114",
+      "from": "test:test/implements-edges.test.ts::never touches non-stale edges, nor a stale edge missing a ref/tree identity",
+      "to": "REQUIREMENT_INCR-01-AC2",
+      "kind": "validates",
+      "proof": "green",
+      "lastCheck": {
+        "ref": "test/implements-edges.test.ts::never touches non-stale edges, nor a stale edge missing a ref/tree identity",
+        "passed": true,
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
+        "stack": "node-vitest",
+        "kind": "unit"
+      }
+    },
+    {
+      "id": "e115",
       "from": "REQUIREMENT_IMPL-01-AC1",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e110",
+      "id": "e116",
       "from": "test:test/implements-edges.test.ts::links a source file a bound test imports to the requirement, carrying its rollup proof",
       "to": "REQUIREMENT_IMPL-01-AC1",
       "kind": "validates",
@@ -9242,15 +9407,15 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::links a source file a bound test imports to the requirement, carrying its rollup proof",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
-      "id": "e111",
+      "id": "e117",
       "from": "test:test/implements-edges.test.ts::buildVTG emits a green implements edge that makes unimplementedRequirements live",
       "to": "REQUIREMENT_IMPL-01-AC1",
       "kind": "validates",
@@ -9258,15 +9423,15 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::buildVTG emits a green implements edge that makes unimplementedRequirements live",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
-      "id": "e112",
+      "id": "e118",
       "from": "test:test/implements-edges.test.ts::lights up a changed source file's blast radius through the implements edge",
       "to": "REQUIREMENT_IMPL-01-AC1",
       "kind": "validates",
@@ -9274,22 +9439,22 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::lights up a changed source file's blast radius through the implements edge",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
-      "id": "e113",
+      "id": "e119",
       "from": "REQUIREMENT_IMPL-01-AC2",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e114",
+      "id": "e120",
       "from": "test:test/implements-edges.test.ts::inherits the requirement's worst criterion proof — green only when every criterion is green",
       "to": "REQUIREMENT_IMPL-01-AC2",
       "kind": "validates",
@@ -9297,22 +9462,22 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::inherits the requirement's worst criterion proof — green only when every criterion is green",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
-      "id": "e115",
+      "id": "e121",
       "from": "REQUIREMENT_IMPL-01-AC3",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "derivedFrom",
       "proof": "unproven"
     },
     {
-      "id": "e116",
+      "id": "e122",
       "from": "test:test/implements-edges.test.ts::never links a test→test import as an implementation",
       "to": "REQUIREMENT_IMPL-01-AC3",
       "kind": "validates",
@@ -9320,15 +9485,15 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::never links a test→test import as an implementation",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
-      "id": "e117",
+      "id": "e123",
       "from": "test:test/implements-edges.test.ts::does not link a source the requirement's tests never import",
       "to": "REQUIREMENT_IMPL-01-AC3",
       "kind": "validates",
@@ -9336,491 +9501,526 @@
       "lastCheck": {
         "ref": "test/implements-edges.test.ts::does not link a source the requirement's tests never import",
         "passed": true,
-        "at": "2026-06-26T08:49:19.124Z",
-        "sha": "b54de8bfa75b3509f179f29be3b6c22807dcb68b",
-        "tree": "a42e644f4dbd7a424970b2e8ef8865c09be6ed5c",
+        "at": "2026-06-26T21:05:15.952Z",
+        "sha": "dbdc8e18d920f3ac1c4d508cff9af6b14a12ca12",
+        "tree": "5408e7dd80048bcc68e21e8dd768e335fbe4ecdf",
         "stack": "node-vitest",
         "kind": "unit"
       }
     },
     {
-      "id": "e118",
-      "from": "file:src/engine/state/journal.ts",
-      "to": "REQUIREMENT_AUDIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e119",
-      "from": "file:src/engine/state/audit.ts",
-      "to": "REQUIREMENT_AUDIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e120",
-      "from": "file:src/cli/log.ts",
-      "to": "REQUIREMENT_AUDIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e121",
-      "from": "file:src/cli/progress.ts",
-      "to": "REQUIREMENT_AUDIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e122",
-      "from": "file:src/engine/state/tasks.ts",
-      "to": "REQUIREMENT_AUDIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e123",
-      "from": "file:src/engine/state/journal.ts",
-      "to": "REQUIREMENT_AUDIT-02",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
       "id": "e124",
-      "from": "file:src/engine/state/audit.ts",
-      "to": "REQUIREMENT_AUDIT-02",
+      "from": "file:src/engine/state/journal.ts",
+      "to": "REQUIREMENT_AUDIT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e125",
-      "from": "file:src/cli/log.ts",
-      "to": "REQUIREMENT_AUDIT-02",
+      "from": "file:src/engine/state/audit.ts",
+      "to": "REQUIREMENT_AUDIT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e126",
-      "from": "file:src/cli/progress.ts",
-      "to": "REQUIREMENT_AUDIT-02",
+      "from": "file:src/cli/log.ts",
+      "to": "REQUIREMENT_AUDIT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e127",
-      "from": "file:src/engine/state/tasks.ts",
-      "to": "REQUIREMENT_AUDIT-02",
+      "from": "file:src/cli/progress.ts",
+      "to": "REQUIREMENT_AUDIT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e128",
-      "from": "file:src/cli/config-io.ts",
-      "to": "REQUIREMENT_AUDIT-02",
+      "from": "file:src/engine/state/tasks.ts",
+      "to": "REQUIREMENT_AUDIT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e129",
-      "from": "file:src/engine/verify/runner.ts",
+      "from": "file:src/engine/state/journal.ts",
       "to": "REQUIREMENT_AUDIT-02",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e130",
-      "from": "file:src/engine/state/journal.ts",
-      "to": "REQUIREMENT_PROG-01",
+      "from": "file:src/engine/state/audit.ts",
+      "to": "REQUIREMENT_AUDIT-02",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e131",
-      "from": "file:src/engine/state/audit.ts",
-      "to": "REQUIREMENT_PROG-01",
+      "from": "file:src/cli/log.ts",
+      "to": "REQUIREMENT_AUDIT-02",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e132",
+      "from": "file:src/cli/progress.ts",
+      "to": "REQUIREMENT_AUDIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e133",
+      "from": "file:src/engine/state/tasks.ts",
+      "to": "REQUIREMENT_AUDIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e134",
+      "from": "file:src/cli/config-io.ts",
+      "to": "REQUIREMENT_AUDIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e135",
+      "from": "file:src/engine/verify/runner.ts",
+      "to": "REQUIREMENT_AUDIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e136",
+      "from": "file:src/engine/state/journal.ts",
+      "to": "REQUIREMENT_PROG-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e137",
+      "from": "file:src/engine/state/audit.ts",
+      "to": "REQUIREMENT_PROG-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e138",
       "from": "file:src/cli/log.ts",
       "to": "REQUIREMENT_PROG-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e133",
+      "id": "e139",
       "from": "file:src/cli/progress.ts",
       "to": "REQUIREMENT_PROG-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e134",
+      "id": "e140",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_PROG-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e135",
+      "id": "e141",
       "from": "file:src/engine/state/journal.ts",
       "to": "NFR_AUDIT-03",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e136",
+      "id": "e142",
       "from": "file:src/engine/state/audit.ts",
       "to": "NFR_AUDIT-03",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e137",
+      "id": "e143",
       "from": "file:src/cli/log.ts",
       "to": "NFR_AUDIT-03",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e138",
+      "id": "e144",
       "from": "file:src/cli/progress.ts",
       "to": "NFR_AUDIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e139",
-      "from": "file:src/engine/state/tasks.ts",
-      "to": "NFR_AUDIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e140",
-      "from": "file:src/engine/config-manifest.ts",
-      "to": "REQUIREMENT_COCKPIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e141",
-      "from": "file:src/config/schema.ts",
-      "to": "REQUIREMENT_COCKPIT-01",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e142",
-      "from": "file:src/cli/cockpit-data.ts",
-      "to": "REQUIREMENT_COCKPIT-02",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e143",
-      "from": "file:src/cli/cockpit.ts",
-      "to": "REQUIREMENT_COCKPIT-02",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e144",
-      "from": "file:src/engine/state/journal.ts",
-      "to": "REQUIREMENT_COCKPIT-02",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e145",
       "from": "file:src/engine/state/tasks.ts",
-      "to": "REQUIREMENT_COCKPIT-02",
+      "to": "NFR_AUDIT-03",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e146",
+      "from": "file:src/engine/config-manifest.ts",
+      "to": "REQUIREMENT_COCKPIT-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e147",
+      "from": "file:src/config/schema.ts",
+      "to": "REQUIREMENT_COCKPIT-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e148",
+      "from": "file:src/cli/cockpit-data.ts",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e149",
+      "from": "file:src/cli/cockpit.ts",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e150",
+      "from": "file:src/engine/state/journal.ts",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e151",
+      "from": "file:src/engine/state/tasks.ts",
+      "to": "REQUIREMENT_COCKPIT-02",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e152",
       "from": "file:src/cli/tasks.ts",
       "to": "REQUIREMENT_COCKPIT-02",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e147",
-      "from": "file:src/cli/cockpit-data.ts",
-      "to": "REQUIREMENT_COCKPIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e148",
-      "from": "file:src/cli/cockpit.ts",
-      "to": "REQUIREMENT_COCKPIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e149",
-      "from": "file:src/engine/state/journal.ts",
-      "to": "REQUIREMENT_COCKPIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e150",
-      "from": "file:src/engine/state/tasks.ts",
-      "to": "REQUIREMENT_COCKPIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e151",
-      "from": "file:src/cli/tasks.ts",
-      "to": "REQUIREMENT_COCKPIT-03",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
-      "id": "e152",
-      "from": "file:src/cli/cockpit-data.ts",
-      "to": "REQUIREMENT_COCKPIT-04",
-      "kind": "implements",
-      "proof": "green"
-    },
-    {
       "id": "e153",
-      "from": "file:src/cli/cockpit.ts",
-      "to": "REQUIREMENT_COCKPIT-04",
+      "from": "file:src/cli/cockpit-data.ts",
+      "to": "REQUIREMENT_COCKPIT-03",
       "kind": "implements",
       "proof": "green"
     },
     {
       "id": "e154",
+      "from": "file:src/cli/cockpit.ts",
+      "to": "REQUIREMENT_COCKPIT-03",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e155",
+      "from": "file:src/engine/state/journal.ts",
+      "to": "REQUIREMENT_COCKPIT-03",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e156",
+      "from": "file:src/engine/state/tasks.ts",
+      "to": "REQUIREMENT_COCKPIT-03",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e157",
+      "from": "file:src/cli/tasks.ts",
+      "to": "REQUIREMENT_COCKPIT-03",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e158",
+      "from": "file:src/cli/cockpit-data.ts",
+      "to": "REQUIREMENT_COCKPIT-04",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e159",
+      "from": "file:src/cli/cockpit.ts",
+      "to": "REQUIREMENT_COCKPIT-04",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e160",
       "from": "file:src/engine/state/journal.ts",
       "to": "REQUIREMENT_COCKPIT-04",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e155",
+      "id": "e161",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_COCKPIT-04",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e156",
+      "id": "e162",
       "from": "file:src/cli/tasks.ts",
       "to": "REQUIREMENT_COCKPIT-04",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e157",
+      "id": "e163",
       "from": "file:src/cli/web.ts",
       "to": "REQUIREMENT_COCKPIT-05",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e158",
+      "id": "e164",
       "from": "file:src/engine/state/journal.ts",
       "to": "REQUIREMENT_COCKPIT-05",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e159",
+      "id": "e165",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_COCKPIT-05",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e160",
+      "id": "e166",
       "from": "file:src/cli/tasks.ts",
       "to": "REQUIREMENT_DOCS-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e161",
+      "id": "e167",
       "from": "file:src/cli/queries.ts",
       "to": "REQUIREMENT_DOCS-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e162",
+      "id": "e168",
       "from": "file:src/engine/state/journal.ts",
       "to": "REQUIREMENT_DOCS-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e163",
+      "id": "e169",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_DOCS-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e164",
+      "id": "e170",
       "from": "file:src/engine/verify/report.ts",
       "to": "REQUIREMENT_TRUST-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e165",
+      "id": "e171",
       "from": "file:src/engine/verify/runner.ts",
       "to": "REQUIREMENT_TRUST-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e166",
+      "id": "e172",
       "from": "file:src/engine/verify/runner.ts",
       "to": "REQUIREMENT_TRUST-02",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e167",
+      "id": "e173",
       "from": "file:src/engine/verify/stamp-batch.ts",
       "to": "REQUIREMENT_STAMP-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e168",
+      "id": "e174",
       "from": "file:src/engine/verify/report.ts",
       "to": "REQUIREMENT_STAMP-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e169",
+      "id": "e175",
       "from": "file:src/engine/spec/lint.ts",
       "to": "REQUIREMENT_LINT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e170",
+      "id": "e176",
       "from": "file:src/engine/spec/ears.ts",
       "to": "REQUIREMENT_LINT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e171",
+      "id": "e177",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_DONE-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e172",
+      "id": "e178",
       "from": "file:src/engine/graph/types.ts",
       "to": "REQUIREMENT_DONE-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e173",
+      "id": "e179",
       "from": "file:src/engine/spec/draft.ts",
       "to": "REQUIREMENT_DRAFT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e174",
+      "id": "e180",
       "from": "file:src/engine/spec/ears.ts",
       "to": "REQUIREMENT_DRAFT-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e175",
+      "id": "e181",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_RECONCILE-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e176",
+      "id": "e182",
       "from": "file:src/engine/graph/types.ts",
       "to": "REQUIREMENT_RECONCILE-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e177",
+      "id": "e183",
       "from": "file:src/engine/verify/judge.ts",
       "to": "REQUIREMENT_JUDGE-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e178",
+      "id": "e184",
       "from": "file:src/engine/graph/cycles.ts",
       "to": "REQUIREMENT_CYCLE-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e179",
+      "id": "e185",
       "from": "file:src/engine/graph/types.ts",
       "to": "REQUIREMENT_PRBLAST-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e180",
+      "id": "e186",
       "from": "file:src/engine/pr/body.ts",
       "to": "REQUIREMENT_PRBLAST-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e181",
+      "id": "e187",
       "from": "file:src/engine/spec/parse.ts",
       "to": "REQUIREMENT_PRBLAST-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e182",
+      "id": "e188",
+      "from": "file:src/engine/graph/build.ts",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e189",
+      "from": "file:src/engine/graph/types.ts",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e190",
+      "from": "file:src/engine/spec/ears.ts",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e191",
+      "from": "file:src/engine/state/tasks.ts",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e192",
+      "from": "file:src/engine/graphify/index.ts",
+      "to": "REQUIREMENT_INCR-01",
+      "kind": "implements",
+      "proof": "green"
+    },
+    {
+      "id": "e193",
       "from": "file:src/engine/graph/build.ts",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e183",
+      "id": "e194",
       "from": "file:src/engine/graph/types.ts",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e184",
+      "id": "e195",
       "from": "file:src/engine/spec/ears.ts",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e185",
+      "id": "e196",
       "from": "file:src/engine/state/tasks.ts",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "implements",
       "proof": "green"
     },
     {
-      "id": "e186",
+      "id": "e197",
       "from": "file:src/engine/graphify/index.ts",
       "to": "REQUIREMENT_IMPL-01",
       "kind": "implements",

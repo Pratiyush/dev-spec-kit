@@ -73,3 +73,20 @@ export function gitTreeHash(cwd: string): string | undefined {
     /* c8 ignore stop */
   }
 }
+
+/**
+ * Files that differ between two tree-ish (a proof's recorded tree vs the current tree) — the basis for
+ * affected-aware staleness — excluding the kit's own bookkeeping, exactly like `gitTreeHash`. Returns
+ * `undefined` when the diff can't run (e.g. the proof's tree object was garbage-collected); callers treat
+ * that conservatively (the proof stays stale rather than risk a false green).
+ */
+export function gitDiffFiles(cwd: string, treeA: string, treeB: string): string[] | undefined {
+  const res = spawnSync(
+    "git",
+    ["diff", "--name-only", treeA, treeB, "--", ":(exclude).dev-spec-kit", ":(exclude).revitify"],
+    { cwd, stdio: ["ignore", "pipe", "ignore"] },
+  );
+  if (res.status !== 0) return undefined;
+  const out = res.stdout.toString().trim();
+  return out.length > 0 ? out.split("\n") : [];
+}

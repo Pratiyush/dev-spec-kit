@@ -3,7 +3,7 @@ import { mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execSync } from "node:child_process";
-import { gitTreeHash, isDirty } from "../src/engine/git.js";
+import { gitDiffFiles, gitTreeHash, isDirty } from "../src/engine/git.js";
 import { execute } from "../src/engine/verify/runner.js";
 import { buildVTG } from "../src/engine/graph/build.js";
 import { parseSpec } from "../src/engine/spec/parse.js";
@@ -116,6 +116,16 @@ describe("proof identity = tested tree", () => {
     const before = gitTreeHash(dir);
     writeFileSync(join(dir, "brand-new.ts"), "export const x = 1;\n");
     expect(gitTreeHash(dir)).not.toBe(before);
+  });
+
+  it("gitDiffFiles lists files changed between two trees; undefined for an undiffable tree (FEAT-INCR-01)", () => {
+    const dir = tempRepo();
+    const t1 = gitTreeHash(dir)!;
+    writeFileSync(join(dir, "f.txt"), "v2\n");
+    writeFileSync(join(dir, "new.ts"), "export const x = 1;\n");
+    const t2 = gitTreeHash(dir)!;
+    expect(gitDiffFiles(dir, t1, t2)!.sort()).toEqual(["f.txt", "new.ts"]);
+    expect(gitDiffFiles(dir, "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef", t2)).toBeUndefined();
   });
 
   it("changed content goes stale even at the same HEAD; legacy sha-only proofs still compare by sha", () => {
