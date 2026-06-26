@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { approve, pr, route, guardPr, unlock } from "../src/cli/workflow.js";
+import { approve, pr, route, guardPr, gateCmd, unlock } from "../src/cli/workflow.js";
 import { TaskStore } from "../src/engine/state/tasks.js";
 import { Journal } from "../src/engine/state/journal.js";
 import { tmpProject, run } from "./helpers/cli-harness.js";
@@ -19,6 +19,58 @@ const validates = (proof: string) =>
     edges: [{ id: "e1", from: "t:1", to: "AC1", kind: "validates", proof, lastCheck: { ref: "c1" } }],
   });
 const ZERO = JSON.stringify({ nodes: [], edges: [] });
+
+describe("dev-spec-kit gate — lean graph-clean check (exit 2, no fresh-verify gate)", () => {
+  it("passes (no exit code) when every proof is green", () => {
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("green") });
+    const { text, exitCode } = run(dir, () => gateCmd({}));
+    expect(text).toContain("every proof green");
+    expect(exitCode).toBeUndefined();
+  });
+
+  it("blocks (exit 2) on a STALE proof — the case the grep-guard false-passed", () => {
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("stale") });
+    const { text, exitCode } = run(dir, () => gateCmd({}));
+    expect(text).toContain("blocked");
+    expect(text).toContain("STALE");
+    expect(exitCode).toBe(2);
+  });
+
+  it("blocks (exit 2) on RED and on UNPROVEN too", () => {
+    for (const p of ["red", "unproven"]) {
+      const dir = tmpProject({ ".dev-spec-kit/graph.json": validates(p) });
+      expect(run(dir, () => gateCmd({})).exitCode).toBe(2);
+    }
+  });
+
+  it("blocks (exit 2) when the graph is missing — absence ≠ permission", () => {
+    const dir = tmpProject(); // .dev-spec-kit exists, but no graph.json
+    const { text, exitCode } = run(dir, () => gateCmd({}));
+    expect(text).toContain("graph build");
+    expect(exitCode).toBe(2);
+  });
+
+  it("passes zero-proof graphs with a notice", () => {
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": ZERO });
+    const { text, exitCode } = run(dir, () => gateCmd({}));
+    expect(text).toContain("zero bound proofs");
+    expect(exitCode).toBeUndefined();
+  });
+
+  it("--quiet emits nothing and only signals the exit code", () => {
+    const dir = tmpProject({ ".dev-spec-kit/graph.json": validates("stale") });
+    const { text, exitCode } = run(dir, () => gateCmd({ quiet: true }));
+    expect(text).toBe("");
+    expect(exitCode).toBe(2);
+  });
+
+  it("is a no-op outside a dev-spec-kit project", () => {
+    const bare = mkdtempSync(join(tmpdir(), "gate-bare-"));
+    const { text, exitCode } = run(bare, () => gateCmd({}));
+    expect(text).toContain("nothing to enforce");
+    expect(exitCode).toBeUndefined();
+  });
+});
 
 describe("dev-spec-kit approve", () => {
   it("records an approval for a proven (done) task", () => {
