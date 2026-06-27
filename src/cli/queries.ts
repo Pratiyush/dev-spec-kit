@@ -11,6 +11,16 @@ import { graphifyBin } from "../engine/graphify/index.js";
 import type { ProofState } from "../engine/graph/types.js";
 import { label } from "./emoji.js";
 import { refreshDocs } from "./refresh-docs.js";
+import { mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { runVerify } from "../engine/verify/verify-all.js";
+import { stampProofs } from "./verify-cmd.js";
+
+// FEAT-INCR-02: above this many same-stack JS targets, one suite run + stamp (≈ suite time) beats N serial
+// vitest/jest spawns (each pays ~1s cold-start). Tuned so a small drift stays targeted, a big one batches.
+const DRIFT_BATCH_MIN = 5;
+const JS_STACKS = new Set(["node-vitest", "node-jest"]);
 
 const LIGHT: Record<ProofState, string> = {
   green: pc.green("● green"),
@@ -83,31 +93,50 @@ export function drift(opts: { stack?: string; dryRun?: boolean }): void {
     return;
   }
 
-  const store = new TaskStore(journalFor(cwd));
   const config = before.config;
   let reran = 0;
-  for (const t of targets) {
-    const stack = t.stack ?? opts.stack;
-    if (!stack) {
-      console.log(pc.yellow(`  ⚠ ${t.ref}: no recorded stack and no --stack fallback — skipped`));
-      continue;
-    }
-    const kind = kindForRef(before.requirements, t.ref) ?? "unit";
-    const picked = pickRunner(config, kind, stack);
-    process.stdout.write(pc.dim(`  ${label("drift")} re-running ${t.ref} [${kind}] via ${stack} … `));
-    const { result, attempts } = runWithRetry(
-      () => ({
-        ...runCheck({ kind: kind as never, ref: t.ref }, stack, { cwd }, picked.override),
-        stack,
-        kind,
-      }),
-      config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0,
-    );
-    for (const taskId of t.taskIds.length > 0 ? t.taskIds : []) store.recordCheck(taskId, result);
-    reran++;
+  // FEAT-INCR-02: a big drift batches into ONE suite run + stamp instead of N serial vitest/jest spawns
+  // (each pays a ~1s cold-start). Only when every target is a JS stack — the suite re-proves them all at once.
+  const allJs = targets.every((t) => JS_STACKS.has(t.stack ?? opts.stack ?? ""));
+  if (allJs && targets.length >= DRIFT_BATCH_MIN) {
     console.log(
-      result.passed ? pc.green(`PASS${result.flaky ? ` (flaky, attempt ${attempts})` : ""}`) : pc.red("FAIL"),
+      pc.dim(`\n  ${label("drift")} ${targets.length} JS proofs drifted — batching into one suite run …`),
     );
+    const reportDir = mkdtempSync(join(tmpdir(), "dev-spec-kit-drift-"));
+    try {
+      const run = runVerify(cwd, config, { reportDir });
+      stampProofs(cwd, config, journalFor(cwd), run);
+      reran = targets.length;
+    } finally {
+      rmSync(reportDir, { recursive: true, force: true });
+    }
+  } else {
+    const store = new TaskStore(journalFor(cwd));
+    for (const t of targets) {
+      const stack = t.stack ?? opts.stack;
+      if (!stack) {
+        console.log(pc.yellow(`  ⚠ ${t.ref}: no recorded stack and no --stack fallback — skipped`));
+        continue;
+      }
+      const kind = kindForRef(before.requirements, t.ref) ?? "unit";
+      const picked = pickRunner(config, kind, stack);
+      process.stdout.write(pc.dim(`  ${label("drift")} re-running ${t.ref} [${kind}] via ${stack} … `));
+      const { result, attempts } = runWithRetry(
+        () => ({
+          ...runCheck({ kind: kind as never, ref: t.ref }, stack, { cwd }, picked.override),
+          stack,
+          kind,
+        }),
+        config.verify.flaky === "retry-flag" ? config.build.retryLimit : 0,
+      );
+      for (const taskId of t.taskIds.length > 0 ? t.taskIds : []) store.recordCheck(taskId, result);
+      reran++;
+      console.log(
+        result.passed
+          ? pc.green(`PASS${result.flaky ? ` (flaky, attempt ${attempts})` : ""}`)
+          : pc.red("FAIL"),
+      );
+    }
   }
 
   const after = materialize(cwd, { refresh: false });
