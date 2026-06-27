@@ -57,6 +57,33 @@ describe("dev-spec-kit drift", () => {
     const { text } = run(dir, () => drift({ stack: "fake" }));
     expect(text).toContain("re-ran");
   });
+
+  it("batches a large drift (≥5 JS proofs) into one suite run instead of N serial spawns", () => {
+    const checks = ["c1", "c2", "c3", "c4", "c5", "c6"];
+    const spec =
+      "## Requirement REQUIREMENT_B-01 — t\nWHEN x THEN the system SHALL y.\n" +
+      checks.map((c) => `@check kind=unit ref=${c}`).join("\n") +
+      "\n";
+    const dir = tmpProject({
+      ".dev-spec-kit/config.json": JSON.stringify({
+        verify: { buildAll: [{ cmd: "node", args: ["-e", "0"] }] },
+      }),
+      ".dev-spec-kit/specs/b.md": spec,
+    });
+    const s = store(dir);
+    s.create("REQUIREMENT_B-01", "t", checks);
+    for (const c of checks)
+      s.recordCheck("REQUIREMENT_B-01", {
+        ref: c,
+        passed: false,
+        at: "x",
+        sha: "S",
+        tree: "T",
+        stack: "node-vitest",
+      });
+    const { text } = run(dir, () => drift({}));
+    expect(text).toContain("batching into one suite run"); // took the batch path, not N serial spawns
+  });
 });
 
 describe("dev-spec-kit affected", () => {
